@@ -1,224 +1,184 @@
-//! # Bone Matrix
+//! # Bone Matrix Module
 //! 
-//! Represents the complex composite material that forms the structural basis of bone tissue.
-//! 
-//! ## Components
-//! - Mineral phase (hydroxyapatite)
-//! - Organic phase (mainly type I collagen)
-//! - Water
-//! - Non-collagenous proteins
-//! 
-//! ## Relationships
-//! - `is_part_of`: [[bone_tissue]]
-//! - `contains`: [[collagen]], [[hydroxyapatite]]
-//! - `regulated_by`: [[bone_remodeling]]
-//! 
-//! For detailed diagrams and explanations, see the accompanying `bone_matrix.md`.
+//! Models the structure and properties of bone matrix.
 
-use serde::{Deserialize, Serialize};
-use crate::{
-    BiologicalState,
-    ChemicalProperty,
-    MechanicalProperty,
-    Vector3D,
-    BiologyError,
-    BiologyResult,
-    Temporal,
-    ChemicallyActive,
-    MechanicallyResponsive,
-};
+use std::collections::HashMap;
+use serde::{Serialize, Deserialize};
+use crate::biology::{BiologyError, BiologyResult};
 
-/// Represents the composition and organization of bone matrix
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BoneMatrix {
-    /// Current state of the matrix
-    state: BiologicalState,
-    /// Material composition
-    composition: MatrixComposition,
-    /// Structural organization
-    organization: MatrixOrganization,
-    /// Physical properties
-    properties: MatrixProperties,
-    /// Age of the matrix in seconds
-    age: f64,
+    // Composition
+    collagen_content: f64,        // % dry weight
+    mineral_content: f64,         // % dry weight
+    water_content: f64,           // % total weight
+    non_collagenous_proteins: HashMap<String, f64>,
+    
+    // Structure
+    collagen_organization: CollagenStructure,
+    mineral_crystals: Vec<Crystal>,
+    crosslinks: Vec<Crosslink>,
+    pore_structure: PoreNetwork
 }
 
-/// Composition of matrix components
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct MatrixComposition {
-    /// Mineral content (hydroxyapatite) percentage
-    mineral_content: f64,
-    /// Organic content (mainly collagen) percentage
-    organic_content: f64,
-    /// Water content percentage
-    water_content: f64,
-    /// Non-collagenous proteins percentage
-    protein_content: f64,
+#[derive(Debug)]
+pub struct MatrixAssembly {
+    assembly_stage: AssemblyStage,
+    mineralization_status: MineralizationStatus,
+    matrix_age: f64,  // days
+    remodeling_sites: Vec<RemodelingUnit>
 }
 
-/// Structural organization of matrix
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct MatrixOrganization {
-    /// Collagen fibril orientation
-    fibril_orientation: Vector3D,
-    /// Crystal orientation
-    crystal_orientation: Vector3D,
-    /// Degree of mineralization
-    mineralization: f64,
-    /// Crosslink density
-    crosslink_density: f64,
+impl MatrixAssembly {
+    pub fn organize_collagen(&self) -> BiologyResult<CollagenNetwork> {
+        // Implementation for collagen organization
+        todo!()
+    }
+
+    pub fn nucleate_crystals(&self) -> BiologyResult<CrystalNuclei> {
+        // Implementation for crystal nucleation
+        todo!()
+    }
+
+    pub fn form_crosslinks(&mut self) -> BiologyResult<CrosslinkDensity> {
+        // Implementation for crosslink formation
+        todo!()
+    }
 }
 
-/// Physical and mechanical properties
+#[derive(Debug, Clone)]
+pub struct MechanicalProperties {
+    elastic_modulus: f64,      // GPa
+    ultimate_strength: f64,    // MPa
+    toughness: f64,           // MJ/m³
+    fatigue_resistance: f64,   // cycles
+    creep_behavior: CreepParameters
+}
+
+impl MechanicalProperties {
+    pub fn calculate_stiffness(&self) -> f64 {
+        // Implementation for stiffness calculation
+        todo!()
+    }
+
+    pub fn predict_failure(&self, load: &Load) -> FailureProbability {
+        // Implementation for failure prediction
+        todo!()
+    }
+
+    pub fn assess_quality(&self) -> QualityScore {
+        // Implementation for quality assessment
+        todo!()
+    }
+}
+
+pub trait MatrixDynamics {
+    fn remodel_site(&mut self, site: &RemodelingUnit) -> BiologyResult<()>;
+    fn adapt_to_load(&mut self, mechanical_stimulus: &MechanicalStimulus);
+    fn respond_to_damage(&mut self, damage: &Damage);
+    fn age_matrix(&mut self, time: f64);
+}
+
+impl MatrixDynamics for BoneMatrix {
+    fn remodel_site(&mut self, site: &RemodelingUnit) -> BiologyResult<()> {
+        // Get current matrix state
+        let current_matrix = site.get_current_matrix()?;
+        
+        // Calculate degradation
+        let degradation = self.calculate_degradation(&current_matrix)?;
+        
+        // Synthesize new matrix
+        let new_matrix = self.synthesize_matrix(site)?;
+        
+        // Update site
+        site.update_matrix(new_matrix)
+    }
+
+    fn adapt_to_load(&mut self, mechanical_stimulus: &MechanicalStimulus) {
+        // Implementation for load adaptation
+        todo!()
+    }
+
+    fn respond_to_damage(&mut self, damage: &Damage) {
+        // Implementation for damage response
+        todo!()
+    }
+
+    fn age_matrix(&mut self, time: f64) {
+        // Implementation for matrix aging
+        todo!()
+    }
+}
+
+#[derive(Debug)]
+pub struct MatrixSignaling {
+    growth_factors: Vec<GrowthFactor>,
+    binding_sites: HashMap<String, BindingSite>,
+    signaling_molecules: Vec<SignalingMolecule>,
+    matrix_metalloproteinases: Vec<MMP>
+}
+
+impl MatrixSignaling {
+    pub fn store_factors(&mut self, factors: &[GrowthFactor]) -> BiologyResult<()> {
+        // Implementation for factor storage
+        todo!()
+    }
+
+    pub fn release_factors(&mut self, stimulus: &Stimulus) -> Vec<ReleasedFactor> {
+        // Implementation for factor release
+        todo!()
+    }
+
+    pub fn regulate_turnover(&mut self, conditions: &Conditions) -> TurnoverRate {
+        // Implementation for turnover regulation
+        todo!()
+    }
+}
+
+// Supporting types
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct MatrixProperties {
-    /// Density in g/cm³
-    density: f64,
-    /// Young's modulus in GPa
-    elastic_modulus: f64,
-    /// Ultimate strength in MPa
+pub struct Crystal {
+    size: Vec3,
+    orientation: f64,
+    composition: Composition,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Crosslink {
+    crosslink_type: CrosslinkType,
+    maturity: f64,
     strength: f64,
-    /// Porosity as fraction
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PoreNetwork {
     porosity: f64,
+    pore_size_distribution: HashMap<f64, f64>,
+    connectivity: f64,
 }
 
-impl BoneMatrix {
-    /// Create a new bone matrix with default composition
-    pub fn new() -> Self {
-        BoneMatrix {
-            state: BiologicalState::Developing,
-            composition: MatrixComposition {
-                mineral_content: 65.0,
-                organic_content: 25.0,
-                water_content: 5.0,
-                protein_content: 5.0,
-            },
-            organization: MatrixOrganization {
-                fibril_orientation: Vector3D::new(0.0, 0.0, 1.0),
-                crystal_orientation: Vector3D::new(0.0, 0.0, 1.0),
-                mineralization: 0.8,
-                crosslink_density: 0.7,
-            },
-            properties: MatrixProperties {
-                density: 2.0,
-                elastic_modulus: 20.0,
-                strength: 150.0,
-                porosity: 0.1,
-            },
-            age: 0.0,
-        }
-    }
-
-    /// Calculate overall matrix quality score
-    pub fn calculate_quality(&self) -> f64 {
-        let composition_score = self.calculate_composition_score();
-        let organization_score = self.calculate_organization_score();
-        let property_score = self.calculate_property_score();
-
-        (composition_score + organization_score + property_score) / 3.0
-    }
-
-    /// Score based on composition
-    fn calculate_composition_score(&self) -> f64 {
-        // Optimal ratios
-        const OPTIMAL_MINERAL: f64 = 65.0;
-        const OPTIMAL_ORGANIC: f64 = 25.0;
-        
-        let mineral_score = 1.0 - (self.composition.mineral_content - OPTIMAL_MINERAL).abs() / OPTIMAL_MINERAL;
-        let organic_score = 1.0 - (self.composition.organic_content - OPTIMAL_ORGANIC).abs() / OPTIMAL_ORGANIC;
-        
-        (mineral_score + organic_score) / 2.0
-    }
-
-    /// Score based on structural organization
-    fn calculate_organization_score(&self) -> f64 {
-        let alignment_score = self.organization.fibril_orientation.normalize().z;
-        let mineralization_score = self.organization.mineralization;
-        let crosslink_score = self.organization.crosslink_density;
-        
-        (alignment_score + mineralization_score + crosslink_score) / 3.0
-    }
-
-    /// Score based on physical properties
-    fn calculate_property_score(&self) -> f64 {
-        // Optimal values
-        const OPTIMAL_DENSITY: f64 = 2.0;
-        const OPTIMAL_MODULUS: f64 = 20.0;
-        
-        let density_score = 1.0 - (self.properties.density - OPTIMAL_DENSITY).abs() / OPTIMAL_DENSITY;
-        let modulus_score = 1.0 - (self.properties.elastic_modulus - OPTIMAL_MODULUS).abs() / OPTIMAL_MODULUS;
-        
-        (density_score + modulus_score) / 2.0
-    }
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum AssemblyStage {
+    Initial,
+    Organizing,
+    Mineralizing,
+    Maturing,
+    Remodeling,
 }
 
-impl Temporal for BoneMatrix {
-    fn update(&mut self, dt: crate::SimulationTime) {
-        self.age += dt.seconds;
-        
-        // Update state based on age and quality
-        self.state = match (self.age, self.calculate_quality()) {
-            (age, quality) if age < 7.0 * 24.0 * 3600.0 => BiologicalState::Developing,
-            (_, quality) if quality > 0.8 => BiologicalState::Mature,
-            (_, quality) if quality < 0.4 => BiologicalState::Degrading,
-            _ => BiologicalState::Active,
-        };
-    }
-
-    fn get_age(&self) -> crate::SimulationTime {
-        crate::SimulationTime::new(self.age)
-    }
-
-    fn get_state(&self) -> BiologicalState {
-        self.state
-    }
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MineralizationStatus {
+    mineral_density: f64,
+    crystal_maturity: f64,
+    distribution: MineralDistribution,
 }
 
-impl ChemicallyActive for BoneMatrix {
-    fn update_chemistry(&mut self, property: ChemicalProperty) {
-        match property {
-            ChemicalProperty::pH(ph) => {
-                // Adjust mineralization based on pH
-                if ph < 7.0 {
-                    self.organization.mineralization *= 0.99;
-                }
-            },
-            ChemicalProperty::Temperature(temp) => {
-                // Adjust crosslink formation based on temperature
-                if temp > 37.0 {
-                    self.organization.crosslink_density *= 0.99;
-                }
-            },
-            _ => (),
-        }
-    }
-
-    fn get_chemical_state(&self) -> Vec<ChemicalProperty> {
-        vec![
-            ChemicalProperty::pH(7.4),
-            ChemicalProperty::Temperature(37.0),
-        ]
-    }
-}
-
-impl MechanicallyResponsive for BoneMatrix {
-    fn apply_force(&mut self, force: Vector3D) {
-        let magnitude = force.magnitude();
-        
-        // Adapt properties based on mechanical loading
-        if magnitude > 1000.0 {
-            self.properties.elastic_modulus *= 1.01;
-            self.organization.mineralization *= 1.01;
-        }
-    }
-
-    fn get_stress(&self) -> MechanicalProperty {
-        MechanicalProperty::Stress(self.properties.strength)
-    }
-
-    fn get_strain(&self) -> MechanicalProperty {
-        MechanicalProperty::Strain(self.properties.strength / self.properties.elastic_modulus)
-    }
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RemodelingUnit {
+    location: Vec3,
+    volume: f64,
+    activity_status: RemodelingStatus,
+    cell_population: CellPopulation,
 }
 
 #[cfg(test)]
@@ -226,24 +186,38 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_matrix_creation() {
-        let matrix = BoneMatrix::new();
-        assert_eq!(matrix.get_state(), BiologicalState::Developing);
+    fn test_matrix_assembly() {
+        let assembly = MatrixAssembly {
+            assembly_stage: AssemblyStage::Initial,
+            mineralization_status: MineralizationStatus {
+                mineral_density: 0.0,
+                crystal_maturity: 0.0,
+                distribution: MineralDistribution::default(),
+            },
+            matrix_age: 0.0,
+            remodeling_sites: vec![],
+        };
+
+        // Test collagen organization
+        let collagen = assembly.organize_collagen();
+        assert!(collagen.is_ok());
+
+        // Test crystal nucleation
+        let crystals = assembly.nucleate_crystals();
+        assert!(crystals.is_ok());
     }
 
     #[test]
-    fn test_quality_calculation() {
-        let matrix = BoneMatrix::new();
-        let quality = matrix.calculate_quality();
-        assert!(quality > 0.0 && quality <= 1.0);
-    }
+    fn test_mechanical_properties() {
+        let properties = MechanicalProperties {
+            elastic_modulus: 20.0,
+            ultimate_strength: 150.0,
+            toughness: 3.0,
+            fatigue_resistance: 1e6,
+            creep_behavior: CreepParameters::default(),
+        };
 
-    #[test]
-    fn test_mechanical_response() {
-        let mut matrix = BoneMatrix::new();
-        let initial_modulus = matrix.properties.elastic_modulus;
-        
-        matrix.apply_force(Vector3D::new(0.0, 0.0, 2000.0));
-        assert!(matrix.properties.elastic_modulus > initial_modulus);
+        let stiffness = properties.calculate_stiffness();
+        assert!(stiffness > 0.0);
     }
 } 
