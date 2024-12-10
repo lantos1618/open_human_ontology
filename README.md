@@ -36,6 +36,44 @@ We use standardized relationship types to create a semantic network:
 - Provide a collaborative platform for medical knowledge sharing
 - Enable easy navigation through body systems and processes
 - Bridge the gap between biological understanding and technical documentation
+- Develop a domain-specific programming language for biological processes
+- Create computational models of biological systems
+
+### Computational Vision
+Our project aims to create a programming framework that will:
+- Define biological structures as data types (structs/classes)
+- Model processes as functions and methods
+- Enable step-through debugging of biological processes
+- Provide IDE integration (VSCode/Cursor) for process visualization
+- Support simulation and prediction of biological interactions
+
+Example structure:
+```typescript
+// Structure definition
+struct Cell {
+    membrane: Membrane;
+    organelles: Organelle[];
+    metabolism: Process[];
+    signaling: PathwayNetwork;
+}
+
+// Process definition
+interface Process {
+    input: Molecule[];
+    output: Molecule[];
+    rate: number;
+    regulators: Protein[];
+}
+
+// Example pathway
+function glycolysis(glucose: Molecule): ATP {
+    // Step-by-step process that can be debugged
+    const g6p = hexokinase.phosphorylate(glucose);
+    const f6p = phosphoglucoseIsomerase.convert(g6p);
+    // ... more steps
+    return atpSynthase.generate(pyruvate);
+}
+```
 
 ## Repository Structure
 
@@ -58,7 +96,7 @@ OpenHuman/
 │   └── physiological/      # System-level processes
 │
 ├── structures/             # Physical structures
-│   ├��─ organs/            # Individual organs
+│   ├── organs/            # Individual organs
 │   ├── tissues/           # Tissue types
 │   └── cells/             # Cell types
 │
@@ -111,3 +149,112 @@ This project is licensed under [License Type] - making human biology knowledge o
 
 ## Note
 This is a documentation project aimed at education and understanding. It is not meant for medical diagnosis or treatment. Always consult healthcare professionals for medical advice. 
+
+### Computational Examples
+
+#### 1. Bone Remodeling Process
+```typescript
+struct Bone {
+    matrix: BoneMatrix;
+    cells: {
+        osteoblasts: Osteoblast[];
+        osteoclasts: Osteoclast[];
+        osteocytes: Osteocyte[];
+    };
+    minerals: {
+        calcium: number;
+        phosphate: number;
+    };
+    mechanics: {
+        strength: number;
+        density: number;
+    };
+}
+
+interface BoneRemodelingUnit {
+    activation(): void;
+    resorption(): void;
+    reversal(): void;
+    formation(): void;
+    mineralization(): void;
+}
+
+// Process simulation
+class BoneRemodeling implements Process {
+    async function remodelingCycle(site: BoneRemodelingUnit) {
+        // Can be stepped through in debugger
+        await site.activation();   // Osteoclast recruitment
+        await site.resorption();   // Matrix degradation
+        await site.reversal();     // Transition phase
+        await site.formation();    // New bone formation
+        await site.mineralization(); // Matrix hardening
+    }
+}
+```
+
+#### 2. Mechanotransduction
+```typescript
+class Osteocyte extends Cell {
+    dendrites: Process[];
+    mechanoreceptors: Protein[];
+    signaling: SignalNetwork;
+
+    async function detectStrain(force: MechanicalForce) {
+        const fluidFlow = this.calculateShearStress(force);
+        const signals = this.mechanoreceptors
+            .filter(r => r.threshold < fluidFlow)
+            .map(r => r.activate());
+        
+        await this.propagateSignal(signals);
+    }
+
+    async function propagateSignal(signals: Signal[]) {
+        // Debuggable signal cascade
+        const calcium = await this.calciumResponse(signals);
+        const genes = await this.geneRegulation(calcium);
+        const proteins = await this.proteinExpression(genes);
+        
+        return this.sendToNetwork(proteins);
+    }
+}
+```
+
+#### 3. Mineral Homeostasis
+```typescript
+interface CalciumRegulation {
+    sensors: CalciumSensor[];
+    effectors: {
+        pth: ParathyroidHormone;
+        vitaminD: VitaminD;
+        calcitonin: Calcitonin;
+    };
+    pools: {
+        bone: number;
+        blood: number;
+        cellular: number;
+    };
+}
+
+class MineralHomeostasis extends Process {
+    async function regulateCalcium(current: number, target: number) {
+        const deviation = target - current;
+        
+        if (Math.abs(deviation) > THRESHOLD) {
+            // Step-through hormone response
+            if (deviation < 0) {
+                await this.decreaseCalcium({
+                    calcitonin: true,
+                    osteoblasts: 'activate',
+                    osteoclasts: 'inhibit'
+                });
+            } else {
+                await this.increaseCalcium({
+                    pth: true,
+                    vitaminD: true,
+                    osteoclasts: 'activate'
+                });
+            }
+        }
+    }
+}
+```
