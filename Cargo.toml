@@ -1,0 +1,29 @@
+[package]
+name = "human_biology"
+version = "0.1.0"
+edition = "2021"
+authors = ["Human Biology Project Contributors"]
+description = "A computational model of human biology focusing on bone structure and mechanics"
+license = "MIT"
+repository = "https://github.com/yourusername/human_biology"
+keywords = ["biology", "simulation", "bone", "medical", "science"]
+categories = ["science", "simulation"]
+
+[dependencies]
+# Numerical computations
+nalgebra = "0.32.3"  # Linear algebra
+rand = "0.8.5"      # Random number generation
+rayon = "1.7.0"     # Parallel computation
+serde = { version = "1.0", features = ["derive"] }  # Serialization
+serde_json = "1.0"  # JSON support
+
+# Visualization
+plotters = "0.3.5"  # Plotting library
+
+[dev-dependencies]
+criterion = "0.5.1"  # Benchmarking
+proptest = "1.2.0"  # Property testing
+
+[[bench]]
+name = "bone_strength"
+harness = false 
