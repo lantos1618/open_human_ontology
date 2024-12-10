@@ -1,7 +1,34 @@
-# OpenHuman: An Open-Source Human Body Ontology Documentation Project
+# OpenHuman: An Open-Source Human Body Documentation Project
 
 ## Overview
 OpenHuman is a comprehensive, open-source documentation project that aims to describe the human body in a structured, code-like format. This project bridges the gap between biological understanding and software documentation patterns, making human anatomy and physiology more accessible and interconnected.
+
+## Using with Obsidian
+This documentation is optimized for viewing in [Obsidian](https://obsidian.md/), a powerful knowledge base that works on top of a local folder of plain text Markdown files. To get the best experience:
+
+1. Download and install Obsidian
+2. Open this repository as a vault
+3. Enable the following plugins:
+   - Graph View (for relationship visualization)
+   - Mermaid (for diagrams)
+   - Backlinks (for reference tracking)
+   - Page Preview (for quick reference)
+
+### Key Features in Obsidian
+- **Wiki-style Links**: Use [[file_name]] to create connections
+- **Interactive Graphs**: Visualize relationships between concepts
+- **Dynamic References**: Track what references each component
+- **Visual Diagrams**: View Mermaid diagrams inline
+- **Tag System**: Use #tags for additional categorization
+
+### Relationship Types
+We use standardized relationship types to create a semantic network:
+- `is_part_of`: Component relationships
+- `contains`: Structural relationships
+- `interacts_with`: Functional interactions
+- `regulated_by`: Control mechanisms
+- `produces`: Output relationships
+- See `RELATIONSHIPS.md` for complete list
 
 ## Project Goals
 - Create a structured representation of human anatomy and physiology
@@ -31,7 +58,7 @@ OpenHuman/
 │   └── physiological/      # System-level processes
 │
 ├── structures/             # Physical structures
-│   ├── organs/            # Individual organs
+│   ├��─ organs/            # Individual organs
 │   ├── tissues/           # Tissue types
 │   └── cells/             # Cell types
 │
@@ -43,15 +70,16 @@ OpenHuman/
 ```
 
 ## Documentation Format
-Each component will be documented using a structured format:
+Each component is documented using a structured format:
 
 ```markdown
 # Component Name
 ## Description
+## Relationships
 ## Structure
 ## Function
-## Interactions
-## Processes
+## Regulation
+## Clinical Significance
 ## References
 ```
 
@@ -71,10 +99,12 @@ We welcome contributions from:
 - Cross-referencing with medical literature
 
 ## Getting Started
-1. Choose a system or component to document
-2. Follow the documentation format
-3. Submit pull requests with your contributions
-4. Participate in discussions and reviews
+1. Clone this repository
+2. Install Obsidian
+3. Open the repository as an Obsidian vault
+4. Choose a system or component to document
+5. Follow the documentation format
+6. Submit pull requests with your contributions
 
 ## License
 This project is licensed under [License Type] - making human biology knowledge open and accessible to everyone.
