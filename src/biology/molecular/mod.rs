@@ -10,6 +10,7 @@ pub mod hydroxyapatite;
 pub mod collagen;
 pub mod crosslinks;
 pub mod enzymes;
+pub use enzymes::*;
 
 /// Represents a molecular structure with 3D coordinates
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

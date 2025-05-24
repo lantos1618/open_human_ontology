@@ -131,6 +131,13 @@ graph TD
 - Variable regulatory regions
 - Species-specific variants
 
+## Computational Model
+The ALDH2 enzyme, crucial for acetaldehyde detoxification, is modeled in Rust. This includes representations for its common variants (`ALDH2_1`, `ALDH2_2`) and their impact on acetaldehyde metabolism, which is central to understanding conditions like the alcohol flush reaction.
+
+-   **Source Code:** `src/biology/molecular/enzymes.rs`
+-   **Key Structures:** `ALDH2`, `ALDH2_Variant`
+-   **Functionality:** The `metabolize_acetaldehyde` method simulates the clearance of acetaldehyde, with rates significantly affected by the enzyme variant (especially the deficient `ALDH2_2` variant).
+
 ## References
 1. Molecular Structure and Function
 2. Biochemistry and Regulation

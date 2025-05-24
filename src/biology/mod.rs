@@ -8,6 +8,7 @@ use std::fmt;
 pub mod molecular;
 pub mod cellular;
 pub mod tissue;
+pub mod processes;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

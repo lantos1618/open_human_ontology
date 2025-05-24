@@ -114,6 +114,13 @@ graph TD
 - Hydration
 - Pace control
 
+## Computational Model of Reaction
+The alcohol flush reaction can be modeled using a Rust simulation that predicts acetaldehyde accumulation based on ADH1B and ALDH2 enzyme genetics. This allows for a computational assessment of reaction severity.
+
+-   **Source Code:** `src/biology/processes/ethanol_metabolism_simulation.rs`
+-   **Key Function:** `get_flush_reaction_severity`
+-   **Functionality:** This function utilizes the output of the `simulate_ethanol_metabolism` function (specifically, the peak acetaldehyde level) to provide a qualitative assessment of the alcohol flush reaction severity (e.g., "None", "Mild", "Moderate", "Severe"). This helps in understanding the physiological impact of different enzyme variant combinations.
+
 ## Research Directions
 
 ### 1. Genetic Studies

@@ -137,6 +137,13 @@ graph TD
 - Transcriptional control
 - Post-translational modifications
 
+## Computational Model
+A Rust implementation modeling the ADH1B enzyme, including its common variants (`ADH1B_1`, `ADH1B_2`) and their differential catalytic activities, is available in the project. This model allows for simulation of ethanol metabolism.
+
+-   **Source Code:** `src/biology/molecular/enzymes.rs`
+-   **Key Structures:** `ADH1B`, `ADH1B_Variant`
+-   **Functionality:** The `metabolize_ethanol` method simulates the conversion of ethanol to acetaldehyde, with rates dependent on the enzyme variant.
+
 ## References
 1. Molecular Genetics and Evolution
 2. Enzyme Structure and Function

@@ -135,6 +135,13 @@ graph TD
 - Genetic screening
 - Risk assessment
 
+## Computational Simulation
+A Rust-based simulation model for ethanol metabolism has been implemented. This model incorporates the activities of ADH1B and ALDH2 enzyme variants to predict acetaldehyde dynamics following ethanol exposure.
+
+-   **Source Code:** `src/biology/processes/ethanol_metabolism_simulation.rs`
+-   **Key Function:** `simulate_ethanol_metabolism`
+-   **Functionality:** The simulation takes an initial ethanol concentration and specific ADH1B/ALDH2 variants as input. It outputs metrics such as peak acetaldehyde level and approximate time to clear acetaldehyde, providing insights into how genetic variations affect metabolism.
+
 ## References
 1. Biochemistry of Alcohol Metabolism
 2. Genetic Variations in ADH and ALDH
