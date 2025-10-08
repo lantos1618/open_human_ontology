@@ -7,6 +7,7 @@ pub mod nervous;
 pub mod renal;
 pub mod integumentary;
 pub mod immune;
+pub mod reproductive;
 
 pub use cardiovascular::{Heart, BloodVessel, Blood};
 pub use respiratory::{Lung, GasExchange, BreathingPattern};
@@ -17,3 +18,4 @@ pub use nervous::{CentralNervousSystem, PeripheralNervousSystem};
 pub use renal::{Kidney, Filtration};
 pub use integumentary::{Skin, Hair, Nail};
 pub use immune::{LymphaticSystem, WhiteBloodCell};
+pub use reproductive::{MaleReproductiveSystem, FemaleReproductiveSystem};
