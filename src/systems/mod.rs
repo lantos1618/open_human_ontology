@@ -8,6 +8,7 @@ pub mod renal;
 pub mod integumentary;
 pub mod immune;
 pub mod reproductive;
+pub mod sensory;
 
 pub use cardiovascular::{Heart, BloodVessel, Blood};
 pub use respiratory::{Lung, GasExchange, BreathingPattern};
