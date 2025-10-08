@@ -47,6 +47,7 @@
 pub mod biology;
 pub mod chemistry;
 pub mod physics;
+pub mod systems;
 
 // Re-export commonly used types
 pub use biology::{

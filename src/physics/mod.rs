@@ -84,6 +84,43 @@ impl MechanicalProperties {
         }
     }
 
+    pub fn bone() -> Self {
+        MechanicalProperties {
+            youngs_modulus: 18.0,
+            poissons_ratio: 0.3,
+            ultimate_strength: 150.0,
+            yield_strength: 100.0,
+            failure_strain: 0.02,
+            toughness: 3.0,
+        }
+    }
+
+    pub fn cartilage() -> Self {
+        MechanicalProperties {
+            youngs_modulus: 0.7,
+            poissons_ratio: 0.4,
+            ultimate_strength: 5.0,
+            yield_strength: 3.0,
+            failure_strain: 0.15,
+            toughness: 0.5,
+        }
+    }
+
+    pub fn tendon() -> Self {
+        MechanicalProperties {
+            youngs_modulus: 1.5,
+            poissons_ratio: 0.4,
+            ultimate_strength: 100.0,
+            yield_strength: 60.0,
+            failure_strain: 0.10,
+            toughness: 7.5,
+        }
+    }
+
+    pub fn yield_strength_mpa(&self) -> f64 {
+        self.yield_strength
+    }
+
     /// Calculate shear modulus
     pub fn shear_modulus(&self) -> f64 {
         self.youngs_modulus / (2.0 * (1.0 + self.poissons_ratio))

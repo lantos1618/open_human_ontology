@@ -8,6 +8,9 @@ use std::fmt;
 pub mod molecular;
 pub mod neural;
 pub mod immunology;
+pub mod cellular;
+pub mod tissue;
+pub mod skeletal;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -73,6 +76,7 @@ pub enum Modification {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Compartment {
     Extracellular,
+    Intracellular,
     PlasmaMembrane,
     Cytoplasm,
     Nucleus,
@@ -130,6 +134,8 @@ pub enum BiologyError {
     InvalidInteraction(String),
     InvalidCompartment(String),
     InvalidConcentration(String),
+    InvalidValue(String),
+    InvalidState(String),
 }
 
 impl fmt::Display for BiologyError {
@@ -139,6 +145,8 @@ impl fmt::Display for BiologyError {
             BiologyError::InvalidInteraction(msg) => write!(f, "Invalid interaction: {}", msg),
             BiologyError::InvalidCompartment(msg) => write!(f, "Invalid compartment: {}", msg),
             BiologyError::InvalidConcentration(msg) => write!(f, "Invalid concentration: {}", msg),
+            BiologyError::InvalidValue(msg) => write!(f, "Invalid value: {}", msg),
+            BiologyError::InvalidState(msg) => write!(f, "Invalid state: {}", msg),
         }
     }
 }

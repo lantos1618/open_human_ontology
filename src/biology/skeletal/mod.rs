@@ -1,0 +1,7 @@
+pub mod bone;
+pub mod joint;
+pub mod bone_remodeling;
+
+pub use bone::{Bone, BoneType, BoneStructure};
+pub use joint::{Joint, JointType, JointMovement};
+pub use bone_remodeling::{BoneRemodeling, RemodelingPhase};
