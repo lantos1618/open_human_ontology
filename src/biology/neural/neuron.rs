@@ -4,7 +4,7 @@
 
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::biology::{BiologyError, BiologyResult, Molecule};
+use crate::biology::BiologyResult;
 
 /// Types of neurons based on morphology
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

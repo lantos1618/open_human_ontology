@@ -3,9 +3,7 @@
 //! Models different vaccine delivery mechanisms and their properties.
 
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use super::vaccines::{VaccineType, DeliverySystem};
-use crate::biology::{BiologyError, BiologyResult};
 
 /// Properties of delivery routes
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -283,7 +281,7 @@ mod tests {
             sequence: "AUGGGC".into(),
             modifications: vec![],
             delivery_system: DeliverySystem::LipidNanoparticle {
-                composition: HashMap::new(),
+                composition: std::collections::HashMap::new(),
                 size: 100.0,
                 charge: 0.0,
             },

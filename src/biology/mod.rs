@@ -11,6 +11,7 @@ pub mod immunology;
 pub mod cellular;
 pub mod tissue;
 pub mod skeletal;
+pub mod genetics;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -1,4 +1,4 @@
-use crate::biology::{BiologyError, BiologyResult, Compartment, Molecule};
+use crate::biology::{BiologyError, BiologyResult, Compartment};
 use crate::biology::cellular::organelles::Organelle;
 use serde::{Deserialize, Serialize};
 

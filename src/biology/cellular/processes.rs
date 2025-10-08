@@ -1,4 +1,4 @@
-use crate::biology::{BiologyError, BiologyResult, Molecule};
+use crate::biology::{BiologyError, BiologyResult};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

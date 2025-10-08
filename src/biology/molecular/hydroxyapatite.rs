@@ -4,7 +4,6 @@
 
 use std::collections::HashMap;
 use serde::{Serialize, Deserialize};
-use crate::biology::{BiologyError, BiologyResult};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HydroxyapatiteCrystal {

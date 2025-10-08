@@ -4,7 +4,6 @@
 
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::biology::{BiologyError, BiologyResult, Molecule};
 
 /// Represents different types of vaccines
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

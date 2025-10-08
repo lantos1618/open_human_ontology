@@ -5,7 +5,7 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use super::vaccines::{VaccineType, Antigen};
-use crate::biology::{BiologyError, BiologyResult, Molecule};
+use crate::biology::BiologyResult;
 
 /// Types of immune cells
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
