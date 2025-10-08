@@ -48,12 +48,15 @@ pub mod biology;
 pub mod chemistry;
 pub mod physics;
 pub mod systems;
+pub mod human;
 
 // Re-export commonly used types
 pub use biology::{
     AminoAcid, BiologyError, BiologyResult, Compartment, Concentration,
     ConcentrationUnit, Modification, Molecule,
 };
+
+pub use human::{Human, BiologicalSex, HealthSummary};
 
 /// Version information
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
