@@ -51,6 +51,8 @@ pub mod systems;
 pub mod human;
 pub mod pathology;
 pub mod pharmacology;
+pub mod metabolism;
+pub mod diagnosis;
 
 // Re-export commonly used types
 pub use biology::{
