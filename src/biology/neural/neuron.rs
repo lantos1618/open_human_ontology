@@ -16,7 +16,7 @@ pub enum NeuronType {
 }
 
 /// Neurotransmitter types
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Neurotransmitter {
     Glutamate,
     GABA,
@@ -24,7 +24,7 @@ pub enum Neurotransmitter {
     Dopamine,
     Serotonin,
     Norepinephrine,
-    Substance_P,
+    SubstanceP,
     Endorphin,
 }
 
@@ -37,7 +37,7 @@ pub enum ChannelState {
 }
 
 /// Ion channel types
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum ChannelType {
     VoltageGatedSodium,
     VoltageGatedPotassium,

@@ -1,0 +1,43 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Rust build artifacts
+/target/
+**/*.rs.bk
+*.pdb
+
+# Cargo lock file (uncomment if this is a library)
+# Cargo.lock
+
+# Generated documentation
+/doc/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Agent artifacts
+.agent/
+
+# OS files
+Thumbs.db
+
+# Backup files
+*.bak
+*.orig
+
+# Test coverage
+*.profraw
+*.profdata
+/coverage/
+
+# Flamegraph profiling
+flamegraph.svg
+perf.data
+perf.data.old

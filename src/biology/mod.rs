@@ -6,8 +6,8 @@ use serde::{Deserialize, Serialize};
 use std::fmt;
 
 pub mod molecular;
-pub mod cellular;
-pub mod tissue;
+pub mod neural;
+pub mod immunology;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -7,9 +7,7 @@ use crate::biology::{BiologyError, BiologyResult, Molecule, Modification, Modifi
 
 pub mod bone_matrix;
 pub mod hydroxyapatite;
-pub mod collagen;
-pub mod crosslinks;
-pub mod enzymes;
+pub mod lysyl_oxidase;
 
 /// Represents a molecular structure with 3D coordinates
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

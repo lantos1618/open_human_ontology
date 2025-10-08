@@ -4,7 +4,8 @@
 
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::biology::{BiologyError, BiologyResult, Molecule, Concentration};
+use crate::biology::{BiologyError, BiologyResult};
+use crate::{Molecule, Concentration};
 
 /// Represents a chemical reaction
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -12,9 +13,9 @@ pub struct Reaction {
     /// Name of the reaction
     pub name: String,
     /// Reactants with stoichiometric coefficients
-    pub reactants: HashMap<Molecule, f64>,
+    pub reactants: HashMap<String, f64>,
     /// Products with stoichiometric coefficients
-    pub products: HashMap<Molecule, f64>,
+    pub products: HashMap<String, f64>,
     /// Rate constant
     pub rate_constant: f64,
     /// Activation energy in kJ/mol
@@ -55,7 +56,7 @@ pub struct Equilibrium {
 
 /// pH effects on reactions
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct pHEffect {
+pub struct PhEffect {
     /// Optimal pH
     pub optimal_ph: f64,
     /// pH range for activity
@@ -68,8 +69,8 @@ impl Reaction {
     /// Create a new reaction
     pub fn new(
         name: String,
-        reactants: HashMap<Molecule, f64>,
-        products: HashMap<Molecule, f64>,
+        reactants: HashMap<String, f64>,
+        products: HashMap<String, f64>,
         rate_constant: f64,
         activation_energy: f64,
     ) -> Self {
@@ -87,7 +88,7 @@ impl Reaction {
     }
 
     /// Calculate reaction rate
-    pub fn calculate_rate(&self, concentrations: &HashMap<Molecule, Concentration>) -> BiologyResult<f64> {
+    pub fn calculate_rate(&self, concentrations: &HashMap<String, Concentration>) -> BiologyResult<f64> {
         let mut rate = self.rate_constant;
 
         // Calculate rate based on reactant concentrations
@@ -137,8 +138,8 @@ impl Equilibrium {
     /// Calculate equilibrium concentrations
     pub fn calculate_equilibrium(
         &self,
-        initial_concentrations: &HashMap<Molecule, Concentration>,
-    ) -> BiologyResult<HashMap<Molecule, Concentration>> {
+        initial_concentrations: &HashMap<String, Concentration>,
+    ) -> BiologyResult<HashMap<String, Concentration>> {
         let mut equilibrium_concentrations = initial_concentrations.clone();
         
         // Simple iteration to approach equilibrium
@@ -179,14 +180,8 @@ mod tests {
         let mut products = HashMap::new();
         let mut concentrations = HashMap::new();
 
-        let reactant = Molecule::Protein {
-            name: "Test".into(),
-            sequence: vec![],
-            modifications: vec![],
-        };
-
-        reactants.insert(reactant.clone(), 1.0);
-        concentrations.insert(reactant, Concentration {
+        reactants.insert("glucose".to_string(), 1.0);
+        concentrations.insert("glucose".to_string(), Concentration {
             value: 2.0,
             unit: ConcentrationUnit::Molar,
         });

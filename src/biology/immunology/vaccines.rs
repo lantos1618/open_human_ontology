@@ -71,6 +71,15 @@ pub enum AttenuationMethod {
     HostRestriction,
 }
 
+/// Represents an antigen modification
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum AntigenModification {
+    Glycosylation,
+    Phosphorylation,
+    Acetylation,
+    Methylation,
+}
+
 /// Represents an antigen in a vaccine
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Antigen {
@@ -178,7 +187,7 @@ impl VaccineType {
                 0.7 + (adjuvants.len() as f64 * 0.1)
             },
             VaccineType::LiveAttenuated { generation, .. } => {
-                0.9 - (generation as f64 * 0.01)
+                0.9 - (*generation as f64 * 0.01)
             },
             VaccineType::Subunit { antigens, adjuvants, .. } => {
                 0.6 + (antigens.len() as f64 * 0.1) + (adjuvants.len() as f64 * 0.1)
