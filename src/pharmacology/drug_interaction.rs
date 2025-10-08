@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use super::drug::Drug;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct DrugInteraction {

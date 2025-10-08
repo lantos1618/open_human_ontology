@@ -1,6 +1,4 @@
 use crate::biology::{BiologyError, BiologyResult};
-use crate::biology::tissue::ExtracellularMatrix;
-use crate::physics::FluidProperties;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]

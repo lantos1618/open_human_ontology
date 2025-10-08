@@ -1,4 +1,3 @@
-use crate::biology::cellular::{Cell, CellType};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]

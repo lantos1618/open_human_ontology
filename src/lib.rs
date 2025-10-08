@@ -58,7 +58,7 @@ pub use biology::{
     ConcentrationUnit, Modification, Molecule,
 };
 
-pub use human::{Human, BiologicalSex, HealthSummary};
+pub use human::{Human, BiologicalSex, HealthSummary, ComprehensiveHealthAssessment, GeneticProfile, HealthConditions};
 
 /// Version information
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");

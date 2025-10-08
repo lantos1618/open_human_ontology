@@ -5,7 +5,7 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use crate::biology::{BiologyError, BiologyResult};
-use crate::{Molecule, Concentration};
+use crate::Concentration;
 
 /// Represents a chemical reaction
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

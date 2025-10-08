@@ -137,6 +137,7 @@ pub enum BiologyError {
     InvalidConcentration(String),
     InvalidValue(String),
     InvalidState(String),
+    InvalidParameter(String),
 }
 
 impl fmt::Display for BiologyError {
@@ -148,6 +149,7 @@ impl fmt::Display for BiologyError {
             BiologyError::InvalidConcentration(msg) => write!(f, "Invalid concentration: {}", msg),
             BiologyError::InvalidValue(msg) => write!(f, "Invalid value: {}", msg),
             BiologyError::InvalidState(msg) => write!(f, "Invalid state: {}", msg),
+            BiologyError::InvalidParameter(msg) => write!(f, "Invalid parameter: {}", msg),
         }
     }
 }

@@ -1,7 +1,6 @@
 use crate::biology::{BiologyError, BiologyResult};
 use crate::biology::tissue::ExtracellularMatrix;
 use serde::{Deserialize, Serialize};
-use nalgebra::Vector3;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum JointType {

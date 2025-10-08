@@ -4,7 +4,6 @@
 
 use serde::{Deserialize, Serialize};
 use nalgebra as na;
-use crate::biology::{BiologyError, BiologyResult};
 
 /// 3D vector type using nalgebra
 pub type Vector3 = na::Vector3<f64>;

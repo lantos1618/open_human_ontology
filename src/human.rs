@@ -1,5 +1,9 @@
 use serde::{Deserialize, Serialize};
 use crate::systems::*;
+use crate::biology::genetics::{AncestryProfile, Genotype};
+use crate::pharmacology::pharmacogenomics::PharmacogeneticProfile;
+use crate::pathology::headache::HeadacheProfile;
+use std::collections::HashMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Human {
@@ -7,13 +11,15 @@ pub struct Human {
     pub demographics: Demographics,
     pub body_metrics: BodyMetrics,
     pub systems: BodySystems,
+    pub genetics: GeneticProfile,
+    pub pharmacogenomics: PharmacogeneticProfile,
+    pub health_conditions: HealthConditions,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Demographics {
     pub age_years: f64,
     pub biological_sex: BiologicalSex,
-    pub ancestry: Vec<Ancestry>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -23,9 +29,19 @@ pub enum BiologicalSex {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Ancestry {
-    pub population: String,
-    pub percentage: f64,
+pub struct GeneticProfile {
+    pub ancestry: AncestryProfile,
+    pub genotypes: HashMap<String, Genotype>,
+    pub carrier_status: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct HealthConditions {
+    pub active_conditions: Vec<String>,
+    pub past_conditions: Vec<String>,
+    pub family_history: Vec<String>,
+    pub headache_profile: Option<HeadacheProfile>,
+    pub allergies: Vec<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -124,10 +140,12 @@ impl Human {
             demographics: Demographics {
                 age_years,
                 biological_sex: BiologicalSex::Male,
-                ancestry: vec![],
             },
             body_metrics,
             systems: BodySystems::new_adult_male(),
+            genetics: GeneticProfile::new(),
+            pharmacogenomics: PharmacogeneticProfile::new(),
+            health_conditions: HealthConditions::new(),
         }
     }
 
@@ -139,10 +157,12 @@ impl Human {
             demographics: Demographics {
                 age_years,
                 biological_sex: BiologicalSex::Female,
-                ancestry: vec![],
             },
             body_metrics,
             systems: BodySystems::new_adult_female(),
+            genetics: GeneticProfile::new(),
+            pharmacogenomics: PharmacogeneticProfile::new(),
+            health_conditions: HealthConditions::new(),
         }
     }
 
@@ -192,6 +212,86 @@ impl Human {
             metabolic_rate: self.metabolic_rate_kcal_per_day(),
         }
     }
+
+    pub fn ancestry_report(&self) -> Vec<String> {
+        let mut report = Vec::new();
+
+        if let Some(primary) = self.genetics.ancestry.primary_ancestry() {
+            report.push(format!("Primary ancestry: {:?}", primary));
+        }
+
+        for (ancestry, percentage) in &self.genetics.ancestry.components {
+            report.push(format!("{:?}: {:.1}%", ancestry, percentage));
+        }
+
+        let risks = self.genetics.ancestry.genetic_risk_factors();
+        if !risks.is_empty() {
+            report.push("\nGenetic risk factors based on ancestry:".to_string());
+            report.extend(risks);
+        }
+
+        report
+    }
+
+    pub fn drug_compatibility_check(&self, drug_name: &str) -> Vec<String> {
+        self.pharmacogenomics.check_drug_compatibility(drug_name)
+    }
+
+    pub fn comprehensive_health_assessment(&self) -> ComprehensiveHealthAssessment {
+        ComprehensiveHealthAssessment {
+            basic_metrics: self.health_summary(),
+            genetic_risks: self.genetics.ancestry.genetic_risk_factors(),
+            carrier_status: self.genetics.carrier_status.clone(),
+            active_conditions: self.health_conditions.active_conditions.clone(),
+            family_history: self.health_conditions.family_history.clone(),
+        }
+    }
+}
+
+impl GeneticProfile {
+    pub fn new() -> Self {
+        Self {
+            ancestry: AncestryProfile::new(),
+            genotypes: HashMap::new(),
+            carrier_status: Vec::new(),
+        }
+    }
+}
+
+impl Default for GeneticProfile {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl HealthConditions {
+    pub fn new() -> Self {
+        Self {
+            active_conditions: Vec::new(),
+            past_conditions: Vec::new(),
+            family_history: Vec::new(),
+            headache_profile: None,
+            allergies: Vec::new(),
+        }
+    }
+
+    pub fn add_condition(&mut self, condition: String) {
+        if !self.active_conditions.contains(&condition) {
+            self.active_conditions.push(condition);
+        }
+    }
+
+    pub fn add_family_history(&mut self, condition: String) {
+        if !self.family_history.contains(&condition) {
+            self.family_history.push(condition);
+        }
+    }
+}
+
+impl Default for HealthConditions {
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -201,6 +301,15 @@ pub struct HealthSummary {
     pub respiratory_rate: f64,
     pub gfr: f64,
     pub metabolic_rate: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ComprehensiveHealthAssessment {
+    pub basic_metrics: HealthSummary,
+    pub genetic_risks: Vec<String>,
+    pub carrier_status: Vec<String>,
+    pub active_conditions: Vec<String>,
+    pub family_history: Vec<String>,
 }
 
 impl BodyMetrics {

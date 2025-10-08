@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use super::disease::Disease;
-use super::symptom::{Symptom, SymptomCluster};
+use super::symptom::Symptom;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Diagnosis {
