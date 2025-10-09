@@ -12,11 +12,41 @@ Create an accurate, type-safe model of the human body that can:
 
 ## 📊 Current Status
 
-✅ **60 Rust source files**
-✅ **224 passing tests**
-✅ **11 complete body systems**
-✅ **10,751 lines of code**
-✅ **Comprehensive Human model**
+✅ **105 Rust source files**
+✅ **442 passing tests**
+✅ **13 complete body systems**
+✅ **Comprehensive Human model with genetics**
+✅ **Full diagnostic capabilities**
+✅ **Pharmacogenomic profiling**
+
+## ⭐ Key Features
+
+### 🧬 Genetic Analysis
+- **27 ancestry types** with population-specific disease risks
+- **SNP-based phenotype prediction** (eye color, metabolism, drug response)
+- **Mixed ancestry profiling** with component analysis
+- **Carrier screening** for genetic conditions
+
+### 💊 Pharmacogenomics
+- **Drug metabolism profiling** (CYP1A2, ALDH2, CYP2C9, etc.)
+- **Warfarin sensitivity** with dose recommendations
+- **Opioid metabolism variants** (ultra-rapid to poor)
+- **Caffeine & alcohol** metabolism
+- **Statin myopathy risk** assessment
+
+### 🏥 Diagnostic Capabilities
+- **Migraine risk assessment** (sex, age, genetic factors)
+- **Cluster headache risk** analysis
+- **Disability scoring** for headache conditions
+- **Treatment recommendations** (acute & prophylactic)
+- **Personalized screening priorities**
+
+### 📈 Health Metrics
+- BMI calculation & categorization
+- Cardiac output modeling
+- GFR (kidney function)
+- Metabolic rate (BMR)
+- Body composition analysis
 
 ## 🧬 Implemented Systems
 
@@ -157,18 +187,49 @@ src/
 
 ## 🎓 Use Cases
 
-### Individual Modeling
-Model specific individuals with their unique characteristics:
-```rust
-// Create a person with specific traits
-let person = Human::new_adult_female("jane_doe", 28.0, 165.0, 60.0);
+### Individual Modeling & Diagnostics
+Model individuals and perform comprehensive genetic and clinical analysis:
 
-// Customize based on ancestry, genetics, health conditions
-person.demographics.ancestry.push(Ancestry {
-    population: "East Asian".to_string(),
-    percentage: 100.0,
-});
+```rust
+use human_biology::*;
+use human_biology::biology::genetics::Ancestry;
+
+// Create a person with specific traits
+let mut person = Human::new_adult_female("patient_001".to_string(), 32.0, 162.0, 55.0);
+
+// Set ancestry
+person.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0).unwrap();
+
+// Assess migraine risk
+let migraine_info = person.assess_migraine_risk();
+println!("Risk Score: {:.2}x", migraine_info.risk_score);  // 3.25x
+
+// Get genetic disease risks
+let risks = person.assess_genetic_disease_risks();
+for risk in risks {
+    println!("{}: {:.1}% risk", risk.condition, risk.relative_risk * 100.0);
+}
+
+// Pharmacogenomic analysis
+let pharma = person.pharmacogenomic_report();
+for warning in pharma.warnings {
+    println!("⚠️  {}", warning);
+}
 ```
+
+### Interactive Demo
+Run the comprehensive diagnostic demo:
+```bash
+cargo run --example demo
+```
+
+This demonstrates:
+- East Asian female migraine risk assessment
+- Ashkenazi Jewish BRCA screening priorities
+- Pharmacogenomic drug interaction analysis
+- Male cluster headache risk & treatment protocols
+
+See [EXAMPLES.md](EXAMPLES.md) for complete documentation.
 
 ### Health Assessment
 Analyze health metrics and detect anomalies:
@@ -206,14 +267,23 @@ The implementation is based on:
 
 ## 🧪 Testing
 
-All 224 tests passing:
+All 442 tests passing:
 ```bash
-cargo test --quiet
+# Run all tests
+cargo test
+
+# Run with output
+cargo test -- --nocapture
+
+# Run specific integration test
+cargo test --test comprehensive_human_analysis
 ```
 
 Test categories:
-- Unit tests for each component
-- Integration tests for system interactions
+- **409** unit tests for each component
+- **8** comprehensive analysis scenarios
+- **13** full system integration tests
+- **11** ancestry/pharmacogenomics tests
 - Property-based tests for biological invariants
 - Medical validation against known data
 
@@ -225,28 +295,24 @@ Test categories:
 - **Testing**: Built-in + proptest
 - **Documentation**: Rust docs + Markdown
 
-## 📈 Future Roadmap
+## 📈 Roadmap
 
-### Phase 6: Genetics & Variation
-- SNP modeling
-- Genetic ancestry
-- Trait inheritance
-- Personalized risk factors
+### ✅ Completed (Current)
+- **Genetics & Variation**: SNP modeling, ancestry, trait prediction
+- **Pathology**: Disease models, headache conditions, genetic screening
+- **Diagnostics**: Risk assessment, pharmacogenomics, health analysis
+- **13 Body Systems**: Full organ system implementation
 
-### Phase 7: Pathology
-- Disease models
-- Condition simulation
-- Progression modeling
+### 🚧 In Progress
+- Enhanced drug interaction database
+- More genetic variant coverage
+- Additional disease models
 
-### Phase 8: Simulation Engine
-- Time-stepped simulation
-- Multi-system interactions
-- Dynamic state changes
-
-### Phase 9: AI Integration
-- Pattern recognition
-- Diagnostic algorithms
-- Predictive modeling
+### 🔮 Future
+- **Simulation Engine**: Time-stepped simulation, dynamic state changes
+- **AI Integration**: Pattern recognition, diagnostic algorithms
+- **Clinical Validation**: Real-world data validation
+- **3D Visualization**: Anatomical modeling
 
 ## 🤝 Contributing
 
