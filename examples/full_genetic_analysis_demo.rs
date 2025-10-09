@@ -1,4 +1,4 @@
-use human_biology::biology::genetics::*;
+use human_biology::biology::genetics::{*, population_traits::EarwaxType};
 use human_biology::human::*;
 use std::collections::HashMap;
 

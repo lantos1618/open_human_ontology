@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use super::ancestry::Ancestry;
-use crate::biology::{BiologyResult, BiologyError};
+pub use super::phenotype::EarwaxType;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PopulationSpecificTraits {
@@ -47,11 +46,6 @@ pub enum SkinPigmentation {
     VeryDark,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
-pub enum EarwaxType {
-    Wet,
-    Dry,
-}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HairTraits {
