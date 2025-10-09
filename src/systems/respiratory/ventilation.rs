@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use crate::biology::{BiologyError, BiologyResult};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VentilationMechanics {

@@ -197,7 +197,7 @@ impl Human {
     }
 
     fn assess_neurological_genetic_risk(&self) -> RiskAssessment {
-        let mut risk = 1.0;
+        let risk = 1.0;
         let mut factors = Vec::new();
         let mut modifiable = Vec::new();
 
@@ -328,7 +328,7 @@ impl Human {
     }
 
     fn assess_respiratory_health(&self) -> f64 {
-        let mut score: f64 = 100.0;
+        let score: f64 = 100.0;
         score.max(0.0_f64)
     }
 

@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 use crate::systems::cardiovascular::{BloodVessel, VesselType, Heart};
-use crate::biology::{BiologyError, BiologyResult};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CirculatorySystem {

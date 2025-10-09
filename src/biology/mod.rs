@@ -12,6 +12,10 @@ pub mod cellular;
 pub mod tissue;
 pub mod skeletal;
 pub mod genetics;
+pub mod circadian;
+pub mod biomarkers;
+pub mod aging;
+pub mod lifestyle;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
