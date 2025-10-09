@@ -26,6 +26,8 @@ pub mod epigenetic_clocks;
 pub mod hematology;
 pub mod nutrition;
 pub mod blood_typing;
+pub mod exercise_physiology;
+pub mod sleep;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

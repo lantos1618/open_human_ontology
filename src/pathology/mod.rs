@@ -20,6 +20,7 @@ pub mod gastroenterology;
 pub mod transplant;
 pub mod otolaryngology;
 pub mod pain;
+pub mod sports_medicine;
 
 pub use disease::*;
 pub use condition::*;
@@ -43,3 +44,4 @@ pub use gastroenterology::*;
 pub use transplant::*;
 pub use otolaryngology::*;
 pub use pain::*;
+pub use sports_medicine::*;
