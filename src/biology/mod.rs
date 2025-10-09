@@ -31,6 +31,7 @@ pub mod sleep;
 pub mod developmental;
 pub mod environmental;
 pub mod metabolism;
+pub mod immune_system;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

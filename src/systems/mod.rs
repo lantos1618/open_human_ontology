@@ -12,6 +12,7 @@ pub mod sensory;
 pub mod lymphatic;
 pub mod vision;
 pub mod auditory;
+pub mod gastrointestinal;
 
 pub use cardiovascular::{Heart, BloodVessel, Blood};
 pub use respiratory::{Lung, GasExchange, BreathingPattern};
