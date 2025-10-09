@@ -27,6 +27,8 @@ pub mod disease_susceptibility;
 pub mod lactose_tolerance;
 pub mod trait_interactions;
 pub mod comprehensive_risk_calculator;
+pub mod epistasis;
+pub mod gene_environment;
 
 pub use dna::*;
 pub use gene::*;
@@ -57,3 +59,5 @@ pub use disease_susceptibility::*;
 pub use lactose_tolerance::*;
 pub use trait_interactions::*;
 pub use comprehensive_risk_calculator::*;
+pub use epistasis::*;
+pub use gene_environment::*;

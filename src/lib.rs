@@ -54,6 +54,7 @@ pub mod pharmacology;
 pub mod metabolism;
 pub mod diagnosis;
 pub mod simulation;
+pub mod personalized_medicine;
 
 // Re-export commonly used types
 pub use biology::{
