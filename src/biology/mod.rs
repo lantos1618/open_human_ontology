@@ -38,6 +38,8 @@ pub mod toxicology;
 pub mod wound_healing;
 pub mod allergy;
 pub mod rare_diseases;
+pub mod radiation_biology;
+pub mod hormone_signaling;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -426,3 +426,261 @@ mod tests {
         assert!(OrganType::Kidney.one_year_survival_rate() > 0.9);
     }
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+pub enum RejectionType {
+    Hyperacute,
+    Acute,
+    Chronic,
+    AntibodyMediated,
+    TCellMediated,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RejectionEpisode {
+    pub rejection_type: RejectionType,
+    pub severity_grade: RejectionGrade,
+    pub days_post_transplant: u32,
+    pub biopsy_findings: BiopsyFindings,
+    pub treatment: RejectionTreatment,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+pub enum RejectionGrade {
+    Borderline,
+    Grade1A,
+    Grade1B,
+    Grade2A,
+    Grade2B,
+    Grade3A,
+    Grade3B,
+}
+
+impl RejectionGrade {
+    pub fn requires_treatment(&self) -> bool {
+        !matches!(self, RejectionGrade::Borderline)
+    }
+
+    pub fn is_severe(&self) -> bool {
+        matches!(self, RejectionGrade::Grade3A | RejectionGrade::Grade3B)
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BiopsyFindings {
+    pub tubulitis_score: u8,
+    pub interstitial_inflammation_score: u8,
+    pub vasculitis_score: u8,
+    pub glomerulitis_score: u8,
+    pub peritubular_capillaritis_score: u8,
+    pub c4d_positive: bool,
+    pub donor_specific_antibodies: bool,
+}
+
+impl BiopsyFindings {
+    pub fn banff_score(&self) -> u8 {
+        self.tubulitis_score + self.interstitial_inflammation_score + self.vasculitis_score
+    }
+
+    pub fn suggests_antibody_mediated_rejection(&self) -> bool {
+        self.c4d_positive || (self.glomerulitis_score > 0 && self.peritubular_capillaritis_score > 0)
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RejectionTreatment {
+    pub corticosteroid_pulse: bool,
+    pub thymoglobulin: bool,
+    pub plasmapheresis: bool,
+    pub ivig: bool,
+    pub rituximab: bool,
+}
+
+impl RejectionTreatment {
+    pub fn standard_acute_rejection() -> Self {
+        Self {
+            corticosteroid_pulse: true,
+            thymoglobulin: false,
+            plasmapheresis: false,
+            ivig: false,
+            rituximab: false,
+        }
+    }
+
+    pub fn antibody_mediated_rejection() -> Self {
+        Self {
+            corticosteroid_pulse: true,
+            thymoglobulin: false,
+            plasmapheresis: true,
+            ivig: true,
+            rituximab: true,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ImmunosuppressionMonitoring {
+    pub tacrolimus_trough_ng_ml: Option<f64>,
+    pub cyclosporine_trough_ng_ml: Option<f64>,
+    pub sirolimus_trough_ng_ml: Option<f64>,
+    pub mycophenolate_dose_mg: Option<f64>,
+    pub prednisone_dose_mg: Option<f64>,
+}
+
+impl ImmunosuppressionMonitoring {
+    pub fn new() -> Self {
+        Self {
+            tacrolimus_trough_ng_ml: None,
+            cyclosporine_trough_ng_ml: None,
+            sirolimus_trough_ng_ml: None,
+            mycophenolate_dose_mg: None,
+            prednisone_dose_mg: None,
+        }
+    }
+
+    pub fn tacrolimus_in_range(&self) -> bool {
+        self.tacrolimus_trough_ng_ml
+            .map(|level| level >= 5.0 && level <= 15.0)
+            .unwrap_or(false)
+    }
+
+    pub fn cyclosporine_in_range(&self) -> bool {
+        self.cyclosporine_trough_ng_ml
+            .map(|level| level >= 100.0 && level <= 300.0)
+            .unwrap_or(false)
+    }
+
+    pub fn requires_dose_adjustment(&self) -> bool {
+        !self.tacrolimus_in_range() || !self.cyclosporine_in_range()
+    }
+}
+
+impl Default for ImmunosuppressionMonitoring {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct TransplantOutcome {
+    pub graft_function: GraftFunction,
+    pub rejection_episodes: Vec<RejectionEpisode>,
+    pub complications: Vec<TransplantComplication>,
+    pub immunosuppression: ImmunosuppressionRegimen,
+    pub monitoring: ImmunosuppressionMonitoring,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+pub enum GraftFunction {
+    Excellent,
+    Good,
+    Fair,
+    PrimaryNonFunction,
+    ChronicDysfunction,
+    Failed,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+pub enum TransplantComplication {
+    SurgicalBleed,
+    VascularThrombosis,
+    BileLeak,
+    UrinaryLeak,
+    Infection,
+    PTLD,
+    CMVDisease,
+    BKVNephropathy,
+    NewOnsetDiabetes,
+    Malignancy,
+}
+
+impl TransplantOutcome {
+    pub fn new() -> Self {
+        Self {
+            graft_function: GraftFunction::Excellent,
+            rejection_episodes: Vec::new(),
+            complications: Vec::new(),
+            immunosuppression: ImmunosuppressionRegimen {
+                induction: Vec::new(),
+                maintenance: Vec::new(),
+                rejection_prophylaxis: Vec::new(),
+            },
+            monitoring: ImmunosuppressionMonitoring::new(),
+        }
+    }
+
+    pub fn has_rejection(&self) -> bool {
+        !self.rejection_episodes.is_empty()
+    }
+
+    pub fn rejection_free_survival_months(&self, current_time_months: u32) -> u32 {
+        self.rejection_episodes
+            .first()
+            .map(|ep| ep.days_post_transplant / 30)
+            .unwrap_or(current_time_months)
+    }
+
+    pub fn requires_intensive_monitoring(&self) -> bool {
+        self.has_rejection() || matches!(self.graft_function, GraftFunction::Fair | GraftFunction::ChronicDysfunction)
+    }
+}
+
+impl Default for TransplantOutcome {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+#[cfg(test)]
+mod rejection_tests {
+    use super::*;
+
+    #[test]
+    fn test_rejection_grade() {
+        assert!(RejectionGrade::Grade3A.is_severe());
+        assert!(RejectionGrade::Grade2A.requires_treatment());
+        assert!(!RejectionGrade::Borderline.requires_treatment());
+    }
+
+    #[test]
+    fn test_biopsy_findings() {
+        let findings = BiopsyFindings {
+            tubulitis_score: 2,
+            interstitial_inflammation_score: 2,
+            vasculitis_score: 1,
+            glomerulitis_score: 1,
+            peritubular_capillaritis_score: 1,
+            c4d_positive: true,
+            donor_specific_antibodies: true,
+        };
+
+        assert_eq!(findings.banff_score(), 5);
+        assert!(findings.suggests_antibody_mediated_rejection());
+    }
+
+    #[test]
+    fn test_immunosuppression_monitoring() {
+        let mut monitoring = ImmunosuppressionMonitoring::new();
+        monitoring.tacrolimus_trough_ng_ml = Some(8.0);
+
+        assert!(monitoring.tacrolimus_in_range());
+    }
+
+    #[test]
+    fn test_transplant_outcome() {
+        let outcome = TransplantOutcome::new();
+        assert!(!outcome.has_rejection());
+        assert!(!outcome.requires_intensive_monitoring());
+    }
+
+    #[test]
+    fn test_rejection_treatment() {
+        let standard = RejectionTreatment::standard_acute_rejection();
+        assert!(standard.corticosteroid_pulse);
+        assert!(!standard.rituximab);
+
+        let amr = RejectionTreatment::antibody_mediated_rejection();
+        assert!(amr.plasmapheresis);
+        assert!(amr.rituximab);
+    }
+}
