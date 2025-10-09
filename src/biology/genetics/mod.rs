@@ -33,7 +33,7 @@ pub use gene::*;
 pub use chromosome::*;
 pub use snp::*;
 pub use allele::*;
-pub use genotype::*;
+pub use genotype::Genotype;
 pub use ancestry::*;
 pub use gene_catalog::*;
 pub use blood_type::*;

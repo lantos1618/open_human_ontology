@@ -18,6 +18,8 @@ pub mod aging;
 pub mod lifestyle;
 pub mod neurotransmitters;
 pub mod microbiome;
+pub mod epigenetics;
+pub mod proteomics;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
