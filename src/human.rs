@@ -247,6 +247,149 @@ impl Human {
             family_history: self.health_conditions.family_history.clone(),
         }
     }
+
+    pub fn assess_migraine_risk(&self) -> MigraineDiagnosticInfo {
+        let mut risk_score = 1.0;
+        let mut genetic_factors = Vec::new();
+
+        if let Some(primary) = self.genetics.ancestry.primary_ancestry() {
+            for condition in primary.associated_conditions() {
+                if condition.to_lowercase().contains("migraine") {
+                    risk_score *= 1.5;
+                    genetic_factors.push(format!("Ancestry: {:?} associated with migraines", primary));
+                }
+            }
+        }
+
+        if matches!(self.demographics.biological_sex, BiologicalSex::Female) {
+            risk_score *= 2.5;
+            genetic_factors.push("Female sex - 2.5x increased risk".to_string());
+        }
+
+        if self.demographics.age_years >= 18.0 && self.demographics.age_years <= 50.0 {
+            risk_score *= 1.3;
+            genetic_factors.push("Peak age range for migraines".to_string());
+        }
+
+        let recommendations = if risk_score > 2.0 {
+            vec![
+                "Track headache patterns in diary".to_string(),
+                "Identify and avoid triggers".to_string(),
+                "Consider preventive strategies".to_string(),
+                "Maintain regular sleep schedule".to_string(),
+            ]
+        } else {
+            vec!["Standard headache awareness".to_string()]
+        };
+
+        MigraineDiagnosticInfo {
+            risk_score,
+            genetic_factors,
+            has_known_migraines: self.health_conditions.headache_profile.is_some(),
+            recommendations,
+        }
+    }
+
+    pub fn assess_cluster_headache_risk(&self) -> ClusterHeadacheDiagnosticInfo {
+        let mut risk_score = 1.0;
+        let mut genetic_factors = Vec::new();
+
+        if matches!(self.demographics.biological_sex, BiologicalSex::Male) {
+            risk_score *= 3.0;
+            genetic_factors.push("Male sex - 3x increased risk".to_string());
+        }
+
+        if self.demographics.age_years >= 20.0 && self.demographics.age_years <= 50.0 {
+            risk_score *= 1.5;
+            genetic_factors.push("Peak age range for cluster headaches".to_string());
+        }
+
+        let recommendations = if risk_score > 2.0 {
+            vec![
+                "Be aware of circadian pattern headaches".to_string(),
+                "Avoid alcohol during cluster periods".to_string(),
+                "Have oxygen therapy available".to_string(),
+            ]
+        } else {
+            vec!["Standard awareness".to_string()]
+        };
+
+        ClusterHeadacheDiagnosticInfo {
+            risk_score,
+            genetic_factors,
+            recommendations,
+        }
+    }
+
+    pub fn assess_genetic_disease_risks(&self) -> Vec<GeneticDiseaseRisk> {
+        let mut risks = Vec::new();
+
+        for (ancestry, percentage) in &self.genetics.ancestry.components {
+            if *percentage > 10.0 {
+                for condition in ancestry.associated_conditions() {
+                    let risk_factor = percentage / 100.0;
+                    risks.push(GeneticDiseaseRisk {
+                        condition: condition.to_string(),
+                        relative_risk: risk_factor,
+                        source: format!("{:?} ancestry ({:.1}%)", ancestry, percentage),
+                        screening_recommended: risk_factor > 0.25,
+                    });
+                }
+            }
+        }
+
+        risks
+    }
+
+    pub fn pharmacogenomic_report(&self) -> PharmacogenomicReport {
+        let mut drug_interactions = Vec::new();
+        let mut warnings = Vec::new();
+
+        match self.genetics.phenotype.metabolic_traits.caffeine_metabolism {
+            crate::biology::genetics::CaffeineMetabolism::Slow => {
+                warnings.push("Slow caffeine metabolizer - limit intake to avoid insomnia".to_string());
+            },
+            _ => {}
+        }
+
+        if self.genetics.phenotype.metabolic_traits.alcohol_metabolism.alcohol_flush_reaction {
+            warnings.push("Alcohol flush reaction - increased cancer risk with alcohol".to_string());
+        }
+
+        match self.genetics.phenotype.pharmacological_traits.warfarin_sensitivity {
+            crate::biology::genetics::WarfarinSensitivity::High => {
+                drug_interactions.push("Warfarin: Use 30-50% lower doses".to_string());
+            },
+            crate::biology::genetics::WarfarinSensitivity::Low => {
+                drug_interactions.push("Warfarin: May require higher doses".to_string());
+            },
+            _ => {}
+        }
+
+        match self.genetics.phenotype.pharmacological_traits.opioid_metabolism {
+            crate::biology::genetics::OpioidMetabolism::UltraRapid => {
+                drug_interactions.push("Codeine: Risk of toxicity - avoid use".to_string());
+            },
+            crate::biology::genetics::OpioidMetabolism::Poor => {
+                drug_interactions.push("Codeine: Reduced efficacy - consider alternative".to_string());
+            },
+            _ => {}
+        }
+
+        if self.genetics.phenotype.pharmacological_traits.statin_myopathy_risk > 2.0 {
+            drug_interactions.push("Statins: Elevated myopathy risk - monitor CK levels".to_string());
+        }
+
+        PharmacogenomicReport {
+            drug_interactions,
+            warnings,
+            metabolism_profile: format!(
+                "Caffeine: {:?}, Alcohol: {:?}",
+                self.genetics.phenotype.metabolic_traits.caffeine_metabolism,
+                self.genetics.phenotype.metabolic_traits.alcohol_metabolism.aldh2_function
+            ),
+        }
+    }
 }
 
 impl GeneticProfile {
@@ -323,6 +466,36 @@ pub struct ComprehensiveHealthAssessment {
     pub carrier_status: Vec<String>,
     pub active_conditions: Vec<String>,
     pub family_history: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MigraineDiagnosticInfo {
+    pub risk_score: f64,
+    pub genetic_factors: Vec<String>,
+    pub has_known_migraines: bool,
+    pub recommendations: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ClusterHeadacheDiagnosticInfo {
+    pub risk_score: f64,
+    pub genetic_factors: Vec<String>,
+    pub recommendations: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GeneticDiseaseRisk {
+    pub condition: String,
+    pub relative_risk: f64,
+    pub source: String,
+    pub screening_recommended: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PharmacogenomicReport {
+    pub drug_interactions: Vec<String>,
+    pub warnings: Vec<String>,
+    pub metabolism_profile: String,
 }
 
 impl BodyMetrics {
@@ -507,5 +680,115 @@ mod tests {
             ReproductiveSystem::Female(_)
         ));
         assert!(systems.muscular.total_muscle_mass_kg < 30.0);
+    }
+
+    #[test]
+    fn test_asian_ancestry_genetic_analysis() {
+        use crate::biology::genetics::Ancestry;
+
+        let mut human = Human::new_adult_male("asian_001".to_string(), 28.0, 175.0, 70.0);
+        human.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0).unwrap();
+
+        let risks = human.assess_genetic_disease_risks();
+
+        assert!(!risks.is_empty());
+        assert!(risks.iter().any(|r| r.condition.to_lowercase().contains("gastric")));
+    }
+
+    #[test]
+    fn test_migraine_risk_assessment_female() {
+        let mut human = Human::new_adult_female("migraine_001".to_string(), 32.0, 165.0, 60.0);
+
+        let info = human.assess_migraine_risk();
+
+        assert!(info.risk_score > 1.0);
+        assert!(info.genetic_factors.iter().any(|f| f.contains("Female")));
+        assert!(!info.recommendations.is_empty());
+    }
+
+    #[test]
+    fn test_cluster_headache_risk_assessment_male() {
+        let mut human = Human::new_adult_male("cluster_001".to_string(), 35.0, 180.0, 80.0);
+
+        let info = human.assess_cluster_headache_risk();
+
+        assert!(info.risk_score >= 3.0);
+        assert!(info.genetic_factors.iter().any(|f| f.contains("Male")));
+    }
+
+    #[test]
+    fn test_ashkenazi_ancestry_brca_risk() {
+        use crate::biology::genetics::Ancestry;
+
+        let mut human = Human::new_adult_female("ashkenazi_001".to_string(), 40.0, 163.0, 58.0);
+        human.genetics.ancestry.add_component(Ancestry::Ashkenazi, 100.0).unwrap();
+
+        let risks = human.assess_genetic_disease_risks();
+
+        assert!(risks.iter().any(|r| r.condition.contains("BRCA") || r.condition.contains("breast")));
+    }
+
+    #[test]
+    fn test_pharmacogenomic_report() {
+        let mut human = Human::new_adult_male("pharma_001".to_string(), 45.0, 175.0, 75.0);
+        human.genetics.phenotype.metabolic_traits.caffeine_metabolism =
+            crate::biology::genetics::CaffeineMetabolism::Slow;
+
+        let report = human.pharmacogenomic_report();
+
+        assert!(!report.warnings.is_empty());
+        assert!(report.warnings.iter().any(|w| w.contains("caffeine")));
+    }
+
+    #[test]
+    fn test_alcohol_flush_reaction() {
+        let mut human = Human::new_adult_male("alcohol_001".to_string(), 30.0, 170.0, 65.0);
+        human.genetics.phenotype.metabolic_traits.alcohol_metabolism.alcohol_flush_reaction = true;
+
+        let report = human.pharmacogenomic_report();
+
+        assert!(report.warnings.iter().any(|w| w.contains("alcohol")));
+    }
+
+    #[test]
+    fn test_mixed_ancestry_profile() {
+        use crate::biology::genetics::Ancestry;
+
+        let mut human = Human::new_adult_female("mixed_001".to_string(), 26.0, 168.0, 62.0);
+        human.genetics.ancestry.add_component(Ancestry::EastAsian, 50.0).unwrap();
+        human.genetics.ancestry.add_component(Ancestry::European, 50.0).unwrap();
+
+        assert!(human.genetics.ancestry.is_mixed());
+
+        let report = human.ancestry_report();
+        assert!(report.len() > 2);
+    }
+
+    #[test]
+    fn test_warfarin_sensitivity() {
+        let mut human = Human::new_adult_male("warfarin_001".to_string(), 60.0, 175.0, 78.0);
+        human.genetics.phenotype.pharmacological_traits.warfarin_sensitivity =
+            crate::biology::genetics::WarfarinSensitivity::High;
+
+        let report = human.pharmacogenomic_report();
+
+        assert!(report.drug_interactions.iter().any(|d| d.contains("Warfarin")));
+        assert!(report.drug_interactions.iter().any(|d| d.contains("lower")));
+    }
+
+    #[test]
+    fn test_comprehensive_health_assessment() {
+        use crate::biology::genetics::Ancestry;
+
+        let mut human = Human::new_adult_female("comprehensive_001".to_string(), 38.0, 165.0, 65.0);
+        human.genetics.ancestry.add_component(Ancestry::European, 80.0).unwrap();
+        human.genetics.ancestry.add_component(Ancestry::EastAsian, 20.0).unwrap();
+        human.health_conditions.add_condition("Hypertension".to_string());
+
+        let assessment = human.comprehensive_health_assessment();
+
+        assert!(assessment.basic_metrics.bmi > 0.0);
+        assert!(!assessment.genetic_risks.is_empty());
+        assert_eq!(assessment.active_conditions.len(), 1);
     }
 }
