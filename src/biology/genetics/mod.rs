@@ -25,6 +25,8 @@ pub mod population_genetics;
 pub mod phenotype_predictor;
 pub mod disease_susceptibility;
 pub mod lactose_tolerance;
+pub mod trait_interactions;
+pub mod comprehensive_risk_calculator;
 
 pub use dna::*;
 pub use gene::*;
@@ -53,3 +55,5 @@ pub use population_genetics::*;
 pub use phenotype_predictor::*;
 pub use disease_susceptibility::*;
 pub use lactose_tolerance::*;
+pub use trait_interactions::*;
+pub use comprehensive_risk_calculator::*;
