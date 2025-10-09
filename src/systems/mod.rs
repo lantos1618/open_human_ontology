@@ -13,6 +13,8 @@ pub mod lymphatic;
 pub mod vision;
 pub mod auditory;
 pub mod gastrointestinal;
+pub mod dental;
+pub mod hematology;
 
 pub use cardiovascular::{Heart, BloodVessel, Blood};
 pub use respiratory::{Lung, GasExchange, BreathingPattern};
@@ -27,3 +29,5 @@ pub use reproductive::{MaleReproductiveSystem, FemaleReproductiveSystem};
 pub use lymphatic::{LymphNodeSystem, LymphaticVesselNetwork, Lymph, Spleen, Thymus};
 pub use vision::{Eye, VisualPathway, VisualAcuity};
 pub use auditory::{Ear, AuditoryPathway, HearingAcuity};
+pub use dental::{DentalSystem, Tooth, Gums, OralMicrobiome};
+pub use hematology::{CompleteBloodCount, WhiteBloodCells, RedBloodCells, Platelets, AnemiaType, BloodDisorder};

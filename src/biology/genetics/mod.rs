@@ -41,6 +41,9 @@ pub mod mitochondrial;
 pub mod ophthalmology;
 pub mod dermatology;
 pub mod taste_smell;
+pub mod mental_health_genetics;
+pub mod longevity_genetics;
+pub mod sleep_genetics;
 
 #[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use allele::*;
@@ -128,3 +131,9 @@ pub use ophthalmology::*;
 pub use dermatology::*;
 #[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use taste_smell::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+pub use mental_health_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+pub use longevity_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+pub use sleep_genetics::*;
