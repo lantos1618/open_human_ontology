@@ -3,6 +3,7 @@
 //! Defines mechanical and physical properties in biological systems.
 
 pub mod biomechanics;
+pub mod biomechanics_advanced;
 
 use serde::{Deserialize, Serialize};
 use nalgebra as na;

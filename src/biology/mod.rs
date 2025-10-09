@@ -40,6 +40,7 @@ pub mod allergy;
 pub mod rare_diseases;
 pub mod radiation_biology;
 pub mod hormone_signaling;
+pub mod embryology;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
