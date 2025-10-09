@@ -404,12 +404,273 @@ impl GeneCatalog {
         genes
     }
 
+    pub fn get_hematological_genes() -> HashMap<String, GeneInfo> {
+        let mut genes = HashMap::new();
+
+        genes.insert("ABO".to_string(), GeneInfo {
+            symbol: "ABO".to_string(),
+            full_name: "ABO Blood Group Transferase".to_string(),
+            chromosome: "9q34.2".to_string(),
+            function: GeneFunction::Enzyme,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "A allele".to_string(),
+                    rs_id: Some("rs8176719".to_string()),
+                    hgvs: "c.261delG".to_string(),
+                    clinical_significance: ClinicalSignificance::Benign,
+                    associated_conditions: vec!["Blood type A".to_string()],
+                    population_frequency: 0.27,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+                ClinicalVariant {
+                    variant_name: "B allele".to_string(),
+                    rs_id: Some("rs8176746".to_string()),
+                    hgvs: "c.796C>A".to_string(),
+                    clinical_significance: ClinicalSignificance::Benign,
+                    associated_conditions: vec!["Blood type B".to_string()],
+                    population_frequency: 0.16,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+                ClinicalVariant {
+                    variant_name: "O allele".to_string(),
+                    rs_id: Some("rs8176747".to_string()),
+                    hgvs: "c.261delG".to_string(),
+                    clinical_significance: ClinicalSignificance::Benign,
+                    associated_conditions: vec!["Blood type O".to_string()],
+                    population_frequency: 0.63,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+            ],
+            phenotypes: vec!["Blood group antigen expression".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes.insert("HBB".to_string(), GeneInfo {
+            symbol: "HBB".to_string(),
+            full_name: "Hemoglobin Subunit Beta".to_string(),
+            chromosome: "11p15.4".to_string(),
+            function: GeneFunction::StructuralProtein,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "HbS (Sickle)".to_string(),
+                    rs_id: Some("rs334".to_string()),
+                    hgvs: "c.20A>T".to_string(),
+                    clinical_significance: ClinicalSignificance::Pathogenic,
+                    associated_conditions: vec![
+                        "Sickle cell disease".to_string(),
+                        "Sickle cell trait".to_string(),
+                    ],
+                    population_frequency: 0.05,
+                    inheritance_pattern: InheritancePattern::AutosomalRecessive,
+                },
+                ClinicalVariant {
+                    variant_name: "HbC".to_string(),
+                    rs_id: Some("rs33930165".to_string()),
+                    hgvs: "c.19G>A".to_string(),
+                    clinical_significance: ClinicalSignificance::Pathogenic,
+                    associated_conditions: vec!["Hemoglobin C disease".to_string()],
+                    population_frequency: 0.02,
+                    inheritance_pattern: InheritancePattern::AutosomalRecessive,
+                },
+            ],
+            phenotypes: vec!["Oxygen transport".to_string()],
+            drug_interactions: vec!["Hydroxyurea".to_string()],
+        });
+
+        genes.insert("G6PD".to_string(), GeneInfo {
+            symbol: "G6PD".to_string(),
+            full_name: "Glucose-6-Phosphate Dehydrogenase".to_string(),
+            chromosome: "Xq28".to_string(),
+            function: GeneFunction::Enzyme,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "Mediterranean".to_string(),
+                    rs_id: Some("rs5030868".to_string()),
+                    hgvs: "c.563C>T".to_string(),
+                    clinical_significance: ClinicalSignificance::Pathogenic,
+                    associated_conditions: vec![
+                        "G6PD deficiency".to_string(),
+                        "Hemolytic anemia".to_string(),
+                    ],
+                    population_frequency: 0.08,
+                    inheritance_pattern: InheritancePattern::XLinkedRecessive,
+                },
+            ],
+            phenotypes: vec!["Red blood cell metabolism".to_string()],
+            drug_interactions: vec![
+                "Primaquine".to_string(),
+                "Aspirin (high dose)".to_string(),
+                "Sulfonamides".to_string(),
+            ],
+        });
+
+        genes
+    }
+
+    pub fn get_metabolic_trait_genes() -> HashMap<String, GeneInfo> {
+        let mut genes = HashMap::new();
+
+        genes.insert("LCT".to_string(), GeneInfo {
+            symbol: "LCT".to_string(),
+            full_name: "Lactase".to_string(),
+            chromosome: "2q21.3".to_string(),
+            function: GeneFunction::Enzyme,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "MCM6 -13910C>T".to_string(),
+                    rs_id: Some("rs4988235".to_string()),
+                    hgvs: "c.-13910C>T".to_string(),
+                    clinical_significance: ClinicalSignificance::Benign,
+                    associated_conditions: vec!["Lactase persistence (lactose tolerance)".to_string()],
+                    population_frequency: 0.35,
+                    inheritance_pattern: InheritancePattern::AutosomalDominant,
+                },
+            ],
+            phenotypes: vec!["Lactose digestion".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes.insert("TAS2R38".to_string(), GeneInfo {
+            symbol: "TAS2R38".to_string(),
+            full_name: "Taste Receptor Type 2 Member 38".to_string(),
+            chromosome: "7q34".to_string(),
+            function: GeneFunction::Receptor,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "PAV haplotype".to_string(),
+                    rs_id: Some("rs713598".to_string()),
+                    hgvs: "c.145G>C".to_string(),
+                    clinical_significance: ClinicalSignificance::Benign,
+                    associated_conditions: vec!["PTC taster (bitter sensitivity)".to_string()],
+                    population_frequency: 0.55,
+                    inheritance_pattern: InheritancePattern::AutosomalDominant,
+                },
+            ],
+            phenotypes: vec!["Bitter taste perception".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes.insert("ABCC11".to_string(), GeneInfo {
+            symbol: "ABCC11".to_string(),
+            full_name: "ATP Binding Cassette Subfamily C Member 11".to_string(),
+            chromosome: "16q12.1".to_string(),
+            function: GeneFunction::Transporter,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "538G>A".to_string(),
+                    rs_id: Some("rs17822931".to_string()),
+                    hgvs: "c.538G>A".to_string(),
+                    clinical_significance: ClinicalSignificance::Benign,
+                    associated_conditions: vec![
+                        "Dry earwax".to_string(),
+                        "Reduced body odor".to_string(),
+                    ],
+                    population_frequency: 0.80,
+                    inheritance_pattern: InheritancePattern::AutosomalRecessive,
+                },
+            ],
+            phenotypes: vec!["Earwax type".to_string(), "Apocrine gland secretion".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes.insert("EDAR".to_string(), GeneInfo {
+            symbol: "EDAR".to_string(),
+            full_name: "Ectodysplasin A Receptor".to_string(),
+            chromosome: "2q13".to_string(),
+            function: GeneFunction::Receptor,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "370A".to_string(),
+                    rs_id: Some("rs3827760".to_string()),
+                    hgvs: "c.1109T>C".to_string(),
+                    clinical_significance: ClinicalSignificance::Benign,
+                    associated_conditions: vec![
+                        "Thick hair".to_string(),
+                        "Shovel-shaped incisors".to_string(),
+                        "Increased sweat gland density".to_string(),
+                    ],
+                    population_frequency: 0.93,
+                    inheritance_pattern: InheritancePattern::AutosomalDominant,
+                },
+            ],
+            phenotypes: vec!["Hair thickness".to_string(), "Tooth morphology".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes
+    }
+
+    pub fn get_asian_specific_genes() -> HashMap<String, GeneInfo> {
+        let mut genes = HashMap::new();
+
+        genes.insert("SLC24A5".to_string(), GeneInfo {
+            symbol: "SLC24A5".to_string(),
+            full_name: "Solute Carrier Family 24 Member 5".to_string(),
+            chromosome: "15q21.1".to_string(),
+            function: GeneFunction::Transporter,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "111T (ancestral)".to_string(),
+                    rs_id: Some("rs1426654".to_string()),
+                    hgvs: "c.111A>G".to_string(),
+                    clinical_significance: ClinicalSignificance::Benign,
+                    associated_conditions: vec!["Darker skin pigmentation".to_string()],
+                    population_frequency: 0.99,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+            ],
+            phenotypes: vec!["Skin pigmentation".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes.insert("EGFR".to_string(), GeneInfo {
+            symbol: "EGFR".to_string(),
+            full_name: "Epidermal Growth Factor Receptor".to_string(),
+            chromosome: "7p11.2".to_string(),
+            function: GeneFunction::Receptor,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "L858R".to_string(),
+                    rs_id: Some("rs121434568".to_string()),
+                    hgvs: "c.2573T>G".to_string(),
+                    clinical_significance: ClinicalSignificance::Pathogenic,
+                    associated_conditions: vec![
+                        "Non-small cell lung cancer".to_string(),
+                        "EGFR-mutant lung adenocarcinoma".to_string(),
+                    ],
+                    population_frequency: 0.00015,
+                    inheritance_pattern: InheritancePattern::Somatic,
+                },
+                ClinicalVariant {
+                    variant_name: "Exon 19 deletion".to_string(),
+                    rs_id: None,
+                    hgvs: "c.2235_2249del".to_string(),
+                    clinical_significance: ClinicalSignificance::Pathogenic,
+                    associated_conditions: vec!["EGFR-mutant lung cancer".to_string()],
+                    population_frequency: 0.0001,
+                    inheritance_pattern: InheritancePattern::Somatic,
+                },
+            ],
+            phenotypes: vec!["Cell growth regulation".to_string()],
+            drug_interactions: vec![
+                "Erlotinib".to_string(),
+                "Gefitinib".to_string(),
+                "Osimertinib".to_string(),
+            ],
+        });
+
+        genes
+    }
+
     pub fn get_all_genes() -> HashMap<String, GeneInfo> {
         let mut all_genes = HashMap::new();
         all_genes.extend(Self::get_metabolic_genes());
         all_genes.extend(Self::get_cardiovascular_genes());
         all_genes.extend(Self::get_cancer_genes());
         all_genes.extend(Self::get_neurological_genes());
+        all_genes.extend(Self::get_hematological_genes());
+        all_genes.extend(Self::get_metabolic_trait_genes());
+        all_genes.extend(Self::get_asian_specific_genes());
         all_genes
     }
 }
@@ -442,7 +703,46 @@ mod tests {
     #[test]
     fn test_all_genes() {
         let genes = GeneCatalog::get_all_genes();
-        assert!(genes.len() >= 8);
+        assert!(genes.len() >= 16);
+    }
+
+    #[test]
+    fn test_hematological_genes() {
+        let genes = GeneCatalog::get_hematological_genes();
+        assert!(genes.contains_key("ABO"));
+        assert!(genes.contains_key("HBB"));
+        assert!(genes.contains_key("G6PD"));
+    }
+
+    #[test]
+    fn test_metabolic_trait_genes() {
+        let genes = GeneCatalog::get_metabolic_trait_genes();
+        assert!(genes.contains_key("LCT"));
+        assert!(genes.contains_key("ABCC11"));
+        assert!(genes.contains_key("EDAR"));
+    }
+
+    #[test]
+    fn test_asian_specific_genes() {
+        let genes = GeneCatalog::get_asian_specific_genes();
+        assert!(genes.contains_key("EGFR"));
+        assert!(genes.contains_key("SLC24A5"));
+    }
+
+    #[test]
+    fn test_aldh2_variant_rs671() {
+        let genes = GeneCatalog::get_metabolic_genes();
+        let aldh2 = genes.get("ALDH2").unwrap();
+        assert!(aldh2.clinical_variants.iter().any(|v| v.rs_id == Some("rs671".to_string())));
+    }
+
+    #[test]
+    fn test_edar_east_asian_variant() {
+        let genes = GeneCatalog::get_metabolic_trait_genes();
+        let edar = genes.get("EDAR").unwrap();
+        let variant = &edar.clinical_variants[0];
+        assert_eq!(variant.rs_id, Some("rs3827760".to_string()));
+        assert!(variant.population_frequency > 0.9);
     }
 
     #[test]

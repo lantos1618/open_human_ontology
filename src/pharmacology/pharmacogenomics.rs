@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::biology::{BiologyResult, BiologyError};
-use super::drug::DrugClass;
+use crate::biology::BiologyResult;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum PharmacogeneticGene {

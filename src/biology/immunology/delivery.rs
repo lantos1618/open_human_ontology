@@ -1,5 +1,5 @@
 //! # Vaccine Delivery Module
-//! 
+//!
 //! Models different vaccine delivery mechanisms and their properties.
 
 use serde::{Deserialize, Serialize};

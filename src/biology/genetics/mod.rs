@@ -6,6 +6,7 @@ pub mod allele;
 pub mod genotype;
 pub mod ancestry;
 pub mod gene_catalog;
+pub mod blood_type;
 
 pub use dna::*;
 pub use gene::*;
@@ -15,3 +16,4 @@ pub use allele::*;
 pub use genotype::*;
 pub use ancestry::*;
 pub use gene_catalog::*;
+pub use blood_type::*;

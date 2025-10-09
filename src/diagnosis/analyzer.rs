@@ -2,7 +2,6 @@ use serde::{Deserialize, Serialize};
 use crate::human::Human;
 use crate::biology::genetics::Ancestry;
 use crate::pharmacology::pharmacogenomics::MetabolizerPhenotype;
-use std::collections::HashMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DiagnosticReport {
