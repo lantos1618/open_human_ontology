@@ -88,6 +88,12 @@ pub struct GeneEnvironmentProfile {
     pub lifestyle_factors: HashMap<EnvironmentalFactor, f64>,
 }
 
+impl Default for GeneEnvironmentProfile {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl GeneEnvironmentProfile {
     pub fn new() -> Self {
         Self {

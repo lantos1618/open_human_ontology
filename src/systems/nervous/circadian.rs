@@ -182,6 +182,12 @@ impl CircadianSystem {
     }
 }
 
+impl Default for SCN {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl SCN {
     pub fn new() -> Self {
         Self {
@@ -355,6 +361,12 @@ impl SleepSystem {
     }
 }
 
+impl Default for SleepStages {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl SleepStages {
     pub fn new() -> Self {
         Self {
@@ -377,6 +389,12 @@ impl SleepStages {
 
     pub fn advance_time(&mut self, minutes: f64) {
         self.stage_duration_minutes += minutes;
+    }
+}
+
+impl Default for SleepDrive {
+    fn default() -> Self {
+        Self::new()
     }
 }
 

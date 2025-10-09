@@ -114,6 +114,12 @@ pub struct EpigeneticAge {
     pub dunedin_pace: f64,
 }
 
+impl Default for EpigeneticProfile {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl EpigeneticProfile {
     pub fn new() -> Self {
         Self {

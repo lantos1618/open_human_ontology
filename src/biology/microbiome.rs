@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Microbiome {
@@ -88,7 +87,7 @@ impl Microbiome {
 
     pub fn has_dysbiosis(&self) -> bool {
         let fb_ratio = self.firmicutes_bacteroidetes_ratio();
-        fb_ratio > 10.0 || fb_ratio < 0.1 || self.diversity_index < 2.0
+        !(0.1..=10.0).contains(&fb_ratio) || self.diversity_index < 2.0
     }
 
     pub fn pathogenic_load(&self) -> f64 {

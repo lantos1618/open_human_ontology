@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum MetabolicCondition {
@@ -346,7 +345,7 @@ impl LipidPanel {
             return true;
         }
 
-        if diabetes && age >= 40.0 && age <= 75.0 {
+        if diabetes && (40.0..=75.0).contains(&age) {
             return true;
         }
 

@@ -288,20 +288,13 @@ impl PopulationAnalyzer {
         let mut opioid_risk = 0;
 
         for individual in &self.individuals {
-            match individual
+            if individual
                 .genetics
                 .phenotype
                 .pharmacological_traits
-                .warfarin_sensitivity
-            {
-                crate::biology::genetics::WarfarinSensitivity::High => warfarin_sensitive += 1,
-                _ => {}
-            }
+                .warfarin_sensitivity == crate::biology::genetics::WarfarinSensitivity::High { warfarin_sensitive += 1 }
 
-            match individual.genetics.phenotype.metabolic_traits.caffeine_metabolism {
-                crate::biology::genetics::CaffeineMetabolism::Slow => slow_caffeine += 1,
-                _ => {}
-            }
+            if individual.genetics.phenotype.metabolic_traits.caffeine_metabolism == crate::biology::genetics::CaffeineMetabolism::Slow { slow_caffeine += 1 }
 
             if individual
                 .genetics

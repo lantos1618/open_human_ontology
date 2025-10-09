@@ -432,13 +432,11 @@ impl CancerGeneticProfile {
                 0.028
             };
             risks.push(("Endometrial Cancer".to_string(), endometrial_risk));
-        } else {
-            if self.brca2.is_pathogenic() {
-                risks.push((
-                    "Prostate Cancer".to_string(),
-                    self.brca2.prostate_cancer_risk() * 0.12,
-                ));
-            }
+        } else if self.brca2.is_pathogenic() {
+            risks.push((
+                "Prostate Cancer".to_string(),
+                self.brca2.prostate_cancer_risk() * 0.12,
+            ));
         }
 
         let colorectal_risk = if self.mlh_msh.lynch_syndrome() {

@@ -313,19 +313,19 @@ impl SimulationEngine {
 
         for state in &self.state_history {
             series.entry("glucose".to_string())
-                .or_insert_with(Vec::new)
+                .or_default()
                 .push((state.time_hours, state.metabolic_state.glucose_mg_per_dl));
 
             series.entry("heart_rate".to_string())
-                .or_insert_with(Vec::new)
+                .or_default()
                 .push((state.time_hours, state.physiological_metrics.heart_rate_bpm));
 
             series.entry("ketones".to_string())
-                .or_insert_with(Vec::new)
+                .or_default()
                 .push((state.time_hours, state.metabolic_state.ketones_mmol_per_l));
 
             series.entry("atp_production".to_string())
-                .or_insert_with(Vec::new)
+                .or_default()
                 .push((state.time_hours, state.metabolic_state.atp_production_rate));
         }
 

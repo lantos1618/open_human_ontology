@@ -160,7 +160,7 @@ impl Autophagy {
     }
 
     pub fn initiate(&mut self, stress_level: f64) -> BiologyResult<()> {
-        if stress_level < 0.0 || stress_level > 1.0 {
+        if !(0.0..=1.0).contains(&stress_level) {
             return Err(BiologyError::InvalidValue(
                 "Stress level must be between 0 and 1".to_string()
             ));

@@ -321,7 +321,7 @@ impl Ear {
     }
 
     pub fn detect_frequency(&self, frequency_hz: f64) -> BiologyResult<f64> {
-        if frequency_hz < 20.0 || frequency_hz > 20000.0 {
+        if !(20.0..=20000.0).contains(&frequency_hz) {
             return Ok(0.0);
         }
 
@@ -421,7 +421,7 @@ impl AuditoryPathway {
     }
 
     pub fn process_auditory_signal(&self, signal_strength: f64) -> BiologyResult<f64> {
-        if signal_strength < 0.0 || signal_strength > 1.0 {
+        if !(0.0..=1.0).contains(&signal_strength) {
             return Err(BiologyError::InvalidValue(
                 "Signal strength must be between 0 and 1".to_string(),
             ));

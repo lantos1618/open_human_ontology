@@ -1,4 +1,3 @@
-use crate::biology::{BiologyError, BiologyResult};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]

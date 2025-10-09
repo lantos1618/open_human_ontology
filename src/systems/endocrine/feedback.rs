@@ -280,10 +280,10 @@ impl CircadianHormoneRegulation {
     }
 
     pub fn assess_circadian_disruption(&self) -> bool {
-        let cortisol_misaligned = (self.time_of_day_hours - self.cortisol_rhythm.peak_time_hours).abs() < 2.0 &&
-                                   self.cortisol_rhythm.current_level < 100.0;
+        
 
-        cortisol_misaligned
+        (self.time_of_day_hours - self.cortisol_rhythm.peak_time_hours).abs() < 2.0 &&
+                                   self.cortisol_rhythm.current_level < 100.0
     }
 }
 

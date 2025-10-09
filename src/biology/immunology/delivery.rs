@@ -187,6 +187,12 @@ pub struct DeliveryOptimizer {
     devices: Vec<DeliveryDevice>,
 }
 
+impl Default for DeliveryOptimizer {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl DeliveryOptimizer {
     /// Create a new delivery optimizer
     pub fn new() -> Self {

@@ -235,7 +235,7 @@ impl ArterialBloodGas {
     }
 
     pub fn calculate_alveolar_arterial_gradient(&self, fio2: f64) -> BiologyResult<f64> {
-        if fio2 < 0.21 || fio2 > 1.0 {
+        if !(0.21..=1.0).contains(&fio2) {
             return Err(BiologyError::InvalidValue(
                 "FiO2 must be between 0.21 and 1.0".to_string(),
             ));
@@ -301,7 +301,7 @@ impl OxygenationMetrics {
         cardiac_output_l_per_min: f64,
         hemoglobin_g_dl: f64,
     ) -> BiologyResult<Self> {
-        if fio2 < 0.21 || fio2 > 1.0 {
+        if !(0.21..=1.0).contains(&fio2) {
             return Err(BiologyError::InvalidValue(
                 "FiO2 must be between 0.21 and 1.0".to_string(),
             ));

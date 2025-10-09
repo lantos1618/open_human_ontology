@@ -154,6 +154,12 @@ impl Default for SeminiferousTubules {
     }
 }
 
+impl Default for LeydigCells {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl LeydigCells {
     pub fn new() -> Self {
         Self {
@@ -164,6 +170,12 @@ impl LeydigCells {
 
     pub fn production_per_cell_ng(&self) -> f64 {
         (self.testosterone_production_mg_per_day * 1_000_000.0) / self.cell_count as f64
+    }
+}
+
+impl Default for SertoliCells {
+    fn default() -> Self {
+        Self::new()
     }
 }
 

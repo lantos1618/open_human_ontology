@@ -125,6 +125,12 @@ impl Default for Esophagus {
     }
 }
 
+impl Default for Stomach {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Stomach {
     pub fn new() -> Self {
         Self {

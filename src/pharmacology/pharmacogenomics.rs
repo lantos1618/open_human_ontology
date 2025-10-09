@@ -171,13 +171,13 @@ impl PharmacogeneticProfile {
         }
 
         if drug == "Abacavir" && self.genotypes.get(&PharmacogeneticGene::HLA_B5701)
-            .map_or(false, |g| g.contains("*57:01")) {
+            .is_some_and(|g| g.contains("*57:01")) {
             toxicity_risk = ToxicityRisk::Contraindicated;
             warnings.push("HLA-B*57:01 positive: Abacavir is CONTRAINDICATED".to_string());
         }
 
         if drug == "Carbamazepine" && self.genotypes.get(&PharmacogeneticGene::HLA_B1502)
-            .map_or(false, |g| g.contains("*15:02")) {
+            .is_some_and(|g| g.contains("*15:02")) {
             toxicity_risk = ToxicityRisk::Contraindicated;
             warnings.push("HLA-B*15:02 positive: Carbamazepine is CONTRAINDICATED in Asian ancestry".to_string());
         }

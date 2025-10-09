@@ -4,8 +4,7 @@ use std::collections::HashMap;
 use crate::biology::genetics::{
     AncestryProfile, EyeColorGenetics, SkinPigmentationGenetics, HairGenetics,
     ColorVisionGenetics, MyopiaGenetics, GlaucomaRisk,
-    PharmacogenomicProfile, Actn3Genotype, AceGenotype,
-    TasteReceptorGenetics, OlfactoryReceptorGenetics, ChemosensoryProfile,
+    PharmacogenomicProfile, Actn3Genotype, AceGenotype, ChemosensoryProfile,
 };
 use crate::biology::genetics::dermatology::{AcneRisk, PsoriasisRisk, EczemaRisk};
 use crate::anthropometry::{BodyMeasurements, BodyComposition, AnthropometricProfile, BiologicalSex};
@@ -452,7 +451,7 @@ impl ComprehensiveHealthProfile {
         let mut score = 100.0_f64;
 
         let bmi = self.anthropometry.measurements.bmi();
-        if bmi < 18.5 || bmi > 30.0 {
+        if !(18.5..=30.0).contains(&bmi) {
             score -= 15.0;
         } else if bmi > 25.0 {
             score -= 5.0;

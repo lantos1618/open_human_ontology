@@ -336,11 +336,11 @@ impl Human {
         let mut score: f64 = 100.0;
 
         let bmi = self.bmi();
-        if bmi < 18.5 || bmi > 35.0 {
+        if !(18.5..=35.0).contains(&bmi) {
             score -= 30.0;
-        } else if bmi < 20.0 || bmi > 30.0 {
+        } else if !(20.0..=30.0).contains(&bmi) {
             score -= 20.0;
-        } else if bmi < 22.0 || bmi > 27.0 {
+        } else if !(22.0..=27.0).contains(&bmi) {
             score -= 10.0;
         }
 

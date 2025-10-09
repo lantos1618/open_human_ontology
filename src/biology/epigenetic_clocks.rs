@@ -151,7 +151,7 @@ impl EpigeneticClock {
     fn calculate_telomere_length(&self) -> f64 {
         let mut tl_score = 7.5;
 
-        for (_, beta) in &self.cpg_sites {
+        for beta in self.cpg_sites.values() {
             tl_score -= beta * 0.05;
         }
 
@@ -165,13 +165,13 @@ impl EpigeneticClock {
             21.0
         };
 
-        let age_trans = if age >= 0.0 {
+        
+
+        if age >= 0.0 {
             21.0 + (1.0 + 21.0 + age) * age
         } else {
             adult_age
-        };
-
-        age_trans
+        }
     }
 
     fn get_horvath_coefficient(&self, site: &str) -> f64 {

@@ -83,7 +83,7 @@ impl Muscle {
         let optimal_length = self.length_cm;
         let length_ratio = length_cm / optimal_length;
 
-        if length_ratio < 0.5 || length_ratio > 1.5 {
+        if !(0.5..=1.5).contains(&length_ratio) {
             0.0
         } else {
             let length_factor = 1.0 - ((length_ratio - 1.0).powi(2) * 4.0);

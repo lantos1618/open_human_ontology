@@ -177,7 +177,8 @@ impl Human {
     }
 
     pub fn metabolic_rate_kcal_per_day(&self) -> f64 {
-        let bmr = match self.demographics.biological_sex {
+        
+        match self.demographics.biological_sex {
             BiologicalSex::Male => {
                 10.0 * self.body_metrics.weight_kg
                     + 6.25 * self.body_metrics.height_cm
@@ -190,8 +191,7 @@ impl Human {
                     - 5.0 * self.demographics.age_years
                     - 161.0
             }
-        };
-        bmr
+        }
     }
 
     pub fn total_blood_volume_l(&self) -> f64 {
@@ -345,11 +345,8 @@ impl Human {
         let mut drug_interactions = Vec::new();
         let mut warnings = Vec::new();
 
-        match self.genetics.phenotype.metabolic_traits.caffeine_metabolism {
-            crate::biology::genetics::CaffeineMetabolism::Slow => {
-                warnings.push("Slow caffeine metabolizer - limit intake to avoid insomnia".to_string());
-            },
-            _ => {}
+        if self.genetics.phenotype.metabolic_traits.caffeine_metabolism == crate::biology::genetics::CaffeineMetabolism::Slow {
+            warnings.push("Slow caffeine metabolizer - limit intake to avoid insomnia".to_string());
         }
 
         if self.genetics.phenotype.metabolic_traits.alcohol_metabolism.alcohol_flush_reaction {

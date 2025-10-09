@@ -118,9 +118,9 @@ impl DiagnosticEngine {
         let bmi = human.bmi();
         let bmi_severity = match bmi {
             x if x < 18.5 => Severity::Mild,
-            x if x >= 18.5 && x < 25.0 => Severity::Normal,
-            x if x >= 25.0 && x < 30.0 => Severity::Borderline,
-            x if x >= 30.0 && x < 35.0 => Severity::Moderate,
+            x if (18.5..25.0).contains(&x) => Severity::Normal,
+            x if (25.0..30.0).contains(&x) => Severity::Borderline,
+            x if (30.0..35.0).contains(&x) => Severity::Moderate,
             x if x >= 35.0 => Severity::Severe,
             _ => Severity::Normal,
         };
@@ -134,7 +134,7 @@ impl DiagnosticEngine {
         });
 
         let hr = human.systems.cardiovascular.heart.heart_rate_bpm;
-        let hr_severity = if hr < 60.0 || hr > 100.0 {
+        let hr_severity = if !(60.0..=100.0).contains(&hr) {
             Severity::Borderline
         } else {
             Severity::Normal
@@ -232,10 +232,10 @@ impl DiagnosticEngine {
 
         let (severity, description) = match gfr {
             x if x >= 90.0 => (Severity::Normal, "Normal kidney function"),
-            x if x >= 60.0 && x < 90.0 => (Severity::Borderline, "Mildly decreased kidney function"),
-            x if x >= 45.0 && x < 60.0 => (Severity::Mild, "Mild to moderate kidney disease"),
-            x if x >= 30.0 && x < 45.0 => (Severity::Moderate, "Moderate to severe kidney disease"),
-            x if x >= 15.0 && x < 30.0 => (Severity::Severe, "Severe kidney disease"),
+            x if (60.0..90.0).contains(&x) => (Severity::Borderline, "Mildly decreased kidney function"),
+            x if (45.0..60.0).contains(&x) => (Severity::Mild, "Mild to moderate kidney disease"),
+            x if (30.0..45.0).contains(&x) => (Severity::Moderate, "Moderate to severe kidney disease"),
+            x if (15.0..30.0).contains(&x) => (Severity::Severe, "Severe kidney disease"),
             _ => (Severity::Critical, "Kidney failure"),
         };
 

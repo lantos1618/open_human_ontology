@@ -82,7 +82,7 @@ impl PharmacogenomicProfile {
 
     pub fn add_drug_response(&mut self, response: DrugResponse) {
         self.drug_responses.entry(response.drug.clone())
-            .or_insert_with(Vec::new)
+            .or_default()
             .push(response);
     }
 

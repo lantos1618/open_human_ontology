@@ -139,6 +139,12 @@ pub enum SSRIResponse {
     Poor,
 }
 
+impl Default for PhenotypeProfile {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl PhenotypeProfile {
     pub fn new() -> Self {
         Self {

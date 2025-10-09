@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use crate::human::Human;
-use crate::biology::genetics::{AncestryPopulation, genotype::Genotype};
+use crate::biology::genetics::AncestryPopulation;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PersonalizedHealthTest {
@@ -171,14 +171,14 @@ impl PersonalizedHealthAnalyzer {
             Finding {
                 category: "Metabolism".to_string(),
                 description: format!("BMI: {:.1} ({})", bmi, bmi_category),
-                significance: if bmi < 18.5 || bmi >= 30.0 {
+                significance: if !(18.5..30.0).contains(&bmi) {
                     Significance::High
                 } else if bmi >= 25.0 {
                     Significance::Moderate
                 } else {
                     Significance::Low
                 },
-                actionable: bmi < 18.5 || bmi >= 25.0,
+                actionable: !(18.5..25.0).contains(&bmi),
             },
         );
     }
@@ -313,7 +313,7 @@ impl PersonalizedHealthAnalyzer {
         let test_id = format!("PGX_{}", uuid::Uuid::new_v4());
 
         let mut findings = HashMap::new();
-        let mut scores = HashMap::new();
+        let scores = HashMap::new();
         let mut recommendations = Vec::new();
 
         let metabolizer_genes = vec!["CYP2D6", "CYP2C19", "CYP2C9", "CYP3A4", "CYP3A5"];
@@ -338,7 +338,7 @@ impl PersonalizedHealthAnalyzer {
 
         let risk_level = if findings.len() > 3 {
             RiskLevel::Moderate
-        } else if findings.len() > 0 {
+        } else if !findings.is_empty() {
             RiskLevel::Low
         } else {
             RiskLevel::VeryLow

@@ -92,7 +92,7 @@ impl Heart {
     }
 
     pub fn set_heart_rate(&mut self, bpm: f64) -> BiologyResult<()> {
-        if bpm < 30.0 || bpm > 220.0 {
+        if !(30.0..=220.0).contains(&bpm) {
             return Err(BiologyError::InvalidValue(
                 "Heart rate out of physiological range".to_string()
             ));

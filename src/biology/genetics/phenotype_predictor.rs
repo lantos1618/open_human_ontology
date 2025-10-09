@@ -9,6 +9,7 @@ pub struct FullBodyPhenotypePredictor {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Default)]
 pub struct PredictedTraits {
     pub physical_appearance: PhysicalAppearance,
     pub physiology: PhysiologyTraits,
@@ -509,18 +510,6 @@ impl Default for FullBodyPhenotypePredictor {
     }
 }
 
-impl Default for PredictedTraits {
-    fn default() -> Self {
-        Self {
-            physical_appearance: PhysicalAppearance::default(),
-            physiology: PhysiologyTraits::default(),
-            performance: PerformanceTraits::default(),
-            metabolism: MetabolismTraits::default(),
-            sensory: SensoryTraits::default(),
-            behavior: BehaviorTraits::default(),
-        }
-    }
-}
 
 impl Default for PhysicalAppearance {
     fn default() -> Self {

@@ -259,6 +259,12 @@ impl Default for ProteinBuffer {
     }
 }
 
+impl Default for AmmoniaBuffer {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl AmmoniaBuffer {
     pub fn new() -> Self {
         Self {

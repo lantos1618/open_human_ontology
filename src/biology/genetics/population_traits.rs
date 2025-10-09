@@ -255,12 +255,9 @@ impl PopulationSpecificTraits {
             _ => {}
         }
 
-        match self.vitamin_d_synthesis {
-            VitaminDSynthesis::Low => {
-                recommendations.push("Vitamin D supplementation recommended".to_string());
-                recommendations.push("Increased sun exposure needed (with sun protection)".to_string());
-            }
-            _ => {}
+        if self.vitamin_d_synthesis == VitaminDSynthesis::Low {
+            recommendations.push("Vitamin D supplementation recommended".to_string());
+            recommendations.push("Increased sun exposure needed (with sun protection)".to_string());
         }
 
         recommendations

@@ -185,6 +185,12 @@ impl Default for ImmuneSystem {
     }
 }
 
+impl Default for InnateImmunity {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl InnateImmunity {
     pub fn new() -> Self {
         Self {
@@ -227,6 +233,12 @@ impl InnateImmunity {
         let nk_score = (self.natural_killer_cells.cytotoxic_activity_percent / 100.0).min(1.0);
 
         (barrier_score + complement_score + phagocyte_score + nk_score) / 4.0 * 100.0
+    }
+}
+
+impl Default for AdaptiveImmunity {
+    fn default() -> Self {
+        Self::new()
     }
 }
 

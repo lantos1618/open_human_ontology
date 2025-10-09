@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use crate::physics::Vector3;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct OrthopedicProfile {

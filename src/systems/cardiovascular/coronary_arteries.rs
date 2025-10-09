@@ -76,12 +76,10 @@ impl CoronaryArterySystem {
     }
 
     pub fn calculate_total_stenosis(&self) -> f64 {
-        let stenoses = vec![
-            self.left_main.stenosis_percent,
+        let stenoses = [self.left_main.stenosis_percent,
             self.left_anterior_descending.stenosis_percent,
             self.left_circumflex.stenosis_percent,
-            self.right_coronary.stenosis_percent,
-        ];
+            self.right_coronary.stenosis_percent];
 
         stenoses.iter().sum::<f64>() / stenoses.len() as f64
     }

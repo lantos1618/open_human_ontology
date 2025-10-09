@@ -264,37 +264,31 @@ impl AthleticPerformanceProfile {
 
         if score > 1.5 {
             sports.extend(
-                vec![
-                    "100m-400m sprinting",
+                ["100m-400m sprinting",
                     "Powerlifting",
                     "Olympic weightlifting",
                     "American football",
-                    "Rugby",
-                ]
+                    "Rugby"]
                 .iter()
                 .map(|s| s.to_string()),
             );
         } else if score > 0.0 {
             sports.extend(
-                vec![
-                    "800m-1500m middle distance",
+                ["800m-1500m middle distance",
                     "Soccer",
                     "Basketball",
                     "Tennis",
-                    "CrossFit",
-                ]
+                    "CrossFit"]
                 .iter()
                 .map(|s| s.to_string()),
             );
         } else {
             sports.extend(
-                vec![
-                    "Marathon",
+                ["Marathon",
                     "Long-distance cycling",
                     "Triathlon",
                     "Cross-country skiing",
-                    "Swimming distance events",
-                ]
+                    "Swimming distance events"]
                 .iter()
                 .map(|s| s.to_string()),
             );
@@ -332,12 +326,9 @@ impl AthleticPerformanceProfile {
             }
         }
 
-        match self.ppargc1a {
-            Ppargc1aVariant::GG => {
-                recs.push("High mitochondrial adaptation potential".to_string());
-                recs.push("Respond well to high-volume training".to_string());
-            }
-            _ => {}
+        if self.ppargc1a == Ppargc1aVariant::GG {
+            recs.push("High mitochondrial adaptation potential".to_string());
+            recs.push("Respond well to high-volume training".to_string());
         }
 
         if matches!(self.ampd1, AmpD1Genotype::TT) {

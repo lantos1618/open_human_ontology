@@ -52,7 +52,7 @@ impl DNASequence {
         let sequence: Option<Vec<Nucleotide>> = s.chars()
             .map(Nucleotide::from_char)
             .collect();
-        sequence.map(|seq| DNASequence::new(seq))
+        sequence.map(DNASequence::new)
     }
 
     pub fn to_string(&self) -> String {

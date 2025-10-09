@@ -181,9 +181,9 @@ impl AlveolarVentilation {
     }
 
     pub fn co2_production_ml_min(&self, respiratory_quotient: f64) -> f64 {
-        let vco2 = (self.alveolar_ventilation_ml_min * self.alveolar_co2_partial_pressure_mmhg) /
-                   (760.0 - 47.0);
-        vco2
+        
+        (self.alveolar_ventilation_ml_min * self.alveolar_co2_partial_pressure_mmhg) /
+                   (760.0 - 47.0)
     }
 
     pub fn o2_consumption_ml_min(&self, respiratory_quotient: f64) -> f64 {

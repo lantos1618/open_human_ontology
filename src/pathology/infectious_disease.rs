@@ -213,6 +213,12 @@ impl Default for InfectiousDiseaseProfile {
     }
 }
 
+impl Default for ImmunizationStatus {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl ImmunizationStatus {
     pub fn new() -> Self {
         let mut vaccines = HashMap::new();

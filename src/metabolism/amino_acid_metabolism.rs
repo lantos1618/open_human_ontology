@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use crate::biology::AminoAcid;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AminoAcidMetabolism {
@@ -199,12 +198,12 @@ impl UreaCycle {
     }
 
     pub fn overall_cycle_efficiency(&self) -> f64 {
-        let min_activity = self.carbamoyl_phosphate_synthetase_activity
+        
+        self.carbamoyl_phosphate_synthetase_activity
             .min(self.ornithine_transcarbamylase_activity)
             .min(self.argininosuccinate_synthetase_activity)
             .min(self.argininosuccinate_lyase_activity)
-            .min(self.arginase_activity);
-        min_activity
+            .min(self.arginase_activity)
     }
 }
 

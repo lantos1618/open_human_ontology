@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use crate::biology::genetics::AncestryProfile;
 use crate::human::BiologicalSex;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

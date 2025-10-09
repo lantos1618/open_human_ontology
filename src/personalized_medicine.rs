@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use crate::biology::genetics::{
-    AncestryProfile, Ancestry, GeneEnvironmentProfile, EpistasisNetwork,
+    AncestryProfile, GeneEnvironmentProfile,
     PolygeneticRiskScore,
 };
 use crate::pharmacology::pharmacogenomics::PharmacogeneticProfile;
@@ -223,18 +222,14 @@ impl PersonalizedMedicineProfile {
             }
         }
 
-        if condition.contains("diabetes") || condition.contains("Diabetes") {
-            if risk > 1.5 {
-                recommendations.push("Annual HbA1c testing".to_string());
-                recommendations.push("Quarterly fasting glucose monitoring".to_string());
-            }
+        if (condition.contains("diabetes") || condition.contains("Diabetes")) && risk > 1.5 {
+            recommendations.push("Annual HbA1c testing".to_string());
+            recommendations.push("Quarterly fasting glucose monitoring".to_string());
         }
 
-        if condition.contains("cardiovascular") || condition.contains("heart") {
-            if risk > 2.0 {
-                recommendations.push("Annual cardiac stress test".to_string());
-                recommendations.push("Lipid panel every 6 months".to_string());
-            }
+        if (condition.contains("cardiovascular") || condition.contains("heart")) && risk > 2.0 {
+            recommendations.push("Annual cardiac stress test".to_string());
+            recommendations.push("Lipid panel every 6 months".to_string());
         }
 
         recommendations
@@ -327,9 +322,9 @@ impl PersonalizedMedicineEngine {
         _sex: BiologicalSex,
         _age: f64,
     ) -> PersonalizedMedicineProfile {
-        let profile = PersonalizedMedicineProfile::new(patient_id, ancestry);
+        
 
-        profile
+        PersonalizedMedicineProfile::new(patient_id, ancestry)
     }
 
     pub fn optimize_drug_therapy(

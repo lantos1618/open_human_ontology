@@ -486,7 +486,9 @@ impl BodyComposition {
     }
 
     pub fn composition_score(&self) -> f64 {
-        let bf_score = if self.body_fat_percentage < 15.0 {
+        
+
+        if self.body_fat_percentage < 15.0 {
             7.0
         } else if self.body_fat_percentage < 20.0 {
             5.0
@@ -494,9 +496,7 @@ impl BodyComposition {
             3.0
         } else {
             1.0
-        };
-
-        bf_score
+        }
     }
 }
 

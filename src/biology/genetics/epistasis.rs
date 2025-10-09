@@ -35,6 +35,12 @@ pub struct EpistasisNetwork {
     pub hub_genes: HashMap<String, usize>,
 }
 
+impl Default for EpistasisNetwork {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl EpistasisNetwork {
     pub fn new() -> Self {
         Self {

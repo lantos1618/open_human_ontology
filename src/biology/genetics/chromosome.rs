@@ -25,7 +25,7 @@ impl Chromosome {
     }
 
     pub fn autosome(number: u8, sequence: DNASequence, centromere_position: usize) -> Self {
-        assert!(number >= 1 && number <= 22);
+        assert!((1..=22).contains(&number));
         let mut chr = Self::new(number, sequence, centromere_position);
         chr.is_sex_chromosome = false;
         chr
