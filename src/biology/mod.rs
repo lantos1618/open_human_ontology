@@ -28,6 +28,8 @@ pub mod nutrition;
 pub mod blood_typing;
 pub mod exercise_physiology;
 pub mod sleep;
+pub mod developmental;
+pub mod environmental;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

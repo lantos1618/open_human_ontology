@@ -37,6 +37,7 @@ pub mod skin_genetics;
 pub mod snp;
 pub mod trait_interactions;
 pub mod variation;
+pub mod mitochondrial;
 
 pub use allele::*;
 pub use ancestry::*;
@@ -77,3 +78,4 @@ pub use skin_genetics::*;
 pub use snp::*;
 pub use trait_interactions::*;
 pub use variation::*;
+pub use mitochondrial::*;
