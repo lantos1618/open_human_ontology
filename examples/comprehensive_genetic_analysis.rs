@@ -332,7 +332,7 @@ fn example_5_pharmacogenomics_analysis() {
 
     let mut human = Human::new_adult_male("PGX_001".to_string(), 55.0, 175.0, 78.0);
 
-    human.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0).unwrap();
+    human.genetics.ancestry.add_component(AncestryPopulation::EastAsian, 1.0, (0.95, 1.0));
 
     human.pharmacogenomics.phenotypes.insert(
         PharmacogeneticGene::CYP2D6,

@@ -7,6 +7,9 @@ pub mod neurological;
 pub mod metabolic;
 pub mod cardiovascular;
 pub mod organ_pathophysiology;
+pub mod dermatology;
+pub mod ophthalmology;
+pub mod psychiatry;
 
 pub use disease::*;
 pub use condition::*;
@@ -17,3 +20,6 @@ pub use neurological::*;
 pub use metabolic::*;
 pub use cardiovascular::*;
 pub use organ_pathophysiology::*;
+pub use dermatology::*;
+pub use ophthalmology::*;
+pub use psychiatry::*;
