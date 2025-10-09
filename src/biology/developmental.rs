@@ -313,7 +313,7 @@ mod tests {
     fn test_neurodevelopment() {
         let neuro = NeurodevelopmentalProfile::new(5.0);
         assert!(neuro.brain_volume_ml > 1000.0);
-        assert!(matches!(neuro.myelination_status, MyelinationStatus::Developing));
+        assert!(matches!(neuro.myelination_status, MyelinationStatus::NearComplete));
         assert!(neuro.is_age_appropriate());
     }
 }

@@ -30,6 +30,7 @@ pub mod exercise_physiology;
 pub mod sleep;
 pub mod developmental;
 pub mod environmental;
+pub mod metabolism;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

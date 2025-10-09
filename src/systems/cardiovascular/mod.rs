@@ -10,6 +10,7 @@ pub mod cardiac_conduction;
 pub mod coronary_arteries;
 pub mod hematopoiesis;
 pub mod hematology;
+pub mod arrhythmia;
 
 pub use heart::{Heart, HeartChamber, Valve, HeartCycle};
 pub use blood_vessel::{BloodVessel, VesselType, VesselLayer};
