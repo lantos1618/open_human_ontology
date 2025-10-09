@@ -390,6 +390,84 @@ impl Human {
             ),
         }
     }
+
+    pub fn population_specific_traits_report(&self) -> PopulationTraitsReport {
+        use crate::biology::genetics::PopulationSpecificTraits;
+
+        let primary_ancestry = self.genetics.ancestry.primary_ancestry();
+
+        let traits = if let Some(ancestry) = primary_ancestry {
+            PopulationSpecificTraits::from_ancestry(ancestry)
+        } else {
+            PopulationSpecificTraits::default()
+        };
+
+        let dietary_recs = traits.dietary_recommendations();
+        let alcohol_info = traits.alcohol_tolerance_info();
+
+        PopulationTraitsReport {
+            primary_ancestry: primary_ancestry.map(|a| format!("{:?}", a)),
+            lactose_tolerance: format!("{:?}", traits.lactose_tolerance),
+            alcohol_tolerance: alcohol_info,
+            earwax_type: format!("{:?}", traits.earwax_type),
+            skin_pigmentation: format!("{:?}", traits.skin_pigmentation),
+            hair_traits: format!("{:?} hair, {:?} pattern", traits.hair_traits.thickness, traits.hair_traits.curl_pattern),
+            dietary_recommendations: dietary_recs,
+            vitamin_d_needs: format!("{:?}", traits.vitamin_d_synthesis),
+        }
+    }
+
+    pub fn comprehensive_genetic_analysis(&self) -> ComprehensiveGeneticAnalysis {
+        let disease_risks = self.assess_genetic_disease_risks();
+        let migraine_risk = self.assess_migraine_risk();
+        let cluster_risk = self.assess_cluster_headache_risk();
+        let population_traits = self.population_specific_traits_report();
+        let pharma_report = self.pharmacogenomic_report();
+
+        ComprehensiveGeneticAnalysis {
+            ancestry_breakdown: self.genetics.ancestry.components.clone(),
+            disease_risks,
+            headache_risks: HeadacheRisks {
+                migraine: migraine_risk,
+                cluster_headache: cluster_risk,
+            },
+            population_traits,
+            pharmacogenomics: pharma_report,
+            carrier_status: self.genetics.carrier_status.clone(),
+        }
+    }
+
+    pub fn test_for_condition(&self, condition_name: &str) -> ConditionTestResult {
+        let mut risk_factors = Vec::new();
+        let protective_factors = Vec::new();
+        let mut overall_risk = 1.0;
+
+        let disease_risks = self.assess_genetic_disease_risks();
+        for risk in disease_risks {
+            if risk.condition.to_lowercase().contains(&condition_name.to_lowercase()) {
+                risk_factors.push(format!("{} ({}x risk)", risk.source, risk.relative_risk));
+                overall_risk *= 1.0 + risk.relative_risk;
+            }
+        }
+
+        if self.health_conditions.active_conditions.iter().any(|c| c.to_lowercase().contains(&condition_name.to_lowercase())) {
+            risk_factors.push("Currently diagnosed".to_string());
+            overall_risk *= 10.0;
+        }
+
+        if self.health_conditions.family_history.iter().any(|c| c.to_lowercase().contains(&condition_name.to_lowercase())) {
+            risk_factors.push("Family history".to_string());
+            overall_risk *= 2.0;
+        }
+
+        ConditionTestResult {
+            condition: condition_name.to_string(),
+            overall_risk_multiplier: overall_risk,
+            risk_factors,
+            protective_factors,
+            screening_recommended: overall_risk > 2.0,
+        }
+    }
 }
 
 impl GeneticProfile {
@@ -496,6 +574,43 @@ pub struct PharmacogenomicReport {
     pub drug_interactions: Vec<String>,
     pub warnings: Vec<String>,
     pub metabolism_profile: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PopulationTraitsReport {
+    pub primary_ancestry: Option<String>,
+    pub lactose_tolerance: String,
+    pub alcohol_tolerance: crate::biology::genetics::AlcoholToleranceInfo,
+    pub earwax_type: String,
+    pub skin_pigmentation: String,
+    pub hair_traits: String,
+    pub dietary_recommendations: Vec<String>,
+    pub vitamin_d_needs: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ComprehensiveGeneticAnalysis {
+    pub ancestry_breakdown: std::collections::HashMap<crate::biology::genetics::Ancestry, f64>,
+    pub disease_risks: Vec<GeneticDiseaseRisk>,
+    pub headache_risks: HeadacheRisks,
+    pub population_traits: PopulationTraitsReport,
+    pub pharmacogenomics: PharmacogenomicReport,
+    pub carrier_status: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct HeadacheRisks {
+    pub migraine: MigraineDiagnosticInfo,
+    pub cluster_headache: ClusterHeadacheDiagnosticInfo,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ConditionTestResult {
+    pub condition: String,
+    pub overall_risk_multiplier: f64,
+    pub risk_factors: Vec<String>,
+    pub protective_factors: Vec<String>,
+    pub screening_recommended: bool,
 }
 
 impl BodyMetrics {
@@ -790,5 +905,49 @@ mod tests {
         assert!(assessment.basic_metrics.bmi > 0.0);
         assert!(!assessment.genetic_risks.is_empty());
         assert_eq!(assessment.active_conditions.len(), 1);
+    }
+
+    #[test]
+    fn test_population_specific_traits() {
+        use crate::biology::genetics::Ancestry;
+
+        let mut human = Human::new_adult_male("asian_traits_001".to_string(), 28.0, 172.0, 68.0);
+        human.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0).unwrap();
+
+        let traits_report = human.population_specific_traits_report();
+
+        assert!(traits_report.lactose_tolerance.contains("Intolerant"));
+        assert!(traits_report.alcohol_tolerance.cancer_risk_with_alcohol > 5.0);
+        assert!(traits_report.earwax_type.contains("Dry"));
+        assert!(!traits_report.dietary_recommendations.is_empty());
+    }
+
+    #[test]
+    fn test_comprehensive_genetic_analysis() {
+        use crate::biology::genetics::Ancestry;
+
+        let mut human = Human::new_adult_female("comprehensive_genetic_001".to_string(), 32.0, 165.0, 58.0);
+        human.genetics.ancestry.add_component(Ancestry::Ashkenazi, 100.0).unwrap();
+
+        let analysis = human.comprehensive_genetic_analysis();
+
+        assert!(!analysis.disease_risks.is_empty());
+        assert!(analysis.headache_risks.migraine.risk_score > 1.0);
+        assert!(analysis.population_traits.primary_ancestry.is_some());
+    }
+
+    #[test]
+    fn test_condition_test_migraine() {
+        use crate::biology::genetics::Ancestry;
+
+        let mut human = Human::new_adult_female("condition_test_001".to_string(), 35.0, 168.0, 62.0);
+        human.genetics.ancestry.add_component(Ancestry::European, 100.0).unwrap();
+        human.health_conditions.add_family_history("Migraine".to_string());
+
+        let result = human.test_for_condition("migraine");
+
+        assert_eq!(result.condition, "migraine");
+        assert!(result.overall_risk_multiplier >= 2.0);
+        assert!(result.risk_factors.iter().any(|f| f.contains("Family")));
     }
 }

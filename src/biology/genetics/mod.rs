@@ -29,6 +29,7 @@ pub mod trait_interactions;
 pub mod comprehensive_risk_calculator;
 pub mod epistasis;
 pub mod gene_environment;
+pub mod population_traits;
 
 pub use dna::*;
 pub use gene::*;
@@ -61,3 +62,4 @@ pub use trait_interactions::*;
 pub use comprehensive_risk_calculator::*;
 pub use epistasis::*;
 pub use gene_environment::*;
+pub use population_traits::*;

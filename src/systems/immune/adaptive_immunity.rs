@@ -147,7 +147,7 @@ impl AdaptiveImmunity {
             let factor = 1.0 - ((age_years as f64 - 65.0) / 100.0).min(0.4);
             self.cellular_immunity.cd4_count_per_ul *= factor;
             self.cellular_immunity.cd8_count_per_ul *= factor;
-            self.humoral_immunity.antibody_titers.igg_mg_dl *= (factor + 0.2);
+            self.humoral_immunity.antibody_titers.igg_mg_dl *= factor + 0.2;
         }
     }
 
