@@ -7,6 +7,8 @@ we should be able to like describe people later on and run tests on us like if s
 
 push changes as you go to remote
 
+we need to de review of folders and files we leaked things out of src or is this fine? (remove this line once fixed)
+
 ## Vision
 A comprehensive computational model of human biology using Rust's type system to enable simulation, analysis, and diagnosis of biological systems.
 

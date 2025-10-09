@@ -38,6 +38,8 @@ pub mod snp;
 pub mod trait_interactions;
 pub mod variation;
 pub mod mitochondrial;
+pub mod ophthalmology;
+pub mod dermatology;
 
 pub use allele::*;
 pub use ancestry::*;
@@ -79,3 +81,5 @@ pub use snp::*;
 pub use trait_interactions::*;
 pub use variation::*;
 pub use mitochondrial::*;
+pub use ophthalmology::*;
+pub use dermatology::*;
