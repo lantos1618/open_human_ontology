@@ -25,7 +25,7 @@ pub enum PhospholipidType {
     Phosphatidylethanolamine,
     Phosphatidylserine,
     Phosphatidylinositol,
-    Phosphatidylinositol_4_5_bisphosphate,
+    Phosphatidylinositol45Bisphosphate,
     Cardiolipin,
     Sphingomyelin,
 }

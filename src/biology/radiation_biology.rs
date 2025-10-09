@@ -346,7 +346,7 @@ mod tests {
         let dose = RadiationDose::new(60.0, 30, RadiationType::Photon);
 
         let prob = tissue.complication_probability(&dose);
-        assert!(prob >= 0.0 && prob <= 1.0);
+        assert!((0.0..=1.0).contains(&prob));
     }
 
     #[test]

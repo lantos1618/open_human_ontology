@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct MusculoskeletalModel {
@@ -295,7 +294,7 @@ impl MuscleModel {
     pub fn force_length_relationship(&self) -> f64 {
         let length_ratio = self.current_length_m / self.optimal_length_m;
 
-        if length_ratio < 0.5 || length_ratio > 1.5 {
+        if !(0.5..=1.5).contains(&length_ratio) {
             0.0
         } else {
             let x = (length_ratio - 1.0).abs();

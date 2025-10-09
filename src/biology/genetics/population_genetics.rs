@@ -478,7 +478,7 @@ mod tests {
     #[test]
     fn test_east_asian_variants() {
         let variants = east_asian_variants();
-        assert!(variants.len() > 0);
+        assert!(!variants.is_empty());
         assert!(variants.iter().any(|v| v.variant_id == "rs671"));
     }
 

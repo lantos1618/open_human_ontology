@@ -338,7 +338,7 @@ mod tests {
     fn test_fat_soluble_vitamins() {
         let vit_d = Vitamin::new_vitamin_d();
         assert_eq!(vit_d.vitamin_type, VitaminType::FatSoluble);
-        assert!(vit_d.storage_location.len() > 0);
+        assert!(!vit_d.storage_location.is_empty());
     }
 
     #[test]

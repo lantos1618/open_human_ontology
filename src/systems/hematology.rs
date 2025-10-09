@@ -204,7 +204,7 @@ impl CompleteBloodCount {
             ImmuneStatusLevel::Severe
         } else if cd4 < 500.0 || neutrophils < 1000.0 {
             ImmuneStatusLevel::Compromised
-        } else if ratio < 1.0 || ratio > 3.0 {
+        } else if !(1.0..=3.0).contains(&ratio) {
             ImmuneStatusLevel::Imbalanced
         } else {
             ImmuneStatusLevel::Normal

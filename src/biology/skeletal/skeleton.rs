@@ -1,5 +1,4 @@
 use super::bone::{Bone, BoneType};
-use super::joint::{Joint, JointType};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -424,10 +423,8 @@ impl UpperLimbs {
 
 impl UpperLimb {
     pub fn new_adult() -> Self {
-        let carpals: Vec<Bone> = vec![
-            "Scaphoid", "Lunate", "Triquetrum", "Pisiform",
-            "Trapezium", "Trapezoid", "Capitate", "Hamate"
-        ].iter().map(|name| {
+        let carpals: Vec<Bone> = ["Scaphoid", "Lunate", "Triquetrum", "Pisiform",
+            "Trapezium", "Trapezoid", "Capitate", "Hamate"].iter().map(|name| {
             let mut bone = Bone::new(name.to_string(), BoneType::Short);
             bone.mass_g = 5.0;
             bone
@@ -498,10 +495,8 @@ impl LowerLimbs {
 
 impl LowerLimb {
     pub fn new_adult() -> Self {
-        let tarsals: Vec<Bone> = vec![
-            "Calcaneus", "Talus", "Navicular", "Cuboid",
-            "Medial Cuneiform", "Intermediate Cuneiform", "Lateral Cuneiform"
-        ].iter().map(|name| {
+        let tarsals: Vec<Bone> = ["Calcaneus", "Talus", "Navicular", "Cuboid",
+            "Medial Cuneiform", "Intermediate Cuneiform", "Lateral Cuneiform"].iter().map(|name| {
             let mut bone = Bone::new(name.to_string(), BoneType::Short);
             bone.mass_g = 15.0;
             bone

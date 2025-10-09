@@ -281,10 +281,10 @@ mod tests {
     #[test]
     fn test_epistasis_network() {
         let network = EpistasisNetwork::load_known_interactions();
-        assert!(network.interactions.len() > 0);
+        assert!(!network.interactions.is_empty());
 
         let apoe_interactions = network.get_interactions_for_gene("APOE");
-        assert!(apoe_interactions.len() > 0);
+        assert!(!apoe_interactions.is_empty());
     }
 
     #[test]
@@ -312,6 +312,6 @@ mod tests {
     fn test_hub_genes() {
         let network = EpistasisNetwork::load_known_interactions();
         let hubs = network.get_hub_genes(1);
-        assert!(hubs.len() > 0);
+        assert!(!hubs.is_empty());
     }
 }

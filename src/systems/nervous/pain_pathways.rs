@@ -441,7 +441,7 @@ mod tests {
     fn test_pain_intensity_calculation() {
         let system = PainProcessingSystem::new_normal();
         let intensity = system.calculate_pain_intensity(5.0);
-        assert!(intensity >= 0.0 && intensity <= 10.0);
+        assert!((0.0..=10.0).contains(&intensity));
     }
 
     #[test]

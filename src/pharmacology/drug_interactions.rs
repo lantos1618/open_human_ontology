@@ -453,7 +453,7 @@ mod tests {
 
     #[test]
     fn test_drug_interaction_system() {
-        let mut system = DrugInteractionSystem::new();
+        let system = DrugInteractionSystem::new();
         assert_eq!(system.active_medications.len(), 0);
         assert_eq!(system.interactions.len(), 0);
     }
@@ -496,7 +496,7 @@ mod tests {
         system.add_medication(med1);
         system.add_medication(med2);
 
-        assert!(system.interactions.len() > 0);
+        assert!(!system.interactions.is_empty());
         assert!(system.interactions[0].severity == Severity::Major);
     }
 
@@ -523,7 +523,7 @@ mod tests {
         system.add_medication(med1);
         system.add_medication(med2);
 
-        assert!(system.interactions.len() > 0);
+        assert!(!system.interactions.is_empty());
         assert!(system.interactions[0].severity == Severity::Major);
     }
 
@@ -550,7 +550,7 @@ mod tests {
         system.add_medication(med1);
         system.add_medication(med2);
 
-        assert!(system.interactions.len() > 0);
+        assert!(!system.interactions.is_empty());
         assert!(system.interactions[0].severity == Severity::Major);
         assert!(system.interactions[0].clinical_effect.contains("respiratory depression"));
     }

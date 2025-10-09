@@ -261,7 +261,7 @@ impl MuscleMechanics {
 
     pub fn force_length_curve(&self, optimal_length: f64) -> f64 {
         let normalized_length = self.length_m / optimal_length;
-        if normalized_length < 0.5 || normalized_length > 1.5 {
+        if !(0.5..=1.5).contains(&normalized_length) {
             0.0
         } else {
             1.0 - ((normalized_length - 1.0) / 0.5).powi(2)

@@ -1,4 +1,3 @@
-use super::cell::{Cell, CellType};
 use crate::biology::{BiologyError, BiologyResult};
 use serde::{Deserialize, Serialize};
 

@@ -540,13 +540,13 @@ impl ImmunosuppressionMonitoring {
 
     pub fn tacrolimus_in_range(&self) -> bool {
         self.tacrolimus_trough_ng_ml
-            .map(|level| level >= 5.0 && level <= 15.0)
+            .map(|level| (5.0..=15.0).contains(&level))
             .unwrap_or(false)
     }
 
     pub fn cyclosporine_in_range(&self) -> bool {
         self.cyclosporine_trough_ng_ml
-            .map(|level| level >= 100.0 && level <= 300.0)
+            .map(|level| (100.0..=300.0).contains(&level))
             .unwrap_or(false)
     }
 

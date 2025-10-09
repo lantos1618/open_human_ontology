@@ -388,7 +388,7 @@ mod tests {
     fn test_aa_gradient() {
         let abg = ArterialBloodGas::normal();
         let aa_grad = abg.calculate_alveolar_arterial_gradient(0.21).unwrap();
-        assert!(aa_grad >= 0.0 && aa_grad < 20.0);
+        assert!((0.0..20.0).contains(&aa_grad));
     }
 
     #[test]

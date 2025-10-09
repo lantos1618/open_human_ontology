@@ -396,7 +396,7 @@ mod tests {
     fn test_healthspan_percentage() {
         let profile = AgingProfile::new();
         let healthspan = profile.healthspan_percentage();
-        assert!(healthspan >= 50.0 && healthspan <= 95.0);
+        assert!((50.0..=95.0).contains(&healthspan));
     }
 
     #[test]

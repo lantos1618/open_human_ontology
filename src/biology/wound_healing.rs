@@ -373,6 +373,6 @@ mod tests {
         let impaired = factors.healing_impairment_score();
 
         assert!(impaired > baseline);
-        assert!(factors.recommendations().len() > 0);
+        assert!(!factors.recommendations().is_empty());
     }
 }

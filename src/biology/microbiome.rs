@@ -243,7 +243,7 @@ mod tests {
     fn test_microbiome_creation() {
         let gut = Microbiome::new_healthy_gut();
         assert_eq!(gut.location, MicrobiomeLocation::Gut);
-        assert!(gut.bacteria.len() > 0);
+        assert!(!gut.bacteria.is_empty());
     }
 
     #[test]

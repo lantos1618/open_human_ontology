@@ -163,7 +163,7 @@ impl DentalSystem {
                     1 | 2 => ToothType::Incisor,
                     3 => ToothType::Canine,
                     4 | 5 => ToothType::Premolar,
-                    6 | 7 | 8 => ToothType::Molar,
+                    6..=8 => ToothType::Molar,
                     _ => unreachable!(),
                 };
 

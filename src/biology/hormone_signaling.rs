@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum HormoneClass {
@@ -48,16 +47,16 @@ pub enum ReceptorLocation {
 pub enum SignalingPathway {
     CampPka,
     Ip3DagPkc,
-    JAK_STAT,
-    MAPK_ERK,
-    PI3K_AKT,
-    mTOR,
+    JakStat,
+    MapkErk,
+    Pi3kAkt,
+    MTor,
     AMPK,
     NFKB,
-    Wnt_Beta_catenin,
+    WntBetaCatenin,
     Hedgehog,
     Notch,
-    TGF_beta_SMAD,
+    TgfBetaSmad,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -414,7 +413,7 @@ mod tests {
     fn test_crosstalk() {
         let crosstalk = CrosstalkInteraction {
             pathway1: SignalingPathway::CampPka,
-            pathway2: SignalingPathway::MAPK_ERK,
+            pathway2: SignalingPathway::MapkErk,
             interaction_type: InteractionType::Synergistic,
             integration_node: "CREB".to_string(),
         };

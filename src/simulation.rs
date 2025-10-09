@@ -425,7 +425,7 @@ mod tests {
 
         assert!(result.total_duration_hours > 0.0);
         assert!(result.average_glucose > 0.0);
-        assert!(engine.state_history.len() > 0);
+        assert!(!engine.state_history.is_empty());
     }
 
     #[test]
@@ -438,7 +438,7 @@ mod tests {
 
         assert!(series.contains_key("glucose"));
         assert!(series.contains_key("heart_rate"));
-        assert!(series["glucose"].len() > 0);
+        assert!(!series["glucose"].is_empty());
     }
 
     #[test]

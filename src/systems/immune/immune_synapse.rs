@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ImmuneSynapse {
@@ -31,8 +30,8 @@ pub struct EffectorCell {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum EffectorCellType {
-    CD8_Tcell,
-    CD4_Tcell,
+    Cd8Tcell,
+    Cd4Tcell,
     Bcell,
     NKCell,
     Macrophage,
@@ -52,8 +51,8 @@ pub enum ActivationState {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum MHCRestriction {
-    MHC_I,
-    MHC_II,
+    MhcI,
+    MhcIi,
     NonRestricted,
 }
 
@@ -92,8 +91,8 @@ pub enum MHCClass {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum CostimulatoryMolecule {
-    B7_1_CD80,
-    B7_2_CD86,
+    B71Cd80,
+    B72Cd86,
     CD40,
     ICOSL,
     OX40L,
@@ -254,7 +253,7 @@ impl EffectorCell {
 
     pub fn can_kill_target(&self) -> bool {
         matches!(self.cell_type,
-            EffectorCellType::CD8_Tcell |
+            EffectorCellType::Cd8Tcell |
             EffectorCellType::NKCell
         ) && self.is_activated()
     }
@@ -269,7 +268,7 @@ impl EffectorCell {
 
 impl Default for EffectorCell {
     fn default() -> Self {
-        Self::new(EffectorCellType::CD8_Tcell)
+        Self::new(EffectorCellType::Cd8Tcell)
     }
 }
 
@@ -415,7 +414,7 @@ mod tests {
 
     #[test]
     fn test_effector_cell() {
-        let mut cell = EffectorCell::new(EffectorCellType::CD8_Tcell);
+        let mut cell = EffectorCell::new(EffectorCellType::Cd8Tcell);
         assert!(!cell.is_activated());
 
         cell.activation_state = ActivationState::Activated;

@@ -403,15 +403,15 @@ mod tests {
     #[test]
     fn test_east_asian_assessment() {
         let assessment = assess_east_asian_individual();
-        assert!(assessment.disease_risks.len() > 0);
-        assert!(assessment.pharmacogenomic_risks.len() > 0);
+        assert!(!assessment.disease_risks.is_empty());
+        assert!(!assessment.pharmacogenomic_risks.is_empty());
     }
 
     #[test]
     fn test_african_ancestry_assessment() {
         let assessment = assess_african_ancestry_individual();
-        assert!(assessment.carrier_status.len() > 0);
-        assert!(assessment.disease_risks.len() > 0);
+        assert!(!assessment.carrier_status.is_empty());
+        assert!(!assessment.disease_risks.is_empty());
     }
 
     #[test]
@@ -419,6 +419,6 @@ mod tests {
         let assessment = assess_east_asian_individual();
         let summary = assessment.generate_summary();
 
-        assert!(summary.recommendations.len() > 0);
+        assert!(!summary.recommendations.is_empty());
     }
 }

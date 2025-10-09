@@ -399,6 +399,6 @@ mod tests {
     fn test_bmi_categorization() {
         let human_normal = Human::new_adult_male("normal".to_string(), 30.0, 175.0, 70.0);
         let bmi = human_normal.bmi();
-        assert!(bmi >= 18.5 && bmi < 25.0);
+        assert!((18.5..25.0).contains(&bmi));
     }
 }

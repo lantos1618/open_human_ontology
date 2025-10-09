@@ -513,6 +513,6 @@ mod tests {
     fn test_sound_localization() {
         let pathway = AuditoryPathway::new();
         let localization = pathway.localize_sound(100.0, 5.0).unwrap();
-        assert!(localization >= 0.0 && localization <= 1.0);
+        assert!((0.0..=1.0).contains(&localization));
     }
 }

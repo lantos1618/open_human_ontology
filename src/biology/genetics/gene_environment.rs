@@ -321,7 +321,7 @@ mod tests {
     #[test]
     fn test_gene_environment_interaction() {
         let interactions = GeneEnvironmentProfile::load_known_interactions();
-        assert!(interactions.len() > 0);
+        assert!(!interactions.is_empty());
 
         let fto_interaction = interactions.iter().find(|i| i.gene == "FTO");
         assert!(fto_interaction.is_some());
@@ -346,7 +346,7 @@ mod tests {
         profile.interactions = GeneEnvironmentProfile::load_known_interactions();
 
         let recommendations = profile.get_personalized_recommendations("ALDH2");
-        assert!(recommendations.len() > 0);
+        assert!(!recommendations.is_empty());
     }
 
     #[test]
