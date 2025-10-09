@@ -1,6 +1,8 @@
 //! # Physics Module
-//! 
+//!
 //! Defines mechanical and physical properties in biological systems.
+
+pub mod biomechanics;
 
 use serde::{Deserialize, Serialize};
 use nalgebra as na;

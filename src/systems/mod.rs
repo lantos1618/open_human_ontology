@@ -15,6 +15,7 @@ pub mod auditory;
 pub mod gastrointestinal;
 pub mod dental;
 pub mod hematology;
+pub mod hepatic;
 
 pub use cardiovascular::{Heart, BloodVessel, Blood};
 pub use respiratory::{Lung, GasExchange, BreathingPattern};
