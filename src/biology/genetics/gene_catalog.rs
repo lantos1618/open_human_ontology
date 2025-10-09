@@ -401,6 +401,259 @@ impl GeneCatalog {
             drug_interactions: vec!["Antiepileptic drugs".to_string()],
         });
 
+        genes.insert("ATP1A2".to_string(), GeneInfo {
+            symbol: "ATP1A2".to_string(),
+            full_name: "ATPase Na+/K+ Transporting Subunit Alpha 2".to_string(),
+            chromosome: "1q23.2".to_string(),
+            function: GeneFunction::IonChannel,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "T345A".to_string(),
+                    rs_id: Some("rs121909365".to_string()),
+                    hgvs: "c.1033A>G".to_string(),
+                    clinical_significance: ClinicalSignificance::Pathogenic,
+                    associated_conditions: vec![
+                        "Familial hemiplegic migraine type 2".to_string(),
+                        "Migraine with aura".to_string(),
+                    ],
+                    population_frequency: 0.00005,
+                    inheritance_pattern: InheritancePattern::AutosomalDominant,
+                },
+            ],
+            phenotypes: vec!["Sodium-potassium pump activity".to_string()],
+            drug_interactions: vec!["Digoxin".to_string()],
+        });
+
+        genes.insert("SCN1A".to_string(), GeneInfo {
+            symbol: "SCN1A".to_string(),
+            full_name: "Sodium Voltage-Gated Channel Alpha Subunit 1A".to_string(),
+            chromosome: "2q24.3".to_string(),
+            function: GeneFunction::IonChannel,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "Q1489K".to_string(),
+                    rs_id: Some("rs121918601".to_string()),
+                    hgvs: "c.4465C>A".to_string(),
+                    clinical_significance: ClinicalSignificance::Pathogenic,
+                    associated_conditions: vec![
+                        "Familial hemiplegic migraine type 3".to_string(),
+                        "Migraine with aura".to_string(),
+                    ],
+                    population_frequency: 0.00003,
+                    inheritance_pattern: InheritancePattern::AutosomalDominant,
+                },
+            ],
+            phenotypes: vec!["Neuronal sodium channel function".to_string()],
+            drug_interactions: vec!["Antiepileptic drugs".to_string(), "Local anesthetics".to_string()],
+        });
+
+        genes.insert("MTHFR".to_string(), GeneInfo {
+            symbol: "MTHFR".to_string(),
+            full_name: "Methylenetetrahydrofolate Reductase".to_string(),
+            chromosome: "1p36.22".to_string(),
+            function: GeneFunction::Enzyme,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "C677T".to_string(),
+                    rs_id: Some("rs1801133".to_string()),
+                    hgvs: "c.665C>T".to_string(),
+                    clinical_significance: ClinicalSignificance::RiskFactor,
+                    associated_conditions: vec![
+                        "Migraine with aura (increased risk)".to_string(),
+                        "Elevated homocysteine".to_string(),
+                        "Cardiovascular disease risk".to_string(),
+                    ],
+                    population_frequency: 0.25,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+            ],
+            phenotypes: vec!["Folate metabolism".to_string(), "Homocysteine regulation".to_string()],
+            drug_interactions: vec!["Methotrexate".to_string()],
+        });
+
+        genes.insert("LRP1".to_string(), GeneInfo {
+            symbol: "LRP1".to_string(),
+            full_name: "LDL Receptor Related Protein 1".to_string(),
+            chromosome: "12q13.3".to_string(),
+            function: GeneFunction::Receptor,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "rs11172113".to_string(),
+                    rs_id: Some("rs11172113".to_string()),
+                    hgvs: "c.766-18C>T".to_string(),
+                    clinical_significance: ClinicalSignificance::RiskFactor,
+                    associated_conditions: vec![
+                        "Migraine susceptibility".to_string(),
+                        "Migraine without aura".to_string(),
+                    ],
+                    population_frequency: 0.31,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+            ],
+            phenotypes: vec!["Lipoprotein metabolism".to_string(), "Neuronal signaling".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes.insert("PRDM16".to_string(), GeneInfo {
+            symbol: "PRDM16".to_string(),
+            full_name: "PR/SET Domain 16".to_string(),
+            chromosome: "1p36.32".to_string(),
+            function: GeneFunction::TranscriptionFactor,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "rs2651899".to_string(),
+                    rs_id: Some("rs2651899".to_string()),
+                    hgvs: "c.4235A>G".to_string(),
+                    clinical_significance: ClinicalSignificance::RiskFactor,
+                    associated_conditions: vec![
+                        "Migraine susceptibility".to_string(),
+                        "Common migraine".to_string(),
+                    ],
+                    population_frequency: 0.46,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+            ],
+            phenotypes: vec!["Transcriptional regulation".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes
+    }
+
+    pub fn get_pain_disorder_genes() -> HashMap<String, GeneInfo> {
+        let mut genes = HashMap::new();
+
+        genes.insert("HCRTR2".to_string(), GeneInfo {
+            symbol: "HCRTR2".to_string(),
+            full_name: "Hypocretin Receptor 2".to_string(),
+            chromosome: "6p12.1".to_string(),
+            function: GeneFunction::Receptor,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "rs2653349".to_string(),
+                    rs_id: Some("rs2653349".to_string()),
+                    hgvs: "c.1246A>G".to_string(),
+                    clinical_significance: ClinicalSignificance::RiskFactor,
+                    associated_conditions: vec![
+                        "Cluster headache susceptibility".to_string(),
+                    ],
+                    population_frequency: 0.12,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+            ],
+            phenotypes: vec!["Circadian rhythm regulation".to_string(), "Sleep-wake cycle".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes.insert("CLOCK".to_string(), GeneInfo {
+            symbol: "CLOCK".to_string(),
+            full_name: "Clock Circadian Regulator".to_string(),
+            chromosome: "4q12".to_string(),
+            function: GeneFunction::TranscriptionFactor,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "3111T>C".to_string(),
+                    rs_id: Some("rs1801260".to_string()),
+                    hgvs: "c.3111T>C".to_string(),
+                    clinical_significance: ClinicalSignificance::RiskFactor,
+                    associated_conditions: vec![
+                        "Cluster headache susceptibility".to_string(),
+                        "Circadian rhythm disorders".to_string(),
+                    ],
+                    population_frequency: 0.24,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+            ],
+            phenotypes: vec!["Circadian rhythm".to_string()],
+            drug_interactions: vec![],
+        });
+
+        genes.insert("SCN9A".to_string(), GeneInfo {
+            symbol: "SCN9A".to_string(),
+            full_name: "Sodium Voltage-Gated Channel Alpha Subunit 9".to_string(),
+            chromosome: "2q24.3".to_string(),
+            function: GeneFunction::IonChannel,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "L858H".to_string(),
+                    rs_id: Some("rs6746030".to_string()),
+                    hgvs: "c.2573T>A".to_string(),
+                    clinical_significance: ClinicalSignificance::Pathogenic,
+                    associated_conditions: vec![
+                        "Paroxysmal extreme pain disorder".to_string(),
+                        "Chronic pain sensitivity".to_string(),
+                    ],
+                    population_frequency: 0.0001,
+                    inheritance_pattern: InheritancePattern::AutosomalDominant,
+                },
+                ClinicalVariant {
+                    variant_name: "R1150W".to_string(),
+                    rs_id: Some("rs121908912".to_string()),
+                    hgvs: "c.3448C>T".to_string(),
+                    clinical_significance: ClinicalSignificance::Pathogenic,
+                    associated_conditions: vec![
+                        "Erythromelalgia".to_string(),
+                        "Burning pain".to_string(),
+                    ],
+                    population_frequency: 0.00005,
+                    inheritance_pattern: InheritancePattern::AutosomalDominant,
+                },
+            ],
+            phenotypes: vec!["Pain perception".to_string(), "Nociception".to_string()],
+            drug_interactions: vec!["Local anesthetics".to_string(), "Carbamazepine".to_string()],
+        });
+
+        genes.insert("COMT".to_string(), GeneInfo {
+            symbol: "COMT".to_string(),
+            full_name: "Catechol-O-Methyltransferase".to_string(),
+            chromosome: "22q11.21".to_string(),
+            function: GeneFunction::Enzyme,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "Val158Met".to_string(),
+                    rs_id: Some("rs4680".to_string()),
+                    hgvs: "c.472G>A".to_string(),
+                    clinical_significance: ClinicalSignificance::RiskFactor,
+                    associated_conditions: vec![
+                        "Pain sensitivity".to_string(),
+                        "Fibromyalgia risk".to_string(),
+                        "Chronic pain susceptibility".to_string(),
+                    ],
+                    population_frequency: 0.48,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+            ],
+            phenotypes: vec!["Catecholamine metabolism".to_string(), "Pain modulation".to_string()],
+            drug_interactions: vec!["Levodopa".to_string(), "COMT inhibitors".to_string()],
+        });
+
+        genes.insert("OPRM1".to_string(), GeneInfo {
+            symbol: "OPRM1".to_string(),
+            full_name: "Opioid Receptor Mu 1".to_string(),
+            chromosome: "6q25.2".to_string(),
+            function: GeneFunction::Receptor,
+            clinical_variants: vec![
+                ClinicalVariant {
+                    variant_name: "A118G".to_string(),
+                    rs_id: Some("rs1799971".to_string()),
+                    hgvs: "c.118A>G".to_string(),
+                    clinical_significance: ClinicalSignificance::DrugResponse,
+                    associated_conditions: vec![
+                        "Opioid response variation".to_string(),
+                        "Pain medication efficacy".to_string(),
+                    ],
+                    population_frequency: 0.15,
+                    inheritance_pattern: InheritancePattern::Complex,
+                },
+            ],
+            phenotypes: vec!["Opioid response".to_string(), "Pain relief sensitivity".to_string()],
+            drug_interactions: vec![
+                "Morphine".to_string(),
+                "Oxycodone".to_string(),
+                "Fentanyl".to_string(),
+            ],
+        });
+
         genes
     }
 
@@ -668,6 +921,7 @@ impl GeneCatalog {
         all_genes.extend(Self::get_cardiovascular_genes());
         all_genes.extend(Self::get_cancer_genes());
         all_genes.extend(Self::get_neurological_genes());
+        all_genes.extend(Self::get_pain_disorder_genes());
         all_genes.extend(Self::get_hematological_genes());
         all_genes.extend(Self::get_metabolic_trait_genes());
         all_genes.extend(Self::get_asian_specific_genes());
@@ -703,7 +957,35 @@ mod tests {
     #[test]
     fn test_all_genes() {
         let genes = GeneCatalog::get_all_genes();
-        assert!(genes.len() >= 16);
+        assert!(genes.len() >= 21);
+    }
+
+    #[test]
+    fn test_pain_disorder_genes() {
+        let genes = GeneCatalog::get_pain_disorder_genes();
+        assert!(genes.contains_key("HCRTR2"));
+        assert!(genes.contains_key("CLOCK"));
+        assert!(genes.contains_key("SCN9A"));
+        assert!(genes.contains_key("COMT"));
+        assert!(genes.contains_key("OPRM1"));
+    }
+
+    #[test]
+    fn test_migraine_genes() {
+        let genes = GeneCatalog::get_neurological_genes();
+        assert!(genes.contains_key("CACNA1A"));
+        assert!(genes.contains_key("ATP1A2"));
+        assert!(genes.contains_key("MTHFR"));
+        assert!(genes.contains_key("LRP1"));
+    }
+
+    #[test]
+    fn test_cluster_headache_genes() {
+        let genes = GeneCatalog::get_pain_disorder_genes();
+        let hcrtr2 = genes.get("HCRTR2").unwrap();
+        assert!(hcrtr2.clinical_variants.iter().any(|v|
+            v.associated_conditions.iter().any(|c| c.contains("Cluster headache"))
+        ));
     }
 
     #[test]

@@ -8,6 +8,8 @@ pub mod ancestry;
 pub mod gene_catalog;
 pub mod blood_type;
 pub mod phenotype;
+pub mod autoimmune;
+pub mod asian_variants;
 
 pub use dna::*;
 pub use gene::*;
@@ -19,3 +21,5 @@ pub use ancestry::*;
 pub use gene_catalog::*;
 pub use blood_type::*;
 pub use phenotype::*;
+pub use autoimmune::*;
+pub use asian_variants::*;
