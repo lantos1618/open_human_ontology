@@ -20,6 +20,9 @@ pub mod skin_genetics;
 pub mod eye_genetics;
 pub mod hair_genetics;
 pub mod dietary_genetics;
+pub mod migraine_genetics;
+pub mod population_genetics;
+pub mod phenotype_predictor;
 
 pub use dna::*;
 pub use gene::*;
@@ -43,3 +46,6 @@ pub use skin_genetics::*;
 pub use eye_genetics::*;
 pub use hair_genetics::*;
 pub use dietary_genetics::*;
+pub use migraine_genetics::*;
+pub use population_genetics::*;
+pub use phenotype_predictor::*;
