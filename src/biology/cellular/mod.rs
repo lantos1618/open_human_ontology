@@ -3,6 +3,9 @@ pub mod organelles;
 pub mod processes;
 pub mod aging;
 pub mod cell_types;
+pub mod cell_signaling;
+pub mod protein_synthesis;
+pub mod membrane;
 
 pub use cell::{Cell, CellType, CellState, CellCycle};
 pub use organelles::{
@@ -16,3 +19,6 @@ pub use cell_types::{
     Hepatocyte, Cardiomyocyte, Adipocyte, AdiposeTissueType,
     Myocyte, MuscleFiberType, Osteoblast, Osteoclast
 };
+pub use cell_signaling::*;
+pub use protein_synthesis::*;
+pub use membrane::*;
