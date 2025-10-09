@@ -44,6 +44,9 @@ pub mod taste_smell;
 pub mod mental_health_genetics;
 pub mod longevity_genetics;
 pub mod sleep_genetics;
+pub mod addiction_genetics;
+pub mod pain_genetics;
+pub mod hla_typing;
 
 #[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use allele::*;
@@ -137,3 +140,9 @@ pub use mental_health_genetics::*;
 pub use longevity_genetics::*;
 #[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use sleep_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+pub use addiction_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+pub use pain_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+pub use hla_typing::*;
