@@ -162,10 +162,10 @@ impl ComprehensiveMetabolicNetwork {
         let fasting_factor = (hours_fasted / 12.0).min(3.0);
 
         state.carbohydrate_metabolism.glycolysis_rate *= 0.5;
-        state.carbohydrate_metabolism.gluconeogenesis_rate *= (1.0 + fasting_factor);
-        state.carbohydrate_metabolism.glycogen_breakdown_rate *= (1.5 + fasting_factor);
-        state.lipid_metabolism.fatty_acid_oxidation_rate *= (2.0 + fasting_factor);
-        state.lipid_metabolism.ketogenesis_rate *= (3.0 + fasting_factor * 2.0);
+        state.carbohydrate_metabolism.gluconeogenesis_rate *= 1.0 + fasting_factor;
+        state.carbohydrate_metabolism.glycogen_breakdown_rate *= 1.5 + fasting_factor;
+        state.lipid_metabolism.fatty_acid_oxidation_rate *= 2.0 + fasting_factor;
+        state.lipid_metabolism.ketogenesis_rate *= 3.0 + fasting_factor * 2.0;
 
         state
     }

@@ -110,12 +110,12 @@ impl AcidBaseBalance {
         let low_hco3 = self.bicarbonate_meq_l < 22.0;
 
         match (acidotic, alkalotic, high_pco2, low_pco2, high_hco3, low_hco3) {
+            (true, _, true, _, _, true) => AcidBaseDisturbance::MixedAcidosis,
             (true, _, true, _, _, _) => AcidBaseDisturbance::RespiratoryAcidosis,
             (true, _, _, _, _, true) => AcidBaseDisturbance::MetabolicAcidosis,
+            (_, true, _, true, true, _) => AcidBaseDisturbance::MixedAlkalosis,
             (_, true, _, true, _, _) => AcidBaseDisturbance::RespiratoryAlkalosis,
             (_, true, _, _, true, _) => AcidBaseDisturbance::MetabolicAlkalosis,
-            (true, _, true, _, _, true) => AcidBaseDisturbance::MixedAcidosis,
-            (_, true, _, true, true, _) => AcidBaseDisturbance::MixedAlkalosis,
             _ => AcidBaseDisturbance::Normal,
         }
     }
@@ -186,7 +186,6 @@ impl BufferSystem {
     pub fn buffer_acid_load(&mut self, h_ions_meq: f64) {
         let bicarb_proportion = 0.75;
         let phosphate_proportion = 0.10;
-        let protein_proportion = 0.15;
 
         self.bicarbonate_buffer.hco3_meq_l -= h_ions_meq * bicarb_proportion;
         self.phosphate_buffer.hpo4_meq_l -= h_ions_meq * phosphate_proportion;

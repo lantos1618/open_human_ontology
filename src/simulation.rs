@@ -166,7 +166,7 @@ impl SimulationEngine {
             InterventionType::Fasting { hours } => {
                 let factor = (hours / 12.0).min(3.0);
                 metabolic.carbohydrate_metabolism.glycolysis_rate *= 0.5;
-                metabolic.carbohydrate_metabolism.gluconeogenesis_rate *= (1.0 + factor);
+                metabolic.carbohydrate_metabolism.gluconeogenesis_rate *= 1.0 + factor;
                 metabolic.lipid_metabolism.ketogenesis_rate *= 3.0 + factor * 2.0;
             }
             InterventionType::NutrientIntake { nutrient_type, amount } => {

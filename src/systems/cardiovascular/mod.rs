@@ -7,6 +7,7 @@ pub mod electrophysiology;
 pub mod cardiac_conduction;
 pub mod coronary_arteries;
 pub mod hematopoiesis;
+pub mod hematology;
 
 pub use heart::{Heart, HeartChamber, Valve, HeartCycle};
 pub use blood_vessel::{BloodVessel, VesselType, VesselLayer};
@@ -17,3 +18,4 @@ pub use electrophysiology::{CardiacNode, ActionPotential, ActionPotentialPhase, 
 pub use cardiac_conduction::{ConductionNode, SinusNode, AVNode, AVBlock, BundleBranches, PurkinjeNetwork};
 pub use coronary_arteries::{CoronaryArterySystem, CoronaryArtery, AtheroscleroticPlaque, PlaqueStability, CADSeverity, MyocardialPerfusion};
 pub use hematopoiesis::{HematopoieticSystem, BoneMarrow, StemCellPool, CellLineage, ProductionRates, ErythropoiesisStages, Granulopoiesis, Lymphopoiesis, Thrombopoiesis, GrowthFactors, MarrowFunction};
+pub use hematology::{HematologyProfile, CompleteBloodCount, CoagulationSystem, AnemiaRisk, BleedingRisk, ThrombosisRisk};
