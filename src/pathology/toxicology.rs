@@ -34,7 +34,7 @@ pub enum SubstanceCategory {
     HouseholdProducts,
     Biologicals,
     DrugsOfAbuse,
-    Carbon_Monoxide,
+    CarbonMonoxide,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -95,7 +95,7 @@ pub enum Antidote {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum SupportiveCare {
-    IV_Fluids,
+    IvFluids,
     Vasopressors,
     MechanicalVentilation,
     Dialysis,

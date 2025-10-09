@@ -65,7 +65,7 @@ pub enum LesionColor {
 pub enum BorderCharacteristic {
     WellDefined,
     Irregular,
-    Poorly_Defined,
+    PoorlyDefined,
     Scalloped,
 }
 

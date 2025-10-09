@@ -125,7 +125,7 @@ pub struct SignalTransductionPathways {
     pub jak_stat_pathway: JAKSTATPathway,
     pub nfkb_pathway: NFkBPathway,
     pub ampk_pathway: AMPKPathway,
-    pub mtor_pathway: mTORPathway,
+    pub mtor_pathway: MTorPathway,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -172,7 +172,7 @@ pub struct AMPKPathway {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct mTORPathway {
+pub struct MTorPathway {
     pub mtorc1_activity: f64,
     pub mtorc2_activity: f64,
     pub s6k_phosphorylation: f64,
@@ -365,7 +365,7 @@ impl AMPKPathway {
     }
 }
 
-impl mTORPathway {
+impl MTorPathway {
     pub fn new_normal() -> Self {
         Self {
             mtorc1_activity: 0.5,
@@ -461,7 +461,7 @@ impl HormoneSignaling {
                     inflammatory_gene_expression: 0.1,
                 },
                 ampk_pathway: AMPKPathway::new_normal(),
-                mtor_pathway: mTORPathway::new_normal(),
+                mtor_pathway: MTorPathway::new_normal(),
             },
             feedback_mechanisms: FeedbackMechanisms {
                 negative_feedback_loops: vec![
@@ -565,7 +565,7 @@ mod tests {
 
     #[test]
     fn test_mtor_pathway() {
-        let mut mtor = mTORPathway::new_normal();
+        let mut mtor = MTorPathway::new_normal();
         mtor.stimulate_anabolic_response();
         assert!(mtor.autophagy_suppression > 0.7);
 

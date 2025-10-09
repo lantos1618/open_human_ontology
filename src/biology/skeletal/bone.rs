@@ -125,7 +125,7 @@ impl Bone {
         }
     }
 
-    pub fn apply_load(&mut self, force_n: f64, direction: Vector3<f64>) -> BiologyResult<f64> {
+    pub fn apply_load(&mut self, force_n: f64, _direction: Vector3<f64>) -> BiologyResult<f64> {
         if force_n < 0.0 {
             return Err(BiologyError::InvalidValue(
                 "Force cannot be negative".to_string()

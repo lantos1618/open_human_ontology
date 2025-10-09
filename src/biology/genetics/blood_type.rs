@@ -236,7 +236,7 @@ impl BloodTypeCompatibility {
         }
     }
 
-    pub fn possible_offspring_types(parent1: BloodType, parent2: BloodType) -> Vec<BloodType> {
+    pub fn possible_offspring_types(_parent1: BloodType, _parent2: BloodType) -> Vec<BloodType> {
         let mut possible = Vec::new();
 
         for blood_type in [

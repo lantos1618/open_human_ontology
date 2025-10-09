@@ -97,8 +97,8 @@ pub struct ImmunizationStatus {
 pub enum Vaccine {
     MMR,
     Varicella,
-    Hepatitis_A,
-    Hepatitis_B,
+    HepatitisA,
+    HepatitisB,
     HPV,
     Influenza,
     COVID19,
@@ -269,8 +269,8 @@ impl Vaccine {
         match self {
             Vaccine::MMR => 2,
             Vaccine::Varicella => 2,
-            Vaccine::Hepatitis_A => 2,
-            Vaccine::Hepatitis_B => 3,
+            Vaccine::HepatitisA => 2,
+            Vaccine::HepatitisB => 3,
             Vaccine::HPV => 3,
             Vaccine::Influenza => 1,
             Vaccine::COVID19 => 2,
@@ -354,7 +354,7 @@ mod tests {
 
     #[test]
     fn test_vaccine_doses() {
-        assert_eq!(Vaccine::Hepatitis_B.recommended_doses(), 3);
+        assert_eq!(Vaccine::HepatitisB.recommended_doses(), 3);
         assert_eq!(Vaccine::MMR.recommended_doses(), 2);
     }
 

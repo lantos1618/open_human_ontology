@@ -8,7 +8,9 @@ pub mod proprioception;
 pub mod vestibular;
 pub mod mechanoreception;
 
+#[allow(ambiguous_glob_reexports)]
 pub use vision::*;
+#[allow(ambiguous_glob_reexports)]
 pub use hearing::*;
 pub use touch::*;
 pub use taste::*;

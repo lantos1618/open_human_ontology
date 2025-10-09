@@ -263,9 +263,9 @@ impl VitalSigns {
         }
     }
 
-    pub fn heart_rate_category(&self, age: f64, sex: BiologicalSex) -> HeartRateCategory {
-        let max_hr = 220.0 - age;
-        let resting_percentage = (self.resting_heart_rate_bpm / max_hr) * 100.0;
+    pub fn heart_rate_category(&self, age: f64, _sex: BiologicalSex) -> HeartRateCategory {
+        let _max_hr = 220.0 - age;
+        let _resting_percentage = (self.resting_heart_rate_bpm / _max_hr) * 100.0;
 
         match self.resting_heart_rate_bpm {
             hr if hr < 40.0 => HeartRateCategory::Bradycardia,

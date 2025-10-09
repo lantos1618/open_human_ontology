@@ -336,7 +336,7 @@ impl Default for CancerGeneticProfile {
 }
 
 impl CancerGeneticProfile {
-    pub fn comprehensive_cancer_screening(&self, age: f64, is_female: bool) -> Vec<String> {
+    pub fn comprehensive_cancer_screening(&self, _age: f64, is_female: bool) -> Vec<String> {
         let mut screening = Vec::new();
 
         if self.brca1.is_pathogenic() {

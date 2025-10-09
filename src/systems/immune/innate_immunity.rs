@@ -15,7 +15,7 @@ pub struct PhysicalBarriers {
     pub mucus_production: f64,
     pub epithelial_tight_junctions: f64,
     pub antimicrobial_peptides: AntimicrobialPeptides,
-    pub ph_barriers: pHBarriers,
+    pub ph_barriers: PhBarriers,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -27,7 +27,7 @@ pub struct AntimicrobialPeptides {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct pHBarriers {
+pub struct PhBarriers {
     pub stomach_ph: f64,
     pub vaginal_ph: f64,
     pub skin_ph: f64,
@@ -267,7 +267,7 @@ impl PhysicalBarriers {
                 cathelicidin_ll37_ng_ml: 50.0,
                 lysozyme_ug_ml: 10.0,
             },
-            ph_barriers: pHBarriers {
+            ph_barriers: PhBarriers {
                 stomach_ph: 2.0,
                 vaginal_ph: 4.0,
                 skin_ph: 5.5,

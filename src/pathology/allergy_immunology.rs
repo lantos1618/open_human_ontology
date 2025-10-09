@@ -77,7 +77,7 @@ pub enum ImmunodeficiencyType {
     CVID,
     SelectiveIgA,
     SCID,
-    HIV_AIDS,
+    HivAids,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]

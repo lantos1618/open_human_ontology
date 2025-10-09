@@ -143,7 +143,7 @@ pub enum ImplantComplication {
     Loosening,
     Infection,
     Dislocation,
-    Periprosthetic_Fracture,
+    PeriprostheticFracture,
     Wear,
 }
 

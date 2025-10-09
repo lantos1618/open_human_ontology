@@ -302,7 +302,7 @@ pub enum EczemaRisk {
     High,
 }
 
-pub fn predict_vitiligo_risk(genetics: &SkinGeneticProfile, ancestry: &str) -> VitiligoRisk {
+pub fn predict_vitiligo_risk(_genetics: &SkinGeneticProfile, ancestry: &str) -> VitiligoRisk {
     if ancestry.contains("European") || ancestry.contains("South Asian") {
         VitiligoRisk::Moderate
     } else {

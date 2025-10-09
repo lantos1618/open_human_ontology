@@ -42,47 +42,89 @@ pub mod ophthalmology;
 pub mod dermatology;
 pub mod taste_smell;
 
-#[allow(ambiguous_glob_reexports)]
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use allele::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use ancestry::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use asian_variants::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use athletic_performance::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use autoimmune::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use blood_type::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use cancer_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use cardiovascular_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use chromosome::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use comprehensive_risk_calculator::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use dietary_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use disease_association::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use disease_susceptibility::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use dna::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use epistasis::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use eye_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use gene::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use gene_catalog::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use gene_environment::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use gene_variants::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use genome::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use genotype::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use hair_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use lactose_tolerance::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use markers::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use metabolic_disease::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use migraine_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use neurological_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use pharmacogenomics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use phenotype::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use phenotype_predictor::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use population::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use population_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use population_traits::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use respiratory_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use skin_genetics::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use snp::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use trait_interactions::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use variation::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use mitochondrial::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use ophthalmology::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use dermatology::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use taste_smell::*;
