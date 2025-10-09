@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use crate::systems::*;
-use crate::biology::genetics::{AncestryProfile, Genotype};
+use crate::biology::genetics::{AncestryProfile, Genotype, PhenotypeProfile};
 use crate::pharmacology::pharmacogenomics::PharmacogeneticProfile;
 use crate::pathology::headache::HeadacheProfile;
 use std::collections::HashMap;
@@ -33,6 +33,7 @@ pub struct GeneticProfile {
     pub ancestry: AncestryProfile,
     pub genotypes: HashMap<String, Genotype>,
     pub carrier_status: Vec<String>,
+    pub phenotype: PhenotypeProfile,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -254,6 +255,18 @@ impl GeneticProfile {
             ancestry: AncestryProfile::new(),
             genotypes: HashMap::new(),
             carrier_status: Vec::new(),
+            phenotype: PhenotypeProfile::new(),
+        }
+    }
+
+    pub fn with_genotypes(genotypes: HashMap<String, String>) -> Self {
+        let phenotype = PhenotypeProfile::from_genotypes(&genotypes);
+
+        Self {
+            ancestry: AncestryProfile::new(),
+            genotypes: HashMap::new(),
+            carrier_status: Vec::new(),
+            phenotype,
         }
     }
 }
