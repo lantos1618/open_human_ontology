@@ -21,6 +21,7 @@ pub mod transplant;
 pub mod otolaryngology;
 pub mod pain;
 pub mod sports_medicine;
+pub mod neuromuscular;
 
 #[allow(ambiguous_glob_reexports)]
 pub use disease::*;
@@ -68,3 +69,5 @@ pub use otolaryngology::*;
 pub use pain::*;
 #[allow(ambiguous_glob_reexports)]
 pub use sports_medicine::*;
+#[allow(ambiguous_glob_reexports)]
+pub use neuromuscular::*;
