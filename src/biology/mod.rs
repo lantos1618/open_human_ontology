@@ -25,6 +25,7 @@ pub mod gut_brain_axis;
 pub mod epigenetic_clocks;
 pub mod hematology;
 pub mod nutrition;
+pub mod blood_typing;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -17,6 +17,9 @@ pub mod toxicology;
 pub mod allergy_immunology;
 pub mod pulmonology;
 pub mod gastroenterology;
+pub mod transplant;
+pub mod otolaryngology;
+pub mod pain;
 
 pub use disease::*;
 pub use condition::*;
@@ -37,3 +40,6 @@ pub use toxicology::*;
 pub use allergy_immunology::*;
 pub use pulmonology::*;
 pub use gastroenterology::*;
+pub use transplant::*;
+pub use otolaryngology::*;
+pub use pain::*;
