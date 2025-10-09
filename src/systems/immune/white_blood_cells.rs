@@ -333,7 +333,7 @@ mod tests {
     #[test]
     fn test_monocyte_differentiation() {
         let mut monocyte = Monocyte::new();
-        let baseline_function = monocyte.immune_function_score();
+        let _baseline_function = monocyte.immune_function_score();
 
         monocyte.differentiate_to_macrophage();
         assert!(monocyte.phagocytic_capacity > 1.0);

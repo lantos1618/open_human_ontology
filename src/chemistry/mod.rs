@@ -177,7 +177,7 @@ mod tests {
     #[test]
     fn test_reaction_rate() {
         let mut reactants = HashMap::new();
-        let mut products = HashMap::new();
+        let products = HashMap::new();
         let mut concentrations = HashMap::new();
 
         reactants.insert("glucose".to_string(), 1.0);

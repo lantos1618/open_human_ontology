@@ -809,7 +809,7 @@ mod tests {
 
     #[test]
     fn test_migraine_risk_assessment_female() {
-        let mut human = Human::new_adult_female("migraine_001".to_string(), 32.0, 165.0, 60.0);
+        let human = Human::new_adult_female("migraine_001".to_string(), 32.0, 165.0, 60.0);
 
         let info = human.assess_migraine_risk();
 
@@ -820,7 +820,7 @@ mod tests {
 
     #[test]
     fn test_cluster_headache_risk_assessment_male() {
-        let mut human = Human::new_adult_male("cluster_001".to_string(), 35.0, 180.0, 80.0);
+        let human = Human::new_adult_male("cluster_001".to_string(), 35.0, 180.0, 80.0);
 
         let info = human.assess_cluster_headache_risk();
 

@@ -396,7 +396,7 @@ mod tests {
 
     #[test]
     fn test_vaccination_recommendations() {
-        let mut profile = InfectiousDiseaseProfile::new();
+        let profile = InfectiousDiseaseProfile::new();
 
         let recommendations = profile.vaccination_recommendations();
         assert!(!recommendations.is_empty());

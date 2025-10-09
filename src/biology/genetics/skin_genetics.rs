@@ -180,8 +180,8 @@ impl SkinGeneticProfile {
 
     pub fn update_melanoma_risk(&mut self) {
         let mut risk = 1.0;
-        let mut mc1r_contrib = 0.0;
-        let mut pigment_contrib = 0.0;
+        let mc1r_contrib: f64;
+        let pigment_contrib: f64;
 
         match self.mc1r_variant {
             MC1RVariant::RedHairVariant => {
@@ -192,7 +192,9 @@ impl SkinGeneticProfile {
                 mc1r_contrib = 1.5;
                 risk *= 2.0;
             }
-            MC1RVariant::Normal => {}
+            MC1RVariant::Normal => {
+                mc1r_contrib = 0.0;
+            }
         }
 
         match self.pigmentation {

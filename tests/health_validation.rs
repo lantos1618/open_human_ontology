@@ -4,12 +4,11 @@ use human_biology::biology::genetics::{
     Actn3Genotype, AceGenotype, PhenotypeProfile
 };
 use human_biology::pharmacology::pharmacogenomics::*;
-use human_biology::comprehensive_health::{ComprehensiveHealthProfile, GeneticProfile as CompGeneticProfile};
+use human_biology::comprehensive_health::ComprehensiveHealthProfile;
 use human_biology::anthropometry::{
     AnthropometricProfile, BodyMeasurements, BodyComposition as AnthroBodyComp,
     BiologicalSex as AnthroBioSex, Ethnicity
 };
-use human_biology::systems::*;
 use human_biology::pathology::headache::*;
 use std::collections::HashMap;
 
@@ -66,7 +65,7 @@ fn test_complete_human_construction() {
 
 #[test]
 fn test_bmi_calculation() {
-    let demographics = Demographics {
+    let _demographics = Demographics {
         age_years: 28.0,
         biological_sex: BiologicalSex::Female,
     };
@@ -105,7 +104,7 @@ fn test_age_related_health_changes() {
 
 #[test]
 fn test_health_conditions_tracking() {
-    let mut health_conditions = HealthConditions {
+    let health_conditions = HealthConditions {
         active_conditions: vec![
             "Hypertension".to_string(),
             "Type 2 Diabetes".to_string(),

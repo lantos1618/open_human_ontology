@@ -365,7 +365,6 @@ impl PersonalizedHealthAnalyzer {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::human::BiologicalSex;
 
     #[test]
     fn test_comprehensive_analysis() {

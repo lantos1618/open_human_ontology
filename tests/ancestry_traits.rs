@@ -1,6 +1,6 @@
 use human_biology::biology::genetics::*;
 use human_biology::comprehensive_health::*;
-use human_biology::anthropometry::{BiologicalSex, BodyMeasurements, AnthropometricProfile, Ethnicity};
+use human_biology::anthropometry::BiologicalSex;
 use human_biology::biology::genetics::ophthalmology::EyeColor;
 use human_biology::biology::genetics::dermatology::{HairColor, FitzpatrickType};
 
