@@ -22,6 +22,7 @@ pub mod epigenetics;
 pub mod proteomics;
 pub mod cancer;
 pub mod gut_brain_axis;
+pub mod epigenetic_clocks;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
