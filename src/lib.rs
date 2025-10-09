@@ -58,6 +58,7 @@ pub mod personalized_medicine;
 pub mod personalized_testing;
 pub mod biometrics;
 pub mod anthropometry;
+pub mod comprehensive_health;
 
 // Re-export commonly used types
 pub use biology::{

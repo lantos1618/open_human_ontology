@@ -40,6 +40,7 @@ pub mod variation;
 pub mod mitochondrial;
 pub mod ophthalmology;
 pub mod dermatology;
+pub mod taste_smell;
 
 pub use allele::*;
 pub use ancestry::*;
@@ -83,3 +84,4 @@ pub use variation::*;
 pub use mitochondrial::*;
 pub use ophthalmology::*;
 pub use dermatology::*;
+pub use taste_smell::*;
