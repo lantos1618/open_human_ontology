@@ -34,6 +34,9 @@ pub mod metabolism;
 pub mod immune_system;
 pub mod metabolism_pathways;
 pub mod hematopoiesis;
+pub mod toxicology;
+pub mod wound_healing;
+pub mod allergy;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
