@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use super::genome::{Chromosome, Nucleotide};
+use super::genome::Chromosome;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum VariantType {

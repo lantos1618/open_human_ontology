@@ -3,7 +3,7 @@
 //! Models different vaccine delivery mechanisms and their properties.
 
 use serde::{Deserialize, Serialize};
-use super::vaccines::{VaccineType, DeliverySystem};
+use super::vaccines::VaccineType;
 
 /// Properties of delivery routes
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

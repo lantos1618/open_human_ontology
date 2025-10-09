@@ -2,33 +2,33 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Tas2r38Genotype {
-    PAV_PAV,
-    PAV_AVI,
-    AVI_AVI,
+    PavPav,
+    PavAvi,
+    AviAvi,
 }
 
 impl Tas2r38Genotype {
     pub fn ptc_tasting_ability(&self) -> TasteAbility {
         match self {
-            Tas2r38Genotype::PAV_PAV => TasteAbility::SuperTaster,
-            Tas2r38Genotype::PAV_AVI => TasteAbility::NormalTaster,
-            Tas2r38Genotype::AVI_AVI => TasteAbility::NonTaster,
+            Tas2r38Genotype::PavPav => TasteAbility::SuperTaster,
+            Tas2r38Genotype::PavAvi => TasteAbility::NormalTaster,
+            Tas2r38Genotype::AviAvi => TasteAbility::NonTaster,
         }
     }
 
     pub fn bitter_sensitivity(&self) -> f64 {
         match self {
-            Tas2r38Genotype::PAV_PAV => 2.0,
-            Tas2r38Genotype::PAV_AVI => 1.0,
-            Tas2r38Genotype::AVI_AVI => 0.1,
+            Tas2r38Genotype::PavPav => 2.0,
+            Tas2r38Genotype::PavAvi => 1.0,
+            Tas2r38Genotype::AviAvi => 0.1,
         }
     }
 
     pub fn vegetable_preference_likelihood(&self) -> f64 {
         match self {
-            Tas2r38Genotype::PAV_PAV => 0.4,
-            Tas2r38Genotype::PAV_AVI => 0.7,
-            Tas2r38Genotype::AVI_AVI => 0.9,
+            Tas2r38Genotype::PavPav => 0.4,
+            Tas2r38Genotype::PavAvi => 0.7,
+            Tas2r38Genotype::AviAvi => 0.9,
         }
     }
 
@@ -287,12 +287,12 @@ mod tests {
 
     #[test]
     fn test_tas2r38_genotype() {
-        let super_taster = Tas2r38Genotype::PAV_PAV;
+        let super_taster = Tas2r38Genotype::PavPav;
         assert_eq!(super_taster.ptc_tasting_ability(), TasteAbility::SuperTaster);
         assert!(super_taster.bitter_sensitivity() > 1.5);
         assert!(super_taster.vegetable_preference_likelihood() < 0.5);
 
-        let non_taster = Tas2r38Genotype::AVI_AVI;
+        let non_taster = Tas2r38Genotype::AviAvi;
         assert_eq!(non_taster.ptc_tasting_ability(), TasteAbility::NonTaster);
         assert!(non_taster.bitter_sensitivity() < 0.2);
         assert!(non_taster.vegetable_preference_likelihood() > 0.8);
@@ -301,7 +301,7 @@ mod tests {
     #[test]
     fn test_taste_receptor_genetics() {
         let genetics = TasteReceptorGenetics::new(
-            Tas2r38Genotype::PAV_AVI,
+            Tas2r38Genotype::PavAvi,
             true,
             true,
         );
@@ -333,7 +333,7 @@ mod tests {
     #[test]
     fn test_chemosensory_profile() {
         let taste = TasteReceptorGenetics::new(
-            Tas2r38Genotype::PAV_PAV,
+            Tas2r38Genotype::PavPav,
             true,
             true,
         );

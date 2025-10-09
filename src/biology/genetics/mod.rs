@@ -42,6 +42,7 @@ pub mod ophthalmology;
 pub mod dermatology;
 pub mod taste_smell;
 
+#[allow(ambiguous_glob_reexports)]
 pub use allele::*;
 pub use ancestry::*;
 pub use asian_variants::*;

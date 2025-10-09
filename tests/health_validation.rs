@@ -1,8 +1,14 @@
 use human_biology::human::*;
-use human_biology::biology::genetics::*;
+use human_biology::biology::genetics::{
+    AncestryProfile, AncestryPopulation, EyeColorGenetics,
+    Actn3Genotype, AceGenotype, PhenotypeProfile
+};
 use human_biology::pharmacology::pharmacogenomics::*;
 use human_biology::comprehensive_health::*;
-use human_biology::anthropometry::*;
+use human_biology::anthropometry::{
+    AnthropometricProfile, BodyMeasurements, BodyComposition as AnthroBodyComp,
+    BiologicalSex as AnthroBioSex, Ethnicity
+};
 use human_biology::systems::*;
 use human_biology::pathology::headache::*;
 use std::collections::HashMap;
@@ -21,7 +27,7 @@ fn test_complete_human_construction() {
         blood_volume_l: 5.5,
     };
 
-    let systems = BodySystems::default();
+    let systems = BodySystems::new_adult_male();
 
     let mut ancestry = AncestryProfile::new();
     ancestry.add_component(AncestryPopulation::European, 0.95, (0.90, 1.0));
@@ -193,7 +199,7 @@ fn test_complete_health_assessment() {
     let mut profile = ComprehensiveHealthProfile::new(
         "COMPLETE_001".to_string(),
         35,
-        BiologicalSex::Male,
+        AnthroBioSex::Male,
     );
 
     let mut ancestry = AncestryProfile::new();
@@ -222,17 +228,12 @@ fn test_complete_health_assessment() {
         leg_length_cm: 90.0,
     };
 
-    let composition = BodyComposition {
-        lean_mass_kg: 61.5,
-        fat_mass_kg: 13.5,
-        bone_mass_kg: 3.5,
-        water_percentage: 58.0,
-    };
+    let composition = AnthroBodyComp::new(61.5, 13.5, 3.5, 58.0);
 
     profile.anthropometry = AnthropometricProfile {
         measurements,
         composition,
-        biological_sex: BiologicalSex::Male,
+        biological_sex: AnthroBioSex::Male,
         age: 35,
         ethnicity: Ethnicity::Other,
     };
@@ -247,7 +248,7 @@ fn test_serialization_roundtrip() {
     let profile = ComprehensiveHealthProfile::new(
         "SERIAL_TEST_001".to_string(),
         28,
-        BiologicalSex::Female,
+        AnthroBioSex::Female,
     );
 
     let json = serde_json::to_string_pretty(&profile).unwrap();
@@ -261,7 +262,7 @@ fn test_serialization_roundtrip() {
 
 #[test]
 fn test_multi_system_interaction() {
-    let systems = BodySystems::default();
+    let systems = BodySystems::new_adult_male();
 
     assert!(systems.cardiovascular.heart.heart_rate_bpm > 0.0);
     assert!(systems.respiratory.left_lung.volume_ml > 0.0);
