@@ -328,7 +328,7 @@ impl TraceElements {
 }
 
 impl HydrationStatus {
-    pub fn normal(weight_kg: f64) -> Self {
+    pub fn normal(_weight_kg: f64) -> Self {
         Self {
             total_body_water_percent: 60.0,
             intracellular_water_percent: 40.0,

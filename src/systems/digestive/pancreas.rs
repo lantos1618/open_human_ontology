@@ -135,7 +135,7 @@ pub struct VenousDrainage {
 }
 
 impl Pancreas {
-    pub fn new_healthy(body_weight_kg: f64) -> Self {
+    pub fn new_healthy(_body_weight_kg: f64) -> Self {
         let pancreas_mass = 100.0;
         let beta_cell_count = 1e9;
 

@@ -1,4 +1,6 @@
-use crate::biology::blood_typing::{BloodType, ABOType, RhFactor};
+use crate::biology::blood_typing::BloodType;
+#[cfg(test)]
+use crate::biology::blood_typing::{ABOType, RhFactor};
 use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
 

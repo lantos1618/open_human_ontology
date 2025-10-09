@@ -140,7 +140,7 @@ impl EpigeneticClock {
     fn calculate_skin_blood_age(&self) -> f64 {
         let mut age_estimate = 0.0;
 
-        for (site, beta) in &self.cpg_sites {
+        for (_site, beta) in &self.cpg_sites {
             let coefficient = 0.5;
             age_estimate += coefficient * beta;
         }

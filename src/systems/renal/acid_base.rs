@@ -97,7 +97,7 @@ impl AcidBaseBalance {
         }
     }
 
-    fn calculate_base_excess(ph: f64, pco2: f64, hco3: f64) -> f64 {
+    fn calculate_base_excess(ph: f64, _pco2: f64, hco3: f64) -> f64 {
         0.93 * (hco3 - 24.4 + (14.8 * (ph - 7.4)))
     }
 

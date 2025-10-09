@@ -209,7 +209,7 @@ impl ComprehensiveRiskCalculator {
         let midparental_height = (father_height + mother_height) / 2.0;
 
         let mut genetic_component = 0.0;
-        let mut variant_count = 0;
+        let mut _variant_count = 0;
 
         let height_variants = vec![
             ("HMGA2_rs1042725", 0.4),
@@ -222,11 +222,11 @@ impl ComprehensiveRiskCalculator {
                 match genotype.as_str() {
                     "TT" | "CC" | "GG" | "AA" => {
                         genetic_component += effect * 2.0;
-                        variant_count += 1;
+                        _variant_count += 1;
                     }
                     "CT" | "AG" | "CG" => {
                         genetic_component += effect;
-                        variant_count += 1;
+                        _variant_count += 1;
                     }
                     _ => {}
                 }

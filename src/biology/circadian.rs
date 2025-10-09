@@ -171,7 +171,6 @@ impl CircadianSystem {
 
     pub fn calculate_melatonin_level_at_hour(&self, hour: f64) -> f64 {
         let onset = self.melatonin_rhythm.dim_light_melatonin_onset_hour;
-        let peak_hour = (onset + 4.0) % 24.0;
 
         if hour >= onset || hour <= 6.0 {
             if hour >= onset {

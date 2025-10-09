@@ -298,7 +298,7 @@ pub enum TrainingRecommendation {
 }
 
 impl CardiovascularFitness {
-    pub fn new(age: u32, sex: BiologicalSex) -> Self {
+    pub fn new(age: u32, _sex: BiologicalSex) -> Self {
         let max_hr = 220.0 - age as f64;
 
         Self {

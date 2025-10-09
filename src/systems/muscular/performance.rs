@@ -186,7 +186,7 @@ impl Default for FatigueState {
 }
 
 impl MusculoskeletalPerformance {
-    pub fn new_adult(body_weight_kg: f64, height_cm: f64, biological_sex: &str) -> Self {
+    pub fn new_adult(body_weight_kg: f64, _height_cm: f64, biological_sex: &str) -> Self {
         let (muscle_mass_ratio, body_fat) = match biological_sex {
             "male" => (0.45, 15.0),
             "female" => (0.35, 25.0),
