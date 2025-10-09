@@ -23,6 +23,8 @@ pub mod dietary_genetics;
 pub mod migraine_genetics;
 pub mod population_genetics;
 pub mod phenotype_predictor;
+pub mod disease_susceptibility;
+pub mod lactose_tolerance;
 
 pub use dna::*;
 pub use gene::*;
@@ -49,3 +51,5 @@ pub use dietary_genetics::*;
 pub use migraine_genetics::*;
 pub use population_genetics::*;
 pub use phenotype_predictor::*;
+pub use disease_susceptibility::*;
+pub use lactose_tolerance::*;
