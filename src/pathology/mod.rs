@@ -14,6 +14,9 @@ pub mod rheumatology;
 pub mod orthopedics;
 pub mod infectious_disease;
 pub mod toxicology;
+pub mod allergy_immunology;
+pub mod pulmonology;
+pub mod gastroenterology;
 
 pub use disease::*;
 pub use condition::*;
@@ -31,3 +34,6 @@ pub use rheumatology::*;
 pub use orthopedics::*;
 pub use infectious_disease::*;
 pub use toxicology::*;
+pub use allergy_immunology::*;
+pub use pulmonology::*;
+pub use gastroenterology::*;
