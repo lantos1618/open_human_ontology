@@ -21,7 +21,7 @@ pub enum LysosomalStorageDisorder {
     MucopolysaccharidosisTypeI,
     MucopolysaccharidosisTypeII,
     Krabbe,
-    Metachromatic_leukodystrophy,
+    MetachromaticLeukodystrophy,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
@@ -37,7 +37,7 @@ pub enum MitochondrialDisorder {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum PeroxisomalDisorder {
     ZellwegerSyndrome,
-    AdrenoleukodystrophyX_linked,
+    AdrenoleukodystrophyXLinked,
     RefsumsDisease,
 }
 
@@ -100,7 +100,7 @@ impl RareDiseaseProfile {
             RareDisease::LysosomalStorage(LysosomalStorageDisorder::FabryDisease) => true,
             RareDisease::LysosomalStorage(LysosomalStorageDisorder::PompeDisease) => true,
             RareDisease::MetabolicDefect(MetabolicDefect::Phenylketonuria) => true,
-            RareDisease::Peroxisomal(PeroxisomalDisorder::AdrenoleukodystrophyX_linked) => true,
+            RareDisease::Peroxisomal(PeroxisomalDisorder::AdrenoleukodystrophyXLinked) => true,
             _ => false,
         })
     }
@@ -124,7 +124,7 @@ pub struct GeneticTestResult {
 pub enum Zygosity {
     Heterozygous,
     Homozygous,
-    Compound_heterozygous,
+    CompoundHeterozygous,
     Hemizygous,
 }
 
@@ -230,7 +230,7 @@ pub struct OrphanDrugTherapy {
 pub enum DrugAvailability {
     FDAApproved,
     EMAApproved,
-    Compassionate_use,
+    CompassionateUse,
     ClinicalTrial,
     NotAvailable,
 }

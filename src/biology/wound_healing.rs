@@ -239,7 +239,7 @@ pub enum NutritionStatus {
     Optimal,
     Adequate,
     Deficient,
-    Severely_deficient,
+    SeverelyDeficient,
 }
 
 impl HealingFactors {
@@ -261,7 +261,7 @@ impl HealingFactors {
             NutritionStatus::Optimal => 0.9,
             NutritionStatus::Adequate => 1.0,
             NutritionStatus::Deficient => 1.3,
-            NutritionStatus::Severely_deficient => 1.6,
+            NutritionStatus::SeverelyDeficient => 1.6,
         };
 
         impairment *= 2.0 - self.oxygen_perfusion;
@@ -287,7 +287,7 @@ impl HealingFactors {
     pub fn recommendations(&self) -> Vec<String> {
         let mut recs = Vec::new();
 
-        if matches!(self.nutrition_status, NutritionStatus::Deficient | NutritionStatus::Severely_deficient) {
+        if matches!(self.nutrition_status, NutritionStatus::Deficient | NutritionStatus::SeverelyDeficient) {
             recs.push("Optimize nutrition with protein, vitamin C, and zinc".to_string());
         }
 

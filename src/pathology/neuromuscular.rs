@@ -20,11 +20,11 @@ pub enum NeuromuscularDisorder {
 pub enum DystrophyType {
     Duchenne,
     Becker,
-    Limb_girdle,
+    LimbGirdle,
     Facioscapulohumeral,
     Myotonic,
     Oculopharyngeal,
-    Emery_dreifuss,
+    EmeryDreifuss,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]

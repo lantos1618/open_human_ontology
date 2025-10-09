@@ -46,8 +46,8 @@ pub enum ReceptorLocation {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum SignalingPathway {
-    CAMP_PKA,
-    IP3_DAG_PKC,
+    CampPka,
+    Ip3DagPkc,
     JAK_STAT,
     MAPK_ERK,
     PI3K_AKT,
@@ -413,7 +413,7 @@ mod tests {
     #[test]
     fn test_crosstalk() {
         let crosstalk = CrosstalkInteraction {
-            pathway1: SignalingPathway::CAMP_PKA,
+            pathway1: SignalingPathway::CampPka,
             pathway2: SignalingPathway::MAPK_ERK,
             interaction_type: InteractionType::Synergistic,
             integration_node: "CREB".to_string(),
