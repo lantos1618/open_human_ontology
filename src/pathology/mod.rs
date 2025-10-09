@@ -10,6 +10,10 @@ pub mod organ_pathophysiology;
 pub mod dermatology;
 pub mod ophthalmology;
 pub mod psychiatry;
+pub mod rheumatology;
+pub mod orthopedics;
+pub mod infectious_disease;
+pub mod toxicology;
 
 pub use disease::*;
 pub use condition::*;
@@ -23,3 +27,7 @@ pub use organ_pathophysiology::*;
 pub use dermatology::*;
 pub use ophthalmology::*;
 pub use psychiatry::*;
+pub use rheumatology::*;
+pub use orthopedics::*;
+pub use infectious_disease::*;
+pub use toxicology::*;
