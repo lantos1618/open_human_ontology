@@ -5,6 +5,7 @@ pub mod snp;
 pub mod allele;
 pub mod genotype;
 pub mod ancestry;
+pub mod gene_catalog;
 
 pub use dna::*;
 pub use gene::*;
@@ -13,3 +14,4 @@ pub use snp::*;
 pub use allele::*;
 pub use genotype::*;
 pub use ancestry::*;
+pub use gene_catalog::*;
