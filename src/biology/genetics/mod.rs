@@ -16,6 +16,10 @@ pub mod neurological_genetics;
 pub mod cancer_genetics;
 pub mod respiratory_genetics;
 pub mod athletic_performance;
+pub mod skin_genetics;
+pub mod eye_genetics;
+pub mod hair_genetics;
+pub mod dietary_genetics;
 
 pub use dna::*;
 pub use gene::*;
@@ -35,3 +39,7 @@ pub use neurological_genetics::*;
 pub use cancer_genetics::*;
 pub use respiratory_genetics::*;
 pub use athletic_performance::*;
+pub use skin_genetics::*;
+pub use eye_genetics::*;
+pub use hair_genetics::*;
+pub use dietary_genetics::*;
