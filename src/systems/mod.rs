@@ -9,6 +9,7 @@ pub mod integumentary;
 pub mod immune;
 pub mod reproductive;
 pub mod sensory;
+pub mod lymphatic;
 
 pub use cardiovascular::{Heart, BloodVessel, Blood};
 pub use respiratory::{Lung, GasExchange, BreathingPattern};
@@ -20,3 +21,4 @@ pub use renal::{Kidney, Filtration};
 pub use integumentary::{Skin, Hair, Nail};
 pub use immune::{LymphaticSystem, WhiteBloodCell};
 pub use reproductive::{MaleReproductiveSystem, FemaleReproductiveSystem};
+pub use lymphatic::{LymphNodeSystem, LymphaticVesselNetwork, Lymph, Spleen, Thymus};
