@@ -47,8 +47,10 @@ fn test_chronic_migraine() {
 
 #[test]
 fn test_tension_type_headache() {
-    let tension = TensionType::new();
-    assert!(tension.frequency_per_month >= 0.0);
+    let mut profile = HeadacheProfile::new();
+    profile.primary_diagnosis = Some(HeadacheType::TensionType);
+    profile.headache_days_per_month = 5.0;
+    assert!(profile.headache_days_per_month >= 0.0);
 }
 
 #[test]

@@ -56,7 +56,7 @@ fn main() {
     );
 
     let taste = TasteReceptorGenetics::new(
-        Tas2r38Genotype::AVI_AVI,
+        Tas2r38Genotype::AviAvi,
         true,
         true,
     );

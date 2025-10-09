@@ -162,6 +162,11 @@ impl AncestryProfile {
     pub fn is_mixed(&self) -> bool {
         self.autosomal_ancestry.is_admixed()
     }
+
+    pub fn has_population(&self, population: AncestryPopulation) -> bool {
+        self.autosomal_ancestry.proportions.contains_key(&population)
+            && self.autosomal_ancestry.proportions[&population] > 0.0
+    }
 }
 
 impl AncestryPopulation {

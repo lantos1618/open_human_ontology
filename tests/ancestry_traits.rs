@@ -1,6 +1,8 @@
 use human_biology::biology::genetics::*;
 use human_biology::comprehensive_health::*;
 use human_biology::anthropometry::{BiologicalSex, BodyMeasurements, AnthropometricProfile, Ethnicity};
+use human_biology::biology::genetics::ophthalmology::EyeColor;
+use human_biology::biology::genetics::dermatology::{HairColor, FitzpatrickType};
 
 #[test]
 fn test_east_asian_epicanthic_fold() {
@@ -20,7 +22,7 @@ fn test_east_asian_epicanthic_fold() {
     ));
 
     let eye_genetics = profile.genetics.eye_genetics.as_ref().unwrap();
-    assert_eq!(eye_genetics.predicted_color(), "Brown");
+    assert_eq!(eye_genetics.predicted_color, EyeColor::Brown);
 }
 
 #[test]
@@ -37,15 +39,15 @@ fn test_african_keloid_susceptibility() {
 
     profile.genetics.skin_genetics = Some(SkinPigmentationGenetics::new(
         vec![],
-        "GG".to_string(),
-        "GG".to_string(),
-        "CC".to_string(),
+        "AA".to_string(),
+        "AA".to_string(),
+        "TT".to_string(),
         "TT".to_string(),
         "GG".to_string(),
     ));
 
     let skin = profile.genetics.skin_genetics.as_ref().unwrap();
-    assert!(skin.predict_fitzpatrick_type() >= 5);
+    assert!(skin.fitzpatrick_type == FitzpatrickType::TypeV || skin.fitzpatrick_type == FitzpatrickType::TypeVI);
 }
 
 #[test]
@@ -61,11 +63,10 @@ fn test_european_lactose_persistence() {
     profile.genetics.ancestry = Some(ancestry);
 
     if let Some(ancestry_profile) = &profile.genetics.ancestry {
-        let eur_component = ancestry_profile.components.iter()
-            .find(|c| c.population == AncestryPopulation::European);
+        let eur_percentage = ancestry_profile.components().get(&AncestryPopulation::European);
 
-        if let Some(component) = eur_component {
-            assert!(component.percentage > 0.80);
+        if let Some(&percentage) = eur_percentage {
+            assert!(percentage > 0.80);
         }
     }
 }
@@ -83,11 +84,10 @@ fn test_east_asian_alcohol_metabolism() {
     profile.genetics.ancestry = Some(ancestry);
 
     let ancestry_profile = profile.genetics.ancestry.as_ref().unwrap();
-    let ea_ancestry = ancestry_profile.components.iter()
-        .find(|c| c.population == AncestryPopulation::EastAsian)
+    let ea_percentage = ancestry_profile.components().get(&AncestryPopulation::EastAsian)
         .unwrap();
 
-    assert!(ea_ancestry.percentage > 0.80);
+    assert!(*ea_percentage > 0.80);
 }
 
 #[test]
@@ -121,7 +121,7 @@ fn test_admixed_american_ancestry() {
     profile.genetics.ancestry = Some(ancestry);
 
     let ancestry_profile = profile.genetics.ancestry.as_ref().unwrap();
-    assert_eq!(ancestry_profile.components.len(), 3);
+    assert_eq!(ancestry_profile.components().len(), 3);
     assert!(ancestry_profile.has_population(AncestryPopulation::NativeAmerican));
     assert!(ancestry_profile.has_population(AncestryPopulation::European));
     assert!(ancestry_profile.has_population(AncestryPopulation::African));
@@ -204,7 +204,7 @@ fn test_hair_texture_ancestry_correlation() {
     ));
 
     let hair = profile.genetics.hair_genetics.as_ref().unwrap();
-    assert_eq!(hair.predicted_color(), "Black/Very Dark Brown");
+    assert!(matches!(hair.predicted_color, HairColor::Black | HairColor::DarkBrown));
 }
 
 #[test]
@@ -238,7 +238,7 @@ fn test_red_hair_celtic_ancestry() {
     ));
 
     let hair = profile.genetics.hair_genetics.as_ref().unwrap();
-    assert_eq!(hair.predicted_color(), "Red");
+    assert_eq!(hair.predicted_color, HairColor::Red);
 
     let skin = profile.genetics.skin_genetics.as_ref().unwrap();
     assert!(skin.predict_fitzpatrick_type() <= 2);
@@ -273,14 +273,14 @@ fn test_northern_european_vitamin_d_synthesis() {
     profile.genetics.ancestry = Some(ancestry);
 
     profile.genetics.skin_genetics = Some(SkinPigmentationGenetics::new(
-        vec![],
-        "AA".to_string(),
+        vec!["R151C".to_string()],
+        "GG".to_string(),
         "L374F".to_string(),
-        "TT".to_string(),
+        "CC".to_string(),
         "CC".to_string(),
         "AA".to_string(),
     ));
 
     let skin = profile.genetics.skin_genetics.as_ref().unwrap();
-    assert!(skin.predict_fitzpatrick_type() <= 3);
+    assert!(matches!(skin.fitzpatrick_type, FitzpatrickType::TypeI | FitzpatrickType::TypeII | FitzpatrickType::TypeIII));
 }

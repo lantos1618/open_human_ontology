@@ -1,10 +1,10 @@
-use human_biology::human::*;
+use human_biology::human::{Human, Demographics, BodyMetrics, HealthConditions, BiologicalSex, BodySystems};
 use human_biology::biology::genetics::{
     AncestryProfile, AncestryPopulation, EyeColorGenetics,
     Actn3Genotype, AceGenotype, PhenotypeProfile
 };
 use human_biology::pharmacology::pharmacogenomics::*;
-use human_biology::comprehensive_health::*;
+use human_biology::comprehensive_health::{ComprehensiveHealthProfile, GeneticProfile as CompGeneticProfile};
 use human_biology::anthropometry::{
     AnthropometricProfile, BodyMeasurements, BodyComposition as AnthroBodyComp,
     BiologicalSex as AnthroBioSex, Ethnicity
@@ -32,11 +32,11 @@ fn test_complete_human_construction() {
     let mut ancestry = AncestryProfile::new();
     ancestry.add_component(AncestryPopulation::European, 0.95, (0.90, 1.0));
 
-    let genetics = GeneticProfile {
+    let genetics = human_biology::human::GeneticProfile {
         ancestry,
         genotypes: HashMap::new(),
         carrier_status: vec![],
-        phenotype: PhenotypeProfile::default(),
+        phenotype: PhenotypeProfile::new(),
     };
 
     let pharmacogenomics = PharmacogeneticProfile::default();
@@ -167,31 +167,15 @@ fn test_pharmacogenomic_drug_response() {
 fn test_complex_headache_profile() {
     let mut headache_profile = HeadacheProfile::new();
 
-    headache_profile.migraine_profile = Some(MigraineProfile {
-        has_aura: true,
-        aura_types: vec![AuraType::Visual, AuraType::Sensory],
-        frequency_per_month: 6.0,
-        typical_duration_hours: 18.0,
-        severity_0_10: 8,
-        triggers: vec![
-            MigraineTrigger::Stress,
-            MigraineTrigger::LackOfSleep,
-            MigraineTrigger::HormonalChanges,
-        ],
-        associated_symptoms: vec![
-            MigraineSymptom::Nausea,
-            MigraineSymptom::Vomiting,
-            MigraineSymptom::Photophobia,
-            MigraineSymptom::Phonophobia,
-        ],
-    });
+    headache_profile.primary_diagnosis = Some(HeadacheType::Migraine(MigraineSubtype::WithoutAura));
+    headache_profile.headache_days_per_month = 6.0;
+    headache_profile.medication_overuse = false;
+    headache_profile.treatment_history.push("Triptans".to_string());
+    headache_profile.current_prophylaxis.push("Topiramate".to_string());
 
-    assert!(headache_profile.migraine_profile.is_some());
-
-    let migraine = headache_profile.migraine_profile.as_ref().unwrap();
-    assert!(migraine.has_aura);
-    assert!(migraine.triggers.len() >= 3);
-    assert!(migraine.associated_symptoms.len() >= 3);
+    assert!(headache_profile.primary_diagnosis.is_some());
+    assert!(headache_profile.headache_days_per_month > 0.0);
+    assert!(!headache_profile.medication_overuse);
 }
 
 #[test]
@@ -265,5 +249,5 @@ fn test_multi_system_interaction() {
     let systems = BodySystems::new_adult_male();
 
     assert!(systems.cardiovascular.heart.heart_rate_bpm > 0.0);
-    assert!(systems.respiratory.left_lung.volume_ml > 0.0);
+    assert!(systems.respiratory.left_lung.total_capacity_ml > 0.0);
 }

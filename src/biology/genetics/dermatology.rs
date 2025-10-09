@@ -180,6 +180,17 @@ impl SkinPigmentationGenetics {
         let synthesis_rate = self.fitzpatrick_type.vitamin_d_synthesis_rate();
         20.0 / synthesis_rate
     }
+
+    pub fn predict_fitzpatrick_type(&self) -> u8 {
+        match self.fitzpatrick_type {
+            FitzpatrickType::TypeI => 1,
+            FitzpatrickType::TypeII => 2,
+            FitzpatrickType::TypeIII => 3,
+            FitzpatrickType::TypeIV => 4,
+            FitzpatrickType::TypeV => 5,
+            FitzpatrickType::TypeVI => 6,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
@@ -332,6 +343,10 @@ impl AcneRisk {
     pub fn is_high_risk(&self) -> bool {
         self.overall_risk > 1.5
     }
+
+    pub fn calculate_risk_score(&self) -> f64 {
+        self.overall_risk
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -384,6 +399,10 @@ impl PsoriasisRisk {
 
     pub fn is_high_risk(&self) -> bool {
         self.genetic_risk_score > 4.0
+    }
+
+    pub fn calculate_risk_score(&self) -> f64 {
+        self.genetic_risk_score
     }
 }
 

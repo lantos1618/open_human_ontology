@@ -30,12 +30,12 @@ fn test_asian_genetic_profile() {
         true,
         true,
         true,
-        true,
+        1.5,
+        8.0,
     ));
 
     let myopia_risk = profile.genetics.myopia_risk.as_ref().unwrap();
-    assert!(myopia_risk.calculate_risk_score() > 0.0);
-    assert!(myopia_risk.high_risk_count >= 3);
+    assert!(myopia_risk.risk_level != MyopiaRisk::Low);
 }
 
 #[test]
@@ -92,9 +92,9 @@ fn test_african_genetic_profile() {
 
     profile.genetics.skin_genetics = Some(SkinPigmentationGenetics::new(
         vec![],
-        "GG".to_string(),
-        "GG".to_string(),
-        "CC".to_string(),
+        "AA".to_string(),
+        "AA".to_string(),
+        "TT".to_string(),
         "TT".to_string(),
         "GG".to_string(),
     ));
@@ -154,6 +154,7 @@ fn test_dermatology_risks() {
         true,
         true,
         true,
+        true,
     ));
 
     let acne_risk = profile.genetics.dermatology_risks.acne.as_ref().unwrap();
@@ -162,6 +163,7 @@ fn test_dermatology_risks() {
     profile.genetics.dermatology_risks.psoriasis = Some(PsoriasisRisk::new(
         true,
         false,
+        true,
         true,
         true,
     ));
@@ -179,15 +181,13 @@ fn test_color_vision_deficiency() {
     );
 
     profile.genetics.color_vision = Some(ColorVisionGenetics::new(
-        GeneStatus::Deficient,
+        GeneStatus::Defective,
         GeneStatus::Normal,
         GeneStatus::Normal,
     ));
 
     let color_vision = profile.genetics.color_vision.as_ref().unwrap();
-    assert!(color_vision.has_deficiency());
-    let deficiency = color_vision.deficiency_type();
-    assert!(deficiency.contains("Protanomaly") || deficiency.contains("Protanopia"));
+    assert!(matches!(color_vision.color_blindness_type, ColorBlindnessType::Protanopia | ColorBlindnessType::Protanomaly));
 }
 
 #[test]

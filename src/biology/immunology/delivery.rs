@@ -236,6 +236,7 @@ impl DeliveryOptimizer {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::biology::immunology::vaccines::DeliverySystem;
 
     #[test]
     fn test_delivery_route() {
