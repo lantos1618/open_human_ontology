@@ -15,7 +15,9 @@ pub enum PharmacogeneticGene {
     DPYD,
     UGT1A1,
     G6PD,
+    #[allow(non_camel_case_types)]
     HLA_B5701,
+    #[allow(non_camel_case_types)]
     HLA_B1502,
     ALDH2,
     COMT,

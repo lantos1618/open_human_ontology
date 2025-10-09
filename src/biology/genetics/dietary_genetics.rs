@@ -102,8 +102,11 @@ pub struct TasteGenetics {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum TAS2R38Genotype {
+    #[allow(non_camel_case_types)]
     PAV_PAV,
+    #[allow(non_camel_case_types)]
     PAV_AVI,
+    #[allow(non_camel_case_types)]
     AVI_AVI,
 }
 

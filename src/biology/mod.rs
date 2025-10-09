@@ -16,6 +16,8 @@ pub mod circadian;
 pub mod biomarkers;
 pub mod aging;
 pub mod lifestyle;
+pub mod neurotransmitters;
+pub mod microbiome;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

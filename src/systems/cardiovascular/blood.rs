@@ -24,6 +24,104 @@ pub enum BloodCell {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct CoagulationFactor {
+    pub factor: ClottingFactor,
+    pub concentration_ug_ml: f64,
+    pub activity_percent: f64,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum ClottingFactor {
+    FactorI,
+    FactorII,
+    FactorV,
+    FactorVII,
+    FactorVIII,
+    FactorIX,
+    FactorX,
+    FactorXI,
+    FactorXII,
+    FactorXIII,
+    VonWillebrandFactor,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BloodProtein {
+    pub name: String,
+    pub concentration_g_l: f64,
+    pub function: ProteinFunction,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum ProteinFunction {
+    Transport,
+    Immune,
+    Coagulation,
+    Enzymatic,
+    Structural,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Immunoglobulin {
+    pub ig_type: ImmunoglobulinType,
+    pub concentration_mg_dl: f64,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum ImmunoglobulinType {
+    IgG,
+    IgA,
+    IgM,
+    IgE,
+    IgD,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Lipoproteins {
+    pub total_cholesterol_mg_dl: f64,
+    pub ldl_mg_dl: f64,
+    pub hdl_mg_dl: f64,
+    pub vldl_mg_dl: f64,
+    pub triglycerides_mg_dl: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct LiverEnzymes {
+    pub alt_u_l: f64,
+    pub ast_u_l: f64,
+    pub alp_u_l: f64,
+    pub ggt_u_l: f64,
+    pub ldh_u_l: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct CardiacMarkers {
+    pub troponin_i_ng_ml: f64,
+    pub troponin_t_ng_ml: f64,
+    pub ck_mb_ng_ml: f64,
+    pub bnp_pg_ml: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct InflammatoryMarkers {
+    pub crp_mg_l: f64,
+    pub esr_mm_hr: f64,
+    pub procalcitonin_ng_ml: f64,
+    pub ferritin_ng_ml: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Electrolytes {
+    pub sodium_meq_l: f64,
+    pub potassium_meq_l: f64,
+    pub chloride_meq_l: f64,
+    pub bicarbonate_meq_l: f64,
+    pub calcium_mg_dl: f64,
+    pub magnesium_mg_dl: f64,
+    pub phosphate_mg_dl: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PlasmaComposition {
     pub volume_ml: f64,
     pub protein_g_dl: f64,
@@ -39,6 +137,14 @@ pub struct PlasmaComposition {
     pub urea_nitrogen_mg_dl: f64,
     pub creatinine_mg_dl: f64,
     pub bilirubin_mg_dl: f64,
+    pub electrolytes: Electrolytes,
+    pub lipoproteins: Lipoproteins,
+    pub liver_enzymes: LiverEnzymes,
+    pub cardiac_markers: CardiacMarkers,
+    pub inflammatory_markers: InflammatoryMarkers,
+    pub immunoglobulins: Vec<Immunoglobulin>,
+    pub coagulation_factors: Vec<CoagulationFactor>,
+    pub proteins: Vec<BloodProtein>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -219,6 +325,14 @@ impl PlasmaComposition {
             urea_nitrogen_mg_dl: 14.0,
             creatinine_mg_dl: 1.0,
             bilirubin_mg_dl: 0.8,
+            electrolytes: Electrolytes::new_normal(),
+            lipoproteins: Lipoproteins::new_normal(),
+            liver_enzymes: LiverEnzymes::new_normal(),
+            cardiac_markers: CardiacMarkers::new_normal(),
+            inflammatory_markers: InflammatoryMarkers::new_normal(),
+            immunoglobulins: Immunoglobulin::new_normal_panel(),
+            coagulation_factors: CoagulationFactor::new_normal_panel(),
+            proteins: BloodProtein::new_normal_panel(),
         }
     }
 
@@ -256,6 +370,186 @@ impl PlasmaComposition {
 
     pub fn has_hypoglycemia(&self) -> bool {
         self.glucose_mg_dl < 70.0
+    }
+}
+
+impl Electrolytes {
+    pub fn new_normal() -> Self {
+        Self {
+            sodium_meq_l: 140.0,
+            potassium_meq_l: 4.0,
+            chloride_meq_l: 103.0,
+            bicarbonate_meq_l: 24.0,
+            calcium_mg_dl: 9.5,
+            magnesium_mg_dl: 2.0,
+            phosphate_mg_dl: 3.5,
+        }
+    }
+
+    pub fn anion_gap(&self) -> f64 {
+        self.sodium_meq_l - (self.chloride_meq_l + self.bicarbonate_meq_l)
+    }
+}
+
+impl Lipoproteins {
+    pub fn new_normal() -> Self {
+        Self {
+            total_cholesterol_mg_dl: 180.0,
+            ldl_mg_dl: 100.0,
+            hdl_mg_dl: 50.0,
+            vldl_mg_dl: 30.0,
+            triglycerides_mg_dl: 150.0,
+        }
+    }
+
+    pub fn calculate_vldl(&self) -> f64 {
+        self.triglycerides_mg_dl / 5.0
+    }
+
+    pub fn ldl_hdl_ratio(&self) -> f64 {
+        self.ldl_mg_dl / self.hdl_mg_dl
+    }
+
+    pub fn has_dyslipidemia(&self) -> bool {
+        self.total_cholesterol_mg_dl > 200.0 || self.ldl_mg_dl > 130.0 || self.hdl_mg_dl < 40.0
+    }
+}
+
+impl LiverEnzymes {
+    pub fn new_normal() -> Self {
+        Self {
+            alt_u_l: 30.0,
+            ast_u_l: 30.0,
+            alp_u_l: 70.0,
+            ggt_u_l: 25.0,
+            ldh_u_l: 150.0,
+        }
+    }
+
+    pub fn ast_alt_ratio(&self) -> f64 {
+        self.ast_u_l / self.alt_u_l
+    }
+
+    pub fn has_hepatocellular_injury(&self) -> bool {
+        self.alt_u_l > 100.0 || self.ast_u_l > 100.0
+    }
+
+    pub fn has_cholestasis(&self) -> bool {
+        self.alp_u_l > 120.0 || self.ggt_u_l > 50.0
+    }
+}
+
+impl CardiacMarkers {
+    pub fn new_normal() -> Self {
+        Self {
+            troponin_i_ng_ml: 0.01,
+            troponin_t_ng_ml: 0.01,
+            ck_mb_ng_ml: 3.0,
+            bnp_pg_ml: 50.0,
+        }
+    }
+
+    pub fn has_myocardial_injury(&self) -> bool {
+        self.troponin_i_ng_ml > 0.04 || self.troponin_t_ng_ml > 0.01
+    }
+
+    pub fn has_heart_failure(&self) -> bool {
+        self.bnp_pg_ml > 100.0
+    }
+}
+
+impl InflammatoryMarkers {
+    pub fn new_normal() -> Self {
+        Self {
+            crp_mg_l: 1.0,
+            esr_mm_hr: 10.0,
+            procalcitonin_ng_ml: 0.05,
+            ferritin_ng_ml: 100.0,
+        }
+    }
+
+    pub fn has_inflammation(&self) -> bool {
+        self.crp_mg_l > 3.0 || self.esr_mm_hr > 20.0
+    }
+
+    pub fn has_severe_inflammation(&self) -> bool {
+        self.crp_mg_l > 10.0
+    }
+
+    pub fn has_bacterial_infection(&self) -> bool {
+        self.procalcitonin_ng_ml > 0.5
+    }
+}
+
+impl Immunoglobulin {
+    pub fn new_normal_panel() -> Vec<Self> {
+        vec![
+            Self { ig_type: ImmunoglobulinType::IgG, concentration_mg_dl: 1000.0 },
+            Self { ig_type: ImmunoglobulinType::IgA, concentration_mg_dl: 200.0 },
+            Self { ig_type: ImmunoglobulinType::IgM, concentration_mg_dl: 100.0 },
+            Self { ig_type: ImmunoglobulinType::IgE, concentration_mg_dl: 0.05 },
+            Self { ig_type: ImmunoglobulinType::IgD, concentration_mg_dl: 3.0 },
+        ]
+    }
+}
+
+impl CoagulationFactor {
+    pub fn new_normal_panel() -> Vec<Self> {
+        vec![
+            Self { factor: ClottingFactor::FactorI, concentration_ug_ml: 3000.0, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::FactorII, concentration_ug_ml: 100.0, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::FactorV, concentration_ug_ml: 10.0, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::FactorVII, concentration_ug_ml: 0.5, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::FactorVIII, concentration_ug_ml: 0.1, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::FactorIX, concentration_ug_ml: 5.0, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::FactorX, concentration_ug_ml: 10.0, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::FactorXI, concentration_ug_ml: 5.0, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::FactorXII, concentration_ug_ml: 30.0, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::FactorXIII, concentration_ug_ml: 20.0, activity_percent: 100.0 },
+            Self { factor: ClottingFactor::VonWillebrandFactor, concentration_ug_ml: 10.0, activity_percent: 100.0 },
+        ]
+    }
+}
+
+impl BloodProtein {
+    pub fn new_normal_panel() -> Vec<Self> {
+        vec![
+            Self {
+                name: "Albumin".to_string(),
+                concentration_g_l: 40.0,
+                function: ProteinFunction::Transport,
+            },
+            Self {
+                name: "Transferrin".to_string(),
+                concentration_g_l: 2.5,
+                function: ProteinFunction::Transport,
+            },
+            Self {
+                name: "Ceruloplasmin".to_string(),
+                concentration_g_l: 0.3,
+                function: ProteinFunction::Transport,
+            },
+            Self {
+                name: "Haptoglobin".to_string(),
+                concentration_g_l: 1.0,
+                function: ProteinFunction::Transport,
+            },
+            Self {
+                name: "Alpha-1-antitrypsin".to_string(),
+                concentration_g_l: 1.5,
+                function: ProteinFunction::Enzymatic,
+            },
+            Self {
+                name: "C3 Complement".to_string(),
+                concentration_g_l: 1.2,
+                function: ProteinFunction::Immune,
+            },
+            Self {
+                name: "C4 Complement".to_string(),
+                concentration_g_l: 0.3,
+                function: ProteinFunction::Immune,
+            },
+        ]
     }
 }
 
