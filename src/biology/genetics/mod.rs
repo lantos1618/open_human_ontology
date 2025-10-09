@@ -30,6 +30,7 @@ pub mod comprehensive_risk_calculator;
 pub mod epistasis;
 pub mod gene_environment;
 pub mod population_traits;
+pub mod gene_variants;
 
 pub use dna::*;
 pub use gene::*;
@@ -63,3 +64,4 @@ pub use comprehensive_risk_calculator::*;
 pub use epistasis::*;
 pub use gene_environment::*;
 pub use population_traits::*;
+pub use gene_variants::GeneVariantCatalog;
