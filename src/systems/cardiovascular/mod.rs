@@ -1,6 +1,8 @@
 pub mod heart;
 pub mod blood_vessel;
 pub mod blood;
+pub mod blood_cells;
+pub mod bone_marrow;
 pub mod hemodynamics;
 pub mod circulation;
 pub mod electrophysiology;
