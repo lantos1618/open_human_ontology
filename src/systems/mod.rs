@@ -10,6 +10,8 @@ pub mod immune;
 pub mod reproductive;
 pub mod sensory;
 pub mod lymphatic;
+pub mod vision;
+pub mod auditory;
 
 pub use cardiovascular::{Heart, BloodVessel, Blood};
 pub use respiratory::{Lung, GasExchange, BreathingPattern};
@@ -22,3 +24,5 @@ pub use integumentary::{Skin, Hair, Nail};
 pub use immune::{LymphaticSystem, WhiteBloodCell};
 pub use reproductive::{MaleReproductiveSystem, FemaleReproductiveSystem};
 pub use lymphatic::{LymphNodeSystem, LymphaticVesselNetwork, Lymph, Spleen, Thymus};
+pub use vision::{Eye, VisualPathway, VisualAcuity};
+pub use auditory::{Ear, AuditoryPathway, HearingAcuity};
