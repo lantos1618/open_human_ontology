@@ -3,6 +3,9 @@ pub mod condition;
 pub mod symptom;
 pub mod diagnosis;
 pub mod headache;
+pub mod neurological;
+pub mod metabolic;
+pub mod cardiovascular;
 pub mod organ_pathophysiology;
 
 pub use disease::*;
@@ -10,4 +13,7 @@ pub use condition::*;
 pub use symptom::*;
 pub use diagnosis::*;
 pub use headache::*;
+pub use neurological::*;
+pub use metabolic::*;
+pub use cardiovascular::*;
 pub use organ_pathophysiology::*;
