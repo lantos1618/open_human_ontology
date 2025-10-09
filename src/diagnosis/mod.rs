@@ -1,7 +1,9 @@
 pub mod biomarkers;
 pub mod screening;
 pub mod analyzer;
+pub mod comprehensive_assessment;
 
 pub use biomarkers::{Biomarker, BiomarkerPanel, BiomarkerValue, ReferenceRange};
-pub use screening::{HealthScreening, ScreeningResult, RiskAssessment};
+pub use screening::{HealthScreening, ScreeningResult, RiskAssessment as ScreeningRiskAssessment};
 pub use analyzer::{DiagnosticEngine, DiagnosticReport, Finding, RiskFactor, GeneticInsight, DrugRecommendation};
+pub use comprehensive_assessment::*;
