@@ -61,11 +61,11 @@ pub struct MetabolicVariant {
 pub struct MetabolicImpact {
     pub pathway: String,
     pub effect_magnitude: f64,
-    pub clinical_significance: ClinicalSignificance,
+    pub clinical_significance: VariantClinicalSignificance,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
-pub enum ClinicalSignificance {
+pub enum VariantClinicalSignificance {
     HighlySignificant,
     ModeratelySignificant,
     LowSignificance,
@@ -219,7 +219,7 @@ impl GeneVariantCatalog {
                 metabolic_impact: MetabolicImpact {
                     pathway: "Folate metabolism".to_string(),
                     effect_magnitude: 0.3,
-                    clinical_significance: ClinicalSignificance::ModeratelySignificant,
+                    clinical_significance: VariantClinicalSignificance::ModeratelySignificant,
                 },
             },
         );
@@ -270,7 +270,7 @@ impl GeneVariantCatalog {
                 metabolic_impact: MetabolicImpact {
                     pathway: "Alcohol metabolism".to_string(),
                     effect_magnitude: 0.5,
-                    clinical_significance: ClinicalSignificance::HighlySignificant,
+                    clinical_significance: VariantClinicalSignificance::HighlySignificant,
                 },
             },
         );

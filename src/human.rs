@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use crate::systems::*;
-use crate::biology::genetics::{AncestryProfile, Genotype, PhenotypeProfile};
+use crate::biology::genetics::{AncestryProfile, PhenotypeProfile, genotype::Genotype};
 use crate::pharmacology::pharmacogenomics::PharmacogeneticProfile;
 use crate::pathology::headache::HeadacheProfile;
 use std::collections::HashMap;
@@ -221,7 +221,7 @@ impl Human {
             report.push(format!("Primary ancestry: {:?}", primary));
         }
 
-        for (ancestry, percentage) in &self.genetics.ancestry.components {
+        for (ancestry, percentage) in self.genetics.ancestry.components() {
             report.push(format!("{:?}: {:.1}%", ancestry, percentage));
         }
 
@@ -324,7 +324,7 @@ impl Human {
     pub fn assess_genetic_disease_risks(&self) -> Vec<GeneticDiseaseRisk> {
         let mut risks = Vec::new();
 
-        for (ancestry, percentage) in &self.genetics.ancestry.components {
+        for (ancestry, percentage) in self.genetics.ancestry.components() {
             if *percentage > 10.0 {
                 for condition in ancestry.associated_conditions() {
                     let risk_factor = percentage / 100.0;
@@ -425,7 +425,7 @@ impl Human {
         let pharma_report = self.pharmacogenomic_report();
 
         ComprehensiveGeneticAnalysis {
-            ancestry_breakdown: self.genetics.ancestry.components.clone(),
+            ancestry_breakdown: self.genetics.ancestry.components().clone(),
             disease_risks,
             headache_risks: HeadacheRisks {
                 migraine: migraine_risk,
@@ -802,7 +802,7 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_male("asian_001".to_string(), 28.0, 175.0, 70.0);
-        human.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0).unwrap();
+        human.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0, (0.0, 0.0));
 
         let risks = human.assess_genetic_disease_risks();
 
@@ -836,7 +836,7 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_female("ashkenazi_001".to_string(), 40.0, 163.0, 58.0);
-        human.genetics.ancestry.add_component(Ancestry::Ashkenazi, 100.0).unwrap();
+        human.genetics.ancestry.add_component(Ancestry::Ashkenazi, 100.0, (0.0, 0.0));
 
         let risks = human.assess_genetic_disease_risks();
 
@@ -870,8 +870,8 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_female("mixed_001".to_string(), 26.0, 168.0, 62.0);
-        human.genetics.ancestry.add_component(Ancestry::EastAsian, 50.0).unwrap();
-        human.genetics.ancestry.add_component(Ancestry::European, 50.0).unwrap();
+        human.genetics.ancestry.add_component(Ancestry::EastAsian, 50.0, (0.0, 0.0));
+        human.genetics.ancestry.add_component(Ancestry::European, 50.0, (0.0, 0.0));
 
         assert!(human.genetics.ancestry.is_mixed());
 
@@ -896,8 +896,8 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_female("comprehensive_001".to_string(), 38.0, 165.0, 65.0);
-        human.genetics.ancestry.add_component(Ancestry::European, 80.0).unwrap();
-        human.genetics.ancestry.add_component(Ancestry::EastAsian, 20.0).unwrap();
+        human.genetics.ancestry.add_component(Ancestry::European, 80.0, (0.0, 0.0));
+        human.genetics.ancestry.add_component(Ancestry::EastAsian, 20.0, (0.0, 0.0));
         human.health_conditions.add_condition("Hypertension".to_string());
 
         let assessment = human.comprehensive_health_assessment();
@@ -912,7 +912,7 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_male("asian_traits_001".to_string(), 28.0, 172.0, 68.0);
-        human.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0).unwrap();
+        human.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0, (0.0, 0.0));
 
         let traits_report = human.population_specific_traits_report();
 
@@ -927,7 +927,7 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_female("comprehensive_genetic_001".to_string(), 32.0, 165.0, 58.0);
-        human.genetics.ancestry.add_component(Ancestry::Ashkenazi, 100.0).unwrap();
+        human.genetics.ancestry.add_component(Ancestry::Ashkenazi, 100.0, (0.0, 0.0));
 
         let analysis = human.comprehensive_genetic_analysis();
 
@@ -941,7 +941,7 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_female("condition_test_001".to_string(), 35.0, 168.0, 62.0);
-        human.genetics.ancestry.add_component(Ancestry::European, 100.0).unwrap();
+        human.genetics.ancestry.add_component(Ancestry::European, 100.0, (0.0, 0.0));
         human.health_conditions.add_family_history("Migraine".to_string());
 
         let result = human.test_for_condition("migraine");

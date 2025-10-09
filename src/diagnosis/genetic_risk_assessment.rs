@@ -251,8 +251,8 @@ pub enum OverallRiskCategory {
 
 pub fn assess_east_asian_individual() -> GeneticRiskAssessment {
     let mut profile = AncestryProfile::new();
-    profile.add_component(Ancestry::EastAsian, 0.95).ok();
-    profile.add_component(Ancestry::NorthernEuropean, 0.05).ok();
+    profile.add_component(Ancestry::EastAsian, 0.95, (0.90, 1.0));
+    profile.add_component(Ancestry::NorthernEuropean, 0.05, (0.0, 0.10));
 
     let mut assessment = GeneticRiskAssessment::new("EA_001".to_string(), profile);
 
@@ -299,8 +299,8 @@ pub fn assess_east_asian_individual() -> GeneticRiskAssessment {
 
 pub fn assess_african_ancestry_individual() -> GeneticRiskAssessment {
     let mut profile = AncestryProfile::new();
-    profile.add_component(Ancestry::SubSaharanAfrican, 0.85).ok();
-    profile.add_component(Ancestry::European, 0.15).ok();
+    profile.add_component(Ancestry::SubSaharanAfrican, 0.85, (0.80, 0.90));
+    profile.add_component(Ancestry::European, 0.15, (0.10, 0.20));
 
     let mut assessment = GeneticRiskAssessment::new("AA_001".to_string(), profile);
 

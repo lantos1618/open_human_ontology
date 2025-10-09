@@ -262,7 +262,7 @@ impl DiagnosticEngine {
     }
 
     fn analyze_genetic_factors(human: &Human, report: &mut DiagnosticReport) {
-        for (ancestry, percentage) in &human.genetics.ancestry.components {
+        for (ancestry, percentage) in human.genetics.ancestry.components() {
             if *percentage > 25.0 {
                 let conditions = ancestry.associated_conditions();
                 for condition in conditions {
@@ -352,7 +352,7 @@ impl DiagnosticEngine {
             report.follow_up_tests.push("Urinalysis with microalbumin".to_string());
         }
 
-        if human.genetics.ancestry.components.contains_key(&Ancestry::Ashkenazi) {
+        if human.genetics.ancestry.components().contains_key(&Ancestry::Ashkenazi) {
             report.follow_up_tests.push("Genetic counseling for carrier screening".to_string());
         }
 

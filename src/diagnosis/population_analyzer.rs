@@ -117,7 +117,7 @@ impl PopulationAnalyzer {
         let mut ancestry_counts: std::collections::HashMap<Ancestry, f64> = std::collections::HashMap::new();
 
         for individual in &self.individuals {
-            for (ancestry, percentage) in &individual.genetics.ancestry.components {
+            for (ancestry, percentage) in individual.genetics.ancestry.components(){
                 *ancestry_counts.entry(*ancestry).or_insert(0.0) += percentage;
             }
         }
@@ -210,7 +210,7 @@ impl PopulationAnalyzer {
             if individual
                 .genetics
                 .ancestry
-                .components
+                .components()
                 .iter()
                 .any(|(a, p)| *a == ancestry && *p > 25.0)
             {
