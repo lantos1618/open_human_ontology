@@ -7,11 +7,13 @@ pub mod nociception;
 pub mod proprioception;
 pub mod vestibular;
 pub mod mechanoreception;
+pub mod visual_processing;
 
 #[allow(ambiguous_glob_reexports)]
 pub use vision::*;
 #[allow(ambiguous_glob_reexports)]
 pub use hearing::*;
+pub use visual_processing::*;
 pub use touch::*;
 pub use taste::*;
 pub use smell::*;
