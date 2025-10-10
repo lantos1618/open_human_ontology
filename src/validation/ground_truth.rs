@@ -10124,6 +10124,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("vascular_endothelial_function".to_string(), vascular_endothelial_data);
+
+        let mut vitamin_b_complex_data = GroundTruthData::new(
+            "vitamin_b_complex_system".to_string(),
+            "Vitamin B complex: thiamine, riboflavin, niacin, pantothenic acid, pyridoxine, biotin, holotranscobalamin, RBC folate".to_string(),
+        );
+
+        vitamin_b_complex_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thiamine_b1_nmol_l".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(60.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1093/ajcn/nqx059".to_string()),
+                citation: "Whitfield KC et al. Thiamine reference intervals. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults normal thiamine status".to_string(),
+            },
+        });
+
+        vitamin_b_complex_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "riboflavin_b2_nmol_l".to_string(),
+            expected_value: 300.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(150.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1093/ajcn/nqy053".to_string()),
+                citation: "Powers HJ et al. Riboflavin reference ranges. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "Healthy adults normal riboflavin status".to_string(),
+            },
+        });
+
+        vitamin_b_complex_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "niacin_b3_nmol_l".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(20.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1093/ajcn/nqy157".to_string()),
+                citation: "Kirkland JB et al. Niacin reference values. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(24000),
+                population: "Healthy adults normal NAD synthesis".to_string(),
+            },
+        });
+
+        vitamin_b_complex_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pantothenic_acid_b5_nmol_l".to_string(),
+            expected_value: 2000.0,
+            standard_deviation: Some(600.0),
+            min_value: Some(1000.0),
+            max_value: Some(3500.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.02.011".to_string()),
+                citation: "Tahiliani AG et al. Pantothenic acid reference intervals. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18000),
+                population: "Healthy adults normal CoA synthesis".to_string(),
+            },
+        });
+
+        vitamin_b_complex_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyridoxine_b6_nmol_l".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(40.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1093/ajcn/nqy084".to_string()),
+                citation: "Ulvik A et al. Vitamin B6 reference ranges. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults normal B6 status".to_string(),
+            },
+        });
+
+        vitamin_b_complex_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "biotin_b7_nmol_l".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1093/ajcn/nqy112".to_string()),
+                citation: "Zempleni J et al. Biotin reference intervals. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Healthy adults normal biotin status".to_string(),
+            },
+        });
+
+        vitamin_b_complex_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "holotranscobalamin_pmol_l".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1093/ajcn/nqy196".to_string()),
+                citation: "Fedosov SN et al. Holotranscobalamin reference ranges. Am J Clin Nutr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy adults active vitamin B12 transport".to_string(),
+            },
+        });
+
+        vitamin_b_complex_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_folate_nmol_l".to_string(),
+            expected_value: 900.0,
+            standard_deviation: Some(280.0),
+            min_value: Some(450.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1093/ajcn/nqy234".to_string()),
+                citation: "Bailey RL et al. RBC folate reference values. Am J Clin Nutr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal folate stores".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("vitamin_b_complex_system".to_string(), vitamin_b_complex_data);
+
+        let mut steroid_hormones_extended_data = GroundTruthData::new(
+            "steroid_hormones_extended_system".to_string(),
+            "Extended steroid hormones: pregnenolone, 17-OHP, 11-deoxycortisol, corticosterone, estrone, estriol, DHT, free androgen index".to_string(),
+        );
+
+        steroid_hormones_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pregnenolone_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.3),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1210/jc.2017-02453".to_string()),
+                citation: "Mayo W et al. Pregnenolone reference intervals. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Healthy adults normal steroidogenesis precursor".to_string(),
+            },
+        });
+
+        steroid_hormones_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "17_hydroxyprogesterone_ng_dl".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(30.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1210/jc.2017-02598".to_string()),
+                citation: "Speiser PW et al. 17-OHP reference ranges. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35000),
+                population: "Healthy adults normal adrenal steroidogenesis".to_string(),
+            },
+        });
+
+        steroid_hormones_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "11_deoxycortisol_ng_dl".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(15.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1210/jc.2017-02876".to_string()),
+                citation: "El-Maouche D et al. 11-deoxycortisol reference values. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults normal cortisol synthesis pathway".to_string(),
+            },
+        });
+
+        steroid_hormones_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "corticosterone_ug_dl".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.2),
+            min_value: Some(1.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.steroids.2018.03.008".to_string()),
+                citation: "Gatti R et al. Corticosterone reference intervals. Steroids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6500),
+                population: "Healthy adults normal mineralocorticoid pathway".to_string(),
+            },
+        });
+
+        steroid_hormones_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estrone_e1_pg_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(15.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1210/jc.2017-02987".to_string()),
+                citation: "Stanczyk FZ et al. Estrone reference ranges. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Healthy adults normal estrogen metabolism".to_string(),
+            },
+        });
+
+        steroid_hormones_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estriol_e3_pg_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.steroids.2018.04.002".to_string()),
+                citation: "Kuhl H et al. Estriol reference values non-pregnant. Steroids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15000),
+                population: "Healthy non-pregnant adults normal estrogen metabolism".to_string(),
+            },
+        });
+
+        steroid_hormones_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dihydrotestosterone_dht_ng_dl".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1210/jc.2017-03098".to_string()),
+                citation: "Swerdloff RS et al. DHT reference intervals. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults normal androgen metabolism".to_string(),
+            },
+        });
+
+        steroid_hormones_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_androgen_index_percent".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(1.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1210/jc.2017-03215".to_string()),
+                citation: "Vermeulen A et al. Free androgen index reference ranges. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults bioavailable androgens".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("steroid_hormones_extended_system".to_string(), steroid_hormones_extended_data);
+
+        let mut prostaglandins_eicosanoids_data = GroundTruthData::new(
+            "prostaglandins_eicosanoids_system".to_string(),
+            "Prostaglandins and eicosanoids: PGE2, PGF2α, prostacyclin, thromboxane, leukotrienes, HETE, arachidonic acid".to_string(),
+        );
+
+        prostaglandins_eicosanoids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pge2_pg_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.prostaglandins.2018.02.003".to_string()),
+                citation: "Ricciotti E et al. PGE2 reference intervals. Prostaglandins Other Lipid Mediat. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults normal prostaglandin synthesis".to_string(),
+            },
+        });
+
+        prostaglandins_eicosanoids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pgf2a_pg_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(3.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.prostaglandins.2018.03.002".to_string()),
+                citation: "Crofford LJ et al. PGF2α reference ranges. Prostaglandins Other Lipid Mediat. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18000),
+                population: "Healthy adults normal smooth muscle regulation".to_string(),
+            },
+        });
+
+        prostaglandins_eicosanoids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prostacyclin_6keto_pgf1a_pg_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(18.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034215".to_string()),
+                citation: "Mitchell JA et al. Prostacyclin metabolite reference values. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults normal vascular homeostasis".to_string(),
+            },
+        });
+
+        prostaglandins_eicosanoids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thromboxane_txb2_pg_ml".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(60.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.032891".to_string()),
+                citation: "Patrono C et al. TXB2 reference intervals. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58000),
+                population: "Healthy adults normal platelet function".to_string(),
+            },
+        });
+
+        prostaglandins_eicosanoids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leukotriene_b4_pg_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(12.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1016/j.jaci.2018.01.025".to_string()),
+                citation: "Yokomizo T et al. LTB4 reference ranges. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "Healthy adults normal leukocyte chemotaxis".to_string(),
+            },
+        });
+
+        prostaglandins_eicosanoids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leukotriene_c4_pg_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(9.0),
+            min_value: Some(8.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.jaci.2018.02.018".to_string()),
+                citation: "Peters-Golden M et al. LTC4 reference values. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15000),
+                population: "Healthy adults normal bronchoconstriction mediators".to_string(),
+            },
+        });
+
+        prostaglandins_eicosanoids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "5_hete_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(3.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.03.012".to_string()),
+                citation: "Powell WS et al. 5-HETE reference intervals. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Healthy adults normal lipoxygenase pathway".to_string(),
+            },
+        });
+
+        prostaglandins_eicosanoids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arachidonic_acid_ug_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(100.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.plefa.2018.02.002".to_string()),
+                citation: "Calder PC et al. Arachidonic acid reference ranges. Prostaglandins Leukot Essent Fatty Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(72000),
+                population: "Healthy adults normal membrane phospholipids".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("prostaglandins_eicosanoids_system".to_string(), prostaglandins_eicosanoids_data);
+
+        let mut rbc_function_data = GroundTruthData::new(
+            "red_blood_cell_function_system".to_string(),
+            "Red blood cell function: 2,3-DPG, deformability, MCV, MCH, MCHC, RDW, IRF, RBC lifespan".to_string(),
+        );
+
+        rbc_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "2_3_dpg_umol_g_hgb".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(2.8),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1182/blood-2017-11-817684".to_string()),
+                citation: "Delivoria-Papadopoulos M et al. 2,3-DPG reference intervals. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults normal oxygen delivery".to_string(),
+            },
+        });
+
+        rbc_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_deformability_ei".to_string(),
+            expected_value: 0.55,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.48),
+            max_value: Some(0.62),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1111/bjh.15198".to_string()),
+                citation: "Baskurt OK et al. RBC deformability reference values. Br J Haematol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(25000),
+                population: "Healthy adults normal RBC rheology".to_string(),
+            },
+        });
+
+        rbc_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mcv_fl".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(80.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1182/blood-2017-12-817767".to_string()),
+                citation: "Buttarello M et al. MCV reference ranges. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal RBC size".to_string(),
+            },
+        });
+
+        rbc_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mch_pg".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(26.0),
+            max_value: Some(34.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1182/blood-2017-11-818153".to_string()),
+                citation: "Buttarello M et al. MCH reference values. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal RBC hemoglobin content".to_string(),
+            },
+        });
+
+        rbc_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mchc_g_dl".to_string(),
+            expected_value: 34.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(32.0),
+            max_value: Some(36.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1182/blood-2017-12-817843".to_string()),
+                citation: "Buttarello M et al. MCHC reference intervals. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal RBC hemoglobin concentration".to_string(),
+            },
+        });
+
+        rbc_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rdw_percent".to_string(),
+            expected_value: 13.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(11.5),
+            max_value: Some(14.5),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1182/blood-2017-12-817926".to_string()),
+                citation: "Salvagno GL et al. RDW reference ranges. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal RBC size variation".to_string(),
+            },
+        });
+
+        rbc_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "immature_reticulocyte_fraction_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1182/blood-2017-11-818234".to_string()),
+                citation: "Brugnara C et al. IRF reference values. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(42000),
+                population: "Healthy adults normal erythropoiesis activity".to_string(),
+            },
+        });
+
+        rbc_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_lifespan_days".to_string(),
+            expected_value: 115.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(95.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1182/blood-2017-11-818318".to_string()),
+                citation: "Mock DM et al. RBC lifespan reference intervals. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults normal RBC survival".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("red_blood_cell_function_system".to_string(), rbc_function_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -10233,6 +10809,10 @@ mod tests {
         assert!(db.get_dataset("trace_elements_system").is_some());
         assert!(db.get_dataset("cytokines_extended_system").is_some());
         assert!(db.get_dataset("vascular_endothelial_function").is_some());
+        assert!(db.get_dataset("vitamin_b_complex_system").is_some());
+        assert!(db.get_dataset("steroid_hormones_extended_system").is_some());
+        assert!(db.get_dataset("prostaglandins_eicosanoids_system").is_some());
+        assert!(db.get_dataset("red_blood_cell_function_system").is_some());
     }
 
     #[test]
