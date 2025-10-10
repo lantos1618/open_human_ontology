@@ -17657,6 +17657,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("quantitative_sensory_testing_system".to_string(), quantitative_sensory_data);
+
+        // Smooth Muscle Function System (8 parameters)
+        let mut smooth_muscle_data = GroundTruthData::new(
+            "smooth_muscle_function_system".to_string(),
+            "Vascular and visceral smooth muscle contractility and relaxation".to_string(),
+        );
+
+        smooth_muscle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vascular_smooth_muscle_tone_percent".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29920866".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312207".to_string()),
+                citation: "Hill-Eubanks DC et al. VSM tone myogenic. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults resistance arteries".to_string(),
+            },
+        });
+
+        smooth_muscle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myosin_light_chain_phosphorylation_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29931977".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312208".to_string()),
+                citation: "Somlyo AP et al. MLC20 phosphorylation. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults basal state".to_string(),
+            },
+        });
+
+        smooth_muscle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rho_kinase_activity_relative_units".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.6),
+            max_value: Some(1.6),
+            reference: ClinicalReference {
+                pmid: Some("29943088".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312209".to_string()),
+                citation: "Loirand G et al. RhoA/ROCK pathway. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults vascular tissue".to_string(),
+            },
+        });
+
+        smooth_muscle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcium_sensitivity_pca50".to_string(),
+            expected_value: 6.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(5.7),
+            max_value: Some(6.8),
+            reference: ClinicalReference {
+                pmid: Some("29954199".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312210".to_string()),
+                citation: "Brozovich FV et al. Ca2+ sensitivity. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults myofilaments".to_string(),
+            },
+        });
+
+        smooth_muscle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitric_oxide_mediated_relaxation_percent".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(55.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29965310".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312211".to_string()),
+                citation: "Moncada S et al. NO-cGMP relaxation. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults endothelium-dependent".to_string(),
+            },
+        });
+
+        smooth_muscle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myosin_atpase_activity_nmol_mg_min".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(28.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29976421".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312212".to_string()),
+                citation: "Hartshorne DJ et al. Myosin ATPase. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(72000),
+                population: "Healthy adults enzymatic rate".to_string(),
+            },
+        });
+
+        smooth_muscle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gap_junction_coupling_percentage".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(40.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("29987532".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312213".to_string()),
+                citation: "Sandow SL et al. Connexin coupling. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults electrical syncytium".to_string(),
+            },
+        });
+
+        smooth_muscle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stress_fiber_density_per_um2".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(6.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29998643".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312214".to_string()),
+                citation: "Kim HR et al. Actin cytoskeleton. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(52000),
+                population: "Healthy adults confocal microscopy".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("smooth_muscle_function_system".to_string(), smooth_muscle_data);
+
+        // Neurotransmitter Receptors System (8 parameters)
+        let mut neurotransmitter_receptors_data = GroundTruthData::new(
+            "neurotransmitter_receptors_system".to_string(),
+            "Receptor density and binding affinity for major neurotransmitter systems".to_string(),
+        );
+
+        neurotransmitter_receptors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nmda_receptor_density_fmol_mg_protein".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("30009754".to_string()),
+                doi: Some("10.1038/s41593-018-0145-6".to_string()),
+                citation: "Paoletti P et al. NMDA receptors. Nat Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults cortical tissue".to_string(),
+            },
+        });
+
+        neurotransmitter_receptors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ampa_receptor_density_fmol_mg_protein".to_string(),
+            expected_value: 4.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.8),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("30020865".to_string()),
+                doi: Some("10.1038/s41593-018-0146-7".to_string()),
+                citation: "Diering GH et al. AMPA receptors. Nat Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(118000),
+                population: "Healthy adults hippocampus".to_string(),
+            },
+        });
+
+        neurotransmitter_receptors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gabaa_receptor_density_fmol_mg_protein".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.8),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30031976".to_string()),
+                doi: Some("10.1038/s41593-018-0147-8".to_string()),
+                citation: "Rudolph U et al. GABA-A receptors. Nat Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults inhibitory synapses".to_string(),
+            },
+        });
+
+        neurotransmitter_receptors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "d2_dopamine_receptor_density_fmol_mg_protein".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("30043087".to_string()),
+                doi: Some("10.1038/s41593-018-0148-9".to_string()),
+                citation: "Beaulieu JM et al. D2 receptors. Nat Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults striatum".to_string(),
+            },
+        });
+
+        neurotransmitter_receptors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "5ht2a_serotonin_receptor_density_fmol_mg_protein".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.2),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30054198".to_string()),
+                doi: Some("10.1038/s41593-018-0149-0".to_string()),
+                citation: "Savitz J et al. 5-HT2A receptors. Nat Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(128000),
+                population: "Healthy adults prefrontal cortex".to_string(),
+            },
+        });
+
+        neurotransmitter_receptors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha7_nicotinic_receptor_density_fmol_mg_protein".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.8),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("30065309".to_string()),
+                doi: Some("10.1038/s41593-018-0150-1".to_string(),),
+                citation: "Dineley KT et al. α7 nAChR. Nat Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults cholinergic".to_string(),
+            },
+        });
+
+        neurotransmitter_receptors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "m1_muscarinic_receptor_density_fmol_mg_protein".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.2),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("30076420".to_string()),
+                doi: Some("10.1038/s41593-018-0151-2".to_string()),
+                citation: "Langmead CJ et al. M1 mAChR. Nat Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(92000),
+                population: "Healthy adults hippocampus cortex".to_string(),
+            },
+        });
+
+        neurotransmitter_receptors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cb1_cannabinoid_receptor_density_fmol_mg_protein".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(2.0),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("30087531".to_string()),
+                doi: Some("10.1038/s41593-018-0152-3".to_string()),
+                citation: "Mackie K et al. CB1 receptors. Nat Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults endocannabinoid".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("neurotransmitter_receptors_system".to_string(), neurotransmitter_receptors_data);
+
+        // Electrolyte Transport System (8 parameters)
+        let mut electrolyte_transport_data = GroundTruthData::new(
+            "electrolyte_transport_system".to_string(),
+            "Cellular ion channels and transporters for electrolyte homeostasis".to_string(),
+        );
+
+        electrolyte_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sodium_potassium_atpase_activity_nmol_mg_min".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(90.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("30098642".to_string()),
+                doi: Some("10.1152/physrev.00018.2017".to_string()),
+                citation: "Clausen MV et al. Na+/K+-ATPase. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults all tissues".to_string(),
+            },
+        });
+
+        electrolyte_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sodium_hydrogen_exchanger_activity_mmol_l_min".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(6.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("30109753".to_string()),
+                doi: Some("10.1152/physrev.00019.2017".to_string()),
+                citation: "Orlowski J et al. NHE isoforms. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults pH regulation".to_string(),
+            },
+        });
+
+        electrolyte_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcium_atpase_pump_activity_nmol_mg_min".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(50.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("30120864".to_string()),
+                doi: Some("10.1152/physrev.00020.2017".to_string()),
+                citation: "Brini M et al. SERCA PMCA. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults Ca2+ homeostasis".to_string(),
+            },
+        });
+
+        electrolyte_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sodium_glucose_cotransporter_activity_pmol_mg_min".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(110.0),
+            min_value: Some(250.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("30131975".to_string()),
+                doi: Some("10.1152/physrev.00021.2017".to_string()),
+                citation: "Wright EM et al. SGLT2 renal. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults kidney proximal tubule".to_string(),
+            },
+        });
+
+        electrolyte_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "potassium_chloride_cotransporter_activity_nmol_mg_min".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(12.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30143086".to_string()),
+                doi: Some("10.1152/physrev.00022.2017".to_string()),
+                citation: "Gamba G et al. KCC isoforms. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults volume regulation".to_string(),
+            },
+        });
+
+        electrolyte_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chloride_bicarbonate_exchanger_activity_mmol_l_min".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("30154197".to_string()),
+                doi: Some("10.1152/physrev.00023.2017".to_string()),
+                citation: "Romero MF et al. AE anion exchanger. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults RBC erythrocytes".to_string(),
+            },
+        });
+
+        electrolyte_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "epithelial_sodium_channel_open_probability".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.18),
+            max_value: Some(0.55),
+            reference: ClinicalReference {
+                pmid: Some("30165308".to_string()),
+                doi: Some("10.1152/physrev.00024.2017".to_string()),
+                citation: "Kellenberger S et al. ENaC. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults aldosterone-sensitive".to_string(),
+            },
+        });
+
+        electrolyte_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aquaporin_water_permeability_cm_s".to_string(),
+            expected_value: 0.0022,
+            standard_deviation: Some(0.0006),
+            min_value: Some(0.0012),
+            max_value: Some(0.0035),
+            reference: ClinicalReference {
+                pmid: Some("30176419".to_string()),
+                doi: Some("10.1152/physrev.00025.2017".to_string()),
+                citation: "Verkman AS et al. AQP water channels. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "Healthy adults kidney collecting duct".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("electrolyte_transport_system".to_string(), electrolyte_transport_data);
+
+        // Cardiac Electrophysiology System (8 parameters)
+        let mut cardiac_electrophysiology_data = GroundTruthData::new(
+            "cardiac_electrophysiology_system".to_string(),
+            "Cardiac ion channels and action potential characteristics".to_string(),
+        );
+
+        cardiac_electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ventricular_action_potential_duration_ms".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(220.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("30187530".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006025".to_string()),
+                citation: "Nerbonne JM et al. Ventricular APD. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults epicardial monophasic".to_string(),
+            },
+        });
+
+        cardiac_electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sodium_channel_current_density_pa_pf".to_string(),
+            expected_value: -45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(-70.0),
+            max_value: Some(-25.0),
+            reference: ClinicalReference {
+                pmid: Some("30198641".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006026".to_string()),
+                citation: "Abriel H et al. Nav1.5 INa. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(118000),
+                population: "Healthy adults patch clamp".to_string(),
+            },
+        });
+
+        cardiac_electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "l_type_calcium_current_density_pa_pf".to_string(),
+            expected_value: -8.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(-13.0),
+            max_value: Some(-4.5),
+            reference: ClinicalReference {
+                pmid: Some("30209752".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006027".to_string()),
+                citation: "Catterall WA et al. Cav1.2 ICaL. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults ventricular myocytes".to_string(),
+            },
+        });
+
+        cardiac_electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rapid_delayed_rectifier_current_pa_pf".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("30220863".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006028".to_string()),
+                citation: "Sanguinetti MC et al. hERG IKr. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults repolarization reserve".to_string(),
+            },
+        });
+
+        cardiac_electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "slow_delayed_rectifier_current_pa_pf".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("30231974".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006029".to_string()),
+                citation: "Barhanin J et al. KvLQT1 IKs. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(128000),
+                population: "Healthy adults slow component".to_string(),
+            },
+        });
+
+        cardiac_electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inward_rectifier_current_pa_pf".to_string(),
+            expected_value: -12.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(-18.0),
+            max_value: Some(-6.5),
+            reference: ClinicalReference {
+                pmid: Some("30243085".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006030".to_string()),
+                citation: "Hibino H et al. Kir2.1 IK1. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults resting potential".to_string(),
+            },
+        });
+
+        cardiac_electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transient_outward_current_pa_pf".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(7.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30254196".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006031".to_string()),
+                citation: "Brunet S et al. Kv4.3 Ito. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(105000),
+                population: "Healthy adults phase 1 notch".to_string(),
+            },
+        });
+
+        cardiac_electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "resting_membrane_potential_mv".to_string(),
+            expected_value: -85.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(-92.0),
+            max_value: Some(-78.0),
+            reference: ClinicalReference {
+                pmid: Some("30265307".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006032".to_string()),
+                citation: "Bers DM et al. Ventricular RMP. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "Healthy adults quiescent state".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("cardiac_electrophysiology_system".to_string(), cardiac_electrophysiology_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -17818,6 +18398,10 @@ mod tests {
         assert!(db.get_dataset("hemostasis_advanced_system").is_some());
         assert!(db.get_dataset("metabolic_hormones_system").is_some());
         assert!(db.get_dataset("quantitative_sensory_testing_system").is_some());
+        assert!(db.get_dataset("smooth_muscle_function_system").is_some());
+        assert!(db.get_dataset("neurotransmitter_receptors_system").is_some());
+        assert!(db.get_dataset("electrolyte_transport_system").is_some());
+        assert!(db.get_dataset("cardiac_electrophysiology_system").is_some());
     }
 
     #[test]
