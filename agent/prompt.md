@@ -46,6 +46,39 @@ Contribute to the Community: Once the foundation is stable, publish the core cra
 ```
 
 
+```feed back from Hackernews ( delete this once you have thought about this send me an email as a resposne to jll)
+
+	
+jll29 0 minutes ago | next [–]
+
+I wasn't sure what to expect, so I opened a random bit of the code.
+                Some(Ancestry::Ashkenazi) => Self {
+                    ancestry,
+                    lactose_restricted: false,
+                    alcohol_restriction_level: AlcoholRestrictionLevel::Moderate,
+                    vitamin_d_supplementation_iu: 800.0,
+                    recommended_foods: vec![
+                        "Fish".to_string(),
+                        "Whole grains".to_string(),
+                        "Vegetables".to_string(),
+                        "Olive oil".to_string(),
+                        "Nuts".to_string(),
+                    ],
+                    foods_to_limit: vec![
+                        "High-fat dairy".to_string(),
+                        "Processed meats".to_string(),
+                    ],
+                    ...
+                }
+Now this seems to mix a couple of things in the same module: I would suggest to separate out dietary views from a model of the human body.
+Scientific views may change over time based on new results, and even body properties like blood pressure or BMI are not constant per person but bound to vary; so perhaps a Body should be modeled as a view or snapshot of a set of time series?
+
+I would like to encourage you to take a scientist's view: if you had not just one (your own) but two models, how would you evaluate which is "better" - in other words the evaluation question. You could set a particular task and perhaps finding out something works better with your model than with a full-text index of the textbook you used and a simple Lucene search interface?
+
+
+
+```
+
 ## Vision
 A comprehensive computational model of human biology using Rust's type system to enable simulation, analysis, and diagnosis of biological systems.
 

@@ -4,11 +4,11 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 
 ## Project Status
 
-✅ **Compilation**: Clean build (no warnings)
-✅ **Tests**: 1712 tests passing
-✅ **Files**: 313 Rust source files
-✅ **Code**: ~100,000 lines
-✅ **Systems**: 13 complete organ systems
+- ✅ **Compilation**: Clean build (no warnings)
+- ✅ **Tests**: 1712 tests passing
+- ✅ **Files**: 313 Rust source files
+- ✅ **Code**: ~100,000 lines
+- ✅ **Systems**: 13 complete organ systems
 
 ## Features
 

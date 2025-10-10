@@ -5,6 +5,8 @@ use crate::biology::epigenetics::EpigeneticProfile;
 use crate::biology::proteomics::ProteomicsProfile;
 use std::collections::HashMap;
 
+pub mod physiology_engine;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SimulationEngine {
     pub time_step_hours: f64,

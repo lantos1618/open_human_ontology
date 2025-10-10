@@ -114,11 +114,13 @@ impl PhysiologyState {
         self.respiratory.update(dt, &self.metabolic, &self.cardiovascular);
         self.metabolic.update(dt, &self.cardiovascular, &self.respiratory);
         self.renal.update(dt, &self.cardiovascular);
-        self.update_temperature(dt, &self.metabolic);
+
+        let metabolic_rate = self.metabolic.metabolic_rate_kcal_day;
+        self.update_temperature(dt, metabolic_rate);
     }
 
-    fn update_temperature(&mut self, dt: f64, metabolic: &MetabolicState) {
-        let heat_production = metabolic.metabolic_rate_kcal_day / 24.0 / 3600.0;
+    fn update_temperature(&mut self, dt: f64, metabolic_rate_kcal_day: f64) {
+        let heat_production = metabolic_rate_kcal_day / 24.0 / 3600.0;
         let heat_loss_coefficient = 0.5;
         let ambient_temp = 25.0;
 
@@ -210,7 +212,6 @@ impl RespiratoryState {
         self.paco2_mmhg = 40.0 / ventilation_perfusion_ratio.max(0.5);
         self.pao2_mmhg = 100.0 * (ventilation_perfusion_ratio / 0.8).min(1.2);
 
-        let o2_hb_affinity = 0.0031 * self.pao2_mmhg;
         self.sao2_percent = (100.0 * self.pao2_mmhg.powi(3)) /
                            (self.pao2_mmhg.powi(3) + 26.0_f64.powi(3));
 
@@ -240,7 +241,10 @@ impl MetabolicState {
 
     pub fn update(&mut self, dt: f64, cv: &CardiovascularState, resp: &RespiratoryState) {
         let oxygen_delivery = cv.cardiac_output_l_min * 1000.0 * resp.sao2_percent / 100.0 * 0.2;
-        self.vo2_ml_min = oxygen_delivery.min(400.0);
+        let baseline_vo2 = 250.0;
+        let vo2_tau = 30.0;
+        let target_vo2 = oxygen_delivery.max(baseline_vo2).min(400.0);
+        self.vo2_ml_min += (target_vo2 - self.vo2_ml_min) * dt / vo2_tau;
 
         self.vco2_ml_min = self.vo2_ml_min * self.respiratory_quotient;
 
@@ -350,6 +354,14 @@ impl Stressors {
     pub fn exercise(intensity: f64) -> Self {
         Self {
             physical_stress: intensity,
+            mental_stress: 0.1,
+            chronic_stress: 0.0,
+        }
+    }
+
+    pub fn moderate_exercise() -> Self {
+        Self {
+            physical_stress: 0.6,
             mental_stress: 0.1,
             chronic_stress: 0.0,
         }
