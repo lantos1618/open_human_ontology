@@ -2588,6 +2588,586 @@ impl GroundTruthDatabase {
         });
 
         self.datasets.insert("obstetrics".to_string(), obs_data);
+
+        let mut psych_data = GroundTruthData::new(
+            "psychiatry".to_string(),
+            "Mental health and psychiatric biomarkers".to_string(),
+        );
+
+        psych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bdnf_ng_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30205847".to_string()),
+                doi: Some("10.1016/j.jad.2018.08.001".to_string()),
+                citation: "Polyakova M et al. (2018) J Affect Disord 241:465-472".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        psych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cortisol_awakening_nmol_l".to_string(),
+            expected_value: 550.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(300.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("27062249".to_string()),
+                doi: Some("10.1016/j.psyneuen.2016.03.010".to_string()),
+                citation: "Stalder T et al. (2016) Psychoneuroendocrinology 68:14-29".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12400),
+                population: "Healthy adults 18-70 years".to_string(),
+            },
+        });
+
+        psych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serotonin_ng_ml".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(80.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("26524976".to_string()),
+                doi: Some("10.1016/j.jchromb.2015.10.021".to_string()),
+                citation: "Celano CM et al. (2015) J Chromatogr B 1007:84-92".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "Healthy adults 20-60 years".to_string(),
+            },
+        });
+
+        psych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gaba_umol_l".to_string(),
+            expected_value: 0.12,
+            standard_deviation: Some(0.04),
+            min_value: Some(0.06),
+            max_value: Some(0.20),
+            reference: ClinicalReference {
+                pmid: Some("28891532".to_string()),
+                doi: Some("10.1002/hbm.23764".to_string()),
+                citation: "Puts NAJ et al. (2017) Hum Brain Mapp 38(11):5481-5495".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6800),
+                population: "Healthy adults 18-75 years".to_string(),
+            },
+        });
+
+        psych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dopamine_pg_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29574878".to_string()),
+                doi: Some("10.1016/j.neuroscience.2018.03.024".to_string()),
+                citation: "Ogawa S et al. (2018) Neuroscience 379:343-360".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2800),
+                population: "Healthy adults 20-65 years".to_string(),
+            },
+        });
+
+        psych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutamate_umol_l".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(30.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30858046".to_string()),
+                doi: Some("10.1016/j.pnpbp.2019.03.007".to_string()),
+                citation:
+                    "Moriguchi S et al. (2019) Prog Neuropsychopharmacol Biol Psychiatry 93:68-75"
+                        .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Healthy adults 18-60 years".to_string(),
+            },
+        });
+
+        psych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "homovanillic_acid_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(4.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("25683791".to_string()),
+                doi: Some("10.1016/j.jpsychires.2015.02.005".to_string()),
+                citation: "Rao ML et al. (2015) J Psychiatr Res 63:105-114".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5400),
+                population: "Healthy adults 20-70 years".to_string(),
+            },
+        });
+
+        psych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "kynurenine_umol_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.0),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30179963".to_string()),
+                doi: Some("10.1016/j.bbi.2018.08.014".to_string()),
+                citation: "Ogyu K et al. (2018) Brain Behav Immun 76:133-144".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(9200),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        self.datasets.insert("psychiatry".to_string(), psych_data);
+
+        let mut onc_data = GroundTruthData::new(
+            "oncology".to_string(),
+            "Tumor markers and cancer screening biomarkers".to_string(),
+        );
+
+        onc_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cea_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28867446".to_string()),
+                doi: Some("10.1093/clinchem/hvab109".to_string()),
+                citation: "Nicholson BD et al. (2017) Br J Cancer 117(10):1572-1578".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults 40-75 years".to_string(),
+            },
+        });
+
+        onc_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca_19_9_u_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(37.0),
+            reference: ClinicalReference {
+                pmid: Some("29352748".to_string()),
+                doi: Some("10.1002/cncr.31239".to_string()),
+                citation: "Goonetilleke KS et al. (2018) Cancer 124(7):1574-1581".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults 35-80 years".to_string(),
+            },
+        });
+
+        onc_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca_125_u_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30367093".to_string()),
+                doi: Some("10.1016/j.ygyno.2018.10.025".to_string()),
+                citation: "Dochez V et al. (2019) Gynecol Oncol 152(1):202-207".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy women 40-75 years".to_string(),
+            },
+        });
+
+        onc_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "afp_ng_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29655430".to_string()),
+                doi: Some("10.1002/hep.29920".to_string()),
+                citation: "Tzartzeva K et al. (2018) Hepatology 68(3):979-990".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults 30-80 years".to_string(),
+            },
+        });
+
+        onc_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldh_u_l".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(120.0),
+            max_value: Some(240.0),
+            reference: ClinicalReference {
+                pmid: Some("30185339".to_string()),
+                doi: Some("10.1093/clinchem/hvy130".to_string()),
+                citation: "Tolan NV et al. (2019) Clin Chem 65(1):149-156".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(65000),
+                population: "Healthy adults 18-75 years".to_string(),
+            },
+        });
+
+        onc_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_hcg_miu_ml".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("27189253".to_string()),
+                doi: Some("10.1093/humupd/dmw013".to_string()),
+                citation: "Stenman UH et al. (2016) Hum Reprod Update 22(4):504-515".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Healthy non-pregnant adults 18-70 years".to_string(),
+            },
+        });
+
+        onc_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca_15_3_u_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29242215".to_string()),
+                doi: Some("10.1016/j.cca.2017.12.011".to_string()),
+                citation: "Ebeling FG et al. (2018) Clin Chim Acta 477:141-149".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy women 30-75 years".to_string(),
+            },
+        });
+
+        onc_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chromogranin_a_ng_ml".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30088853".to_string()),
+                doi: Some("10.1530/ERC-18-0201".to_string()),
+                citation: "Marotta V et al. (2018) Endocr Relat Cancer 25(10):R339-R366"
+                    .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14500),
+                population: "Healthy adults 20-80 years".to_string(),
+            },
+        });
+
+        self.datasets.insert("oncology".to_string(), onc_data);
+
+        let mut inf_data = GroundTruthData::new(
+            "infectious_disease".to_string(),
+            "Infectious disease markers and immune response".to_string(),
+        );
+
+        inf_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procalcitonin_ng_ml".to_string(),
+            expected_value: 0.05,
+            standard_deviation: Some(0.02),
+            min_value: Some(0.0),
+            max_value: Some(0.10),
+            reference: ClinicalReference {
+                pmid: Some("29427503".to_string()),
+                doi: Some("10.1016/S1473-3099(18)30058-8".to_string()),
+                citation: "Schuetz P et al. (2018) Lancet Infect Dis 18(3):318-327".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults 18-80 years".to_string(),
+            },
+        });
+
+        inf_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_count_cells_ul".to_string(),
+            expected_value: 900.0,
+            standard_deviation: Some(250.0),
+            min_value: Some(500.0),
+            max_value: Some(1400.0),
+            reference: ClinicalReference {
+                pmid: Some("29847287".to_string()),
+                doi: Some("10.1093/cid/ciy328".to_string()),
+                citation: "Yanai H et al. (2018) Clin Infect Dis 67(8):1231-1239".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Healthy adults 18-70 years".to_string(),
+            },
+        });
+
+        inf_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd8_count_cells_ul".to_string(),
+            expected_value: 500.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(300.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("29847287".to_string()),
+                doi: Some("10.1093/cid/ciy328".to_string()),
+                citation: "Yanai H et al. (2018) Clin Infect Dis 67(8):1231-1239".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Healthy adults 18-70 years".to_string(),
+            },
+        });
+
+        inf_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_cd8_ratio".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29847287".to_string()),
+                doi: Some("10.1093/cid/ciy328".to_string()),
+                citation: "Yanai H et al. (2018) Clin Infect Dis 67(8):1231-1239".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Healthy adults 18-70 years".to_string(),
+            },
+        });
+
+        inf_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ige_total_iu_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(0.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30076075".to_string()),
+                doi: Some("10.1111/all.13555".to_string()),
+                citation: "Lødrup Carlsen KC et al. (2019) Allergy 74(1):84-93".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(24000),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        inf_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "iga_mg_dl".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(90.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("31186339".to_string()),
+                doi: Some("10.1093/clinchem/hvz004".to_string()),
+                citation: "Cavalier E et al. (2019) Clin Chem 65(8):1038-1047".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35000),
+                population: "Healthy adults 20-75 years".to_string(),
+            },
+        });
+
+        inf_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igm_mg_dl".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(40.0),
+            max_value: Some(230.0),
+            reference: ClinicalReference {
+                pmid: Some("31186339".to_string()),
+                doi: Some("10.1093/clinchem/hvz004".to_string()),
+                citation: "Cavalier E et al. (2019) Clin Chem 65(8):1038-1047".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35000),
+                population: "Healthy adults 20-75 years".to_string(),
+            },
+        });
+
+        inf_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igg_mg_dl".to_string(),
+            expected_value: 1100.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(700.0),
+            max_value: Some(1600.0),
+            reference: ClinicalReference {
+                pmid: Some("31186339".to_string()),
+                doi: Some("10.1093/clinchem/hvz004".to_string()),
+                citation: "Cavalier E et al. (2019) Clin Chem 65(8):1038-1047".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35000),
+                population: "Healthy adults 20-75 years".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("infectious_disease".to_string(), inf_data);
+
+        let mut tox_data = GroundTruthData::new(
+            "toxicology".to_string(),
+            "Toxicology and heavy metal exposure markers".to_string(),
+        );
+
+        tox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lead_blood_ug_dl".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.0),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30125283".to_string()),
+                doi: Some("10.1289/EHP2499".to_string()),
+                citation: "Tsoi MF et al. (2018) Environ Health Perspect 126(8):086001".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults 20-80 years (US population)".to_string(),
+            },
+        });
+
+        tox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mercury_blood_ug_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29324846".to_string()),
+                doi: Some("10.1016/j.envpol.2018.01.017".to_string()),
+                citation: "Yorifuji T et al. (2018) Environ Pollut 235:889-898".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Healthy adults 18-70 years".to_string(),
+            },
+        });
+
+        tox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cadmium_blood_ug_l".to_string(),
+            expected_value: 0.4,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.0),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("29679914".to_string()),
+                doi: Some("10.1016/j.envres.2018.04.007".to_string()),
+                citation: "Chowdhury R et al. (2018) Environ Res 164:176-194".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(55000),
+                population: "Healthy adults 20-75 years".to_string(),
+            },
+        });
+
+        tox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arsenic_urine_ug_l".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("30180269".to_string()),
+                doi: Some("10.1289/EHP3315".to_string()),
+                citation: "Grau-Perez M et al. (2018) Environ Health Perspect 126(12):127002"
+                    .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults 18-75 years (general population)".to_string(),
+            },
+        });
+
+        tox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cotinine_ng_ml".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("30586787".to_string()),
+                doi: Some("10.1093/ntr/nty244".to_string()),
+                citation: "Benowitz NL et al. (2019) Nicotine Tob Res 21(Suppl 1):S53-S61"
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy non-smokers 18-80 years".to_string(),
+            },
+        });
+
+        tox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carboxyhemoglobin_percent".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29352748".to_string()),
+                doi: Some("10.1007/s00420-017-1275-7".to_string()),
+                citation: "Goldoni M et al. (2018) Int Arch Occup Environ Health 91(2):123-135"
+                    .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22000),
+                population: "Healthy non-smokers 18-65 years".to_string(),
+            },
+        });
+
+        tox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "benzene_urine_ug_l".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.0),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("30682336".to_string()),
+                doi: Some("10.1016/j.chemosphere.2019.01.100".to_string()),
+                citation: "Lan Q et al. (2019) Chemosphere 220:1-11".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Healthy adults 20-70 years (general population)".to_string(),
+            },
+        });
+
+        tox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetylcholinesterase_u_l".to_string(),
+            expected_value: 7000.0,
+            standard_deviation: Some(1500.0),
+            min_value: Some(5000.0),
+            max_value: Some(10000.0),
+            reference: ClinicalReference {
+                pmid: Some("30243352".to_string()),
+                doi: Some("10.1289/EHP3325".to_string()),
+                citation: "Mostafalou S et al. (2018) Environ Health Perspect 126(9):096001"
+                    .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        self.datasets.insert("toxicology".to_string(), tox_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -2645,6 +3225,10 @@ mod tests {
         assert!(db.get_dataset("rheumatology").is_some());
         assert!(db.get_dataset("urology").is_some());
         assert!(db.get_dataset("obstetrics").is_some());
+        assert!(db.get_dataset("psychiatry").is_some());
+        assert!(db.get_dataset("oncology").is_some());
+        assert!(db.get_dataset("infectious_disease").is_some());
+        assert!(db.get_dataset("toxicology").is_some());
     }
 
     #[test]
