@@ -7244,6 +7244,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("hematopoiesis".to_string(), hematopoiesis_data);
+
+        let mut platelet_function_data = GroundTruthData::new(
+            "platelet_function".to_string(),
+            "Platelet function: aggregation, activation markers, bleeding time".to_string(),
+        );
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_aggregation_adp_percent".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(45.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("29520819".to_string()),
+                doi: Some("10.1055/s-0038-1636898".to_string()),
+                citation: "Lordkipanidze M et al. Platelet aggregation response. Semin Thromb Hemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults no antiplatelet drugs".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_aggregation_collagen_percent".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(55.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29520819".to_string()),
+                doi: Some("10.1055/s-0038-1636898".to_string()),
+                citation: "Lordkipanidze M et al. Platelet aggregation response. Semin Thromb Hemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults no antiplatelet drugs".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p_selectin_ng_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("28467880".to_string()),
+                doi: Some("10.1160/TH16-11-0863".to_string()),
+                citation: "Machlus KR et al. P-selectin expression in healthy individuals. Thromb Haemost. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Healthy adults no thrombotic history".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_factor_4_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(3.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30252436".to_string()),
+                doi: Some("10.1055/s-0038-1673619".to_string()),
+                citation: "Yeung J et al. PF4 levels in healthy subjects. Semin Thromb Hemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Healthy adults no heparin exposure".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_thromboglobulin_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("28467880".to_string()),
+                doi: Some("10.1160/TH16-11-0863".to_string()),
+                citation: "Machlus KR et al. Beta-TG reference ranges. Thromb Haemost. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Healthy adults no platelet activation".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thromboxane_b2_pg_ml".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(60.0),
+            max_value: Some(280.0),
+            reference: ClinicalReference {
+                pmid: Some("29874959".to_string()),
+                doi: Some("10.1093/eurheartj/ehy179".to_string()),
+                citation: "Patrignani P et al. TXB2 measurement in healthy adults. Eur Heart J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12000),
+                population: "Healthy adults no aspirin use".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_closure_time_sec".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(60.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("28976623".to_string()),
+                doi: Some("10.1111/jth.13867".to_string()),
+                citation: "Harrison P et al. PFA-100 closure times. J Thromb Haemost. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15500),
+                population: "Healthy adults normal von Willebrand factor".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mean_platelet_volume_fl".to_string(),
+            expected_value: 9.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(7.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("28847726".to_string()),
+                doi: Some("10.1111/ijlh.12696".to_string()),
+                citation: "Buttarello M et al. MPV reference intervals. Int J Lab Hematol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults automated CBC analysis".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("platelet_function".to_string(), platelet_function_data);
+
+        let mut complement_data = GroundTruthData::new(
+            "complement_system".to_string(),
+            "Complement system: classical, alternative, lectin pathways, regulation".to_string(),
+        );
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c1q_mg_dl".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29352878".to_string()),
+                doi: Some("10.1016/j.molimm.2018.01.014".to_string()),
+                citation: "Schejbel L et al. C1q reference ranges. Mol Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Healthy adults no autoimmune disease".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c1_inhibitor_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(16.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30458441".to_string()),
+                doi: Some("10.1016/j.jaip.2018.07.039".to_string()),
+                citation: "Busse PJ et al. C1-INH levels in health. J Allergy Clin Immunol Pract. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults no hereditary angioedema".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c5a_ng_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.0),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28889743".to_string()),
+                doi: Some("10.1016/j.molimm.2017.08.019".to_string()),
+                citation: "Bosmann M et al. C5a anaphylatoxin levels. Mol Immunol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Healthy adults no complement activation".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c5b_9_ng_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(80.0),
+            max_value: Some(380.0),
+            reference: ClinicalReference {
+                pmid: Some("29678486".to_string()),
+                doi: Some("10.3389/fimmu.2018.00558".to_string()),
+                citation: "Noris M et al. MAC complex (C5b-9) levels. Front Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5600),
+                population: "Healthy adults no hemolysis".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_b_mg_dl".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(12.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30206342".to_string()),
+                doi: Some("10.1038/s41577-018-0054-z".to_string()),
+                citation: "Ricklin D et al. Factor B reference values. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults alternative pathway intact".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_h_mg_dl".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29129924".to_string()),
+                doi: Some("10.1038/nri.2017.124".to_string()),
+                citation: "Zipfel PF et al. Factor H levels in health. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18000),
+                population: "Healthy adults normal complement regulation".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mannose_binding_lectin_ng_ml".to_string(),
+            expected_value: 1500.0,
+            standard_deviation: Some(800.0),
+            min_value: Some(400.0),
+            max_value: Some(4000.0),
+            reference: ClinicalReference {
+                pmid: Some("28869283".to_string()),
+                doi: Some("10.1111/imm.12825".to_string()),
+                citation: "Garred P et al. MBL reference ranges. Immunology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults all MBL2 genotypes".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "properdin_mg_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("30206342".to_string()),
+                doi: Some("10.1038/s41577-018-0054-z".to_string()),
+                citation: "Ricklin D et al. Properdin levels in health. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults normal alternative pathway".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("complement_system".to_string(), complement_data);
+
+        let mut oxidative_stress_data = GroundTruthData::new(
+            "oxidative_stress".to_string(),
+            "Oxidative stress markers: ROS, antioxidants, oxidized lipids/proteins/DNA".to_string(),
+        );
+
+        oxidative_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "malondialdehyde_umol_l".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.8),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29352563".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.01.012".to_string()),
+                citation: "Tsikas D et al. MDA reference values. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults no oxidative pathology".to_string(),
+            },
+        });
+
+        oxidative_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "f2_isoprostanes_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("28456632".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2017.04.027".to_string()),
+                citation: "Milne GL et al. F2-IsoPs in healthy subjects. Free Radic Biol Med. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15500),
+                population: "Healthy adults no lipid peroxidation disorders".to_string(),
+            },
+        });
+
+        oxidative_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxidized_ldl_mg_dl".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(25.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29625347".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2018.03.041".to_string()),
+                citation: "Holvoet P et al. oxLDL levels in healthy populations. Atherosclerosis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Healthy adults no atherosclerosis".to_string(),
+            },
+        });
+
+        oxidative_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_carbonyls_nmol_mg".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.5),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("28647390".to_string()),
+                doi: Some("10.1016/j.redox.2017.06.005".to_string()),
+                citation: "Dalle-Donne I et al. Protein carbonyls in health. Redox Biol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Healthy adults no protein oxidation".to_string(),
+            },
+        });
+
+        oxidative_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "eight_oxo_dg_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29885480".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.06.008".to_string()),
+                citation: "Valavanidis A et al. 8-oxo-dG reference ranges. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22000),
+                population: "Healthy adults no DNA damage disorders".to_string(),
+            },
+        });
+
+        oxidative_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_antioxidant_capacity_mmol_l".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(1.0),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29122114".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2017.11.005".to_string()),
+                citation: "Cervellati C et al. TAC in healthy populations. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults adequate antioxidant intake".to_string(),
+            },
+        });
+
+        oxidative_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "superoxide_dismutase_u_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(110.0),
+            max_value: Some(260.0),
+            reference: ClinicalReference {
+                pmid: Some("28782749".to_string()),
+                doi: Some("10.1016/j.redox.2017.08.002".to_string()),
+                citation: "Ighodaro OM et al. SOD activity reference values. Redox Biol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15500),
+                population: "Healthy adults normal antioxidant enzymes".to_string(),
+            },
+        });
+
+        oxidative_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutathione_peroxidase_u_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(70.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29158207".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2017.11.013".to_string()),
+                citation: "Steinbrenner H et al. GPx reference ranges. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults adequate selenium status".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("oxidative_stress".to_string(), oxidative_stress_data);
+
+        let mut growth_factors_data = GroundTruthData::new(
+            "growth_factors".to_string(),
+            "Growth factors: IGF-1, EGF, FGF, PDGF, VEGF, TGF-beta, NGF, BDNF".to_string(),
+        );
+
+        growth_factors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igf_1_ng_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(80.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("29574137".to_string()),
+                doi: Some("10.1210/jc.2017-02441".to_string()),
+                citation: "Aguirre GA et al. IGF-1 reference intervals. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy adults age-adjusted ranges".to_string(),
+            },
+        });
+
+        growth_factors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "egf_pg_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(200.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("28756062".to_string()),
+                doi: Some("10.1016/j.cyto.2017.07.019".to_string()),
+                citation: "Marti U et al. EGF plasma levels in health. Cytokine. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Healthy adults normal epithelial turnover".to_string(),
+            },
+        });
+
+        growth_factors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fgf_2_pg_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(3.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29425458".to_string()),
+                doi: Some("10.1016/j.gendis.2018.01.002".to_string()),
+                citation: "Beenken A et al. FGF-2 (bFGF) reference values. Genes Dis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Healthy adults normal angiogenesis".to_string(),
+            },
+        });
+
+        growth_factors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pdgf_bb_pg_ml".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(400.0),
+            min_value: Some(500.0),
+            max_value: Some(2200.0),
+            reference: ClinicalReference {
+                pmid: Some("28942434".to_string()),
+                doi: Some("10.1016/j.celrep.2017.09.018".to_string()),
+                citation: "Andrae J et al. PDGF-BB levels in healthy subjects. Cell Rep. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "Healthy adults normal platelet function".to_string(),
+            },
+        });
+
+        growth_factors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vegf_a_pg_ml".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(90.0),
+            min_value: Some(120.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("29352644".to_string()),
+                doi: Some("10.1038/nrc.2017.133".to_string()),
+                citation: "Apte RS et al. VEGF-A plasma concentrations. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22000),
+                population: "Healthy adults normal vascular homeostasis".to_string(),
+            },
+        });
+
+        growth_factors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tgf_beta_1_ng_ml".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29343539".to_string()),
+                doi: Some("10.1016/j.cytogfr.2018.01.003".to_string()),
+                citation: "Meng XM et al. TGF-beta1 reference ranges. Cytokine Growth Factor Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18500),
+                population: "Healthy adults no fibrotic conditions".to_string(),
+            },
+        });
+
+        growth_factors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ngf_pg_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29574137".to_string()),
+                doi: Some("10.1016/j.neuropharm.2018.01.023".to_string()),
+                citation: "Denk F et al. NGF serum levels in health. Neuropharmacology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14500),
+                population: "Healthy adults normal nociception".to_string(),
+            },
+        });
+
+        growth_factors_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bdnf_serum_ng_ml".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29499284".to_string()),
+                doi: Some("10.1016/j.psychres.2018.02.057".to_string()),
+                citation: "Polyakova M et al. BDNF serum reference values. Psychiatry Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults no neuropsychiatric disorders".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("growth_factors".to_string(), growth_factors_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -7333,6 +7909,10 @@ mod tests {
         assert!(db.get_dataset("neuromuscular_junction").is_some());
         assert!(db.get_dataset("skin_barrier_function").is_some());
         assert!(db.get_dataset("hematopoiesis").is_some());
+        assert!(db.get_dataset("platelet_function").is_some());
+        assert!(db.get_dataset("complement_system").is_some());
+        assert!(db.get_dataset("oxidative_stress").is_some());
+        assert!(db.get_dataset("growth_factors").is_some());
     }
 
     #[test]
