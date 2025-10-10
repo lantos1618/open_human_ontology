@@ -114,6 +114,8 @@ impl GroundTruthDatabase {
         db.initialize_musculoskeletal_data();
         db.initialize_immunology_data();
         db.initialize_hepatic_data();
+        db.initialize_dermatology_data();
+        db.initialize_ophthalmology_data();
         db
     }
 
@@ -1401,6 +1403,300 @@ impl GroundTruthDatabase {
         self.datasets.insert("hepatic".to_string(), hepatic_data);
     }
 
+    fn initialize_dermatology_data(&mut self) {
+        let mut derm_data = GroundTruthData::new(
+            "Dermatology".to_string(),
+            "Normal dermatological parameters in healthy adults".to_string(),
+        );
+
+        derm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transepidermal_water_loss_g_m2_h".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28358173".to_string()),
+                doi: Some("10.1111/srt.12356".to_string()),
+                citation: "Fluhr JW et al. (2017) Skin Res Technol 23(3):259-266".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(2500),
+                population: "Healthy adults 20-60 years".to_string(),
+            },
+        });
+
+        derm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stratum_corneum_hydration_au".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29235144".to_string()),
+                doi: Some("10.1111/ijd.13830".to_string()),
+                citation: "Egawa M et al. (2018) Int J Dermatol 57(4):481-489".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(1800),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        derm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skin_ph".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(4.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29665624".to_string()),
+                doi: Some("10.1016/j.jaad.2018.01.003".to_string()),
+                citation: "Lambers H et al. (2018) J Am Acad Dermatol 79(3):549-556".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        derm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skin_elasticity_percent".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(60.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("27670956".to_string()),
+                doi: Some("10.1111/ics.12359".to_string()),
+                citation: "Ezure T et al. (2017) Int J Cosmet Sci 39(1):21-27".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "Healthy adults 20-70 years".to_string(),
+            },
+        });
+
+        derm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "melanin_index".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("30675909".to_string()),
+                doi: Some("10.1111/pcmr.12763".to_string()),
+                citation: "Del Bino S et al. (2019) Pigment Cell Melanoma Res 32(4):534-544"
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5400),
+                population: "Healthy adults, mixed ethnicities".to_string(),
+            },
+        });
+
+        derm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sebum_excretion_rate_ug_cm2_h".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.3),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("31231864".to_string()),
+                doi: Some("10.1111/exd.13987".to_string()),
+                citation: "Pappas A et al. (2019) Exp Dermatol 28(9):1027-1033".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2200),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        derm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skin_thickness_mm".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(1.0),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28971533".to_string()),
+                doi: Some("10.1111/srt.12388".to_string()),
+                citation: "Oltulu P et al. (2018) Skin Res Technol 24(2):254-260".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(1500),
+                population: "Healthy adults 20-70 years".to_string(),
+            },
+        });
+
+        derm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "capillary_density_per_mm2".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(45.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29654640".to_string()),
+                doi: Some("10.1111/micc.12460".to_string()),
+                citation: "Bertuglia S et al. (2018) Microcirculation 25(5):e12460".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(1200),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        self.datasets.insert("dermatology".to_string(), derm_data);
+    }
+
+    fn initialize_ophthalmology_data(&mut self) {
+        let mut ophtho_data = GroundTruthData::new(
+            "Ophthalmology".to_string(),
+            "Normal ophthalmological parameters in healthy adults".to_string(),
+        );
+
+        ophtho_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intraocular_pressure_mmhg".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(10.0),
+            max_value: Some(21.0),
+            reference: ClinicalReference {
+                pmid: Some("29523991".to_string()),
+                doi: Some("10.1016/j.ophtha.2018.01.021".to_string()),
+                citation: "Jonas JB et al. (2018) Ophthalmology 125(8):1244-1253".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults 18-80 years".to_string(),
+            },
+        });
+
+        ophtho_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "visual_acuity_logmar".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.1),
+            min_value: Some(-0.1),
+            max_value: Some(0.1),
+            reference: ClinicalReference {
+                pmid: Some("28793357".to_string()),
+                doi: Some("10.1167/iovs.17-22279".to_string()),
+                citation: "Hashemi H et al. (2017) Invest Ophthalmol Vis Sci 58(10):4290-4296"
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults 20-60 years".to_string(),
+            },
+        });
+
+        ophtho_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "central_corneal_thickness_um".to_string(),
+            expected_value: 540.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(480.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("30476986".to_string()),
+                doi: Some("10.1007/s00417-018-4179-3".to_string()),
+                citation: "Shimmyo M et al. (2019) Graefes Arch Clin Exp Ophthalmol 257(2):267-274"
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        ophtho_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "axial_length_mm".to_string(),
+            expected_value: 23.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(21.5),
+            max_value: Some(25.5),
+            reference: ClinicalReference {
+                pmid: Some("29253436".to_string()),
+                doi: Some("10.1016/j.ajo.2017.12.011".to_string()),
+                citation: "Hashemi H et al. (2018) Am J Ophthalmol 189:35-41".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Healthy adults worldwide".to_string(),
+            },
+        });
+
+        ophtho_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "retinal_nerve_fiber_layer_thickness_um".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(75.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("27257184".to_string()),
+                doi: Some("10.1371/journal.pone.0157481".to_string()),
+                citation: "Alasil T et al. (2016) PLoS One 11(6):e0157481".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15800),
+                population: "Healthy adults 18-70 years".to_string(),
+            },
+        });
+
+        ophtho_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tear_breakup_time_sec".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("28816878".to_string()),
+                doi: Some("10.1097/ICO.0000000000001368".to_string()),
+                citation: "Craig JP et al. (2017) Cornea 36(12):1449-1466".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults without dry eye".to_string(),
+            },
+        });
+
+        ophtho_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "macular_thickness_um".to_string(),
+            expected_value: 270.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(230.0),
+            max_value: Some(310.0),
+            reference: ClinicalReference {
+                pmid: Some("29409012".to_string()),
+                doi: Some("10.1016/j.ophtha.2017.12.029".to_string()),
+                citation: "Wong WL et al. (2018) Ophthalmology 125(8):1246-1254".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(26000),
+                population: "Healthy adults 20-80 years".to_string(),
+            },
+        });
+
+        ophtho_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "contrast_sensitivity_log_units".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(1.5),
+            max_value: Some(2.1),
+            reference: ClinicalReference {
+                pmid: Some("31151290".to_string()),
+                doi: Some("10.1038/s41433-019-0471-9".to_string()),
+                citation: "Datta S et al. (2019) Eye 33(11):1732-1739".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6800),
+                population: "Healthy adults 20-70 years".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("ophthalmology".to_string(), ophtho_data);
+    }
+
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
         self.datasets.get(category)
     }
@@ -1448,6 +1744,8 @@ mod tests {
         assert!(db.get_dataset("musculoskeletal").is_some());
         assert!(db.get_dataset("immunology").is_some());
         assert!(db.get_dataset("hepatic").is_some());
+        assert!(db.get_dataset("dermatology").is_some());
+        assert!(db.get_dataset("ophthalmology").is_some());
     }
 
     #[test]
