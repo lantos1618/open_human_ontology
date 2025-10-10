@@ -59,6 +59,11 @@ pub mod personalized_testing;
 pub mod biometrics;
 pub mod anthropometry;
 pub mod comprehensive_health;
+pub mod physiology;
+pub mod exercise;
+pub mod nutrition;
+pub mod development;
+pub mod microbiome;
 
 // Re-export commonly used types
 pub use biology::{
