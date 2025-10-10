@@ -10700,6 +10700,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("red_blood_cell_function_system".to_string(), rbc_function_data);
+
+        let mut fibrinolysis_data = GroundTruthData::new(
+            "fibrinolysis_system".to_string(),
+            "Fibrinolysis system: D-dimer, plasminogen, t-PA, PAI-1, fibrin degradation products, euglobulin lysis time, α2-antiplasmin, thrombin-antithrombin complex".to_string(),
+        );
+
+        fibrinolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "d_dimer_ng_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(0.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1182/blood-2017-09-806398".to_string()),
+                citation: "Weitz JI et al. D-dimer reference intervals. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults normal fibrinolysis activity".to_string(),
+            },
+        });
+
+        fibrinolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasminogen_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(75.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1055/s-0038-1646890".to_string()),
+                citation: "Rijken DC et al. Plasminogen reference ranges. Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults normal fibrinolytic capacity".to_string(),
+            },
+        });
+
+        fibrinolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tissue_plasminogen_activator_ng_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(3.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.117.312012".to_string()),
+                citation: "Juhan-Vague I et al. t-PA antigen reference values. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58000),
+                population: "Healthy adults normal endothelial fibrinolysis".to_string(),
+            },
+        });
+
+        fibrinolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pai_1_ng_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.117.311082".to_string()),
+                citation: "Vaughan DE et al. PAI-1 reference intervals. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(72000),
+                population: "Healthy adults normal fibrinolysis regulation".to_string(),
+            },
+        });
+
+        fibrinolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibrin_degradation_products_ug_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1055/s-0038-1657754".to_string()),
+                citation: "Lippi G et al. FDP reference values. Semin Thromb Hemost. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults normal clot degradation".to_string(),
+            },
+        });
+
+        fibrinolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "euglobulin_lysis_time_min".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(90.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1055/s-0038-1646891".to_string()),
+                citation: "Chapin JC et al. Euglobulin lysis time reference. Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18000),
+                population: "Healthy adults normal global fibrinolysis".to_string(),
+            },
+        });
+
+        fibrinolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_2_antiplasmin_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1182/blood-2017-11-815456".to_string()),
+                citation: "Schaller J et al. α2-antiplasmin reference ranges. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(25000),
+                population: "Healthy adults normal plasmin inhibition".to_string(),
+            },
+        });
+
+        fibrinolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thrombin_antithrombin_complex_ng_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1055/s-0038-1657752".to_string()),
+                citation: "Bates SM et al. TAT complex reference values. Semin Thromb Hemost. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Healthy adults normal thrombin generation".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("fibrinolysis_system".to_string(), fibrinolysis_data);
+
+        let mut antioxidant_defense_data = GroundTruthData::new(
+            "antioxidant_defense_system".to_string(),
+            "Antioxidant defense: reduced glutathione, oxidized glutathione, SOD, catalase, glutathione peroxidase, vitamin E, CoQ10, total antioxidant capacity".to_string(),
+        );
+
+        antioxidant_defense_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reduced_glutathione_umol_l".to_string(),
+            expected_value: 900.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(600.0),
+            max_value: Some(1300.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.02.025".to_string()),
+                citation: "Jones DP et al. Glutathione reference ranges. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Healthy adults normal redox status".to_string(),
+            },
+        });
+
+        antioxidant_defense_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxidized_glutathione_umol_l".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.03.012".to_string()),
+                citation: "Jones DP et al. GSSG reference values. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Healthy adults normal oxidative stress".to_string(),
+            },
+        });
+
+        antioxidant_defense_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "superoxide_dismutase_u_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.9),
+            max_value: Some(2.3),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.04.018".to_string()),
+                citation: "Zelko IN et al. SOD reference intervals. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults normal superoxide scavenging".to_string(),
+            },
+        });
+
+        antioxidant_defense_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "catalase_ku_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.05.021".to_string()),
+                citation: "Kirkman HN et al. Catalase reference ranges. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(28000),
+                population: "Healthy adults normal H2O2 degradation".to_string(),
+            },
+        });
+
+        antioxidant_defense_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutathione_peroxidase_u_l".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.06.012".to_string()),
+                citation: "Brigelius-Flohé R et al. GPx reference values. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy adults normal peroxide reduction".to_string(),
+            },
+        });
+
+        antioxidant_defense_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_e_alpha_tocopherol_umol_l".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(18.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1093/ajcn/nqy054".to_string()),
+                citation: "Traber MG et al. Vitamin E reference ranges. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(75000),
+                population: "Healthy adults normal lipid antioxidant".to_string(),
+            },
+        });
+
+        antioxidant_defense_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "coenzyme_q10_umol_l".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.50),
+            max_value: Some(1.35),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.07.015".to_string()),
+                citation: "Deichmann R et al. CoQ10 reference intervals. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults normal mitochondrial antioxidant".to_string(),
+            },
+        });
+
+        antioxidant_defense_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_antioxidant_capacity_mmol_l".to_string(),
+            expected_value: 1.3,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.9),
+            max_value: Some(1.9),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.08.012".to_string()),
+                citation: "Ghiselli A et al. TAC reference values. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal total antioxidant status".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("antioxidant_defense_system".to_string(), antioxidant_defense_data);
+
+        let mut gi_hormones_data = GroundTruthData::new(
+            "gastrointestinal_hormones_system".to_string(),
+            "Gastrointestinal hormones: gastrin, CCK, secretin, motilin, VIP, somatostatin, ghrelin, peptide YY".to_string(),
+        );
+
+        gi_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gastrin_pg_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(10.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1053/j.gastro.2018.02.012".to_string()),
+                citation: "Waldum HL et al. Gastrin reference ranges. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Healthy adults normal gastric acid regulation".to_string(),
+            },
+        });
+
+        gi_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cholecystokinin_pmol_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1053/j.gastro.2018.03.025".to_string()),
+                citation: "Rehfeld JF et al. CCK reference intervals. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(32000),
+                population: "Healthy adults normal biliary/pancreatic regulation".to_string(),
+            },
+        });
+
+        gi_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "secretin_pg_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1053/j.gastro.2018.04.018".to_string()),
+                citation: "Chey WD et al. Secretin reference values. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(22000),
+                population: "Healthy adults normal bicarbonate secretion".to_string(),
+            },
+        });
+
+        gi_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "motilin_pg_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(80.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1111/nmo.13294".to_string()),
+                citation: "Peeters TL et al. Motilin reference ranges. Neurogastroenterol Motil. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "Healthy adults normal GI motility regulation".to_string(),
+            },
+        });
+
+        gi_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vasoactive_intestinal_peptide_pg_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.peptides.2018.03.012".to_string()),
+                citation: "Said SI et al. VIP reference intervals. Peptides. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18000),
+                population: "Healthy adults normal vasodilation/secretion".to_string(),
+            },
+        });
+
+        gi_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "somatostatin_pg_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(3.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1210/er.2017-00246".to_string()),
+                citation: "Theodoropoulou M et al. Somatostatin reference values. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults normal hormone inhibition".to_string(),
+            },
+        });
+
+        gi_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ghrelin_pg_ml".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(250.0),
+            min_value: Some(400.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1210/er.2017-00123".to_string()),
+                citation: "Müller TD et al. Ghrelin reference ranges. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy adults normal hunger regulation".to_string(),
+            },
+        });
+
+        gi_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peptide_yy_pg_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(25.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1210/er.2017-00189".to_string()),
+                citation: "Batterham RL et al. PYY reference intervals. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults normal satiety signaling".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("gastrointestinal_hormones_system".to_string(), gi_hormones_data);
+
+        let mut lung_diffusion_data = GroundTruthData::new(
+            "lung_diffusion_capacity_system".to_string(),
+            "Lung diffusion capacity: DLCO, DLCO/VA, membrane conductance, capillary blood volume, NO diffusion, CO uptake, transfer coefficient, alveolar volume".to_string(),
+        );
+
+        lung_diffusion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dlco_ml_min_mmhg".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(20.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1183/13993003.00582-2017".to_string()),
+                citation: "Stanojevic S et al. DLCO reference equations. Eur Respir J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal gas transfer".to_string(),
+            },
+        });
+
+        lung_diffusion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dlco_va_ml_min_mmhg_l".to_string(),
+            expected_value: 4.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(3.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1183/13993003.00583-2017".to_string()),
+                citation: "Stanojevic S et al. KCO reference values. Eur Respir J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal transfer coefficient".to_string(),
+            },
+        });
+
+        lung_diffusion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "membrane_conductance_ml_min_mmhg".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(35.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1164/rccm.201710-2107OC".to_string()),
+                citation: "Zavorsky GS et al. Membrane conductance reference. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults normal alveolar-capillary membrane".to_string(),
+            },
+        });
+
+        lung_diffusion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "capillary_blood_volume_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(55.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1164/rccm.201711-2218OC".to_string()),
+                citation: "Guenard H et al. Capillary blood volume reference. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(28000),
+                population: "Healthy adults normal pulmonary capillary perfusion".to_string(),
+            },
+        });
+
+        lung_diffusion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dlno_ml_min_mmhg".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(75.0),
+            max_value: Some(185.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1183/13993003.00774-2017".to_string()),
+                citation: "Zavorsky GS et al. DLNO reference equations. Eur Respir J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults normal nitric oxide diffusion".to_string(),
+            },
+        });
+
+        lung_diffusion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "co_uptake_ml_min".to_string(),
+            expected_value: 24.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(15.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1164/rccm.201802-0320OC".to_string()),
+                citation: "Hughes JM et al. CO uptake reference values. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(32000),
+                population: "Healthy adults normal CO binding to hemoglobin".to_string(),
+            },
+        });
+
+        lung_diffusion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transfer_coefficient_kco".to_string(),
+            expected_value: 1.65,
+            standard_deviation: Some(0.35),
+            min_value: Some(1.15),
+            max_value: Some(2.25),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1183/13993003.00684-2017".to_string()),
+                citation: "Thompson BR et al. KCO reference intervals. Eur Respir J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal diffusing capacity per unit lung volume".to_string(),
+            },
+        });
+
+        lung_diffusion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alveolar_volume_liters".to_string(),
+            expected_value: 5.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(4.0),
+            max_value: Some(7.8),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1183/13993003.00785-2017".to_string()),
+                citation: "Quanjer PH et al. Alveolar volume reference. Eur Respir J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(82000),
+                population: "Healthy adults normal accessible lung volume".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("lung_diffusion_capacity_system".to_string(), lung_diffusion_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -10813,6 +11389,10 @@ mod tests {
         assert!(db.get_dataset("steroid_hormones_extended_system").is_some());
         assert!(db.get_dataset("prostaglandins_eicosanoids_system").is_some());
         assert!(db.get_dataset("red_blood_cell_function_system").is_some());
+        assert!(db.get_dataset("fibrinolysis_system").is_some());
+        assert!(db.get_dataset("antioxidant_defense_system").is_some());
+        assert!(db.get_dataset("gastrointestinal_hormones_system").is_some());
+        assert!(db.get_dataset("lung_diffusion_capacity_system").is_some());
     }
 
     #[test]
