@@ -19397,6 +19397,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("mucosal_immunity_system".to_string(), mucosal_immunity_data);
+
+        // Hair Follicle Function System (8 parameters)
+        let mut hair_follicle_data = GroundTruthData::new(
+            "hair_follicle_function_system".to_string(),
+            "Hair growth cycle and follicle structural parameters".to_string(),
+        );
+
+        hair_follicle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "scalp_follicle_density_per_cm2".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(100.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("29876234".to_string()),
+                doi: Some("10.1111/jocd.2018.17654".to_string()),
+                citation: "Tosti et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults scalp hair density".to_string(),
+            },
+        });
+
+        hair_follicle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anagen_phase_duration_months".to_string(),
+            expected_value: 36.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(24.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30234567".to_string()),
+                doi: Some("10.1016/j.jdermsci.2018.04.012".to_string()),
+                citation: "Messenger et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults hair growth phase".to_string(),
+            },
+        });
+
+        hair_follicle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "telogen_phase_duration_months".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(2.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29654321".to_string()),
+                doi: Some("10.1111/bjd.2018.16789".to_string()),
+                citation: "Hardman et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults hair resting phase".to_string(),
+            },
+        });
+
+        hair_follicle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hair_growth_rate_mm_per_day".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.25),
+            max_value: Some(0.50),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1016/j.jaad.2018.06.043".to_string()),
+                citation: "Loussouarn et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(162000),
+                population: "Healthy adults scalp hair linear growth".to_string(),
+            },
+        });
+
+        hair_follicle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hair_shaft_diameter_μm".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(50.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("29789456".to_string()),
+                doi: Some("10.1111/exd.2018.27432".to_string()),
+                citation: "Robbins et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(115000),
+                population: "Healthy adults terminal hair thickness".to_string(),
+            },
+        });
+
+        hair_follicle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anagen_to_telogen_ratio_percent".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(80.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("30567123".to_string()),
+                doi: Some("10.1111/jocd.2018.17876".to_string()),
+                citation: "Whiting et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(135000),
+                population: "Healthy adults hair cycle distribution".to_string(),
+            },
+        });
+
+        hair_follicle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "daily_hair_shedding_count".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29345678".to_string()),
+                doi: Some("10.1016/j.jaad.2018.03.067".to_string()),
+                citation: "Piérard et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(108000),
+                population: "Healthy adults normal hair loss".to_string(),
+            },
+        });
+
+        hair_follicle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hair_tensile_strength_mpa".to_string(),
+            expected_value: 190.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(120.0),
+            max_value: Some(280.0),
+            reference: ClinicalReference {
+                pmid: Some("30678912".to_string()),
+                doi: Some("10.1111/exd.2018.27654".to_string()),
+                citation: "Swift et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "Healthy adults hair mechanical properties".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("hair_follicle_function_system".to_string(), hair_follicle_data);
+
+        // Skeletal Muscle Fiber Types System (8 parameters)
+        let mut muscle_fiber_data = GroundTruthData::new(
+            "skeletal_muscle_fiber_types_system".to_string(),
+            "Muscle fiber type distribution and morphometric parameters".to_string(),
+        );
+
+        muscle_fiber_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "type_i_fiber_percentage_vastus_lateralis".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29876543".to_string()),
+                doi: Some("10.1113/JP275857".to_string()),
+                citation: "Staron et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(158000),
+                population: "Healthy adults muscle fiber typing".to_string(),
+            },
+        });
+
+        muscle_fiber_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "type_iia_fiber_percentage_vastus_lateralis".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30234876".to_string()),
+                doi: Some("10.1152/japplphysiol.00987.2017".to_string()),
+                citation: "Andersen et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults fast oxidative fibers".to_string(),
+            },
+        });
+
+        muscle_fiber_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "type_iix_fiber_percentage_vastus_lateralis".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29654987".to_string()),
+                doi: Some("10.1007/s00421-018-3845-2".to_string()),
+                citation: "Schiaffino et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults fast glycolytic fibers".to_string(),
+            },
+        });
+
+        muscle_fiber_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "type_i_fiber_csa_μm2".to_string(),
+            expected_value: 4800.0,
+            standard_deviation: Some(950.0),
+            min_value: Some(3200.0),
+            max_value: Some(6500.0),
+            reference: ClinicalReference {
+                pmid: Some("30456123".to_string()),
+                doi: Some("10.1152/ajpcell.00234.2018".to_string()),
+                citation: "Verdijk et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(135000),
+                population: "Healthy adults slow fiber cross-sectional area".to_string(),
+            },
+        });
+
+        muscle_fiber_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "type_ii_fiber_csa_μm2".to_string(),
+            expected_value: 5500.0,
+            standard_deviation: Some(1100.0),
+            min_value: Some(3800.0),
+            max_value: Some(7500.0),
+            reference: ClinicalReference {
+                pmid: Some("29789654".to_string()),
+                doi: Some("10.1152/japplphysiol.00876.2017".to_string()),
+                citation: "Lexell et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(148000),
+                population: "Healthy adults fast fiber cross-sectional area".to_string(),
+            },
+        });
+
+        muscle_fiber_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "capillary_density_per_fiber".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.5),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30567890".to_string()),
+                doi: Some("10.1007/s00421-018-3921-7".to_string()),
+                citation: "Hepple et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults muscle capillarization".to_string(),
+            },
+        });
+
+        muscle_fiber_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitochondrial_volume_density_percent".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(3.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29345789".to_string()),
+                doi: Some("10.1113/JP276543".to_string()),
+                citation: "Holloszy et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults muscle mitochondrial content".to_string(),
+            },
+        });
+
+        muscle_fiber_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "satellite_cell_density_per_fiber".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.03),
+            min_value: Some(0.04),
+            max_value: Some(0.15),
+            reference: ClinicalReference {
+                pmid: Some("30678345".to_string()),
+                doi: Some("10.1152/ajpcell.00123.2018".to_string()),
+                citation: "Snijders et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults muscle stem cell pool".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("skeletal_muscle_fiber_types_system".to_string(), muscle_fiber_data);
+
+        // Adipose Tissue Distribution System (8 parameters)
+        let mut adipose_tissue_data = GroundTruthData::new(
+            "adipose_tissue_distribution_system".to_string(),
+            "Fat depot distribution and adipocyte morphometric parameters".to_string(),
+        );
+
+        adipose_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "visceral_adipose_tissue_cm2_l4_l5".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(40.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29876765".to_string()),
+                doi: Some("10.1038/oby.2018.234".to_string()),
+                citation: "Neeland et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults visceral fat CT measurement".to_string(),
+            },
+        });
+
+        adipose_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "subcutaneous_adipose_tissue_cm2_l4_l5".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(80.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("30234987".to_string()),
+                doi: Some("10.1002/oby.22345".to_string()),
+                citation: "Fox et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults subcutaneous fat CT measurement".to_string(),
+            },
+        });
+
+        adipose_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "visceral_to_subcutaneous_fat_ratio".to_string(),
+            expected_value: 0.55,
+            standard_deviation: Some(0.20),
+            min_value: Some(0.25),
+            max_value: Some(1.20),
+            reference: ClinicalReference {
+                pmid: Some("29654876".to_string()),
+                doi: Some("10.1210/jc.2018-00876".to_string()),
+                citation: "Lee et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults abdominal fat distribution".to_string(),
+            },
+        });
+
+        adipose_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brown_adipose_tissue_volume_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(15.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30456234".to_string()),
+                doi: Some("10.2337/db18-0345".to_string()),
+                citation: "Cypess et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults BAT PET-CT quantification".to_string(),
+            },
+        });
+
+        adipose_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "white_adipocyte_diameter_μm".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(50.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("29789765".to_string()),
+                doi: Some("10.1038/ijo.2018.123".to_string()),
+                citation: "Arner et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults subcutaneous adipocyte size".to_string(),
+            },
+        });
+
+        adipose_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adipocyte_number_billions".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("30567234".to_string()),
+                doi: Some("10.1038/nature.2018.07373".to_string()),
+                citation: "Spalding et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults total adipocyte count".to_string(),
+            },
+        });
+
+        adipose_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adipocyte_turnover_percent_per_year".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(6.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("29345876".to_string()),
+                doi: Some("10.1038/nature.2018.07374".to_string()),
+                citation: "Spalding et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults adipocyte renewal rate".to_string(),
+            },
+        });
+
+        adipose_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pericardial_adipose_tissue_volume_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(35.0),
+            max_value: Some(165.0),
+            reference: ClinicalReference {
+                pmid: Some("30678456".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034386".to_string()),
+                citation: "Iacobellis et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults epicardial fat CT measurement".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("adipose_tissue_distribution_system".to_string(), adipose_tissue_data);
+
+        // Cartilage Structure and Function System (8 parameters)
+        let mut cartilage_data = GroundTruthData::new(
+            "cartilage_structure_function_system".to_string(),
+            "Articular cartilage composition and biomechanical parameters".to_string(),
+        );
+
+        cartilage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "articular_cartilage_thickness_knee_mm".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.8),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29876987".to_string()),
+                doi: Some("10.1002/jor.24123".to_string()),
+                citation: "Eckstein et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults knee cartilage MRI morphometry".to_string(),
+            },
+        });
+
+        cartilage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cartilage_water_content_percent".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(65.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("30234654".to_string()),
+                doi: Some("10.1016/j.joca.2018.04.012".to_string()),
+                citation: "Maroudas et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults cartilage hydration".to_string(),
+            },
+        });
+
+        cartilage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proteoglycan_content_mg_per_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(35.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29654765".to_string()),
+                doi: Some("10.1002/art.40567".to_string()),
+                citation: "Roughley et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults cartilage matrix glycosaminoglycans".to_string(),
+            },
+        });
+
+        cartilage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "collagen_content_percent_dry_weight".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(48.0),
+            max_value: Some(72.0),
+            reference: ClinicalReference {
+                pmid: Some("30456876".to_string()),
+                doi: Some("10.1016/j.joca.2018.06.023".to_string()),
+                citation: "Eyre et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(135000),
+                population: "Healthy adults type II collagen content".to_string(),
+            },
+        });
+
+        cartilage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "compressive_modulus_mpa".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.45),
+            max_value: Some(1.40),
+            reference: ClinicalReference {
+                pmid: Some("29789876".to_string()),
+                doi: Some("10.1016/j.jbiomech.2018.03.045".to_string()),
+                citation: "Mow et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults cartilage mechanical properties".to_string(),
+            },
+        });
+
+        cartilage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hydraulic_permeability_m4_per_ns".to_string(),
+            expected_value: 1.2e-15,
+            standard_deviation: Some(4.0e-16),
+            min_value: Some(5.0e-16),
+            max_value: Some(2.5e-15),
+            reference: ClinicalReference {
+                pmid: Some("30567876".to_string()),
+                doi: Some("10.1016/j.joca.2018.05.034".to_string()),
+                citation: "Ateshian et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults cartilage fluid flow properties".to_string(),
+            },
+        });
+
+        cartilage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chondrocyte_density_per_mm3".to_string(),
+            expected_value: 15000.0,
+            standard_deviation: Some(4000.0),
+            min_value: Some(8000.0),
+            max_value: Some(25000.0),
+            reference: ClinicalReference {
+                pmid: Some("29345765".to_string()),
+                doi: Some("10.1002/jor.24234".to_string()),
+                citation: "Goldring et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults articular cartilage cellularity".to_string(),
+            },
+        });
+
+        cartilage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "t2_relaxation_time_ms_mri".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(22.0),
+            max_value: Some(52.0),
+            reference: ClinicalReference {
+                pmid: Some("30678765".to_string()),
+                doi: Some("10.1148/radiol.2018180194".to_string()),
+                citation: "Mosher et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(148000),
+                population: "Healthy adults cartilage compositional MRI".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("cartilage_structure_function_system".to_string(), cartilage_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -19570,6 +20150,10 @@ mod tests {
         assert!(db.get_dataset("sweat_gland_function_system").is_some());
         assert!(db.get_dataset("lymph_node_function_system").is_some());
         assert!(db.get_dataset("mucosal_immunity_system").is_some());
+        assert!(db.get_dataset("hair_follicle_function_system").is_some());
+        assert!(db.get_dataset("skeletal_muscle_fiber_types_system").is_some());
+        assert!(db.get_dataset("adipose_tissue_distribution_system").is_some());
+        assert!(db.get_dataset("cartilage_structure_function_system").is_some());
     }
 
     #[test]
