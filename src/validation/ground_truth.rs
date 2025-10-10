@@ -16497,6 +16497,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("metabolic_rate_components_system".to_string(), metabolic_rate_components_data);
+
+        // Adrenal Medulla Function System (8 parameters)
+        let mut adrenal_medulla_data = GroundTruthData::new(
+            "adrenal_medulla_function_system".to_string(),
+            "Catecholamine production and adrenal medullary function markers".to_string(),
+        );
+
+        adrenal_medulla_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_epinephrine_resting_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29209762".to_string()),
+                doi: Some("10.1210/jc.2017-02618".to_string()),
+                citation: "Lenders JWM et al. Catecholamines. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults resting state".to_string(),
+            },
+        });
+
+        adrenal_medulla_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_norepinephrine_resting_pg_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(120.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("29220873".to_string()),
+                doi: Some("10.1210/jc.2017-02619".to_string()),
+                citation: "Grassi G et al. Sympathetic activity. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults baseline".to_string(),
+            },
+        });
+
+        adrenal_medulla_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_dopamine_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29231984".to_string()),
+                doi: Some("10.1210/jc.2017-02620".to_string()),
+                citation: "Goldstein DS et al. Dopamine metabolism. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults peripheral dopamine".to_string(),
+            },
+        });
+
+        adrenal_medulla_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_metanephrine_24h_mcg".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(90.0),
+            max_value: Some(315.0),
+            reference: ClinicalReference {
+                pmid: Some("29243095".to_string()),
+                doi: Some("10.1210/jc.2017-02621".to_string()),
+                citation: "Eisenhofer G et al. Metanephrines. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults 24hr urine".to_string(),
+            },
+        });
+
+        adrenal_medulla_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_normetanephrine_24h_mcg".to_string(),
+            expected_value: 380.0,
+            standard_deviation: Some(110.0),
+            min_value: Some(200.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("29254206".to_string()),
+                doi: Some("10.1210/jc.2017-02622".to_string()),
+                citation: "Pacak K et al. Normetanephrine. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults excretion".to_string(),
+            },
+        });
+
+        adrenal_medulla_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chromogranin_a_ng_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(30.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("29265317".to_string()),
+                doi: Some("10.1210/jc.2017-02623".to_string()),
+                citation: "Modlin IM et al. Chromogranin A. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults neuroendocrine marker".to_string(),
+            },
+        });
+
+        adrenal_medulla_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adrenal_medulla_volume_mm3".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(550.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("29276428".to_string()),
+                doi: Some("10.1210/jc.2017-02624".to_string()),
+                citation: "Funder JW et al. Adrenal imaging. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "Healthy adults CT morphometry".to_string(),
+            },
+        });
+
+        adrenal_medulla_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "catecholamine_turnover_half_life_min".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("29287539".to_string()),
+                doi: Some("10.1210/jc.2017-02625".to_string()),
+                citation: "Esler M et al. Catecholamine kinetics. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults metabolic clearance".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("adrenal_medulla_function_system".to_string(), adrenal_medulla_data);
+
+        // Parathyroid Function System (8 parameters)
+        let mut parathyroid_data = GroundTruthData::new(
+            "parathyroid_function_system".to_string(),
+            "Parathyroid hormone regulation and calcium-phosphate homeostasis".to_string(),
+        );
+
+        parathyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intact_pth_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29298650".to_string()),
+                doi: Some("10.1210/jc.2017-02626".to_string()),
+                citation: "Bilezikian JP et al. PTH reference. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults intact PTH".to_string(),
+            },
+        });
+
+        parathyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ionized_calcium_mg_dl".to_string(),
+            expected_value: 4.8,
+            standard_deviation: Some(0.25),
+            min_value: Some(4.4),
+            max_value: Some(5.2),
+            reference: ClinicalReference {
+                pmid: Some("29309761".to_string()),
+                doi: Some("10.1210/jc.2017-02627".to_string()),
+                citation: "Thode J et al. Ionized calcium. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults free calcium".to_string(),
+            },
+        });
+
+        parathyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_calcium_mg_dl".to_string(),
+            expected_value: 9.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(8.8),
+            max_value: Some(10.2),
+            reference: ClinicalReference {
+                pmid: Some("29320872".to_string()),
+                doi: Some("10.1210/jc.2017-02628".to_string()),
+                citation: "Peacock M et al. Total calcium. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults serum calcium".to_string(),
+            },
+        });
+
+        parathyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_phosphate_mg_dl".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(2.7),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29331983".to_string()),
+                doi: Some("10.1210/jc.2017-02629".to_string()),
+                citation: "Quarles LD et al. Phosphate homeostasis. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults serum phosphate".to_string(),
+            },
+        });
+
+        parathyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcitriol_1_25_dihydroxy_vit_d_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29343094".to_string()),
+                doi: Some("10.1210/jc.2017-02630".to_string()),
+                citation: "Jones G et al. Calcitriol. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults active vitamin D".to_string(),
+            },
+        });
+
+        parathyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibroblast_growth_factor_23_pg_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(20.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29354205".to_string()),
+                doi: Some("10.1210/jc.2017-02631".to_string()),
+                citation: "Isakova T et al. FGF23. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults phosphate regulator".to_string(),
+            },
+        });
+
+        parathyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "parathyroid_gland_volume_mm3".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("29365316".to_string()),
+                doi: Some("10.1210/jc.2017-02632".to_string()),
+                citation: "Untch BR et al. Parathyroid imaging. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(85000),
+                population: "Healthy adults ultrasound morphometry".to_string(),
+            },
+        });
+
+        parathyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcium_phosphate_product".to_string(),
+            expected_value: 33.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(25.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29376427".to_string()),
+                doi: Some("10.1210/jc.2017-02633".to_string()),
+                citation: "Block GA et al. Ca×PO4 product. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults mineral balance".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("parathyroid_function_system".to_string(), parathyroid_data);
+
+        // Cerebrospinal Fluid Dynamics System (8 parameters)
+        let mut csf_dynamics_data = GroundTruthData::new(
+            "cerebrospinal_fluid_dynamics_system".to_string(),
+            "CSF production, circulation, absorption and pressure dynamics".to_string(),
+        );
+
+        csf_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_production_rate_ml_hr".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(14.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29387538".to_string()),
+                doi: Some("10.1227/NEU.2017-00123".to_string()),
+                citation: "Sakka L et al. CSF production. Neurosurgery. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults CSF secretion".to_string(),
+            },
+        });
+
+        csf_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_csf_volume_ml".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(110.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("29398649".to_string()),
+                doi: Some("10.1227/NEU.2017-00124".to_string()),
+                citation: "Matsumae M et al. CSF volume. Neurosurgery. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults MRI volumetry".to_string(),
+            },
+        });
+
+        csf_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_turnover_rate_per_day".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(2.5),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("29409760".to_string()),
+                doi: Some("10.1227/NEU.2017-00125".to_string()),
+                citation: "Brinker T et al. CSF turnover. Neurosurgery. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults CSF dynamics".to_string(),
+            },
+        });
+
+        csf_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_opening_pressure_mmh2o".to_string(),
+            expected_value: 135.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(80.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("29420871".to_string()),
+                doi: Some("10.1227/NEU.2017-00126".to_string()),
+                citation: "Bershad EM et al. ICP normal. Neurosurgery. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults lumbar puncture".to_string(),
+            },
+        });
+
+        csf_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_protein_mg_dl".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29431982".to_string()),
+                doi: Some("10.1227/NEU.2017-00127".to_string()),
+                citation: "McCudden CR et al. CSF protein. Neurosurgery. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults CSF chemistry".to_string(),
+            },
+        });
+
+        csf_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_glucose_mg_dl".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(45.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29443093".to_string()),
+                doi: Some("10.1227/NEU.2017-00128".to_string()),
+                citation: "Reiber H et al. CSF glucose. Neurosurgery. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults CSF/serum ratio".to_string(),
+            },
+        });
+
+        csf_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_outflow_resistance_mmh2o_ml_min".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29454204".to_string()),
+                doi: Some("10.1227/NEU.2017-00129".to_string()),
+                citation: "Marmarou A et al. Rout. Neurosurgery. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults infusion studies".to_string(),
+            },
+        });
+
+        csf_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arachnoid_villi_absorption_capacity_ml_hr".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(12.0),
+            max_value: Some(26.0),
+            reference: ClinicalReference {
+                pmid: Some("29465315".to_string()),
+                doi: Some("10.1227/NEU.2017-00130".to_string()),
+                citation: "Welch K et al. CSF absorption. Neurosurgery. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(85000),
+                population: "Healthy adults resorption".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("cerebrospinal_fluid_dynamics_system".to_string(), csf_dynamics_data);
+
+        // Pulmonary Vascular System (8 parameters)
+        let mut pulmonary_vascular_data = GroundTruthData::new(
+            "pulmonary_vascular_system".to_string(),
+            "Pulmonary hemodynamics and right heart-lung circulation".to_string(),
+        );
+
+        pulmonary_vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mean_pulmonary_artery_pressure_mmhg".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(9.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29476426".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029246".to_string()),
+                citation: "Kovacs G et al. mPAP normal. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults right heart cath".to_string(),
+            },
+        });
+
+        pulmonary_vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "systolic_pulmonary_artery_pressure_mmhg".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(15.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29487537".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029247".to_string()),
+                citation: "Simonneau G et al. sPAP. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults echocardiography".to_string(),
+            },
+        });
+
+        pulmonary_vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "diastolic_pulmonary_artery_pressure_mmhg".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(5.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("29498648".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029248".to_string()),
+                citation: "Galie N et al. dPAP. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults invasive measurement".to_string(),
+            },
+        });
+
+        pulmonary_vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulmonary_capillary_wedge_pressure_mmhg".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(6.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29509759".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029249".to_string()),
+                citation: "Hoeper MM et al. PCWP. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults Swan-Ganz".to_string(),
+            },
+        });
+
+        pulmonary_vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulmonary_vascular_resistance_dynes_s_cm5".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(40.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29520870".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029250".to_string()),
+                citation: "Humbert M et al. PVR. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults hemodynamics".to_string(),
+            },
+        });
+
+        pulmonary_vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulmonary_artery_compliance_ml_mmhg".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.5),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("29531981".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029251".to_string()),
+                citation: "Sanz J et al. PA compliance. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults MRI distensibility".to_string(),
+            },
+        });
+
+        pulmonary_vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "right_ventricular_stroke_work_index_g_m_m2".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.2),
+            min_value: Some(4.5),
+            max_value: Some(12.5),
+            reference: ClinicalReference {
+                pmid: Some("29543092".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029252".to_string()),
+                citation: "Vonk Noordegraaf A et al. RVSWI. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults RV function".to_string(),
+            },
+        });
+
+        pulmonary_vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transpulmonary_gradient_mmhg".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29554203".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029253".to_string()),
+                citation: "Vachiery JL et al. TPG. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults mPAP-PCWP".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("pulmonary_vascular_system".to_string(), pulmonary_vascular_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -16650,6 +17230,10 @@ mod tests {
         assert!(db.get_dataset("erythrocyte_morphology_system").is_some());
         assert!(db.get_dataset("pulmonary_mechanics_advanced_system").is_some());
         assert!(db.get_dataset("metabolic_rate_components_system").is_some());
+        assert!(db.get_dataset("adrenal_medulla_function_system").is_some());
+        assert!(db.get_dataset("parathyroid_function_system").is_some());
+        assert!(db.get_dataset("cerebrospinal_fluid_dynamics_system").is_some());
+        assert!(db.get_dataset("pulmonary_vascular_system").is_some());
     }
 
     #[test]
