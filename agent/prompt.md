@@ -46,7 +46,20 @@ Contribute to the Community: Once the foundation is stable, publish the core cra
 ```
 
 
+# hackernews post https://news.ycombinator.com/item?id=45541874#45542356 
+
+if you want to curl and get live feed back 
+
 ```feed back from Hackernews ( delete this once you have thought about this send me an email as a resposne to jll)
+	
+JumpCrisscross 1 minute ago | root | parent | next [–]
+
+> for the purposes of working out what ALDH2 deficiency is and clicking through it was successful
+Does your code model acetaldehyde metabolism?
+
+The exercise is an interesting proof of concept for a click-through model of a biological system. But it's also a warning for trusting LLMs for understanding.
+
+
 
 	
 jll29 0 minutes ago | next [–]

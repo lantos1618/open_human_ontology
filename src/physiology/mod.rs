@@ -2,6 +2,7 @@ pub mod thermoregulation;
 pub mod stress_response;
 pub mod aging;
 pub mod inflammation;
+pub mod time_series;
 
 use serde::{Deserialize, Serialize};
 
@@ -20,6 +21,11 @@ pub use aging::{
 pub use inflammation::{
     InflammationSystem, AcuteInflammation, ChronicInflammation, CytokineNetwork,
     InflammatoryMarkers, ResolutionMediators, InflammationState,
+};
+pub use time_series::{
+    PhysiologicalTimeSeries, PhysiologicalSnapshot, CardiovascularSnapshot,
+    MetabolicSnapshot, BodyCompositionSnapshot, BiomarkerSnapshot,
+    MetricType, Trend, TrendDirection, RiskChangeAssessment, RiskCategory,
 };
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
