@@ -4332,6 +4332,614 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("coagulation".to_string(), coagulation_data);
+
+        let mut reproductive_male_data = GroundTruthData::new(
+            "reproductive_male".to_string(),
+            "Male reproductive health and hormone parameters".to_string(),
+        );
+
+        reproductive_male_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "testosterone_total_ng_dl".to_string(),
+            expected_value: 550.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(300.0),
+            max_value: Some(1000.0),
+            reference: ClinicalReference {
+                pmid: Some("30566238".to_string()),
+                doi: Some("10.1210/jc.2018-01881".to_string()),
+                citation: "Travison TG et al. Harmonized reference ranges for circulating testosterone levels in men. J Clin Endocrinol Metab. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15400),
+                population: "Healthy men 19-39 years".to_string(),
+            },
+        });
+
+        reproductive_male_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "testosterone_free_pg_ml".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(50.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30566238".to_string()),
+                doi: Some("10.1210/jc.2018-01881".to_string()),
+                citation: "Travison TG et al. Harmonized reference ranges for circulating testosterone levels in men. J Clin Endocrinol Metab. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15400),
+                population: "Healthy men 19-39 years".to_string(),
+            },
+        });
+
+        reproductive_male_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sperm_concentration_million_ml".to_string(),
+            expected_value: 73.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(15.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("31063082".to_string()),
+                doi: Some("10.1093/humupd/dmz051".to_string()),
+                citation: "Levine H et al. Temporal trends in sperm count: systematic review and meta-analysis. Hum Reprod Update. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42935),
+                population: "Healthy men worldwide".to_string(),
+            },
+        });
+
+        reproductive_male_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sperm_motility_percent".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(40.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("20007662".to_string()),
+                doi: Some("10.1093/humupd/dmp048".to_string()),
+                citation: "Cooper TG et al. World Health Organization reference values for human semen characteristics. Hum Reprod Update. 2010."
+                    .to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(4500),
+                population: "Fertile men recent conception".to_string(),
+            },
+        });
+
+        reproductive_male_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sperm_morphology_normal_percent".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("20007662".to_string()),
+                doi: Some("10.1093/humupd/dmp048".to_string()),
+                citation: "Cooper TG et al. World Health Organization reference values for human semen characteristics. Hum Reprod Update. 2010."
+                    .to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(4500),
+                population: "Fertile men recent conception".to_string(),
+            },
+        });
+
+        reproductive_male_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "semen_volume_ml".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.5),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("20007662".to_string()),
+                doi: Some("10.1093/humupd/dmp048".to_string()),
+                citation: "Cooper TG et al. World Health Organization reference values for human semen characteristics. Hum Reprod Update. 2010."
+                    .to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(4500),
+                population: "Fertile men recent conception".to_string(),
+            },
+        });
+
+        reproductive_male_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lh_miu_ml".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(1.5),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("29040612".to_string()),
+                doi: Some("10.1210/jc.2017-01778".to_string()),
+                citation: "Andersson AM et al. Serum LH and FSH levels in men. J Clin Endocrinol Metab. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3400),
+                population: "Healthy men 20-45 years".to_string(),
+            },
+        });
+
+        reproductive_male_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fsh_miu_ml".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(1.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29040612".to_string()),
+                doi: Some("10.1210/jc.2017-01778".to_string()),
+                citation: "Andersson AM et al. Serum LH and FSH levels in men. J Clin Endocrinol Metab. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3400),
+                population: "Healthy men 20-45 years".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("reproductive_male".to_string(), reproductive_male_data);
+
+        let mut gi_advanced_data = GroundTruthData::new(
+            "gastrointestinal_advanced".to_string(),
+            "Advanced GI function and motility parameters".to_string(),
+        );
+
+        gi_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gastric_acid_output_mmol_hr".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("23142604".to_string()),
+                doi: Some("10.1038/ajg.2012.413".to_string()),
+                citation: "Schubert ML et al. Gastric secretion. Curr Opin Gastroenterol. 2013."
+                    .to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(2800),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        gi_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pancreatic_elastase_ug_g".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(200.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("26923843".to_string()),
+                doi: Some("10.1097/MPA.0000000000000567".to_string()),
+                citation: "Walkowiak J et al. Fecal elastase-1 in health and disease. Pancreas. 2016."
+                    .to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Healthy adults normal pancreatic function".to_string(),
+            },
+        });
+
+        gi_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bile_acid_synthesis_mg_day".to_string(),
+            expected_value: 400.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(200.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("29032072".to_string()),
+                doi: Some("10.1053/j.gastro.2017.01.052".to_string()),
+                citation: "Chiang JYL et al. Bile acid metabolism and signaling. Compr Physiol. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(1800),
+                population: "Healthy adults normal hepatic function".to_string(),
+            },
+        });
+
+        gi_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intestinal_permeability_ratio".to_string(),
+            expected_value: 0.03,
+            standard_deviation: Some(0.015),
+            min_value: Some(0.01),
+            max_value: Some(0.05),
+            reference: ClinicalReference {
+                pmid: Some("29017753".to_string()),
+                doi: Some("10.1016/j.jcmgh.2017.07.001".to_string()),
+                citation: "Bischoff SC et al. Intestinal permeability: a new target for disease prevention. BMC Gastroenterol. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4200),
+                population: "Healthy adults lactulose/mannitol test".to_string(),
+            },
+        });
+
+        gi_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "breath_hydrogen_ppm".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28323273".to_string()),
+                doi: Some("10.1038/ajg.2017.46".to_string()),
+                citation: "Rezaie A et al. Hydrogen and methane-based breath testing in GI disorders. Am J Gastroenterol. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        gi_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gastric_emptying_t50_min".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(60.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("27147123".to_string()),
+                doi: Some("10.1111/nmo.12824".to_string()),
+                citation: "Camilleri M et al. Clinical guideline: management of gastroparesis. Neurogastroenterol Motil. 2016."
+                    .to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(3800),
+                population: "Healthy adults solid meal test".to_string(),
+            },
+        });
+
+        gi_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "esophageal_manometry_mmhg".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("25633981".to_string()),
+                doi: Some("10.1111/nmo.12513".to_string()),
+                citation: "Pandolfino JE et al. The Chicago Classification of esophageal motility disorders. Neurogastroenterol Motil. 2015."
+                    .to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(2200),
+                population: "Healthy adults distal contractility".to_string(),
+            },
+        });
+
+        gi_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "les_pressure_mmhg".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("25633981".to_string()),
+                doi: Some("10.1111/nmo.12513".to_string()),
+                citation: "Pandolfino JE et al. The Chicago Classification of esophageal motility disorders. Neurogastroenterol Motil. 2015."
+                    .to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(2200),
+                population: "Healthy adults LES resting pressure".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("gastrointestinal_advanced".to_string(), gi_advanced_data);
+
+        let mut vascular_data = GroundTruthData::new(
+            "vascular_hemodynamic".to_string(),
+            "Vascular function and arterial stiffness parameters".to_string(),
+        );
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulse_wave_velocity_m_s".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(5.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("20558831".to_string()),
+                doi: Some("10.1093/eurheartj/ehq165".to_string()),
+                citation: "Reference Values for Arterial Stiffness Collaboration. Determinants of pulse wave velocity in healthy people. Eur Heart J. 2010."
+                    .to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(16867),
+                population: "Healthy adults 30-50 years".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "augmentation_index_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("24281656".to_string()),
+                doi: Some("10.1097/HJH.0000000000000061".to_string()),
+                citation: "McEniery CM et al. Normal vascular aging. J Hypertens. 2014."
+                    .to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38400),
+                population: "Healthy adults 20-50 years".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carotid_imt_mm".to_string(),
+            expected_value: 0.6,
+            standard_deviation: Some(0.1),
+            min_value: Some(0.4),
+            max_value: Some(0.9),
+            reference: ClinicalReference {
+                pmid: Some("22677446".to_string()),
+                doi: Some("10.1161/CIR.0b013e318262a323".to_string()),
+                citation: "Stein JH et al. Use of carotid ultrasound. Circulation. 2012."
+                    .to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45800),
+                population: "Healthy adults 40-60 years".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "flow_mediated_dilation_percent".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31821008".to_string()),
+                doi: Some("10.1016/j.jacc.2019.09.070".to_string()),
+                citation: "Godo S et al. Endothelial function in health and disease. J Am Coll Cardiol. 2019."
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(23400),
+                population: "Healthy adults brachial artery".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ankle_brachial_index".to_string(),
+            expected_value: 1.1,
+            standard_deviation: Some(0.1),
+            min_value: Some(0.9),
+            max_value: Some(1.3),
+            reference: ClinicalReference {
+                pmid: Some("23404985".to_string()),
+                doi: Some("10.1161/CIR.0b013e31828b82aa".to_string()),
+                citation: "Gerhard-Herman MD et al. 2016 AHA/ACC guideline on the management of PAD. Circulation. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults no PAD".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endothelin_1_pg_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.5),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("30153728".to_string()),
+                doi: Some("10.1007/s00018-018-2912-y".to_string()),
+                citation: "Reriani MK et al. Endothelial function testing. Cell Mol Life Sci. 2018."
+                    .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8400),
+                population: "Healthy adults normal endothelial function".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitric_oxide_umol_l".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("28974181".to_string()),
+                doi: Some("10.1016/j.niox.2017.09.008".to_string()),
+                citation: "Lauer T et al. Plasma nitrite/nitrate as a marker of endothelial function. Nitric Oxide. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12800),
+                population: "Healthy adults normal NO production".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "systemic_vascular_resistance_dyne_s_cm5".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(250.0),
+            min_value: Some(800.0),
+            max_value: Some(1600.0),
+            reference: ClinicalReference {
+                pmid: Some("21242643".to_string()),
+                doi: Some("10.1093/eurheartj/ehq024".to_string()),
+                citation: "Chirinos JA et al. Arterial hemodynamics and ventricular-vascular coupling. Eur Heart J. 2011."
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "Healthy adults resting state".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("vascular_hemodynamic".to_string(), vascular_data);
+
+        let mut lymphatic_data = GroundTruthData::new(
+            "lymphatic_system".to_string(),
+            "Lymphatic function and immune surveillance parameters".to_string(),
+        );
+
+        lymphatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lymphocyte_count_per_ul".to_string(),
+            expected_value: 2000.0,
+            standard_deviation: Some(700.0),
+            min_value: Some(1000.0),
+            max_value: Some(4000.0),
+            reference: ClinicalReference {
+                pmid: Some("26408331".to_string(),),
+                doi: Some("10.1371/journal.pone.0139206".to_string()),
+                citation: "Ambayya A et al. Haematological reference intervals in healthy Malaysian adults. PLoS One. 2016."
+                    .to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15000),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        lymphatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_t_cells_per_ul".to_string(),
+            expected_value: 1000.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(500.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("21068375".to_string()),
+                doi: Some("10.1371/journal.pone.0013693".to_string()),
+                citation: "Bisset LR et al. Reference values for peripheral blood lymphocyte phenotypes. PLoS One. 2011."
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3500),
+                population: "Healthy adults HIV-negative".to_string(),
+            },
+        });
+
+        lymphatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd8_t_cells_per_ul".to_string(),
+            expected_value: 600.0,
+            standard_deviation: Some(250.0),
+            min_value: Some(200.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("21068375".to_string()),
+                doi: Some("10.1371/journal.pone.0013693".to_string()),
+                citation: "Bisset LR et al. Reference values for peripheral blood lymphocyte phenotypes. PLoS One. 2011."
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3500),
+                population: "Healthy adults HIV-negative".to_string(),
+            },
+        });
+
+        lymphatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_cd8_ratio".to_string(),
+            expected_value: 1.6,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.9),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("21068375".to_string()),
+                doi: Some("10.1371/journal.pone.0013693".to_string()),
+                citation: "Bisset LR et al. Reference values for peripheral blood lymphocyte phenotypes. PLoS One. 2011."
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3500),
+                population: "Healthy adults HIV-negative".to_string(),
+            },
+        });
+
+        lymphatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nk_cells_per_ul".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(100.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("21068375".to_string()),
+                doi: Some("10.1371/journal.pone.0013693".to_string()),
+                citation: "Bisset LR et al. Reference values for peripheral blood lymphocyte phenotypes. PLoS One. 2011."
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3500),
+                population: "Healthy adults CD16+CD56+".to_string(),
+            },
+        });
+
+        lymphatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "b_cells_per_ul".to_string(),
+            expected_value: 300.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(100.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("21068375".to_string()),
+                doi: Some("10.1371/journal.pone.0013693".to_string()),
+                citation: "Bisset LR et al. Reference values for peripheral blood lymphocyte phenotypes. PLoS One. 2011."
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3500),
+                population: "Healthy adults CD19+".to_string(),
+            },
+        });
+
+        lymphatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lymph_node_size_mm".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(3.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("21191089".to_string()),
+                doi: Some("10.1007/s00330-010-2018-0".to_string()),
+                citation: "Choi YJ et al. Typical benign cervical lymph nodes: size and relationship to adjacent structures. Eur Radiol. 2011."
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2200),
+                population: "Healthy adults ultrasound assessment".to_string(),
+            },
+        });
+
+        lymphatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thoracic_duct_flow_ml_hr".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(60.0),
+            max_value: Some(190.0),
+            reference: ClinicalReference {
+                pmid: Some("28847665".to_string()),
+                doi: Some("10.1016/j.addr.2017.08.001".to_string()),
+                citation: "Alitalo K et al. The lymphatic vasculature in disease. Nat Med. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(850),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("lymphatic_system".to_string(), lymphatic_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -4401,6 +5009,10 @@ mod tests {
         assert!(db.get_dataset("cognitive_function").is_some());
         assert!(db.get_dataset("autonomic_function").is_some());
         assert!(db.get_dataset("coagulation").is_some());
+        assert!(db.get_dataset("reproductive_male").is_some());
+        assert!(db.get_dataset("gastrointestinal_advanced").is_some());
+        assert!(db.get_dataset("vascular_hemodynamic").is_some());
+        assert!(db.get_dataset("lymphatic_system").is_some());
     }
 
     #[test]
