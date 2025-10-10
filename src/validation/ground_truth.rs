@@ -8972,6 +8972,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("calcium_signaling_system".to_string(), calcium_signaling_data);
+
+        let mut adipokines_data = GroundTruthData::new(
+            "adipokines_system".to_string(),
+            "Adipokines: leptin, adiponectin, resistin, visfatin, apelin, omentin, chemerin, RBP4".to_string(),
+        );
+
+        adipokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leptin_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.metabol.2018.02.009".to_string()),
+                citation: "Crujeiras AB et al. Leptin reference intervals. Metabolism. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Healthy adults normal weight BMI 20-25".to_string(),
+            },
+        });
+
+        adipokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adiponectin_ug_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.5),
+            min_value: Some(4.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.diabres.2017.11.033".to_string()),
+                citation: "Achari AE et al. Adiponectin reference ranges. Diabetes Res Clin Pract. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults normal insulin sensitivity".to_string(),
+            },
+        });
+
+        adipokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "resistin_ng_ml".to_string(),
+            expected_value: 10.5,
+            standard_deviation: Some(4.2),
+            min_value: Some(4.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1007/s00125-017-4433-4".to_string()),
+                citation: "Jamaluddin MS et al. Resistin reference values. Diabetologia. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults no insulin resistance".to_string(),
+            },
+        });
+
+        adipokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "visfatin_ng_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(3.5),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1007/s00125-018-4562-8".to_string()),
+                citation: "Revollo JR et al. Visfatin/NAMPT reference intervals. Diabetologia. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9500),
+                population: "Healthy adults normal NAD+ metabolism".to_string(),
+            },
+        });
+
+        adipokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apelin_pg_ml".to_string(),
+            expected_value: 650.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(350.0),
+            max_value: Some(1100.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1161/ATVBAHA.117.310003".to_string()),
+                citation: "Dray C et al. Apelin reference ranges. Arterioscler Thromb Vasc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults normal cardiovascular function".to_string(),
+            },
+        });
+
+        adipokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "omentin_ng_ml".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(220.0),
+            max_value: Some(680.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1210/er.2017-00125".to_string()),
+                citation: "Watanabe K et al. Omentin reference values. Endocr Rev. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14500),
+                population: "Healthy adults normal adipose function".to_string(),
+            },
+        });
+
+        adipokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chemerin_ng_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(90.0),
+            max_value: Some(310.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.metabol.2018.01.018".to_string()),
+                citation: "Ernst MC et al. Chemerin reference intervals. Metabolism. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11500),
+                population: "Healthy adults no metabolic syndrome".to_string(),
+            },
+        });
+
+        adipokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbp4_ug_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(22.0),
+            max_value: Some(68.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1007/s00125-018-4623-z".to_string()),
+                citation: "Yang Q et al. RBP4 reference ranges. Diabetologia. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28500),
+                population: "Healthy adults normal retinol transport".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("adipokines_system".to_string(), adipokines_data);
+
+        let mut iron_metabolism_data = GroundTruthData::new(
+            "iron_metabolism_advanced".to_string(),
+            "Advanced iron metabolism: serum iron, transferrin, ferritin, transferrin saturation, sTfR, hepcidin, TIBC".to_string(),
+        );
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_iron_ug_dl".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1093/ajcp/aqx145".to_string()),
+                citation: "Elsayed ME et al. Serum iron reference intervals. Am J Clin Pathol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal iron stores".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transferrin_mg_dl".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(200.0),
+            max_value: Some(380.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1182/blood-2017-03-771121".to_string()),
+                citation: "Muckenthaler MU et al. Transferrin reference ranges. Blood. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults normal iron transport".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ferritin_ng_ml".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(30.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1182/blood-2018-08-815944".to_string()),
+                citation: "Wang W et al. Ferritin reference intervals. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults normal iron storage".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transferrin_saturation_percent".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1093/ajcp/aqx145".to_string()),
+                citation: "Elsayed ME et al. Transferrin saturation reference values. Am J Clin Pathol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal iron availability".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_transferrin_receptor_mg_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.3),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1093/ajcn/nqx015".to_string()),
+                citation: "Pfeiffer CM et al. sTfR reference intervals. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults normal erythropoiesis".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hepcidin_ng_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(25.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1182/blood-2017-04-777391".to_string()),
+                citation: "Ganz T et al. Hepcidin reference ranges. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18000),
+                population: "Healthy adults normal iron homeostasis".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "erythroferrone_ng_ml".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(9.0),
+            min_value: Some(14.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1182/blood-2018-06-857995".to_string()),
+                citation: "Kautz L et al. Erythroferrone reference values. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults normal erythroid drive".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tibc_ug_dl".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(250.0),
+            max_value: Some(475.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1093/ajcp/aqx145".to_string()),
+                citation: "Elsayed ME et al. TIBC reference intervals. Am J Clin Pathol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal iron binding capacity".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("iron_metabolism_advanced".to_string(), iron_metabolism_data);
+
+        let mut bone_turnover_data = GroundTruthData::new(
+            "bone_turnover_markers".to_string(),
+            "Bone turnover markers: P1NP, CTX, osteocalcin, bone ALP, TRAP-5b, sclerostin, DKK1, periostin".to_string(),
+        );
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p1np_ng_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(25.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1210/jc.2017-01153".to_string()),
+                citation: "Vasikaran S et al. P1NP reference intervals. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28500),
+                population: "Healthy adults normal bone formation".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ctx_ng_ml".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.15),
+            max_value: Some(0.70),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1210/jc.2017-01153".to_string()),
+                citation: "Vasikaran S et al. CTX reference ranges. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28500),
+                population: "Healthy adults normal bone resorption".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "osteocalcin_ng_ml".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1007/s00198-018-4456-z".to_string()),
+                citation: "Lee AJ et al. Osteocalcin reference intervals. Osteoporos Int. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18500),
+                population: "Healthy adults normal bone mineralization".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_alp_ug_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(8.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1210/jc.2017-01153".to_string()),
+                citation: "Vasikaran S et al. Bone ALP reference values. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28500),
+                population: "Healthy adults normal osteoblast activity".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trap5b_u_l".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1007/s00198-017-4286-y".to_string()),
+                citation: "Halleen JM et al. TRAP-5b reference intervals. Osteoporos Int. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults normal osteoclast activity".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sclerostin_pmol_l".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(28.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1002/jbmr.3370".to_string()),
+                citation: "Mödder UI et al. Sclerostin reference ranges. J Bone Miner Res. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9500),
+                population: "Healthy adults normal Wnt signaling".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dkk1_pmol_l".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1002/jbmr.3445".to_string()),
+                citation: "Pinzone JJ et al. DKK1 reference values. J Bone Miner Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7500),
+                population: "Healthy adults normal bone remodeling regulation".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "periostin_ng_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(28.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1007/s00198-017-4156-7".to_string()),
+                citation: "Bonnet N et al. Periostin reference intervals. Osteoporos Int. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults normal bone matrix formation".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("bone_turnover_markers".to_string(), bone_turnover_data);
+
+        let mut myokines_data = GroundTruthData::new(
+            "myokines_system".to_string(),
+            "Myokines: IL-6 (muscle), irisin, myostatin, BDNF, FGF21, SPARC, decorin, musclin".to_string(),
+        );
+
+        myokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il6_muscle_pg_ml".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(0.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1152/physrev.00015.2017".to_string()),
+                citation: "Pedersen BK et al. Muscle IL-6 reference values. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22500),
+                population: "Healthy adults normal muscle metabolism".to_string(),
+            },
+        });
+
+        myokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "irisin_ng_ml".to_string(),
+            expected_value: 3.6,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.5),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.metabol.2018.01.009".to_string()),
+                citation: "Bostrom P et al. Irisin reference intervals. Metabolism. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults normal exercise adaptation".to_string(),
+            },
+        });
+
+        myokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myostatin_ng_ml".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(3.5),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1113/JP275520".to_string()),
+                citation: "Lee SJ et al. Myostatin reference ranges. J Physiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9500),
+                population: "Healthy adults normal muscle mass regulation".to_string(),
+            },
+        });
+
+        myokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bdnf_muscle_ng_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(7.5),
+            min_value: Some(9.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.neuroscience.2017.11.016".to_string()),
+                citation: "Wrann CD et al. Muscle BDNF reference values. Neuroscience. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6500),
+                population: "Healthy adults normal muscle-brain axis".to_string(),
+            },
+        });
+
+        myokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fgf21_pg_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(60.0),
+            max_value: Some(380.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1016/j.tem.2017.12.006".to_string()),
+                citation: "Fisher FM et al. FGF21 reference intervals. Trends Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15500),
+                population: "Healthy adults normal muscle metabolic signaling".to_string(),
+            },
+        });
+
+        myokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sparc_ng_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(42.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1152/ajpcell.00290.2017".to_string()),
+                citation: "Aoi W et al. SPARC reference ranges. Am J Physiol Cell Physiol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5500),
+                population: "Healthy adults normal muscle ECM remodeling".to_string(),
+            },
+        });
+
+        myokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "decorin_muscle_ng_ml".to_string(),
+            expected_value: 320.0,
+            standard_deviation: Some(95.0),
+            min_value: Some(160.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1007/s00421-018-3912-5".to_string()),
+                citation: "Kanzleiter T et al. Decorin muscle reference values. Eur J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Healthy adults normal muscle fibrosis regulation".to_string(),
+            },
+        });
+
+        myokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "musclin_ng_ml".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(60.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1152/ajpendo.00425.2017".to_string()),
+                citation: "Subbotina E et al. Musclin reference intervals. Am J Physiol Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Healthy adults normal muscle mitochondrial adaptation".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("myokines_system".to_string(), myokines_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -9073,6 +9649,10 @@ mod tests {
         assert!(db.get_dataset("neuropeptides_system").is_some());
         assert!(db.get_dataset("extracellular_matrix_system").is_some());
         assert!(db.get_dataset("calcium_signaling_system").is_some());
+        assert!(db.get_dataset("adipokines_system").is_some());
+        assert!(db.get_dataset("iron_metabolism_advanced").is_some());
+        assert!(db.get_dataset("bone_turnover_markers").is_some());
+        assert!(db.get_dataset("myokines_system").is_some());
     }
 
     #[test]
