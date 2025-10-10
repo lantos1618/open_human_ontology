@@ -8,6 +8,7 @@ pub mod detailed_pathways;
 pub mod amino_acid_metabolism;
 pub mod lipid_metabolism;
 pub mod detoxification;
+pub mod alcohol_metabolism;
 
 pub use energy::{EnergyBalance, BasalMetabolicRate, TotalEnergyExpenditure};
 pub use pathways::{MetabolicPathway, Glycolysis, CitricAcidCycle, OxidativePhosphorylation, Gluconeogenesis};
@@ -19,3 +20,4 @@ pub use detailed_pathways::{DetailedGlycolysis, KrebsCycle, BetaOxidation, Elect
 pub use amino_acid_metabolism::{AminoAcidMetabolism, EssentialAminoAcidStatus, NonEssentialAminoAcidStatus, UreaCycle, BranchedChainAminoAcidMetabolism, AromaticAminoAcidMetabolism, SulfurAminoAcidMetabolism, AminoAcidDisorder, ProteinStatus};
 pub use lipid_metabolism::{LipidMetabolism, LipidProfile, FattyAcidOxidation, LipidSynthesis, CholesterolMetabolism, PhospholipidMetabolism, SphingolipidMetabolism, KetoneBodyStatus, CardiovascularRiskCategory, FattyAcidOxidationDisorder};
 pub use detoxification::{DetoxificationSystem, Phase1Metabolism, Phase2Metabolism, CytochromeP450System, GlucuronidationSystem, GlutathioneConjugationSystem, AntioxidantSystems, OxidativeStressMarkers, CYP2D6Phenotype, NAT2Phenotype};
+pub use alcohol_metabolism::{AlcoholMetabolismPathway, AlcoholMetabolismSimulation, ALDH2Genotype, ADH1BGenotype, AlcoholIngestion, AlcoholConsumptionLevel, Sex, MetabolismTimePoint};

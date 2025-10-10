@@ -65,6 +65,7 @@ pub mod nutrition;
 pub mod development;
 pub mod microbiome;
 pub mod biometric_authentication;
+pub mod validation;
 
 // Re-export commonly used types
 pub use biology::{
