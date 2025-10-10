@@ -6,6 +6,7 @@ pub mod cell_types;
 pub mod cell_signaling;
 pub mod protein_synthesis;
 pub mod membrane;
+pub mod mitochondria;
 
 pub use cell::{Cell, CellType, CellState, CellCycle};
 pub use organelles::{
@@ -22,3 +23,7 @@ pub use cell_types::{
 pub use cell_signaling::*;
 pub use protein_synthesis::*;
 pub use membrane::*;
+pub use mitochondria::{
+    Mitochondrion as MitochondrionDetailed, ElectronTransportChain, OxidativePhosphorylation,
+    MitochondrialDynamics, MitochondrialQualityControl, MitochondrialDysfunction,
+};

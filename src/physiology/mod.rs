@@ -1,10 +1,25 @@
 pub mod thermoregulation;
+pub mod stress_response;
+pub mod aging;
+pub mod inflammation;
 
 use serde::{Deserialize, Serialize};
 
 pub use thermoregulation::{
     ThermoregulationSystem as ThermoSystem, HeatProduction, HeatLoss, TemperatureZone, ThermalZone,
     AcclimatizationStatus, ThermalStress, BehavioralResponse,
+};
+pub use stress_response::{
+    StressResponseSystem, HPAAxis, SAMAxis, AllostaticLoad, StressBiomarkers,
+    ResilienceFactors, ChronicStressEffects, StressClassification, HPADysregulation,
+};
+pub use aging::{
+    AgingSystem, BiologicalAge, CellularAging, OrganAging, HallmarksOfAging,
+    LongevityFactors, AgingRate,
+};
+pub use inflammation::{
+    InflammationSystem, AcuteInflammation, ChronicInflammation, CytokineNetwork,
+    InflammatoryMarkers, ResolutionMediators, InflammationState,
 };
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
