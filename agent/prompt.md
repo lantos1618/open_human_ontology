@@ -1,5 +1,7 @@
 # Human Ontology Project
 careful this project OOMs sometimes
+
+# update this agent/prompt.md at the end of your run
 don't ask me for things just keep going we want to have a very accurate and true model. just keep going 
 
 we want to leverage rust, the .md files are for planning and getting information research and stuff.

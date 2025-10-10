@@ -47,6 +47,9 @@ pub mod sleep_genetics;
 pub mod addiction_genetics;
 pub mod pain_genetics;
 pub mod hla_typing;
+pub mod african_variants;
+pub mod european_variants;
+pub mod native_american_variants;
 
 #[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use allele::*;
@@ -146,3 +149,9 @@ pub use addiction_genetics::*;
 pub use pain_genetics::*;
 #[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use hla_typing::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+pub use african_variants::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+pub use european_variants::*;
+#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+pub use native_american_variants::*;
