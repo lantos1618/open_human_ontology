@@ -1,4 +1,5 @@
 use crate::biology::genetics::{genotype::Genotype, AncestryProfile, PhenotypeProfile};
+use crate::config::{BaselineHumanParams, HumanPreset, PresetType};
 use crate::pathology::headache::HeadacheProfile;
 use crate::pharmacology::pharmacogenomics::PharmacogeneticProfile;
 use crate::systems::*;
@@ -161,6 +162,73 @@ impl Human {
             },
             body_metrics,
             systems: BodySystems::new_adult_female(),
+            genetics: GeneticProfile::new(),
+            pharmacogenomics: PharmacogeneticProfile::new(),
+            health_conditions: HealthConditions::new(),
+        }
+    }
+
+    pub fn from_preset(id: String, preset_type: PresetType) -> Self {
+        let preset = HumanPreset::from_preset_type(preset_type);
+        let body_metrics = BodyMetrics::calculate(preset.height_cm, preset.weight_kg);
+
+        let biological_sex = match preset_type {
+            PresetType::AdultMaleHealthy
+            | PresetType::AdultMaleAthlete
+            | PresetType::AdultMaleObesity
+            | PresetType::ElderlyMaleHealthy
+            | PresetType::YoungAdultMaleHealthy => BiologicalSex::Male,
+            PresetType::AdultFemaleHealthy
+            | PresetType::AdultFemaleAthlete
+            | PresetType::AdultFemaleObesity
+            | PresetType::ElderlyFemaleHealthy
+            | PresetType::YoungAdultFemaleHealthy => BiologicalSex::Female,
+        };
+
+        let systems = match biological_sex {
+            BiologicalSex::Male => BodySystems::from_baseline_params_male(&preset.baseline_params),
+            BiologicalSex::Female => {
+                BodySystems::from_baseline_params_female(&preset.baseline_params)
+            }
+        };
+
+        Self {
+            id,
+            demographics: Demographics {
+                age_years: preset.age_years,
+                biological_sex,
+            },
+            body_metrics,
+            systems,
+            genetics: GeneticProfile::new(),
+            pharmacogenomics: PharmacogeneticProfile::new(),
+            health_conditions: HealthConditions::new(),
+        }
+    }
+
+    pub fn from_custom_params(
+        id: String,
+        age_years: f64,
+        height_cm: f64,
+        weight_kg: f64,
+        biological_sex: BiologicalSex,
+        baseline_params: BaselineHumanParams,
+    ) -> Self {
+        let body_metrics = BodyMetrics::calculate(height_cm, weight_kg);
+
+        let systems = match biological_sex {
+            BiologicalSex::Male => BodySystems::from_baseline_params_male(&baseline_params),
+            BiologicalSex::Female => BodySystems::from_baseline_params_female(&baseline_params),
+        };
+
+        Self {
+            id,
+            demographics: Demographics {
+                age_years,
+                biological_sex,
+            },
+            body_metrics,
+            systems,
             genetics: GeneticProfile::new(),
             pharmacogenomics: PharmacogeneticProfile::new(),
             health_conditions: HealthConditions::new(),
@@ -718,6 +786,64 @@ impl BodySystems {
         }
     }
 
+    pub fn from_baseline_params_male(params: &BaselineHumanParams) -> Self {
+        let mut heart = Heart::new();
+        heart.heart_rate_bpm = params.cardiovascular.resting_heart_rate_bpm;
+        heart.stroke_volume_ml = params.cardiovascular.stroke_volume_ml;
+        heart.ejection_fraction = params.cardiovascular.ejection_fraction;
+
+        let mut kidney_left = Kidney::new_left();
+        kidney_left.gfr_ml_per_min = params.renal.gfr_ml_per_min;
+
+        let mut kidney_right = Kidney::new_right();
+        kidney_right.gfr_ml_per_min = params.renal.gfr_ml_per_min;
+
+        Self {
+            cardiovascular: CardiovascularSystem {
+                heart,
+                blood_vessels: vec![],
+                blood: Blood::new(cardiovascular::BloodType::OPositive),
+            },
+            respiratory: RespiratorySystem {
+                left_lung: Lung::new_left(),
+                right_lung: Lung::new_right(),
+                gas_exchange: GasExchange::new_normal(),
+                breathing_pattern: BreathingPattern::new_normal(),
+            },
+            nervous: NervousSystemIntegrated {
+                central: CentralNervousSystem::new_adult(),
+                peripheral: PeripheralNervousSystem::new(),
+            },
+            digestive: DigestiveSystem {
+                gi_tract: GITract::new_adult(),
+                nutrient_absorption: NutrientAbsorption::new_normal(),
+            },
+            renal: RenalSystem {
+                left_kidney: kidney_left,
+                right_kidney: kidney_right,
+                filtration: Filtration::new_normal(),
+            },
+            endocrine: EndocrineLandscape::new_adult_male(),
+            muscular: MuscularSystem {
+                total_muscle_mass_kg: 35.0,
+                fiber_type_distribution: 0.5,
+            },
+            skeletal: SkeletalSystem {
+                total_bone_mass_kg: 4.5,
+                bone_density_g_cm3: 1.3,
+            },
+            integumentary: IntegumentarySystem {
+                skin: Skin::new_adult(1.8),
+                skin_type: integumentary::SkinType::new_type_iii(),
+            },
+            immune: ImmuneSystem {
+                lymphatic: LymphaticSystem::new_adult(),
+                wbc_count_per_ul: params.hematology.wbc_count_per_ul,
+            },
+            reproductive: ReproductiveSystem::Male(MaleReproductiveSystem::new_adult()),
+        }
+    }
+
     pub fn new_adult_female() -> Self {
         Self {
             cardiovascular: CardiovascularSystem {
@@ -760,6 +886,64 @@ impl BodySystems {
             immune: ImmuneSystem {
                 lymphatic: LymphaticSystem::new_adult(),
                 wbc_count_per_ul: 7000.0,
+            },
+            reproductive: ReproductiveSystem::Female(FemaleReproductiveSystem::new_adult()),
+        }
+    }
+
+    pub fn from_baseline_params_female(params: &BaselineHumanParams) -> Self {
+        let mut heart = Heart::new();
+        heart.heart_rate_bpm = params.cardiovascular.resting_heart_rate_bpm;
+        heart.stroke_volume_ml = params.cardiovascular.stroke_volume_ml;
+        heart.ejection_fraction = params.cardiovascular.ejection_fraction;
+
+        let mut kidney_left = Kidney::new_left();
+        kidney_left.gfr_ml_per_min = params.renal.gfr_ml_per_min;
+
+        let mut kidney_right = Kidney::new_right();
+        kidney_right.gfr_ml_per_min = params.renal.gfr_ml_per_min;
+
+        Self {
+            cardiovascular: CardiovascularSystem {
+                heart,
+                blood_vessels: vec![],
+                blood: Blood::new(cardiovascular::BloodType::OPositive),
+            },
+            respiratory: RespiratorySystem {
+                left_lung: Lung::new_left(),
+                right_lung: Lung::new_right(),
+                gas_exchange: GasExchange::new_normal(),
+                breathing_pattern: BreathingPattern::new_normal(),
+            },
+            nervous: NervousSystemIntegrated {
+                central: CentralNervousSystem::new_adult(),
+                peripheral: PeripheralNervousSystem::new(),
+            },
+            digestive: DigestiveSystem {
+                gi_tract: GITract::new_adult(),
+                nutrient_absorption: NutrientAbsorption::new_normal(),
+            },
+            renal: RenalSystem {
+                left_kidney: kidney_left,
+                right_kidney: kidney_right,
+                filtration: Filtration::new_normal(),
+            },
+            endocrine: EndocrineLandscape::new_adult_female(),
+            muscular: MuscularSystem {
+                total_muscle_mass_kg: 28.0,
+                fiber_type_distribution: 0.5,
+            },
+            skeletal: SkeletalSystem {
+                total_bone_mass_kg: 3.5,
+                bone_density_g_cm3: 1.2,
+            },
+            integumentary: IntegumentarySystem {
+                skin: Skin::new_adult(1.6),
+                skin_type: integumentary::SkinType::new_type_iii(),
+            },
+            immune: ImmuneSystem {
+                lymphatic: LymphaticSystem::new_adult(),
+                wbc_count_per_ul: params.hematology.wbc_count_per_ul,
             },
             reproductive: ReproductiveSystem::Female(FemaleReproductiveSystem::new_adult()),
         }
