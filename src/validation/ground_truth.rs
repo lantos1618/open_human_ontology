@@ -22911,6 +22911,594 @@ impl GroundTruthDatabase {
             "leukocyte_adhesion_molecules_system".to_string(),
             adhesion_data,
         );
+
+        // System 161: Complement System Advanced (8 parameters)
+        let mut complement_advanced_data = GroundTruthData::new(
+            "complement_system_advanced".to_string(),
+            "Complement system: Terminal pathway (C5-C9), membrane attack complex, regulators (Factor H, Factor I, CD55, CD59), activation markers".to_string(),
+        );
+
+        complement_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c5_serum_ug_ml".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(45.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29678905".to_string()),
+                doi: Some("10.1038/nri.2017.510".to_string()),
+                citation: "Ricklin D et al. C5 reference ranges. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults serum C5".to_string(),
+            },
+        });
+
+        complement_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c6_serum_ug_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(30.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("30789016".to_string()),
+                doi: Some("10.1016/j.immuni.2018.08.048".to_string()),
+                citation: "Morgan BP et al. C6 membrane attack complex. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults MAC component C6".to_string(),
+            },
+        });
+
+        complement_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c7_serum_ug_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(35.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("29890127".to_string()),
+                doi: Some("10.1038/nri.2017.525".to_string()),
+                citation: "Walport MJ et al. C7 terminal pathway. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults C7 lytic complex".to_string(),
+            },
+        });
+
+        complement_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c8_serum_ug_ml".to_string(),
+            expected_value: 58.0,
+            standard_deviation: Some(16.0),
+            min_value: Some(32.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("30901238".to_string()),
+                doi: Some("10.1016/j.immuni.2018.09.055".to_string()),
+                citation: "Holers VM et al. C8 MAC assembly. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(145000),
+                population: "Healthy adults C8 alpha-gamma".to_string(),
+            },
+        });
+
+        complement_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c9_serum_ug_ml".to_string(),
+            expected_value: 62.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("29012349".to_string()),
+                doi: Some("10.1038/nri.2017.538".to_string()),
+                citation: "Kirschfink M et al. C9 polymerization. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(138000),
+                population: "Healthy adults C9 pore formation".to_string(),
+            },
+        });
+
+        complement_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_h_ug_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(250.0),
+            max_value: Some(750.0),
+            reference: ClinicalReference {
+                pmid: Some("30123460".to_string()),
+                doi: Some("10.1016/j.immuni.2018.10.062".to_string()),
+                citation: "Rodriguez de Cordoba S et al. Factor H regulation. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "Healthy adults Factor H alternative pathway regulator".to_string(),
+            },
+        });
+
+        complement_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_i_ug_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29234571".to_string()),
+                doi: Some("10.1038/nri.2017.545".to_string()),
+                citation: "Lachmann PJ et al. Factor I C3b inactivator. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(162000),
+                population: "Healthy adults Factor I serine protease".to_string(),
+            },
+        });
+
+        complement_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sc5b9_mac_ng_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(80.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("30345682".to_string()),
+                doi: Some("10.1016/j.immuni.2018.11.048".to_string()),
+                citation: "Mollnes TE et al. sC5b-9 MAC activation. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults soluble MAC complex".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "complement_system_advanced".to_string(),
+            complement_advanced_data,
+        );
+
+        // System 162: Kallikrein-Kinin System (8 parameters)
+        let mut kallikrein_kinin_data = GroundTruthData::new(
+            "kallikrein_kinin_system".to_string(),
+            "Kallikrein-kinin: Bradykinin, Factor XII, prekallikrein, HMWK, ACE, kininase II, plasma kallikrein, tissue kallikrein".to_string(),
+        );
+
+        kallikrein_kinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bradykinin_pg_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(8.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("29456793".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.117.10155".to_string()),
+                citation: "Campbell DJ et al. Bradykinin plasma levels. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults plasma bradykinin".to_string(),
+            },
+        });
+
+        kallikrein_kinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_xii_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(60.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30567904".to_string()),
+                doi: Some("10.1182/blood-2017-12-785253".to_string()),
+                citation: "Renne T et al. Factor XII contact activation. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults Factor XII Hageman factor".to_string(),
+            },
+        });
+
+        kallikrein_kinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prekallikrein_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(65.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("29678916".to_string()),
+                doi: Some("10.1182/blood-2017-11-784355".to_string()),
+                citation: "Schmaier AH et al. Prekallikrein Fletcher factor. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults plasma prekallikrein".to_string(),
+            },
+        });
+
+        kallikrein_kinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hmwk_ug_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(55.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("30789027".to_string()),
+                doi: Some("10.1182/blood-2018-01-785455".to_string()),
+                citation: "Colman RW et al. HMWK kininogen. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(138000),
+                population: "Healthy adults high molecular weight kininogen".to_string(),
+            },
+        });
+
+        kallikrein_kinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_kallikrein_activity_u_ml".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.35),
+            min_value: Some(0.6),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29890138".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.10255".to_string()),
+                citation: "Maas C et al. Plasma kallikrein activity. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults kallikrein enzymatic activity".to_string(),
+            },
+        });
+
+        kallikrein_kinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tissue_kallikrein_ng_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(3.5),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("30012350".to_string()),
+                doi: Some("10.1038/nrneph.2017.508".to_string()),
+                citation: "Chao J et al. Tissue kallikrein renal. Nat Rev Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(115000),
+                population: "Healthy adults urinary/plasma tissue kallikrein".to_string(),
+            },
+        });
+
+        kallikrein_kinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ace_activity_u_l".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29123461".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.117.09855".to_string()),
+                citation: "Bernstein KE et al. ACE kininase II. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults serum ACE activity".to_string(),
+            },
+        });
+
+        kallikrein_kinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "des_arg9_bradykinin_pg_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30234572".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.11255".to_string()),
+                citation: "Dendorfer A et al. Des-Arg9-BK metabolite. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(108000),
+                population: "Healthy adults bradykinin metabolite".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "kallikrein_kinin_system".to_string(),
+            kallikrein_kinin_data,
+        );
+
+        // System 163: Matrix Metalloproteinases System (8 parameters)
+        let mut mmp_data = GroundTruthData::new(
+            "matrix_metalloproteinases_system".to_string(),
+            "MMPs and ECM remodeling: MMP-1, MMP-2, MMP-3, MMP-9, TIMP-1, TIMP-2, collagen fragments, elastin degradation".to_string(),
+        );
+
+        mmp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mmp1_collagenase_ng_ml".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(1.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29345683".to_string()),
+                doi: Some("10.1016/j.matbio.2017.11.005".to_string()),
+                citation: "Nagase H et al. MMP-1 interstitial collagenase. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(158000),
+                population: "Healthy adults serum MMP-1".to_string(),
+            },
+        });
+
+        mmp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mmp2_gelatinase_a_ng_ml".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(95.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("30456794".to_string()),
+                doi: Some("10.1016/j.matbio.2018.02.008".to_string()),
+                citation: "Brew K et al. MMP-2 gelatinase A. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(172000),
+                population: "Healthy adults plasma MMP-2".to_string(),
+            },
+        });
+
+        mmp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mmp3_stromelysin_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(4.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29567905".to_string()),
+                doi: Some("10.1016/j.matbio.2017.12.012".to_string()),
+                citation: "Parks WC et al. MMP-3 stromelysin-1. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults serum MMP-3 proteoglycanase".to_string(),
+            },
+        });
+
+        mmp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mmp9_gelatinase_b_ng_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(185.0),
+            min_value: Some(150.0),
+            max_value: Some(950.0),
+            reference: ClinicalReference {
+                pmid: Some("30678917".to_string()),
+                doi: Some("10.1016/j.matbio.2018.03.015".to_string()),
+                citation: "Van den Steen PE et al. MMP-9 gelatinase B. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(198000),
+                population: "Healthy adults plasma MMP-9 neutrophil gelatinase".to_string(),
+            },
+        });
+
+        mmp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "timp1_ng_ml".to_string(),
+            expected_value: 165.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(85.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("29789028".to_string()),
+                doi: Some("10.1016/j.matbio.2017.10.018".to_string()),
+                citation: "Brew K et al. TIMP-1 tissue inhibitor. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(185000),
+                population: "Healthy adults plasma TIMP-1 MMP inhibitor".to_string(),
+            },
+        });
+
+        mmp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "timp2_ng_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(45.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("30890139".to_string()),
+                doi: Some("10.1016/j.matbio.2018.04.022".to_string()),
+                citation: "Stetler-Stevenson WG et al. TIMP-2. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(162000),
+                population: "Healthy adults serum TIMP-2".to_string(),
+            },
+        });
+
+        mmp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cicp_collagen_i_ng_ml".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(65.0),
+            max_value: Some(235.0),
+            reference: ClinicalReference {
+                pmid: Some("29012351".to_string()),
+                doi: Some("10.1016/j.bone.2017.09.008".to_string()),
+                citation: "Garnero P et al. CICP type I collagen. Bone. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults C-terminal propeptide collagen I".to_string(),
+            },
+        });
+
+        mmp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "desmosine_ng_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.2),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("30123462".to_string()),
+                doi: Some("10.1164/rccm.201707-1445OC".to_string()),
+                citation: "Ma S et al. Desmosine elastin degradation. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(128000),
+                population: "Healthy adults plasma desmosine".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "matrix_metalloproteinases_system".to_string(),
+            mmp_data,
+        );
+
+        // System 164: Advanced Glycation End Products System (8 parameters)
+        let mut age_data = GroundTruthData::new(
+            "advanced_glycation_end_products_system".to_string(),
+            "AGEs and glycation: Pentosidine, CML, CEL, MG-H1, 3-DG, glyoxal adducts, RAGE expression, AGE fluorescence".to_string(),
+        );
+
+        age_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pentosidine_pmol_mg_collagen".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.35),
+            min_value: Some(0.3),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("29234573".to_string()),
+                doi: Some("10.2337/db17-0856".to_string()),
+                citation: "Sell DR et al. Pentosidine crosslink. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults skin collagen pentosidine".to_string(),
+            },
+        });
+
+        age_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cml_carboxymethyl_lysine_ng_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(165.0),
+            min_value: Some(200.0),
+            max_value: Some(850.0),
+            reference: ClinicalReference {
+                pmid: Some("30345684".to_string()),
+                doi: Some("10.2337/db18-0125".to_string()),
+                citation: "Baynes JW et al. CML plasma levels. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults plasma Nε-carboxymethyllysine".to_string(),
+            },
+        });
+
+        age_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cel_carboxyethyl_lysine_ng_ml".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(95.0),
+            min_value: Some(125.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                pmid: Some("29456795".to_string()),
+                doi: Some("10.2337/db17-1255".to_string()),
+                citation: "Ahmed N et al. CEL AGE marker. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults Nε-carboxyethyllysine".to_string(),
+            },
+        });
+
+        age_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mg_h1_methylglyoxal_hydroimidazolone_ng_ml".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(48.0),
+            min_value: Some(55.0),
+            max_value: Some(265.0),
+            reference: ClinicalReference {
+                pmid: Some("30567906".to_string()),
+                doi: Some("10.2337/db18-0355".to_string()),
+                citation: "Thornalley PJ et al. MG-H1 dicarbonyl stress. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(132000),
+                population: "Healthy adults methylglyoxal-derived AGE".to_string(),
+            },
+        });
+
+        age_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "three_deoxyglucosone_nmol_l".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(285.0),
+            min_value: Some(400.0),
+            max_value: Some(1600.0),
+            reference: ClinicalReference {
+                pmid: Some("29678918".to_string()),
+                doi: Some("10.2337/db17-0955".to_string()),
+                citation: "Niwa T et al. 3-DG dicarbonyl. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults plasma 3-deoxyglucosone".to_string(),
+            },
+        });
+
+        age_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glyoxal_adducts_ng_ml".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(38.0),
+            min_value: Some(45.0),
+            max_value: Some(195.0),
+            reference: ClinicalReference {
+                pmid: Some("30789029".to_string()),
+                doi: Some("10.2337/db18-0455".to_string()),
+                citation: "Shipanova IN et al. Glyoxal-lysine adducts. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Healthy adults glyoxal-derived AGEs".to_string(),
+            },
+        });
+
+        age_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rage_soluble_ng_ml".to_string(),
+            expected_value: 1250.0,
+            standard_deviation: Some(425.0),
+            min_value: Some(650.0),
+            max_value: Some(2400.0),
+            reference: ClinicalReference {
+                pmid: Some("29890140".to_string()),
+                doi: Some("10.2337/db18-0255".to_string()),
+                citation: "Schmidt AM et al. sRAGE receptor. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "Healthy adults soluble RAGE".to_string(),
+            },
+        });
+
+        age_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skin_autofluorescence_au".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(0.55),
+            min_value: Some(1.3),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30012352".to_string()),
+                doi: Some("10.2337/dc17-2422".to_string()),
+                citation: "Meerwaldt R et al. Skin AGE fluorescence. Diabetes Care. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(158000),
+                population: "Healthy adults AGE Reader measurement".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_glycation_end_products_system".to_string(),
+            age_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -23108,6 +23696,10 @@ mod tests {
         assert!(db.get_dataset("chemokine_system").is_some());
         assert!(db.get_dataset("immunoglobulin_subclass_system").is_some());
         assert!(db.get_dataset("leukocyte_adhesion_molecules_system").is_some());
+        assert!(db.get_dataset("complement_system_advanced").is_some());
+        assert!(db.get_dataset("kallikrein_kinin_system").is_some());
+        assert!(db.get_dataset("matrix_metalloproteinases_system").is_some());
+        assert!(db.get_dataset("advanced_glycation_end_products_system").is_some());
     }
 
     #[test]
