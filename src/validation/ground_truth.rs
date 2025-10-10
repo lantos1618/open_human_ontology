@@ -291,6 +291,15 @@ impl GroundTruthDatabase {
     pub fn all_categories(&self) -> Vec<String> {
         self.datasets.keys().cloned().collect()
     }
+
+    pub fn get_parameter(&self, parameter_name: &str) -> Option<&GroundTruthDataPoint> {
+        for dataset in self.datasets.values() {
+            if let Some(dp) = dataset.data_points.iter().find(|dp| dp.parameter_name == parameter_name) {
+                return Some(dp);
+            }
+        }
+        None
+    }
 }
 
 impl Default for GroundTruthDatabase {
