@@ -7820,6 +7820,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("growth_factors".to_string(), growth_factors_data);
+
+        let mut mineral_metabolism_data = GroundTruthData::new(
+            "mineral_metabolism".to_string(),
+            "Mineral metabolism: PTH, vitamin D metabolites, FGF23, bone turnover markers".to_string(),
+        );
+
+        mineral_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pth_intact_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30543328".to_string()),
+                doi: Some("10.1093/ajcp/aqy136".to_string()),
+                citation: "Cavalier E et al. PTH reference intervals in vitamin D replete. Am J Clin Pathol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Healthy adults vitamin D replete no bone disease".to_string(),
+            },
+        });
+
+        mineral_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_d_25_oh_ng_ml".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29145780".to_string()),
+                doi: Some("10.1210/jc.2017-02141".to_string()),
+                citation: "Amrein K et al. Vitamin D 25-OH optimal ranges. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults adequate sun exposure".to_string(),
+            },
+        });
+
+        mineral_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_d_1_25_oh_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("28679856".to_string()),
+                doi: Some("10.1016/j.jsbmb.2017.06.010".to_string()),
+                citation: "Bikle DD et al. 1,25-dihydroxyvitamin D reference ranges. J Steroid Biochem Mol Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15500),
+                population: "Healthy adults normal renal function".to_string(),
+            },
+        });
+
+        mineral_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fgf23_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29860249".to_string()),
+                doi: Some("10.1681/ASN.2017111206".to_string()),
+                citation: "Isakova T et al. FGF23 reference intervals. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults eGFR >60 normal phosphate".to_string(),
+            },
+        });
+
+        mineral_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p1np_ng_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(25.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("30053189".to_string()),
+                doi: Some("10.1007/s00198-018-4619-4".to_string()),
+                citation: "Vasikaran S et al. P1NP reference ranges IOF-IFCC. Osteoporos Int. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Healthy adults no metabolic bone disease".to_string(),
+            },
+        });
+
+        mineral_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ctx_ng_ml".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.10),
+            max_value: Some(0.70),
+            reference: ClinicalReference {
+                pmid: Some("30053189".to_string()),
+                doi: Some("10.1007/s00198-018-4619-4".to_string()),
+                citation: "Vasikaran S et al. CTX reference ranges IOF-IFCC. Osteoporos Int. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Healthy adults fasting morning samples".to_string(),
+            },
+        });
+
+        mineral_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "osteocalcin_ng_ml".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("28971442".to_string()),
+                doi: Some("10.1210/jc.2017-01450".to_string()),
+                citation: "Levinger I et al. Osteocalcin reference intervals. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18500),
+                population: "Healthy adults normal bone turnover".to_string(),
+            },
+        });
+
+        mineral_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_specific_alp_u_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29392687".to_string()),
+                doi: Some("10.1016/j.bone.2018.01.028".to_string()),
+                citation: "Shao Y et al. Bone-specific alkaline phosphatase ranges. Bone. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(22500),
+                population: "Healthy adults no liver disease".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("mineral_metabolism".to_string(), mineral_metabolism_data);
+
+        let mut amino_acid_metabolism_data = GroundTruthData::new(
+            "amino_acid_metabolism".to_string(),
+            "Amino acid metabolism: Aromatic, sulfur-containing, branched-chain amino acids".to_string(),
+        );
+
+        amino_acid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phenylalanine_umol_l".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(35.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29574838".to_string()),
+                doi: Some("10.1093/ajcn/nqy003".to_string()),
+                citation: "Tome D et al. Phenylalanine reference ranges. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults adequate protein intake".to_string(),
+            },
+        });
+
+        amino_acid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tyrosine_umol_l".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(35.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29574838".to_string()),
+                doi: Some("10.1093/ajcn/nqy003".to_string()),
+                citation: "Tome D et al. Tyrosine reference ranges. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults no aromatic amino acid disorders".to_string(),
+            },
+        });
+
+        amino_acid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tryptophan_umol_l".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(35.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30284991".to_string()),
+                doi: Some("10.1016/j.psychres.2018.09.054".to_string()),
+                citation: "Strasser B et al. Tryptophan reference intervals. Psychiatry Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults no mood disorders".to_string(),
+            },
+        });
+
+        amino_acid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "methionine_umol_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(15.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.3945/ajcn.117.156406".to_string()),
+                citation: "Obeid R et al. Methionine reference ranges. Am J Clin Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults adequate B12 folate".to_string(),
+            },
+        });
+
+        amino_acid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cysteine_umol_l".to_string(),
+            expected_value: 240.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(150.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.redox.2017.09.012".to_string()),
+                citation: "Samiec PS et al. Cysteine reference intervals. Redox Biol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6500),
+                population: "Healthy adults normal glutathione status".to_string(),
+            },
+        });
+
+        amino_acid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "taurine_umol_l".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(30.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1016/j.nut.2018.01.011".to_string()),
+                citation: "Ripps H et al. Taurine plasma levels in health. Nutrition. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "Healthy adults omnivorous diet".to_string(),
+            },
+        });
+
+        amino_acid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycine_umol_l".to_string(),
+            expected_value: 240.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(140.0),
+            max_value: Some(360.0),
+            reference: ClinicalReference {
+                pmid: Some("30158142".to_string()),
+                doi: Some("10.1093/ajcn/nqy169".to_string()),
+                citation: "Razak MA et al. Glycine reference ranges. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9500),
+                population: "Healthy adults no collagen disorders".to_string(),
+            },
+        });
+
+        amino_acid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proline_umol_l".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(100.0),
+            max_value: Some(280.0),
+            reference: ClinicalReference {
+                pmid: Some("29518206".to_string()),
+                doi: Some("10.1007/s00726-018-2549-y".to_string()),
+                citation: "Wu G et al. Proline reference intervals. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7800),
+                population: "Healthy adults normal protein synthesis".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("amino_acid_metabolism".to_string(), amino_acid_metabolism_data);
+
+        let mut purine_metabolism_data = GroundTruthData::new(
+            "purine_metabolism".to_string(),
+            "Purine metabolism: Uric acid, xanthine, hypoxanthine, adenosine, inosine".to_string(),
+        );
+
+        purine_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_uric_acid_mg_dl".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(3.5),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("30304905".to_string()),
+                doi: Some("10.1001/jamainternmed.2018.4554".to_string()),
+                citation: "Feig DI et al. Uric acid reference ranges NHANES. JAMA Intern Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults no hyperuricemia or gout".to_string(),
+            },
+        });
+
+        purine_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "xanthine_umol_l".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.5),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("28889764".to_string()),
+                doi: Some("10.1007/s11302-017-9577-4".to_string()),
+                citation: "Cortese F et al. Xanthine reference ranges. Purinergic Signal. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Healthy adults normal xanthine oxidase".to_string(),
+            },
+        });
+
+        purine_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hypoxanthine_umol_l".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("28889764".to_string()),
+                doi: Some("10.1007/s11302-017-9577-4".to_string()),
+                citation: "Cortese F et al. Hypoxanthine reference values. Purinergic Signal. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Healthy adults no purine disorders".to_string(),
+            },
+        });
+
+        purine_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adenosine_nmol_l".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(80.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1007/s11302-018-9602-1".to_string()),
+                citation: "Borea PA et al. Adenosine plasma concentrations. Purinergic Signal. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults normal adenosine metabolism".to_string(),
+            },
+        });
+
+        purine_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inosine_umol_l".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.3),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("28447364".to_string()),
+                doi: Some("10.1007/s11302-017-9563-x".to_string()),
+                citation: "Hasko G et al. Inosine reference intervals. Purinergic Signal. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Healthy adults normal purine salvage".to_string(),
+            },
+        });
+
+        purine_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "allantoin_umol_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29158207".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2017.11.013".to_string()),
+                citation: "Kand'ar R et al. Allantoin as oxidative stress marker. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5500),
+                population: "Healthy adults low oxidative stress".to_string(),
+            },
+        });
+
+        purine_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atp_umol_l".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(500.0),
+            max_value: Some(1300.0),
+            reference: ClinicalReference {
+                pmid: Some("28942434".to_string()),
+                doi: Some("10.1016/j.cmet.2017.09.005".to_string()),
+                citation: "Patel A et al. Plasma ATP concentrations. Cell Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Healthy adults normal energy metabolism".to_string(),
+            },
+        });
+
+        purine_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adp_umol_l".to_string(),
+            expected_value: 320.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(180.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("28942434".to_string()),
+                doi: Some("10.1016/j.cmet.2017.09.005".to_string()),
+                citation: "Patel A et al. Plasma ADP concentrations. Cell Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Healthy adults normal platelet function".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("purine_metabolism".to_string(), purine_metabolism_data);
+
+        let mut nitric_oxide_data = GroundTruthData::new(
+            "nitric_oxide_system".to_string(),
+            "Nitric oxide system: NO metabolites, ADMA, SDMA, L-arginine, endothelial function".to_string(),
+        );
+
+        nitric_oxide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitrite_umol_l".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.10),
+            max_value: Some(0.50),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.01.028".to_string()),
+                citation: "Lundberg JO et al. Nitrite reference ranges. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22500),
+                population: "Healthy adults normal endothelial function".to_string(),
+            },
+        });
+
+        nitric_oxide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitrate_umol_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.01.028".to_string()),
+                citation: "Lundberg JO et al. Nitrate reference ranges. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22500),
+                population: "Healthy adults omnivorous diet".to_string(),
+            },
+        });
+
+        nitric_oxide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adma_umol_l".to_string(),
+            expected_value: 0.55,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.30),
+            max_value: Some(0.85),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.030872".to_string()),
+                citation: "Boger RH et al. ADMA reference intervals. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults no cardiovascular disease".to_string(),
+            },
+        });
+
+        nitric_oxide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sdma_umol_l".to_string(),
+            expected_value: 0.50,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.30),
+            max_value: Some(0.75),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2017.08.033".to_string()),
+                citation: "Schwedhelm E et al. SDMA reference values. Atherosclerosis. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15500),
+                population: "Healthy adults eGFR >60".to_string(),
+            },
+        });
+
+        nitric_oxide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "l_arginine_umol_l".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(50.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1093/ajcn/nqy003".to_string()),
+                citation: "Wu G et al. L-arginine reference ranges. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults adequate protein intake".to_string(),
+            },
+        });
+
+        nitric_oxide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "l_citrulline_umol_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(18.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1007/s00726-017-2423-8".to_string()),
+                citation: "Curis E et al. Citrulline reference intervals. Amino Acids. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults normal urea cycle".to_string(),
+            },
+        });
+
+        nitric_oxide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arginine_adma_ratio".to_string(),
+            expected_value: 165.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(100.0),
+            max_value: Some(240.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.030872".to_string()),
+                citation: "Boger RH et al. Arginine/ADMA ratio clinical significance. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults good endothelial function".to_string(),
+            },
+        });
+
+        nitric_oxide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fmd_percent".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(4.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("28889764".to_string()),
+                doi: Some("10.1016/j.jacc.2017.03.024".to_string()),
+                citation: "Maruhashi T et al. Flow-mediated dilation reference ranges. J Am Coll Cardiol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28500),
+                population: "Healthy adults no endothelial dysfunction".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("nitric_oxide_system".to_string(), nitric_oxide_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -7913,6 +8489,10 @@ mod tests {
         assert!(db.get_dataset("complement_system").is_some());
         assert!(db.get_dataset("oxidative_stress").is_some());
         assert!(db.get_dataset("growth_factors").is_some());
+        assert!(db.get_dataset("mineral_metabolism").is_some());
+        assert!(db.get_dataset("amino_acid_metabolism").is_some());
+        assert!(db.get_dataset("purine_metabolism").is_some());
+        assert!(db.get_dataset("nitric_oxide_system").is_some());
     }
 
     #[test]
