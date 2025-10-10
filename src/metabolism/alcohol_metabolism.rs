@@ -72,8 +72,12 @@ impl ALDH2Genotype {
     pub fn description(&self) -> &'static str {
         match self {
             ALDH2Genotype::WildType => "ALDH2*1/*1 - Normal acetaldehyde clearance",
-            ALDH2Genotype::Heterozygous => "ALDH2*1/*2 - Reduced acetaldehyde clearance (Asian flush)",
-            ALDH2Genotype::Homozygous => "ALDH2*2/*2 - Severely reduced acetaldehyde clearance (very rare)",
+            ALDH2Genotype::Heterozygous => {
+                "ALDH2*1/*2 - Reduced acetaldehyde clearance (Asian flush)"
+            }
+            ALDH2Genotype::Homozygous => {
+                "ALDH2*2/*2 - Severely reduced acetaldehyde clearance (very rare)"
+            }
         }
     }
 
@@ -111,7 +115,9 @@ impl ADH1BGenotype {
         match self {
             ADH1BGenotype::Slow => "ADH1B*1/*1 - Slow ethanol → acetaldehyde conversion",
             ADH1BGenotype::Intermediate => "ADH1B*1/*2 - Intermediate ethanol metabolism",
-            ADH1BGenotype::Fast => "ADH1B*2/*2 - Fast ethanol → acetaldehyde conversion (common in East Asia)",
+            ADH1BGenotype::Fast => {
+                "ADH1B*2/*2 - Fast ethanol → acetaldehyde conversion (common in East Asia)"
+            }
         }
     }
 }
@@ -173,10 +179,13 @@ impl AlcoholMetabolismPathway {
 
         let acetaldehyde_clearance = self.acetaldehyde_concentration_umol_l * k_aldh * delta_hours;
 
-        self.ethanol_concentration_mmol_l = (self.ethanol_concentration_mmol_l - ethanol_metabolized).max(0.0);
+        self.ethanol_concentration_mmol_l =
+            (self.ethanol_concentration_mmol_l - ethanol_metabolized).max(0.0);
 
-        self.acetaldehyde_concentration_umol_l =
-            (self.acetaldehyde_concentration_umol_l + acetaldehyde_produced - acetaldehyde_clearance).max(0.0);
+        self.acetaldehyde_concentration_umol_l = (self.acetaldehyde_concentration_umol_l
+            + acetaldehyde_produced
+            - acetaldehyde_clearance)
+            .max(0.0);
 
         self.acetate_concentration_mmol_l += acetaldehyde_clearance / 1000.0;
 
@@ -231,7 +240,8 @@ impl AlcoholMetabolismPathway {
             return 0.0;
         }
 
-        let ethanol_clearance_hours = self.ethanol_concentration_mmol_l / (0.15 * self.adh_activity_relative);
+        let ethanol_clearance_hours =
+            self.ethanol_concentration_mmol_l / (0.15 * self.adh_activity_relative);
 
         let acetaldehyde_hours = if self.aldh2_activity_relative > 0.1 {
             self.acetaldehyde_concentration_umol_l / (0.8 * self.aldh2_activity_relative * 1000.0)
@@ -284,7 +294,8 @@ impl AlcoholMetabolismSimulation {
     }
 
     pub fn peak_acetaldehyde(&self) -> f64 {
-        self.timeline.iter()
+        self.timeline
+            .iter()
             .map(|tp| tp.acetaldehyde_umol_l)
             .fold(0.0, f64::max)
     }
@@ -292,9 +303,10 @@ impl AlcoholMetabolismSimulation {
     pub fn area_under_curve_acetaldehyde(&self) -> f64 {
         let mut auc = 0.0;
         for i in 1..self.timeline.len() {
-            let dt = self.timeline[i].time_hours - self.timeline[i-1].time_hours;
-            let avg_concentration = (self.timeline[i].acetaldehyde_umol_l +
-                                    self.timeline[i-1].acetaldehyde_umol_l) / 2.0;
+            let dt = self.timeline[i].time_hours - self.timeline[i - 1].time_hours;
+            let avg_concentration = (self.timeline[i].acetaldehyde_umol_l
+                + self.timeline[i - 1].acetaldehyde_umol_l)
+                / 2.0;
             auc += avg_concentration * dt;
         }
         auc
@@ -304,7 +316,7 @@ impl AlcoholMetabolismSimulation {
         let mut time_above = 0.0;
         for i in 1..self.timeline.len() {
             if self.timeline[i].acetaldehyde_umol_l > threshold_umol_l {
-                time_above += self.timeline[i].time_hours - self.timeline[i-1].time_hours;
+                time_above += self.timeline[i].time_hours - self.timeline[i - 1].time_hours;
             }
         }
         time_above
@@ -312,18 +324,37 @@ impl AlcoholMetabolismSimulation {
 
     pub fn print_summary(&self) {
         println!("\n=== Alcohol Metabolism Simulation ===");
-        println!("ADH1B Genotype: {}", self.pathway.adh1b_genotype.description());
-        println!("ALDH2 Genotype: {}", self.pathway.aldh2_genotype.description());
-        println!("\nPeak BAC: {:.2} mg/dL", self.timeline[0].ethanol_mmol_l * 46.07 / 10.0);
+        println!(
+            "ADH1B Genotype: {}",
+            self.pathway.adh1b_genotype.description()
+        );
+        println!(
+            "ALDH2 Genotype: {}",
+            self.pathway.aldh2_genotype.description()
+        );
+        println!(
+            "\nPeak BAC: {:.2} mg/dL",
+            self.timeline[0].ethanol_mmol_l * 46.07 / 10.0
+        );
         println!("Peak Acetaldehyde: {:.1} µmol/L", self.peak_acetaldehyde());
-        println!("Acetaldehyde AUC: {:.1} µmol·h/L", self.area_under_curve_acetaldehyde());
-        println!("Time with Acetaldehyde >10 µmol/L: {:.2} hours", self.time_above_threshold(10.0));
+        println!(
+            "Acetaldehyde AUC: {:.1} µmol·h/L",
+            self.area_under_curve_acetaldehyde()
+        );
+        println!(
+            "Time with Acetaldehyde >10 µmol/L: {:.2} hours",
+            self.time_above_threshold(10.0)
+        );
 
-        if let Some(worst) = self.timeline.iter().max_by(|a, b|
-            a.flush_response_score.partial_cmp(&b.flush_response_score).unwrap()
-        ) {
-            println!("\nPeak Flush Response: {:.1}/10 at {:.1} hours",
-                worst.flush_response_score, worst.time_hours);
+        if let Some(worst) = self.timeline.iter().max_by(|a, b| {
+            a.flush_response_score
+                .partial_cmp(&b.flush_response_score)
+                .unwrap()
+        }) {
+            println!(
+                "\nPeak Flush Response: {:.1}/10 at {:.1} hours",
+                worst.flush_response_score, worst.time_hours
+            );
             if !worst.symptoms.is_empty() {
                 println!("Symptoms: {}", worst.symptoms.join(", "));
             }
@@ -338,7 +369,10 @@ mod tests {
     #[test]
     fn test_aldh2_activity() {
         assert_eq!(ALDH2Genotype::WildType.aldh2_activity_multiplier(), 1.0);
-        assert_eq!(ALDH2Genotype::Heterozygous.aldh2_activity_multiplier(), 0.15);
+        assert_eq!(
+            ALDH2Genotype::Heterozygous.aldh2_activity_multiplier(),
+            0.15
+        );
         assert_eq!(ALDH2Genotype::Homozygous.aldh2_activity_multiplier(), 0.01);
     }
 
@@ -390,27 +424,38 @@ mod tests {
         let wildtype_peak = wildtype_sim.peak_acetaldehyde();
         let deficient_peak = deficient_sim.peak_acetaldehyde();
 
-        assert!(deficient_peak > wildtype_peak * 1.5,
-            "ALDH2 deficiency should cause at least 1.5x higher acetaldehyde (literature: 2-10x)");
-        assert!(deficient_peak < wildtype_peak * 15.0,
-            "Peak should be reasonable (literature: 2-10x)");
+        assert!(
+            deficient_peak > wildtype_peak * 1.5,
+            "ALDH2 deficiency should cause at least 1.5x higher acetaldehyde (literature: 2-10x)"
+        );
+        assert!(
+            deficient_peak < wildtype_peak * 15.0,
+            "Peak should be reasonable (literature: 2-10x)"
+        );
     }
 
     #[test]
     fn test_cancer_risk() {
         let genotype = ALDH2Genotype::Heterozygous;
 
-        assert_eq!(genotype.cancer_risk_multiplier(AlcoholConsumptionLevel::None), 1.0);
-        assert_eq!(genotype.cancer_risk_multiplier(AlcoholConsumptionLevel::Light), 2.0);
-        assert_eq!(genotype.cancer_risk_multiplier(AlcoholConsumptionLevel::Heavy), 10.0);
+        assert_eq!(
+            genotype.cancer_risk_multiplier(AlcoholConsumptionLevel::None),
+            1.0
+        );
+        assert_eq!(
+            genotype.cancer_risk_multiplier(AlcoholConsumptionLevel::Light),
+            2.0
+        );
+        assert_eq!(
+            genotype.cancer_risk_multiplier(AlcoholConsumptionLevel::Heavy),
+            10.0
+        );
     }
 
     #[test]
     fn test_metabolism_pathway() {
-        let mut pathway = AlcoholMetabolismPathway::new(
-            ADH1BGenotype::Fast,
-            ALDH2Genotype::Heterozygous,
-        );
+        let mut pathway =
+            AlcoholMetabolismPathway::new(ADH1BGenotype::Fast, ALDH2Genotype::Heterozygous);
 
         let ingestion = AlcoholIngestion {
             volume_ml: 355.0,

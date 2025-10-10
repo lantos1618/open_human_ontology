@@ -130,7 +130,8 @@ impl CellSurvival {
 
     pub fn d10_dose(&self) -> f64 {
         let target = 0.1_f64.ln();
-        (-self.alpha + (self.alpha * self.alpha - 4.0 * self.beta * target).sqrt()) / (2.0 * self.beta)
+        (-self.alpha + (self.alpha * self.alpha - 4.0 * self.beta * target).sqrt())
+            / (2.0 * self.beta)
     }
 }
 
@@ -230,7 +231,10 @@ pub enum ToxicityGrade {
 
 impl ToxicityGrade {
     pub fn requires_intervention(&self) -> bool {
-        matches!(self, ToxicityGrade::Grade3 | ToxicityGrade::Grade4 | ToxicityGrade::Grade5)
+        matches!(
+            self,
+            ToxicityGrade::Grade3 | ToxicityGrade::Grade4 | ToxicityGrade::Grade5
+        )
     }
 
     pub fn is_life_threatening(&self) -> bool {

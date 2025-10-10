@@ -39,11 +39,12 @@ impl GustatorySystem {
     }
 
     pub fn average_sensitivity(&self) -> f64 {
-        (self.taste_sensitivity.sweet +
-         self.taste_sensitivity.sour +
-         self.taste_sensitivity.salty +
-         self.taste_sensitivity.bitter +
-         self.taste_sensitivity.umami) / 5.0
+        (self.taste_sensitivity.sweet
+            + self.taste_sensitivity.sour
+            + self.taste_sensitivity.salty
+            + self.taste_sensitivity.bitter
+            + self.taste_sensitivity.umami)
+            / 5.0
     }
 
     pub fn has_taste_impairment(&self) -> bool {

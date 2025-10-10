@@ -209,7 +209,8 @@ impl NativeAmericanGeneticVariants {
         if !self.lactase_persistence.persistence_allele {
             considerations.insert(
                 "lactose".to_string(),
-                "Lactose intolerance likely; consider lactose-free dairy or supplements".to_string(),
+                "Lactose intolerance likely; consider lactose-free dairy or supplements"
+                    .to_string(),
             );
         }
 

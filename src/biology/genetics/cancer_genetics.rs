@@ -466,7 +466,8 @@ impl CancerGeneticProfile {
         let mut biomarkers = Vec::new();
 
         if self.mlh_msh.lynch_syndrome() {
-            biomarkers.push("MSI-High / dMMR: excellent response to checkpoint inhibitors".to_string());
+            biomarkers
+                .push("MSI-High / dMMR: excellent response to checkpoint inhibitors".to_string());
         }
 
         biomarkers

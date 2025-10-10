@@ -167,7 +167,8 @@ impl CircadianSystem {
 
         self.melatonin_rhythm.current_level_pg_ml = self.melatonin_rhythm.calculate_level(t);
         self.cortisol_rhythm.current_level_ug_dl = self.cortisol_rhythm.calculate_level(t);
-        self.core_body_temperature.current_temp_celsius = self.core_body_temperature.calculate_temp(t);
+        self.core_body_temperature.current_temp_celsius =
+            self.core_body_temperature.calculate_temp(t);
 
         self.clock_genes.update_expression(t);
     }
@@ -230,12 +231,12 @@ impl ClockGeneExpression {
     pub fn update_expression(&mut self, time_hours: f64) {
         let phase = 2.0 * PI * time_hours / 24.0;
 
-        self.per1_level = 50.0 + 40.0 * (phase - PI/2.0).cos();
-        self.per2_level = 50.0 + 40.0 * (phase - PI/2.0).cos();
+        self.per1_level = 50.0 + 40.0 * (phase - PI / 2.0).cos();
+        self.per2_level = 50.0 + 40.0 * (phase - PI / 2.0).cos();
         self.cry1_level = 50.0 + 40.0 * (phase - PI).cos();
         self.cry2_level = 50.0 + 40.0 * (phase - PI).cos();
-        self.bmal1_level = 50.0 + 40.0 * (phase + PI/2.0).cos();
-        self.clock_level = 50.0 + 40.0 * (phase + PI/2.0).cos();
+        self.bmal1_level = 50.0 + 40.0 * (phase + PI / 2.0).cos();
+        self.clock_level = 50.0 + 40.0 * (phase + PI / 2.0).cos();
     }
 
     pub fn oscillation_amplitude(&self) -> f64 {
@@ -354,7 +355,11 @@ impl SleepSystem {
 
     pub fn sleep_health_score(&self) -> f64 {
         let efficiency_score = self.sleep_quality.sleep_efficiency_percent;
-        let architecture_score = if self.sleep_architecture.is_healthy() { 100.0 } else { 60.0 };
+        let architecture_score = if self.sleep_architecture.is_healthy() {
+            100.0
+        } else {
+            60.0
+        };
         let debt_score = 100.0 - (self.sleep_debt_hours * 10.0).min(100.0);
 
         (efficiency_score + architecture_score + debt_score) / 3.0
@@ -442,20 +447,21 @@ impl SleepQuality {
 
     pub fn calculate_efficiency(&mut self) {
         if self.time_in_bed_hours > 0.0 {
-            self.sleep_efficiency_percent = (self.total_sleep_time_hours / self.time_in_bed_hours) * 100.0;
+            self.sleep_efficiency_percent =
+                (self.total_sleep_time_hours / self.time_in_bed_hours) * 100.0;
         }
     }
 
     pub fn is_good_quality(&self) -> bool {
-        self.sleep_efficiency_percent >= 85.0 &&
-        self.sleep_latency_minutes <= 30.0 &&
-        self.wake_after_sleep_onset_minutes <= 30.0
+        self.sleep_efficiency_percent >= 85.0
+            && self.sleep_latency_minutes <= 30.0
+            && self.wake_after_sleep_onset_minutes <= 30.0
     }
 
     pub fn is_poor_quality(&self) -> bool {
-        self.sleep_efficiency_percent < 70.0 ||
-        self.sleep_latency_minutes > 60.0 ||
-        self.wake_after_sleep_onset_minutes > 60.0
+        self.sleep_efficiency_percent < 70.0
+            || self.sleep_latency_minutes > 60.0
+            || self.wake_after_sleep_onset_minutes > 60.0
     }
 }
 
@@ -473,10 +479,10 @@ impl SleepArchitecture {
     }
 
     pub fn is_healthy(&self) -> bool {
-        self.n3_percent >= 15.0 &&
-        self.rem_percent >= 15.0 &&
-        self.n3_percent <= 25.0 &&
-        self.rem_percent <= 25.0
+        self.n3_percent >= 15.0
+            && self.rem_percent >= 15.0
+            && self.n3_percent <= 25.0
+            && self.rem_percent <= 25.0
     }
 
     pub fn has_rem_deficiency(&self) -> bool {

@@ -147,7 +147,8 @@ impl ThermoregulationSystem {
         }
 
         if duration_minutes > 15 {
-            self.behavioral_responses.push(BehavioralResponse::SeekWarmth);
+            self.behavioral_responses
+                .push(BehavioralResponse::SeekWarmth);
         }
     }
 
@@ -172,7 +173,8 @@ impl ThermoregulationSystem {
         self.sweating_rate_ml_hour = 500.0 * evaporative_efficiency;
         self.heat_loss_watts += 680.0 * (self.sweating_rate_ml_hour / 1000.0);
 
-        self.behavioral_responses.push(BehavioralResponse::SeekCooling);
+        self.behavioral_responses
+            .push(BehavioralResponse::SeekCooling);
     }
 
     pub fn induce_fever(&mut self, pyrogen_level: f64) {

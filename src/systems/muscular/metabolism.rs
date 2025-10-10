@@ -132,7 +132,10 @@ mod tests {
     fn test_exercising_metabolism() {
         let metabolism = MuscleEnergyMetabolism::new_exercising();
         assert!(metabolism.lactate_threshold_exceeded());
-        assert_eq!(metabolism.dominant_energy_system(), EnergySystem::GlycolyticSystem);
+        assert_eq!(
+            metabolism.dominant_energy_system(),
+            EnergySystem::GlycolyticSystem
+        );
     }
 
     #[test]

@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::physics::Vector3;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct MusculoskeletalBiomechanics {
@@ -262,7 +262,11 @@ impl MusculoskeletalBiomechanics {
         force_n * (moment_arm_cm / 100.0)
     }
 
-    pub fn calculate_mechanical_advantage(&self, muscle_moment_arm_cm: f64, load_moment_arm_cm: f64) -> f64 {
+    pub fn calculate_mechanical_advantage(
+        &self,
+        muscle_moment_arm_cm: f64,
+        load_moment_arm_cm: f64,
+    ) -> f64 {
         muscle_moment_arm_cm / load_moment_arm_cm
     }
 }
@@ -323,7 +327,10 @@ mod tests {
     #[test]
     fn test_biomechanics_creation() {
         let biomech = MusculoskeletalBiomechanics::new_resting();
-        assert_eq!(biomech.muscle_mechanics.muscle_activation.activation_level, 0.0);
+        assert_eq!(
+            biomech.muscle_mechanics.muscle_activation.activation_level,
+            0.0
+        );
     }
 
     #[test]

@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
 use super::ground_truth::GroundTruthDatabase;
-use super::metrics::{ModelAccuracy, PredictionError, CorrelationMetrics};
+use super::metrics::{CorrelationMetrics, ModelAccuracy, PredictionError};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ValidationResult {
@@ -46,17 +46,30 @@ impl ValidationResult {
 
     pub fn summary(&self) -> String {
         let mut summary = format!("Test: {}\n", self.test_name);
-        summary.push_str(&format!("Status: {}\n", if self.passed { "✓ PASSED" } else { "✗ FAILED" }));
+        summary.push_str(&format!(
+            "Status: {}\n",
+            if self.passed {
+                "✓ PASSED"
+            } else {
+                "✗ FAILED"
+            }
+        ));
 
         if let Some(acc) = &self.accuracy_metrics {
-            summary.push_str(&format!("  MAPE: {:.2}% ({})\n",
-                acc.mean_absolute_percentage_error, acc.performance_grade()));
+            summary.push_str(&format!(
+                "  MAPE: {:.2}% ({})\n",
+                acc.mean_absolute_percentage_error,
+                acc.performance_grade()
+            ));
             summary.push_str(&format!("  Within 10%: {:.1}%\n", acc.within_10_percent));
         }
 
         if let Some(corr) = &self.correlation_metrics {
-            summary.push_str(&format!("  R²: {:.3} ({})\n",
-                corr.r_squared, corr.correlation_strength()));
+            summary.push_str(&format!(
+                "  R²: {:.3} ({})\n",
+                corr.r_squared,
+                corr.correlation_strength()
+            ));
         }
 
         if !self.errors.is_empty() {
@@ -83,7 +96,8 @@ impl ValidationMetrics {
         let failed_tests = total_tests - passed_tests;
 
         let overall_accuracy = if !results.is_empty() {
-            let sum: f64 = results.iter()
+            let sum: f64 = results
+                .iter()
                 .filter_map(|r| r.accuracy_metrics.as_ref())
                 .map(|a| 100.0 - a.mean_absolute_percentage_error)
                 .sum();
@@ -132,13 +146,11 @@ impl ValidationFramework {
 
         if let Some(dataset) = self.ground_truth.get_dataset(category) {
             if let Some(expected) = dataset.get_expected_value(parameter_name) {
-                let error = PredictionError::new(
-                    parameter_name.to_string(),
-                    predicted_value,
-                    expected,
-                );
+                let error =
+                    PredictionError::new(parameter_name.to_string(), predicted_value, expected);
 
-                let within_range = dataset.is_within_expected_range(parameter_name, predicted_value);
+                let within_range =
+                    dataset.is_within_expected_range(parameter_name, predicted_value);
 
                 if !error.is_acceptable(max_error_percent) || !within_range {
                     result.mark_failed();
@@ -153,7 +165,10 @@ impl ValidationFramework {
                 result.add_note(format!("No ground truth for parameter: {}", parameter_name));
             }
         } else {
-            result.add_note(format!("No ground truth dataset for category: {}", category));
+            result.add_note(format!(
+                "No ground truth dataset for category: {}",
+                category
+            ));
         }
 
         let passed = result.passed;
@@ -198,7 +213,10 @@ impl ValidationFramework {
         let metrics = self.get_metrics();
         println!("\nOverall Metrics:");
         println!("  Total Tests: {}", metrics.total_tests);
-        println!("  Passed: {} ({:.1}%)", metrics.passed_tests, metrics.pass_rate);
+        println!(
+            "  Passed: {} ({:.1}%)",
+            metrics.passed_tests, metrics.pass_rate
+        );
         println!("  Failed: {}", metrics.failed_tests);
         println!("  Overall Accuracy: {:.2}%", metrics.overall_accuracy);
 
@@ -238,12 +256,8 @@ mod tests {
     fn test_validation_framework() {
         let mut framework = ValidationFramework::new();
 
-        let passed = framework.validate_parameter(
-            "cardiovascular",
-            "resting_heart_rate_bpm",
-            72.0,
-            10.0,
-        );
+        let passed =
+            framework.validate_parameter("cardiovascular", "resting_heart_rate_bpm", 72.0, 10.0);
 
         assert!(passed);
     }

@@ -214,15 +214,21 @@ impl OrthopedicProfile {
     pub fn functional_status(&self) -> FunctionalStatus {
         let mut impairments = 0;
 
-        impairments += self.injuries.iter()
+        impairments += self
+            .injuries
+            .iter()
             .filter(|i| matches!(i.severity, InjurySeverity::Grade3))
             .count();
 
-        impairments += self.fractures.iter()
+        impairments += self
+            .fractures
+            .iter()
             .filter(|f| !matches!(f.union_status, UnionStatus::United))
             .count();
 
-        impairments += self.joint_replacements.iter()
+        impairments += self
+            .joint_replacements
+            .iter()
             .filter(|j| !j.complications.is_empty())
             .count();
 
@@ -235,9 +241,17 @@ impl OrthopedicProfile {
     }
 
     pub fn requires_surgery(&self) -> bool {
-        self.fractures.iter().any(|f| f.displacement_mm > 5.0 || f.angulation_degrees > 15.0) ||
-        self.injuries.iter().any(|i| matches!(i.severity, InjurySeverity::Grade3)) ||
-        self.spinal_conditions.iter().any(|s| matches!(s.severity, SpinalSeverity::Severe))
+        self.fractures
+            .iter()
+            .any(|f| f.displacement_mm > 5.0 || f.angulation_degrees > 15.0)
+            || self
+                .injuries
+                .iter()
+                .any(|i| matches!(i.severity, InjurySeverity::Grade3))
+            || self
+                .spinal_conditions
+                .iter()
+                .any(|s| matches!(s.severity, SpinalSeverity::Severe))
     }
 }
 
@@ -307,19 +321,25 @@ impl JointReplacement {
     }
 
     pub fn needs_revision(&self) -> bool {
-        self.surgery_date_years_ago > self.implant_longevity_years() ||
-        self.complications.contains(&ImplantComplication::Loosening) ||
-        self.function_score < 50.0
+        self.surgery_date_years_ago > self.implant_longevity_years()
+            || self.complications.contains(&ImplantComplication::Loosening)
+            || self.function_score < 50.0
     }
 }
 
 impl SpinalLevel {
     pub fn is_cervical(&self) -> bool {
-        matches!(self, SpinalLevel::C1C2 | SpinalLevel::C3C4 | SpinalLevel::C5C6 | SpinalLevel::C7T1)
+        matches!(
+            self,
+            SpinalLevel::C1C2 | SpinalLevel::C3C4 | SpinalLevel::C5C6 | SpinalLevel::C7T1
+        )
     }
 
     pub fn is_lumbar(&self) -> bool {
-        matches!(self, SpinalLevel::L1L2 | SpinalLevel::L3L4 | SpinalLevel::L4L5 | SpinalLevel::L5S1)
+        matches!(
+            self,
+            SpinalLevel::L1L2 | SpinalLevel::L3L4 | SpinalLevel::L4L5 | SpinalLevel::L5S1
+        )
     }
 
     pub fn is_thoracic(&self) -> bool {

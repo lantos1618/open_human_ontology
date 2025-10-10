@@ -133,7 +133,8 @@ impl ProteomicsProfile {
     }
 
     pub fn add_protein_expression(&mut self, expression: ProteinExpression) {
-        self.protein_expression.insert(expression.protein_id.clone(), expression);
+        self.protein_expression
+            .insert(expression.protein_id.clone(), expression);
     }
 
     pub fn get_protein_abundance(&self, protein_id: &str) -> Option<f64> {
@@ -160,10 +161,12 @@ impl ProteomicsProfile {
             return 1.0;
         }
 
-        let avg_half_life: f64 = self.degradation_pathways
+        let avg_half_life: f64 = self
+            .degradation_pathways
             .iter()
             .map(|p| p.half_life_hours)
-            .sum::<f64>() / self.degradation_pathways.len() as f64;
+            .sum::<f64>()
+            / self.degradation_pathways.len() as f64;
 
         (avg_half_life / 24.0).min(1.0)
     }
@@ -194,19 +197,23 @@ impl ProteomicsProfile {
     }
 
     pub fn analyze_ptm_stoichiometry(&self, protein_id: &str) -> PTMAnalysis {
-        let ptms: Vec<_> = self.post_translational_modifications
+        let ptms: Vec<_> = self
+            .post_translational_modifications
             .iter()
             .filter(|ptm| ptm.protein_id == protein_id)
             .collect();
 
         let total_sites = ptms.len();
-        let phospho_count = ptms.iter()
+        let phospho_count = ptms
+            .iter()
             .filter(|ptm| matches!(ptm.modification_type, PTMType::Phosphorylation))
             .count();
-        let acetyl_count = ptms.iter()
+        let acetyl_count = ptms
+            .iter()
             .filter(|ptm| matches!(ptm.modification_type, PTMType::Acetylation))
             .count();
-        let ubiq_count = ptms.iter()
+        let ubiq_count = ptms
+            .iter()
             .filter(|ptm| matches!(ptm.modification_type, PTMType::Ubiquitination))
             .count();
 

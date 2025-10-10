@@ -206,7 +206,10 @@ impl AgingSystem {
     }
 
     fn calculate_telomere_age(&self) -> f64 {
-        let tl = self.cellular_aging.telomere_attrition.average_telomere_length_kb;
+        let tl = self
+            .cellular_aging
+            .telomere_attrition
+            .average_telomere_length_kb;
         let expected_tl_at_birth = 11.0;
         let loss_per_year = 0.05;
 
@@ -234,17 +237,22 @@ impl AgingSystem {
     pub fn update_aging_over_time(&mut self, years_elapsed: f64) {
         self.chronological_age_years += years_elapsed;
 
-        self.cellular_aging.telomere_attrition.average_telomere_length_kb -=
-            self.cellular_aging.telomere_attrition.telomere_shortening_rate_bp_per_year * years_elapsed / 1000.0;
+        self.cellular_aging
+            .telomere_attrition
+            .average_telomere_length_kb -= self
+            .cellular_aging
+            .telomere_attrition
+            .telomere_shortening_rate_bp_per_year
+            * years_elapsed
+            / 1000.0;
 
-        self.cellular_aging.cellular_senescence.senescent_cell_burden_percent +=
-            years_elapsed * 0.5;
+        self.cellular_aging
+            .cellular_senescence
+            .senescent_cell_burden_percent += years_elapsed * 0.5;
 
-        self.organ_aging.brain_aging.brain_volume_ml -=
-            years_elapsed * 2.0;
+        self.organ_aging.brain_aging.brain_volume_ml -= years_elapsed * 2.0;
 
-        self.organ_aging.musculoskeletal_aging.muscle_mass_kg -=
-            years_elapsed * 0.3;
+        self.organ_aging.musculoskeletal_aging.muscle_mass_kg -= years_elapsed * 0.3;
 
         self.calculate_biological_age();
     }
@@ -267,24 +275,56 @@ impl AgingSystem {
         let mut deficits: f64 = 0.0;
         let total_items: f64 = 40.0;
 
-        if self.organ_aging.musculoskeletal_aging.sarcopenia_score > 0.5 { deficits += 1.0; }
-        if self.organ_aging.brain_aging.cognitive_reserve < 0.7 { deficits += 1.0; }
-        if self.organ_aging.cardiovascular_aging.ejection_fraction_percent < 55.0 { deficits += 1.0; }
-        if self.cellular_aging.cellular_senescence.senescent_cell_burden_percent > 5.0 { deficits += 1.0; }
-        if self.cellular_aging.telomere_attrition.average_telomere_length_kb < 7.0 { deficits += 1.0; }
+        if self.organ_aging.musculoskeletal_aging.sarcopenia_score > 0.5 {
+            deficits += 1.0;
+        }
+        if self.organ_aging.brain_aging.cognitive_reserve < 0.7 {
+            deficits += 1.0;
+        }
+        if self
+            .organ_aging
+            .cardiovascular_aging
+            .ejection_fraction_percent
+            < 55.0
+        {
+            deficits += 1.0;
+        }
+        if self
+            .cellular_aging
+            .cellular_senescence
+            .senescent_cell_burden_percent
+            > 5.0
+        {
+            deficits += 1.0;
+        }
+        if self
+            .cellular_aging
+            .telomere_attrition
+            .average_telomere_length_kb
+            < 7.0
+        {
+            deficits += 1.0;
+        }
 
         (deficits / total_items).clamp(0.0, 1.0)
     }
 
     pub fn longevity_potential_score(&self) -> f64 {
-        let telomere_score = (self.cellular_aging.telomere_attrition.average_telomere_length_kb / 11.0).clamp(0.0, 1.0);
-        let sirtuin_score = (self.longevity_factors.sirtuin_activity.sirt1 +
-                            self.longevity_factors.sirtuin_activity.sirt3 +
-                            self.longevity_factors.sirtuin_activity.sirt6) / 3.0;
+        let telomere_score = (self
+            .cellular_aging
+            .telomere_attrition
+            .average_telomere_length_kb
+            / 11.0)
+            .clamp(0.0, 1.0);
+        let sirtuin_score = (self.longevity_factors.sirtuin_activity.sirt1
+            + self.longevity_factors.sirtuin_activity.sirt3
+            + self.longevity_factors.sirtuin_activity.sirt6)
+            / 3.0;
         let ampk_score = self.longevity_factors.ampk_activity;
         let autophagy_score = self.organ_aging.metabolic_aging.autophagy_activity;
 
-        ((telomere_score + sirtuin_score + ampk_score + autophagy_score) / 4.0 * 100.0).clamp(0.0, 100.0)
+        ((telomere_score + sirtuin_score + ampk_score + autophagy_score) / 4.0 * 100.0)
+            .clamp(0.0, 100.0)
     }
 }
 
@@ -450,7 +490,13 @@ mod tests {
     fn test_aging_system_creation() {
         let aging = AgingSystem::new(30.0);
         assert_eq!(aging.chronological_age_years, 30.0);
-        assert!(aging.cellular_aging.telomere_attrition.average_telomere_length_kb > 8.0);
+        assert!(
+            aging
+                .cellular_aging
+                .telomere_attrition
+                .average_telomere_length_kb
+                > 8.0
+        );
     }
 
     #[test]
@@ -464,12 +510,21 @@ mod tests {
     #[test]
     fn test_aging_over_time() {
         let mut aging = AgingSystem::new(30.0);
-        let initial_telomere = aging.cellular_aging.telomere_attrition.average_telomere_length_kb;
+        let initial_telomere = aging
+            .cellular_aging
+            .telomere_attrition
+            .average_telomere_length_kb;
 
         aging.update_aging_over_time(10.0);
 
         assert_eq!(aging.chronological_age_years, 40.0);
-        assert!(aging.cellular_aging.telomere_attrition.average_telomere_length_kb < initial_telomere);
+        assert!(
+            aging
+                .cellular_aging
+                .telomere_attrition
+                .average_telomere_length_kb
+                < initial_telomere
+        );
     }
 
     #[test]
@@ -477,7 +532,10 @@ mod tests {
         let aging = AgingSystem::new(30.0);
         let rate = aging.assess_aging_rate();
 
-        assert!(matches!(rate, AgingRate::SlowAging | AgingRate::NormalAging | AgingRate::AcceleratedAging));
+        assert!(matches!(
+            rate,
+            AgingRate::SlowAging | AgingRate::NormalAging | AgingRate::AcceleratedAging
+        ));
     }
 
     #[test]

@@ -191,8 +191,8 @@ pub fn epistatic_interactions() -> Vec<EpistaticEffect> {
             modifying_genes: vec!["RAD51".to_string(), "PALB2".to_string()],
             trait_affected: "Breast Cancer Penetrance".to_string(),
             effect_magnitude: 0.7,
-            description:
-                "RAD51 and PALB2 variants modify BRCA1 penetrance from 80% to 50-60%".to_string(),
+            description: "RAD51 and PALB2 variants modify BRCA1 penetrance from 80% to 50-60%"
+                .to_string(),
         },
         EpistaticEffect {
             primary_gene: "HFE".to_string(),

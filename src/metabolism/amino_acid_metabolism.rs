@@ -198,7 +198,6 @@ impl UreaCycle {
     }
 
     pub fn overall_cycle_efficiency(&self) -> f64 {
-        
         self.carbamoyl_phosphate_synthetase_activity
             .min(self.ornithine_transcarbamylase_activity)
             .min(self.argininosuccinate_synthetase_activity)
@@ -219,9 +218,9 @@ impl BranchedChainAminoAcidMetabolism {
     }
 
     pub fn has_maple_syrup_urine_disease(&self) -> bool {
-        self.bckdh_activity < 0.3 &&
-        self.leucine_umol_l > 400.0 &&
-        self.alpha_ketoisocaproic_acid_umol_l > 20.0
+        self.bckdh_activity < 0.3
+            && self.leucine_umol_l > 400.0
+            && self.alpha_ketoisocaproic_acid_umol_l > 20.0
     }
 
     pub fn total_bcaa(&self) -> f64 {
@@ -337,16 +336,19 @@ impl AminoAcidMetabolism {
         self.amino_acid_disorders.clear();
 
         if self.essential_amino_acids.phenylalanine_umol_l > 1200.0 {
-            self.amino_acid_disorders.push(AminoAcidDisorder::Phenylketonuria);
+            self.amino_acid_disorders
+                .push(AminoAcidDisorder::Phenylketonuria);
         }
 
         let bcaa_total = self.essential_amino_acids.total_bcaa();
         if bcaa_total > 800.0 {
-            self.amino_acid_disorders.push(AminoAcidDisorder::MapleSyrupUrineDisease);
+            self.amino_acid_disorders
+                .push(AminoAcidDisorder::MapleSyrupUrineDisease);
         }
 
         if self.urea_cycle.has_hyperammonemia() {
-            self.amino_acid_disorders.push(AminoAcidDisorder::Hyperammonemia);
+            self.amino_acid_disorders
+                .push(AminoAcidDisorder::Hyperammonemia);
         }
     }
 }
@@ -404,7 +406,10 @@ mod tests {
     #[test]
     fn test_amino_acid_metabolism() {
         let mut aa_metabolism = AminoAcidMetabolism::new_normal();
-        assert_eq!(aa_metabolism.assess_protein_status(), ProteinStatus::Adequate);
+        assert_eq!(
+            aa_metabolism.assess_protein_status(),
+            ProteinStatus::Adequate
+        );
         aa_metabolism.detect_metabolic_disorders();
         assert!(aa_metabolism.amino_acid_disorders.is_empty());
     }

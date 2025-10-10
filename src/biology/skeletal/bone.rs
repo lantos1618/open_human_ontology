@@ -1,8 +1,8 @@
-use crate::biology::{BiologyError, BiologyResult};
 use crate::biology::tissue::ExtracellularMatrix;
+use crate::biology::{BiologyError, BiologyResult};
 use crate::physics::MechanicalProperties;
-use serde::{Deserialize, Serialize};
 use nalgebra::Vector3;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum BoneType {
@@ -128,20 +128,21 @@ impl Bone {
     pub fn apply_load(&mut self, force_n: f64, _direction: Vector3<f64>) -> BiologyResult<f64> {
         if force_n < 0.0 {
             return Err(BiologyError::InvalidValue(
-                "Force cannot be negative".to_string()
+                "Force cannot be negative".to_string(),
             ));
         }
 
-        let cross_sectional_area_cm2 = self.structure.cortical_thickness_mm * self.length_mm / 100.0;
+        let cross_sectional_area_cm2 =
+            self.structure.cortical_thickness_mm * self.length_mm / 100.0;
         let stress_mpa = force_n / (cross_sectional_area_cm2 * 100.0);
 
         let ultimate_strength = self.mechanical_properties.yield_strength_mpa() * 1.5;
 
         if stress_mpa > ultimate_strength {
-            return Err(BiologyError::InvalidState(
-                format!("Bone fracture: stress {} MPa exceeds ultimate strength {} MPa",
-                    stress_mpa, ultimate_strength)
-            ));
+            return Err(BiologyError::InvalidState(format!(
+                "Bone fracture: stress {} MPa exceeds ultimate strength {} MPa",
+                stress_mpa, ultimate_strength
+            )));
         }
 
         Ok(stress_mpa)
@@ -219,7 +220,9 @@ mod tests {
     #[test]
     fn test_load_application() {
         let mut bone = Bone::femur();
-        let stress = bone.apply_load(1000.0, Vector3::new(0.0, 0.0, 1.0)).unwrap();
+        let stress = bone
+            .apply_load(1000.0, Vector3::new(0.0, 0.0, 1.0))
+            .unwrap();
         assert!(stress > 0.0);
     }
 }

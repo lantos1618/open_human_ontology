@@ -148,9 +148,14 @@ impl PainProfile {
         let mut strategies = Vec::new();
 
         if self.opioid_effectiveness > 1.2 {
-            strategies.push("Enhanced opioid response: standard or lower doses may be effective".to_string());
+            strategies.push(
+                "Enhanced opioid response: standard or lower doses may be effective".to_string(),
+            );
         } else if self.opioid_effectiveness < 0.8 {
-            strategies.push("Reduced opioid response: may require higher doses or alternative analgesics".to_string());
+            strategies.push(
+                "Reduced opioid response: may require higher doses or alternative analgesics"
+                    .to_string(),
+            );
         }
 
         if self.nsaid_effectiveness > 1.2 {
@@ -158,15 +163,24 @@ impl PainProfile {
         }
 
         if self.chronic_pain_risk > 1.5 {
-            strategies.push("Elevated chronic pain risk: early intervention, multimodal approach recommended".to_string());
+            strategies.push(
+                "Elevated chronic pain risk: early intervention, multimodal approach recommended"
+                    .to_string(),
+            );
         }
 
         if self.neuropathic_pain_risk > 1.5 {
-            strategies.push("Higher neuropathic pain risk: gabapentinoids or SNRIs may be beneficial".to_string());
+            strategies.push(
+                "Higher neuropathic pain risk: gabapentinoids or SNRIs may be beneficial"
+                    .to_string(),
+            );
         }
 
         if self.pain_sensitivity_score > 1.5 {
-            strategies.push("High pain sensitivity: consider psychological interventions (CBT, mindfulness)".to_string());
+            strategies.push(
+                "High pain sensitivity: consider psychological interventions (CBT, mindfulness)"
+                    .to_string(),
+            );
         }
 
         strategies
@@ -176,15 +190,19 @@ impl PainProfile {
         let mut considerations = Vec::new();
 
         if self.pain_sensitivity_score < 0.5 {
-            considerations.push("Low pain sensitivity: may underreport pain, monitor closely".to_string());
+            considerations
+                .push("Low pain sensitivity: may underreport pain, monitor closely".to_string());
         } else if self.pain_sensitivity_score > 1.5 {
-            considerations.push("High pain sensitivity: may require enhanced analgesia perioperatively".to_string());
+            considerations.push(
+                "High pain sensitivity: may require enhanced analgesia perioperatively".to_string(),
+            );
         }
 
         if self.opioid_effectiveness > 1.3 {
             considerations.push("Enhanced opioid sensitivity: reduce initial doses, monitor for respiratory depression".to_string());
         } else if self.opioid_effectiveness < 0.7 {
-            considerations.push("Reduced opioid response: multimodal analgesia recommended".to_string());
+            considerations
+                .push("Reduced opioid response: multimodal analgesia recommended".to_string());
         }
 
         considerations
@@ -196,9 +214,15 @@ impl PainProfile {
         for variant in &self.variants {
             if variant.gene == PainGene::SCN9A {
                 if variant.variant.contains("loss") {
-                    conditions.push("Congenital insensitivity to pain (CIP): risk of undetected injuries".to_string());
+                    conditions.push(
+                        "Congenital insensitivity to pain (CIP): risk of undetected injuries"
+                            .to_string(),
+                    );
                 } else if variant.variant.contains("gain") {
-                    conditions.push("Erythromelalgia or paroxysmal extreme pain disorder: severe episodic pain".to_string());
+                    conditions.push(
+                        "Erythromelalgia or paroxysmal extreme pain disorder: severe episodic pain"
+                            .to_string(),
+                    );
                 }
             }
         }
@@ -328,7 +352,10 @@ mod tests {
         });
 
         assert_eq!(profile.pain_sensitivity_score, 0.0);
-        assert_eq!(profile.pain_sensitivity_category(), PainSensitivityLevel::VeryLow);
+        assert_eq!(
+            profile.pain_sensitivity_category(),
+            PainSensitivityLevel::VeryLow
+        );
     }
 
     #[test]
@@ -381,13 +408,22 @@ mod tests {
     #[test]
     fn test_pain_sensitivity_categories() {
         let mut profile = PainProfile::new();
-        assert_eq!(profile.pain_sensitivity_category(), PainSensitivityLevel::Average);
+        assert_eq!(
+            profile.pain_sensitivity_category(),
+            PainSensitivityLevel::Average
+        );
 
         profile.pain_sensitivity_score = 0.3;
-        assert_eq!(profile.pain_sensitivity_category(), PainSensitivityLevel::VeryLow);
+        assert_eq!(
+            profile.pain_sensitivity_category(),
+            PainSensitivityLevel::VeryLow
+        );
 
         profile.pain_sensitivity_score = 1.6;
-        assert_eq!(profile.pain_sensitivity_category(), PainSensitivityLevel::VeryHigh);
+        assert_eq!(
+            profile.pain_sensitivity_category(),
+            PainSensitivityLevel::VeryHigh
+        );
     }
 
     #[test]

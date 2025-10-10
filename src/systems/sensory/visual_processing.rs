@@ -226,7 +226,8 @@ impl VisualPathway {
 
         VisualResponse {
             adaptation,
-            photoreceptor_response: self.retina.photoreceptors.rods.sensitivity_quanta * luminance_cd_per_m2,
+            photoreceptor_response: self.retina.photoreceptors.rods.sensitivity_quanta
+                * luminance_cd_per_m2,
             ganglion_firing_rate_hz: 50.0,
             cortical_response: 1.0,
         }

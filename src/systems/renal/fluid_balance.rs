@@ -171,7 +171,12 @@ impl FluidBalance {
         }
     }
 
-    pub fn calculate_plasma_osmolality(&self, sodium_meq_l: f64, glucose_mg_dl: f64, bun_mg_dl: f64) -> f64 {
+    pub fn calculate_plasma_osmolality(
+        &self,
+        sodium_meq_l: f64,
+        glucose_mg_dl: f64,
+        bun_mg_dl: f64,
+    ) -> f64 {
         2.0 * sodium_meq_l + glucose_mg_dl / 18.0 + bun_mg_dl / 2.8
     }
 
@@ -208,7 +213,11 @@ impl FluidOutput {
     }
 
     pub fn total_output_ml(&self) -> f64 {
-        self.urine_ml + self.feces_ml + self.respiratory_losses_ml + self.skin_losses_ml + self.sweat_ml
+        self.urine_ml
+            + self.feces_ml
+            + self.respiratory_losses_ml
+            + self.skin_losses_ml
+            + self.sweat_ml
     }
 
     pub fn insensible_losses_ml(&self) -> f64 {

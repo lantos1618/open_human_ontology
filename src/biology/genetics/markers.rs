@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use super::genome::Chromosome;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GeneticMarker {
@@ -60,7 +60,8 @@ impl BiomarkerPanel {
     }
 
     pub fn significant_markers(&self) -> Vec<&PhenotypeMarker> {
-        self.markers.iter()
+        self.markers
+            .iter()
             .filter(|m| m.is_genome_wide_significant())
             .collect()
     }

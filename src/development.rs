@@ -113,13 +113,15 @@ impl DevelopmentalStage {
         let mut strengths = Vec::new();
 
         if self.growth_metrics.height_percentile < 3.0 {
-            concerns.push("Height below 3rd percentile - evaluate for growth disorders".to_string());
+            concerns
+                .push("Height below 3rd percentile - evaluate for growth disorders".to_string());
         } else if self.growth_metrics.height_percentile > 97.0 {
             strengths.push("Height above 97th percentile".to_string());
         }
 
         if self.growth_metrics.weight_percentile < 3.0 {
-            concerns.push("Weight below 3rd percentile - evaluate for failure to thrive".to_string());
+            concerns
+                .push("Weight below 3rd percentile - evaluate for failure to thrive".to_string());
         } else if self.growth_metrics.weight_percentile > 95.0 {
             concerns.push("Weight above 95th percentile - obesity risk".to_string());
         }
@@ -131,7 +133,10 @@ impl DevelopmentalStage {
             .count();
 
         if milestones_delayed > 0 {
-            concerns.push(format!("{} developmental milestones delayed", milestones_delayed));
+            concerns.push(format!(
+                "{} developmental milestones delayed",
+                milestones_delayed
+            ));
         }
 
         let overall_status = if concerns.is_empty() {
@@ -459,9 +464,15 @@ mod tests {
     fn test_standard_milestones() {
         let milestones = Milestone::standard_milestones();
         assert!(!milestones.is_empty());
-        assert!(milestones.iter().any(|m| m.category == MilestoneCategory::Motor));
-        assert!(milestones.iter().any(|m| m.category == MilestoneCategory::Language));
-        assert!(milestones.iter().any(|m| m.category == MilestoneCategory::Cognitive));
+        assert!(milestones
+            .iter()
+            .any(|m| m.category == MilestoneCategory::Motor));
+        assert!(milestones
+            .iter()
+            .any(|m| m.category == MilestoneCategory::Language));
+        assert!(milestones
+            .iter()
+            .any(|m| m.category == MilestoneCategory::Cognitive));
     }
 
     #[test]

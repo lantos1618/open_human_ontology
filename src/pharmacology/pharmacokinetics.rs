@@ -64,11 +64,7 @@ pub enum ExcretionRoute {
 }
 
 impl Pharmacokinetics {
-    pub fn new(
-        bioavailability: f64,
-        half_life_hours: f64,
-        volume_of_distribution_l: f64,
-    ) -> Self {
+    pub fn new(bioavailability: f64, half_life_hours: f64, volume_of_distribution_l: f64) -> Self {
         Pharmacokinetics {
             absorption: Absorption {
                 bioavailability: bioavailability.clamp(0.0, 1.0),
@@ -103,13 +99,9 @@ impl Pharmacokinetics {
         0.693 / self.metabolism.half_life_hours
     }
 
-    pub fn calculate_concentration(
-        &self,
-        dose_mg: f64,
-        time_hours: f64,
-    ) -> f64 {
-        let c0 = (dose_mg * self.absorption.bioavailability) /
-                 self.distribution.volume_of_distribution_l;
+    pub fn calculate_concentration(&self, dose_mg: f64, time_hours: f64) -> f64 {
+        let c0 = (dose_mg * self.absorption.bioavailability)
+            / self.distribution.volume_of_distribution_l;
         let k = self.elimination_constant();
         c0 * (-k * time_hours).exp()
     }

@@ -193,6 +193,8 @@ mod tests {
     fn test_evidence_level_scoring() {
         assert_eq!(EvidenceLevel::SystematicReview.score(), 5);
         assert_eq!(EvidenceLevel::ExpertOpinion.score(), 1);
-        assert!(EvidenceLevel::RandomizedControlledTrial.score() > EvidenceLevel::CaseControl.score());
+        assert!(
+            EvidenceLevel::RandomizedControlledTrial.score() > EvidenceLevel::CaseControl.score()
+        );
     }
 }

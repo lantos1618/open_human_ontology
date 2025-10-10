@@ -64,10 +64,8 @@ impl RespiratoryMechanics {
     }
 
     pub fn calculate_total_compliance(&mut self) {
-        self.total_compliance_l_cmh2o = 1.0 / (
-            1.0 / self.lung_compliance_l_cmh2o +
-            1.0 / self.chest_wall_compliance_l_cmh2o
-        );
+        self.total_compliance_l_cmh2o =
+            1.0 / (1.0 / self.lung_compliance_l_cmh2o + 1.0 / self.chest_wall_compliance_l_cmh2o);
     }
 
     pub fn calculate_elastance(&mut self) {
@@ -182,8 +180,7 @@ impl RespiratoryMuscles {
     }
 
     pub fn total_inspiratory_force(&self) -> f64 {
-        self.diaphragm_force_n + self.intercostal_force_n +
-            self.accessory_muscle_activation * 100.0
+        self.diaphragm_force_n + self.intercostal_force_n + self.accessory_muscle_activation * 100.0
     }
 
     pub fn inspiratory_muscle_strength(&self) -> f64 {
@@ -191,8 +188,8 @@ impl RespiratoryMuscles {
     }
 
     pub fn has_respiratory_muscle_weakness(&self) -> bool {
-        self.maximal_inspiratory_pressure_cmh2o < 60.0 ||
-            self.maximal_expiratory_pressure_cmh2o < 80.0
+        self.maximal_inspiratory_pressure_cmh2o < 60.0
+            || self.maximal_expiratory_pressure_cmh2o < 80.0
     }
 
     pub fn diaphragm_efficiency(&self) -> f64 {
@@ -269,8 +266,7 @@ impl SurfactantSystem {
     }
 
     pub fn is_deficient(&self) -> bool {
-        self.surfactant_concentration_mg_ml < 0.03 ||
-            self.phosphatidylcholine_mg_ml < 0.025
+        self.surfactant_concentration_mg_ml < 0.03 || self.phosphatidylcholine_mg_ml < 0.025
     }
 
     pub fn surfactant_function_index(&self) -> f64 {
@@ -280,13 +276,17 @@ impl SurfactantSystem {
         (concentration_factor + tension_factor) / 2.0
     }
 
-    pub fn simulate_surfactant_depletion(&mut self, ventilation_intensity: f64, duration_hours: f64) {
+    pub fn simulate_surfactant_depletion(
+        &mut self,
+        ventilation_intensity: f64,
+        duration_hours: f64,
+    ) {
         let depletion_rate = 0.01 * ventilation_intensity * duration_hours;
         self.surfactant_concentration_mg_ml -= depletion_rate;
         self.surfactant_concentration_mg_ml = self.surfactant_concentration_mg_ml.max(0.01);
 
-        self.surface_tension_dyne_cm = 5.0 + (70.0 - 5.0) *
-            (1.0 - self.surfactant_concentration_mg_ml / 0.05);
+        self.surface_tension_dyne_cm =
+            5.0 + (70.0 - 5.0) * (1.0 - self.surfactant_concentration_mg_ml / 0.05);
     }
 }
 

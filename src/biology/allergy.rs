@@ -74,14 +74,21 @@ impl AllergicReaction {
     }
 
     pub fn requires_epinephrine(&self) -> bool {
-        self.severity == AllergySeverity::Anaphylactic ||
-        self.symptoms.contains(&AllergySymptom::Anaphylaxis) ||
-        (self.symptoms.contains(&AllergySymptom::BronchialConstriction) &&
-         self.symptoms.contains(&AllergySymptom::Hypotension))
+        self.severity == AllergySeverity::Anaphylactic
+            || self.symptoms.contains(&AllergySymptom::Anaphylaxis)
+            || (self
+                .symptoms
+                .contains(&AllergySymptom::BronchialConstriction)
+                && self.symptoms.contains(&AllergySymptom::Hypotension))
     }
 
     pub fn is_immediate(&self) -> bool {
-        matches!(self.hypersensitivity_type, HypersensitivityType::TypeI | HypersensitivityType::TypeII | HypersensitivityType::TypeIII)
+        matches!(
+            self.hypersensitivity_type,
+            HypersensitivityType::TypeI
+                | HypersensitivityType::TypeII
+                | HypersensitivityType::TypeIII
+        )
     }
 }
 
@@ -199,7 +206,8 @@ impl AllergyProfile {
 
     pub fn add_allergen(&mut self, allergen: Allergen, ige_level: f64) {
         self.known_allergens.push(allergen.clone());
-        self.ige_profile.add_specific_ige(allergen.name.clone(), ige_level);
+        self.ige_profile
+            .add_specific_ige(allergen.name.clone(), ige_level);
     }
 
     pub fn risk_for_allergen(&self, allergen_name: &str) -> AllergyRisk {
@@ -208,8 +216,9 @@ impl AllergyProfile {
         }
 
         for (known, cross_reactive) in &self.cross_reactivities {
-            if cross_reactive.contains(&allergen_name.to_string()) &&
-               self.known_allergens.iter().any(|a| a.name == *known) {
+            if cross_reactive.contains(&allergen_name.to_string())
+                && self.known_allergens.iter().any(|a| a.name == *known)
+            {
                 return AllergyRisk::CrossReactive;
             }
         }
@@ -222,8 +231,15 @@ impl AllergyProfile {
     }
 
     pub fn anaphylaxis_risk(&self) -> AnaphylaxisRisk {
-        let severe_count = self.previous_reactions.iter()
-            .filter(|r| matches!(r.severity, AllergySeverity::Severe | AllergySeverity::Anaphylactic))
+        let severe_count = self
+            .previous_reactions
+            .iter()
+            .filter(|r| {
+                matches!(
+                    r.severity,
+                    AllergySeverity::Severe | AllergySeverity::Anaphylactic
+                )
+            })
             .count();
 
         match severe_count {
@@ -305,14 +321,30 @@ impl FoodAllergyPanel {
     pub fn positive_results(&self) -> Vec<String> {
         let mut results = Vec::new();
 
-        if self.milk > 0.35 { results.push("Milk".to_string()); }
-        if self.egg > 0.35 { results.push("Egg".to_string()); }
-        if self.peanut > 0.35 { results.push("Peanut".to_string()); }
-        if self.tree_nuts > 0.35 { results.push("Tree nuts".to_string()); }
-        if self.soy > 0.35 { results.push("Soy".to_string()); }
-        if self.wheat > 0.35 { results.push("Wheat".to_string()); }
-        if self.fish > 0.35 { results.push("Fish".to_string()); }
-        if self.shellfish > 0.35 { results.push("Shellfish".to_string()); }
+        if self.milk > 0.35 {
+            results.push("Milk".to_string());
+        }
+        if self.egg > 0.35 {
+            results.push("Egg".to_string());
+        }
+        if self.peanut > 0.35 {
+            results.push("Peanut".to_string());
+        }
+        if self.tree_nuts > 0.35 {
+            results.push("Tree nuts".to_string());
+        }
+        if self.soy > 0.35 {
+            results.push("Soy".to_string());
+        }
+        if self.wheat > 0.35 {
+            results.push("Wheat".to_string());
+        }
+        if self.fish > 0.35 {
+            results.push("Fish".to_string());
+        }
+        if self.shellfish > 0.35 {
+            results.push("Shellfish".to_string());
+        }
 
         results
     }
@@ -349,7 +381,10 @@ mod tests {
         profile.add_specific_ige("Peanut".to_string(), 5.0);
 
         assert!(profile.is_elevated() || !profile.is_elevated());
-        assert_eq!(profile.allergen_sensitivity("Peanut"), AllergySensitivity::High);
+        assert_eq!(
+            profile.allergen_sensitivity("Peanut"),
+            AllergySensitivity::High
+        );
         assert!(profile.atopic_status);
     }
 

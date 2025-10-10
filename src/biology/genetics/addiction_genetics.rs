@@ -138,11 +138,17 @@ impl AddictionProfile {
         let mut factors = Vec::new();
 
         if self.alcohol_metabolism_rate > 2.0 {
-            factors.push("Fast alcohol metabolism (ADH1B*2) - protective against alcohol dependence".to_string());
+            factors.push(
+                "Fast alcohol metabolism (ADH1B*2) - protective against alcohol dependence"
+                    .to_string(),
+            );
         }
 
         if self.alcohol_metabolism_rate < 0.3 {
-            factors.push("ALDH2*2 variant - highly protective against alcoholism (unpleasant reaction)".to_string());
+            factors.push(
+                "ALDH2*2 variant - highly protective against alcoholism (unpleasant reaction)"
+                    .to_string(),
+            );
         }
 
         if self.nicotine_metabolism_rate < 0.7 {
@@ -150,7 +156,9 @@ impl AddictionProfile {
         }
 
         if self.dopamine_receptor_density > 1.2 {
-            factors.push("Higher dopamine receptor density - reduced addiction susceptibility".to_string());
+            factors.push(
+                "Higher dopamine receptor density - reduced addiction susceptibility".to_string(),
+            );
         }
 
         factors
@@ -161,12 +169,18 @@ impl AddictionProfile {
 
         let overall_risk = self.overall_addiction_risk();
         if overall_risk > 1.5 {
-            recs.push("Elevated genetic addiction risk: exercise caution with addictive substances".to_string());
+            recs.push(
+                "Elevated genetic addiction risk: exercise caution with addictive substances"
+                    .to_string(),
+            );
         }
 
         if let Some(alcohol_risk) = self.addiction_risks.get(&AddictionType::Alcohol) {
             if *alcohol_risk > 1.5 {
-                recs.push("Higher alcohol addiction risk: limit consumption, seek support if needed".to_string());
+                recs.push(
+                    "Higher alcohol addiction risk: limit consumption, seek support if needed"
+                        .to_string(),
+                );
             }
         }
 
@@ -195,16 +209,25 @@ impl AddictionProfile {
         let mut considerations = Vec::new();
 
         if self.opioid_receptor_sensitivity > 1.2 {
-            considerations.push("OPRM1 variant: may require lower opioid doses, monitor closely for dependence".to_string());
+            considerations.push(
+                "OPRM1 variant: may require lower opioid doses, monitor closely for dependence"
+                    .to_string(),
+            );
         }
 
         if self.dopamine_receptor_density < 0.8 {
-            considerations.push("DRD2 A1 allele: may respond better to dopamine agonists for addiction treatment".to_string());
+            considerations.push(
+                "DRD2 A1 allele: may respond better to dopamine agonists for addiction treatment"
+                    .to_string(),
+            );
         }
 
         if let Some(alcohol_risk) = self.addiction_risks.get(&AddictionType::Alcohol) {
             if *alcohol_risk > 1.5 {
-                considerations.push("Consider naltrexone or acamprosate for alcohol use disorder treatment".to_string());
+                considerations.push(
+                    "Consider naltrexone or acamprosate for alcohol use disorder treatment"
+                        .to_string(),
+                );
             }
         }
 
@@ -352,7 +375,10 @@ mod tests {
             description: "Test".to_string(),
         });
 
-        let alcohol_risk = profile.addiction_risks.get(&AddictionType::Alcohol).unwrap();
+        let alcohol_risk = profile
+            .addiction_risks
+            .get(&AddictionType::Alcohol)
+            .unwrap();
         assert!(*alcohol_risk < 0.5);
         assert!(profile.alcohol_metabolism_rate < 0.2);
     }

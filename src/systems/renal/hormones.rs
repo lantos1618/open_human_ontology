@@ -200,11 +200,7 @@ impl Calcitriol {
         self.plasma_concentration_pg_ml *= 2.0;
     }
 
-    pub fn production_factors(
-        calcium_mg_dl: f64,
-        phosphate_mg_dl: f64,
-        pth_pg_ml: f64,
-    ) -> f64 {
+    pub fn production_factors(calcium_mg_dl: f64, phosphate_mg_dl: f64, pth_pg_ml: f64) -> f64 {
         let mut factor = 1.0;
 
         if calcium_mg_dl < 8.5 {
@@ -386,10 +382,10 @@ impl AquaporinExpression {
     }
 
     pub fn water_permeability(&self) -> f64 {
-        (self.aqp1_proximal_tubule * 0.6) +
-        (self.aqp2_collecting_duct * 0.3) +
-        (self.aqp3_basolateral * 0.05) +
-        (self.aqp4_basolateral * 0.05)
+        (self.aqp1_proximal_tubule * 0.6)
+            + (self.aqp2_collecting_duct * 0.3)
+            + (self.aqp3_basolateral * 0.05)
+            + (self.aqp4_basolateral * 0.05)
     }
 
     pub fn nephrogenic_diabetes_insipidus(&mut self) {
@@ -426,22 +422,20 @@ impl SodiumTransport {
 
     fn calculate_total(&mut self) {
         let filtered_sodium = 25200.0;
-        let reabsorbed = filtered_sodium * (
-            (self.proximal_tubule_reabsorption_percent / 100.0) +
-            (self.thick_ascending_limb_reabsorption_percent / 100.0) +
-            (self.distal_tubule_reabsorption_percent / 100.0) +
-            (self.collecting_duct_reabsorption_percent / 100.0)
-        );
+        let reabsorbed = filtered_sodium
+            * ((self.proximal_tubule_reabsorption_percent / 100.0)
+                + (self.thick_ascending_limb_reabsorption_percent / 100.0)
+                + (self.distal_tubule_reabsorption_percent / 100.0)
+                + (self.collecting_duct_reabsorption_percent / 100.0));
         self.total_sodium_reabsorption_meq_day = reabsorbed;
     }
 
     pub fn fractional_excretion(&self) -> f64 {
-        100.0 - (
-            self.proximal_tubule_reabsorption_percent +
-            self.thick_ascending_limb_reabsorption_percent +
-            self.distal_tubule_reabsorption_percent +
-            self.collecting_duct_reabsorption_percent
-        )
+        100.0
+            - (self.proximal_tubule_reabsorption_percent
+                + self.thick_ascending_limb_reabsorption_percent
+                + self.distal_tubule_reabsorption_percent
+                + self.collecting_duct_reabsorption_percent)
     }
 
     pub fn sodium_excretion_meq_day(&self) -> f64 {
@@ -564,11 +558,12 @@ mod tests {
     #[test]
     fn test_aldosterone_effect_on_sodium() {
         let normal = SodiumTransport::new_normal();
-        let stimulated = SodiumTransport::new_normal()
-            .with_aldosterone_stimulation(30.0);
+        let stimulated = SodiumTransport::new_normal().with_aldosterone_stimulation(30.0);
 
-        assert!(stimulated.collecting_duct_reabsorption_percent >
-                normal.collecting_duct_reabsorption_percent);
+        assert!(
+            stimulated.collecting_duct_reabsorption_percent
+                > normal.collecting_duct_reabsorption_percent
+        );
     }
 
     #[test]

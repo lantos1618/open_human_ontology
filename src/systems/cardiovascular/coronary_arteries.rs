@@ -76,10 +76,12 @@ impl CoronaryArterySystem {
     }
 
     pub fn calculate_total_stenosis(&self) -> f64 {
-        let stenoses = [self.left_main.stenosis_percent,
+        let stenoses = [
+            self.left_main.stenosis_percent,
             self.left_anterior_descending.stenosis_percent,
             self.left_circumflex.stenosis_percent,
-            self.right_coronary.stenosis_percent];
+            self.right_coronary.stenosis_percent,
+        ];
 
         stenoses.iter().sum::<f64>() / stenoses.len() as f64
     }
@@ -92,7 +94,9 @@ impl CoronaryArterySystem {
     }
 
     pub fn assess_cad_severity(&self) -> CADSeverity {
-        let max_stenosis = self.left_main.stenosis_percent
+        let max_stenosis = self
+            .left_main
+            .stenosis_percent
             .max(self.left_anterior_descending.stenosis_percent)
             .max(self.left_circumflex.stenosis_percent)
             .max(self.right_coronary.stenosis_percent);
@@ -276,7 +280,10 @@ mod tests {
     fn test_single_vessel_disease() {
         let mut system = CoronaryArterySystem::new();
         system.left_anterior_descending.stenosis_percent = 80.0;
-        assert_eq!(system.assess_cad_severity(), CADSeverity::SingleVesselDisease);
+        assert_eq!(
+            system.assess_cad_severity(),
+            CADSeverity::SingleVesselDisease
+        );
     }
 
     #[test]

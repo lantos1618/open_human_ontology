@@ -1,5 +1,5 @@
 //! # Vaccines Module
-//! 
+//!
 //! Models different types of vaccines and their delivery mechanisms.
 
 use serde::{Deserialize, Serialize};
@@ -56,7 +56,7 @@ pub enum VaccineType {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum InactivationMethod {
     Chemical(String),
-    Heat(f64), // temperature in Celsius
+    Heat(f64),      // temperature in Celsius
     Radiation(f64), // dose in Gray
     Enzymatic(String),
 }
@@ -182,18 +182,14 @@ impl VaccineType {
     /// Calculate expected immune response strength
     pub fn predict_immune_response(&self) -> f64 {
         match self {
-            VaccineType::Inactivated { adjuvants, .. } => {
-                0.7 + (adjuvants.len() as f64 * 0.1)
-            },
-            VaccineType::LiveAttenuated { generation, .. } => {
-                0.9 - (*generation as f64 * 0.01)
-            },
-            VaccineType::Subunit { antigens, adjuvants, .. } => {
-                0.6 + (antigens.len() as f64 * 0.1) + (adjuvants.len() as f64 * 0.1)
-            },
-            VaccineType::MRNA { modifications, .. } => {
-                0.8 + (modifications.len() as f64 * 0.05)
-            },
+            VaccineType::Inactivated { adjuvants, .. } => 0.7 + (adjuvants.len() as f64 * 0.1),
+            VaccineType::LiveAttenuated { generation, .. } => 0.9 - (*generation as f64 * 0.01),
+            VaccineType::Subunit {
+                antigens,
+                adjuvants,
+                ..
+            } => 0.6 + (antigens.len() as f64 * 0.1) + (adjuvants.len() as f64 * 0.1),
+            VaccineType::MRNA { modifications, .. } => 0.8 + (modifications.len() as f64 * 0.05),
             _ => 0.7,
         }
     }
@@ -227,17 +223,22 @@ impl DeliverySystem {
                 let size_factor = 1.0 - ((size - 100.0).abs() / 100.0);
                 let charge_factor = 1.0 - (charge.abs() / 50.0);
                 (size_factor + charge_factor) / 2.0
-            },
-            DeliverySystem::Polymer { degradation_rate, .. } => {
+            }
+            DeliverySystem::Polymer {
+                degradation_rate, ..
+            } => {
                 // Optimal degradation rate around 0.1 per day
                 1.0 - ((degradation_rate - 0.1).abs() / 0.1)
-            },
-            DeliverySystem::Electroporation { voltage, pulse_duration } => {
+            }
+            DeliverySystem::Electroporation {
+                voltage,
+                pulse_duration,
+            } => {
                 // Optimal voltage around 100V, duration around 20ms
                 let voltage_factor = 1.0 - ((voltage - 100.0).abs() / 100.0);
                 let duration_factor = 1.0 - ((pulse_duration - 20.0).abs() / 20.0);
                 (voltage_factor + duration_factor) / 2.0
-            },
+            }
             _ => 0.7,
         }
     }
@@ -261,7 +262,10 @@ mod tests {
 
         assert!(mrna_vaccine.predict_immune_response() > 0.8);
         assert!(mrna_vaccine.check_stability(-80.0));
-        assert_eq!(mrna_vaccine.recommended_route(), AdministrationRoute::Intramuscular);
+        assert_eq!(
+            mrna_vaccine.recommended_route(),
+            AdministrationRoute::Intramuscular
+        );
     }
 
     #[test]
@@ -275,4 +279,4 @@ mod tests {
         let efficiency = lnp.calculate_efficiency();
         assert!(efficiency > 0.9);
     }
-} 
+}

@@ -207,10 +207,10 @@ impl Mitochondrion {
     }
 
     pub fn calculate_respiratory_capacity(&self) -> f64 {
-        let etc_efficiency =
-            (self.electron_transport_chain.complex_i.activity_level +
-             self.electron_transport_chain.complex_iii.activity_level +
-             self.electron_transport_chain.complex_iv.activity_level) / 3.0;
+        let etc_efficiency = (self.electron_transport_chain.complex_i.activity_level
+            + self.electron_transport_chain.complex_iii.activity_level
+            + self.electron_transport_chain.complex_iv.activity_level)
+            / 3.0;
 
         let coupling = self.oxidative_phosphorylation.respiratory_control_ratio / 10.0;
 
@@ -218,12 +218,19 @@ impl Mitochondrion {
     }
 
     pub fn calculate_bioenergetic_health_index(&self) -> f64 {
-        let atp_production_score = (self.energy_production.atp_production_rate_pmol_s / 100.0).min(1.0);
-        let membrane_potential_score = ((self.structure.membrane_potential_mv.abs() - 140.0) / 40.0).clamp(0.0, 1.0);
+        let atp_production_score =
+            (self.energy_production.atp_production_rate_pmol_s / 100.0).min(1.0);
+        let membrane_potential_score =
+            ((self.structure.membrane_potential_mv.abs() - 140.0) / 40.0).clamp(0.0, 1.0);
         let respiratory_capacity = self.calculate_respiratory_capacity();
         let quality_control_score = self.quality_control.mitophagy_rate;
 
-        ((atp_production_score + membrane_potential_score + respiratory_capacity + quality_control_score) / 4.0 * 100.0)
+        ((atp_production_score
+            + membrane_potential_score
+            + respiratory_capacity
+            + quality_control_score)
+            / 4.0
+            * 100.0)
             .clamp(0.0, 100.0)
     }
 
@@ -254,17 +261,23 @@ impl Mitochondrion {
         let protons_pumped = etc_activity * 10.0;
         self.oxidative_phosphorylation.proton_motive_force_mv = protons_pumped * 18.0;
 
-        self.energy_production.atp_production_rate_pmol_s =
-            self.electron_transport_chain.complex_v.atp_synthesis_rate_pmol_s * etc_activity;
+        self.energy_production.atp_production_rate_pmol_s = self
+            .electron_transport_chain
+            .complex_v
+            .atp_synthesis_rate_pmol_s
+            * etc_activity;
 
-        self.energy_production.atp_adp_ratio = self.energy_production.atp_production_rate_pmol_s / 20.0;
+        self.energy_production.atp_adp_ratio =
+            self.energy_production.atp_production_rate_pmol_s / 20.0;
     }
 
     pub fn induce_oxidative_stress(&mut self, stressor_intensity: f64) {
         let intensity = stressor_intensity.clamp(0.0, 10.0);
 
         self.electron_transport_chain.complex_i.ros_production_rate += intensity * 0.5;
-        self.electron_transport_chain.complex_iii.ros_production_rate += intensity * 0.3;
+        self.electron_transport_chain
+            .complex_iii
+            .ros_production_rate += intensity * 0.3;
 
         self.structure.membrane_potential_mv *= 1.0 - (intensity * 0.02);
 
@@ -520,6 +533,9 @@ mod tests {
     fn test_dysfunction_assessment() {
         let mito = Mitochondrion::new_healthy();
         let dysfunction = mito.assess_dysfunction_level();
-        assert!(matches!(dysfunction, MitochondrialDysfunction::Healthy | MitochondrialDysfunction::Mild));
+        assert!(matches!(
+            dysfunction,
+            MitochondrialDysfunction::Healthy | MitochondrialDysfunction::Mild
+        ));
     }
 }

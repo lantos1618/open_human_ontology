@@ -155,39 +155,72 @@ impl CardiovascularRiskProfile {
             BiologicalSex::Male => {
                 risk_score += self.age * 3.06;
 
-                risk_score += if self.total_cholesterol_mg_dl < 160.0 { 0.0 }
-                    else if self.total_cholesterol_mg_dl < 200.0 { 4.0 }
-                    else if self.total_cholesterol_mg_dl < 240.0 { 8.0 }
-                    else { 11.0 };
+                risk_score += if self.total_cholesterol_mg_dl < 160.0 {
+                    0.0
+                } else if self.total_cholesterol_mg_dl < 200.0 {
+                    4.0
+                } else if self.total_cholesterol_mg_dl < 240.0 {
+                    8.0
+                } else {
+                    11.0
+                };
 
-                risk_score += if self.hdl_cholesterol_mg_dl >= 60.0 { -1.0 }
-                    else if self.hdl_cholesterol_mg_dl >= 50.0 { 0.0 }
-                    else if self.hdl_cholesterol_mg_dl >= 40.0 { 1.0 }
-                    else { 2.0 };
+                risk_score += if self.hdl_cholesterol_mg_dl >= 60.0 {
+                    -1.0
+                } else if self.hdl_cholesterol_mg_dl >= 50.0 {
+                    0.0
+                } else if self.hdl_cholesterol_mg_dl >= 40.0 {
+                    1.0
+                } else {
+                    2.0
+                };
 
-                if self.systolic_bp_mmhg >= 160.0 { risk_score += 2.0; }
-                else if self.systolic_bp_mmhg >= 140.0 { risk_score += 1.0; }
+                if self.systolic_bp_mmhg >= 160.0 {
+                    risk_score += 2.0;
+                } else if self.systolic_bp_mmhg >= 140.0 {
+                    risk_score += 1.0;
+                }
 
-                if self.smoker { risk_score += 4.0; }
-                if self.diabetes { risk_score += 2.0; }
+                if self.smoker {
+                    risk_score += 4.0;
+                }
+                if self.diabetes {
+                    risk_score += 2.0;
+                }
             }
             BiologicalSex::Female => {
                 risk_score += self.age * 2.32;
 
-                risk_score += if self.total_cholesterol_mg_dl < 160.0 { 0.0 }
-                    else if self.total_cholesterol_mg_dl < 200.0 { 4.0 }
-                    else if self.total_cholesterol_mg_dl < 240.0 { 8.0 }
-                    else { 11.0 };
+                risk_score += if self.total_cholesterol_mg_dl < 160.0 {
+                    0.0
+                } else if self.total_cholesterol_mg_dl < 200.0 {
+                    4.0
+                } else if self.total_cholesterol_mg_dl < 240.0 {
+                    8.0
+                } else {
+                    11.0
+                };
 
-                risk_score += if self.hdl_cholesterol_mg_dl >= 60.0 { -1.0 }
-                    else if self.hdl_cholesterol_mg_dl >= 50.0 { 0.0 }
-                    else { 2.0 };
+                risk_score += if self.hdl_cholesterol_mg_dl >= 60.0 {
+                    -1.0
+                } else if self.hdl_cholesterol_mg_dl >= 50.0 {
+                    0.0
+                } else {
+                    2.0
+                };
 
-                if self.systolic_bp_mmhg >= 160.0 { risk_score += 3.0; }
-                else if self.systolic_bp_mmhg >= 140.0 { risk_score += 2.0; }
+                if self.systolic_bp_mmhg >= 160.0 {
+                    risk_score += 3.0;
+                } else if self.systolic_bp_mmhg >= 140.0 {
+                    risk_score += 2.0;
+                }
 
-                if self.smoker { risk_score += 3.0; }
-                if self.diabetes { risk_score += 4.0; }
+                if self.smoker {
+                    risk_score += 3.0;
+                }
+                if self.diabetes {
+                    risk_score += 4.0;
+                }
             }
         }
 
@@ -212,8 +245,12 @@ impl CardiovascularRiskProfile {
                 sum += ln_total_chol * 11.853;
                 sum -= ln_hdl * 7.990;
                 sum += ln_sbp * 1.797;
-                if self.smoker { sum += 7.837; }
-                if self.diabetes { sum += 0.658; }
+                if self.smoker {
+                    sum += 7.837;
+                }
+                if self.diabetes {
+                    sum += 0.658;
+                }
 
                 let risk = 1.0 - 0.9144_f64.powf((sum - 61.18).exp());
                 (risk * 100.0).min(50.0).max(0.0)
@@ -223,8 +260,12 @@ impl CardiovascularRiskProfile {
                 sum += ln_total_chol * 13.540;
                 sum -= ln_hdl * 13.578;
                 sum += ln_sbp * 2.019;
-                if self.smoker { sum += 7.574; }
-                if self.diabetes { sum += 0.661; }
+                if self.smoker {
+                    sum += 7.574;
+                }
+                if self.diabetes {
+                    sum += 0.661;
+                }
 
                 let risk = 1.0 - 0.9665_f64.powf((sum + 29.18).exp());
                 (risk * 100.0).min(50.0).max(0.0)
@@ -374,7 +415,9 @@ impl GeneticCardiovascularRisk {
     }
 
     pub fn has_familial_hypercholesterolemia(&self) -> bool {
-        !self.ldlr_variants.is_empty() || !self.apob_variants.is_empty() || !self.pcsk9_variants.is_empty()
+        !self.ldlr_variants.is_empty()
+            || !self.apob_variants.is_empty()
+            || !self.pcsk9_variants.is_empty()
     }
 
     pub fn cardiovascular_genetic_risk(&self) -> f64 {
@@ -451,7 +494,10 @@ mod tests {
         profile.diabetes = true;
 
         let category = profile.risk_category();
-        assert!(matches!(category, RiskCategory::High | RiskCategory::Intermediate));
+        assert!(matches!(
+            category,
+            RiskCategory::High | RiskCategory::Intermediate
+        ));
     }
 
     #[test]

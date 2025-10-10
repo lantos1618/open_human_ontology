@@ -141,8 +141,8 @@ impl DigestiveEnzymes {
     }
 
     pub fn assess_pancreatic_insufficiency(&self) -> bool {
-        self.pancreatic.pancreatic_lipase_u_ml < 50.0 ||
-        self.pancreatic.trypsin_activity_u_ml < 30.0
+        self.pancreatic.pancreatic_lipase_u_ml < 50.0
+            || self.pancreatic.trypsin_activity_u_ml < 30.0
     }
 }
 
@@ -185,8 +185,8 @@ impl MacronutrientDigestion {
     }
 
     pub fn assess_malabsorption(&self) -> bool {
-        self.fat_digestion.micelle_formation_efficiency < 0.80 ||
-        self.fat_digestion.fatty_acid_production_rate_g_hr < 8.0
+        self.fat_digestion.micelle_formation_efficiency < 0.80
+            || self.fat_digestion.fatty_acid_production_rate_g_hr < 8.0
     }
 }
 
@@ -246,8 +246,7 @@ impl BileSecretion {
     }
 
     pub fn assess_cholestasis(&self) -> bool {
-        self.bile_production_ml_day < 300.0 ||
-        self.bilirubin_secretion_mg_day < 100.0
+        self.bile_production_ml_day < 300.0 || self.bilirubin_secretion_mg_day < 100.0
     }
 
     pub fn assess_bile_acid_malabsorption(&self) -> bool {

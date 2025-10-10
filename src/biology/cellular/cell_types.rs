@@ -208,11 +208,12 @@ impl Cardiomyocyte {
     }
 
     pub fn force_generation_potential(&self) -> f64 {
-        let sarcomere_optimal = if self.sarcomere_length_um >= 1.8 && self.sarcomere_length_um <= 2.4 {
-            1.0
-        } else {
-            0.7
-        };
+        let sarcomere_optimal =
+            if self.sarcomere_length_um >= 1.8 && self.sarcomere_length_um <= 2.4 {
+                1.0
+            } else {
+                0.7
+            };
 
         self.contractility * self.calcium_handling * sarcomere_optimal * self.mitochondrial_density
     }
@@ -262,7 +263,8 @@ impl Adipocyte {
     }
 
     pub fn lipid_content_percent(&self) -> f64 {
-        let cell_volume = (4.0 / 3.0) * std::f64::consts::PI * (self.cell_diameter_um / 2.0).powi(3);
+        let cell_volume =
+            (4.0 / 3.0) * std::f64::consts::PI * (self.cell_diameter_um / 2.0).powi(3);
         (self.lipid_droplet_volume_um3 / cell_volume) * 100.0
     }
 
@@ -278,7 +280,7 @@ impl Adipocyte {
     pub fn release_lipid(&mut self, amount_um3: f64) -> BiologyResult<f64> {
         if amount_um3 > self.lipid_droplet_volume_um3 {
             return Err(BiologyError::InvalidValue(
-                "Cannot release more lipid than stored".to_string()
+                "Cannot release more lipid than stored".to_string(),
             ));
         }
         self.lipid_droplet_volume_um3 -= amount_um3;
@@ -336,7 +338,10 @@ impl Myocyte {
     }
 
     pub fn is_fast_twitch(&self) -> bool {
-        matches!(self.fiber_type, MuscleFiberType::Type2A | MuscleFiberType::Type2X)
+        matches!(
+            self.fiber_type,
+            MuscleFiberType::Type2A | MuscleFiberType::Type2X
+        )
     }
 }
 
@@ -359,7 +364,10 @@ impl Osteoblast {
     }
 
     pub fn bone_formation_capacity(&self) -> f64 {
-        (self.collagen_synthesis_rate + self.alkaline_phosphatase_activity + self.matrix_deposition_rate) / 3.0
+        (self.collagen_synthesis_rate
+            + self.alkaline_phosphatase_activity
+            + self.matrix_deposition_rate)
+            / 3.0
     }
 
     pub fn differentiate(&mut self, amount: f64) {
@@ -396,7 +404,10 @@ impl Osteoclast {
     }
 
     pub fn bone_resorption_capacity(&self) -> f64 {
-        self.resorption_rate * self.acid_secretion * self.enzyme_activity * (self.nuclei_count as f64 / 3.0)
+        self.resorption_rate
+            * self.acid_secretion
+            * self.enzyme_activity
+            * (self.nuclei_count as f64 / 3.0)
     }
 
     pub fn is_multinucleated(&self) -> bool {

@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ComprehensiveRiskCalculator {
     pub disease_risks: HashMap<String, DiseaseRiskProfile>,
@@ -250,12 +249,7 @@ impl ComprehensiveRiskCalculator {
     pub fn get_high_risk_diseases(&self) -> Vec<&DiseaseRiskProfile> {
         self.disease_risks
             .values()
-            .filter(|d| {
-                matches!(
-                    d.risk_category,
-                    RiskCategory::High | RiskCategory::VeryHigh
-                )
-            })
+            .filter(|d| matches!(d.risk_category, RiskCategory::High | RiskCategory::VeryHigh))
             .collect()
     }
 

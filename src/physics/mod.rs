@@ -5,8 +5,8 @@
 pub mod biomechanics;
 pub mod biomechanics_advanced;
 
-use serde::{Deserialize, Serialize};
 use nalgebra as na;
+use serde::{Deserialize, Serialize};
 
 /// 3D vector type using nalgebra
 pub type Vector3 = na::Vector3<f64>;
@@ -230,11 +230,7 @@ mod tests {
     fn test_mechanical_properties() {
         let props = MechanicalProperties::new(
             200.0, // Steel-like
-            0.3,
-            400.0,
-            250.0,
-            0.2,
-            50.0,
+            0.3, 400.0, 250.0, 0.2, 50.0,
         );
 
         let shear = props.shear_modulus();
@@ -246,13 +242,9 @@ mod tests {
 
     #[test]
     fn test_stress_tensor() {
-        let components = Matrix3::new(
-            100.0, 0.0, 0.0,
-            0.0, 0.0, 0.0,
-            0.0, 0.0, 0.0,
-        );
+        let components = Matrix3::new(100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
         let stress = StressTensor::new(components);
-        
+
         let von_mises = stress.von_mises_stress();
         assert!(von_mises > 0.0);
     }
@@ -268,4 +260,4 @@ mod tests {
         let re = water.reynolds_number(1.0, 0.01);
         assert!(re > 0.0);
     }
-} 
+}

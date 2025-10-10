@@ -169,11 +169,21 @@ impl CompleteBloodCount {
             disorders.push(BloodDisorder::Leukocytosis);
         }
 
-        if self.white_blood_cells.neutrophils.absolute_count_per_microliter < 1500.0 {
+        if self
+            .white_blood_cells
+            .neutrophils
+            .absolute_count_per_microliter
+            < 1500.0
+        {
             disorders.push(BloodDisorder::Neutropenia);
         }
 
-        if self.white_blood_cells.lymphocytes.absolute_count_per_microliter < 1000.0 {
+        if self
+            .white_blood_cells
+            .lymphocytes
+            .absolute_count_per_microliter
+            < 1000.0
+        {
             disorders.push(BloodDisorder::Lymphopenia);
         }
 
@@ -195,10 +205,21 @@ impl CompleteBloodCount {
     }
 
     pub fn immune_function_assessment(&self) -> ImmuneStatus {
-        let cd4 = self.white_blood_cells.lymphocytes.t_cells.cd4_count_per_microliter;
-        let cd8 = self.white_blood_cells.lymphocytes.t_cells.cd8_count_per_microliter;
+        let cd4 = self
+            .white_blood_cells
+            .lymphocytes
+            .t_cells
+            .cd4_count_per_microliter;
+        let cd8 = self
+            .white_blood_cells
+            .lymphocytes
+            .t_cells
+            .cd8_count_per_microliter;
         let ratio = self.white_blood_cells.lymphocytes.t_cells.cd4_cd8_ratio;
-        let neutrophils = self.white_blood_cells.neutrophils.absolute_count_per_microliter;
+        let neutrophils = self
+            .white_blood_cells
+            .neutrophils
+            .absolute_count_per_microliter;
 
         let status = if cd4 < 200.0 {
             ImmuneStatusLevel::Severe
@@ -222,15 +243,31 @@ impl CompleteBloodCount {
     pub fn infection_risk_score(&self) -> f64 {
         let mut risk = 0.0;
 
-        if self.white_blood_cells.neutrophils.absolute_count_per_microliter < 1500.0 {
+        if self
+            .white_blood_cells
+            .neutrophils
+            .absolute_count_per_microliter
+            < 1500.0
+        {
             risk += 3.0;
         }
 
-        if self.white_blood_cells.lymphocytes.t_cells.cd4_count_per_microliter < 500.0 {
+        if self
+            .white_blood_cells
+            .lymphocytes
+            .t_cells
+            .cd4_count_per_microliter
+            < 500.0
+        {
             risk += 2.0;
         }
 
-        if self.white_blood_cells.lymphocytes.absolute_count_per_microliter < 1000.0 {
+        if self
+            .white_blood_cells
+            .lymphocytes
+            .absolute_count_per_microliter
+            < 1000.0
+        {
             risk += 2.0;
         }
 
@@ -374,7 +411,9 @@ mod tests {
     #[test]
     fn test_neutropenia_detection() {
         let mut cbc = CompleteBloodCount::normal_adult_male();
-        cbc.white_blood_cells.neutrophils.absolute_count_per_microliter = 1000.0;
+        cbc.white_blood_cells
+            .neutrophils
+            .absolute_count_per_microliter = 1000.0;
 
         let disorders = cbc.detect_blood_disorders();
         assert!(disorders.contains(&BloodDisorder::Neutropenia));
@@ -401,7 +440,10 @@ mod tests {
     #[test]
     fn test_immune_function_compromised() {
         let mut cbc = CompleteBloodCount::normal_adult_male();
-        cbc.white_blood_cells.lymphocytes.t_cells.cd4_count_per_microliter = 300.0;
+        cbc.white_blood_cells
+            .lymphocytes
+            .t_cells
+            .cd4_count_per_microliter = 300.0;
 
         let immune = cbc.immune_function_assessment();
         assert_eq!(immune.status, ImmuneStatusLevel::Compromised);
@@ -410,8 +452,13 @@ mod tests {
     #[test]
     fn test_infection_risk_scoring() {
         let mut cbc = CompleteBloodCount::normal_adult_male();
-        cbc.white_blood_cells.neutrophils.absolute_count_per_microliter = 1000.0;
-        cbc.white_blood_cells.lymphocytes.t_cells.cd4_count_per_microliter = 400.0;
+        cbc.white_blood_cells
+            .neutrophils
+            .absolute_count_per_microliter = 1000.0;
+        cbc.white_blood_cells
+            .lymphocytes
+            .t_cells
+            .cd4_count_per_microliter = 400.0;
 
         let risk = cbc.infection_risk_score();
         assert!(risk >= 5.0);

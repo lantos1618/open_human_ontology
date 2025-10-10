@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
 use super::dna::DNASequence;
 use super::gene::Gene;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Chromosome {
@@ -72,13 +72,13 @@ impl Chromosome {
     }
 
     pub fn find_gene_by_position(&self, position: usize) -> Option<&Gene> {
-        self.genes.iter()
+        self.genes
+            .iter()
             .find(|g| position >= g.start_position && position <= g.end_position)
     }
 
     pub fn find_gene_by_symbol(&self, symbol: &str) -> Option<&Gene> {
-        self.genes.iter()
-            .find(|g| g.symbol == symbol)
+        self.genes.iter().find(|g| g.symbol == symbol)
     }
 }
 
@@ -104,14 +104,8 @@ impl Karyotype {
         Karyotype {
             autosomes: Vec::new(),
             sex_chromosomes: SexChromosomes::XY(
-                Chromosome::x_chromosome(
-                    DNASequence::from_str("ATGC").unwrap(),
-                    1000,
-                ),
-                Chromosome::y_chromosome(
-                    DNASequence::from_str("ATGC").unwrap(),
-                    500,
-                ),
+                Chromosome::x_chromosome(DNASequence::from_str("ATGC").unwrap(), 1000),
+                Chromosome::y_chromosome(DNASequence::from_str("ATGC").unwrap(), 500),
             ),
             total_chromosome_count: 46,
         }
@@ -121,29 +115,25 @@ impl Karyotype {
         Karyotype {
             autosomes: Vec::new(),
             sex_chromosomes: SexChromosomes::XX(
-                Chromosome::x_chromosome(
-                    DNASequence::from_str("ATGC").unwrap(),
-                    1000,
-                ),
-                Chromosome::x_chromosome(
-                    DNASequence::from_str("ATGC").unwrap(),
-                    1000,
-                ),
+                Chromosome::x_chromosome(DNASequence::from_str("ATGC").unwrap(), 1000),
+                Chromosome::x_chromosome(DNASequence::from_str("ATGC").unwrap(), 1000),
             ),
             total_chromosome_count: 46,
         }
     }
 
     pub fn is_male(&self) -> bool {
-        matches!(self.sex_chromosomes,
-            SexChromosomes::XY(_, _) |
-            SexChromosomes::XYY(_, _, _))
+        matches!(
+            self.sex_chromosomes,
+            SexChromosomes::XY(_, _) | SexChromosomes::XYY(_, _, _)
+        )
     }
 
     pub fn is_female(&self) -> bool {
-        matches!(self.sex_chromosomes,
-            SexChromosomes::XX(_, _) |
-            SexChromosomes::XXX(_, _, _))
+        matches!(
+            self.sex_chromosomes,
+            SexChromosomes::XX(_, _) | SexChromosomes::XXX(_, _, _)
+        )
     }
 
     pub fn has_chromosomal_abnormality(&self) -> bool {

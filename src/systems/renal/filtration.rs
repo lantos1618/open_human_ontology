@@ -81,8 +81,8 @@ impl UrineFormation {
     }
 
     pub fn verify_balance(&self) -> bool {
-        let calculated_urine =
-            self.filtrate_volume_l_per_day - self.reabsorption_volume_l_per_day + self.secretion_volume_l_per_day;
+        let calculated_urine = self.filtrate_volume_l_per_day - self.reabsorption_volume_l_per_day
+            + self.secretion_volume_l_per_day;
         (calculated_urine - self.final_urine_volume_l_per_day).abs() < 0.1
     }
 }

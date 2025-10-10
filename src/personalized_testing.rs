@@ -1,7 +1,7 @@
+use crate::biology::genetics::AncestryPopulation;
+use crate::human::Human;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::human::Human;
-use crate::biology::genetics::AncestryPopulation;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PersonalizedHealthTest {
@@ -103,7 +103,10 @@ impl PersonalizedHealthAnalyzer {
         scores: &mut HashMap<String, f64>,
         risk_factors: &mut Vec<RiskFactor>,
     ) {
-        let primary_ancestry = human.genetics.ancestry.autosomal_ancestry
+        let primary_ancestry = human
+            .genetics
+            .ancestry
+            .autosomal_ancestry
             .primary_ancestry()
             .unwrap_or(AncestryPopulation::European);
 

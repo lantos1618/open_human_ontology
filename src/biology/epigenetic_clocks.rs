@@ -35,28 +35,76 @@ impl ClockType {
     pub fn key_cpg_sites(&self) -> Vec<&'static str> {
         match self {
             ClockType::HorvathClock => vec![
-                "cg00075967", "cg00374717", "cg00864867", "cg01820374", "cg02228185",
-                "cg02769083", "cg03303940", "cg03619792", "cg04084157", "cg04528819",
+                "cg00075967",
+                "cg00374717",
+                "cg00864867",
+                "cg01820374",
+                "cg02228185",
+                "cg02769083",
+                "cg03303940",
+                "cg03619792",
+                "cg04084157",
+                "cg04528819",
             ],
             ClockType::HannumClock => vec![
-                "cg00945507", "cg01820374", "cg02228185", "cg03636183", "cg04474832",
-                "cg06493994", "cg07547549", "cg08309687", "cg09809672", "cg10321156",
+                "cg00945507",
+                "cg01820374",
+                "cg02228185",
+                "cg03636183",
+                "cg04474832",
+                "cg06493994",
+                "cg07547549",
+                "cg08309687",
+                "cg09809672",
+                "cg10321156",
             ],
             ClockType::PhenoAgeClock => vec![
-                "cg00075967", "cg00945507", "cg01820374", "cg02228185", "cg03193609",
-                "cg04474832", "cg05442089", "cg06493994", "cg07547549", "cg08309687",
+                "cg00075967",
+                "cg00945507",
+                "cg01820374",
+                "cg02228185",
+                "cg03193609",
+                "cg04474832",
+                "cg05442089",
+                "cg06493994",
+                "cg07547549",
+                "cg08309687",
             ],
             ClockType::GrimAgeClock => vec![
-                "cg00074492", "cg00945507", "cg01459453", "cg01820374", "cg02228185",
-                "cg03193609", "cg04474832", "cg05442089", "cg06493994", "cg07547549",
+                "cg00074492",
+                "cg00945507",
+                "cg01459453",
+                "cg01820374",
+                "cg02228185",
+                "cg03193609",
+                "cg04474832",
+                "cg05442089",
+                "cg06493994",
+                "cg07547549",
             ],
             ClockType::SkinBloodClock => vec![
-                "cg00945507", "cg01820374", "cg02228185", "cg04474832", "cg06493994",
-                "cg07547549", "cg08309687", "cg09809672", "cg10321156", "cg11807280",
+                "cg00945507",
+                "cg01820374",
+                "cg02228185",
+                "cg04474832",
+                "cg06493994",
+                "cg07547549",
+                "cg08309687",
+                "cg09809672",
+                "cg10321156",
+                "cg11807280",
             ],
             ClockType::DNAmTL => vec![
-                "cg00229005", "cg00432489", "cg00599556", "cg00830186", "cg01163530",
-                "cg01273843", "cg01459453", "cg01733105", "cg01842396", "cg02085953",
+                "cg00229005",
+                "cg00432489",
+                "cg00599556",
+                "cg00830186",
+                "cg01163530",
+                "cg01273843",
+                "cg01459453",
+                "cg01733105",
+                "cg01842396",
+                "cg02085953",
             ],
         }
     }
@@ -76,7 +124,8 @@ impl EpigeneticClock {
     }
 
     pub fn add_methylation_value(&mut self, cpg_site: String, methylation_beta: f64) {
-        self.cpg_sites.insert(cpg_site, methylation_beta.clamp(0.0, 1.0));
+        self.cpg_sites
+            .insert(cpg_site, methylation_beta.clamp(0.0, 1.0));
     }
 
     pub fn calculate_predicted_age(&mut self) {
@@ -165,8 +214,6 @@ impl EpigeneticClock {
             21.0
         };
 
-        
-
         if age >= 0.0 {
             21.0 + (1.0 + 21.0 + age) * age
         } else {
@@ -224,7 +271,8 @@ impl EpigeneticClock {
     }
 
     pub fn mortality_risk(&self) -> MortalityRisk {
-        if self.clock_type == ClockType::PhenoAgeClock || self.clock_type == ClockType::GrimAgeClock {
+        if self.clock_type == ClockType::PhenoAgeClock || self.clock_type == ClockType::GrimAgeClock
+        {
             match self.age_acceleration {
                 acc if acc > 10.0 => MortalityRisk::VeryHigh,
                 acc if acc > 5.0 => MortalityRisk::High,

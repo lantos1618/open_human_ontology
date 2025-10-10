@@ -166,7 +166,10 @@ impl HematologyProfile {
 
     pub fn assess_anemia_risk(&self) -> AnemiaRisk {
         let hgb = self.complete_blood_count.red_blood_cells.hemoglobin_g_dl;
-        let mcv = self.complete_blood_count.red_blood_cells.mean_corpuscular_volume_fl;
+        let mcv = self
+            .complete_blood_count
+            .red_blood_cells
+            .mean_corpuscular_volume_fl;
 
         if hgb < 8.0 {
             AnemiaRisk::Severe
@@ -401,7 +404,10 @@ mod tests {
     #[test]
     fn test_normal_hematology_profile() {
         let profile = HematologyProfile::new_normal(BiologicalSex::Male);
-        assert_eq!(profile.complete_blood_count.red_blood_cells.hemoglobin_g_dl, 15.0);
+        assert_eq!(
+            profile.complete_blood_count.red_blood_cells.hemoglobin_g_dl,
+            15.0
+        );
         assert_eq!(profile.coagulation.coagulation_tests.inr, 1.0);
     }
 

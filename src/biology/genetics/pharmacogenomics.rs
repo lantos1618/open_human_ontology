@@ -25,11 +25,15 @@ impl DrugMetabolism {
 
     pub fn dosage_recommendation(&self) -> String {
         match self.metabolizer_status {
-            MetabolizerStatus::UltraRapid => "Consider increased dose or alternative medication".to_string(),
+            MetabolizerStatus::UltraRapid => {
+                "Consider increased dose or alternative medication".to_string()
+            }
             MetabolizerStatus::Rapid => "May require higher than standard dose".to_string(),
             MetabolizerStatus::Normal => "Standard dosing appropriate".to_string(),
             MetabolizerStatus::Intermediate => "Consider reduced dose".to_string(),
-            MetabolizerStatus::Poor => "Significantly reduced dose or alternative medication recommended".to_string(),
+            MetabolizerStatus::Poor => {
+                "Significantly reduced dose or alternative medication recommended".to_string()
+            }
         }
     }
 }
@@ -81,7 +85,8 @@ impl PharmacogenomicProfile {
     }
 
     pub fn add_drug_response(&mut self, response: DrugResponse) {
-        self.drug_responses.entry(response.drug.clone())
+        self.drug_responses
+            .entry(response.drug.clone())
             .or_default()
             .push(response);
     }

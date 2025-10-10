@@ -197,9 +197,9 @@ impl SenescenceMarkers {
     }
 
     pub fn is_senescent(&self) -> bool {
-        self.p16_expression_level > 5.0 &&
-        self.beta_galactosidase_activity > 5.0 &&
-        self.cell_cycle_arrest
+        self.p16_expression_level > 5.0
+            && self.beta_galactosidase_activity > 5.0
+            && self.cell_cycle_arrest
     }
 }
 
@@ -244,19 +244,17 @@ impl OxidativeStress {
     }
 
     pub fn oxidative_balance(&self) -> f64 {
-        let antioxidant_capacity = (
-            self.superoxide_dismutase_activity +
-            self.catalase_activity +
-            self.glutathione_peroxidase_activity +
-            self.glutathione_ratio
-        ) / 4.0;
+        let antioxidant_capacity = (self.superoxide_dismutase_activity
+            + self.catalase_activity
+            + self.glutathione_peroxidase_activity
+            + self.glutathione_ratio)
+            / 4.0;
 
-        let oxidative_damage = (
-            self.reactive_oxygen_species_level +
-            self.lipid_peroxidation_level +
-            self.protein_carbonylation_level +
-            self.dna_oxidation_8_ohdg
-        ) / 4.0;
+        let oxidative_damage = (self.reactive_oxygen_species_level
+            + self.lipid_peroxidation_level
+            + self.protein_carbonylation_level
+            + self.dna_oxidation_8_ohdg)
+            / 4.0;
 
         antioxidant_capacity / oxidative_damage
     }
@@ -333,13 +331,12 @@ impl DNADamageResponse {
     }
 
     pub fn repair_capacity(&self) -> f64 {
-        (
-            self.base_excision_repair_activity +
-            self.nucleotide_excision_repair_activity +
-            self.mismatch_repair_activity +
-            self.homologous_recombination_activity +
-            self.non_homologous_end_joining_activity
-        ) / 5.0
+        (self.base_excision_repair_activity
+            + self.nucleotide_excision_repair_activity
+            + self.mismatch_repair_activity
+            + self.homologous_recombination_activity
+            + self.non_homologous_end_joining_activity)
+            / 5.0
     }
 
     pub fn has_excessive_damage(&self) -> bool {
@@ -381,13 +378,15 @@ impl ProteostasisCapacity {
     }
 
     pub fn is_impaired(&self) -> bool {
-        self.protein_folding_efficiency < 70.0 ||
-        self.proteasome_activity < 70.0 ||
-        self.aggregated_protein_burden > 20.0
+        self.protein_folding_efficiency < 70.0
+            || self.proteasome_activity < 70.0
+            || self.aggregated_protein_burden > 20.0
     }
 
     pub fn proteostasis_score(&self) -> f64 {
-        let capacity = (self.protein_folding_efficiency + self.chaperone_activity + self.proteasome_activity) / 3.0;
+        let capacity =
+            (self.protein_folding_efficiency + self.chaperone_activity + self.proteasome_activity)
+                / 3.0;
         let burden = 100.0 - self.aggregated_protein_burden;
 
         (capacity + burden) / 2.0
@@ -416,15 +415,21 @@ impl AgingHallmark {
         match self {
             AgingHallmark::GenomicInstability => "Accumulation of DNA damage and mutations",
             AgingHallmark::TelomereAttrition => "Progressive shortening of telomeres",
-            AgingHallmark::EpigeneticAlterations => "Changes in DNA methylation and histone modifications",
+            AgingHallmark::EpigeneticAlterations => {
+                "Changes in DNA methylation and histone modifications"
+            }
             AgingHallmark::LossOfProteostasis => "Impaired protein quality control",
             AgingHallmark::DisabledMacroautophagy => "Reduced cellular cleanup and recycling",
             AgingHallmark::DeregulatedNutrientSensing => "Dysregulation of metabolic pathways",
-            AgingHallmark::MitochondrialDysfunction => "Impaired energy production and increased ROS",
+            AgingHallmark::MitochondrialDysfunction => {
+                "Impaired energy production and increased ROS"
+            }
             AgingHallmark::CellularSenescence => "Accumulation of senescent cells",
             AgingHallmark::StemCellExhaustion => "Depletion of stem cell reserves",
             AgingHallmark::AlteredIntercellularCommunication => "Changes in cell-cell signaling",
-            AgingHallmark::ChronicInflammation => "Persistent low-grade inflammation (inflammaging)",
+            AgingHallmark::ChronicInflammation => {
+                "Persistent low-grade inflammation (inflammaging)"
+            }
             AgingHallmark::Dysbiosis => "Imbalance in microbiome composition",
         }
     }

@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use super::genome::Chromosome;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum VariantType {
@@ -57,7 +57,10 @@ impl GeneticVariation {
     }
 
     pub fn is_clinically_significant(&self) -> bool {
-        matches!(self.effect, VariantEffect::Pathogenic | VariantEffect::LikelyPathogenic)
+        matches!(
+            self.effect,
+            VariantEffect::Pathogenic | VariantEffect::LikelyPathogenic
+        )
     }
 }
 

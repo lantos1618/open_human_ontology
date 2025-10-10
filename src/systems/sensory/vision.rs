@@ -79,7 +79,10 @@ pub struct Snellen {
 
 impl Snellen {
     pub fn new(numerator: u32, denominator: u32) -> Self {
-        Snellen { numerator, denominator }
+        Snellen {
+            numerator,
+            denominator,
+        }
     }
 
     pub fn decimal(&self) -> f64 {
@@ -143,8 +146,7 @@ impl Eye {
     }
 
     pub fn has_glaucoma_risk(&self) -> bool {
-        self.intraocular_pressure_mmhg > 21.0 ||
-        self.optic_nerve.cup_to_disc_ratio > 0.6
+        self.intraocular_pressure_mmhg > 21.0 || self.optic_nerve.cup_to_disc_ratio > 0.6
     }
 
     pub fn has_cataract(&self) -> bool {
@@ -174,8 +176,7 @@ impl VisualSystem {
     }
 
     pub fn requires_correction(&self) -> bool {
-        self.visual_acuity.left_eye.decimal() < 1.0 ||
-        self.visual_acuity.right_eye.decimal() < 1.0
+        self.visual_acuity.left_eye.decimal() < 1.0 || self.visual_acuity.right_eye.decimal() < 1.0
     }
 }
 

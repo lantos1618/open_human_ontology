@@ -62,12 +62,14 @@ pub struct TasteReceptorGenetics {
 }
 
 impl TasteReceptorGenetics {
-    pub fn new(
-        tas2r38: Tas2r38Genotype,
-        tas1r2: bool,
-        tas1r3: bool,
-    ) -> Self {
-        let sweet = if tas1r2 && tas1r3 { 1.0 } else if tas1r2 || tas1r3 { 0.7 } else { 0.3 };
+    pub fn new(tas2r38: Tas2r38Genotype, tas1r2: bool, tas1r3: bool) -> Self {
+        let sweet = if tas1r2 && tas1r3 {
+            1.0
+        } else if tas1r2 || tas1r3 {
+            0.7
+        } else {
+            0.3
+        };
         let umami = if tas1r3 { 1.0 } else { 0.5 };
 
         Self {
@@ -230,10 +232,7 @@ pub struct ChemosensoryProfile {
 }
 
 impl ChemosensoryProfile {
-    pub fn new(
-        taste: TasteReceptorGenetics,
-        olfactory: OlfactoryReceptorGenetics,
-    ) -> Self {
+    pub fn new(taste: TasteReceptorGenetics, olfactory: OlfactoryReceptorGenetics) -> Self {
         Self {
             taste_genetics: taste,
             olfactory_genetics: olfactory,
@@ -245,8 +244,11 @@ impl ChemosensoryProfile {
 
         match self.taste_genetics.tas2r38_genotype.ptc_tasting_ability() {
             TasteAbility::SuperTaster => {
-                recommendations.push("Consider cooking cruciferous vegetables to reduce bitterness".to_string());
-                recommendations.push("May prefer milder coffee and chocolate varieties".to_string());
+                recommendations.push(
+                    "Consider cooking cruciferous vegetables to reduce bitterness".to_string(),
+                );
+                recommendations
+                    .push("May prefer milder coffee and chocolate varieties".to_string());
             }
             TasteAbility::NonTaster => {
                 recommendations.push("Can easily consume bitter vegetables raw".to_string());
@@ -258,22 +260,23 @@ impl ChemosensoryProfile {
         }
 
         if self.olfactory_genetics.cilantro_aversion_likelihood() > 0.8 {
-            recommendations.push("Strong genetic predisposition to dislike cilantro/coriander".to_string());
+            recommendations
+                .push("Strong genetic predisposition to dislike cilantro/coriander".to_string());
         }
 
         if !self.olfactory_genetics.can_smell_asparagus_metabolites() {
-            recommendations.push("Genetically unable to smell asparagus metabolites in urine".to_string());
+            recommendations
+                .push("Genetically unable to smell asparagus metabolites in urine".to_string());
         }
 
         recommendations
     }
 
     pub fn flavor_perception_index(&self) -> f64 {
-        let taste_score = (
-            self.taste_genetics.sweet_sensitivity +
-            self.taste_genetics.umami_sensitivity +
-            self.taste_genetics.tas2r38_genotype.bitter_sensitivity()
-        ) / 3.0;
+        let taste_score = (self.taste_genetics.sweet_sensitivity
+            + self.taste_genetics.umami_sensitivity
+            + self.taste_genetics.tas2r38_genotype.bitter_sensitivity())
+            / 3.0;
 
         let smell_score = self.olfactory_genetics.olfactory_acuity();
 
@@ -288,7 +291,10 @@ mod tests {
     #[test]
     fn test_tas2r38_genotype() {
         let super_taster = Tas2r38Genotype::PavPav;
-        assert_eq!(super_taster.ptc_tasting_ability(), TasteAbility::SuperTaster);
+        assert_eq!(
+            super_taster.ptc_tasting_ability(),
+            TasteAbility::SuperTaster
+        );
         assert!(super_taster.bitter_sensitivity() > 1.5);
         assert!(super_taster.vegetable_preference_likelihood() < 0.5);
 
@@ -300,11 +306,7 @@ mod tests {
 
     #[test]
     fn test_taste_receptor_genetics() {
-        let genetics = TasteReceptorGenetics::new(
-            Tas2r38Genotype::PavAvi,
-            true,
-            true,
-        );
+        let genetics = TasteReceptorGenetics::new(Tas2r38Genotype::PavAvi, true, true);
 
         assert_eq!(genetics.sweet_sensitivity, 1.0);
         assert_eq!(genetics.umami_sensitivity, 1.0);
@@ -332,11 +334,7 @@ mod tests {
 
     #[test]
     fn test_chemosensory_profile() {
-        let taste = TasteReceptorGenetics::new(
-            Tas2r38Genotype::PavPav,
-            true,
-            true,
-        );
+        let taste = TasteReceptorGenetics::new(Tas2r38Genotype::PavPav, true, true);
 
         let olfactory = OlfactoryReceptorGenetics::new(
             Or11h7pGenotype::Functional,

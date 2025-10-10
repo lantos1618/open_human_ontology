@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
 use super::disease::Disease;
 use super::symptom::Symptom;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Diagnosis {
@@ -55,9 +55,8 @@ impl Diagnosis {
 
     pub fn add_differential(&mut self, diff: DifferentialDiagnosis) {
         self.differential_diagnoses.push(diff);
-        self.differential_diagnoses.sort_by(|a, b|
-            b.probability.partial_cmp(&a.probability).unwrap()
-        );
+        self.differential_diagnoses
+            .sort_by(|a, b| b.probability.partial_cmp(&a.probability).unwrap());
     }
 
     pub fn add_evidence(&mut self, evidence: Evidence) {
@@ -77,11 +76,20 @@ impl Diagnosis {
     }
 
     pub fn has_genetic_confirmation(&self) -> bool {
-        self.supporting_evidence.iter().any(|e| matches!(e, Evidence::GeneticTest { pathogenic: true, .. }))
+        self.supporting_evidence.iter().any(|e| {
+            matches!(
+                e,
+                Evidence::GeneticTest {
+                    pathogenic: true,
+                    ..
+                }
+            )
+        })
     }
 
     pub fn abnormal_lab_count(&self) -> usize {
-        self.supporting_evidence.iter()
+        self.supporting_evidence
+            .iter()
             .filter(|e| matches!(e, Evidence::LabResults { abnormal: true, .. }))
             .count()
     }
@@ -104,11 +112,7 @@ pub struct Criterion {
 }
 
 impl DiagnosticCriteria {
-    pub fn new(
-        condition_name: String,
-        required_major: usize,
-        required_minor: usize,
-    ) -> Self {
+    pub fn new(condition_name: String, required_major: usize, required_minor: usize) -> Self {
         DiagnosticCriteria {
             condition_name,
             major_criteria: Vec::new(),
@@ -135,8 +139,7 @@ impl DiagnosticCriteria {
     }
 
     pub fn is_diagnosis_met(&self) -> bool {
-        self.major_met() >= self.required_major &&
-        self.minor_met() >= self.required_minor
+        self.major_met() >= self.required_major && self.minor_met() >= self.required_minor
     }
 
     pub fn completion_percentage(&self) -> f64 {
@@ -148,8 +151,8 @@ impl DiagnosticCriteria {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use super::super::disease::{Disease, DiseaseCategory};
+    use super::*;
 
     #[test]
     fn test_diagnosis_creation() {
@@ -174,10 +177,7 @@ mod tests {
 
     #[test]
     fn test_differential_diagnosis() {
-        let primary_disease = Disease::new(
-            "Migraine".to_string(),
-            DiseaseCategory::Neurological,
-        );
+        let primary_disease = Disease::new("Migraine".to_string(), DiseaseCategory::Neurological);
 
         let mut diagnosis = Diagnosis::new(primary_disease, 0.75);
 
@@ -197,11 +197,7 @@ mod tests {
 
     #[test]
     fn test_diagnostic_criteria() {
-        let mut criteria = DiagnosticCriteria::new(
-            "Rheumatoid Arthritis".to_string(),
-            2,
-            1,
-        );
+        let mut criteria = DiagnosticCriteria::new("Rheumatoid Arthritis".to_string(), 2, 1);
 
         criteria.add_major_criterion(Criterion {
             description: "Positive RF".to_string(),

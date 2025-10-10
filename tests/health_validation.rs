@@ -1,15 +1,17 @@
-use human_biology::human::{Human, Demographics, BodyMetrics, HealthConditions, BiologicalSex, BodySystems};
-use human_biology::biology::genetics::{
-    AncestryProfile, AncestryPopulation, EyeColorGenetics,
-    Actn3Genotype, AceGenotype, PhenotypeProfile
-};
-use human_biology::pharmacology::pharmacogenomics::*;
-use human_biology::comprehensive_health::ComprehensiveHealthProfile;
 use human_biology::anthropometry::{
-    AnthropometricProfile, BodyMeasurements, BodyComposition as AnthroBodyComp,
-    BiologicalSex as AnthroBioSex, Ethnicity
+    AnthropometricProfile, BiologicalSex as AnthroBioSex, BodyComposition as AnthroBodyComp,
+    BodyMeasurements, Ethnicity,
+};
+use human_biology::biology::genetics::{
+    AceGenotype, Actn3Genotype, AncestryPopulation, AncestryProfile, EyeColorGenetics,
+    PhenotypeProfile,
+};
+use human_biology::comprehensive_health::ComprehensiveHealthProfile;
+use human_biology::human::{
+    BiologicalSex, BodyMetrics, BodySystems, Demographics, HealthConditions, Human,
 };
 use human_biology::pathology::headache::*;
+use human_biology::pharmacology::pharmacogenomics::*;
 use std::collections::HashMap;
 
 #[test]
@@ -105,27 +107,21 @@ fn test_age_related_health_changes() {
 #[test]
 fn test_health_conditions_tracking() {
     let health_conditions = HealthConditions {
-        active_conditions: vec![
-            "Hypertension".to_string(),
-            "Type 2 Diabetes".to_string(),
-        ],
-        past_conditions: vec![
-            "Appendicitis".to_string(),
-        ],
+        active_conditions: vec!["Hypertension".to_string(), "Type 2 Diabetes".to_string()],
+        past_conditions: vec!["Appendicitis".to_string()],
         family_history: vec![
             "Coronary Artery Disease".to_string(),
             "Breast Cancer".to_string(),
         ],
         headache_profile: None,
-        allergies: vec![
-            "Penicillin".to_string(),
-            "Peanuts".to_string(),
-        ],
+        allergies: vec!["Penicillin".to_string(), "Peanuts".to_string()],
     };
 
     assert_eq!(health_conditions.active_conditions.len(), 2);
     assert_eq!(health_conditions.allergies.len(), 2);
-    assert!(health_conditions.active_conditions.contains(&"Hypertension".to_string()));
+    assert!(health_conditions
+        .active_conditions
+        .contains(&"Hypertension".to_string()));
 }
 
 #[test]
@@ -159,7 +155,9 @@ fn test_pharmacogenomic_drug_response() {
     pharmaco_profile.add_genotype(PharmacogeneticGene::CYP2D6, "*1/*1".to_string());
     pharmaco_profile.add_phenotype(PharmacogeneticGene::CYP2D6, MetabolizerPhenotype::Normal);
 
-    assert!(pharmaco_profile.genotypes.contains_key(&PharmacogeneticGene::CYP2D6));
+    assert!(pharmaco_profile
+        .genotypes
+        .contains_key(&PharmacogeneticGene::CYP2D6));
 }
 
 #[test]
@@ -169,8 +167,12 @@ fn test_complex_headache_profile() {
     headache_profile.primary_diagnosis = Some(HeadacheType::Migraine(MigraineSubtype::WithoutAura));
     headache_profile.headache_days_per_month = 6.0;
     headache_profile.medication_overuse = false;
-    headache_profile.treatment_history.push("Triptans".to_string());
-    headache_profile.current_prophylaxis.push("Topiramate".to_string());
+    headache_profile
+        .treatment_history
+        .push("Triptans".to_string());
+    headache_profile
+        .current_prophylaxis
+        .push("Topiramate".to_string());
 
     assert!(headache_profile.primary_diagnosis.is_some());
     assert!(headache_profile.headache_days_per_month > 0.0);
@@ -179,21 +181,15 @@ fn test_complex_headache_profile() {
 
 #[test]
 fn test_complete_health_assessment() {
-    let mut profile = ComprehensiveHealthProfile::new(
-        "COMPLETE_001".to_string(),
-        35,
-        AnthroBioSex::Male,
-    );
+    let mut profile =
+        ComprehensiveHealthProfile::new("COMPLETE_001".to_string(), 35, AnthroBioSex::Male);
 
     let mut ancestry = AncestryProfile::new();
     ancestry.add_component(AncestryPopulation::European, 0.60, (0.55, 0.65));
     ancestry.add_component(AncestryPopulation::EastAsian, 0.40, (0.35, 0.45));
     profile.genetics.ancestry = Some(ancestry);
 
-    profile.genetics.eye_genetics = Some(EyeColorGenetics::new(
-        "AG".to_string(),
-        "CT".to_string(),
-    ));
+    profile.genetics.eye_genetics = Some(EyeColorGenetics::new("AG".to_string(), "CT".to_string()));
 
     profile.genetics.athletic_genetics.actn3 = Some(Actn3Genotype::RX);
     profile.genetics.athletic_genetics.ace = Some(AceGenotype::ID);
@@ -228,11 +224,8 @@ fn test_complete_health_assessment() {
 
 #[test]
 fn test_serialization_roundtrip() {
-    let profile = ComprehensiveHealthProfile::new(
-        "SERIAL_TEST_001".to_string(),
-        28,
-        AnthroBioSex::Female,
-    );
+    let profile =
+        ComprehensiveHealthProfile::new("SERIAL_TEST_001".to_string(), 28, AnthroBioSex::Female);
 
     let json = serde_json::to_string_pretty(&profile).unwrap();
     assert!(!json.is_empty());
@@ -240,7 +233,10 @@ fn test_serialization_roundtrip() {
     let deserialized: ComprehensiveHealthProfile = serde_json::from_str(&json).unwrap();
     assert_eq!(deserialized.personal_info.id, profile.personal_info.id);
     assert_eq!(deserialized.personal_info.age, profile.personal_info.age);
-    assert_eq!(deserialized.personal_info.biological_sex, profile.personal_info.biological_sex);
+    assert_eq!(
+        deserialized.personal_info.biological_sex,
+        profile.personal_info.biological_sex
+    );
 }
 
 #[test]

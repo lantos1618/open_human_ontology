@@ -118,9 +118,15 @@ impl LungVolumes {
     pub fn capacities(&self) -> LungCapacities {
         LungCapacities {
             inspiratory_capacity_ml: self.tidal_volume_ml + self.inspiratory_reserve_volume_ml,
-            functional_residual_capacity_ml: self.expiratory_reserve_volume_ml + self.residual_volume_ml,
-            vital_capacity_ml: self.inspiratory_reserve_volume_ml + self.tidal_volume_ml + self.expiratory_reserve_volume_ml,
-            total_lung_capacity_ml: self.inspiratory_reserve_volume_ml + self.tidal_volume_ml + self.expiratory_reserve_volume_ml + self.residual_volume_ml,
+            functional_residual_capacity_ml: self.expiratory_reserve_volume_ml
+                + self.residual_volume_ml,
+            vital_capacity_ml: self.inspiratory_reserve_volume_ml
+                + self.tidal_volume_ml
+                + self.expiratory_reserve_volume_ml,
+            total_lung_capacity_ml: self.inspiratory_reserve_volume_ml
+                + self.tidal_volume_ml
+                + self.expiratory_reserve_volume_ml
+                + self.residual_volume_ml,
         }
     }
 }
@@ -135,9 +141,18 @@ impl VentilationPerfusionRatio {
             perfusion_l_min: perfusion,
             ratio: ventilation / perfusion,
             regional_ratios: vec![
-                RegionalVQ { lung_zone: LungZone::Apical, vq_ratio: 3.3 },
-                RegionalVQ { lung_zone: LungZone::Middle, vq_ratio: 1.0 },
-                RegionalVQ { lung_zone: LungZone::Basal, vq_ratio: 0.6 },
+                RegionalVQ {
+                    lung_zone: LungZone::Apical,
+                    vq_ratio: 3.3,
+                },
+                RegionalVQ {
+                    lung_zone: LungZone::Middle,
+                    vq_ratio: 1.0,
+                },
+                RegionalVQ {
+                    lung_zone: LungZone::Basal,
+                    vq_ratio: 0.6,
+                },
             ],
         }
     }
@@ -162,7 +177,12 @@ impl VentilationPerfusionRatio {
 }
 
 impl AlveolarVentilation {
-    pub fn calculate(tidal_volume_ml: f64, dead_space_ml: f64, respiratory_rate: f64, fio2: f64) -> Self {
+    pub fn calculate(
+        tidal_volume_ml: f64,
+        dead_space_ml: f64,
+        respiratory_rate: f64,
+        fio2: f64,
+    ) -> Self {
         let minute_ventilation = tidal_volume_ml * respiratory_rate;
         let alveolar_ventilation = (tidal_volume_ml - dead_space_ml) * respiratory_rate;
 
@@ -181,9 +201,8 @@ impl AlveolarVentilation {
     }
 
     pub fn co2_production_ml_min(&self, _respiratory_quotient: f64) -> f64 {
-        
-        (self.alveolar_ventilation_ml_min * self.alveolar_co2_partial_pressure_mmhg) /
-                   (760.0 - 47.0)
+        (self.alveolar_ventilation_ml_min * self.alveolar_co2_partial_pressure_mmhg)
+            / (760.0 - 47.0)
     }
 
     pub fn o2_consumption_ml_min(&self, respiratory_quotient: f64) -> f64 {

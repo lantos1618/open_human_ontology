@@ -184,8 +184,10 @@ impl PhenotypeProfile {
                 "AA" => ALDH2Function::DeficientHomozygous,
                 _ => ALDH2Function::Normal,
             };
-            profile.metabolic_traits.alcohol_metabolism.alcohol_flush_reaction =
-                aldh2.contains('A');
+            profile
+                .metabolic_traits
+                .alcohol_metabolism
+                .alcohol_flush_reaction = aldh2.contains('A');
         }
 
         profile
@@ -289,10 +291,20 @@ mod tests {
         let profile = PhenotypeProfile::from_genotypes(&genotypes);
 
         assert!(profile.physical_traits.lactose_tolerance);
-        assert_eq!(profile.metabolic_traits.caffeine_metabolism, CaffeineMetabolism::Fast);
-        assert_eq!(profile.metabolic_traits.alcohol_metabolism.aldh2_function,
-                   ALDH2Function::DeficientHeterozygous);
-        assert!(profile.metabolic_traits.alcohol_metabolism.alcohol_flush_reaction);
+        assert_eq!(
+            profile.metabolic_traits.caffeine_metabolism,
+            CaffeineMetabolism::Fast
+        );
+        assert_eq!(
+            profile.metabolic_traits.alcohol_metabolism.aldh2_function,
+            ALDH2Function::DeficientHeterozygous
+        );
+        assert!(
+            profile
+                .metabolic_traits
+                .alcohol_metabolism
+                .alcohol_flush_reaction
+        );
     }
 
     #[test]
@@ -302,6 +314,9 @@ mod tests {
         susceptibility.add_autoimmune_risk("Rheumatoid Arthritis".to_string(), 1.8);
 
         assert_eq!(susceptibility.cancer_risks.get("Breast"), Some(&2.5));
-        assert_eq!(susceptibility.autoimmune_risks.get("Rheumatoid Arthritis"), Some(&1.8));
+        assert_eq!(
+            susceptibility.autoimmune_risks.get("Rheumatoid Arthritis"),
+            Some(&1.8)
+        );
     }
 }

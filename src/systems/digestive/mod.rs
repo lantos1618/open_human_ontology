@@ -1,15 +1,26 @@
-pub mod gi_tract;
 pub mod absorption;
 pub mod digestion;
-pub mod liver;
-pub mod pancreas;
-pub mod motility;
+pub mod gi_tract;
 pub mod gut_brain_axis;
+pub mod liver;
+pub mod motility;
+pub mod pancreas;
 
-pub use gi_tract::{GITract, Stomach, SmallIntestine, LargeIntestine};
-pub use absorption::{NutrientAbsorption, Villus, Enterocyte};
-pub use digestion::{DigestiveEnzymes, MacronutrientDigestion, GastricSecretion, PancreaticSecretion, BileSecretion};
-pub use liver::{Liver, DetoxificationCapacity, HepaticMetabolism, BileProduction, LiverFunctionAssessment, HepatocyteZone, ProteinSynthesis};
+pub use absorption::{Enterocyte, NutrientAbsorption, Villus};
+pub use digestion::{
+    BileSecretion, DigestiveEnzymes, GastricSecretion, MacronutrientDigestion, PancreaticSecretion,
+};
+pub use gi_tract::{GITract, LargeIntestine, SmallIntestine, Stomach};
+pub use gut_brain_axis::{
+    GutBrainAxis, GutBrainCommunicationPathway, GutBrainDisorder, GutBrainDisorderType,
+    HPAAxisActivity, ImmuneSignaling, NeurotransmitterProduction, StressResponse,
+};
+pub use liver::{
+    BileProduction, DetoxificationCapacity, HepaticMetabolism, HepatocyteZone, Liver,
+    LiverFunctionAssessment, ProteinSynthesis,
+};
+pub use motility::{
+    BristolStoolScale, ColonTransit, EntericNervousSystem, EntericNeurotransmitter, EntericReflex,
+    GIRegion, GastricEmptying, GutMotility, MealComposition, MotilityPattern, SmoothMuscleLayers,
+};
 pub use pancreas::Pancreas;
-pub use motility::{GutMotility, MotilityPattern, GIRegion, EntericNervousSystem, EntericNeurotransmitter, EntericReflex, SmoothMuscleLayers, GastricEmptying, MealComposition, ColonTransit, BristolStoolScale};
-pub use gut_brain_axis::{GutBrainAxis, NeurotransmitterProduction, HPAAxisActivity, ImmuneSignaling, StressResponse, GutBrainCommunicationPathway, GutBrainDisorder, GutBrainDisorderType};

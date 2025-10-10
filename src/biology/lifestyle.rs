@@ -205,11 +205,12 @@ impl LifestyleProfile {
         let stress_score = 1.0 - (self.stress.chronic_stress_score);
         let substance_score = self.calculate_substance_use_score();
 
-        (exercise_score * 0.25 +
-         nutrition_score * 0.25 +
-         sleep_score * 0.2 +
-         stress_score * 0.15 +
-         substance_score * 0.15).clamp(0.0, 1.0)
+        (exercise_score * 0.25
+            + nutrition_score * 0.25
+            + sleep_score * 0.2
+            + stress_score * 0.15
+            + substance_score * 0.15)
+            .clamp(0.0, 1.0)
     }
 
     pub fn calculate_exercise_score(&self) -> f64 {
@@ -305,15 +306,17 @@ impl LifestyleProfile {
     }
 
     pub fn assess_metabolic_health_impact(&self) -> f64 {
-        let exercise_benefit = (self.exercise.metabolic_equivalent_hours_per_week / 20.0).min(1.0) * 0.3;
+        let exercise_benefit =
+            (self.exercise.metabolic_equivalent_hours_per_week / 20.0).min(1.0) * 0.3;
 
         let nutrition_benefit = (1.0 - self.nutrition.processed_food_percentage / 100.0) * 0.3;
 
-        let sleep_benefit = if self.sleep.average_sleep_hours >= 7.0 && self.sleep.average_sleep_hours <= 9.0 {
-            0.2
-        } else {
-            0.1
-        };
+        let sleep_benefit =
+            if self.sleep.average_sleep_hours >= 7.0 && self.sleep.average_sleep_hours <= 9.0 {
+                0.2
+            } else {
+                0.1
+            };
 
         let sedentary_penalty = if self.exercise.sedentary_hours_per_day > 8.0 {
             -((self.exercise.sedentary_hours_per_day - 8.0) * 0.05)
@@ -343,7 +346,8 @@ impl LifestyleProfile {
 
         let social_benefit = self.stress.social_support_score * 0.1;
 
-        (sleep_benefit + exercise_benefit + stress_impact + nutrition_benefit + social_benefit).clamp(0.0, 1.0)
+        (sleep_benefit + exercise_benefit + stress_impact + nutrition_benefit + social_benefit)
+            .clamp(0.0, 1.0)
     }
 
     pub fn generate_recommendations(&self) -> Vec<String> {
@@ -357,9 +361,8 @@ impl LifestyleProfile {
         }
 
         if self.exercise.weekly_resistance_sessions < 2 {
-            recommendations.push(
-                "Add at least 2 resistance training sessions per week".to_string()
-            );
+            recommendations
+                .push("Add at least 2 resistance training sessions per week".to_string());
         }
 
         if self.sleep.average_sleep_hours < 7.0 {
@@ -370,9 +373,7 @@ impl LifestyleProfile {
         }
 
         if self.sleep.sleep_efficiency_percent < 85.0 {
-            recommendations.push(
-                "Improve sleep hygiene to increase sleep efficiency".to_string()
-            );
+            recommendations.push("Improve sleep hygiene to increase sleep efficiency".to_string());
         }
 
         if self.nutrition.fiber_grams_per_day < 25.0 {
@@ -383,33 +384,29 @@ impl LifestyleProfile {
         }
 
         if self.nutrition.processed_food_percentage > 30.0 {
-            recommendations.push(
-                "Reduce processed food consumption to less than 30% of diet".to_string()
-            );
+            recommendations
+                .push("Reduce processed food consumption to less than 30% of diet".to_string());
         }
 
         if self.substance_use.tobacco.current_smoker {
-            recommendations.push(
-                "Quit smoking - the single most important health intervention".to_string()
-            );
+            recommendations
+                .push("Quit smoking - the single most important health intervention".to_string());
         }
 
         if self.substance_use.alcohol.drinks_per_week > 14.0 {
             recommendations.push(
-                "Reduce alcohol consumption to recommended limits (≤14 drinks/week)".to_string()
+                "Reduce alcohol consumption to recommended limits (≤14 drinks/week)".to_string(),
             );
         }
 
         if self.stress.chronic_stress_score > 0.5 {
             recommendations.push(
-                "Implement stress reduction techniques (meditation, therapy, etc.)".to_string()
+                "Implement stress reduction techniques (meditation, therapy, etc.)".to_string(),
             );
         }
 
         if self.exercise.sedentary_hours_per_day > 8.0 {
-            recommendations.push(
-                "Reduce sedentary time with regular movement breaks".to_string()
-            );
+            recommendations.push("Reduce sedentary time with regular movement breaks".to_string());
         }
 
         recommendations

@@ -31,7 +31,9 @@ fn test_migraine_without_aura() {
 
     assert_eq!(migraine.subtype, MigraineSubtype::WithoutAura);
     assert!(migraine.aura_symptoms.is_empty());
-    assert!(migraine.triggers.contains(&MigraineTrigger::HormonalChanges));
+    assert!(migraine
+        .triggers
+        .contains(&MigraineTrigger::HormonalChanges));
 }
 
 #[test]

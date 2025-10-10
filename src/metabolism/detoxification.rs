@@ -222,9 +222,14 @@ impl CytochromeP450System {
     }
 
     pub fn overall_capacity(&self) -> f64 {
-        (self.cyp1a2_activity + self.cyp2c9_activity + self.cyp2c19_activity +
-         self.cyp2d6_activity + self.cyp2e1_activity + self.cyp3a4_activity +
-         self.cyp3a5_activity) / 7.0
+        (self.cyp1a2_activity
+            + self.cyp2c9_activity
+            + self.cyp2c19_activity
+            + self.cyp2d6_activity
+            + self.cyp2e1_activity
+            + self.cyp3a4_activity
+            + self.cyp3a5_activity)
+            / 7.0
     }
 
     pub fn is_impaired(&self) -> bool {
@@ -261,8 +266,9 @@ impl Phase1Metabolism {
 
     pub fn assess_capacity(&self) -> f64 {
         let p450_score = self.cytochrome_p450.overall_capacity();
-        let fmo_score = (self.flavin_monooxygenase.fmo1_activity +
-                        self.flavin_monooxygenase.fmo3_activity) / 2.0;
+        let fmo_score = (self.flavin_monooxygenase.fmo1_activity
+            + self.flavin_monooxygenase.fmo3_activity)
+            / 2.0;
         let adh_score = self.alcohol_dehydrogenase.total_adh_activity;
         let aldh_score = self.aldehyde_dehydrogenase.total_aldh_activity;
 
@@ -283,8 +289,12 @@ impl GlucuronidationSystem {
     }
 
     pub fn overall_activity(&self) -> f64 {
-        (self.ugt1a1_activity + self.ugt1a4_activity + self.ugt1a6_activity +
-         self.ugt2b7_activity + self.ugt2b15_activity) / 5.0
+        (self.ugt1a1_activity
+            + self.ugt1a4_activity
+            + self.ugt1a6_activity
+            + self.ugt2b7_activity
+            + self.ugt2b15_activity)
+            / 5.0
     }
 
     pub fn substrate_limited(&self) -> bool {
@@ -304,8 +314,11 @@ impl GlutathioneConjugationSystem {
     }
 
     pub fn overall_activity(&self) -> f64 {
-        (self.gst_alpha_activity + self.gst_mu_activity +
-         self.gst_pi_activity + self.gst_theta_activity) / 4.0
+        (self.gst_alpha_activity
+            + self.gst_mu_activity
+            + self.gst_pi_activity
+            + self.gst_theta_activity)
+            / 4.0
     }
 
     pub fn glutathione_depleted(&self) -> bool {
@@ -357,12 +370,19 @@ impl Phase2Metabolism {
     pub fn assess_capacity(&self) -> f64 {
         let glucuronidation_score = self.glucuronidation.overall_activity();
         let gst_score = self.glutathione_conjugation.overall_activity();
-        let sulfation_score = (self.sulfation.sult1a1_activity + self.sulfation.sult2a1_activity) / 2.0;
-        let acetylation_score = (self.acetylation.nat1_activity + self.acetylation.nat2_activity) / 2.0;
-        let methylation_score = (self.methylation.comt_activity + self.methylation.tpmt_activity) / 2.0;
+        let sulfation_score =
+            (self.sulfation.sult1a1_activity + self.sulfation.sult2a1_activity) / 2.0;
+        let acetylation_score =
+            (self.acetylation.nat1_activity + self.acetylation.nat2_activity) / 2.0;
+        let methylation_score =
+            (self.methylation.comt_activity + self.methylation.tpmt_activity) / 2.0;
 
-        (glucuronidation_score + gst_score + sulfation_score +
-         acetylation_score + methylation_score) / 5.0
+        (glucuronidation_score
+            + gst_score
+            + sulfation_score
+            + acetylation_score
+            + methylation_score)
+            / 5.0
     }
 }
 
@@ -378,9 +398,12 @@ impl EnzymaticAntioxidants {
     }
 
     pub fn overall_capacity(&self) -> f64 {
-        (self.superoxide_dismutase_activity + self.catalase_activity +
-         self.glutathione_peroxidase_activity + self.glutathione_reductase_activity +
-         self.thioredoxin_reductase_activity) / 5.0
+        (self.superoxide_dismutase_activity
+            + self.catalase_activity
+            + self.glutathione_peroxidase_activity
+            + self.glutathione_reductase_activity
+            + self.thioredoxin_reductase_activity)
+            / 5.0
     }
 }
 
@@ -426,10 +449,10 @@ impl OxidativeStressMarkers {
     }
 
     pub fn has_oxidative_stress(&self) -> bool {
-        self.malondialdehyde_umol_l > 3.0 ||
-        self.oxo_8_deoxyguanosine_ng_ml > 5.0 ||
-        self.protein_carbonyls_nmol_mg > 2.0 ||
-        self.isoprostanes_pg_ml > 50.0
+        self.malondialdehyde_umol_l > 3.0
+            || self.oxo_8_deoxyguanosine_ng_ml > 5.0
+            || self.protein_carbonyls_nmol_mg > 2.0
+            || self.isoprostanes_pg_ml > 50.0
     }
 
     pub fn oxidative_damage_score(&self) -> f64 {
@@ -478,7 +501,10 @@ impl DetoxificationSystem {
     pub fn overall_detoxification_capacity(&self) -> f64 {
         let phase1_score = self.phase_1_metabolism.assess_capacity();
         let phase2_score = self.phase_2_metabolism.assess_capacity();
-        let antioxidant_score = self.antioxidant_systems.enzymatic_antioxidants.overall_capacity();
+        let antioxidant_score = self
+            .antioxidant_systems
+            .enzymatic_antioxidants
+            .overall_capacity();
 
         (phase1_score + phase2_score + antioxidant_score) / 3.0
     }
@@ -500,7 +526,10 @@ mod tests {
     #[test]
     fn test_cyp450_system() {
         let cyp = CytochromeP450System::new_normal();
-        assert_eq!(cyp.determine_cyp2d6_phenotype(), CYP2D6Phenotype::ExtensiveMetabolizer);
+        assert_eq!(
+            cyp.determine_cyp2d6_phenotype(),
+            CYP2D6Phenotype::ExtensiveMetabolizer
+        );
         assert!(!cyp.is_impaired());
         assert!(cyp.overall_capacity() > 0.8);
     }
@@ -528,7 +557,10 @@ mod tests {
     #[test]
     fn test_acetylation() {
         let acetylation = AcetylationSystem::new_normal();
-        assert_eq!(acetylation.determine_nat2_phenotype(), NAT2Phenotype::IntermediateAcetylator);
+        assert_eq!(
+            acetylation.determine_nat2_phenotype(),
+            NAT2Phenotype::IntermediateAcetylator
+        );
     }
 
     #[test]

@@ -1,5 +1,5 @@
+use crate::systems::cardiovascular::{BloodVessel, Heart, VesselType};
 use serde::{Deserialize, Serialize};
-use crate::systems::cardiovascular::{BloodVessel, VesselType, Heart};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CirculatorySystem {
@@ -87,8 +87,18 @@ impl CirculatorySystem {
 
     pub fn total_blood_volume_ml(&self) -> f64 {
         let systemic = self.systemic_circulation.aorta.volume_ml()
-            + self.systemic_circulation.major_arteries.iter().map(|v| v.volume_ml()).sum::<f64>()
-            + self.systemic_circulation.major_veins.iter().map(|v| v.volume_ml()).sum::<f64>();
+            + self
+                .systemic_circulation
+                .major_arteries
+                .iter()
+                .map(|v| v.volume_ml())
+                .sum::<f64>()
+            + self
+                .systemic_circulation
+                .major_veins
+                .iter()
+                .map(|v| v.volume_ml())
+                .sum::<f64>();
 
         let pulmonary = self.pulmonary_circulation.total_blood_volume_ml;
 
@@ -99,7 +109,11 @@ impl CirculatorySystem {
         heart.cardiac_output_l_min() / body_surface_area_m2
     }
 
-    pub fn total_peripheral_resistance(&self, mean_arterial_pressure: f64, cardiac_output: f64) -> f64 {
+    pub fn total_peripheral_resistance(
+        &self,
+        mean_arterial_pressure: f64,
+        cardiac_output: f64,
+    ) -> f64 {
         if cardiac_output == 0.0 {
             return 0.0;
         }
@@ -107,7 +121,8 @@ impl CirculatorySystem {
     }
 
     pub fn organ_blood_flow_distribution(&self) -> Vec<(OrganSupplied, f64)> {
-        self.systemic_circulation.capillary_beds
+        self.systemic_circulation
+            .capillary_beds
             .iter()
             .map(|bed| (bed.organ, bed.blood_flow_ml_min))
             .collect()
@@ -146,7 +161,9 @@ impl SystemicCirculation {
     }
 
     pub fn calculate_pressure_drop(&self) -> f64 {
-        let arterial_resistance: f64 = self.major_arteries.iter()
+        let arterial_resistance: f64 = self
+            .major_arteries
+            .iter()
             .map(|v| v.resistance_mmhg_s_ml)
             .sum();
         let arteriolar_resistance = self.total_arteriolar_resistance();
@@ -165,7 +182,12 @@ impl PulmonaryCirculation {
         }
     }
 
-    pub fn pulmonary_vascular_resistance(&self, mean_pa_pressure: f64, la_pressure: f64, cardiac_output: f64) -> f64 {
+    pub fn pulmonary_vascular_resistance(
+        &self,
+        mean_pa_pressure: f64,
+        la_pressure: f64,
+        cardiac_output: f64,
+    ) -> f64 {
         if cardiac_output == 0.0 {
             return 0.0;
         }
@@ -173,7 +195,8 @@ impl PulmonaryCirculation {
     }
 
     pub fn assess_gas_exchange_surface(&self) -> f64 {
-        self.pulmonary_capillaries.iter()
+        self.pulmonary_capillaries
+            .iter()
             .map(|bed| bed.total_surface_area_cm2)
             .sum()
     }
@@ -299,7 +322,8 @@ mod tests {
         let circulation = CirculatorySystem::new_adult();
         let distribution = circulation.organ_blood_flow_distribution();
 
-        let brain_flow = distribution.iter()
+        let brain_flow = distribution
+            .iter()
             .find(|(organ, _)| *organ == OrganSupplied::Brain)
             .map(|(_, flow)| *flow);
 

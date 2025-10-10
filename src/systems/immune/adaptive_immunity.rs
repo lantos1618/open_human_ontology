@@ -158,7 +158,12 @@ impl AdaptiveImmunity {
             1.0
         };
 
-        let complement_overactivity = if self.humoral_immunity.complement_activity.ch50_activity_percent > 150.0 {
+        let complement_overactivity = if self
+            .humoral_immunity
+            .complement_activity
+            .ch50_activity_percent
+            > 150.0
+        {
             0.3
         } else {
             0.0
@@ -220,7 +225,11 @@ impl CellularImmunity {
     pub fn functionality_score(&self) -> f64 {
         let cd4_score = (self.cd4_count_per_ul / 1500.0).min(1.0);
         let cd8_score = (self.cd8_count_per_ul / 800.0).min(1.0);
-        let ratio_score = if self.cd4_cd8_ratio > 1.0 && self.cd4_cd8_ratio < 3.0 { 1.0 } else { 0.5 };
+        let ratio_score = if self.cd4_cd8_ratio > 1.0 && self.cd4_cd8_ratio < 3.0 {
+            1.0
+        } else {
+            0.5
+        };
         let nk_score = (self.nk_cell_count_per_ul / 300.0).min(1.0);
 
         (cd4_score * 0.3 + cd8_score * 0.3 + ratio_score * 0.2 + nk_score * 0.2).min(1.0)
@@ -459,8 +468,16 @@ pub enum ImmuneBalance {
 impl MajorHistocompatibilityComplex {
     pub fn new_example() -> Self {
         Self {
-            mhc_class_i_alleles: vec!["HLA-A".to_string(), "HLA-B".to_string(), "HLA-C".to_string()],
-            mhc_class_ii_alleles: vec!["HLA-DR".to_string(), "HLA-DQ".to_string(), "HLA-DP".to_string()],
+            mhc_class_i_alleles: vec![
+                "HLA-A".to_string(),
+                "HLA-B".to_string(),
+                "HLA-C".to_string(),
+            ],
+            mhc_class_ii_alleles: vec![
+                "HLA-DR".to_string(),
+                "HLA-DQ".to_string(),
+                "HLA-DP".to_string(),
+            ],
             hla_a: vec!["A*02:01".to_string(), "A*01:01".to_string()],
             hla_b: vec!["B*07:02".to_string(), "B*08:01".to_string()],
             hla_c: vec!["C*07:01".to_string(), "C*07:02".to_string()],
@@ -471,8 +488,12 @@ impl MajorHistocompatibilityComplex {
     }
 
     pub fn antigen_presentation_diversity(&self) -> f64 {
-        let total_alleles = self.hla_a.len() + self.hla_b.len() + self.hla_c.len() +
-                           self.hla_dr.len() + self.hla_dq.len() + self.hla_dp.len();
+        let total_alleles = self.hla_a.len()
+            + self.hla_b.len()
+            + self.hla_c.len()
+            + self.hla_dr.len()
+            + self.hla_dq.len()
+            + self.hla_dp.len();
         (total_alleles as f64 / 12.0).min(1.5)
     }
 
@@ -538,10 +559,11 @@ impl CostimulatoryMolecules {
     }
 
     pub fn total_signal(&self) -> f64 {
-        (self.cd28_b7_interaction * 0.4 +
-         self.cd40_cd40l_interaction * 0.3 +
-         self.icos_icosl_interaction * 0.2 +
-         self.ox40_ox40l_interaction * 0.1).min(1.0)
+        (self.cd28_b7_interaction * 0.4
+            + self.cd40_cd40l_interaction * 0.3
+            + self.icos_icosl_interaction * 0.2
+            + self.ox40_ox40l_interaction * 0.1)
+            .min(1.0)
     }
 
     pub fn checkpoint_inhibition(&mut self) {

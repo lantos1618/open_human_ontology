@@ -141,11 +141,13 @@ impl FiberComposition {
     }
 
     pub fn oxidative_capacity(&self) -> f64 {
-        (self.type_i_percent * 1.0 + self.type_iia_percent * 0.7 + self.type_iix_percent * 0.3) / 100.0
+        (self.type_i_percent * 1.0 + self.type_iia_percent * 0.7 + self.type_iix_percent * 0.3)
+            / 100.0
     }
 
     pub fn glycolytic_capacity(&self) -> f64 {
-        (self.type_i_percent * 0.3 + self.type_iia_percent * 0.7 + self.type_iix_percent * 1.0) / 100.0
+        (self.type_i_percent * 0.3 + self.type_iia_percent * 0.7 + self.type_iix_percent * 1.0)
+            / 100.0
     }
 }
 

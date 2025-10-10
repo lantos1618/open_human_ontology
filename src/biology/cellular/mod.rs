@@ -1,29 +1,27 @@
-pub mod cell;
-pub mod organelles;
-pub mod processes;
 pub mod aging;
-pub mod cell_types;
+pub mod cell;
 pub mod cell_signaling;
-pub mod protein_synthesis;
+pub mod cell_types;
 pub mod membrane;
 pub mod mitochondria;
+pub mod organelles;
+pub mod processes;
+pub mod protein_synthesis;
 
-pub use cell::{Cell, CellType, CellState, CellCycle};
-pub use organelles::{
-    Organelle, Mitochondrion, Ribosome, EndoplasmicReticulum,
-    GolgiApparatus, Lysosome, Nucleus
-};
-pub use processes::{CellularProcess, EnergyProduction, ProteinSynthesis};
 pub use aging::*;
-pub use cell_types::{
-    Erythrocyte, Leukocyte, LeukocyteType, Platelet, PlateletActivation,
-    Hepatocyte, Cardiomyocyte, Adipocyte, AdiposeTissueType,
-    Myocyte, MuscleFiberType, Osteoblast, Osteoclast
-};
+pub use cell::{Cell, CellCycle, CellState, CellType};
 pub use cell_signaling::*;
-pub use protein_synthesis::*;
+pub use cell_types::{
+    Adipocyte, AdiposeTissueType, Cardiomyocyte, Erythrocyte, Hepatocyte, Leukocyte, LeukocyteType,
+    MuscleFiberType, Myocyte, Osteoblast, Osteoclast, Platelet, PlateletActivation,
+};
 pub use membrane::*;
 pub use mitochondria::{
-    Mitochondrion as MitochondrionDetailed, ElectronTransportChain, OxidativePhosphorylation,
-    MitochondrialDynamics, MitochondrialQualityControl, MitochondrialDysfunction,
+    ElectronTransportChain, MitochondrialDynamics, MitochondrialDysfunction,
+    MitochondrialQualityControl, Mitochondrion as MitochondrionDetailed, OxidativePhosphorylation,
 };
+pub use organelles::{
+    EndoplasmicReticulum, GolgiApparatus, Lysosome, Mitochondrion, Nucleus, Organelle, Ribosome,
+};
+pub use processes::{CellularProcess, EnergyProduction, ProteinSynthesis};
+pub use protein_synthesis::*;

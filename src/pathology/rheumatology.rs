@@ -134,27 +134,27 @@ impl RheumatologyProfile {
         let swollen_joints = self.count_swollen_joints();
         let esr = self.inflammatory_markers.esr_mm_hr;
 
-        let das28 = 0.56 * (tender_joints as f64).sqrt() +
-                    0.28 * (swollen_joints as f64).sqrt() +
-                    0.70 * esr.ln() +
-                    0.014 * 50.0;
+        let das28 = 0.56 * (tender_joints as f64).sqrt()
+            + 0.28 * (swollen_joints as f64).sqrt()
+            + 0.70 * esr.ln()
+            + 0.014 * 50.0;
 
         Some(das28)
     }
 
     fn has_ra(&self) -> bool {
-        self.diagnoses.iter()
+        self.diagnoses
+            .iter()
             .any(|d| d.condition == RheumatologicCondition::RheumatoidArthritis)
     }
 
     fn count_tender_joints(&self) -> u32 {
-        self.joint_status.values()
-            .filter(|s| s.tenderness)
-            .count() as u32
+        self.joint_status.values().filter(|s| s.tenderness).count() as u32
     }
 
     fn count_swollen_joints(&self) -> u32 {
-        self.joint_status.values()
+        self.joint_status
+            .values()
             .filter(|s| !matches!(s.swelling, SwellingGrade::None))
             .count() as u32
     }
@@ -183,7 +183,9 @@ impl RheumatologyProfile {
             score += 2;
         }
 
-        let arthritis_count = self.joint_status.values()
+        let arthritis_count = self
+            .joint_status
+            .values()
             .filter(|s| s.swelling != SwellingGrade::None)
             .count();
 
@@ -235,11 +237,26 @@ impl InflammatoryMarkers {
 impl AutoantibodyPanel {
     pub fn negative() -> Self {
         Self {
-            rheumatoid_factor: AntibodyResult { positive: false, titer: None },
-            anti_ccp: AntibodyResult { positive: false, titer: None },
-            ana: AntibodyResult { positive: false, titer: None },
-            anti_dsdna: AntibodyResult { positive: false, titer: None },
-            anti_sm: AntibodyResult { positive: false, titer: None },
+            rheumatoid_factor: AntibodyResult {
+                positive: false,
+                titer: None,
+            },
+            anti_ccp: AntibodyResult {
+                positive: false,
+                titer: None,
+            },
+            ana: AntibodyResult {
+                positive: false,
+                titer: None,
+            },
+            anti_dsdna: AntibodyResult {
+                positive: false,
+                titer: None,
+            },
+            anti_sm: AntibodyResult {
+                positive: false,
+                titer: None,
+            },
         }
     }
 }
@@ -262,24 +279,31 @@ impl JointStatus {
 
 impl Joint {
     pub fn is_large_joint(&self) -> bool {
-        matches!(self,
-            Joint::RightShoulder | Joint::LeftShoulder |
-            Joint::RightHip | Joint::LeftHip |
-            Joint::RightKnee | Joint::LeftKnee
+        matches!(
+            self,
+            Joint::RightShoulder
+                | Joint::LeftShoulder
+                | Joint::RightHip
+                | Joint::LeftHip
+                | Joint::RightKnee
+                | Joint::LeftKnee
         )
     }
 
     pub fn is_small_joint(&self) -> bool {
-        matches!(self,
-            Joint::RightWrist | Joint::LeftWrist |
-            Joint::RightAnkle | Joint::LeftAnkle
+        matches!(
+            self,
+            Joint::RightWrist | Joint::LeftWrist | Joint::RightAnkle | Joint::LeftAnkle
         )
     }
 
     pub fn is_axial(&self) -> bool {
-        matches!(self,
-            Joint::CervicalSpine | Joint::LumbarSpine |
-            Joint::ThoracicSpine | Joint::SacroiliacJoint
+        matches!(
+            self,
+            Joint::CervicalSpine
+                | Joint::LumbarSpine
+                | Joint::ThoracicSpine
+                | Joint::SacroiliacJoint
         )
     }
 }
@@ -319,21 +343,27 @@ mod tests {
             duration_years: Some(5.0),
         });
 
-        profile.update_joint(Joint::RightWrist, JointStatus {
-            pain_score: 6,
-            swelling: SwellingGrade::Moderate,
-            tenderness: true,
-            range_of_motion_percent: 70.0,
-            deformity: None,
-        });
+        profile.update_joint(
+            Joint::RightWrist,
+            JointStatus {
+                pain_score: 6,
+                swelling: SwellingGrade::Moderate,
+                tenderness: true,
+                range_of_motion_percent: 70.0,
+                deformity: None,
+            },
+        );
 
-        profile.update_joint(Joint::LeftWrist, JointStatus {
-            pain_score: 6,
-            swelling: SwellingGrade::Moderate,
-            tenderness: true,
-            range_of_motion_percent: 70.0,
-            deformity: None,
-        });
+        profile.update_joint(
+            Joint::LeftWrist,
+            JointStatus {
+                pain_score: 6,
+                swelling: SwellingGrade::Moderate,
+                tenderness: true,
+                range_of_motion_percent: 70.0,
+                deformity: None,
+            },
+        );
 
         profile.inflammatory_markers.esr_mm_hr = 30.0;
 

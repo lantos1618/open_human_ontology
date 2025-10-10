@@ -86,8 +86,8 @@ impl Symptom {
     }
 
     pub fn is_chronic(&self) -> bool {
-        matches!(self.onset, Onset::Chronic) ||
-        matches!(self.duration, Duration::Months(_) | Duration::Persistent)
+        matches!(self.onset, Onset::Chronic)
+            || matches!(self.duration, Duration::Months(_) | Duration::Persistent)
     }
 }
 
@@ -143,14 +143,11 @@ mod tests {
 
     #[test]
     fn test_symptom_creation() {
-        let symptom = Symptom::new(
-            "Headache".to_string(),
-            SymptomCategory::Pain,
-        )
-        .with_severity(7)
-        .with_onset(Onset::Sudden)
-        .with_duration(Duration::Hours(4.0))
-        .with_location("Frontal".to_string());
+        let symptom = Symptom::new("Headache".to_string(), SymptomCategory::Pain)
+            .with_severity(7)
+            .with_onset(Onset::Sudden)
+            .with_duration(Duration::Hours(4.0))
+            .with_location("Frontal".to_string());
 
         assert_eq!(symptom.severity, 7);
         assert!(!symptom.is_severe());
@@ -161,20 +158,16 @@ mod tests {
 
     #[test]
     fn test_symptom_cluster() {
-        let mut cluster = SymptomCluster::new(
-            "Flu-like symptoms".to_string(),
-            TemporalPattern::Continuous,
+        let mut cluster =
+            SymptomCluster::new("Flu-like symptoms".to_string(), TemporalPattern::Continuous);
+
+        cluster.add_symptom(
+            Symptom::new("Fever".to_string(), SymptomCategory::Constitutional).with_severity(6),
         );
 
-        cluster.add_symptom(Symptom::new(
-            "Fever".to_string(),
-            SymptomCategory::Constitutional,
-        ).with_severity(6));
-
-        cluster.add_symptom(Symptom::new(
-            "Fatigue".to_string(),
-            SymptomCategory::Constitutional,
-        ).with_severity(8));
+        cluster.add_symptom(
+            Symptom::new("Fatigue".to_string(), SymptomCategory::Constitutional).with_severity(8),
+        );
 
         assert_eq!(cluster.symptom_count(), 2);
         assert_eq!(cluster.average_severity(), 7.0);

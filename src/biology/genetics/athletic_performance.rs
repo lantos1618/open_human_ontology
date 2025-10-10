@@ -264,31 +264,37 @@ impl AthleticPerformanceProfile {
 
         if score > 1.5 {
             sports.extend(
-                ["100m-400m sprinting",
+                [
+                    "100m-400m sprinting",
                     "Powerlifting",
                     "Olympic weightlifting",
                     "American football",
-                    "Rugby"]
+                    "Rugby",
+                ]
                 .iter()
                 .map(|s| s.to_string()),
             );
         } else if score > 0.0 {
             sports.extend(
-                ["800m-1500m middle distance",
+                [
+                    "800m-1500m middle distance",
                     "Soccer",
                     "Basketball",
                     "Tennis",
-                    "CrossFit"]
+                    "CrossFit",
+                ]
                 .iter()
                 .map(|s| s.to_string()),
             );
         } else {
             sports.extend(
-                ["Marathon",
+                [
+                    "Marathon",
                     "Long-distance cycling",
                     "Triathlon",
                     "Cross-country skiing",
-                    "Swimming distance events"]
+                    "Swimming distance events",
+                ]
                 .iter()
                 .map(|s| s.to_string()),
             );
@@ -364,7 +370,9 @@ impl AthleticPerformanceProfile {
     }
 
     pub fn vo2_max_genetic_potential(&self, baseline_vo2_max: f64) -> f64 {
-        baseline_vo2_max * self.ace.vo2_max_potential() * self.ppargc1a.endurance_training_response()
+        baseline_vo2_max
+            * self.ace.vo2_max_potential()
+            * self.ppargc1a.endurance_training_response()
     }
 }
 

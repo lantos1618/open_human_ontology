@@ -261,19 +261,20 @@ impl EnvironmentalRiskProfile {
     }
 
     fn update_risk_score(&mut self) {
-        let total_risk: f64 = self.exposures.iter()
+        let total_risk: f64 = self
+            .exposures
+            .iter()
             .map(|e| e.calculate_risk_score())
             .sum();
 
-        let total_protection: f64 = self.protective_factors.iter()
-            .map(|p| p.strength)
-            .sum();
+        let total_protection: f64 = self.protective_factors.iter().map(|p| p.strength).sum();
 
         self.cumulative_risk_score = (total_risk - total_protection).max(0.0);
     }
 
     pub fn get_high_risk_exposures(&self) -> Vec<&EnvironmentalExposure> {
-        self.exposures.iter()
+        self.exposures
+            .iter()
             .filter(|e| e.calculate_risk_score() > 10.0)
             .collect()
     }

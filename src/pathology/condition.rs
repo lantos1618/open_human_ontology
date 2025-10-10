@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use super::symptom::Symptom;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct MedicalCondition {
@@ -150,10 +150,8 @@ mod tests {
 
     #[test]
     fn test_medical_condition() {
-        let mut condition = MedicalCondition::new(
-            "Hypertension".to_string(),
-            true,
-        ).with_onset_age(45.0);
+        let mut condition =
+            MedicalCondition::new("Hypertension".to_string(), true).with_onset_age(45.0);
 
         condition.add_affected_system("Cardiovascular".to_string());
 
@@ -164,9 +162,7 @@ mod tests {
 
     #[test]
     fn test_migraine() {
-        let mut migraine = Migraine::new()
-            .with_frequency(20.0)
-            .with_aura();
+        let mut migraine = Migraine::new().with_frequency(20.0).with_aura();
 
         migraine.add_trigger("Stress".to_string());
         migraine.add_trigger("Caffeine".to_string());

@@ -110,11 +110,7 @@ impl GeneEnvironmentProfile {
         self.lifestyle_factors.insert(factor, level);
     }
 
-    pub fn calculate_gene_environment_risk(
-        &self,
-        gene: &str,
-        trait_name: &str,
-    ) -> f64 {
+    pub fn calculate_gene_environment_risk(&self, gene: &str, trait_name: &str) -> f64 {
         let relevant_interactions: Vec<_> = self
             .interactions
             .iter()
@@ -124,12 +120,21 @@ impl GeneEnvironmentProfile {
         let mut total_risk = 1.0;
 
         for interaction in relevant_interactions {
-            if let Some(&exposure_level) = self.lifestyle_factors.get(&interaction.environmental_factor) {
+            if let Some(&exposure_level) = self
+                .lifestyle_factors
+                .get(&interaction.environmental_factor)
+            {
                 let effect = match interaction.direction {
-                    InteractionDirection::Protective => 1.0 - (interaction.interaction_strength * exposure_level),
-                    InteractionDirection::RiskIncreasing => 1.0 + (interaction.interaction_strength * exposure_level),
+                    InteractionDirection::Protective => {
+                        1.0 - (interaction.interaction_strength * exposure_level)
+                    }
+                    InteractionDirection::RiskIncreasing => {
+                        1.0 + (interaction.interaction_strength * exposure_level)
+                    }
                     InteractionDirection::Neutral => 1.0,
-                    InteractionDirection::Conditional => 1.0 + (interaction.interaction_strength * exposure_level * 0.5),
+                    InteractionDirection::Conditional => {
+                        1.0 + (interaction.interaction_strength * exposure_level * 0.5)
+                    }
                 };
                 total_risk *= effect;
             }
@@ -247,10 +252,7 @@ impl GeneEnvironmentProfile {
         ]
     }
 
-    pub fn get_personalized_recommendations(
-        &self,
-        gene: &str,
-    ) -> Vec<LifestyleRecommendation> {
+    pub fn get_personalized_recommendations(&self, gene: &str) -> Vec<LifestyleRecommendation> {
         let mut recommendations = Vec::new();
 
         for interaction in &self.interactions {
@@ -261,27 +263,50 @@ impl GeneEnvironmentProfile {
                     _ => RecommendationPriority::Low,
                 };
 
-                let recommendation_text = match (&interaction.environmental_factor, &interaction.direction) {
-                    (EnvironmentalFactor::Exercise(_), InteractionDirection::Protective) => {
-                        format!("Regular exercise can reduce your genetic risk for {}", interaction.affected_trait)
-                    }
-                    (EnvironmentalFactor::Diet(diet), InteractionDirection::Protective) => {
-                        format!("A {:?} diet may help protect against {}", diet, interaction.affected_trait)
-                    }
-                    (EnvironmentalFactor::Smoking, InteractionDirection::RiskIncreasing) => {
-                        format!("Avoid smoking - you have increased genetic susceptibility to {}", interaction.affected_trait)
-                    }
-                    (EnvironmentalFactor::Alcohol, InteractionDirection::RiskIncreasing) => {
-                        format!("Limit alcohol consumption due to genetic risk for {}", interaction.affected_trait)
-                    }
-                    (EnvironmentalFactor::UVExposure, InteractionDirection::RiskIncreasing) => {
-                        format!("Use sun protection - genetic variant increases {} risk", interaction.affected_trait)
-                    }
-                    (EnvironmentalFactor::Sleep(_), InteractionDirection::RiskIncreasing) => {
-                        format!("Prioritize sleep quality to reduce genetic risk for {}", interaction.affected_trait)
-                    }
-                    _ => format!("Monitor {} for {}", format!("{:?}", interaction.environmental_factor), interaction.affected_trait),
-                };
+                let recommendation_text =
+                    match (&interaction.environmental_factor, &interaction.direction) {
+                        (EnvironmentalFactor::Exercise(_), InteractionDirection::Protective) => {
+                            format!(
+                                "Regular exercise can reduce your genetic risk for {}",
+                                interaction.affected_trait
+                            )
+                        }
+                        (EnvironmentalFactor::Diet(diet), InteractionDirection::Protective) => {
+                            format!(
+                                "A {:?} diet may help protect against {}",
+                                diet, interaction.affected_trait
+                            )
+                        }
+                        (EnvironmentalFactor::Smoking, InteractionDirection::RiskIncreasing) => {
+                            format!(
+                                "Avoid smoking - you have increased genetic susceptibility to {}",
+                                interaction.affected_trait
+                            )
+                        }
+                        (EnvironmentalFactor::Alcohol, InteractionDirection::RiskIncreasing) => {
+                            format!(
+                                "Limit alcohol consumption due to genetic risk for {}",
+                                interaction.affected_trait
+                            )
+                        }
+                        (EnvironmentalFactor::UVExposure, InteractionDirection::RiskIncreasing) => {
+                            format!(
+                                "Use sun protection - genetic variant increases {} risk",
+                                interaction.affected_trait
+                            )
+                        }
+                        (EnvironmentalFactor::Sleep(_), InteractionDirection::RiskIncreasing) => {
+                            format!(
+                                "Prioritize sleep quality to reduce genetic risk for {}",
+                                interaction.affected_trait
+                            )
+                        }
+                        _ => format!(
+                            "Monitor {} for {}",
+                            format!("{:?}", interaction.environmental_factor),
+                            interaction.affected_trait
+                        ),
+                    };
 
                 recommendations.push(LifestyleRecommendation {
                     gene: gene.to_string(),
@@ -331,10 +356,7 @@ mod tests {
     fn test_risk_calculation() {
         let mut profile = GeneEnvironmentProfile::new();
         profile.interactions = GeneEnvironmentProfile::load_known_interactions();
-        profile.set_lifestyle_factor(
-            EnvironmentalFactor::Exercise(ExerciseType::Aerobic),
-            0.8,
-        );
+        profile.set_lifestyle_factor(EnvironmentalFactor::Exercise(ExerciseType::Aerobic), 0.8);
 
         let risk = profile.calculate_gene_environment_risk("FTO", "Obesity risk");
         assert!(risk < 1.0);

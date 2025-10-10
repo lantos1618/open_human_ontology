@@ -191,7 +191,10 @@ impl MusculoskeletalModel {
     }
 
     pub fn total_moment_of_inertia(&self) -> f64 {
-        self.segments.iter().map(|s| s.moment_of_inertia_kg_m2).sum()
+        self.segments
+            .iter()
+            .map(|s| s.moment_of_inertia_kg_m2)
+            .sum()
     }
 }
 
@@ -251,13 +254,14 @@ impl Joint {
     }
 
     pub fn power_watts(&self) -> f64 {
-        let angular_velocity_rad_per_s = self.angular_velocity_deg_per_s * std::f64::consts::PI / 180.0;
+        let angular_velocity_rad_per_s =
+            self.angular_velocity_deg_per_s * std::f64::consts::PI / 180.0;
         self.torque_nm * angular_velocity_rad_per_s
     }
 
     pub fn is_within_normal_range(&self) -> bool {
-        self.angle_degrees >= -self.range_of_motion.extension_deg &&
-        self.angle_degrees <= self.range_of_motion.flexion_deg
+        self.angle_degrees >= -self.range_of_motion.extension_deg
+            && self.angle_degrees <= self.range_of_motion.flexion_deg
     }
 }
 
@@ -331,10 +335,10 @@ impl GaitAnalysis {
     }
 
     pub fn is_normal_gait(&self) -> bool {
-        self.gait_cycle.double_support_percent >= 10.0 &&
-        self.gait_cycle.double_support_percent <= 20.0 &&
-        self.step_width_m >= 0.05 &&
-        self.step_width_m <= 0.15
+        self.gait_cycle.double_support_percent >= 10.0
+            && self.gait_cycle.double_support_percent <= 20.0
+            && self.step_width_m >= 0.05
+            && self.step_width_m <= 0.15
     }
 }
 

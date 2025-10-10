@@ -192,37 +192,55 @@ impl PainProcessingSystem {
     }
 
     pub fn calculate_pain_intensity(&self, nociceptive_input: f64) -> f64 {
-        let peripheral_signal = nociceptive_input *
-            self.peripheral_nociception.a_delta_fibers.sensitization_level;
+        let peripheral_signal = nociceptive_input
+            * self
+                .peripheral_nociception
+                .a_delta_fibers
+                .sensitization_level;
 
-        let spinal_amplification = peripheral_signal *
-            (1.0 + self.spinal_processing.dorsal_horn.central_sensitization);
+        let spinal_amplification =
+            peripheral_signal * (1.0 + self.spinal_processing.dorsal_horn.central_sensitization);
 
-        let gate_effect = spinal_amplification *
-            self.spinal_processing.gate_control.gate_open_percentage;
+        let gate_effect =
+            spinal_amplification * self.spinal_processing.gate_control.gate_open_percentage;
 
-        let descending_inhibition =
-            self.descending_modulation.periaqueductal_gray.activity_level +
-            self.descending_modulation.rostral_ventromedial_medulla.net_modulation +
-            self.descending_modulation.locus_coeruleus.descending_inhibition;
+        let descending_inhibition = self
+            .descending_modulation
+            .periaqueductal_gray
+            .activity_level
+            + self
+                .descending_modulation
+                .rostral_ventromedial_medulla
+                .net_modulation
+            + self
+                .descending_modulation
+                .locus_coeruleus
+                .descending_inhibition;
 
         let final_intensity = gate_effect * (1.0 - descending_inhibition / 3.0);
 
-        let emotional_modulation = 1.0 +
-            (self.pain_memory.pain_catastrophizing_score * 0.3) +
-            (self.pain_memory.pain_anxiety_score * 0.2);
+        let emotional_modulation = 1.0
+            + (self.pain_memory.pain_catastrophizing_score * 0.3)
+            + (self.pain_memory.pain_anxiety_score * 0.2);
 
         (final_intensity * emotional_modulation).max(0.0).min(10.0)
     }
 
     pub fn assess_chronic_pain_risk(&self) -> ChronicPainRisk {
         let central_sens = self.spinal_processing.dorsal_horn.central_sensitization;
-        let descending_dysfunction = 1.0 -
-            (self.descending_modulation.periaqueductal_gray.activity_level +
-             self.descending_modulation.rostral_ventromedial_medulla.off_cells_activity) / 2.0;
-        let psychological_factors =
-            (self.pain_memory.pain_catastrophizing_score +
-             self.pain_memory.pain_anxiety_score) / 2.0;
+        let descending_dysfunction = 1.0
+            - (self
+                .descending_modulation
+                .periaqueductal_gray
+                .activity_level
+                + self
+                    .descending_modulation
+                    .rostral_ventromedial_medulla
+                    .off_cells_activity)
+                / 2.0;
+        let psychological_factors = (self.pain_memory.pain_catastrophizing_score
+            + self.pain_memory.pain_anxiety_score)
+            / 2.0;
 
         let risk_score = (central_sens + descending_dysfunction + psychological_factors) / 3.0;
 
@@ -236,15 +254,16 @@ impl PainProcessingSystem {
     }
 
     pub fn calculate_pain_tolerance(&self) -> f64 {
-        let opioid_contribution =
-            (self.descending_modulation.endogenous_opioids.beta_endorphin +
-             self.descending_modulation.endogenous_opioids.enkephalins) / 2.0;
+        let opioid_contribution = (self.descending_modulation.endogenous_opioids.beta_endorphin
+            + self.descending_modulation.endogenous_opioids.enkephalins)
+            / 2.0;
 
-        let descending_contribution =
-            self.descending_modulation.periaqueductal_gray.activity_level;
+        let descending_contribution = self
+            .descending_modulation
+            .periaqueductal_gray
+            .activity_level;
 
-        let psychological_contribution = 1.0 -
-            (self.pain_memory.pain_catastrophizing_score * 0.5);
+        let psychological_contribution = 1.0 - (self.pain_memory.pain_catastrophizing_score * 0.5);
 
         (opioid_contribution + descending_contribution + psychological_contribution) / 3.0
     }
@@ -434,7 +453,10 @@ mod tests {
     #[test]
     fn test_normal_pain_processing() {
         let system = PainProcessingSystem::new_normal();
-        assert_eq!(system.peripheral_nociception.a_delta_fibers.fiber_count, 500_000);
+        assert_eq!(
+            system.peripheral_nociception.a_delta_fibers.fiber_count,
+            500_000
+        );
     }
 
     #[test]

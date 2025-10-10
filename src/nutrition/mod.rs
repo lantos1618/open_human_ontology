@@ -9,6 +9,6 @@ pub use recommendation_engine::{
     DietaryRecommendations, FoodRecommendation, RecommendationEngine, SupplementRecommendation,
 };
 pub use requirements::{
-    NutritionalRequirements, MacronutrientRequirements, MicronutrientRequirements,
-    HydrationRequirements, ActivityLevel,
+    ActivityLevel, HydrationRequirements, MacronutrientRequirements, MicronutrientRequirements,
+    NutritionalRequirements,
 };

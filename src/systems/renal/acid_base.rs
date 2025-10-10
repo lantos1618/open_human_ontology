@@ -109,7 +109,9 @@ impl AcidBaseBalance {
         let high_hco3 = self.bicarbonate_meq_l > 26.0;
         let low_hco3 = self.bicarbonate_meq_l < 22.0;
 
-        match (acidotic, alkalotic, high_pco2, low_pco2, high_hco3, low_hco3) {
+        match (
+            acidotic, alkalotic, high_pco2, low_pco2, high_hco3, low_hco3,
+        ) {
             (true, _, true, _, _, true) => AcidBaseDisturbance::MixedAcidosis,
             (true, _, true, _, _, _) => AcidBaseDisturbance::RespiratoryAcidosis,
             (true, _, _, _, _, true) => AcidBaseDisturbance::MetabolicAcidosis,
@@ -150,7 +152,8 @@ impl AcidBaseBalance {
             AcidBaseDisturbance::MetabolicAcidosis | AcidBaseDisturbance::MetabolicAlkalosis => {
                 self.pco2_mmhg >= min && self.pco2_mmhg <= max
             }
-            AcidBaseDisturbance::RespiratoryAcidosis | AcidBaseDisturbance::RespiratoryAlkalosis => {
+            AcidBaseDisturbance::RespiratoryAcidosis
+            | AcidBaseDisturbance::RespiratoryAlkalosis => {
                 self.bicarbonate_meq_l >= min && self.bicarbonate_meq_l <= max
             }
             _ => true,
@@ -395,7 +398,10 @@ mod tests {
     #[test]
     fn test_metabolic_acidosis() {
         let ab = AcidBaseBalance::from_abg(7.30, 38.0, 18.0);
-        assert_eq!(ab.classify_disturbance(), AcidBaseDisturbance::MetabolicAcidosis);
+        assert_eq!(
+            ab.classify_disturbance(),
+            AcidBaseDisturbance::MetabolicAcidosis
+        );
         let (min, max) = ab.expected_compensation();
         assert!(min < max);
     }
@@ -403,19 +409,28 @@ mod tests {
     #[test]
     fn test_respiratory_acidosis() {
         let ab = AcidBaseBalance::from_abg(7.32, 55.0, 28.0);
-        assert_eq!(ab.classify_disturbance(), AcidBaseDisturbance::RespiratoryAcidosis);
+        assert_eq!(
+            ab.classify_disturbance(),
+            AcidBaseDisturbance::RespiratoryAcidosis
+        );
     }
 
     #[test]
     fn test_metabolic_alkalosis() {
         let ab = AcidBaseBalance::from_abg(7.50, 48.0, 36.0);
-        assert_eq!(ab.classify_disturbance(), AcidBaseDisturbance::MetabolicAlkalosis);
+        assert_eq!(
+            ab.classify_disturbance(),
+            AcidBaseDisturbance::MetabolicAlkalosis
+        );
     }
 
     #[test]
     fn test_respiratory_alkalosis() {
         let ab = AcidBaseBalance::from_abg(7.48, 30.0, 22.0);
-        assert_eq!(ab.classify_disturbance(), AcidBaseDisturbance::RespiratoryAlkalosis);
+        assert_eq!(
+            ab.classify_disturbance(),
+            AcidBaseDisturbance::RespiratoryAlkalosis
+        );
     }
 
     #[test]

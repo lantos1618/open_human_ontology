@@ -415,7 +415,9 @@ impl MuscularFitness {
     }
 
     pub fn fitness_score(&self) -> f64 {
-        let strength_score = (self.upper_body_strength.relative_strength + self.lower_body_strength.relative_strength) / 2.0;
+        let strength_score = (self.upper_body_strength.relative_strength
+            + self.lower_body_strength.relative_strength)
+            / 2.0;
         let endurance_score = (self.muscular_endurance.push_ups as f64 / 40.0).min(1.0);
         let power_score = (self.power_output.vertical_jump_cm / 60.0).min(1.0);
 
@@ -486,8 +488,6 @@ impl BodyComposition {
     }
 
     pub fn composition_score(&self) -> f64 {
-        
-
         if self.body_fat_percentage < 15.0 {
             7.0
         } else if self.body_fat_percentage < 20.0 {

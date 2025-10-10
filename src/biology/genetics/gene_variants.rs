@@ -318,9 +318,7 @@ impl GeneVariantCatalog {
                 if drug.drug_name == drug_name {
                     recommendations.push(format!(
                         "{} ({}): {}",
-                        variant.gene,
-                        variant.rsid,
-                        drug.dosage_adjustment.recommendation
+                        variant.gene, variant.rsid, drug.dosage_adjustment.recommendation
                     ));
                 }
             }

@@ -35,10 +35,7 @@ impl Lung {
     pub fn new_left() -> Self {
         Self {
             side: LungSide::Left,
-            lobes: vec![
-                Lobe::new("Superior", 1200.0),
-                Lobe::new("Inferior", 1800.0),
-            ],
+            lobes: vec![Lobe::new("Superior", 1200.0), Lobe::new("Inferior", 1800.0)],
             total_capacity_ml: 3000.0,
             residual_volume_ml: 1200.0,
             tidal_volume_ml: 500.0,

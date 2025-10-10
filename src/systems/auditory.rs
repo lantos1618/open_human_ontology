@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::biology::{BiologyError, BiologyResult};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Ear {
@@ -432,8 +432,14 @@ impl AuditoryPathway {
         let ic_output = soc_output * self.inferior_colliculus.frequency_map_precision;
         let mgn_output = ic_output * self.medial_geniculate_nucleus.relay_efficiency;
 
-        let cortical_processing = (self.auditory_cortex.primary_auditory_cortex.activation_level
-            + self.auditory_cortex.secondary_auditory_cortex.activation_level)
+        let cortical_processing = (self
+            .auditory_cortex
+            .primary_auditory_cortex
+            .activation_level
+            + self
+                .auditory_cortex
+                .secondary_auditory_cortex
+                .activation_level)
             / 2.0;
 
         Ok(mgn_output * cortical_processing * self.auditory_cortex.tonotopic_map_quality)
@@ -488,15 +494,13 @@ mod tests {
     #[test]
     fn test_frequency_detection() {
         let mut ear = Ear::new();
-        ear.inner_ear.cochlea.organ_of_corti.inner_hair_cells = vec![
-            HairCell {
-                position_mm: 10.0,
-                stereocilia_count: 50,
-                sensitivity: 1.0,
-                frequency_tuning_hz: 1000.0,
-                health: 1.0,
-            },
-        ];
+        ear.inner_ear.cochlea.organ_of_corti.inner_hair_cells = vec![HairCell {
+            position_mm: 10.0,
+            stereocilia_count: 50,
+            sensitivity: 1.0,
+            frequency_tuning_hz: 1000.0,
+            health: 1.0,
+        }];
 
         let detection = ear.detect_frequency(1000.0).unwrap();
         assert!(detection >= 0.0);

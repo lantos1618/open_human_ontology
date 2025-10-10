@@ -245,7 +245,10 @@ impl ENTProfile {
             return true;
         }
 
-        if matches!(self.throat.vocal_cord_mobility, VocalCordMobility::ParalyzedUnilateral | VocalCordMobility::ParalyzedBilateral) {
+        if matches!(
+            self.throat.vocal_cord_mobility,
+            VocalCordMobility::ParalyzedUnilateral | VocalCordMobility::ParalyzedBilateral
+        ) {
             return true;
         }
 
@@ -313,8 +316,10 @@ impl Audiogram {
     }
 
     pub fn air_bone_gap(&self) -> f64 {
-        let air_avg: f64 = self.air_conduction.iter().sum::<f64>() / self.air_conduction.len() as f64;
-        let bone_avg: f64 = self.bone_conduction.iter().sum::<f64>() / self.bone_conduction.len() as f64;
+        let air_avg: f64 =
+            self.air_conduction.iter().sum::<f64>() / self.air_conduction.len() as f64;
+        let bone_avg: f64 =
+            self.bone_conduction.iter().sum::<f64>() / self.bone_conduction.len() as f64;
 
         air_avg - bone_avg
     }

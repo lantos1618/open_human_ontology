@@ -202,7 +202,10 @@ impl EpigeneticProfile {
 
     fn interpret_deviation(&self, site: &ClockSite, deviation: f64) -> String {
         if deviation > 0.2 {
-            format!("Significant deviation at {} - may indicate accelerated aging", site.cpg_id)
+            format!(
+                "Significant deviation at {} - may indicate accelerated aging",
+                site.cpg_id
+            )
         } else if deviation > 0.1 {
             format!("Moderate deviation at {} - monitor over time", site.cpg_id)
         } else {
@@ -246,7 +249,8 @@ impl MethylationProfile {
     }
 
     pub fn add_cpg_site(&mut self, site_id: String, methylation_level: f64) {
-        self.cpg_island_methylation.insert(site_id, methylation_level);
+        self.cpg_island_methylation
+            .insert(site_id, methylation_level);
     }
 
     pub fn add_clock_site(&mut self, site: ClockSite) {

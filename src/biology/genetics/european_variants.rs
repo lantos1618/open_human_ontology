@@ -260,7 +260,8 @@ impl EuropeanGeneticVariants {
             Genotype::Homozygous | Genotype::Heterozygous => {
                 considerations.insert(
                     "anticoagulation".to_string(),
-                    "Increased thrombosis risk; consider prophylaxis for surgery/travel".to_string(),
+                    "Increased thrombosis risk; consider prophylaxis for surgery/travel"
+                        .to_string(),
                 );
             }
             _ => {}

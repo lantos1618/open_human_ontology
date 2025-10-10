@@ -80,8 +80,9 @@ impl VestibularSystem {
     }
 
     pub fn assess_fall_risk(&self) -> FallRisk {
-        let balance_score = (self.balance_function.static_balance_score +
-                            self.balance_function.dynamic_balance_score) / 2.0;
+        let balance_score = (self.balance_function.static_balance_score
+            + self.balance_function.dynamic_balance_score)
+            / 2.0;
 
         if balance_score < 0.5 {
             FallRisk::High

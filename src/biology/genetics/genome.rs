@@ -3,9 +3,31 @@ use std::collections::HashMap;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Chromosome {
-    Chr1, Chr2, Chr3, Chr4, Chr5, Chr6, Chr7, Chr8, Chr9, Chr10,
-    Chr11, Chr12, Chr13, Chr14, Chr15, Chr16, Chr17, Chr18, Chr19, Chr20,
-    Chr21, Chr22, ChrX, ChrY, ChrMT,
+    Chr1,
+    Chr2,
+    Chr3,
+    Chr4,
+    Chr5,
+    Chr6,
+    Chr7,
+    Chr8,
+    Chr9,
+    Chr10,
+    Chr11,
+    Chr12,
+    Chr13,
+    Chr14,
+    Chr15,
+    Chr16,
+    Chr17,
+    Chr18,
+    Chr19,
+    Chr20,
+    Chr21,
+    Chr22,
+    ChrX,
+    ChrY,
+    ChrMT,
 }
 
 impl Chromosome {
@@ -157,7 +179,8 @@ impl Genome {
         if self.variants.is_empty() {
             return 0.0;
         }
-        let het_count = self.variants
+        let het_count = self
+            .variants
             .iter()
             .filter(|v| v.zygosity == Zygosity::Heterozygous)
             .count();

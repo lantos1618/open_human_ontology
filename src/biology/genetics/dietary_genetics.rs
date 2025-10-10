@@ -237,7 +237,10 @@ impl DietaryGeneticProfile {
         recommendations.extend(self.lactose_tolerance.recommendations.clone());
 
         if self.alcohol_metabolism.alcohol_flush_reaction {
-            recommendations.push("Limit alcohol consumption - increased cancer risk with ALDH2 deficiency".to_string());
+            recommendations.push(
+                "Limit alcohol consumption - increased cancer risk with ALDH2 deficiency"
+                    .to_string(),
+            );
         }
 
         if matches!(
@@ -245,7 +248,8 @@ impl DietaryGeneticProfile {
             MetabolismSpeed::Slow
         ) {
             recommendations.push("Limit caffeine intake, especially after 2pm".to_string());
-            recommendations.push("Slow caffeine metabolizer - consider decaf alternatives".to_string());
+            recommendations
+                .push("Slow caffeine metabolizer - consider decaf alternatives".to_string());
         }
 
         if matches!(self.gluten_sensitivity, GlutenSensitivity::CeliacDisease) {
@@ -253,7 +257,8 @@ impl DietaryGeneticProfile {
         }
 
         if let MTHFRGenotype::TT = self.nutrient_metabolism.folate_metabolism.mthfr_c677t {
-            recommendations.push("Increased folate needs - consider methylfolate supplementation".to_string());
+            recommendations
+                .push("Increased folate needs - consider methylfolate supplementation".to_string());
         }
 
         recommendations
@@ -317,9 +322,7 @@ impl LactoseTolerance {
             lct_genotype: LCTGenotype::TT,
             lactase_persistence: true,
             tolerance_level: ToleranceLevel::Tolerant,
-            recommendations: vec![
-                "Dairy products generally well-tolerated".to_string(),
-            ],
+            recommendations: vec!["Dairy products generally well-tolerated".to_string()],
         }
     }
 
@@ -328,9 +331,7 @@ impl LactoseTolerance {
             lct_genotype: LCTGenotype::TT,
             lactase_persistence: true,
             tolerance_level: ToleranceLevel::HighlyTolerant,
-            recommendations: vec![
-                "Excellent dairy tolerance".to_string(),
-            ],
+            recommendations: vec!["Excellent dairy tolerance".to_string()],
         }
     }
 
@@ -501,7 +502,9 @@ mod tests {
         let recs = profile.dietary_recommendations();
 
         assert!(!recs.is_empty());
-        assert!(recs.iter().any(|r| r.contains("lactose") || r.contains("dairy")));
+        assert!(recs
+            .iter()
+            .any(|r| r.contains("lactose") || r.contains("dairy")));
         assert!(recs.iter().any(|r| r.contains("alcohol")));
     }
 
@@ -511,7 +514,10 @@ mod tests {
         let plan = profile.personalized_nutrition_plan();
 
         assert!(!plan.avoid_foods.is_empty());
-        assert!(plan.avoid_foods.iter().any(|f| f.contains("dairy") || f.contains("alcohol")));
+        assert!(plan
+            .avoid_foods
+            .iter()
+            .any(|f| f.contains("dairy") || f.contains("alcohol")));
     }
 
     #[test]

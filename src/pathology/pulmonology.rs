@@ -123,13 +123,17 @@ impl PulmonologyProfile {
     }
 
     pub fn asthma_control(&self) -> Option<AsthmaControl> {
-        let asthma = self.conditions.iter()
+        let asthma = self
+            .conditions
+            .iter()
             .find(|c| c.diagnosis == PulmonaryDiagnosis::Asthma)?;
 
         let control = match (asthma.exacerbations_per_year, asthma.severity) {
             (0, PulmonarySeverity::Mild) => AsthmaControl::WellControlled,
             (1..=2, _) => AsthmaControl::PartiallyControlled,
-            (_, PulmonarySeverity::Severe | PulmonarySeverity::VerySevre) => AsthmaControl::Uncontrolled,
+            (_, PulmonarySeverity::Severe | PulmonarySeverity::VerySevre) => {
+                AsthmaControl::Uncontrolled
+            }
             _ => AsthmaControl::PartiallyControlled,
         };
 
@@ -137,7 +141,9 @@ impl PulmonologyProfile {
     }
 
     pub fn gold_copd_stage(&self) -> Option<GOLDStage> {
-        let has_copd = self.conditions.iter()
+        let has_copd = self
+            .conditions
+            .iter()
             .any(|c| c.diagnosis == PulmonaryDiagnosis::COPD);
 
         if !has_copd {
@@ -284,11 +290,17 @@ impl GasExchangeStatus {
 
 impl LungLocation {
     pub fn is_upper_lobe(&self) -> bool {
-        matches!(self, LungLocation::RightUpperLobe | LungLocation::LeftUpperLobe)
+        matches!(
+            self,
+            LungLocation::RightUpperLobe | LungLocation::LeftUpperLobe
+        )
     }
 
     pub fn is_lower_lobe(&self) -> bool {
-        matches!(self, LungLocation::RightLowerLobe | LungLocation::LeftLowerLobe)
+        matches!(
+            self,
+            LungLocation::RightLowerLobe | LungLocation::LeftLowerLobe
+        )
     }
 }
 
@@ -357,7 +369,10 @@ mod tests {
         profile.gas_exchange.pao2_mmhg = 55.0;
         profile.gas_exchange.paco2_mmhg = 55.0;
 
-        assert_eq!(profile.respiratory_failure_type(), Some(RespiratoryFailureType::Type2));
+        assert_eq!(
+            profile.respiratory_failure_type(),
+            Some(RespiratoryFailureType::Type2)
+        );
     }
 
     #[test]

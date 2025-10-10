@@ -1,5 +1,5 @@
 use human_biology::biology::genetics::DietaryGeneticProfile;
-use human_biology::nutrition::{RecommendationEngine, NutritionEvidenceBase};
+use human_biology::nutrition::{NutritionEvidenceBase, RecommendationEngine};
 
 fn main() {
     println!("=== Evidence-Based Nutrition Recommendation System ===\n");
@@ -16,13 +16,21 @@ fn main() {
 
     println!("\nRecommended Foods:");
     for food in &recs_asian.recommended_foods {
-        println!("  • {} (Confidence: {:.0}%)", food.food, food.confidence * 100.0);
+        println!(
+            "  • {} (Confidence: {:.0}%)",
+            food.food,
+            food.confidence * 100.0
+        );
         println!("    Reason: {}", food.reason);
     }
 
     println!("\nFoods to Limit:");
     for food in &recs_asian.foods_to_limit {
-        println!("  • {} (Confidence: {:.0}%)", food.food, food.confidence * 100.0);
+        println!(
+            "  • {} (Confidence: {:.0}%)",
+            food.food,
+            food.confidence * 100.0
+        );
         println!("    Reason: {}", food.reason);
     }
 
@@ -50,7 +58,11 @@ fn main() {
 
     println!("\nRecommended Foods:");
     for food in recs_euro.recommended_foods.iter().take(5) {
-        println!("  • {} (Confidence: {:.0}%)", food.food, food.confidence * 100.0);
+        println!(
+            "  • {} (Confidence: {:.0}%)",
+            food.food,
+            food.confidence * 100.0
+        );
     }
 
     println!("\nKey Difference from East Asian Profile:");
@@ -62,7 +74,11 @@ fn main() {
     if let Some(rec) = evidence.get_recommendation("aldh2_deficiency") {
         println!("\nCondition: {}", rec.condition);
         println!("Recommendation: {}", rec.recommendation);
-        println!("Evidence Level: {:?} (Score: {})", rec.evidence_level, rec.evidence_level.score());
+        println!(
+            "Evidence Level: {:?} (Score: {})",
+            rec.evidence_level,
+            rec.evidence_level.score()
+        );
         println!("Confidence: {:.0}%", rec.confidence * 100.0);
         println!("\nCitation:");
         for cite in &rec.citations {

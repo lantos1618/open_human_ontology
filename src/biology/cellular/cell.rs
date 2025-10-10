@@ -1,5 +1,5 @@
-use crate::biology::{BiologyError, BiologyResult, Compartment};
 use crate::biology::cellular::organelles::Organelle;
+use crate::biology::{BiologyError, BiologyResult, Compartment};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
@@ -102,7 +102,7 @@ impl Cell {
     pub fn assess_energy_state(&self) -> BiologyResult<f64> {
         if self.atp_concentration_mm < 0.0 {
             return Err(BiologyError::InvalidValue(
-                "ATP concentration cannot be negative".to_string()
+                "ATP concentration cannot be negative".to_string(),
             ));
         }
 
@@ -131,7 +131,7 @@ impl Cell {
     pub fn undergo_apoptosis(&mut self) -> BiologyResult<()> {
         if self.state == CellState::Necrotic {
             return Err(BiologyError::InvalidState(
-                "Cannot undergo apoptosis from necrotic state".to_string()
+                "Cannot undergo apoptosis from necrotic state".to_string(),
             ));
         }
         self.state = CellState::Apoptotic;
@@ -143,7 +143,7 @@ impl Cell {
     pub fn enter_cell_cycle(&mut self, phase: CellCycle) -> BiologyResult<()> {
         if self.state != CellState::Healthy && self.state != CellState::Proliferating {
             return Err(BiologyError::InvalidState(
-                "Only healthy cells can enter cell cycle".to_string()
+                "Only healthy cells can enter cell cycle".to_string(),
             ));
         }
         self.cycle = phase;

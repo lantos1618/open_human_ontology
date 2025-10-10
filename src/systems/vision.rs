@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::biology::{BiologyError, BiologyResult};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Eye {
@@ -182,23 +182,30 @@ impl Eye {
 
     pub fn adjust_pupil_size(&mut self, luminance: f64) -> BiologyResult<()> {
         if luminance < 0.0 {
-            return Err(BiologyError::InvalidValue("Luminance cannot be negative".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Luminance cannot be negative".to_string(),
+            ));
         }
 
-        self.pupil_diameter_mm = 2.0 + 6.0 * (-0.4 * luminance.log10()).exp() / (1.0 + (-0.4 * luminance.log10()).exp());
+        self.pupil_diameter_mm =
+            2.0 + 6.0 * (-0.4 * luminance.log10()).exp() / (1.0 + (-0.4 * luminance.log10()).exp());
         Ok(())
     }
 
     pub fn accommodate_for_distance(&mut self, distance_m: f64) -> BiologyResult<()> {
         if distance_m <= 0.0 {
-            return Err(BiologyError::InvalidValue("Distance must be positive".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Distance must be positive".to_string(),
+            ));
         }
 
         let required_power = 1.0 / distance_m;
         let max_accommodation = self.lens.accommodation_amplitude;
 
         if required_power > max_accommodation {
-            return Err(BiologyError::InvalidValue("Object too close to focus".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Object too close to focus".to_string(),
+            ));
         }
 
         self.lens.refractive_power_diopters = 20.0 + required_power;
@@ -294,19 +301,23 @@ impl VisualPathway {
 
     pub fn process_visual_signal(&mut self, signal_strength: f64) -> BiologyResult<f64> {
         if !(0.0..=1.0).contains(&signal_strength) {
-            return Err(BiologyError::InvalidValue("Signal strength must be between 0 and 1".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Signal strength must be between 0 and 1".to_string(),
+            ));
         }
 
-        let chiasm_output = signal_strength * self.optic_chiasm.signal_integrity * self.optic_chiasm.crossing_completeness;
-        let lgn_output = chiasm_output * self.lateral_geniculate_nucleus.signal_processing_efficiency;
+        let chiasm_output = signal_strength
+            * self.optic_chiasm.signal_integrity
+            * self.optic_chiasm.crossing_completeness;
+        let lgn_output =
+            chiasm_output * self.lateral_geniculate_nucleus.signal_processing_efficiency;
 
-        let cortical_processing = (
-            self.visual_cortex.v1_area.activation_level +
-            self.visual_cortex.v2_area.activation_level +
-            self.visual_cortex.v3_area.activation_level +
-            self.visual_cortex.v4_area.activation_level +
-            self.visual_cortex.v5_area.activation_level
-        ) / 5.0;
+        let cortical_processing = (self.visual_cortex.v1_area.activation_level
+            + self.visual_cortex.v2_area.activation_level
+            + self.visual_cortex.v3_area.activation_level
+            + self.visual_cortex.v4_area.activation_level
+            + self.visual_cortex.v5_area.activation_level)
+            / 5.0;
 
         Ok(lgn_output * cortical_processing)
     }

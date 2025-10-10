@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use super::dna::DNASequence;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Allele {
@@ -160,7 +160,8 @@ mod tests {
             "c.185delAG".to_string(),
             seq,
             AlleleType::Frameshift,
-        ).with_frequency(0.001);
+        )
+        .with_frequency(0.001);
 
         assert!(allele.is_pathogenic());
         assert!(!allele.is_benign());

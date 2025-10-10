@@ -131,7 +131,9 @@ impl LipidProfile {
 
     pub fn calculate_friedewald_ldl(&self) -> f64 {
         if self.triglycerides_mg_dl <= 400.0 {
-            self.total_cholesterol_mg_dl - self.hdl_cholesterol_mg_dl - (self.triglycerides_mg_dl / 5.0)
+            self.total_cholesterol_mg_dl
+                - self.hdl_cholesterol_mg_dl
+                - (self.triglycerides_mg_dl / 5.0)
         } else {
             self.ldl_cholesterol_mg_dl
         }
@@ -319,13 +321,21 @@ impl LipidMetabolism {
     }
 
     pub fn comprehensive_lipid_health_score(&self) -> f64 {
-        let profile_score = if self.lipid_profile.cardiovascular_risk_category() == CardiovascularRiskCategory::Optimal {
+        let profile_score = if self.lipid_profile.cardiovascular_risk_category()
+            == CardiovascularRiskCategory::Optimal
+        {
             1.0
-        } else if self.lipid_profile.cardiovascular_risk_category() == CardiovascularRiskCategory::NearOptimal {
+        } else if self.lipid_profile.cardiovascular_risk_category()
+            == CardiovascularRiskCategory::NearOptimal
+        {
             0.8
-        } else if self.lipid_profile.cardiovascular_risk_category() == CardiovascularRiskCategory::BorderlineHigh {
+        } else if self.lipid_profile.cardiovascular_risk_category()
+            == CardiovascularRiskCategory::BorderlineHigh
+        {
             0.6
-        } else if self.lipid_profile.cardiovascular_risk_category() == CardiovascularRiskCategory::High {
+        } else if self.lipid_profile.cardiovascular_risk_category()
+            == CardiovascularRiskCategory::High
+        {
             0.4
         } else {
             0.2
@@ -380,7 +390,10 @@ mod tests {
     #[test]
     fn test_lipid_profile_optimal() {
         let profile = LipidProfile::new_optimal();
-        assert_eq!(profile.cardiovascular_risk_category(), CardiovascularRiskCategory::Optimal);
+        assert_eq!(
+            profile.cardiovascular_risk_category(),
+            CardiovascularRiskCategory::Optimal
+        );
         assert!(!profile.has_metabolic_syndrome_dyslipidemia());
         assert!(profile.atherogenic_index() < 3.5);
     }

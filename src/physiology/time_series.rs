@@ -120,7 +120,8 @@ impl PhysiologicalTimeSeries {
         let latest = self.get_latest()?;
         let earliest = self.get_earliest()?;
 
-        let initial_risk = Self::calculate_cv_risk_score(&earliest.cardiovascular, &earliest.metabolic);
+        let initial_risk =
+            Self::calculate_cv_risk_score(&earliest.cardiovascular, &earliest.metabolic);
         let current_risk = Self::calculate_cv_risk_score(&latest.cardiovascular, &latest.metabolic);
 
         let risk_change = current_risk - initial_risk;
@@ -340,7 +341,10 @@ mod tests {
         let risk = ts.assess_cardiovascular_risk_change().unwrap();
         assert!(risk.improving);
         assert!(risk.current_risk_score < risk.initial_risk_score);
-        assert!(matches!(risk.risk_category, RiskCategory::Low | RiskCategory::Moderate));
+        assert!(matches!(
+            risk.risk_category,
+            RiskCategory::Low | RiskCategory::Moderate
+        ));
     }
 
     #[test]

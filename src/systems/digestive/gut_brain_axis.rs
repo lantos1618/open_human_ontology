@@ -136,8 +136,11 @@ impl GutBrainAxis {
         let hpa_score = self.hpa_axis_activity.assess_function();
         let stress_score = 1.0 - (self.stress_response.perceived_stress_score / 10.0);
 
-        vagal_score * 0.25 + permeability_score * 0.25 + inflammation_score * 0.2
-            + hpa_score * 0.2 + stress_score * 0.1
+        vagal_score * 0.25
+            + permeability_score * 0.25
+            + inflammation_score * 0.2
+            + hpa_score * 0.2
+            + stress_score * 0.1
     }
 
     pub fn serotonin_gut_percentage(&self) -> f64 {
@@ -145,7 +148,8 @@ impl GutBrainAxis {
     }
 
     pub fn apply_stress(&mut self, stress_level: f64) {
-        self.stress_response.perceived_stress_score = (self.stress_response.perceived_stress_score + stress_level).min(10.0);
+        self.stress_response.perceived_stress_score =
+            (self.stress_response.perceived_stress_score + stress_level).min(10.0);
         self.hpa_axis_activity.cortisol_ug_dl += stress_level * 2.0;
         self.gut_motility_change(stress_level);
         self.gut_permeability += stress_level * 0.05;
@@ -168,7 +172,9 @@ impl GutBrainAxis {
         self.neurotransmitter_production.serotonin_ng_ml += 20.0 * improvement_factor;
         self.neurotransmitter_production.gaba_nmol_l += 15.0 * improvement_factor;
         self.gut_permeability = (self.gut_permeability - 0.1 * improvement_factor).max(0.1);
-        self.immune_signaling.inflammatory_markers.reduce_inflammation(improvement_factor);
+        self.immune_signaling
+            .inflammatory_markers
+            .reduce_inflammation(improvement_factor);
         self.vagal_tone = (self.vagal_tone + 10.0 * improvement_factor).min(100.0);
     }
 
@@ -185,7 +191,8 @@ impl NeurotransmitterProduction {
         let gaba_normal = self.gaba_nmol_l > 50.0 && self.gaba_nmol_l < 120.0;
         let dopamine_normal = self.dopamine_pg_ml > 30.0 && self.dopamine_pg_ml < 100.0;
 
-        let score = (serotonin_normal as u32 + gaba_normal as u32 + dopamine_normal as u32) as f64 / 3.0;
+        let score =
+            (serotonin_normal as u32 + gaba_normal as u32 + dopamine_normal as u32) as f64 / 3.0;
         score
     }
 }
@@ -197,14 +204,22 @@ impl HPAAxisActivity {
         let feedback_working = self.feedback_sensitivity > 0.6;
 
         let mut score = 0.0;
-        if cortisol_normal { score += 0.4; }
-        if rhythm_intact { score += 0.3; }
-        if feedback_working { score += 0.3; }
+        if cortisol_normal {
+            score += 0.4;
+        }
+        if rhythm_intact {
+            score += 0.3;
+        }
+        if feedback_working {
+            score += 0.3;
+        }
         score
     }
 
     pub fn is_dysregulated(&self) -> bool {
-        self.cortisol_ug_dl > 30.0 || self.feedback_sensitivity < 0.5 || self.diurnal_rhythm_integrity < 0.6
+        self.cortisol_ug_dl > 30.0
+            || self.feedback_sensitivity < 0.5
+            || self.diurnal_rhythm_integrity < 0.6
     }
 }
 
@@ -338,7 +353,10 @@ mod tests {
     #[test]
     fn test_ibs_disorder() {
         let ibs = GutBrainDisorder::ibs();
-        assert_eq!(ibs.disorder_type, GutBrainDisorderType::IrritableBowelSyndrome);
+        assert_eq!(
+            ibs.disorder_type,
+            GutBrainDisorderType::IrritableBowelSyndrome
+        );
         assert!(!ibs.symptoms.is_empty());
     }
 

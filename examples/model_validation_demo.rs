@@ -1,8 +1,7 @@
-use human_biology::validation::{ValidationFramework, GroundTruthDatabase};
 use human_biology::metabolism::{
-    AlcoholMetabolismSimulation, ALDH2Genotype, ADH1BGenotype,
-    AlcoholIngestion, Sex,
+    ADH1BGenotype, ALDH2Genotype, AlcoholIngestion, AlcoholMetabolismSimulation, Sex,
 };
+use human_biology::validation::{GroundTruthDatabase, ValidationFramework};
 
 fn main() {
     println!("╔═══════════════════════════════════════════════════════════════╗");
@@ -36,7 +35,12 @@ fn main() {
     println!("  Heart Rate: {} bpm", simulated_hr);
     println!("  Blood Pressure: {}/{} mmHg", simulated_sbp, simulated_dbp);
 
-    framework.validate_parameter("cardiovascular", "resting_heart_rate_bpm", simulated_hr, 15.0);
+    framework.validate_parameter(
+        "cardiovascular",
+        "resting_heart_rate_bpm",
+        simulated_hr,
+        15.0,
+    );
     framework.validate_parameter("cardiovascular", "systolic_bp_mmhg", simulated_sbp, 10.0);
     framework.validate_parameter("cardiovascular", "diastolic_bp_mmhg", simulated_dbp, 10.0);
 
@@ -67,7 +71,10 @@ fn main() {
 
     let peak_multiplier = deficient.peak_acetaldehyde() / wildtype.peak_acetaldehyde();
 
-    println!("\nModel Prediction: ALDH2*1/*2 acetaldehyde peak is {:.1}x higher", peak_multiplier);
+    println!(
+        "\nModel Prediction: ALDH2*1/*2 acetaldehyde peak is {:.1}x higher",
+        peak_multiplier
+    );
     println!("Ground Truth: 5.0x higher (range: 2-10x) from Brooks 2009");
 
     framework.validate_parameter(
@@ -88,15 +95,15 @@ fn main() {
     println!("\n\n━━━ Example 3: Time-Series Validation ━━━");
     println!("Comparing predicted acetaldehyde clearance to clinical data");
 
-    let predicted_concentration: Vec<f64> = deficient.timeline.iter()
+    let predicted_concentration: Vec<f64> = deficient
+        .timeline
+        .iter()
         .take(60)
         .step_by(10)
         .map(|tp| tp.acetaldehyde_umol_l)
         .collect();
 
-    let actual_clinical_data = vec![
-        0.0, 950.0, 1850.0, 2450.0, 2900.0, 3100.0
-    ];
+    let actual_clinical_data = vec![0.0, 950.0, 1850.0, 2450.0, 2900.0, 3100.0];
 
     framework.validate_series(
         "Acetaldehyde Time Course".to_string(),
@@ -125,7 +132,8 @@ fn main() {
                     println!("    Range: {:.2} - {:.2}", min, max);
                 }
                 println!("    Reference: {}", dp.reference.citation);
-                println!("    Evidence: {:?} (quality score: {:.2})",
+                println!(
+                    "    Evidence: {:?} (quality score: {:.2})",
                     dp.reference.evidence_level,
                     dp.reference.evidence_level.quality_score()
                 );

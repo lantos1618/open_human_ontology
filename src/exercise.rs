@@ -208,8 +208,8 @@ impl ExercisePhysiology {
     }
 
     pub fn simulate_exercise(&mut self, intensity: ExerciseIntensity, duration_min: f64) {
-        let hr_reserve = self.cardiovascular_response.max_hr_bpm
-            - self.cardiovascular_response.resting_hr_bpm;
+        let hr_reserve =
+            self.cardiovascular_response.max_hr_bpm - self.cardiovascular_response.resting_hr_bpm;
 
         let (hr_percent, vo2_percent) = match intensity {
             ExerciseIntensity::Rest => (0.0, 0.0),
@@ -221,8 +221,8 @@ impl ExercisePhysiology {
             ExerciseIntensity::Maximal => (1.0, 1.0),
         };
 
-        self.cardiovascular_response.current_hr_bpm = self.cardiovascular_response.resting_hr_bpm
-            + hr_reserve * hr_percent;
+        self.cardiovascular_response.current_hr_bpm =
+            self.cardiovascular_response.resting_hr_bpm + hr_reserve * hr_percent;
 
         self.metabolic_response.vo2_ml_kg_min =
             3.5 + (self.metabolic_response.vo2_max_ml_kg_min - 3.5) * vo2_percent;
@@ -233,8 +233,7 @@ impl ExercisePhysiology {
             1.0 + (vo2_percent - 0.6) * 15.0
         };
 
-        self.respiratory_response.exercise_rate_bpm =
-            12.0 + 30.0 * vo2_percent;
+        self.respiratory_response.exercise_rate_bpm = 12.0 + 30.0 * vo2_percent;
 
         self.thermoregulatory_response.core_temp_c = 37.0 + vo2_percent * 2.0;
         self.thermoregulatory_response.sweat_rate_l_hr = vo2_percent * 1.5;
@@ -245,8 +244,9 @@ impl ExercisePhysiology {
         self.muscular_response.fatigue_level = (vo2_percent * duration_min / 60.0).min(1.0);
 
         if intensity as usize >= ExerciseIntensity::Vigorous as usize {
-            self.muscular_response.muscle_damage_markers.creatine_kinase_u_l +=
-                vo2_percent * duration_min * 10.0;
+            self.muscular_response
+                .muscle_damage_markers
+                .creatine_kinase_u_l += vo2_percent * duration_min * 10.0;
         }
     }
 
@@ -397,12 +397,18 @@ mod tests {
     #[test]
     fn test_muscle_damage_markers() {
         let mut phys = ExercisePhysiology::new_sedentary(25.0);
-        let initial_ck = phys.muscular_response.muscle_damage_markers.creatine_kinase_u_l;
+        let initial_ck = phys
+            .muscular_response
+            .muscle_damage_markers
+            .creatine_kinase_u_l;
 
         phys.simulate_exercise(ExerciseIntensity::VeryVigorous, 45.0);
 
         assert!(
-            phys.muscular_response.muscle_damage_markers.creatine_kinase_u_l > initial_ck
+            phys.muscular_response
+                .muscle_damage_markers
+                .creatine_kinase_u_l
+                > initial_ck
         );
     }
 }

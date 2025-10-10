@@ -114,7 +114,8 @@ impl LymphNode {
 
     pub fn activate(&mut self, antigen_level: f64) {
         self.activation_state = (antigen_level * 0.5).min(1.0);
-        self.lymphocyte_count = (self.lymphocyte_count as f64 * (1.0 + self.activation_state)) as u64;
+        self.lymphocyte_count =
+            (self.lymphocyte_count as f64 * (1.0 + self.activation_state)) as u64;
     }
 
     pub fn is_enlarged(&self) -> bool {

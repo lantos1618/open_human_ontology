@@ -324,15 +324,23 @@ impl AcneRisk {
 
     fn estimate_sebum(tgfb2: bool, ddb2: bool) -> f64 {
         let mut sebum = 1.0;
-        if tgfb2 { sebum += 0.3; }
-        if ddb2 { sebum += 0.2; }
+        if tgfb2 {
+            sebum += 0.3;
+        }
+        if ddb2 {
+            sebum += 0.2;
+        }
         sebum
     }
 
     fn estimate_inflammation(sell: bool, fst: bool) -> f64 {
         let mut inflammation = 1.0;
-        if sell { inflammation += 0.4; }
-        if fst { inflammation += 0.3; }
+        if sell {
+            inflammation += 0.4;
+        }
+        if fst {
+            inflammation += 0.3;
+        }
         inflammation
     }
 
@@ -360,13 +368,7 @@ pub struct PsoriasisRisk {
 }
 
 impl PsoriasisRisk {
-    pub fn new(
-        hla: bool,
-        il12b: bool,
-        il23r: bool,
-        tnfaip3: bool,
-        traf3ip2: bool,
-    ) -> Self {
+    pub fn new(hla: bool, il12b: bool, il23r: bool, tnfaip3: bool, traf3ip2: bool) -> Self {
         let score = Self::calculate_score(hla, il12b, il23r, tnfaip3, traf3ip2);
 
         Self {
@@ -379,20 +381,24 @@ impl PsoriasisRisk {
         }
     }
 
-    fn calculate_score(
-        hla: bool,
-        il12b: bool,
-        il23r: bool,
-        tnfaip3: bool,
-        traf3ip2: bool,
-    ) -> f64 {
+    fn calculate_score(hla: bool, il12b: bool, il23r: bool, tnfaip3: bool, traf3ip2: bool) -> f64 {
         let mut score = 1.0;
 
-        if hla { score *= 3.0; }
-        if il12b { score *= 1.5; }
-        if il23r { score *= 1.6; }
-        if tnfaip3 { score *= 1.3; }
-        if traf3ip2 { score *= 1.4; }
+        if hla {
+            score *= 3.0;
+        }
+        if il12b {
+            score *= 1.5;
+        }
+        if il23r {
+            score *= 1.6;
+        }
+        if tnfaip3 {
+            score *= 1.3;
+        }
+        if traf3ip2 {
+            score *= 1.4;
+        }
 
         score
     }
@@ -418,12 +424,7 @@ pub struct EczemaRisk {
 }
 
 impl EczemaRisk {
-    pub fn new(
-        flg: Vec<String>,
-        il4: bool,
-        il13: bool,
-        ors1: bool,
-    ) -> Self {
+    pub fn new(flg: Vec<String>, il4: bool, il13: bool, ors1: bool) -> Self {
         let barrier = Self::calculate_barrier_function(&flg, ors1);
         let immune = Self::calculate_immune_dysregulation(il4, il13);
         let risk = Self::calculate_overall_risk(barrier, immune);
@@ -456,8 +457,12 @@ impl EczemaRisk {
     fn calculate_immune_dysregulation(il4: bool, il13: bool) -> f64 {
         let mut score = 1.0;
 
-        if il4 { score += 0.4; }
-        if il13 { score += 0.4; }
+        if il4 {
+            score += 0.4;
+        }
+        if il13 {
+            score += 0.4;
+        }
 
         score
     }

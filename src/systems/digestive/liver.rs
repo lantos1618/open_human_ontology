@@ -100,11 +100,7 @@ impl DetoxificationCapacity {
     }
 
     pub fn phase_i_reactions(&self) -> Vec<&str> {
-        vec![
-            "Oxidation (CYP450)",
-            "Reduction",
-            "Hydrolysis",
-        ]
+        vec!["Oxidation (CYP450)", "Reduction", "Hydrolysis"]
     }
 
     pub fn phase_ii_reactions(&self) -> Vec<&str> {
@@ -120,7 +116,7 @@ impl DetoxificationCapacity {
     pub fn detoxify_ammonia(&mut self, ammonia_mm: f64) -> BiologyResult<f64> {
         if !self.phase_i_active {
             return Err(BiologyError::InvalidState(
-                "Detoxification impaired".to_string()
+                "Detoxification impaired".to_string(),
             ));
         }
 
@@ -318,9 +314,7 @@ impl HepatocyteZone {
                 "Cholesterol synthesis",
                 "Bile acid synthesis",
             ],
-            HepatocyteZone::Zone2Intermediate => vec![
-                "Mixed metabolic functions",
-            ],
+            HepatocyteZone::Zone2Intermediate => vec!["Mixed metabolic functions"],
             HepatocyteZone::Zone3Pericentral => vec![
                 "Glycolysis",
                 "Lipogenesis",
@@ -368,8 +362,10 @@ impl ProteinSynthesis {
     }
 
     pub fn total_protein_synthesis(&self) -> f64 {
-        self.albumin_g_per_day + self.globulins_g_per_day +
-        self.fibrinogen_g_per_day + self.transferrin_g_per_day
+        self.albumin_g_per_day
+            + self.globulins_g_per_day
+            + self.fibrinogen_g_per_day
+            + self.transferrin_g_per_day
     }
 
     pub fn acute_phase_response(&mut self) {
@@ -437,7 +433,10 @@ mod tests {
 
         metabolism.switch_to_fed();
         assert!(metabolism.glycogenesis_active);
-        assert_eq!(metabolism.metabolic_state(), "Fed state - storing glucose as glycogen");
+        assert_eq!(
+            metabolism.metabolic_state(),
+            "Fed state - storing glucose as glycogen"
+        );
 
         metabolism.switch_to_fasting();
         assert!(metabolism.glycogenolysis_active);

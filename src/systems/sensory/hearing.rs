@@ -141,9 +141,7 @@ impl Ear {
     pub fn new(side: Side) -> Self {
         Ear {
             side,
-            outer_ear: OuterEar {
-                canal_patency: 1.0,
-            },
+            outer_ear: OuterEar { canal_patency: 1.0 },
             middle_ear: MiddleEar {
                 ossicles: Ossicles {
                     malleus_mobility: 1.0,
@@ -173,8 +171,7 @@ impl Ear {
     }
 
     pub fn conductive_loss_present(&self) -> bool {
-        self.middle_ear.tympanic_membrane_integrity < 0.8 ||
-        self.outer_ear.canal_patency < 0.8
+        self.middle_ear.tympanic_membrane_integrity < 0.8 || self.outer_ear.canal_patency < 0.8
     }
 
     pub fn sensorineural_loss_present(&self) -> bool {
@@ -191,8 +188,13 @@ impl AuditorySystem {
     }
 
     pub fn has_hearing_loss(&self) -> bool {
-        !matches!(self.hearing_threshold.left_hearing_loss(), HearingLossDegree::Normal) ||
-        !matches!(self.hearing_threshold.right_hearing_loss(), HearingLossDegree::Normal)
+        !matches!(
+            self.hearing_threshold.left_hearing_loss(),
+            HearingLossDegree::Normal
+        ) || !matches!(
+            self.hearing_threshold.right_hearing_loss(),
+            HearingLossDegree::Normal
+        )
     }
 }
 

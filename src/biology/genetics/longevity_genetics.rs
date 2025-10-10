@@ -144,19 +144,23 @@ impl AgingProfile {
         let mut recommendations = Vec::new();
 
         if self.oxidative_stress_resistance < 1.0 {
-            recommendations.push("Increase antioxidant intake (vitamin C, E, polyphenols)".to_string());
+            recommendations
+                .push("Increase antioxidant intake (vitamin C, E, polyphenols)".to_string());
         }
 
         if self.inflammation_tendency > 1.2 {
-            recommendations.push("Anti-inflammatory diet (omega-3, reduce processed foods)".to_string());
+            recommendations
+                .push("Anti-inflammatory diet (omega-3, reduce processed foods)".to_string());
         }
 
         if self.telomere_attrition_rate > 1.0 {
-            recommendations.push("Stress reduction and regular exercise to preserve telomeres".to_string());
+            recommendations
+                .push("Stress reduction and regular exercise to preserve telomeres".to_string());
         }
 
         if self.metabolic_efficiency < 1.0 {
-            recommendations.push("Intermittent fasting or caloric restriction may be beneficial".to_string());
+            recommendations
+                .push("Intermittent fasting or caloric restriction may be beneficial".to_string());
         }
 
         if self.cellular_aging_rate > 1.1 {
@@ -182,7 +186,9 @@ pub fn get_longevity_variants() -> Vec<LongevityVariant> {
             effect: LongevityEffect::ProLongevity,
             lifespan_impact_years: 2.7,
             healthspan_impact: HealthspanEffect::ExtendedHealthspan,
-            description: "FOXO3 longevity variant, strongest genetic association with human lifespan".to_string(),
+            description:
+                "FOXO3 longevity variant, strongest genetic association with human lifespan"
+                    .to_string(),
         },
         LongevityVariant {
             gene: LongevityGene::APOE,
@@ -200,7 +206,8 @@ pub fn get_longevity_variants() -> Vec<LongevityVariant> {
             effect: LongevityEffect::AntiLongevity,
             lifespan_impact_years: -2.0,
             healthspan_impact: HealthspanEffect::ReducedHealthspan,
-            description: "APOE4 associated with reduced lifespan and increased Alzheimer's risk".to_string(),
+            description: "APOE4 associated with reduced lifespan and increased Alzheimer's risk"
+                .to_string(),
         },
         LongevityVariant {
             gene: LongevityGene::CETP,
@@ -209,7 +216,8 @@ pub fn get_longevity_variants() -> Vec<LongevityVariant> {
             effect: LongevityEffect::ProLongevity,
             lifespan_impact_years: 1.2,
             healthspan_impact: HealthspanEffect::ExtendedHealthspan,
-            description: "CETP variant increasing HDL cholesterol, associated with longevity".to_string(),
+            description: "CETP variant increasing HDL cholesterol, associated with longevity"
+                .to_string(),
         },
         LongevityVariant {
             gene: LongevityGene::KLOTHO,
@@ -218,7 +226,8 @@ pub fn get_longevity_variants() -> Vec<LongevityVariant> {
             effect: LongevityEffect::ProLongevity,
             lifespan_impact_years: 1.8,
             healthspan_impact: HealthspanEffect::ExtendedHealthspan,
-            description: "Klotho variant associated with cognitive protection and longevity".to_string(),
+            description: "Klotho variant associated with cognitive protection and longevity"
+                .to_string(),
         },
         LongevityVariant {
             gene: LongevityGene::IGF1R,
@@ -236,7 +245,8 @@ pub fn get_longevity_variants() -> Vec<LongevityVariant> {
             effect: LongevityEffect::ProLongevity,
             lifespan_impact_years: 0.8,
             healthspan_impact: HealthspanEffect::ExtendedHealthspan,
-            description: "Sirtuin 1 variant, involved in cellular stress response and metabolism".to_string(),
+            description: "Sirtuin 1 variant, involved in cellular stress response and metabolism"
+                .to_string(),
         },
         LongevityVariant {
             gene: LongevityGene::SIRT6,

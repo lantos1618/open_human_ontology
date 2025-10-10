@@ -87,7 +87,7 @@ impl BloodVessel {
     pub fn apply_pressure(&mut self, pressure_mmhg: f64) -> BiologyResult<()> {
         if pressure_mmhg < 0.0 {
             return Err(BiologyError::InvalidValue(
-                "Pressure cannot be negative".to_string()
+                "Pressure cannot be negative".to_string(),
             ));
         }
 
@@ -98,7 +98,7 @@ impl BloodVessel {
 
         if self.wall_stress_kdynes_cm2() > 200.0 {
             return Err(BiologyError::InvalidState(
-                "Vessel wall stress exceeds rupture threshold".to_string()
+                "Vessel wall stress exceeds rupture threshold".to_string(),
             ));
         }
 
@@ -138,9 +138,9 @@ impl VesselLayer {
     }
 
     pub fn total_thickness_um(&self) -> f64 {
-        self.tunica_intima_thickness_um +
-        self.tunica_media_thickness_um +
-        self.tunica_adventitia_thickness_um
+        self.tunica_intima_thickness_um
+            + self.tunica_media_thickness_um
+            + self.tunica_adventitia_thickness_um
     }
 }
 

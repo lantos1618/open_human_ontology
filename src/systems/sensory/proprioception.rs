@@ -158,7 +158,8 @@ impl ProprioceptiveSystem {
     pub fn calculate_balance_score(&self) -> f64 {
         let vestibular_contribution = 0.4 * self.vestibular_system.vestibulo_ocular_reflex_gain;
         let proprioceptive_contribution = 0.35 * self.body_awareness.balance_stability_index;
-        let joint_contribution = 0.25 * (1.0 - self.joint_receptors.joint_position_accuracy_degrees / 10.0);
+        let joint_contribution =
+            0.25 * (1.0 - self.joint_receptors.joint_position_accuracy_degrees / 10.0);
 
         vestibular_contribution + proprioceptive_contribution + joint_contribution
     }
@@ -182,8 +183,16 @@ impl ProprioceptiveSystem {
 
     pub fn assess_spatial_orientation(&self) -> SpatialOrientationAssessment {
         SpatialOrientationAssessment {
-            vertical_perception_accuracy: self.vestibular_system.otolith_organs.utricle.gravity_sensing_accuracy,
-            horizontal_plane_stability: self.vestibular_system.semicircular_canals.horizontal.cupula_displacement_sensitivity,
+            vertical_perception_accuracy: self
+                .vestibular_system
+                .otolith_organs
+                .utricle
+                .gravity_sensing_accuracy,
+            horizontal_plane_stability: self
+                .vestibular_system
+                .semicircular_canals
+                .horizontal
+                .cupula_displacement_sensitivity,
             three_dimensional_awareness: self.body_awareness.spatial_position_accuracy,
             movement_detection_sensitivity: self.joint_receptors.movement_detection_threshold,
         }

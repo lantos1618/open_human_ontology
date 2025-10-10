@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use nalgebra::Vector3;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum CellArrangement {

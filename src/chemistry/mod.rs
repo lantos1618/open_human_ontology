@@ -1,11 +1,11 @@
 //! # Chemistry Module
-//! 
+//!
 //! Defines chemical reactions and properties in biological systems.
 
-use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use crate::biology::{BiologyError, BiologyResult};
 use crate::Concentration;
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
 /// Represents a chemical reaction
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -88,7 +88,10 @@ impl Reaction {
     }
 
     /// Calculate reaction rate
-    pub fn calculate_rate(&self, concentrations: &HashMap<String, Concentration>) -> BiologyResult<f64> {
+    pub fn calculate_rate(
+        &self,
+        concentrations: &HashMap<String, Concentration>,
+    ) -> BiologyResult<f64> {
         let mut rate = self.rate_constant;
 
         // Calculate rate based on reactant concentrations
@@ -96,9 +99,10 @@ impl Reaction {
             if let Some(conc) = concentrations.get(reactant) {
                 rate *= conc.value.powf(*stoich);
             } else {
-                return Err(BiologyError::InvalidConcentration(
-                    format!("Missing concentration for reactant: {:?}", reactant)
-                ));
+                return Err(BiologyError::InvalidConcentration(format!(
+                    "Missing concentration for reactant: {:?}",
+                    reactant
+                )));
             }
         }
 
@@ -112,15 +116,15 @@ impl Reaction {
         match self.temperature_dependence {
             TemperatureDependence::Arrhenius { a, ea } => {
                 a * (-ea * 1000.0 / (R * temperature)).exp()
-            },
+            }
             TemperatureDependence::Eyring { delta_h, delta_s } => {
                 let kb = 1.380649e-23; // Boltzmann constant
                 let h = 6.62607015e-34; // Planck constant
-                
-                (kb * temperature / h) * 
-                (-delta_h * 1000.0 / (R * temperature)).exp() *
-                (delta_s / R).exp()
-            },
+
+                (kb * temperature / h)
+                    * (-delta_h * 1000.0 / (R * temperature)).exp()
+                    * (delta_s / R).exp()
+            }
         }
     }
 }
@@ -141,16 +145,16 @@ impl Equilibrium {
         initial_concentrations: &HashMap<String, Concentration>,
     ) -> BiologyResult<HashMap<String, Concentration>> {
         let mut equilibrium_concentrations = initial_concentrations.clone();
-        
+
         // Simple iteration to approach equilibrium
         for _ in 0..100 {
             let forward_rate = self.forward.calculate_rate(&equilibrium_concentrations)?;
             let reverse_rate = self.reverse.calculate_rate(&equilibrium_concentrations)?;
-            
+
             if (forward_rate / reverse_rate - self.k_eq).abs() < 1e-6 {
                 break;
             }
-            
+
             // Adjust concentrations
             let delta = (forward_rate - reverse_rate) * 0.1;
             for (reactant, stoich) in &self.forward.reactants {
@@ -164,7 +168,7 @@ impl Equilibrium {
                 }
             }
         }
-        
+
         Ok(equilibrium_concentrations)
     }
 }
@@ -181,18 +185,15 @@ mod tests {
         let mut concentrations = HashMap::new();
 
         reactants.insert("glucose".to_string(), 1.0);
-        concentrations.insert("glucose".to_string(), Concentration {
-            value: 2.0,
-            unit: ConcentrationUnit::Molar,
-        });
-
-        let reaction = Reaction::new(
-            "Test".into(),
-            reactants,
-            products,
-            1.0,
-            50.0,
+        concentrations.insert(
+            "glucose".to_string(),
+            Concentration {
+                value: 2.0,
+                unit: ConcentrationUnit::Molar,
+            },
         );
+
+        let reaction = Reaction::new("Test".into(), reactants, products, 1.0, 50.0);
 
         let rate = reaction.calculate_rate(&concentrations).unwrap();
         assert_eq!(rate, 2.0);
@@ -206,14 +207,11 @@ mod tests {
             products: HashMap::new(),
             rate_constant: 1.0,
             activation_energy: 50.0,
-            temperature_dependence: TemperatureDependence::Arrhenius {
-                a: 1.0,
-                ea: 50.0,
-            },
+            temperature_dependence: TemperatureDependence::Arrhenius { a: 1.0, ea: 50.0 },
         };
 
         let rate_298 = reaction.temperature_effect(298.0);
         let rate_308 = reaction.temperature_effect(308.0);
         assert!(rate_308 > rate_298); // Rate increases with temperature
     }
-} 
+}

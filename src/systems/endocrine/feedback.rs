@@ -63,32 +63,41 @@ impl HormonalFeedbackSystem {
     pub fn new_adult() -> Self {
         let mut hormone_levels = HashMap::new();
 
-        hormone_levels.insert("TSH".to_string(), HormoneLevel {
-            concentration_ng_ml: 2.0,
-            reference_range_low: 0.4,
-            reference_range_high: 4.0,
-            half_life_hours: 1.0,
-            production_rate_ug_day: 100.0,
-            clearance_rate_ml_min: 50.0,
-        });
+        hormone_levels.insert(
+            "TSH".to_string(),
+            HormoneLevel {
+                concentration_ng_ml: 2.0,
+                reference_range_low: 0.4,
+                reference_range_high: 4.0,
+                half_life_hours: 1.0,
+                production_rate_ug_day: 100.0,
+                clearance_rate_ml_min: 50.0,
+            },
+        );
 
-        hormone_levels.insert("T4".to_string(), HormoneLevel {
-            concentration_ng_ml: 100.0,
-            reference_range_low: 60.0,
-            reference_range_high: 120.0,
-            half_life_hours: 168.0,
-            production_rate_ug_day: 90.0,
-            clearance_rate_ml_min: 1.2,
-        });
+        hormone_levels.insert(
+            "T4".to_string(),
+            HormoneLevel {
+                concentration_ng_ml: 100.0,
+                reference_range_low: 60.0,
+                reference_range_high: 120.0,
+                half_life_hours: 168.0,
+                production_rate_ug_day: 90.0,
+                clearance_rate_ml_min: 1.2,
+            },
+        );
 
-        hormone_levels.insert("Cortisol".to_string(), HormoneLevel {
-            concentration_ng_ml: 150.0,
-            reference_range_low: 50.0,
-            reference_range_high: 250.0,
-            half_life_hours: 1.5,
-            production_rate_ug_day: 20000.0,
-            clearance_rate_ml_min: 180.0,
-        });
+        hormone_levels.insert(
+            "Cortisol".to_string(),
+            HormoneLevel {
+                concentration_ng_ml: 150.0,
+                reference_range_low: 50.0,
+                reference_range_high: 250.0,
+                half_life_hours: 1.5,
+                production_rate_ug_day: 20000.0,
+                clearance_rate_ml_min: 180.0,
+            },
+        );
 
         Self {
             axes: vec![
@@ -114,7 +123,11 @@ impl HormonalFeedbackSystem {
         }
     }
 
-    pub fn calculate_feedback_response(&self, axis_type: AxisType, target_hormone_level: f64) -> f64 {
+    pub fn calculate_feedback_response(
+        &self,
+        axis_type: AxisType,
+        target_hormone_level: f64,
+    ) -> f64 {
         if let Some(axis) = self.axes.iter().find(|a| a.axis_type == axis_type) {
             let error = axis.set_point - target_hormone_level;
             axis.feedback_strength * error
@@ -194,7 +207,8 @@ impl EndocrineAxis {
             self.current_state.stimulation_level = 1.0 - self.current_state.suppression_level;
         } else {
             self.current_state.suppression_level = 0.0;
-            self.current_state.stimulation_level = 1.0 + (excess.abs() * self.feedback_strength).min(2.0);
+            self.current_state.stimulation_level =
+                1.0 + (excess.abs() * self.feedback_strength).min(2.0);
         }
     }
 
@@ -219,8 +233,8 @@ impl HormoneLevel {
     }
 
     pub fn is_within_normal_range(&self) -> bool {
-        self.concentration_ng_ml >= self.reference_range_low &&
-        self.concentration_ng_ml <= self.reference_range_high
+        self.concentration_ng_ml >= self.reference_range_low
+            && self.concentration_ng_ml <= self.reference_range_high
     }
 }
 
@@ -252,26 +266,22 @@ impl CircadianHormoneRegulation {
     pub fn update_hormone_levels(&mut self, current_time_hours: f64) {
         self.time_of_day_hours = current_time_hours % 24.0;
 
-        self.cortisol_rhythm.current_level = self.calculate_circadian_level(
-            &self.cortisol_rhythm,
-            current_time_hours,
-            150.0,
-        );
+        self.cortisol_rhythm.current_level =
+            self.calculate_circadian_level(&self.cortisol_rhythm, current_time_hours, 150.0);
 
-        self.melatonin_rhythm.current_level = self.calculate_circadian_level(
-            &self.melatonin_rhythm,
-            current_time_hours,
-            10.0,
-        );
+        self.melatonin_rhythm.current_level =
+            self.calculate_circadian_level(&self.melatonin_rhythm, current_time_hours, 10.0);
 
-        self.growth_hormone_rhythm.current_level = self.calculate_circadian_level(
-            &self.growth_hormone_rhythm,
-            current_time_hours,
-            2.0,
-        );
+        self.growth_hormone_rhythm.current_level =
+            self.calculate_circadian_level(&self.growth_hormone_rhythm, current_time_hours, 2.0);
     }
 
-    fn calculate_circadian_level(&self, rhythm: &CircadianRhythm, time_hours: f64, baseline: f64) -> f64 {
+    fn calculate_circadian_level(
+        &self,
+        rhythm: &CircadianRhythm,
+        time_hours: f64,
+        baseline: f64,
+    ) -> f64 {
         let phase_shift = (time_hours - rhythm.peak_time_hours) * 2.0 * std::f64::consts::PI / 24.0;
         let cosine_component = phase_shift.cos();
         let amplitude = baseline * (rhythm.amplitude_fold_change - 1.0) / 2.0;
@@ -280,10 +290,8 @@ impl CircadianHormoneRegulation {
     }
 
     pub fn assess_circadian_disruption(&self) -> bool {
-        
-
-        (self.time_of_day_hours - self.cortisol_rhythm.peak_time_hours).abs() < 2.0 &&
-                                   self.cortisol_rhythm.current_level < 100.0
+        (self.time_of_day_hours - self.cortisol_rhythm.peak_time_hours).abs() < 2.0
+            && self.cortisol_rhythm.current_level < 100.0
     }
 }
 
@@ -333,7 +341,8 @@ mod tests {
     #[test]
     fn test_feedback_response() {
         let system = HormonalFeedbackSystem::new_adult();
-        let response = system.calculate_feedback_response(AxisType::HypothalamicPituitaryThyroid, 80.0);
+        let response =
+            system.calculate_feedback_response(AxisType::HypothalamicPituitaryThyroid, 80.0);
         assert!(response > 0.0);
     }
 }

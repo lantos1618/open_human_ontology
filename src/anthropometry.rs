@@ -210,9 +210,7 @@ impl BodyComposition {
                     (23.0..=35.0).contains(&bf_pct)
                 }
             }
-            BiologicalSex::Intersex => {
-                (14.0..=27.0).contains(&bf_pct)
-            }
+            BiologicalSex::Intersex => (14.0..=27.0).contains(&bf_pct),
         }
     }
 }
@@ -295,15 +293,9 @@ impl AnthropometricProfile {
         let frame = self.frame_size();
 
         let base_weight = match self.biological_sex {
-            BiologicalSex::Male => {
-                50.0 + 0.91 * (height_cm - 152.4)
-            }
-            BiologicalSex::Female => {
-                45.5 + 0.91 * (height_cm - 152.4)
-            }
-            BiologicalSex::Intersex => {
-                47.75 + 0.91 * (height_cm - 152.4)
-            }
+            BiologicalSex::Male => 50.0 + 0.91 * (height_cm - 152.4),
+            BiologicalSex::Female => 45.5 + 0.91 * (height_cm - 152.4),
+            BiologicalSex::Intersex => 47.75 + 0.91 * (height_cm - 152.4),
         };
 
         match frame {
@@ -325,15 +317,9 @@ impl AnthropometricProfile {
         let a = self.age as f64;
 
         match self.biological_sex {
-            BiologicalSex::Male => {
-                88.362 + (13.397 * w) + (4.799 * h) - (5.677 * a)
-            }
-            BiologicalSex::Female => {
-                447.593 + (9.247 * w) + (3.098 * h) - (4.330 * a)
-            }
-            BiologicalSex::Intersex => {
-                267.9775 + (11.322 * w) + (3.9485 * h) - (5.0035 * a)
-            }
+            BiologicalSex::Male => 88.362 + (13.397 * w) + (4.799 * h) - (5.677 * a),
+            BiologicalSex::Female => 447.593 + (9.247 * w) + (3.098 * h) - (4.330 * a),
+            BiologicalSex::Intersex => 267.9775 + (11.322 * w) + (3.9485 * h) - (5.0035 * a),
         }
     }
 
@@ -346,15 +332,22 @@ impl AnthropometricProfile {
         }
     }
 
-    pub fn has_metabolic_syndrome(&self, systolic_bp: f64, glucose: f64, triglycerides: f64, hdl: f64) -> bool {
+    pub fn has_metabolic_syndrome(
+        &self,
+        systolic_bp: f64,
+        glucose: f64,
+        triglycerides: f64,
+        hdl: f64,
+    ) -> bool {
         let mut criteria = 0;
 
-        if self.measurements.waist_circumference_cm >
-            match self.biological_sex {
+        if self.measurements.waist_circumference_cm
+            > match self.biological_sex {
                 BiologicalSex::Male => 102.0,
                 BiologicalSex::Female => 88.0,
                 BiologicalSex::Intersex => 95.0,
-            } {
+            }
+        {
             criteria += 1;
         }
 
@@ -370,11 +363,13 @@ impl AnthropometricProfile {
             criteria += 1;
         }
 
-        if hdl < match self.biological_sex {
-            BiologicalSex::Male => 40.0,
-            BiologicalSex::Female => 50.0,
-            BiologicalSex::Intersex => 45.0,
-        } {
+        if hdl
+            < match self.biological_sex {
+                BiologicalSex::Male => 40.0,
+                BiologicalSex::Female => 50.0,
+                BiologicalSex::Intersex => 45.0,
+            }
+        {
             criteria += 1;
         }
 
@@ -407,9 +402,8 @@ mod tests {
 
     #[test]
     fn test_bmi_calculation() {
-        let measurements = BodyMeasurements::new(
-            175.0, 70.0, 80.0, 95.0, 38.0, 95.0, 45.0, 75.0, 90.0, 56.0
-        );
+        let measurements =
+            BodyMeasurements::new(175.0, 70.0, 80.0, 95.0, 38.0, 95.0, 45.0, 75.0, 90.0, 56.0);
 
         let bmi = measurements.bmi();
         assert!((bmi - 22.86).abs() < 0.1);
@@ -418,9 +412,8 @@ mod tests {
 
     #[test]
     fn test_waist_to_hip_ratio() {
-        let measurements = BodyMeasurements::new(
-            170.0, 65.0, 75.0, 95.0, 35.0, 90.0, 42.0, 72.0, 88.0, 55.0
-        );
+        let measurements =
+            BodyMeasurements::new(170.0, 65.0, 75.0, 95.0, 35.0, 90.0, 42.0, 72.0, 88.0, 55.0);
 
         let whr = measurements.waist_to_hip_ratio();
         assert!((whr - 0.789).abs() < 0.01);
@@ -437,7 +430,7 @@ mod tests {
     #[test]
     fn test_metabolic_risk() {
         let measurements = BodyMeasurements::new(
-            175.0, 90.0, 105.0, 100.0, 42.0, 110.0, 48.0, 75.0, 90.0, 58.0
+            175.0, 90.0, 105.0, 100.0, 42.0, 110.0, 48.0, 75.0, 90.0, 58.0,
         );
 
         assert_eq!(
@@ -448,9 +441,8 @@ mod tests {
 
     #[test]
     fn test_basal_metabolic_rate() {
-        let measurements = BodyMeasurements::new(
-            175.0, 70.0, 80.0, 95.0, 38.0, 95.0, 45.0, 75.0, 90.0, 56.0
-        );
+        let measurements =
+            BodyMeasurements::new(175.0, 70.0, 80.0, 95.0, 38.0, 95.0, 45.0, 75.0, 90.0, 56.0);
         let composition = BodyComposition::new(55.0, 12.0, 3.0, 62.0);
 
         let profile = AnthropometricProfile::new(
@@ -467,9 +459,8 @@ mod tests {
 
     #[test]
     fn test_surface_area() {
-        let measurements = BodyMeasurements::new(
-            170.0, 70.0, 80.0, 95.0, 38.0, 95.0, 45.0, 75.0, 88.0, 56.0
-        );
+        let measurements =
+            BodyMeasurements::new(170.0, 70.0, 80.0, 95.0, 38.0, 95.0, 45.0, 75.0, 88.0, 56.0);
         let composition = BodyComposition::new(55.0, 12.0, 3.0, 62.0);
 
         let profile = AnthropometricProfile::new(

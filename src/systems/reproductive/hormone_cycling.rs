@@ -162,9 +162,7 @@ impl MenstrualCycle {
                 CycleSymptom::BackPain,
             ],
             CyclePhase::Follicular => vec![],
-            CyclePhase::Ovulatory => vec![
-                CycleSymptom::BreastTenderness,
-            ],
+            CyclePhase::Ovulatory => vec![CycleSymptom::BreastTenderness],
             CyclePhase::Luteal => vec![
                 CycleSymptom::Bloating,
                 CycleSymptom::BreastTenderness,
@@ -334,7 +332,11 @@ impl FertilityProfile {
     }
 
     pub fn recommend_fertility_preservation(&self) -> bool {
-        self.age_years >= 35.0 || matches!(self.ovarian_reserve.reserve_status, ReserveStatus::Diminished | ReserveStatus::VeryLow)
+        self.age_years >= 35.0
+            || matches!(
+                self.ovarian_reserve.reserve_status,
+                ReserveStatus::Diminished | ReserveStatus::VeryLow
+            )
     }
 }
 
@@ -397,7 +399,10 @@ mod tests {
     fn test_fertility_profile_young() {
         let profile = FertilityProfile::new(25.0);
         assert!(profile.conception_probability_per_cycle > 0.2);
-        assert_eq!(profile.ovarian_reserve.reserve_status, ReserveStatus::Excellent);
+        assert_eq!(
+            profile.ovarian_reserve.reserve_status,
+            ReserveStatus::Excellent
+        );
     }
 
     #[test]

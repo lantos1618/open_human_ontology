@@ -10,11 +10,35 @@ pub struct MitochondrialDNA {
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum MtDNAHaplogroup {
-    L0, L1, L2, L3, L4, L5, L6,
-    M, N,
-    A, B, C, D, E, F, G,
-    H, HV, I, J, K, T, U, V, W, X,
-    R, P, Q,
+    L0,
+    L1,
+    L2,
+    L3,
+    L4,
+    L5,
+    L6,
+    M,
+    N,
+    A,
+    B,
+    C,
+    D,
+    E,
+    F,
+    G,
+    H,
+    HV,
+    I,
+    J,
+    K,
+    T,
+    U,
+    V,
+    W,
+    X,
+    R,
+    P,
+    Q,
     Other(String),
 }
 
@@ -82,9 +106,11 @@ impl MitochondrialDNA {
         if self.variants.is_empty() {
             return 0.0;
         }
-        self.variants.iter()
+        self.variants
+            .iter()
             .map(|v| v.heteroplasmy_level)
-            .sum::<f64>() / self.variants.len() as f64
+            .sum::<f64>()
+            / self.variants.len() as f64
     }
 
     pub fn assess_disease_risk(&self) -> HashMap<MitochondrialDisease, f64> {
@@ -129,8 +155,8 @@ impl MitochondrialFunction {
     }
 
     pub fn assess_dysfunction(&self) -> bool {
-        self.oxidative_phosphorylation_efficiency < 0.5 ||
-        self.reactive_oxygen_species_production > 0.1
+        self.oxidative_phosphorylation_efficiency < 0.5
+            || self.reactive_oxygen_species_production > 0.1
     }
 
     pub fn aging_impact(&mut self, years: f64) {

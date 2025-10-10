@@ -207,16 +207,19 @@ impl ClusterHeadache {
     }
 
     pub fn meets_diagnostic_criteria(&self) -> bool {
-        self.attacks_per_day >= 1.0 &&
-        self.duration_minutes >= 15.0 &&
-        self.duration_minutes <= 180.0 &&
-        !self.autonomic_symptoms.is_empty()
+        self.attacks_per_day >= 1.0
+            && self.duration_minutes >= 15.0
+            && self.duration_minutes <= 180.0
+            && !self.autonomic_symptoms.is_empty()
     }
 
     pub fn known_genetic_variants() -> Vec<(&'static str, &'static str)> {
         vec![
             ("HCRTR2", "Hypocretin receptor 2 - circadian rhythm"),
-            ("ADH4", "Alcohol dehydrogenase - alcohol trigger sensitivity"),
+            (
+                "ADH4",
+                "Alcohol dehydrogenase - alcohol trigger sensitivity",
+            ),
             ("CLOCK", "Circadian clock gene"),
             ("PER3", "Period circadian regulator"),
             ("MTHFR", "Associated with cluster headache risk"),
@@ -299,14 +302,17 @@ impl HeadacheProfile {
         for (gene, variant) in &self.genetic_testing {
             match gene.as_str() {
                 "CACNA1A" | "ATP1A2" | "SCN1A" => {
-                    risks.push(format!("Familial hemiplegic migraine risk: {} {}", gene, variant));
-                },
+                    risks.push(format!(
+                        "Familial hemiplegic migraine risk: {} {}",
+                        gene, variant
+                    ));
+                }
                 "MTHFR" if variant.contains("C677T") => {
                     risks.push("Increased migraine with aura risk".to_string());
-                },
+                }
                 "HCRTR2" => {
                     risks.push("Cluster headache circadian pattern risk".to_string());
-                },
+                }
                 _ => {}
             }
         }
@@ -373,7 +379,9 @@ mod tests {
     #[test]
     fn test_cluster_diagnostic_criteria() {
         let mut cluster = ClusterHeadache::new();
-        cluster.autonomic_symptoms.push(AutonomicSymptom::Lacrimation);
+        cluster
+            .autonomic_symptoms
+            .push(AutonomicSymptom::Lacrimation);
         cluster.duration_minutes = 60.0;
         assert!(cluster.meets_diagnostic_criteria());
     }
@@ -413,8 +421,12 @@ mod tests {
     #[test]
     fn test_genetic_risk_assessment() {
         let mut profile = HeadacheProfile::new();
-        profile.genetic_testing.insert("CACNA1A".to_string(), "mutation".to_string());
-        profile.genetic_testing.insert("MTHFR".to_string(), "C677T".to_string());
+        profile
+            .genetic_testing
+            .insert("CACNA1A".to_string(), "mutation".to_string());
+        profile
+            .genetic_testing
+            .insert("MTHFR".to_string(), "C677T".to_string());
 
         let risks = profile.genetic_risk_assessment();
         assert_eq!(risks.len(), 2);

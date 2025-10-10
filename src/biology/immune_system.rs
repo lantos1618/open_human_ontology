@@ -172,8 +172,19 @@ impl ImmuneSystem {
 
     pub fn infection_resistance_score(&self) -> f64 {
         let neutrophil_score = (self.immune_cell_counts.neutrophil_percent / 70.0).min(1.0);
-        let nk_score = (self.innate_immunity.natural_killer_cells.cytotoxic_activity_percent / 100.0).min(1.0);
-        let antibody_score = (self.adaptive_immunity.b_cell_immunity.immunoglobulin_levels.igg_mg_dl / 1000.0).min(1.0);
+        let nk_score = (self
+            .innate_immunity
+            .natural_killer_cells
+            .cytotoxic_activity_percent
+            / 100.0)
+            .min(1.0);
+        let antibody_score = (self
+            .adaptive_immunity
+            .b_cell_immunity
+            .immunoglobulin_levels
+            .igg_mg_dl
+            / 1000.0)
+            .min(1.0);
 
         (neutrophil_score + nk_score + antibody_score) / 3.0 * 100.0
     }
@@ -229,7 +240,8 @@ impl InnateImmunity {
             + self.physical_barriers.ciliary_clearance)
             / 3.0;
         let complement_score = (self.complement_system.ch50_activity / 100.0).min(1.0);
-        let phagocyte_score = (self.phagocytes.phagocytic_index + self.phagocytes.oxidative_burst_capacity) / 2.0;
+        let phagocyte_score =
+            (self.phagocytes.phagocytic_index + self.phagocytes.oxidative_burst_capacity) / 2.0;
         let nk_score = (self.natural_killer_cells.cytotoxic_activity_percent / 100.0).min(1.0);
 
         (barrier_score + complement_score + phagocyte_score + nk_score) / 4.0 * 100.0
@@ -276,7 +288,9 @@ impl AdaptiveImmunity {
     }
 
     pub fn calculate_score(&self) -> f64 {
-        let t_cell_score = if self.t_cell_immunity.cd4_cd8_ratio > 0.9 && self.t_cell_immunity.cd4_cd8_ratio < 3.0 {
+        let t_cell_score = if self.t_cell_immunity.cd4_cd8_ratio > 0.9
+            && self.t_cell_immunity.cd4_cd8_ratio < 3.0
+        {
             1.0
         } else {
             0.5
@@ -301,7 +315,9 @@ impl ImmuneCellCounts {
     }
 
     pub fn calculate_score(&self) -> f64 {
-        let wbc_score = if self.white_blood_cells_per_ul >= 4000.0 && self.white_blood_cells_per_ul <= 11000.0 {
+        let wbc_score = if self.white_blood_cells_per_ul >= 4000.0
+            && self.white_blood_cells_per_ul <= 11000.0
+        {
             1.0
         } else {
             0.5
@@ -377,7 +393,10 @@ mod tests {
     fn test_immunocompromised() {
         let mut immune = ImmuneSystem::new();
         immune.immune_cell_counts.white_blood_cells_per_ul = 2000.0;
-        assert_eq!(immune.assess_immune_status(), ImmuneStatus::Immunocompromised);
+        assert_eq!(
+            immune.assess_immune_status(),
+            ImmuneStatus::Immunocompromised
+        );
     }
 
     #[test]

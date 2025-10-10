@@ -268,10 +268,7 @@ impl LipidMetabolism {
         Self {
             fatty_acid_oxidation_rate: 1.0,
             cholesterol_synthesis_mg_per_day: 800.0,
-            lipoprotein_production: vec![
-                "VLDL".to_string(),
-                "HDL".to_string(),
-            ],
+            lipoprotein_production: vec!["VLDL".to_string(), "HDL".to_string()],
         }
     }
 }

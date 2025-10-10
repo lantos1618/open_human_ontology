@@ -318,7 +318,7 @@ mod tests {
     fn test_rare_disease_profile() {
         let mut profile = RareDiseaseProfile::new();
         profile.add_confirmed_diagnosis(RareDisease::LysosomalStorage(
-            LysosomalStorageDisorder::GaucherDisease
+            LysosomalStorageDisorder::GaucherDisease,
         ));
 
         assert!(profile.has_treatable_condition());
@@ -362,7 +362,7 @@ mod tests {
     fn test_orphan_drug() {
         let drug = OrphanDrugTherapy::new(
             "Imiglucerase".to_string(),
-            RareDisease::LysosomalStorage(LysosomalStorageDisorder::GaucherDisease)
+            RareDisease::LysosomalStorage(LysosomalStorageDisorder::GaucherDisease),
         );
 
         assert_eq!(drug.drug_name, "Imiglucerase");
@@ -386,6 +386,9 @@ mod tests {
             pathogenicity: Pathogenicity::Pathogenic,
         };
 
-        assert!(matches!(variant.pathogenicity, Pathogenicity::Pathogenic | Pathogenicity::LikelyPathogenic));
+        assert!(matches!(
+            variant.pathogenicity,
+            Pathogenicity::Pathogenic | Pathogenicity::LikelyPathogenic
+        ));
     }
 }

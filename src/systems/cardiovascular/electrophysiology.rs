@@ -329,7 +329,10 @@ impl ConductionSystem {
             (self.sa_node, self.sa_node.intrinsic_rate_bpm()),
             (self.av_node, self.av_node.intrinsic_rate_bpm()),
             (self.bundle_of_his, self.bundle_of_his.intrinsic_rate_bpm()),
-            (self.purkinje_fibers, self.purkinje_fibers.intrinsic_rate_bpm()),
+            (
+                self.purkinje_fibers,
+                self.purkinje_fibers.intrinsic_rate_bpm(),
+            ),
         ]
     }
 }
@@ -374,7 +377,16 @@ impl Arrhythmia {
         }
     }
 
-    pub fn stroke_risk_chadsvasc(&self, age: u32, has_htn: bool, has_dm: bool, has_chf: bool, has_stroke_hx: bool, has_vascular_disease: bool, is_female: bool) -> u32 {
+    pub fn stroke_risk_chadsvasc(
+        &self,
+        age: u32,
+        has_htn: bool,
+        has_dm: bool,
+        has_chf: bool,
+        has_stroke_hx: bool,
+        has_vascular_disease: bool,
+        is_female: bool,
+    ) -> u32 {
         if self.rhythm_type != CardiacRhythm::AtrialFibrillation {
             return 0;
         }

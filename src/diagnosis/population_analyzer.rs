@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
-use crate::human::Human;
 use crate::biology::genetics::Ancestry;
+use crate::human::Human;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PopulationAnalyzer {
@@ -114,10 +114,11 @@ impl PopulationAnalyzer {
     }
 
     fn calculate_ancestry_distribution(&self) -> Vec<(Ancestry, f64)> {
-        let mut ancestry_counts: std::collections::HashMap<Ancestry, f64> = std::collections::HashMap::new();
+        let mut ancestry_counts: std::collections::HashMap<Ancestry, f64> =
+            std::collections::HashMap::new();
 
         for individual in &self.individuals {
-            for (ancestry, percentage) in individual.genetics.ancestry.components(){
+            for (ancestry, percentage) in individual.genetics.ancestry.components() {
                 *ancestry_counts.entry(*ancestry).or_insert(0.0) += percentage;
             }
         }
@@ -143,7 +144,8 @@ impl PopulationAnalyzer {
     }
 
     fn calculate_disease_prevalence(&self) -> Vec<DiseasePrevalence> {
-        let mut condition_counts: std::collections::HashMap<String, usize> = std::collections::HashMap::new();
+        let mut condition_counts: std::collections::HashMap<String, usize> =
+            std::collections::HashMap::new();
 
         for individual in &self.individuals {
             for condition in &individual.health_conditions.active_conditions {
@@ -172,7 +174,8 @@ impl PopulationAnalyzer {
     }
 
     fn calculate_genetic_risks(&self) -> GeneticRiskSummary {
-        let mut carrier_counts: std::collections::HashMap<String, usize> = std::collections::HashMap::new();
+        let mut carrier_counts: std::collections::HashMap<String, usize> =
+            std::collections::HashMap::new();
 
         for individual in &self.individuals {
             for carrier in &individual.genetics.carrier_status {
@@ -204,7 +207,8 @@ impl PopulationAnalyzer {
 
     pub fn ancestry_specific_analysis(&self, ancestry: Ancestry) -> AncestryHealthProfile {
         let mut count = 0;
-        let mut conditions: std::collections::HashMap<String, usize> = std::collections::HashMap::new();
+        let mut conditions: std::collections::HashMap<String, usize> =
+            std::collections::HashMap::new();
 
         for individual in &self.individuals {
             if individual
@@ -292,9 +296,21 @@ impl PopulationAnalyzer {
                 .genetics
                 .phenotype
                 .pharmacological_traits
-                .warfarin_sensitivity == crate::biology::genetics::WarfarinSensitivity::High { warfarin_sensitive += 1 }
+                .warfarin_sensitivity
+                == crate::biology::genetics::WarfarinSensitivity::High
+            {
+                warfarin_sensitive += 1
+            }
 
-            if individual.genetics.phenotype.metabolic_traits.caffeine_metabolism == crate::biology::genetics::CaffeineMetabolism::Slow { slow_caffeine += 1 }
+            if individual
+                .genetics
+                .phenotype
+                .metabolic_traits
+                .caffeine_metabolism
+                == crate::biology::genetics::CaffeineMetabolism::Slow
+            {
+                slow_caffeine += 1
+            }
 
             if individual
                 .genetics
@@ -306,7 +322,12 @@ impl PopulationAnalyzer {
                 alcohol_flush += 1;
             }
 
-            match individual.genetics.phenotype.pharmacological_traits.opioid_metabolism {
+            match individual
+                .genetics
+                .phenotype
+                .pharmacological_traits
+                .opioid_metabolism
+            {
                 crate::biology::genetics::OpioidMetabolism::UltraRapid
                 | crate::biology::genetics::OpioidMetabolism::Poor => {
                     opioid_risk += 1;
@@ -411,9 +432,7 @@ impl Ancestry {
                 "Hemoglobinopathy screening".to_string(),
                 "Familial Mediterranean fever screening".to_string(),
             ],
-            _ => vec![
-                "Standard health screenings".to_string(),
-            ],
+            _ => vec!["Standard health screenings".to_string()],
         }
     }
 }

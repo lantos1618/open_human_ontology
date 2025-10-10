@@ -1,5 +1,5 @@
-use crate::biology::{BiologyError, BiologyResult};
 use crate::biology::cellular::Cell;
+use crate::biology::{BiologyError, BiologyResult};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
@@ -78,11 +78,7 @@ impl Tissue {
             return 0.0;
         }
 
-        let healthy_cells = self
-            .cells
-            .iter()
-            .filter(|c| c.is_healthy())
-            .count();
+        let healthy_cells = self.cells.iter().filter(|c| c.is_healthy()).count();
 
         healthy_cells as f64 / self.cells.len() as f64
     }
@@ -105,11 +101,9 @@ impl Tissue {
                 self.state = TissueState::Regenerating;
                 Ok(())
             }
-            TissueState::Necrotic => {
-                Err(BiologyError::InvalidState(
-                    "Cannot regenerate necrotic tissue".to_string()
-                ))
-            }
+            TissueState::Necrotic => Err(BiologyError::InvalidState(
+                "Cannot regenerate necrotic tissue".to_string(),
+            )),
             _ => Ok(()),
         }
     }

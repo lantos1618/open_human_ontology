@@ -298,7 +298,9 @@ impl SleepQuality {
             (self.subjective_quality + self.restfulness + self.morning_alertness) / 3.0;
         let negative_factors = self.daytime_sleepiness;
 
-        (positive_factors * 10.0 - negative_factors * 5.0).max(0.0).min(10.0)
+        (positive_factors * 10.0 - negative_factors * 5.0)
+            .max(0.0)
+            .min(10.0)
     }
 }
 
@@ -342,8 +344,10 @@ impl SleepHygiene {
             score += 2.0;
         }
 
-        if matches!(self.alcohol_consumption, AlcoholConsumption::None | AlcoholConsumption::Light)
-        {
+        if matches!(
+            self.alcohol_consumption,
+            AlcoholConsumption::None | AlcoholConsumption::Light
+        ) {
             score += 1.0;
         }
 

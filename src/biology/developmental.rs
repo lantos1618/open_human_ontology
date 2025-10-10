@@ -179,13 +179,25 @@ impl GrowthMetrics {
     pub fn calculate_percentile(&self, reference: &str) -> f64 {
         match reference {
             "height" => {
-                if self.height_cm > 170.0 { 0.75 } else { 0.5 }
+                if self.height_cm > 170.0 {
+                    0.75
+                } else {
+                    0.5
+                }
             }
             "weight" => {
-                if self.weight_kg > 70.0 { 0.75 } else { 0.5 }
+                if self.weight_kg > 70.0 {
+                    0.75
+                } else {
+                    0.5
+                }
             }
             "bmi" => {
-                if self.bmi > 25.0 { 0.75 } else { 0.5 }
+                if self.bmi > 25.0 {
+                    0.75
+                } else {
+                    0.5
+                }
             }
             _ => 0.5,
         }
@@ -236,7 +248,8 @@ impl BoneDevelopment {
     }
 
     pub fn growth_potential(&self) -> bool {
-        self.growth_plates_status.values()
+        self.growth_plates_status
+            .values()
             .any(|status| matches!(status, GrowthPlateStatus::Open))
     }
 }
@@ -313,7 +326,10 @@ mod tests {
     fn test_neurodevelopment() {
         let neuro = NeurodevelopmentalProfile::new(5.0);
         assert!(neuro.brain_volume_ml > 1000.0);
-        assert!(matches!(neuro.myelination_status, MyelinationStatus::NearComplete));
+        assert!(matches!(
+            neuro.myelination_status,
+            MyelinationStatus::NearComplete
+        ));
         assert!(neuro.is_age_appropriate());
     }
 }

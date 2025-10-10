@@ -203,7 +203,8 @@ impl SignalingCascade {
     }
 
     pub fn activated_transcription_factors(&self) -> Vec<&TranscriptionFactor> {
-        self.transcription_factors.iter()
+        self.transcription_factors
+            .iter()
             .filter(|tf| tf.activation_state)
             .collect()
     }

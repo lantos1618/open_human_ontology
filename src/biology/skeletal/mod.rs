@@ -1,16 +1,19 @@
-pub mod bone;
-pub mod joint;
-pub mod bone_remodeling;
 pub mod biomechanics;
-pub mod skeleton;
+pub mod bone;
 pub mod bone_health;
+pub mod bone_remodeling;
+pub mod joint;
+pub mod skeleton;
 
-pub use bone::{Bone, BoneType, BoneStructure};
-pub use joint::{Joint, JointType, JointMovement};
-pub use bone_remodeling::{BoneRemodeling, RemodelingPhase};
-pub use biomechanics::{MusculoskeletalBiomechanics, GaitAnalysis, Kinematics, Kinetics};
-pub use skeleton::{
-    Skeleton, AxialSkeleton, AppendicularSkeleton, SkullBones, VertebralColumn,
-    RibCage, UpperLimbs, LowerLimbs, UpperLimb, LowerLimb, PectoralGirdles, PelvicGirdle
+pub use biomechanics::{GaitAnalysis, Kinematics, Kinetics, MusculoskeletalBiomechanics};
+pub use bone::{Bone, BoneStructure, BoneType};
+pub use bone_health::{
+    BoneDensity, BoneHealthProfile, BoneMarkers, CalciumBalance, FractureRiskAssessment,
+    VitaminDStatus,
 };
-pub use bone_health::{BoneHealthProfile, BoneDensity, FractureRiskAssessment, BoneMarkers, VitaminDStatus, CalciumBalance};
+pub use bone_remodeling::{BoneRemodeling, RemodelingPhase};
+pub use joint::{Joint, JointMovement, JointType};
+pub use skeleton::{
+    AppendicularSkeleton, AxialSkeleton, LowerLimb, LowerLimbs, PectoralGirdles, PelvicGirdle,
+    RibCage, Skeleton, SkullBones, UpperLimb, UpperLimbs, VertebralColumn,
+};

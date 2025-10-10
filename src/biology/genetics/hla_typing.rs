@@ -219,7 +219,9 @@ pub fn get_hla_disease_associations() -> Vec<HLADiseaseAssociation> {
             disease: "Ankylosing Spondylitis".to_string(),
             relative_risk: 90.0,
             population_frequency: 0.08,
-            description: "HLA-B27: strongly associated with ankylosing spondylitis and reactive arthritis".to_string(),
+            description:
+                "HLA-B27: strongly associated with ankylosing spondylitis and reactive arthritis"
+                    .to_string(),
         },
         HLADiseaseAssociation {
             allele: HLAAllele::new(HLAGene::HLADRB1, "DRB1*15:01".to_string()),
@@ -247,14 +249,16 @@ pub fn get_hla_disease_associations() -> Vec<HLADiseaseAssociation> {
             disease: "Celiac Disease".to_string(),
             relative_risk: 7.0,
             population_frequency: 0.30,
-            description: "HLA-DQ2.5 or DQ8: required for celiac disease (98% of patients)".to_string(),
+            description: "HLA-DQ2.5 or DQ8: required for celiac disease (98% of patients)"
+                .to_string(),
         },
         HLADiseaseAssociation {
             allele: HLAAllele::new(HLAGene::HLAB, "B57:01".to_string()),
             disease: "HIV Slow Progression".to_string(),
             relative_risk: 0.3,
             population_frequency: 0.05,
-            description: "HLA-B*57:01: protective against HIV progression (elite controllers)".to_string(),
+            description: "HLA-B*57:01: protective against HIV progression (elite controllers)"
+                .to_string(),
         },
         HLADiseaseAssociation {
             allele: HLAAllele::new(HLAGene::HLAB, "B51".to_string()),
@@ -268,7 +272,8 @@ pub fn get_hla_disease_associations() -> Vec<HLADiseaseAssociation> {
             disease: "Psoriasis".to_string(),
             relative_risk: 9.0,
             population_frequency: 0.07,
-            description: "HLA-Cw6: strongest genetic risk factor for psoriasis vulgaris".to_string(),
+            description: "HLA-Cw6: strongest genetic risk factor for psoriasis vulgaris"
+                .to_string(),
         },
     ]
 }
@@ -280,28 +285,33 @@ pub fn get_hla_drug_hypersensitivities() -> Vec<DrugHypersensitivityRisk> {
             drug: "Abacavir".to_string(),
             risk_level: RiskLevel::VeryHigh,
             reaction_type: "Severe hypersensitivity reaction".to_string(),
-            recommendation: "Screening mandatory before abacavir use, absolute contraindication if positive".to_string(),
+            recommendation:
+                "Screening mandatory before abacavir use, absolute contraindication if positive"
+                    .to_string(),
         },
         DrugHypersensitivityRisk {
             allele: HLAAllele::new(HLAGene::HLAB, "B15:02".to_string()),
             drug: "Carbamazepine".to_string(),
             risk_level: RiskLevel::VeryHigh,
             reaction_type: "Stevens-Johnson syndrome / TEN".to_string(),
-            recommendation: "Screen in Asian populations before carbamazepine, avoid if positive".to_string(),
+            recommendation: "Screen in Asian populations before carbamazepine, avoid if positive"
+                .to_string(),
         },
         DrugHypersensitivityRisk {
             allele: HLAAllele::new(HLAGene::HLAA, "A31:01".to_string()),
             drug: "Carbamazepine".to_string(),
             risk_level: RiskLevel::High,
             reaction_type: "Drug hypersensitivity".to_string(),
-            recommendation: "Screening recommended, especially in Europeans and Japanese".to_string(),
+            recommendation: "Screening recommended, especially in Europeans and Japanese"
+                .to_string(),
         },
         DrugHypersensitivityRisk {
             allele: HLAAllele::new(HLAGene::HLAB, "B58:01".to_string()),
             drug: "Allopurinol".to_string(),
             risk_level: RiskLevel::VeryHigh,
             reaction_type: "Severe cutaneous adverse reactions".to_string(),
-            recommendation: "Screen in Han Chinese, Thai, and Korean populations before allopurinol".to_string(),
+            recommendation:
+                "Screen in Han Chinese, Thai, and Korean populations before allopurinol".to_string(),
         },
         DrugHypersensitivityRisk {
             allele: HLAAllele::new(HLAGene::HLAB, "B57:01".to_string()),
@@ -401,7 +411,9 @@ mod tests {
         let profile = HLAProfile::new(hla_type);
         let risks = profile.autoimmune_disease_risks();
 
-        assert!(risks.iter().any(|r| r.contains("Celiac") || r.contains("Diabetes")));
+        assert!(risks
+            .iter()
+            .any(|r| r.contains("Celiac") || r.contains("Diabetes")));
     }
 
     #[test]

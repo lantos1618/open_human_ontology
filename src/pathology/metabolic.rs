@@ -195,16 +195,28 @@ impl MetabolicSyndromeAssessment {
             criteria.push("Elevated waist circumference".to_string());
         }
         if self.triglycerides_mg_dl >= 150.0 {
-            criteria.push(format!("Elevated triglycerides: {} mg/dL", self.triglycerides_mg_dl));
+            criteria.push(format!(
+                "Elevated triglycerides: {} mg/dL",
+                self.triglycerides_mg_dl
+            ));
         }
         if self.meets_hdl_criterion() {
-            criteria.push(format!("Low HDL cholesterol: {} mg/dL", self.hdl_cholesterol_mg_dl));
+            criteria.push(format!(
+                "Low HDL cholesterol: {} mg/dL",
+                self.hdl_cholesterol_mg_dl
+            ));
         }
         if self.systolic_bp_mmhg >= 130.0 || self.diastolic_bp_mmhg >= 85.0 {
-            criteria.push(format!("Elevated blood pressure: {}/{} mmHg", self.systolic_bp_mmhg, self.diastolic_bp_mmhg));
+            criteria.push(format!(
+                "Elevated blood pressure: {}/{} mmHg",
+                self.systolic_bp_mmhg, self.diastolic_bp_mmhg
+            ));
         }
         if self.fasting_glucose_mg_dl >= 100.0 {
-            criteria.push(format!("Elevated fasting glucose: {} mg/dL", self.fasting_glucose_mg_dl));
+            criteria.push(format!(
+                "Elevated fasting glucose: {} mg/dL",
+                self.fasting_glucose_mg_dl
+            ));
         }
 
         criteria
@@ -275,7 +287,11 @@ impl ThyroidProfile {
     }
 
     pub fn has_graves_disease(&self) -> bool {
-        self.thyroid_antibodies.tsi && matches!(self.thyroid_status(), ThyroidStatus::OvertHyperthyroidism | ThyroidStatus::SubclinicalHyperthyroidism)
+        self.thyroid_antibodies.tsi
+            && matches!(
+                self.thyroid_status(),
+                ThyroidStatus::OvertHyperthyroidism | ThyroidStatus::SubclinicalHyperthyroidism
+            )
     }
 }
 
@@ -327,7 +343,10 @@ impl LipidPanel {
     }
 
     pub fn risk_category(&self) -> LipidRiskCategory {
-        if self.ldl_cholesterol_mg_dl < 100.0 && self.hdl_cholesterol_mg_dl >= 60.0 && self.triglycerides_mg_dl < 150.0 {
+        if self.ldl_cholesterol_mg_dl < 100.0
+            && self.hdl_cholesterol_mg_dl >= 60.0
+            && self.triglycerides_mg_dl < 150.0
+        {
             LipidRiskCategory::Optimal
         } else if self.ldl_cholesterol_mg_dl < 130.0 && self.triglycerides_mg_dl < 150.0 {
             LipidRiskCategory::NearOptimal
@@ -340,7 +359,12 @@ impl LipidPanel {
         }
     }
 
-    pub fn requires_statin_therapy(&self, has_cardiovascular_disease: bool, diabetes: bool, age: f64) -> bool {
+    pub fn requires_statin_therapy(
+        &self,
+        has_cardiovascular_disease: bool,
+        diabetes: bool,
+        age: f64,
+    ) -> bool {
         if has_cardiovascular_disease {
             return true;
         }

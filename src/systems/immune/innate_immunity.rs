@@ -301,8 +301,11 @@ impl NeutrophilPopulation {
     }
 
     pub fn functional_capacity(&self) -> f64 {
-        (self.phagocytic_capacity + self.oxidative_burst_capacity +
-         self.net_formation_capacity + self.chemotaxis_efficiency) / 4.0
+        (self.phagocytic_capacity
+            + self.oxidative_burst_capacity
+            + self.net_formation_capacity
+            + self.chemotaxis_efficiency)
+            / 4.0
     }
 }
 
@@ -458,9 +461,10 @@ impl InflammatoryResponse {
     }
 
     pub fn determine_inflammatory_state(&mut self) {
-        let pro_score = (self.pro_inflammatory_cytokines.tnf_alpha_pg_ml / 10.0 +
-                        self.pro_inflammatory_cytokines.il_6_pg_ml / 10.0 +
-                        self.acute_phase_proteins.c_reactive_protein_mg_l) / 3.0;
+        let pro_score = (self.pro_inflammatory_cytokines.tnf_alpha_pg_ml / 10.0
+            + self.pro_inflammatory_cytokines.il_6_pg_ml / 10.0
+            + self.acute_phase_proteins.c_reactive_protein_mg_l)
+            / 3.0;
 
         self.inflammatory_state = if pro_score < 2.0 {
             InflammatoryState::Normal
@@ -476,10 +480,10 @@ impl InflammatoryResponse {
     }
 
     pub fn pro_anti_inflammatory_balance(&self) -> f64 {
-        let pro_total = self.pro_inflammatory_cytokines.tnf_alpha_pg_ml +
-                       self.pro_inflammatory_cytokines.il_6_pg_ml;
-        let anti_total = self.anti_inflammatory_cytokines.il_10_pg_ml +
-                        self.anti_inflammatory_cytokines.il_4_pg_ml;
+        let pro_total = self.pro_inflammatory_cytokines.tnf_alpha_pg_ml
+            + self.pro_inflammatory_cytokines.il_6_pg_ml;
+        let anti_total = self.anti_inflammatory_cytokines.il_10_pg_ml
+            + self.anti_inflammatory_cytokines.il_4_pg_ml;
 
         if anti_total > 0.0 {
             pro_total / anti_total

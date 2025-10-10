@@ -81,7 +81,9 @@ impl BloodType {
     }
 
     pub fn can_receive_from(&self, donor: &BloodType) -> bool {
-        self.abo_compatible(donor) && self.rh_compatible(donor) && self.minor_antigens_compatible(donor)
+        self.abo_compatible(donor)
+            && self.rh_compatible(donor)
+            && self.minor_antigens_compatible(donor)
     }
 
     pub fn can_donate_to(&self, recipient: &BloodType) -> bool {
@@ -235,7 +237,11 @@ impl BloodBankInventory {
         self.units.push(unit);
     }
 
-    pub fn find_compatible_units(&self, recipient: &BloodType, product_type: BloodProductType) -> Vec<&BloodUnit> {
+    pub fn find_compatible_units(
+        &self,
+        recipient: &BloodType,
+        product_type: BloodProductType,
+    ) -> Vec<&BloodUnit> {
         self.units
             .iter()
             .filter(|unit| {
@@ -349,7 +355,8 @@ mod tests {
         });
 
         let recipient = BloodType::new(ABOType::A, RhFactor::Positive);
-        let compatible = inventory.find_compatible_units(&recipient, BloodProductType::PackedRedBloodCells);
+        let compatible =
+            inventory.find_compatible_units(&recipient, BloodProductType::PackedRedBloodCells);
 
         assert_eq!(compatible.len(), 1);
     }

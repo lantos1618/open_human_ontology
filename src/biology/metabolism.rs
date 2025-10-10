@@ -98,7 +98,8 @@ impl MetabolicRate {
     }
 
     pub fn adjust_for_activity(&mut self, activity_factor: f64) {
-        self.total_daily_energy_expenditure_kcal = self.basal_metabolic_rate_kcal_day * activity_factor;
+        self.total_daily_energy_expenditure_kcal =
+            self.basal_metabolic_rate_kcal_day * activity_factor;
     }
 
     pub fn calculate_rq_from_substrate(&mut self, carb_percent: f64, fat_percent: f64) {
@@ -220,7 +221,8 @@ impl ProteinMetabolism {
     }
 
     pub fn calculate_nitrogen_balance(&mut self) {
-        self.nitrogen_balance_g_day = (self.protein_synthesis_rate_g_day - self.protein_breakdown_rate_g_day) * 0.16;
+        self.nitrogen_balance_g_day =
+            (self.protein_synthesis_rate_g_day - self.protein_breakdown_rate_g_day) * 0.16;
     }
 }
 

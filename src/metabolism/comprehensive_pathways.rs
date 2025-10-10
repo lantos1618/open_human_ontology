@@ -173,7 +173,7 @@ impl ComprehensiveMetabolicNetwork {
     pub fn calculate_metabolic_flexibility(&self) -> MetabolicFlexibility {
         let glucose_reliance = self.carbohydrate_metabolism.glycolysis_rate
             / (self.carbohydrate_metabolism.glycolysis_rate
-               + self.lipid_metabolism.fatty_acid_oxidation_rate);
+                + self.lipid_metabolism.fatty_acid_oxidation_rate);
 
         let fat_oxidation_capacity = self.lipid_metabolism.fatty_acid_oxidation_rate / 100.0;
 
@@ -188,11 +188,11 @@ impl ComprehensiveMetabolicNetwork {
     }
 
     pub fn assess_metabolic_health(&self) -> MetabolicHealthAssessment {
-        let energy_balance = self.energy_coupling.atp_production_rate
-            - self.energy_coupling.atp_consumption_rate;
+        let energy_balance =
+            self.energy_coupling.atp_production_rate - self.energy_coupling.atp_consumption_rate;
 
-        let redox_balance = (self.energy_coupling.nadh_nad_ratio
-                            + self.energy_coupling.nadph_nadp_ratio) / 2.0;
+        let redox_balance =
+            (self.energy_coupling.nadh_nad_ratio + self.energy_coupling.nadph_nadp_ratio) / 2.0;
 
         let anabolic_catabolic_balance = self.amino_acid_metabolism.protein_synthesis_rate
             / self.amino_acid_metabolism.protein_degradation_rate;
@@ -219,7 +219,9 @@ impl ComprehensiveMetabolicNetwork {
 
     fn calculate_overall_metabolic_score(&self) -> f64 {
         let energy_score = self.energy_coupling.energy_charge;
-        let flexibility_score = self.calculate_metabolic_flexibility().metabolic_health_score;
+        let flexibility_score = self
+            .calculate_metabolic_flexibility()
+            .metabolic_health_score;
         let methylation_score = self.one_carbon_metabolism.methylation_capacity;
 
         (energy_score + flexibility_score + methylation_score) / 3.0
@@ -291,8 +293,14 @@ mod tests {
         let exercise = ComprehensiveMetabolicNetwork::exercise_state(0.7);
         let resting = ComprehensiveMetabolicNetwork::new_resting_state();
 
-        assert!(exercise.carbohydrate_metabolism.glycolysis_rate > resting.carbohydrate_metabolism.glycolysis_rate);
-        assert!(exercise.energy_coupling.atp_consumption_rate > resting.energy_coupling.atp_consumption_rate);
+        assert!(
+            exercise.carbohydrate_metabolism.glycolysis_rate
+                > resting.carbohydrate_metabolism.glycolysis_rate
+        );
+        assert!(
+            exercise.energy_coupling.atp_consumption_rate
+                > resting.energy_coupling.atp_consumption_rate
+        );
     }
 
     #[test]
@@ -300,8 +308,13 @@ mod tests {
         let fasting = ComprehensiveMetabolicNetwork::fasting_state(24.0);
         let resting = ComprehensiveMetabolicNetwork::new_resting_state();
 
-        assert!(fasting.lipid_metabolism.ketogenesis_rate > resting.lipid_metabolism.ketogenesis_rate);
-        assert!(fasting.carbohydrate_metabolism.gluconeogenesis_rate > resting.carbohydrate_metabolism.gluconeogenesis_rate);
+        assert!(
+            fasting.lipid_metabolism.ketogenesis_rate > resting.lipid_metabolism.ketogenesis_rate
+        );
+        assert!(
+            fasting.carbohydrate_metabolism.gluconeogenesis_rate
+                > resting.carbohydrate_metabolism.gluconeogenesis_rate
+        );
     }
 
     #[test]

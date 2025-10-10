@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::human::BiologicalSex;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BiometricProfile {
@@ -132,12 +132,8 @@ impl BodyComposition {
         let bmi = weight_kg / (height_cm / 100.0).powi(2);
 
         let body_fat_percentage = match sex {
-            BiologicalSex::Male => {
-                1.20 * bmi + 0.23 * age - 16.2
-            }
-            BiologicalSex::Female => {
-                1.20 * bmi + 0.23 * age - 5.4
-            }
+            BiologicalSex::Male => 1.20 * bmi + 0.23 * age - 16.2,
+            BiologicalSex::Female => 1.20 * bmi + 0.23 * age - 5.4,
         };
 
         let body_fat_percentage = body_fat_percentage.max(3.0).min(60.0);
@@ -385,19 +381,10 @@ pub enum VO2MaxCategory {
 }
 
 impl BiometricProfile {
-    pub fn new(
-        height_cm: f64,
-        weight_kg: f64,
-        age_years: f64,
-        sex: BiologicalSex,
-    ) -> Self {
+    pub fn new(height_cm: f64, weight_kg: f64, age_years: f64, sex: BiologicalSex) -> Self {
         let anthropometric = AnthropometricMeasures::new(height_cm, weight_kg);
-        let body_composition = BodyComposition::estimate_from_anthropometrics(
-            height_cm,
-            weight_kg,
-            age_years,
-            sex,
-        );
+        let body_composition =
+            BodyComposition::estimate_from_anthropometrics(height_cm, weight_kg, age_years, sex);
         let vital_signs = VitalSigns::new_normal();
         let fitness_metrics = FitnessMetrics::new_sedentary(age_years, sex);
 
@@ -439,7 +426,7 @@ impl BiometricProfile {
         let mut score: f64 = 100.0;
 
         match self.anthropometric.bmi_category() {
-            BMICategory::Normal => {},
+            BMICategory::Normal => {}
             BMICategory::Overweight => score -= 10.0,
             BMICategory::ObesityClass1 => score -= 20.0,
             BMICategory::ObesityClass2 => score -= 30.0,
@@ -448,7 +435,7 @@ impl BiometricProfile {
         }
 
         match self.vital_signs.blood_pressure_category() {
-            BloodPressureCategory::Normal => {},
+            BloodPressureCategory::Normal => {}
             BloodPressureCategory::Elevated => score -= 5.0,
             BloodPressureCategory::Stage1Hypertension => score -= 15.0,
             BloodPressureCategory::Stage2Hypertension => score -= 25.0,
@@ -482,12 +469,8 @@ mod tests {
 
     #[test]
     fn test_body_composition() {
-        let comp = BodyComposition::estimate_from_anthropometrics(
-            175.0,
-            70.0,
-            30.0,
-            BiologicalSex::Male,
-        );
+        let comp =
+            BodyComposition::estimate_from_anthropometrics(175.0, 70.0, 30.0, BiologicalSex::Male);
         assert!(comp.body_fat_percentage > 0.0);
         assert!(comp.lean_body_mass_kg > 0.0);
     }

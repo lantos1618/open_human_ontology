@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::biology::{BiologyError, BiologyResult};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BloodProfile {
@@ -371,7 +371,8 @@ impl ClottingFactors {
 
     pub fn calculate_aptt_ratio(&self) -> f64 {
         let control_time = 30.0;
-        let factor_average = (self.factor_viii + self.factor_ix + self.factor_xi + self.factor_xii) / 4.0;
+        let factor_average =
+            (self.factor_viii + self.factor_ix + self.factor_xi + self.factor_xii) / 4.0;
         let patient_time = control_time / factor_average;
         patient_time / control_time
     }
@@ -445,7 +446,9 @@ impl Hemoglobin {
                 return Ok(());
             }
         }
-        Err(BiologyError::InvalidState("All binding sites occupied".to_string()))
+        Err(BiologyError::InvalidState(
+            "All binding sites occupied".to_string(),
+        ))
     }
 
     pub fn release_oxygen(&mut self) -> BiologyResult<()> {
@@ -456,7 +459,9 @@ impl Hemoglobin {
                 return Ok(());
             }
         }
-        Err(BiologyError::InvalidState("No oxygen to release".to_string()))
+        Err(BiologyError::InvalidState(
+            "No oxygen to release".to_string(),
+        ))
     }
 
     pub fn oxygen_saturation(&self) -> f64 {

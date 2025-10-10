@@ -1,5 +1,5 @@
+use crate::human::{BiologicalSex, Human};
 use serde::{Deserialize, Serialize};
-use crate::human::{Human, BiologicalSex};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ComprehensiveDiagnosticReport {
@@ -366,9 +366,7 @@ impl Human {
         let interactions = Vec::new();
         let dosing = Vec::new();
         let contraindications = Vec::new();
-        let preferred = vec![
-            "Standard medications appropriate".to_string(),
-        ];
+        let preferred = vec!["Standard medications appropriate".to_string()];
 
         PharmacogenomicSummary {
             drug_interactions: interactions,
@@ -383,14 +381,22 @@ impl Human {
 
         let bmi = self.bmi();
         if bmi > 25.0 {
-            recommendations.push("Weight reduction through caloric restriction and increased physical activity".to_string());
+            recommendations.push(
+                "Weight reduction through caloric restriction and increased physical activity"
+                    .to_string(),
+            );
         } else if bmi < 18.5 {
-            recommendations.push("Weight gain through increased caloric intake and strength training".to_string());
+            recommendations.push(
+                "Weight gain through increased caloric intake and strength training".to_string(),
+            );
         }
 
         recommendations.push("150 minutes moderate aerobic activity per week".to_string());
         recommendations.push("Strength training 2-3 times per week".to_string());
-        recommendations.push("Mediterranean-style diet rich in vegetables, whole grains, and healthy fats".to_string());
+        recommendations.push(
+            "Mediterranean-style diet rich in vegetables, whole grains, and healthy fats"
+                .to_string(),
+        );
         recommendations.push("7-9 hours of quality sleep per night".to_string());
         recommendations.push("Stress management techniques (meditation, yoga, etc.)".to_string());
         recommendations.push("Avoid tobacco and limit alcohol consumption".to_string());
@@ -447,33 +453,41 @@ impl Human {
 
         let bmi = self.bmi();
         if bmi > 40.0 {
-            alerts.push("URGENT: Severe obesity (BMI > 40) - immediate medical evaluation recommended".to_string());
+            alerts.push(
+                "URGENT: Severe obesity (BMI > 40) - immediate medical evaluation recommended"
+                    .to_string(),
+            );
         }
 
         let gfr = self.gfr_ml_per_min();
         if gfr < 30.0 {
-            alerts.push("URGENT: Severe kidney dysfunction (GFR < 30) - nephrology referral indicated".to_string());
+            alerts.push(
+                "URGENT: Severe kidney dysfunction (GFR < 30) - nephrology referral indicated"
+                    .to_string(),
+            );
         }
 
         alerts
     }
 
-    fn calculate_overall_health_score(&self, system_health: &SystemHealthAssessment, genetic_risk: &GeneticRiskProfile) -> f64 {
-        let system_avg = (
-            system_health.cardiovascular_health +
-            system_health.respiratory_health +
-            system_health.neurological_health +
-            system_health.metabolic_health +
-            system_health.renal_health +
-            system_health.immune_health
-        ) / 6.0;
+    fn calculate_overall_health_score(
+        &self,
+        system_health: &SystemHealthAssessment,
+        genetic_risk: &GeneticRiskProfile,
+    ) -> f64 {
+        let system_avg = (system_health.cardiovascular_health
+            + system_health.respiratory_health
+            + system_health.neurological_health
+            + system_health.metabolic_health
+            + system_health.renal_health
+            + system_health.immune_health)
+            / 6.0;
 
-        let genetic_penalty = (
-            genetic_risk.cardiovascular_risk.overall_risk_multiplier +
-            genetic_risk.neurological_risk.overall_risk_multiplier +
-            genetic_risk.respiratory_risk.overall_risk_multiplier +
-            genetic_risk.metabolic_risk.overall_risk_multiplier
-        ) / 4.0;
+        let genetic_penalty = (genetic_risk.cardiovascular_risk.overall_risk_multiplier
+            + genetic_risk.neurological_risk.overall_risk_multiplier
+            + genetic_risk.respiratory_risk.overall_risk_multiplier
+            + genetic_risk.metabolic_risk.overall_risk_multiplier)
+            / 4.0;
 
         let genetic_factor = if genetic_penalty > 1.5 {
             0.9
@@ -517,7 +531,13 @@ mod tests {
         let person = Human::new_adult_male("test".to_string(), 35.0, 175.0, 150.0);
         let report = person.comprehensive_diagnostic_assessment();
 
-        assert!(report.genetic_risk_profile.metabolic_risk.overall_risk_multiplier > 1.0);
+        assert!(
+            report
+                .genetic_risk_profile
+                .metabolic_risk
+                .overall_risk_multiplier
+                > 1.0
+        );
     }
 
     #[test]
@@ -528,9 +548,13 @@ mod tests {
         let female_report = female.comprehensive_diagnostic_assessment();
         let male_report = male.comprehensive_diagnostic_assessment();
 
-        let female_has_mammo = female_report.screening_priorities.iter()
+        let female_has_mammo = female_report
+            .screening_priorities
+            .iter()
             .any(|s| s.test_name.contains("Mammo"));
-        let male_has_mammo = male_report.screening_priorities.iter()
+        let male_has_mammo = male_report
+            .screening_priorities
+            .iter()
             .any(|s| s.test_name.contains("Mammo"));
 
         assert!(female_has_mammo);

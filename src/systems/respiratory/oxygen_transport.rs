@@ -84,7 +84,13 @@ impl Hemoglobin {
         self.p50_mmhg * (y / (1.0 - y)).powf(1.0 / self.hill_coefficient)
     }
 
-    pub fn adjust_p50_for_conditions(&self, temperature_celsius: f64, ph: f64, pco2_mmhg: f64, dpg_2_3_mmol_l: f64) -> f64 {
+    pub fn adjust_p50_for_conditions(
+        &self,
+        temperature_celsius: f64,
+        ph: f64,
+        pco2_mmhg: f64,
+        dpg_2_3_mmol_l: f64,
+    ) -> f64 {
         let mut adjusted_p50 = self.p50_mmhg;
 
         adjusted_p50 *= (temperature_celsius - 37.0) * 0.024 + 1.0;

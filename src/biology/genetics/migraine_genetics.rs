@@ -89,7 +89,13 @@ pub struct HeadacheRiskScores {
 }
 
 impl MigraineVariant {
-    pub fn new(gene: MigraineGene, variant_id: String, alleles: (String, String), risk_type: MigraineRiskType, penetrance: f64) -> Self {
+    pub fn new(
+        gene: MigraineGene,
+        variant_id: String,
+        alleles: (String, String),
+        risk_type: MigraineRiskType,
+        penetrance: f64,
+    ) -> Self {
         Self {
             gene,
             variant_id,
@@ -109,7 +115,13 @@ impl MigraineVariant {
 }
 
 impl ClusterHeadacheVariant {
-    pub fn new(gene: ClusterHeadacheGene, variant_id: String, alleles: (String, String), risk_factor: f64, circadian_association: bool) -> Self {
+    pub fn new(
+        gene: ClusterHeadacheGene,
+        variant_id: String,
+        alleles: (String, String),
+        risk_factor: f64,
+        circadian_association: bool,
+    ) -> Self {
         Self {
             gene,
             variant_id,
@@ -120,7 +132,13 @@ impl ClusterHeadacheVariant {
     }
 
     pub fn is_circadian_related(&self) -> bool {
-        self.circadian_association || matches!(self.gene, ClusterHeadacheGene::CLOCK | ClusterHeadacheGene::PER3 | ClusterHeadacheGene::MTNR1B)
+        self.circadian_association
+            || matches!(
+                self.gene,
+                ClusterHeadacheGene::CLOCK
+                    | ClusterHeadacheGene::PER3
+                    | ClusterHeadacheGene::MTNR1B
+            )
     }
 }
 
@@ -176,7 +194,9 @@ impl HeadacheGeneticProfile {
     }
 
     fn calculate_medication_overuse_risk(&self) -> f64 {
-        let chronic_migraine_variants = self.migraine_variants.iter()
+        let chronic_migraine_variants = self
+            .migraine_variants
+            .iter()
             .filter(|v| matches!(v.risk_type, MigraineRiskType::ChronicMigraine))
             .count();
 
@@ -194,11 +214,14 @@ impl HeadacheGeneticProfile {
     }
 
     pub fn circadian_cluster_association(&self) -> bool {
-        self.cluster_variants.iter().any(|v| v.is_circadian_related())
+        self.cluster_variants
+            .iter()
+            .any(|v| v.is_circadian_related())
     }
 
     pub fn get_high_risk_genes(&self) -> Vec<MigraineGene> {
-        self.migraine_variants.iter()
+        self.migraine_variants
+            .iter()
             .filter(|v| v.is_high_risk())
             .map(|v| v.gene)
             .collect()

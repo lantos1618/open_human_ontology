@@ -287,7 +287,8 @@ impl ColonTransit {
         self.total_transit_time_hours > 72.0
             || matches!(
                 self.stool_consistency,
-                BristolStoolScale::Type1SeparateHardLumps | BristolStoolScale::Type2SausageShapedButLumpy
+                BristolStoolScale::Type1SeparateHardLumps
+                    | BristolStoolScale::Type2SausageShapedButLumpy
             )
     }
 
@@ -295,7 +296,8 @@ impl ColonTransit {
         self.total_transit_time_hours < 12.0
             || matches!(
                 self.stool_consistency,
-                BristolStoolScale::Type6FluffyPiecesRagged | BristolStoolScale::Type7WateryNoSolidPieces
+                BristolStoolScale::Type6FluffyPiecesRagged
+                    | BristolStoolScale::Type7WateryNoSolidPieces
             )
     }
 

@@ -58,7 +58,7 @@ impl Heart {
     pub fn assess_function(&self) -> BiologyResult<f64> {
         if self.ejection_fraction < 0.0 || self.ejection_fraction > 1.0 {
             return Err(BiologyError::InvalidValue(
-                "Ejection fraction must be between 0 and 1".to_string()
+                "Ejection fraction must be between 0 and 1".to_string(),
             ));
         }
 
@@ -94,7 +94,7 @@ impl Heart {
     pub fn set_heart_rate(&mut self, bpm: f64) -> BiologyResult<()> {
         if !(30.0..=220.0).contains(&bpm) {
             return Err(BiologyError::InvalidValue(
-                "Heart rate out of physiological range".to_string()
+                "Heart rate out of physiological range".to_string(),
             ));
         }
 

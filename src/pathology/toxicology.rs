@@ -168,9 +168,12 @@ impl ToxicologyProfile {
                 _ => 3,
             };
 
-            if exposure.symptoms.contains(&ToxicSymptom::Seizures) ||
-               exposure.symptoms.contains(&ToxicSymptom::Coma) ||
-               exposure.symptoms.contains(&ToxicSymptom::RespiratoryDepression) {
+            if exposure.symptoms.contains(&ToxicSymptom::Seizures)
+                || exposure.symptoms.contains(&ToxicSymptom::Coma)
+                || exposure
+                    .symptoms
+                    .contains(&ToxicSymptom::RespiratoryDepression)
+            {
                 score += 2;
             }
         }
@@ -186,18 +189,24 @@ impl ToxicologyProfile {
 
     pub fn requires_antidote(&self) -> Option<Antidote> {
         for overdose in &self.overdoses {
-            if overdose.substance.to_lowercase().contains("opioid") ||
-               overdose.substance.to_lowercase().contains("heroin") ||
-               overdose.substance.to_lowercase().contains("fentanyl") {
+            if overdose.substance.to_lowercase().contains("opioid")
+                || overdose.substance.to_lowercase().contains("heroin")
+                || overdose.substance.to_lowercase().contains("fentanyl")
+            {
                 return Some(Antidote::Naloxone);
             }
 
-            if overdose.substance.to_lowercase().contains("acetaminophen") ||
-               overdose.substance.to_lowercase().contains("paracetamol") {
+            if overdose.substance.to_lowercase().contains("acetaminophen")
+                || overdose.substance.to_lowercase().contains("paracetamol")
+            {
                 return Some(Antidote::NAcetylcysteine);
             }
 
-            if overdose.substance.to_lowercase().contains("organophosphate") {
+            if overdose
+                .substance
+                .to_lowercase()
+                .contains("organophosphate")
+            {
                 return Some(Antidote::Atropine);
             }
         }
@@ -206,10 +215,10 @@ impl ToxicologyProfile {
     }
 
     pub fn heavy_metal_toxicity(&self) -> bool {
-        self.detox_status.heavy_metals.lead_ug_dl > 5.0 ||
-        self.detox_status.heavy_metals.mercury_ug_l > 10.0 ||
-        self.detox_status.heavy_metals.cadmium_ug_l > 5.0 ||
-        self.detox_status.heavy_metals.arsenic_ug_l > 10.0
+        self.detox_status.heavy_metals.lead_ug_dl > 5.0
+            || self.detox_status.heavy_metals.mercury_ug_l > 10.0
+            || self.detox_status.heavy_metals.cadmium_ug_l > 5.0
+            || self.detox_status.heavy_metals.arsenic_ug_l > 10.0
     }
 
     pub fn detoxification_capacity(&self) -> DetoxCapacity {
@@ -219,8 +228,12 @@ impl ToxicologyProfile {
 
         match (phase1_impaired, phase2_impaired, glutathione_low) {
             (true, true, true) => DetoxCapacity::SeverelyImpaired,
-            (true, true, false) | (true, false, true) | (false, true, true) => DetoxCapacity::ModeratelyImpaired,
-            (true, false, false) | (false, true, false) | (false, false, true) => DetoxCapacity::MildlyImpaired,
+            (true, true, false) | (true, false, true) | (false, true, true) => {
+                DetoxCapacity::ModeratelyImpaired
+            }
+            (true, false, false) | (false, true, false) | (false, false, true) => {
+                DetoxCapacity::MildlyImpaired
+            }
             (false, false, false) => DetoxCapacity::Normal,
         }
     }
@@ -252,8 +265,12 @@ impl Default for ToxicologyProfile {
 impl DetoxificationStatus {
     pub fn normal() -> Self {
         Self {
-            phase_1_enzymes: EnzymeActivity { activity_percent_normal: 100.0 },
-            phase_2_enzymes: EnzymeActivity { activity_percent_normal: 100.0 },
+            phase_1_enzymes: EnzymeActivity {
+                activity_percent_normal: 100.0,
+            },
+            phase_2_enzymes: EnzymeActivity {
+                activity_percent_normal: 100.0,
+            },
             glutathione_level_umol_l: 1000.0,
             heavy_metals: HeavyMetalPanel::normal(),
         }
@@ -271,10 +288,10 @@ impl HeavyMetalPanel {
     }
 
     pub fn has_elevation(&self) -> bool {
-        self.lead_ug_dl > 5.0 ||
-        self.mercury_ug_l > 10.0 ||
-        self.cadmium_ug_l > 5.0 ||
-        self.arsenic_ug_l > 10.0
+        self.lead_ug_dl > 5.0
+            || self.mercury_ug_l > 10.0
+            || self.cadmium_ug_l > 5.0
+            || self.arsenic_ug_l > 10.0
     }
 }
 
@@ -351,7 +368,10 @@ mod tests {
         });
 
         let severity = profile.severity_score();
-        assert!(matches!(severity, ToxicitySeverity::Moderate | ToxicitySeverity::Severe));
+        assert!(matches!(
+            severity,
+            ToxicitySeverity::Moderate | ToxicitySeverity::Severe
+        ));
     }
 
     #[test]
@@ -389,7 +409,10 @@ mod tests {
         profile.detox_status.phase_2_enzymes.activity_percent_normal = 50.0;
         profile.detox_status.glutathione_level_umol_l = 600.0;
 
-        assert_eq!(profile.detoxification_capacity(), DetoxCapacity::SeverelyImpaired);
+        assert_eq!(
+            profile.detoxification_capacity(),
+            DetoxCapacity::SeverelyImpaired
+        );
     }
 
     #[test]
@@ -407,6 +430,9 @@ mod tests {
     #[test]
     fn test_antidote_mechanism() {
         assert_eq!(Antidote::Naloxone.mechanism(), "Opioid receptor antagonist");
-        assert_eq!(Antidote::NAcetylcysteine.mechanism(), "Glutathione precursor");
+        assert_eq!(
+            Antidote::NAcetylcysteine.mechanism(),
+            "Glutathione precursor"
+        );
     }
 }

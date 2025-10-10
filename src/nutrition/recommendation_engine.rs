@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
-use crate::biology::genetics::DietaryGeneticProfile;
 use super::evidence_base::NutritionEvidenceBase;
+use crate::biology::genetics::DietaryGeneticProfile;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DietaryRecommendations {
@@ -101,7 +101,9 @@ impl RecommendationEngine {
             }
         }
 
-        use crate::biology::genetics::dietary_genetics::{MetabolismSpeed, MTHFRGenotype, VitaminDMetabolism};
+        use crate::biology::genetics::dietary_genetics::{
+            MTHFRGenotype, MetabolismSpeed, VitaminDMetabolism,
+        };
 
         if matches!(
             genetic_profile.nutrient_metabolism.vitamin_d_processing,
@@ -119,12 +121,16 @@ impl RecommendationEngine {
                     reason: "High in vitamin D (poor vitamin D metabolism detected)".to_string(),
                     confidence: 0.85,
                 });
-                lifestyle_notes.push("Monitor serum 25(OH)D levels annually. Target: 30-50 ng/mL".to_string());
+                lifestyle_notes
+                    .push("Monitor serum 25(OH)D levels annually. Target: 30-50 ng/mL".to_string());
             }
         }
 
         if matches!(
-            genetic_profile.nutrient_metabolism.folate_metabolism.mthfr_c677t,
+            genetic_profile
+                .nutrient_metabolism
+                .folate_metabolism
+                .mthfr_c677t,
             MTHFRGenotype::TT
         ) {
             if let Some(rec) = self.evidence_base.get_recommendation("mthfr_c677t_tt") {
@@ -147,7 +153,10 @@ impl RecommendationEngine {
             genetic_profile.caffeine_sensitivity.metabolism_rate,
             MetabolismSpeed::Slow
         ) {
-            if let Some(rec) = self.evidence_base.get_recommendation("slow_caffeine_metabolizer") {
+            if let Some(rec) = self
+                .evidence_base
+                .get_recommendation("slow_caffeine_metabolizer")
+            {
                 foods_to_limit.push(FoodRecommendation {
                     food: "Caffeine (coffee, energy drinks, tea)".to_string(),
                     reason: rec.recommendation.clone(),
@@ -156,9 +165,7 @@ impl RecommendationEngine {
                 lifestyle_notes.push("CYP1A2 slow metabolizer: Limit caffeine to <200mg/day. Avoid after 2pm to prevent sleep disruption.".to_string());
                 evidence_citations.push(format!(
                     "{} ({}) - {}",
-                    rec.citations[0].authors,
-                    rec.citations[0].year,
-                    rec.citations[0].title
+                    rec.citations[0].authors, rec.citations[0].year, rec.citations[0].title
                 ));
             }
         }
@@ -219,7 +226,10 @@ mod tests {
         let recs = engine.generate_recommendations(&profile);
 
         assert!(recs.foods_to_limit.iter().any(|f| f.food.contains("dairy")));
-        assert!(recs.recommended_foods.iter().any(|f| f.food.contains("plant milk") || f.food.contains("Leafy greens")));
+        assert!(recs
+            .recommended_foods
+            .iter()
+            .any(|f| f.food.contains("plant milk") || f.food.contains("Leafy greens")));
         assert!(!recs.evidence_citations.is_empty());
     }
 
@@ -230,7 +240,10 @@ mod tests {
 
         let recs = engine.generate_recommendations(&profile);
 
-        assert!(recs.foods_to_limit.iter().any(|f| f.food.contains("alcohol")));
+        assert!(recs
+            .foods_to_limit
+            .iter()
+            .any(|f| f.food.contains("alcohol")));
         assert!(recs.lifestyle_notes.iter().any(|n| n.contains("cancer")));
         assert!(recs.evidence_citations.iter().any(|c| c.contains("Brooks")));
     }
@@ -242,8 +255,14 @@ mod tests {
 
         let recs = engine.generate_recommendations(&profile);
 
-        assert!(recs.recommended_foods.iter().any(|f| f.food.contains("Dairy products")));
-        assert!(!recs.foods_to_limit.iter().any(|f| f.food.contains("dairy milk")));
+        assert!(recs
+            .recommended_foods
+            .iter()
+            .any(|f| f.food.contains("Dairy products")));
+        assert!(!recs
+            .foods_to_limit
+            .iter()
+            .any(|f| f.food.contains("dairy milk")));
     }
 
     #[test]
@@ -253,8 +272,17 @@ mod tests {
 
         let recs = engine.generate_recommendations(&profile);
 
-        assert!(recs.recommended_foods.iter().any(|f| f.food.contains("vegetables")));
-        assert!(recs.recommended_foods.iter().any(|f| f.food.contains("Whole grains")));
-        assert!(recs.foods_to_limit.iter().any(|f| f.food.contains("Ultra-processed")));
+        assert!(recs
+            .recommended_foods
+            .iter()
+            .any(|f| f.food.contains("vegetables")));
+        assert!(recs
+            .recommended_foods
+            .iter()
+            .any(|f| f.food.contains("Whole grains")));
+        assert!(recs
+            .foods_to_limit
+            .iter()
+            .any(|f| f.food.contains("Ultra-processed")));
     }
 }

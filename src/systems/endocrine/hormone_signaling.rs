@@ -478,36 +478,50 @@ impl HormoneSignaling {
                         time_constant_minutes: 180.0,
                     },
                 ],
-                positive_feedback_loops: vec![
-                    PositiveFeedbackLoop {
-                        hormone_name: "Oxytocin".to_string(),
-                        amplification_factor: 2.0,
-                        duration_hours: 2.0,
-                    },
-                ],
-                feedforward_mechanisms: vec![
-                    FeedforwardMechanism {
-                        initiating_signal: "Food intake".to_string(),
-                        anticipatory_response: "Insulin secretion".to_string(),
-                        activation_threshold: 0.5,
-                    },
-                ],
+                positive_feedback_loops: vec![PositiveFeedbackLoop {
+                    hormone_name: "Oxytocin".to_string(),
+                    amplification_factor: 2.0,
+                    duration_hours: 2.0,
+                }],
+                feedforward_mechanisms: vec![FeedforwardMechanism {
+                    initiating_signal: "Food intake".to_string(),
+                    anticipatory_response: "Insulin secretion".to_string(),
+                    activation_threshold: 0.5,
+                }],
             },
         }
     }
 
     pub fn assess_signal_integration(&self) -> f64 {
-        let gpcr_score = (self.receptor_systems.g_protein_coupled_receptors.gs_pathway_activity
-            + self.receptor_systems.g_protein_coupled_receptors.gi_pathway_activity
-            + self.receptor_systems.g_protein_coupled_receptors.gq_pathway_activity) / 3.0;
+        let gpcr_score = (self
+            .receptor_systems
+            .g_protein_coupled_receptors
+            .gs_pathway_activity
+            + self
+                .receptor_systems
+                .g_protein_coupled_receptors
+                .gi_pathway_activity
+            + self
+                .receptor_systems
+                .g_protein_coupled_receptors
+                .gq_pathway_activity)
+            / 3.0;
 
         let second_messenger_score = (self.second_messengers.camp_system.pka_activation_level
             + self.second_messengers.calcium_system.calmodulin_activation
-            + self.second_messengers.ip3_dag_system.pkc_activation_level) / 3.0;
+            + self.second_messengers.ip3_dag_system.pkc_activation_level)
+            / 3.0;
 
         let pathway_score = (self.signal_transduction.mapk_pathways.erk1_2_activation
-            + self.signal_transduction.pi3k_akt_pathway.akt_phosphorylation
-            + self.signal_transduction.ampk_pathway.ampk_alpha_phosphorylation) / 3.0;
+            + self
+                .signal_transduction
+                .pi3k_akt_pathway
+                .akt_phosphorylation
+            + self
+                .signal_transduction
+                .ampk_pathway
+                .ampk_alpha_phosphorylation)
+            / 3.0;
 
         (gpcr_score + second_messenger_score + pathway_score) / 3.0
     }

@@ -174,10 +174,14 @@ impl ECGReading {
                 arrhythmias.push(Arrhythmia::Tachycardia(TachycardiaType::SinusTachycardia));
             }
             ECGRhythm::AtrialFibrillation => {
-                arrhythmias.push(Arrhythmia::FibrillationFlutter(FibrillationType::AtrialFibrillation));
+                arrhythmias.push(Arrhythmia::FibrillationFlutter(
+                    FibrillationType::AtrialFibrillation,
+                ));
             }
             ECGRhythm::VentricularTachycardia => {
-                arrhythmias.push(Arrhythmia::Tachycardia(TachycardiaType::VentricularTachycardia));
+                arrhythmias.push(Arrhythmia::Tachycardia(
+                    TachycardiaType::VentricularTachycardia,
+                ));
             }
             _ => {}
         }
@@ -223,10 +227,15 @@ impl ArrhythmiaRisk {
         self.predicted_arrhythmias.clear();
 
         if self.risk_factors.contains_key("age_over_65") {
-            self.predicted_arrhythmias.push(Arrhythmia::FibrillationFlutter(FibrillationType::AtrialFibrillation));
+            self.predicted_arrhythmias
+                .push(Arrhythmia::FibrillationFlutter(
+                    FibrillationType::AtrialFibrillation,
+                ));
         }
         if self.risk_factors.contains_key("heart_disease") {
-            self.predicted_arrhythmias.push(Arrhythmia::Tachycardia(TachycardiaType::VentricularTachycardia));
+            self.predicted_arrhythmias.push(Arrhythmia::Tachycardia(
+                TachycardiaType::VentricularTachycardia,
+            ));
         }
     }
 

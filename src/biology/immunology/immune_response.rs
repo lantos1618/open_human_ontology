@@ -1,11 +1,11 @@
 //! # Immune Response Module
-//! 
+//!
 //! Models immune system responses to vaccines and pathogens.
 
+use super::vaccines::{Antigen, VaccineType};
+use crate::biology::BiologyResult;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use super::vaccines::{VaccineType, Antigen};
-use crate::biology::BiologyResult;
 
 /// Types of immune cells
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -125,16 +125,16 @@ impl ImmuneResponse {
         match vaccine {
             VaccineType::LiveAttenuated { .. } => {
                 response.generate_live_attenuated_response()?;
-            },
+            }
             VaccineType::Inactivated { adjuvants, .. } => {
                 response.generate_inactivated_response(adjuvants)?;
-            },
+            }
             VaccineType::MRNA { .. } => {
                 response.generate_mrna_response()?;
-            },
+            }
             _ => {
                 response.generate_generic_response()?;
-            },
+            }
         }
 
         Ok(response)
@@ -172,7 +172,10 @@ impl ImmuneResponse {
     }
 
     /// Generate response to inactivated vaccine
-    fn generate_inactivated_response(&mut self, adjuvants: &[super::vaccines::Adjuvant]) -> BiologyResult<()> {
+    fn generate_inactivated_response(
+        &mut self,
+        adjuvants: &[super::vaccines::Adjuvant],
+    ) -> BiologyResult<()> {
         // Th2-biased response
         self.cells.push(ImmuneCell::THelper {
             subtype: THelperType::Th2,
@@ -268,12 +271,15 @@ impl ImmuneResponse {
 
     /// Predict protection duration
     pub fn predict_protection_duration(&self) -> f64 {
-        let memory_strength = self.memory.iter()
+        let memory_strength = self
+            .memory
+            .iter()
             .map(|cell| match cell {
                 ImmuneCell::Memory { longevity, .. } => *longevity,
                 _ => 0.0,
             })
-            .sum::<f64>() / self.memory.len() as f64;
+            .sum::<f64>()
+            / self.memory.len() as f64;
 
         365.0 * memory_strength // Duration in days
     }
@@ -281,8 +287,8 @@ impl ImmuneResponse {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use super::super::vaccines::*;
+    use super::*;
 
     #[test]
     fn test_mrna_response() {
@@ -313,4 +319,4 @@ mod tests {
         assert!(response.cytokines.contains_key(&Cytokine::IFNGamma));
         assert!(response.duration > 14.0);
     }
-} 
+}

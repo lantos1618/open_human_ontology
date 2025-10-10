@@ -73,8 +73,7 @@ impl SomatosensorySystem {
     }
 
     pub fn has_neuropathy(&self) -> bool {
-        self.mechanoreceptors.sensitivity < 0.5 ||
-        self.thermoreceptors.sensitivity < 0.5
+        self.mechanoreceptors.sensitivity < 0.5 || self.thermoreceptors.sensitivity < 0.5
     }
 
     pub fn has_hyperalgesia(&self) -> bool {

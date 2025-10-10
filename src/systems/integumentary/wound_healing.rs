@@ -177,7 +177,8 @@ impl WoundHealing {
             }
             HealingPhase::Remodeling => {
                 self.tensile_strength_percent += healing_rate * 2.0;
-                self.collagen_deposition = (self.collagen_deposition + healing_rate * 0.02).min(1.0);
+                self.collagen_deposition =
+                    (self.collagen_deposition + healing_rate * 0.02).min(1.0);
             }
             _ => {}
         }

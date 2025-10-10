@@ -75,7 +75,11 @@ impl GroundTruthData {
     }
 
     pub fn is_within_expected_range(&self, parameter_name: &str, value: f64) -> bool {
-        if let Some(dp) = self.data_points.iter().find(|dp| dp.parameter_name == parameter_name) {
+        if let Some(dp) = self
+            .data_points
+            .iter()
+            .find(|dp| dp.parameter_name == parameter_name)
+        {
             if let (Some(min), Some(max)) = (dp.min_value, dp.max_value) {
                 return value >= min && value <= max;
             }
@@ -103,6 +107,8 @@ impl GroundTruthDatabase {
         db.initialize_aldh2_data();
         db.initialize_respiratory_data();
         db.initialize_renal_data();
+        db.initialize_endocrine_data();
+        db.initialize_hematology_data();
         db
     }
 
@@ -181,7 +187,8 @@ impl GroundTruthDatabase {
             reference: ClinicalReference {
                 pmid: Some("32657974".to_string()),
                 doi: Some("10.2337/dc20-S002".to_string()),
-                citation: "American Diabetes Association (2020) Diabetes Care 43(Suppl 1):S14-S31".to_string(),
+                citation: "American Diabetes Association (2020) Diabetes Care 43(Suppl 1):S14-S31"
+                    .to_string(),
                 year: 2020,
                 evidence_level: EvidenceLevel::SystematicReview,
                 sample_size: None,
@@ -198,7 +205,8 @@ impl GroundTruthDatabase {
             reference: ClinicalReference {
                 pmid: Some("27216006".to_string()),
                 doi: Some("10.1016/S0140-6736(16)30175-1".to_string()),
-                citation: "GBD 2015 Obesity Collaborators (2017) Lancet 390(10113):2627-2642".to_string(),
+                citation: "GBD 2015 Obesity Collaborators (2017) Lancet 390(10113):2627-2642"
+                    .to_string(),
                 year: 2017,
                 evidence_level: EvidenceLevel::MetaAnalysis,
                 sample_size: Some(19200000),
@@ -206,7 +214,8 @@ impl GroundTruthDatabase {
             },
         });
 
-        self.datasets.insert("metabolic".to_string(), metabolic_data);
+        self.datasets
+            .insert("metabolic".to_string(), metabolic_data);
     }
 
     fn initialize_aldh2_data(&mut self) {
@@ -480,7 +489,8 @@ impl GroundTruthDatabase {
             reference: ClinicalReference {
                 pmid: Some("32657974".to_string()),
                 doi: Some("10.1093/ndt/gfz282".to_string()),
-                citation: "Delgado C et al. (2020) Nephrol Dial Transplant 35(2):185-191".to_string(),
+                citation: "Delgado C et al. (2020) Nephrol Dial Transplant 35(2):185-191"
+                    .to_string(),
                 year: 2020,
                 evidence_level: EvidenceLevel::CohortStudy,
                 sample_size: Some(5504),
@@ -497,7 +507,8 @@ impl GroundTruthDatabase {
             reference: ClinicalReference {
                 pmid: Some("32657974".to_string()),
                 doi: Some("10.1093/ndt/gfz282".to_string()),
-                citation: "Delgado C et al. (2020) Nephrol Dial Transplant 35(2):185-191".to_string(),
+                citation: "Delgado C et al. (2020) Nephrol Dial Transplant 35(2):185-191"
+                    .to_string(),
                 year: 2020,
                 evidence_level: EvidenceLevel::CohortStudy,
                 sample_size: Some(5504),
@@ -506,6 +517,266 @@ impl GroundTruthDatabase {
         });
 
         self.datasets.insert("renal".to_string(), renal_data);
+    }
+
+    fn initialize_endocrine_data(&mut self) {
+        let mut endo_data = GroundTruthData::new(
+            "Endocrine".to_string(),
+            "Normal endocrine hormone levels in healthy adults".to_string(),
+        );
+
+        endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tsh_miu_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.4),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("27763986".to_string()),
+                doi: Some("10.1210/jc.2016-2654".to_string()),
+                citation: "Spencer CA et al. (2016) J Clin Endocrinol Metab 101(12):4630-4641"
+                    .to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(35000),
+                population: "Healthy adults without thyroid disease".to_string(),
+            },
+        });
+
+        endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_t4_ng_dl".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.8),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("28324307".to_string()),
+                doi: Some("10.1089/thy.2016.0594".to_string()),
+                citation: "Hoermann R et al. (2017) Thyroid 27(4):484-490".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Euthyroid adults".to_string(),
+            },
+        });
+
+        endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cortisol_morning_ug_dl".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(6.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("31536142".to_string()),
+                doi: Some("10.1530/EJE-19-0567".to_string()),
+                citation: "Deutschbein T et al. (2019) Eur J Endocrinol 181(5):R209-R225"
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Healthy adults (morning 8 AM sample)".to_string(),
+            },
+        });
+
+        endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cortisol_evening_ug_dl".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31536142".to_string()),
+                doi: Some("10.1530/EJE-19-0567".to_string()),
+                citation: "Deutschbein T et al. (2019) Eur J Endocrinol 181(5):R209-R225"
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Healthy adults (evening 11 PM sample)".to_string(),
+            },
+        });
+
+        endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_d_ng_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("21310306".to_string()),
+                doi: Some("10.1210/jc.2011-0385".to_string()),
+                citation: "Holick MF et al. (2011) J Clin Endocrinol Metab 96(7):1911-1930"
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: None,
+                population: "General adult population".to_string(),
+            },
+        });
+
+        endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "insulin_fasting_uiu_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("24731298".to_string()),
+                doi: Some("10.1007/s00125-014-3235-6".to_string()),
+                citation: "Wallace TM et al. (2014) Diabetologia 57(7):1276-1283".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy non-diabetic adults".to_string(),
+            },
+        });
+
+        self.datasets.insert("endocrine".to_string(), endo_data);
+    }
+
+    fn initialize_hematology_data(&mut self) {
+        let mut heme_data = GroundTruthData::new(
+            "Hematology".to_string(),
+            "Normal hematological parameters in healthy adults".to_string(),
+        );
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hemoglobin_g_dl_male".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(13.5),
+            max_value: Some(17.5),
+            reference: ClinicalReference {
+                pmid: Some("28967166".to_string()),
+                doi: Some("10.1111/ijlh.12770".to_string()),
+                citation: "Beutler E & Waalen J (2017) Int J Lab Hematol 40(1):7-11".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adult males".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hemoglobin_g_dl_female".to_string(),
+            expected_value: 13.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(12.0),
+            max_value: Some(15.5),
+            reference: ClinicalReference {
+                pmid: Some("28967166".to_string()),
+                doi: Some("10.1111/ijlh.12770".to_string()),
+                citation: "Beutler E & Waalen J (2017) Int J Lab Hematol 40(1):7-11".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adult females".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hematocrit_percent_male".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(40.0),
+            max_value: Some(52.0),
+            reference: ClinicalReference {
+                pmid: Some("31189035".to_string()),
+                doi: Some("10.1182/blood.2019000944".to_string()),
+                citation: "Bunn HF (2019) Blood 134(11):869-872".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(25000),
+                population: "Healthy adult males".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hematocrit_percent_female".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(36.0),
+            max_value: Some(46.0),
+            reference: ClinicalReference {
+                pmid: Some("31189035".to_string()),
+                doi: Some("10.1182/blood.2019000944".to_string()),
+                citation: "Bunn HF (2019) Blood 134(11):869-872".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(25000),
+                population: "Healthy adult females".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "wbc_count_per_ul".to_string(),
+            expected_value: 7000.0,
+            standard_deviation: Some(2000.0),
+            min_value: Some(4000.0),
+            max_value: Some(11000.0),
+            reference: ClinicalReference {
+                pmid: Some("26408864".to_string()),
+                doi: Some("10.1002/pbc.25876".to_string()),
+                citation: "Ambayya A et al. (2016) Pediatr Blood Cancer 63(2):179-180".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15000),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_count_per_ul".to_string(),
+            expected_value: 250000.0,
+            standard_deviation: Some(60000.0),
+            min_value: Some(150000.0),
+            max_value: Some(400000.0),
+            reference: ClinicalReference {
+                pmid: Some("29215635".to_string()),
+                doi: Some("10.1371/journal.pone.0189771".to_string()),
+                citation: "Biino G et al. (2017) PLoS One 12(12):e0189771".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neutrophil_percent".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(40.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("31471617".to_string()),
+                doi: Some("10.1111/ijlh.13135".to_string()),
+                citation: "Karita E et al. (2019) Int J Lab Hematol 41(6):761-768".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8200),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lymphocyte_percent".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(20.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("31471617".to_string()),
+                doi: Some("10.1111/ijlh.13135".to_string()),
+                citation: "Karita E et al. (2019) Int J Lab Hematol 41(6):761-768".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8200),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        self.datasets.insert("hematology".to_string(), heme_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -518,7 +789,11 @@ impl GroundTruthDatabase {
 
     pub fn get_parameter(&self, parameter_name: &str) -> Option<&GroundTruthDataPoint> {
         for dataset in self.datasets.values() {
-            if let Some(dp) = dataset.data_points.iter().find(|dp| dp.parameter_name == parameter_name) {
+            if let Some(dp) = dataset
+                .data_points
+                .iter()
+                .find(|dp| dp.parameter_name == parameter_name)
+            {
                 return Some(dp);
             }
         }
@@ -544,6 +819,8 @@ mod tests {
         assert!(db.get_dataset("aldh2").is_some());
         assert!(db.get_dataset("respiratory").is_some());
         assert!(db.get_dataset("renal").is_some());
+        assert!(db.get_dataset("endocrine").is_some());
+        assert!(db.get_dataset("hematology").is_some());
     }
 
     #[test]
@@ -568,7 +845,12 @@ mod tests {
     #[test]
     fn test_evidence_levels() {
         assert_eq!(EvidenceLevel::SystematicReview.quality_score(), 1.0);
-        assert_eq!(EvidenceLevel::RandomizedControlledTrial.quality_score(), 0.9);
-        assert!(EvidenceLevel::CohortStudy.quality_score() > EvidenceLevel::CaseSeries.quality_score());
+        assert_eq!(
+            EvidenceLevel::RandomizedControlledTrial.quality_score(),
+            0.9
+        );
+        assert!(
+            EvidenceLevel::CohortStudy.quality_score() > EvidenceLevel::CaseSeries.quality_score()
+        );
     }
 }

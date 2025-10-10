@@ -16,6 +16,7 @@ rand = "0.8.5"      # Random number generation
 rayon = "1.7.0"     # Parallel computation
 serde = { version = "1.0", features = ["derive"] }  # Serialization
 serde_json = "1.0"  # JSON support
+toml = "0.8"        # TOML support for configuration
 uuid = { version = "1.6", features = ["v4", "serde"] }  # Unique identifiers
 
 [dev-dependencies]

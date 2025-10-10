@@ -50,8 +50,14 @@ impl EpistasisNetwork {
     }
 
     pub fn add_interaction(&mut self, interaction: GeneGeneInteraction) {
-        *self.hub_genes.entry(interaction.gene_a.clone()).or_insert(0) += 1;
-        *self.hub_genes.entry(interaction.gene_b.clone()).or_insert(0) += 1;
+        *self
+            .hub_genes
+            .entry(interaction.gene_a.clone())
+            .or_insert(0) += 1;
+        *self
+            .hub_genes
+            .entry(interaction.gene_b.clone())
+            .or_insert(0) += 1;
         self.interactions.push(interaction);
     }
 

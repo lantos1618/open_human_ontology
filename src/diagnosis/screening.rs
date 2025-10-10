@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::diagnosis::biomarkers::{Biomarker, BiomarkerPanel};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HealthScreening {
@@ -151,7 +151,10 @@ impl HealthScreening {
             contributing_factors.push(risk_factor.name.clone());
 
             if risk_factor.modifiable {
-                recommendations.push(format!("Address modifiable risk factor: {}", risk_factor.name));
+                recommendations.push(format!(
+                    "Address modifiable risk factor: {}",
+                    risk_factor.name
+                ));
             }
         }
 
@@ -200,7 +203,10 @@ mod tests {
     fn test_cardiovascular_screening() {
         let screening = HealthScreening::cardiovascular_screening();
         assert_eq!(screening.screening_type, ScreeningType::CardiovascularRisk);
-        assert!(screening.biomarker_panel.markers.contains_key(&Biomarker::TotalCholesterol));
+        assert!(screening
+            .biomarker_panel
+            .markers
+            .contains_key(&Biomarker::TotalCholesterol));
     }
 
     #[test]
@@ -214,7 +220,9 @@ mod tests {
     #[test]
     fn test_screening_with_abnormal_results() {
         let mut screening = HealthScreening::cardiovascular_screening();
-        screening.biomarker_panel.add_marker(Biomarker::LDLCholesterol, 180.0);
+        screening
+            .biomarker_panel
+            .add_marker(Biomarker::LDLCholesterol, 180.0);
 
         let result = screening.perform_screening();
         assert!(!result.abnormal_findings.is_empty());

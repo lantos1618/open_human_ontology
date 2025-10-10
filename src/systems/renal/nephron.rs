@@ -294,13 +294,11 @@ impl DistalTubule {
                     romk_channels: 500,
                     aldosterone_sensitive: true,
                 }],
-                intercalated_cells: vec![
-                    IntercalatedCell {
-                        cell_type: IntercalatedCellType::TypeA,
-                        h_atpase_pumps: 500,
-                        hco3_transporters: 300,
-                    },
-                ],
+                intercalated_cells: vec![IntercalatedCell {
+                    cell_type: IntercalatedCellType::TypeA,
+                    h_atpase_pumps: 500,
+                    hco3_transporters: 300,
+                }],
             },
         }
     }

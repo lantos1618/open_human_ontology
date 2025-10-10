@@ -287,7 +287,8 @@ impl BiomarkerPanel {
 
     pub fn add_marker(&mut self, biomarker: Biomarker, value: f64) {
         let unit = biomarker.default_unit().to_string();
-        self.markers.insert(biomarker, BiomarkerValue::new(value, unit));
+        self.markers
+            .insert(biomarker, BiomarkerValue::new(value, unit));
     }
 
     pub fn get_marker(&self, biomarker: &Biomarker) -> Option<&BiomarkerValue> {

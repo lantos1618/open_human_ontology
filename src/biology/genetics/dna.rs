@@ -49,16 +49,12 @@ impl DNASequence {
     }
 
     pub fn from_str(s: &str) -> Option<Self> {
-        let sequence: Option<Vec<Nucleotide>> = s.chars()
-            .map(Nucleotide::from_char)
-            .collect();
+        let sequence: Option<Vec<Nucleotide>> = s.chars().map(Nucleotide::from_char).collect();
         sequence.map(DNASequence::new)
     }
 
     pub fn to_string(&self) -> String {
-        self.sequence.iter()
-            .map(|n| n.to_char())
-            .collect()
+        self.sequence.iter().map(|n| n.to_char()).collect()
     }
 
     pub fn len(&self) -> usize {
@@ -71,18 +67,13 @@ impl DNASequence {
 
     pub fn complement(&self) -> Self {
         DNASequence {
-            sequence: self.sequence.iter()
-                .map(|n| n.complement())
-                .collect(),
+            sequence: self.sequence.iter().map(|n| n.complement()).collect(),
         }
     }
 
     pub fn reverse_complement(&self) -> Self {
         DNASequence {
-            sequence: self.sequence.iter()
-                .rev()
-                .map(|n| n.complement())
-                .collect(),
+            sequence: self.sequence.iter().rev().map(|n| n.complement()).collect(),
         }
     }
 
@@ -104,7 +95,9 @@ impl DNASequence {
         if self.sequence.is_empty() {
             return 0.0;
         }
-        let gc_count = self.sequence.iter()
+        let gc_count = self
+            .sequence
+            .iter()
             .filter(|n| matches!(n, Nucleotide::Guanine | Nucleotide::Cytosine))
             .count();
         gc_count as f64 / self.sequence.len() as f64

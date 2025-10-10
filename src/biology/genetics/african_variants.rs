@@ -176,7 +176,10 @@ impl AfricanGeneticVariants {
         let mut considerations = HashMap::new();
 
         match &self.g6pd_deficiency {
-            G6PDStatus::AMinus | G6PDStatus::Mediterranean | G6PDStatus::Canton | G6PDStatus::Deficient => {
+            G6PDStatus::AMinus
+            | G6PDStatus::Mediterranean
+            | G6PDStatus::Canton
+            | G6PDStatus::Deficient => {
                 considerations.insert(
                     "oxidative_drugs".to_string(),
                     "Avoid primaquine, dapsone, nitrofurantoin, rasburicase".to_string(),
@@ -229,7 +232,10 @@ mod tests {
     #[test]
     fn test_sickle_cell_carrier() {
         let variants = AfricanGeneticVariants::with_sickle_cell_trait();
-        assert!(matches!(variants.sickle_cell_status, SickleCellStatus::Carrier));
+        assert!(matches!(
+            variants.sickle_cell_status,
+            SickleCellStatus::Carrier
+        ));
         assert!(variants.malaria_protection_level() > 0.0);
     }
 

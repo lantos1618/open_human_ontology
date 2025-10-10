@@ -1,46 +1,46 @@
 //! # Biology Module
-//! 
+//!
 //! Core types and traits for biological modeling.
 
 use serde::{Deserialize, Serialize};
 use std::fmt;
 
+pub mod aging;
+pub mod allergy;
+pub mod biomarkers;
+pub mod blood_typing;
+pub mod cancer;
+pub mod cellular;
+pub mod circadian;
+pub mod developmental;
+pub mod embryology;
+pub mod environmental;
+pub mod epigenetic_clocks;
+pub mod epigenetics;
+pub mod exercise_physiology;
+pub mod genetics;
+pub mod gut_brain_axis;
+pub mod hematology;
+pub mod hematopoiesis;
+pub mod hormone_signaling;
+pub mod immune_system;
+pub mod immunology;
+pub mod lifestyle;
+pub mod metabolism;
+pub mod metabolism_pathways;
+pub mod microbiome;
 pub mod molecular;
 pub mod neural;
-pub mod immunology;
-pub mod cellular;
-pub mod tissue;
-pub mod skeletal;
-pub mod genetics;
-pub mod circadian;
-pub mod biomarkers;
-pub mod aging;
-pub mod lifestyle;
 pub mod neurotransmitters;
-pub mod microbiome;
-pub mod epigenetics;
-pub mod proteomics;
-pub mod cancer;
-pub mod gut_brain_axis;
-pub mod epigenetic_clocks;
-pub mod hematology;
 pub mod nutrition;
-pub mod blood_typing;
-pub mod exercise_physiology;
+pub mod proteomics;
+pub mod radiation_biology;
+pub mod rare_diseases;
+pub mod skeletal;
 pub mod sleep;
-pub mod developmental;
-pub mod environmental;
-pub mod metabolism;
-pub mod immune_system;
-pub mod metabolism_pathways;
-pub mod hematopoiesis;
+pub mod tissue;
 pub mod toxicology;
 pub mod wound_healing;
-pub mod allergy;
-pub mod rare_diseases;
-pub mod radiation_biology;
-pub mod hormone_signaling;
-pub mod embryology;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -152,7 +152,7 @@ pub trait Localized {
 pub trait Interactive {
     type Target;
     type Outcome;
-    
+
     fn interact_with(&mut self, target: &mut Self::Target) -> Result<Self::Outcome, BiologyError>;
     fn can_interact_with(&self, target: &Self::Target) -> bool;
 }
@@ -199,7 +199,7 @@ mod tests {
             sequence: vec![AminoAcid::Glycine, AminoAcid::Proline],
             modifications: vec![],
         };
-        
+
         match protein {
             Molecule::Protein { name, .. } => assert_eq!(name, "Collagen"),
             _ => panic!("Expected Protein variant"),
@@ -215,4 +215,4 @@ mod tests {
         assert_eq!(conc.value, 1.0);
         assert_eq!(conc.unit, ConcentrationUnit::MilliMolar);
     }
-} 
+}

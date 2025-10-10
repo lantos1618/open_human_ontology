@@ -356,6 +356,8 @@ mod tests {
         let type_vi = SkinType::new_type_vi();
 
         assert!(type_i.uv_sensitivity > type_vi.uv_sensitivity);
-        assert!(type_vi.minimal_erythema_dose_mj_per_cm2() > type_i.minimal_erythema_dose_mj_per_cm2());
+        assert!(
+            type_vi.minimal_erythema_dose_mj_per_cm2() > type_i.minimal_erythema_dose_mj_per_cm2()
+        );
     }
 }

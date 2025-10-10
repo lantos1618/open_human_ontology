@@ -1,23 +1,23 @@
-pub mod vision;
 pub mod hearing;
-pub mod touch;
-pub mod taste;
-pub mod smell;
+pub mod mechanoreception;
 pub mod nociception;
 pub mod proprioception;
+pub mod smell;
+pub mod taste;
+pub mod touch;
 pub mod vestibular;
-pub mod mechanoreception;
+pub mod vision;
 pub mod visual_processing;
 
 #[allow(ambiguous_glob_reexports)]
-pub use vision::*;
-#[allow(ambiguous_glob_reexports)]
 pub use hearing::*;
-pub use visual_processing::*;
-pub use touch::*;
-pub use taste::*;
+pub use mechanoreception::{Baroreceptors, MechanoreceptorSystem};
+pub use nociception::{NociceptorPopulation, PainModulation, PainSystem, PainType};
+pub use proprioception::{FallRisk, ProprioceptiveSystem, SpatialOrientationAssessment};
 pub use smell::*;
-pub use nociception::{PainSystem, NociceptorPopulation, PainType, PainModulation};
-pub use proprioception::{ProprioceptiveSystem, FallRisk, SpatialOrientationAssessment};
-pub use vestibular::{VestibularSystem, VestibularDisorder};
-pub use mechanoreception::{MechanoreceptorSystem, Baroreceptors};
+pub use taste::*;
+pub use touch::*;
+pub use vestibular::{VestibularDisorder, VestibularSystem};
+#[allow(ambiguous_glob_reexports)]
+pub use vision::*;
+pub use visual_processing::*;

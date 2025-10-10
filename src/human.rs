@@ -1,8 +1,8 @@
-use serde::{Deserialize, Serialize};
-use crate::systems::*;
-use crate::biology::genetics::{AncestryProfile, PhenotypeProfile, genotype::Genotype};
-use crate::pharmacology::pharmacogenomics::PharmacogeneticProfile;
+use crate::biology::genetics::{genotype::Genotype, AncestryProfile, PhenotypeProfile};
 use crate::pathology::headache::HeadacheProfile;
+use crate::pharmacology::pharmacogenomics::PharmacogeneticProfile;
+use crate::systems::*;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -177,17 +177,14 @@ impl Human {
     }
 
     pub fn metabolic_rate_kcal_per_day(&self) -> f64 {
-        
         match self.demographics.biological_sex {
             BiologicalSex::Male => {
-                10.0 * self.body_metrics.weight_kg
-                    + 6.25 * self.body_metrics.height_cm
+                10.0 * self.body_metrics.weight_kg + 6.25 * self.body_metrics.height_cm
                     - 5.0 * self.demographics.age_years
                     + 5.0
             }
             BiologicalSex::Female => {
-                10.0 * self.body_metrics.weight_kg
-                    + 6.25 * self.body_metrics.height_cm
+                10.0 * self.body_metrics.weight_kg + 6.25 * self.body_metrics.height_cm
                     - 5.0 * self.demographics.age_years
                     - 161.0
             }
@@ -256,7 +253,8 @@ impl Human {
             for condition in primary.associated_conditions() {
                 if condition.to_lowercase().contains("migraine") {
                     risk_score *= 1.5;
-                    genetic_factors.push(format!("Ancestry: {:?} associated with migraines", primary));
+                    genetic_factors
+                        .push(format!("Ancestry: {:?} associated with migraines", primary));
                 }
             }
         }
@@ -345,36 +343,63 @@ impl Human {
         let mut drug_interactions = Vec::new();
         let mut warnings = Vec::new();
 
-        if self.genetics.phenotype.metabolic_traits.caffeine_metabolism == crate::biology::genetics::CaffeineMetabolism::Slow {
+        if self.genetics.phenotype.metabolic_traits.caffeine_metabolism
+            == crate::biology::genetics::CaffeineMetabolism::Slow
+        {
             warnings.push("Slow caffeine metabolizer - limit intake to avoid insomnia".to_string());
         }
 
-        if self.genetics.phenotype.metabolic_traits.alcohol_metabolism.alcohol_flush_reaction {
-            warnings.push("Alcohol flush reaction - increased cancer risk with alcohol".to_string());
+        if self
+            .genetics
+            .phenotype
+            .metabolic_traits
+            .alcohol_metabolism
+            .alcohol_flush_reaction
+        {
+            warnings
+                .push("Alcohol flush reaction - increased cancer risk with alcohol".to_string());
         }
 
-        match self.genetics.phenotype.pharmacological_traits.warfarin_sensitivity {
+        match self
+            .genetics
+            .phenotype
+            .pharmacological_traits
+            .warfarin_sensitivity
+        {
             crate::biology::genetics::WarfarinSensitivity::High => {
                 drug_interactions.push("Warfarin: Use 30-50% lower doses".to_string());
-            },
+            }
             crate::biology::genetics::WarfarinSensitivity::Low => {
                 drug_interactions.push("Warfarin: May require higher doses".to_string());
-            },
+            }
             _ => {}
         }
 
-        match self.genetics.phenotype.pharmacological_traits.opioid_metabolism {
+        match self
+            .genetics
+            .phenotype
+            .pharmacological_traits
+            .opioid_metabolism
+        {
             crate::biology::genetics::OpioidMetabolism::UltraRapid => {
                 drug_interactions.push("Codeine: Risk of toxicity - avoid use".to_string());
-            },
+            }
             crate::biology::genetics::OpioidMetabolism::Poor => {
-                drug_interactions.push("Codeine: Reduced efficacy - consider alternative".to_string());
-            },
+                drug_interactions
+                    .push("Codeine: Reduced efficacy - consider alternative".to_string());
+            }
             _ => {}
         }
 
-        if self.genetics.phenotype.pharmacological_traits.statin_myopathy_risk > 2.0 {
-            drug_interactions.push("Statins: Elevated myopathy risk - monitor CK levels".to_string());
+        if self
+            .genetics
+            .phenotype
+            .pharmacological_traits
+            .statin_myopathy_risk
+            > 2.0
+        {
+            drug_interactions
+                .push("Statins: Elevated myopathy risk - monitor CK levels".to_string());
         }
 
         PharmacogenomicReport {
@@ -383,7 +408,11 @@ impl Human {
             metabolism_profile: format!(
                 "Caffeine: {:?}, Alcohol: {:?}",
                 self.genetics.phenotype.metabolic_traits.caffeine_metabolism,
-                self.genetics.phenotype.metabolic_traits.alcohol_metabolism.aldh2_function
+                self.genetics
+                    .phenotype
+                    .metabolic_traits
+                    .alcohol_metabolism
+                    .aldh2_function
             ),
         }
     }
@@ -408,7 +437,10 @@ impl Human {
             alcohol_tolerance: alcohol_info,
             earwax_type: format!("{:?}", traits.earwax_type),
             skin_pigmentation: format!("{:?}", traits.skin_pigmentation),
-            hair_traits: format!("{:?} hair, {:?} pattern", traits.hair_traits.thickness, traits.hair_traits.curl_pattern),
+            hair_traits: format!(
+                "{:?} hair, {:?} pattern",
+                traits.hair_traits.thickness, traits.hair_traits.curl_pattern
+            ),
             dietary_recommendations: dietary_recs,
             vitamin_d_needs: format!("{:?}", traits.vitamin_d_synthesis),
         }
@@ -441,18 +473,32 @@ impl Human {
 
         let disease_risks = self.assess_genetic_disease_risks();
         for risk in disease_risks {
-            if risk.condition.to_lowercase().contains(&condition_name.to_lowercase()) {
+            if risk
+                .condition
+                .to_lowercase()
+                .contains(&condition_name.to_lowercase())
+            {
                 risk_factors.push(format!("{} ({}x risk)", risk.source, risk.relative_risk));
                 overall_risk *= 1.0 + risk.relative_risk;
             }
         }
 
-        if self.health_conditions.active_conditions.iter().any(|c| c.to_lowercase().contains(&condition_name.to_lowercase())) {
+        if self
+            .health_conditions
+            .active_conditions
+            .iter()
+            .any(|c| c.to_lowercase().contains(&condition_name.to_lowercase()))
+        {
             risk_factors.push("Currently diagnosed".to_string());
             overall_risk *= 10.0;
         }
 
-        if self.health_conditions.family_history.iter().any(|c| c.to_lowercase().contains(&condition_name.to_lowercase())) {
+        if self
+            .health_conditions
+            .family_history
+            .iter()
+            .any(|c| c.to_lowercase().contains(&condition_name.to_lowercase()))
+        {
             risk_factors.push("Family history".to_string());
             overall_risk *= 2.0;
         }
@@ -777,10 +823,7 @@ mod tests {
     #[test]
     fn test_body_systems_male() {
         let systems = BodySystems::new_adult_male();
-        assert!(matches!(
-            systems.reproductive,
-            ReproductiveSystem::Male(_)
-        ));
+        assert!(matches!(systems.reproductive, ReproductiveSystem::Male(_)));
         assert!(systems.muscular.total_muscle_mass_kg > 30.0);
     }
 
@@ -799,12 +842,17 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_male("asian_001".to_string(), 28.0, 175.0, 70.0);
-        human.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0, (0.0, 0.0));
+        human
+            .genetics
+            .ancestry
+            .add_component(Ancestry::EastAsian, 100.0, (0.0, 0.0));
 
         let risks = human.assess_genetic_disease_risks();
 
         assert!(!risks.is_empty());
-        assert!(risks.iter().any(|r| r.condition.to_lowercase().contains("gastric")));
+        assert!(risks
+            .iter()
+            .any(|r| r.condition.to_lowercase().contains("gastric")));
     }
 
     #[test]
@@ -833,18 +881,26 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_female("ashkenazi_001".to_string(), 40.0, 163.0, 58.0);
-        human.genetics.ancestry.add_component(Ancestry::Ashkenazi, 100.0, (0.0, 0.0));
+        human
+            .genetics
+            .ancestry
+            .add_component(Ancestry::Ashkenazi, 100.0, (0.0, 0.0));
 
         let risks = human.assess_genetic_disease_risks();
 
-        assert!(risks.iter().any(|r| r.condition.contains("BRCA") || r.condition.contains("breast")));
+        assert!(risks
+            .iter()
+            .any(|r| r.condition.contains("BRCA") || r.condition.contains("breast")));
     }
 
     #[test]
     fn test_pharmacogenomic_report() {
         let mut human = Human::new_adult_male("pharma_001".to_string(), 45.0, 175.0, 75.0);
-        human.genetics.phenotype.metabolic_traits.caffeine_metabolism =
-            crate::biology::genetics::CaffeineMetabolism::Slow;
+        human
+            .genetics
+            .phenotype
+            .metabolic_traits
+            .caffeine_metabolism = crate::biology::genetics::CaffeineMetabolism::Slow;
 
         let report = human.pharmacogenomic_report();
 
@@ -855,7 +911,12 @@ mod tests {
     #[test]
     fn test_alcohol_flush_reaction() {
         let mut human = Human::new_adult_male("alcohol_001".to_string(), 30.0, 170.0, 65.0);
-        human.genetics.phenotype.metabolic_traits.alcohol_metabolism.alcohol_flush_reaction = true;
+        human
+            .genetics
+            .phenotype
+            .metabolic_traits
+            .alcohol_metabolism
+            .alcohol_flush_reaction = true;
 
         let report = human.pharmacogenomic_report();
 
@@ -867,8 +928,14 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_female("mixed_001".to_string(), 26.0, 168.0, 62.0);
-        human.genetics.ancestry.add_component(Ancestry::EastAsian, 50.0, (0.0, 0.0));
-        human.genetics.ancestry.add_component(Ancestry::European, 50.0, (0.0, 0.0));
+        human
+            .genetics
+            .ancestry
+            .add_component(Ancestry::EastAsian, 50.0, (0.0, 0.0));
+        human
+            .genetics
+            .ancestry
+            .add_component(Ancestry::European, 50.0, (0.0, 0.0));
 
         assert!(human.genetics.ancestry.is_mixed());
 
@@ -879,12 +946,18 @@ mod tests {
     #[test]
     fn test_warfarin_sensitivity() {
         let mut human = Human::new_adult_male("warfarin_001".to_string(), 60.0, 175.0, 78.0);
-        human.genetics.phenotype.pharmacological_traits.warfarin_sensitivity =
-            crate::biology::genetics::WarfarinSensitivity::High;
+        human
+            .genetics
+            .phenotype
+            .pharmacological_traits
+            .warfarin_sensitivity = crate::biology::genetics::WarfarinSensitivity::High;
 
         let report = human.pharmacogenomic_report();
 
-        assert!(report.drug_interactions.iter().any(|d| d.contains("Warfarin")));
+        assert!(report
+            .drug_interactions
+            .iter()
+            .any(|d| d.contains("Warfarin")));
         assert!(report.drug_interactions.iter().any(|d| d.contains("lower")));
     }
 
@@ -893,9 +966,17 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_female("comprehensive_001".to_string(), 38.0, 165.0, 65.0);
-        human.genetics.ancestry.add_component(Ancestry::European, 80.0, (0.0, 0.0));
-        human.genetics.ancestry.add_component(Ancestry::EastAsian, 20.0, (0.0, 0.0));
-        human.health_conditions.add_condition("Hypertension".to_string());
+        human
+            .genetics
+            .ancestry
+            .add_component(Ancestry::European, 80.0, (0.0, 0.0));
+        human
+            .genetics
+            .ancestry
+            .add_component(Ancestry::EastAsian, 20.0, (0.0, 0.0));
+        human
+            .health_conditions
+            .add_condition("Hypertension".to_string());
 
         let assessment = human.comprehensive_health_assessment();
 
@@ -909,7 +990,10 @@ mod tests {
         use crate::biology::genetics::Ancestry;
 
         let mut human = Human::new_adult_male("asian_traits_001".to_string(), 28.0, 172.0, 68.0);
-        human.genetics.ancestry.add_component(Ancestry::EastAsian, 100.0, (0.0, 0.0));
+        human
+            .genetics
+            .ancestry
+            .add_component(Ancestry::EastAsian, 100.0, (0.0, 0.0));
 
         let traits_report = human.population_specific_traits_report();
 
@@ -923,8 +1007,12 @@ mod tests {
     fn test_comprehensive_genetic_analysis() {
         use crate::biology::genetics::Ancestry;
 
-        let mut human = Human::new_adult_female("comprehensive_genetic_001".to_string(), 32.0, 165.0, 58.0);
-        human.genetics.ancestry.add_component(Ancestry::Ashkenazi, 100.0, (0.0, 0.0));
+        let mut human =
+            Human::new_adult_female("comprehensive_genetic_001".to_string(), 32.0, 165.0, 58.0);
+        human
+            .genetics
+            .ancestry
+            .add_component(Ancestry::Ashkenazi, 100.0, (0.0, 0.0));
 
         let analysis = human.comprehensive_genetic_analysis();
 
@@ -937,9 +1025,15 @@ mod tests {
     fn test_condition_test_migraine() {
         use crate::biology::genetics::Ancestry;
 
-        let mut human = Human::new_adult_female("condition_test_001".to_string(), 35.0, 168.0, 62.0);
-        human.genetics.ancestry.add_component(Ancestry::European, 100.0, (0.0, 0.0));
-        human.health_conditions.add_family_history("Migraine".to_string());
+        let mut human =
+            Human::new_adult_female("condition_test_001".to_string(), 35.0, 168.0, 62.0);
+        human
+            .genetics
+            .ancestry
+            .add_component(Ancestry::European, 100.0, (0.0, 0.0));
+        human
+            .health_conditions
+            .add_family_history("Migraine".to_string());
 
         let result = human.test_for_condition("migraine");
 

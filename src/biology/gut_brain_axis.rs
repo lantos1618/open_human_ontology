@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::biology::microbiome::{Microbiome, ShortChainFattyAcids};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GutBrainAxis {
@@ -96,8 +96,7 @@ impl MicrobialMetabolites {
     }
 
     pub fn anti_inflammatory_capacity(&self) -> f64 {
-        self.short_chain_fatty_acids.butyrate_mm * 0.05 +
-        self.indole_derivatives * 0.01
+        self.short_chain_fatty_acids.butyrate_mm * 0.05 + self.indole_derivatives * 0.01
     }
 }
 
@@ -201,8 +200,7 @@ impl EntericNervousSystem {
     }
 
     pub fn is_functional(&self) -> bool {
-        self.peristalsis_frequency_per_min > 1.0 &&
-        self.gut_motility_index > 0.5
+        self.peristalsis_frequency_per_min > 1.0 && self.gut_motility_index > 0.5
     }
 
     pub fn modulate_by_microbiome(&mut self, scfa_level: f64) {

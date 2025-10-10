@@ -1,9 +1,9 @@
 //! # Molecular Biology Module
-//! 
+//!
 //! Defines molecular structures and their interactions in biological systems.
 
+use crate::biology::{BiologyError, BiologyResult, Modifiable, Modification, Molecule};
 use serde::{Deserialize, Serialize};
-use crate::biology::{BiologyError, BiologyResult, Molecule, Modification, Modifiable};
 
 pub mod bone_matrix;
 pub mod hydroxyapatite;
@@ -74,9 +74,17 @@ impl MolecularStructure {
     }
 
     /// Add a bond between atoms
-    pub fn add_bond(&mut self, atom1: usize, atom2: usize, bond_type: BondType, strength: f64) -> BiologyResult<()> {
+    pub fn add_bond(
+        &mut self,
+        atom1: usize,
+        atom2: usize,
+        bond_type: BondType,
+        strength: f64,
+    ) -> BiologyResult<()> {
         if atom1 >= self.coordinates.len() || atom2 >= self.coordinates.len() {
-            return Err(BiologyError::InvalidInteraction("Atom index out of bounds".into()));
+            return Err(BiologyError::InvalidInteraction(
+                "Atom index out of bounds".into(),
+            ));
         }
 
         self.bonds.push(Bond {
@@ -92,13 +100,18 @@ impl MolecularStructure {
     /// Calculate center of mass
     pub fn center_of_mass(&self) -> Coordinate3D {
         let n = self.coordinates.len() as f64;
-        let sum = self.coordinates.iter().fold(Coordinate3D { x: 0.0, y: 0.0, z: 0.0 }, |acc, coord| {
+        let sum = self.coordinates.iter().fold(
             Coordinate3D {
+                x: 0.0,
+                y: 0.0,
+                z: 0.0,
+            },
+            |acc, coord| Coordinate3D {
                 x: acc.x + coord.x,
                 y: acc.y + coord.y,
                 z: acc.z + coord.z,
-            }
-        });
+            },
+        );
 
         Coordinate3D {
             x: sum.x / n,
@@ -111,13 +124,17 @@ impl MolecularStructure {
     pub fn radius_of_gyration(&self) -> f64 {
         let center = self.center_of_mass();
         let n = self.coordinates.len() as f64;
-        
-        let sum_sq_dist = self.coordinates.iter().map(|coord| {
-            let dx = coord.x - center.x;
-            let dy = coord.y - center.y;
-            let dz = coord.z - center.z;
-            dx * dx + dy * dy + dz * dz
-        }).sum::<f64>();
+
+        let sum_sq_dist = self
+            .coordinates
+            .iter()
+            .map(|coord| {
+                let dx = coord.x - center.x;
+                let dy = coord.y - center.y;
+                let dz = coord.z - center.z;
+                dx * dx + dy * dy + dz * dz
+            })
+            .sum::<f64>();
 
         (sum_sq_dist / n).sqrt()
     }
@@ -129,9 +146,9 @@ impl Modifiable for MolecularStructure {
             Molecule::Protein { modifications, .. } => {
                 modifications.push(modification);
                 Ok(())
-            },
+            }
             _ => Err(BiologyError::InvalidModification(
-                "Only proteins can be modified".into()
+                "Only proteins can be modified".into(),
             )),
         }
     }
@@ -144,12 +161,12 @@ impl Modifiable for MolecularStructure {
                     Ok(())
                 } else {
                     Err(BiologyError::InvalidModification(
-                        "Modification not found".into()
+                        "Modification not found".into(),
                     ))
                 }
-            },
+            }
             _ => Err(BiologyError::InvalidModification(
-                "Only proteins can be modified".into()
+                "Only proteins can be modified".into(),
             )),
         }
     }
@@ -177,10 +194,20 @@ mod tests {
             },
         );
 
-        let atom1 = structure.add_atom(Coordinate3D { x: 0.0, y: 0.0, z: 0.0 });
-        let atom2 = structure.add_atom(Coordinate3D { x: 1.0, y: 0.0, z: 0.0 });
+        let atom1 = structure.add_atom(Coordinate3D {
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+        });
+        let atom2 = structure.add_atom(Coordinate3D {
+            x: 1.0,
+            y: 0.0,
+            z: 0.0,
+        });
 
-        assert!(structure.add_bond(atom1, atom2, BondType::Single, 1.0).is_ok());
+        assert!(structure
+            .add_bond(atom1, atom2, BondType::Single, 1.0)
+            .is_ok());
     }
 
     #[test]
@@ -194,12 +221,20 @@ mod tests {
             },
         );
 
-        structure.add_atom(Coordinate3D { x: -1.0, y: 0.0, z: 0.0 });
-        structure.add_atom(Coordinate3D { x: 1.0, y: 0.0, z: 0.0 });
+        structure.add_atom(Coordinate3D {
+            x: -1.0,
+            y: 0.0,
+            z: 0.0,
+        });
+        structure.add_atom(Coordinate3D {
+            x: 1.0,
+            y: 0.0,
+            z: 0.0,
+        });
 
         let com = structure.center_of_mass();
         assert_eq!(com.x, 0.0);
         assert_eq!(com.y, 0.0);
         assert_eq!(com.z, 0.0);
     }
-} 
+}

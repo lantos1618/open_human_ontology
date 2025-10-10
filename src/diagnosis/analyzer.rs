@@ -1,7 +1,7 @@
-use serde::{Deserialize, Serialize};
-use crate::human::Human;
 use crate::biology::genetics::Ancestry;
+use crate::human::Human;
 use crate::pharmacology::pharmacogenomics::MetabolizerPhenotype;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DiagnosticReport {
@@ -232,9 +232,13 @@ impl DiagnosticEngine {
 
         let (severity, description) = match gfr {
             x if x >= 90.0 => (Severity::Normal, "Normal kidney function"),
-            x if (60.0..90.0).contains(&x) => (Severity::Borderline, "Mildly decreased kidney function"),
+            x if (60.0..90.0).contains(&x) => {
+                (Severity::Borderline, "Mildly decreased kidney function")
+            }
             x if (45.0..60.0).contains(&x) => (Severity::Mild, "Mild to moderate kidney disease"),
-            x if (30.0..45.0).contains(&x) => (Severity::Moderate, "Moderate to severe kidney disease"),
+            x if (30.0..45.0).contains(&x) => {
+                (Severity::Moderate, "Moderate to severe kidney disease")
+            }
             x if (15.0..30.0).contains(&x) => (Severity::Severe, "Severe kidney disease"),
             _ => (Severity::Critical, "Kidney failure"),
         };
@@ -250,7 +254,11 @@ impl DiagnosticEngine {
         if gfr < 60.0 {
             report.risk_factors.push(RiskFactor {
                 condition: "Chronic Kidney Disease".to_string(),
-                risk_level: if gfr < 30.0 { RiskLevel::VeryHigh } else { RiskLevel::High },
+                risk_level: if gfr < 30.0 {
+                    RiskLevel::VeryHigh
+                } else {
+                    RiskLevel::High
+                },
                 contributing_factors: vec![format!("GFR {:.1} mL/min", gfr)],
                 preventive_measures: vec![
                     "Nephrology consultation".to_string(),
@@ -277,7 +285,10 @@ impl DiagnosticEngine {
                         report.risk_factors.push(RiskFactor {
                             condition: "Type 2 Diabetes".to_string(),
                             risk_level: RiskLevel::Moderate,
-                            contributing_factors: vec![format!("{:?} ancestry ({:.0}%)", ancestry, percentage)],
+                            contributing_factors: vec![format!(
+                                "{:?} ancestry ({:.0}%)",
+                                ancestry, percentage
+                            )],
                             preventive_measures: vec![
                                 "Glucose monitoring".to_string(),
                                 "Dietary counseling".to_string(),
@@ -294,22 +305,28 @@ impl DiagnosticEngine {
             match phenotype {
                 MetabolizerPhenotype::Poor => {
                     for drug in gene.affected_drugs() {
-                        report.pharmacogenetic_recommendations.push(DrugRecommendation {
-                            drug_class: drug.to_string(),
-                            recommendation_type: RecommendationType::DoseAdjust,
-                            rationale: format!("Poor metabolizer for {:?}", gene),
-                            alternatives: vec!["Consider alternative agent".to_string()],
-                        });
+                        report
+                            .pharmacogenetic_recommendations
+                            .push(DrugRecommendation {
+                                drug_class: drug.to_string(),
+                                recommendation_type: RecommendationType::DoseAdjust,
+                                rationale: format!("Poor metabolizer for {:?}", gene),
+                                alternatives: vec!["Consider alternative agent".to_string()],
+                            });
                     }
                 }
                 MetabolizerPhenotype::UltraRapid => {
                     for drug in gene.affected_drugs() {
-                        report.pharmacogenetic_recommendations.push(DrugRecommendation {
-                            drug_class: drug.to_string(),
-                            recommendation_type: RecommendationType::MonitorClosely,
-                            rationale: format!("Ultra-rapid metabolizer for {:?}", gene),
-                            alternatives: vec!["May require higher doses or alternative".to_string()],
-                        });
+                        report
+                            .pharmacogenetic_recommendations
+                            .push(DrugRecommendation {
+                                drug_class: drug.to_string(),
+                                recommendation_type: RecommendationType::MonitorClosely,
+                                rationale: format!("Ultra-rapid metabolizer for {:?}", gene),
+                                alternatives: vec![
+                                    "May require higher doses or alternative".to_string()
+                                ],
+                            });
                     }
                 }
                 _ => {}
@@ -321,43 +338,76 @@ impl DiagnosticEngine {
         let bmi = human.bmi();
 
         if bmi >= 25.0 {
-            report.lifestyle_recommendations.push("Weight management program".to_string());
-            report.lifestyle_recommendations.push("Increase physical activity to 150 min/week".to_string());
+            report
+                .lifestyle_recommendations
+                .push("Weight management program".to_string());
+            report
+                .lifestyle_recommendations
+                .push("Increase physical activity to 150 min/week".to_string());
         }
 
         if bmi < 18.5 {
-            report.lifestyle_recommendations.push("Nutritional counseling for weight gain".to_string());
+            report
+                .lifestyle_recommendations
+                .push("Nutritional counseling for weight gain".to_string());
         }
 
-        report.lifestyle_recommendations.push("Balanced diet with adequate micronutrients".to_string());
-        report.lifestyle_recommendations.push("Regular sleep schedule (7-9 hours)".to_string());
-        report.lifestyle_recommendations.push("Stress management techniques".to_string());
+        report
+            .lifestyle_recommendations
+            .push("Balanced diet with adequate micronutrients".to_string());
+        report
+            .lifestyle_recommendations
+            .push("Regular sleep schedule (7-9 hours)".to_string());
+        report
+            .lifestyle_recommendations
+            .push("Stress management techniques".to_string());
     }
 
     fn recommend_follow_up_tests(human: &Human, report: &mut DiagnosticReport) {
         let age = human.demographics.age_years;
 
         if age > 40.0 {
-            report.follow_up_tests.push("Annual lipid panel".to_string());
-            report.follow_up_tests.push("Fasting glucose or HbA1c".to_string());
+            report
+                .follow_up_tests
+                .push("Annual lipid panel".to_string());
+            report
+                .follow_up_tests
+                .push("Fasting glucose or HbA1c".to_string());
         }
 
         if age > 50.0 {
-            report.follow_up_tests.push("Colonoscopy screening".to_string());
+            report
+                .follow_up_tests
+                .push("Colonoscopy screening".to_string());
         }
 
         let gfr = human.gfr_ml_per_min();
         if gfr < 60.0 {
-            report.follow_up_tests.push("Repeat renal function panel in 3 months".to_string());
-            report.follow_up_tests.push("Urinalysis with microalbumin".to_string());
+            report
+                .follow_up_tests
+                .push("Repeat renal function panel in 3 months".to_string());
+            report
+                .follow_up_tests
+                .push("Urinalysis with microalbumin".to_string());
         }
 
-        if human.genetics.ancestry.components().contains_key(&Ancestry::Ashkenazi) {
-            report.follow_up_tests.push("Genetic counseling for carrier screening".to_string());
+        if human
+            .genetics
+            .ancestry
+            .components()
+            .contains_key(&Ancestry::Ashkenazi)
+        {
+            report
+                .follow_up_tests
+                .push("Genetic counseling for carrier screening".to_string());
         }
 
-        report.follow_up_tests.push("Complete blood count".to_string());
-        report.follow_up_tests.push("Comprehensive metabolic panel".to_string());
+        report
+            .follow_up_tests
+            .push("Complete blood count".to_string());
+        report
+            .follow_up_tests
+            .push("Comprehensive metabolic panel".to_string());
     }
 }
 
@@ -379,8 +429,9 @@ mod tests {
         let human = Human::new_adult_male("test_patient".to_string(), 30.0, 175.0, 100.0);
         let report = DiagnosticEngine::analyze(&human);
 
-        let bmi_finding = report.findings.iter()
-            .find(|f| matches!(f.category, FindingCategory::Metabolic) && f.description.contains("BMI"));
+        let bmi_finding = report.findings.iter().find(|f| {
+            matches!(f.category, FindingCategory::Metabolic) && f.description.contains("BMI")
+        });
 
         assert!(bmi_finding.is_some());
     }

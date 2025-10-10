@@ -76,8 +76,7 @@ impl GITract {
     }
 
     pub fn total_transit_time_hours(&self) -> f64 {
-        self.small_intestine.total_transit_time()
-            + self.large_intestine.total_transit_time()
+        self.small_intestine.total_transit_time() + self.large_intestine.total_transit_time()
     }
 }
 
@@ -211,7 +210,9 @@ impl LargeIntestine {
     }
 
     pub fn total_transit_time(&self) -> f64 {
-        self.cecum.transit_time_hours + self.colon.transit_time_hours + self.rectum.transit_time_hours
+        self.cecum.transit_time_hours
+            + self.colon.transit_time_hours
+            + self.rectum.transit_time_hours
     }
 
     pub fn water_absorption_capacity_ml_per_day(&self) -> f64 {
@@ -226,7 +227,13 @@ impl Default for LargeIntestine {
 }
 
 impl IntestinalSegment {
-    pub fn new(name: &str, length_cm: f64, diameter_cm: f64, villi_density: f64, transit_hours: f64) -> Self {
+    pub fn new(
+        name: &str,
+        length_cm: f64,
+        diameter_cm: f64,
+        villi_density: f64,
+        transit_hours: f64,
+    ) -> Self {
         Self {
             name: name.to_string(),
             length_cm,

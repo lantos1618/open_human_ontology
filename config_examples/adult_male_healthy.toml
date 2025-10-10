@@ -1,0 +1,45 @@
+[cardiovascular]
+resting_heart_rate_bpm = 70.0
+systolic_bp_mmhg = 120.0
+diastolic_bp_mmhg = 80.0
+stroke_volume_ml = 70.0
+ejection_fraction = 0.6
+total_peripheral_resistance_mmhg_min_per_l = 17.0
+
+[respiratory]
+resting_respiratory_rate_bpm = 14.0
+tidal_volume_ml = 500.0
+functional_residual_capacity_ml = 2400.0
+total_lung_capacity_ml = 6000.0
+pao2_mmhg = 95.0
+paco2_mmhg = 40.0
+sao2_percent = 98.0
+
+[renal]
+gfr_ml_per_min = 100.0
+plasma_sodium_mmol_per_l = 140.0
+plasma_potassium_mmol_per_l = 4.0
+plasma_creatinine_mg_per_dl = 1.0
+urine_output_ml_per_day = 1500.0
+
+[metabolic]
+basal_metabolic_rate_kcal_per_day = 1800.0
+fasting_glucose_mg_per_dl = 90.0
+hba1c_percent = 5.0
+total_cholesterol_mg_per_dl = 180.0
+ldl_cholesterol_mg_per_dl = 100.0
+hdl_cholesterol_mg_per_dl = 50.0
+triglycerides_mg_per_dl = 100.0
+
+[endocrine]
+tsh_miu_per_l = 2.0
+free_t4_ng_per_dl = 1.2
+cortisol_morning_ug_per_dl = 15.0
+cortisol_evening_ug_per_dl = 5.0
+vitamin_d_ng_per_ml = 30.0
+
+[hematology]
+hemoglobin_g_per_dl = 15.0
+hematocrit_percent = 45.0
+wbc_count_per_ul = 7000.0
+platelet_count_per_ul = 250000.0

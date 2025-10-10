@@ -461,7 +461,10 @@ mod tests {
         assert_eq!(zygote.developmental_stage, DevelopmentalStage::Zygote);
 
         let organogenesis = EmbryonicDevelopment::new(5.0);
-        assert_eq!(organogenesis.developmental_stage, DevelopmentalStage::Organogenesis);
+        assert_eq!(
+            organogenesis.developmental_stage,
+            DevelopmentalStage::Organogenesis
+        );
         assert!(organogenesis.is_critical_period());
 
         let fetal = EmbryonicDevelopment::new(12.0);

@@ -257,7 +257,9 @@ mod tests {
     fn test_lymph_node_system_creation() {
         let system = LymphNodeSystem::new();
         assert_eq!(system.total_nodes, 600);
-        assert!(system.regional_chains.contains_key(&LymphNodeRegion::Cervical));
+        assert!(system
+            .regional_chains
+            .contains_key(&LymphNodeRegion::Cervical));
     }
 
     #[test]
@@ -280,7 +282,10 @@ mod tests {
         let mut system = LymphNodeSystem::new();
         system.simulate_infection(LymphNodeRegion::Cervical);
 
-        let nodes = system.regional_chains.get(&LymphNodeRegion::Cervical).unwrap();
+        let nodes = system
+            .regional_chains
+            .get(&LymphNodeRegion::Cervical)
+            .unwrap();
         assert!(nodes[0].size_mm > 5.0);
         assert!(nodes[0].immune_activity.activation_level > 1.0);
     }

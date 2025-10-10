@@ -161,11 +161,17 @@ impl InfectiousDiseaseProfile {
     }
 
     pub fn sepsis_risk(&self) -> SepsisRisk {
-        let bloodstream_infection = self.active_infections.iter()
+        let bloodstream_infection = self
+            .active_infections
+            .iter()
             .any(|i| i.site == InfectionSite::Bloodstream);
 
-        let severe_infection = self.active_infections.iter()
-            .any(|i| matches!(i.severity, InfectionSeverity::Severe | InfectionSeverity::Critical));
+        let severe_infection = self.active_infections.iter().any(|i| {
+            matches!(
+                i.severity,
+                InfectionSeverity::Severe | InfectionSeverity::Critical
+            )
+        });
 
         match (bloodstream_infection, severe_infection) {
             (true, _) => SepsisRisk::High,
@@ -176,14 +182,18 @@ impl InfectiousDiseaseProfile {
 
     pub fn requires_isolation(&self) -> bool {
         self.active_infections.iter().any(|i| {
-            matches!(i.pathogen.organism_type, OrganismType::Bacteria) &&
-            i.pathogen.resistance_pattern.as_ref()
-                .map(|r| r.resistant_to.contains(&AntibioticClass::Vancomycin))
-                .unwrap_or(false)
-        }) ||
-        self.active_infections.iter().any(|i| {
-            i.site == InfectionSite::Respiratory &&
-            matches!(i.severity, InfectionSeverity::Moderate | InfectionSeverity::Severe)
+            matches!(i.pathogen.organism_type, OrganismType::Bacteria)
+                && i.pathogen
+                    .resistance_pattern
+                    .as_ref()
+                    .map(|r| r.resistant_to.contains(&AntibioticClass::Vancomycin))
+                    .unwrap_or(false)
+        }) || self.active_infections.iter().any(|i| {
+            i.site == InfectionSite::Respiratory
+                && matches!(
+                    i.severity,
+                    InfectionSeverity::Moderate | InfectionSeverity::Severe
+                )
         })
     }
 
@@ -191,7 +201,10 @@ impl InfectiousDiseaseProfile {
         let mut recommendations = Vec::new();
 
         for (vaccine, status) in &self.immunization_status.vaccines {
-            if matches!(status.immunity_status, ImmunityStatus::NotImmune | ImmunityStatus::WaningImmunity) {
+            if matches!(
+                status.immunity_status,
+                ImmunityStatus::NotImmune | ImmunityStatus::WaningImmunity
+            ) {
                 recommendations.push(*vaccine);
             }
         }
@@ -234,7 +247,8 @@ impl ImmunizationStatus {
     }
 
     pub fn is_up_to_date(&self, vaccine: &Vaccine) -> bool {
-        self.vaccines.get(vaccine)
+        self.vaccines
+            .get(vaccine)
             .map(|s| matches!(s.immunity_status, ImmunityStatus::Immune))
             .unwrap_or(false)
     }
@@ -295,7 +309,8 @@ impl Vaccine {
 
 impl Pathogen {
     pub fn is_multidrug_resistant(&self) -> bool {
-        self.resistance_pattern.as_ref()
+        self.resistance_pattern
+            .as_ref()
             .map(|r| r.resistant_to.len() >= 3)
             .unwrap_or(false)
     }
@@ -368,10 +383,7 @@ mod tests {
     fn test_immunization_status() {
         let mut status = ImmunizationStatus::new();
 
-        status.update_vaccine(
-            Vaccine::Tetanus,
-            VaccineStatus::fully_vaccinated(1, 2.0)
-        );
+        status.update_vaccine(Vaccine::Tetanus, VaccineStatus::fully_vaccinated(1, 2.0));
 
         assert!(status.is_up_to_date(&Vaccine::Tetanus));
     }

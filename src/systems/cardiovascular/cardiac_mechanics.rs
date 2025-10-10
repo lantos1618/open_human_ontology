@@ -117,7 +117,8 @@ impl VentricularGeometry {
     }
 
     pub fn sphericity_index(&self) -> f64 {
-        let volume_derived_radius = ((3.0 * self.end_diastolic_volume_ml) / (4.0 * PI)).powf(1.0 / 3.0);
+        let volume_derived_radius =
+            ((3.0 * self.end_diastolic_volume_ml) / (4.0 * PI)).powf(1.0 / 3.0);
         volume_derived_radius / self.chamber_radius_cm
     }
 
@@ -184,8 +185,14 @@ impl PressureVolumeLoop {
     }
 
     fn calculate_potential_energy(points: &[(f64, f64)]) -> f64 {
-        let max_pressure = points.iter().map(|(_, p)| p).fold(0.0_f64, |a, &b| a.max(b));
-        let edv = points.iter().map(|(v, _)| v).fold(0.0_f64, |a, &b| a.max(b));
+        let max_pressure = points
+            .iter()
+            .map(|(_, p)| p)
+            .fold(0.0_f64, |a, &b| a.max(b));
+        let edv = points
+            .iter()
+            .map(|(v, _)| v)
+            .fold(0.0_f64, |a, &b| a.max(b));
         max_pressure * edv * 0.133322 / 2.0
     }
 
@@ -194,14 +201,18 @@ impl PressureVolumeLoop {
     }
 
     pub fn end_systolic_elastance(&self) -> f64 {
-        let esv_point = self.points.iter()
+        let esv_point = self
+            .points
+            .iter()
             .min_by(|a, b| a.0.partial_cmp(&b.0).unwrap())
             .unwrap();
         esv_point.1 / esv_point.0
     }
 
     pub fn end_diastolic_elastance(&self) -> f64 {
-        let edv_point = self.points.iter()
+        let edv_point = self
+            .points
+            .iter()
             .max_by(|a, b| a.0.partial_cmp(&b.0).unwrap())
             .unwrap();
         edv_point.1 / edv_point.0

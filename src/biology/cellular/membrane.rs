@@ -196,9 +196,7 @@ impl CellMembrane {
     }
 
     pub fn total_protein_count(&self) -> usize {
-        self.membrane_proteins.iter()
-            .map(|p| p.copy_number)
-            .sum()
+        self.membrane_proteins.iter().map(|p| p.copy_number).sum()
     }
 
     pub fn protein_density(&self, membrane_area_um2: f64) -> f64 {
@@ -274,10 +272,11 @@ impl MembraneProtein {
     }
 
     pub fn is_integral(&self) -> bool {
-        matches!(self.protein_type,
-            MembraneProteinType::IntegralMonotopic |
-            MembraneProteinType::IntegralBitopic |
-            MembraneProteinType::IntegralPolytopic
+        matches!(
+            self.protein_type,
+            MembraneProteinType::IntegralMonotopic
+                | MembraneProteinType::IntegralBitopic
+                | MembraneProteinType::IntegralPolytopic
         )
     }
 }
@@ -322,9 +321,9 @@ impl MembraneTransport {
     }
 
     pub fn is_active_transport(&self) -> bool {
-        matches!(self.transport_type,
-            TransportType::PrimaryActiveTransport |
-            TransportType::SecondaryActiveTransport
+        matches!(
+            self.transport_type,
+            TransportType::PrimaryActiveTransport | TransportType::SecondaryActiveTransport
         )
     }
 
@@ -382,10 +381,7 @@ mod tests {
 
     #[test]
     fn test_ion_channel() {
-        let channel = IonChannel::new(
-            "Sodium Channel".to_string(),
-            IonSelectivity::Sodium,
-        );
+        let channel = IonChannel::new("Sodium Channel".to_string(), IonSelectivity::Sodium);
 
         assert_eq!(channel.ion_selectivity, IonSelectivity::Sodium);
         assert_eq!(channel.gating_mechanism, GatingMechanism::VoltageGated);
@@ -393,20 +389,16 @@ mod tests {
 
     #[test]
     fn test_membrane_transport() {
-        let transport = MembraneTransport::new(
-            TransportType::PrimaryActiveTransport,
-            "ATP".to_string(),
-        );
+        let transport =
+            MembraneTransport::new(TransportType::PrimaryActiveTransport, "ATP".to_string());
 
         assert!(transport.is_active_transport());
     }
 
     #[test]
     fn test_passive_transport() {
-        let transport = MembraneTransport::new(
-            TransportType::PassiveDiffusion,
-            "Oxygen".to_string(),
-        );
+        let transport =
+            MembraneTransport::new(TransportType::PassiveDiffusion, "Oxygen".to_string());
 
         assert!(!transport.is_active_transport());
     }

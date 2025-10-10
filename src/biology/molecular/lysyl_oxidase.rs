@@ -2,8 +2,8 @@
 //!
 //! Models lysyl oxidase enzyme and crosslinking.
 
-use serde::{Serialize, Deserialize};
 use crate::biology::{BiologyError, BiologyResult};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LysylOxidase {

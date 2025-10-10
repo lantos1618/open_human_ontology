@@ -106,11 +106,9 @@ impl InteractionChecker {
     }
 
     pub fn check_interaction(&self, drug_a: &str, drug_b: &str) -> Option<&DrugInteraction> {
-        self.known_interactions.iter()
-            .find(|i|
-                (i.drug_a == drug_a && i.drug_b == drug_b) ||
-                (i.drug_a == drug_b && i.drug_b == drug_a)
-            )
+        self.known_interactions.iter().find(|i| {
+            (i.drug_a == drug_a && i.drug_b == drug_b) || (i.drug_a == drug_b && i.drug_b == drug_a)
+        })
     }
 
     pub fn check_multiple(&self, drugs: &[String]) -> Vec<&DrugInteraction> {
@@ -188,10 +186,7 @@ mod tests {
             "Hyperkalemia risk".to_string(),
         ));
 
-        let drugs = vec![
-            "Simvastatin".to_string(),
-            "Clarithromycin".to_string(),
-        ];
+        let drugs = vec!["Simvastatin".to_string(), "Clarithromycin".to_string()];
 
         assert!(checker.has_contraindications(&drugs));
 

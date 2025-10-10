@@ -164,7 +164,8 @@ impl CircadianSystem {
         let phase_diff = current_radians - acrophase_radians;
 
         let mean_temp = (self.body_temperature_rhythm.peak_temperature_celsius
-            + self.body_temperature_rhythm.nadir_temperature_celsius) / 2.0;
+            + self.body_temperature_rhythm.nadir_temperature_celsius)
+            / 2.0;
 
         mean_temp + self.body_temperature_rhythm.amplitude_celsius * phase_diff.cos()
     }
@@ -176,20 +177,25 @@ impl CircadianSystem {
             if hour >= onset {
                 let hours_since_onset = hour - onset;
                 if hours_since_onset <= 4.0 {
-                    5.0 + (self.melatonin_rhythm.peak_concentration_pg_ml - 5.0) * (hours_since_onset / 4.0)
+                    5.0 + (self.melatonin_rhythm.peak_concentration_pg_ml - 5.0)
+                        * (hours_since_onset / 4.0)
                 } else {
                     let hours_after_peak = hours_since_onset - 4.0;
                     let decay_rate = 0.15;
-                    self.melatonin_rhythm.peak_concentration_pg_ml * (-decay_rate * hours_after_peak).exp()
+                    self.melatonin_rhythm.peak_concentration_pg_ml
+                        * (-decay_rate * hours_after_peak).exp()
                 }
             } else {
                 let hours_into_night = 24.0 - onset + hour;
                 if hours_into_night <= 4.0 {
-                    5.0 + (self.melatonin_rhythm.peak_concentration_pg_ml - 5.0) * (hours_into_night / 4.0)
+                    5.0 + (self.melatonin_rhythm.peak_concentration_pg_ml - 5.0)
+                        * (hours_into_night / 4.0)
                 } else {
                     let hours_after_peak = hours_into_night - 4.0;
                     let decay_rate = 0.15;
-                    (self.melatonin_rhythm.peak_concentration_pg_ml * (-decay_rate * hours_after_peak).exp()).max(5.0)
+                    (self.melatonin_rhythm.peak_concentration_pg_ml
+                        * (-decay_rate * hours_after_peak).exp())
+                    .max(5.0)
                 }
             }
         } else {
@@ -218,7 +224,9 @@ impl CircadianSystem {
         let melatonin_contribution = 1.0 - (melatonin / 80.0).min(1.0);
         let cortisol_contribution = (cortisol / 20.0).min(1.0);
 
-        let base_alertness = (temp_contribution * 0.3 + melatonin_contribution * 0.4 + cortisol_contribution * 0.3).clamp(0.0, 1.0);
+        let base_alertness =
+            (temp_contribution * 0.3 + melatonin_contribution * 0.4 + cortisol_contribution * 0.3)
+                .clamp(0.0, 1.0);
 
         if let Some(jet_lag) = &self.jet_lag_state {
             base_alertness * (1.0 - (1.0 - jet_lag.adaptation_progress) * 0.3)
@@ -230,8 +238,9 @@ impl CircadianSystem {
     }
 
     pub fn assess_circadian_health(&self) -> CircadianHealthAssessment {
-        let rhythm_amplitude_score = (self.melatonin_rhythm.amplitude +
-            self.body_temperature_rhythm.amplitude_celsius / 0.7) / 2.0;
+        let rhythm_amplitude_score = (self.melatonin_rhythm.amplitude
+            + self.body_temperature_rhythm.amplitude_celsius / 0.7)
+            / 2.0;
 
         let synchronization_score = self.peripheral_clocks.synchronization_index;
 
@@ -241,7 +250,9 @@ impl CircadianSystem {
             _ => 0.0,
         };
 
-        let overall_health = ((rhythm_amplitude_score + synchronization_score) / 2.0 - disruption_penalty).clamp(0.0, 1.0);
+        let overall_health = ((rhythm_amplitude_score + synchronization_score) / 2.0
+            - disruption_penalty)
+            .clamp(0.0, 1.0);
 
         CircadianHealthAssessment {
             overall_health_score: overall_health,
@@ -262,7 +273,9 @@ impl CircadianSystem {
 
         let phase_shift = time_zones_crossed as f64;
         self.peripheral_clocks.synchronization_index *= 0.5;
-        self.suprachiasmatic_nucleus.clock_gene_expression.phase_degrees += phase_shift * 15.0;
+        self.suprachiasmatic_nucleus
+            .clock_gene_expression
+            .phase_degrees += phase_shift * 15.0;
     }
 
     pub fn advance_time(&mut self, hours: f64) {
@@ -274,11 +287,11 @@ impl CircadianSystem {
                 TravelDirection::Eastward => 1.0,
             };
 
-            jet_lag.adaptation_progress = (jet_lag.days_since_travel * adaptation_rate /
-                jet_lag.time_zones_crossed.abs() as f64).min(1.0);
+            jet_lag.adaptation_progress = (jet_lag.days_since_travel * adaptation_rate
+                / jet_lag.time_zones_crossed.abs() as f64)
+                .min(1.0);
 
-            self.peripheral_clocks.synchronization_index =
-                0.5 + 0.4 * jet_lag.adaptation_progress;
+            self.peripheral_clocks.synchronization_index = 0.5 + 0.4 * jet_lag.adaptation_progress;
 
             if jet_lag.adaptation_progress >= 1.0 {
                 self.jet_lag_state = None;
@@ -392,9 +405,17 @@ mod tests {
         let morning_person = CircadianSystem::new_healthy_adult(Chronotype::ExtremeMorningType);
         let evening_person = CircadianSystem::new_healthy_adult(Chronotype::ExtremeEveningType);
 
-        assert!(morning_person.melatonin_rhythm.dim_light_melatonin_onset_hour <
-                evening_person.melatonin_rhythm.dim_light_melatonin_onset_hour);
-        assert!(morning_person.cortisol_rhythm.morning_peak_hour <
-                evening_person.cortisol_rhythm.morning_peak_hour);
+        assert!(
+            morning_person
+                .melatonin_rhythm
+                .dim_light_melatonin_onset_hour
+                < evening_person
+                    .melatonin_rhythm
+                    .dim_light_melatonin_onset_hour
+        );
+        assert!(
+            morning_person.cortisol_rhythm.morning_peak_hour
+                < evening_person.cortisol_rhythm.morning_peak_hour
+        );
     }
 }

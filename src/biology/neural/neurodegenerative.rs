@@ -184,7 +184,8 @@ impl NeurodegenerativeDisease {
             DiseaseType::Alzheimers => {
                 self.protein_misfolding.amyloid_beta.plaque_burden += 0.1 * years;
                 self.protein_misfolding.tau_protein.braak_stage =
-                    (self.protein_misfolding.tau_protein.braak_stage as f64 + 0.5 * years).min(6.0) as u8;
+                    (self.protein_misfolding.tau_protein.braak_stage as f64 + 0.5 * years).min(6.0)
+                        as u8;
                 self.neuronal_loss.hippocampal_volume_percent -= 2.0 * years;
             }
             DiseaseType::Parkinsons => {
@@ -234,12 +235,18 @@ impl NeurodegenerativeDisease {
                 targets.push("Levodopa/carbidopa".to_string());
                 targets.push("Dopamine agonists".to_string());
                 targets.push("MAO-B inhibitors".to_string());
-                if self.protein_misfolding.alpha_synuclein.oligomeric_form_percent > 30.0 {
+                if self
+                    .protein_misfolding
+                    .alpha_synuclein
+                    .oligomeric_form_percent
+                    > 30.0
+                {
                     targets.push("Anti-synuclein antibodies".to_string());
                 }
             }
             DiseaseType::HuntingtonsDisease => {
-                targets.push("Huntingtin lowering therapy (antisense oligonucleotides)".to_string());
+                targets
+                    .push("Huntingtin lowering therapy (antisense oligonucleotides)".to_string());
                 targets.push("VMAT2 inhibitors (tetrabenazine)".to_string());
             }
             _ => {}
@@ -295,7 +302,11 @@ impl ProteinMisfolding {
         };
 
         let tau_score = (self.tau_protein.braak_stage as f64) / 6.0;
-        let synuclein_score = if self.alpha_synuclein.lewy_bodies_present { 0.5 } else { 0.0 };
+        let synuclein_score = if self.alpha_synuclein.lewy_bodies_present {
+            0.5
+        } else {
+            0.0
+        };
 
         (amyloid_score * 0.4 + tau_score * 0.4 + synuclein_score * 0.2).min(1.0)
     }
@@ -434,10 +445,11 @@ impl NeuronalLoss {
     }
 
     pub fn overall_preservation(&self) -> f64 {
-        (self.hippocampal_volume_percent +
-         self.substantia_nigra_neurons_percent +
-         self.striatal_volume_percent +
-         self.motor_neuron_count_percent) / 400.0
+        (self.hippocampal_volume_percent
+            + self.substantia_nigra_neurons_percent
+            + self.striatal_volume_percent
+            + self.motor_neuron_count_percent)
+            / 400.0
     }
 }
 
@@ -476,10 +488,11 @@ impl CognitiveDecline {
     }
 
     pub fn impairment_score(&self) -> f64 {
-        (self.memory_impairment * 0.3 +
-         (1.0 - self.executive_function) * 0.3 +
-         (1.0 - self.language_function) * 0.2 +
-         (1.0 - self.visuospatial_function) * 0.2).min(1.0)
+        (self.memory_impairment * 0.3
+            + (1.0 - self.executive_function) * 0.3
+            + (1.0 - self.language_function) * 0.2
+            + (1.0 - self.visuospatial_function) * 0.2)
+            .min(1.0)
     }
 
     pub fn dementia_severity(&self) -> ClinicalStage {
@@ -526,9 +539,9 @@ impl BiomarkerChanges {
     }
 
     pub fn alzheimers_signature(&self) -> bool {
-        self.csf_abeta42_pg_ml < 600.0 &&
-        self.csf_ptau_pg_ml > 60.0 &&
-        self.fdg_pet_hypometabolism > 0.2
+        self.csf_abeta42_pg_ml < 600.0
+            && self.csf_ptau_pg_ml > 60.0
+            && self.fdg_pet_hypometabolism > 0.2
     }
 }
 
@@ -572,9 +585,10 @@ impl Neuroinflammation {
     }
 
     pub fn inflammation_score(&self) -> f64 {
-        (self.microglial_activation * 0.4 +
-         self.astrogliosis * 0.3 +
-         (self.pro_inflammatory_cytokines / 5.0).min(0.3)).min(1.0)
+        (self.microglial_activation * 0.4
+            + self.astrogliosis * 0.3
+            + (self.pro_inflammatory_cytokines / 5.0).min(0.3))
+        .min(1.0)
     }
 }
 
@@ -596,9 +610,9 @@ impl SynapticDysfunction {
     }
 
     pub fn synaptic_function_score(&self) -> f64 {
-        (self.synaptic_density_percent / 100.0) *
-        self.neurotransmitter_release *
-        self.receptor_expression
+        (self.synaptic_density_percent / 100.0)
+            * self.neurotransmitter_release
+            * self.receptor_expression
     }
 }
 
@@ -746,6 +760,9 @@ mod tests {
     #[test]
     fn test_clinical_staging() {
         let decline = CognitiveDecline::new_normal();
-        assert_eq!(decline.dementia_severity(), ClinicalStage::MildCognitiveImpairment);
+        assert_eq!(
+            decline.dementia_severity(),
+            ClinicalStage::MildCognitiveImpairment
+        );
     }
 }

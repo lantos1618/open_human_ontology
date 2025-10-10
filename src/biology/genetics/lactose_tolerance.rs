@@ -112,9 +112,7 @@ pub fn get_lct_variant_by_population(population: &str) -> String {
         }
         "East African" | "Tutsi" | "Fulani" => "LCT-14010 G>C (rs145946881)".to_string(),
         "Saudi Arabian" | "Bedouin" => "LCT-13915 T>G (rs41525747)".to_string(),
-        "East Asian" | "Chinese" | "Japanese" | "Korean" => {
-            "LCT-22018 G>A (rs182549)".to_string()
-        }
+        "East Asian" | "Chinese" | "Japanese" | "Korean" => "LCT-22018 G>A (rs182549)".to_string(),
         _ => "LCT-13910 C>T (rs4988235)".to_string(),
     }
 }

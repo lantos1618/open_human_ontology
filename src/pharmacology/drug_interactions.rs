@@ -150,7 +150,8 @@ impl DrugInteractionSystem {
 
     pub fn remove_medication(&mut self, name: &str) {
         self.active_medications.retain(|m| m.name != name);
-        self.interactions.retain(|i| i.drug1 != name && i.drug2 != name);
+        self.interactions
+            .retain(|i| i.drug1 != name && i.drug2 != name);
         self.recalculate_severity();
     }
 
@@ -168,8 +169,9 @@ impl DrugInteractionSystem {
 
     fn check_cyp_interaction(med1: &Medication, med2: &Medication) -> Option<DrugInteraction> {
         for substrate_cyp in &med1.cyp_metabolism.substrate_of {
-            if med2.cyp_metabolism.inhibitor_of.contains(substrate_cyp) &&
-               med2.cyp_metabolism.inhibition_strength != InhibitionStrength::None {
+            if med2.cyp_metabolism.inhibitor_of.contains(substrate_cyp)
+                && med2.cyp_metabolism.inhibition_strength != InhibitionStrength::None
+            {
                 let severity = match med2.cyp_metabolism.inhibition_strength {
                     InhibitionStrength::Weak => Severity::Minor,
                     InhibitionStrength::Moderate => Severity::Moderate,
@@ -187,7 +189,9 @@ impl DrugInteractionSystem {
                         "{} inhibits metabolism of {}, increasing its levels",
                         med2.name, med1.name
                     ),
-                    recommendation: "Monitor for increased effects/toxicity, consider dose reduction".to_string(),
+                    recommendation:
+                        "Monitor for increased effects/toxicity, consider dose reduction"
+                            .to_string(),
                 });
             }
 
@@ -202,14 +206,16 @@ impl DrugInteractionSystem {
                         "{} induces metabolism of {}, decreasing its levels",
                         med2.name, med1.name
                     ),
-                    recommendation: "Monitor for reduced efficacy, consider dose increase".to_string(),
+                    recommendation: "Monitor for reduced efficacy, consider dose increase"
+                        .to_string(),
                 });
             }
         }
 
         for substrate_cyp in &med2.cyp_metabolism.substrate_of {
-            if med1.cyp_metabolism.inhibitor_of.contains(substrate_cyp) &&
-               med1.cyp_metabolism.inhibition_strength != InhibitionStrength::None {
+            if med1.cyp_metabolism.inhibitor_of.contains(substrate_cyp)
+                && med1.cyp_metabolism.inhibition_strength != InhibitionStrength::None
+            {
                 let severity = match med1.cyp_metabolism.inhibition_strength {
                     InhibitionStrength::Weak => Severity::Minor,
                     InhibitionStrength::Moderate => Severity::Moderate,
@@ -227,7 +233,9 @@ impl DrugInteractionSystem {
                         "{} inhibits metabolism of {}, increasing its levels",
                         med1.name, med2.name
                     ),
-                    recommendation: "Monitor for increased effects/toxicity, consider dose reduction".to_string(),
+                    recommendation:
+                        "Monitor for increased effects/toxicity, consider dose reduction"
+                            .to_string(),
                 });
             }
 
@@ -242,7 +250,8 @@ impl DrugInteractionSystem {
                         "{} induces metabolism of {}, decreasing its levels",
                         med1.name, med2.name
                     ),
-                    recommendation: "Monitor for reduced efficacy, consider dose increase".to_string(),
+                    recommendation: "Monitor for reduced efficacy, consider dose increase"
+                        .to_string(),
                 });
             }
         }
@@ -250,19 +259,25 @@ impl DrugInteractionSystem {
         None
     }
 
-    fn check_pharmacodynamic_interaction(med1: &Medication, med2: &Medication) -> Option<DrugInteraction> {
+    fn check_pharmacodynamic_interaction(
+        med1: &Medication,
+        med2: &Medication,
+    ) -> Option<DrugInteraction> {
         use DrugClass::*;
 
         match (med1.drug_class, med2.drug_class) {
-            (Anticoagulant, Antiplatelet) | (Antiplatelet, Anticoagulant) => Some(DrugInteraction {
-                drug1: med1.name.clone(),
-                drug2: med2.name.clone(),
-                interaction_type: InteractionType::Pharmacodynamic,
-                severity: Severity::Major,
-                mechanism: InteractionMechanism::AdditiveEffect,
-                clinical_effect: "Increased bleeding risk".to_string(),
-                recommendation: "Avoid combination if possible, monitor INR and bleeding signs".to_string(),
-            }),
+            (Anticoagulant, Antiplatelet) | (Antiplatelet, Anticoagulant) => {
+                Some(DrugInteraction {
+                    drug1: med1.name.clone(),
+                    drug2: med2.name.clone(),
+                    interaction_type: InteractionType::Pharmacodynamic,
+                    severity: Severity::Major,
+                    mechanism: InteractionMechanism::AdditiveEffect,
+                    clinical_effect: "Increased bleeding risk".to_string(),
+                    recommendation: "Avoid combination if possible, monitor INR and bleeding signs"
+                        .to_string(),
+                })
+            }
 
             (NSAID, Anticoagulant) | (Anticoagulant, NSAID) => Some(DrugInteraction {
                 drug1: med1.name.clone(),
@@ -306,16 +321,18 @@ impl DrugInteractionSystem {
                 Severity::Minor => self.interaction_severity.minor_interactions += 1,
                 Severity::Moderate => self.interaction_severity.moderate_interactions += 1,
                 Severity::Major => self.interaction_severity.major_interactions += 1,
-                Severity::Contraindicated => self.interaction_severity.contraindicated_interactions += 1,
+                Severity::Contraindicated => {
+                    self.interaction_severity.contraindicated_interactions += 1
+                }
             }
         }
 
-        self.interaction_severity.overall_risk_score = (
-            (self.interaction_severity.minor_interactions as f64 * 0.1) +
-            (self.interaction_severity.moderate_interactions as f64 * 0.3) +
-            (self.interaction_severity.major_interactions as f64 * 0.7) +
-            (self.interaction_severity.contraindicated_interactions as f64 * 1.0)
-        ).min(10.0);
+        self.interaction_severity.overall_risk_score =
+            ((self.interaction_severity.minor_interactions as f64 * 0.1)
+                + (self.interaction_severity.moderate_interactions as f64 * 0.3)
+                + (self.interaction_severity.major_interactions as f64 * 0.7)
+                + (self.interaction_severity.contraindicated_interactions as f64 * 1.0))
+                .min(10.0);
     }
 
     pub fn get_major_interactions(&self) -> Vec<&DrugInteraction> {
@@ -328,8 +345,8 @@ impl DrugInteractionSystem {
     pub fn polypharmacy_risk(&self) -> f64 {
         let medication_count = self.active_medications.len() as f64;
         if medication_count >= 5.0 {
-            (medication_count / 10.0).min(1.0) * 0.5 +
-            (self.interaction_severity.overall_risk_score / 10.0) * 0.5
+            (medication_count / 10.0).min(1.0) * 0.5
+                + (self.interaction_severity.overall_risk_score / 10.0) * 0.5
         } else {
             (self.interaction_severity.overall_risk_score / 10.0) * 0.5
         }
@@ -483,7 +500,8 @@ mod tests {
             40.0,
             1,
             DrugClass::Statin,
-        ).with_cyp_metabolism(CYPMetabolism::new_substrate(vec![CYPEnzyme::CYP3A4]));
+        )
+        .with_cyp_metabolism(CYPMetabolism::new_substrate(vec![CYPEnzyme::CYP3A4]));
 
         let med2 = Medication::new(
             "Clarithromycin".to_string(),
@@ -491,7 +509,11 @@ mod tests {
             500.0,
             2,
             DrugClass::Antibiotic,
-        ).with_cyp_metabolism(CYPMetabolism::new_inhibitor(vec![CYPEnzyme::CYP3A4], InhibitionStrength::Strong));
+        )
+        .with_cyp_metabolism(CYPMetabolism::new_inhibitor(
+            vec![CYPEnzyme::CYP3A4],
+            InhibitionStrength::Strong,
+        ));
 
         system.add_medication(med1);
         system.add_medication(med2);
@@ -552,7 +574,9 @@ mod tests {
 
         assert!(!system.interactions.is_empty());
         assert!(system.interactions[0].severity == Severity::Major);
-        assert!(system.interactions[0].clinical_effect.contains("respiratory depression"));
+        assert!(system.interactions[0]
+            .clinical_effect
+            .contains("respiratory depression"));
     }
 
     #[test]

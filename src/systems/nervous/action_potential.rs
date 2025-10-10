@@ -150,8 +150,8 @@ impl ActionPotentialDynamics {
         self.potassium_channels.activation_gate_m +=
             (n_inf - self.potassium_channels.activation_gate_m) * dt_ms / tau_n;
 
-        self.sodium_channels.open_fraction =
-            self.sodium_channels.activation_gate_m.powi(3) * self.sodium_channels.inactivation_gate_h;
+        self.sodium_channels.open_fraction = self.sodium_channels.activation_gate_m.powi(3)
+            * self.sodium_channels.inactivation_gate_h;
         self.potassium_channels.open_fraction = self.potassium_channels.activation_gate_m.powi(4);
     }
 
@@ -298,8 +298,7 @@ impl SynapticTransmission {
         }
 
         let decay_tau_ms = 2.0;
-        self.neurotransmitter_concentration_um *=
-            (-dt_ms / decay_tau_ms).exp();
+        self.neurotransmitter_concentration_um *= (-dt_ms / decay_tau_ms).exp();
 
         let kd_um = match neurotransmitter_type {
             NeurotransmitterType::Glutamate => 1.0,
@@ -308,8 +307,8 @@ impl SynapticTransmission {
             _ => 2.0,
         };
 
-        self.receptor_bound_fraction = self.neurotransmitter_concentration_um /
-            (self.neurotransmitter_concentration_um + kd_um);
+        self.receptor_bound_fraction = self.neurotransmitter_concentration_um
+            / (self.neurotransmitter_concentration_um + kd_um);
 
         let max_conductance_ns = match neurotransmitter_type {
             NeurotransmitterType::Glutamate => 1.0,
@@ -327,8 +326,8 @@ impl SynapticTransmission {
             _ => 0.0,
         };
 
-        self.synaptic_current_pa = self.synaptic_conductance_ns *
-            (self.postsynaptic_vm_mv - reversal_potential_mv);
+        self.synaptic_current_pa =
+            self.synaptic_conductance_ns * (self.postsynaptic_vm_mv - reversal_potential_mv);
 
         let tau_membrane_ms = 20.0;
         let capacitance_pf = 100.0;
@@ -340,7 +339,10 @@ impl SynapticTransmission {
     }
 
     pub fn is_excitatory(&self, neurotransmitter: NeurotransmitterType) -> bool {
-        matches!(neurotransmitter, NeurotransmitterType::Glutamate | NeurotransmitterType::Acetylcholine)
+        matches!(
+            neurotransmitter,
+            NeurotransmitterType::Glutamate | NeurotransmitterType::Acetylcholine
+        )
     }
 
     pub fn is_inhibitory(&self, neurotransmitter: NeurotransmitterType) -> bool {
@@ -408,7 +410,10 @@ mod tests {
 
         assert!(!trace.is_empty());
 
-        let max_v = trace.iter().map(|(_, v)| v).fold(f64::NEG_INFINITY, |a, &b| a.max(b));
+        let max_v = trace
+            .iter()
+            .map(|(_, v)| v)
+            .fold(f64::NEG_INFINITY, |a, &b| a.max(b));
         assert!(max_v > 0.0);
     }
 

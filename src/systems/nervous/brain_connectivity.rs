@@ -179,13 +179,15 @@ impl BrainNetwork {
     }
 
     pub fn region_connectivity(&self, region_name: &str) -> usize {
-        self.connections.iter()
+        self.connections
+            .iter()
             .filter(|c| c.from_region == region_name || c.to_region == region_name)
             .count()
     }
 
     pub fn hub_regions(&self, threshold: usize) -> Vec<&BrainRegion> {
-        self.regions.iter()
+        self.regions
+            .iter()
             .filter(|r| self.region_connectivity(&r.name) >= threshold)
             .collect()
     }
@@ -415,10 +417,8 @@ mod tests {
 
     #[test]
     fn test_white_matter_tract() {
-        let tract = WhiteMatterTract::new(
-            "Corpus Callosum".to_string(),
-            TractType::CommissuralFiber,
-        );
+        let tract =
+            WhiteMatterTract::new("Corpus Callosum".to_string(), TractType::CommissuralFiber);
 
         assert!(tract.is_healthy());
         assert!(!tract.has_white_matter_damage());

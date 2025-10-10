@@ -118,7 +118,9 @@ impl GastroenterologyProfile {
     }
 
     pub fn child_pugh_score(&self) -> Option<ChildPughScore> {
-        let has_cirrhosis = self.conditions.iter()
+        let has_cirrhosis = self
+            .conditions
+            .iter()
             .any(|c| c.diagnosis == GIDiagnosis::Cirrhosis);
 
         if !has_cirrhosis {
@@ -149,14 +151,21 @@ impl GastroenterologyProfile {
     }
 
     pub fn ibd_activity_index(&self) -> Option<IBDActivity> {
-        let has_ibd = self.conditions.iter()
-            .any(|c| matches!(c.diagnosis, GIDiagnosis::CrohnsDisease | GIDiagnosis::UlcerativeColitis));
+        let has_ibd = self.conditions.iter().any(|c| {
+            matches!(
+                c.diagnosis,
+                GIDiagnosis::CrohnsDisease | GIDiagnosis::UlcerativeColitis
+            )
+        });
 
         if !has_ibd {
             return None;
         }
 
-        let activity = match (self.bowel_habits.frequency_per_day, self.bowel_habits.blood_present) {
+        let activity = match (
+            self.bowel_habits.frequency_per_day,
+            self.bowel_habits.blood_present,
+        ) {
             (freq, true) if freq > 6.0 => IBDActivity::Severe,
             (freq, _) if freq > 4.0 => IBDActivity::Moderate,
             (freq, _) if freq > 2.0 => IBDActivity::Mild,
@@ -177,7 +186,9 @@ impl GastroenterologyProfile {
     }
 
     pub fn pancreatitis_severity(&self) -> Option<PancreatitisSeverity> {
-        let has_pancreatitis = self.conditions.iter()
+        let has_pancreatitis = self
+            .conditions
+            .iter()
             .any(|c| c.diagnosis == GIDiagnosis::Pancreatitis);
 
         if !has_pancreatitis {
@@ -299,13 +310,19 @@ impl BowelHabits {
     }
 
     pub fn constipation(&self) -> bool {
-        self.frequency_per_day < 0.3 ||
-        matches!(self.consistency, StoolConsistency::Type1Hard | StoolConsistency::Type2Lumpy)
+        self.frequency_per_day < 0.3
+            || matches!(
+                self.consistency,
+                StoolConsistency::Type1Hard | StoolConsistency::Type2Lumpy
+            )
     }
 
     pub fn diarrhea(&self) -> bool {
-        self.frequency_per_day > 3.0 ||
-        matches!(self.consistency, StoolConsistency::Type6Fluffy | StoolConsistency::Type7Watery)
+        self.frequency_per_day > 3.0
+            || matches!(
+                self.consistency,
+                StoolConsistency::Type6Fluffy | StoolConsistency::Type7Watery
+            )
     }
 
     pub fn alarm_symptoms(&self) -> bool {
@@ -384,7 +401,10 @@ mod tests {
 
         profile.pancreas_function.lipase_u_l = 1200.0;
 
-        assert_eq!(profile.pancreatitis_severity(), Some(PancreatitisSeverity::Severe));
+        assert_eq!(
+            profile.pancreatitis_severity(),
+            Some(PancreatitisSeverity::Severe)
+        );
     }
 
     #[test]

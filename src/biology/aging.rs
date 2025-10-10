@@ -149,17 +149,19 @@ impl AgingProfile {
 
         let senescence_contribution = self.cellular_senescence.senescent_cell_percentage * 2.0;
 
-        let mitochondrial_contribution = (1.0 - self.mitochondrial_function.atp_production_efficiency) * 100.0;
+        let mitochondrial_contribution =
+            (1.0 - self.mitochondrial_function.atp_production_efficiency) * 100.0;
 
         let proteostasis_contribution = (1.0 - self.proteostasis.protein_folding_efficiency) * 80.0;
 
-        let stem_cell_contribution = (1.0 - self.stem_cell_function.stem_cell_self_renewal_capacity) * 70.0;
+        let stem_cell_contribution =
+            (1.0 - self.stem_cell_function.stem_cell_self_renewal_capacity) * 70.0;
 
-        let weighted_age = (telomere_contribution * 0.25) +
-                          (senescence_contribution * 0.2) +
-                          (mitochondrial_contribution * 0.2) +
-                          (proteostasis_contribution * 0.2) +
-                          (stem_cell_contribution * 0.15);
+        let weighted_age = (telomere_contribution * 0.25)
+            + (senescence_contribution * 0.2)
+            + (mitochondrial_contribution * 0.2)
+            + (proteostasis_contribution * 0.2)
+            + (stem_cell_contribution * 0.15);
 
         weighted_age.max(self.chronological_age_years * 0.7)
     }
@@ -172,7 +174,12 @@ impl AgingProfile {
         let proteostasis_factor = 2.0 - self.proteostasis.protein_folding_efficiency;
         let autophagy_factor = 2.0 - self.autophagy_efficiency;
 
-        base_rate * senescence_factor * mitochondrial_factor * proteostasis_factor * autophagy_factor / 16.0
+        base_rate
+            * senescence_factor
+            * mitochondrial_factor
+            * proteostasis_factor
+            * autophagy_factor
+            / 16.0
     }
 
     pub fn calculate_overall_hallmark_score(&self) -> f64 {
@@ -211,7 +218,8 @@ impl AgingProfile {
             self.chronological_age_years + 15.0
         };
 
-        let remaining_healthy_years = (health_span_estimate - self.chronological_age_years).max(0.0);
+        let remaining_healthy_years =
+            (health_span_estimate - self.chronological_age_years).max(0.0);
 
         LongevityAssessment {
             biological_age,
@@ -249,7 +257,8 @@ impl AgingProfile {
         self.mitochondrial_function.atp_production_efficiency =
             (self.mitochondrial_function.atp_production_efficiency + boost_factor * 0.1).min(1.0);
         self.mitochondrial_function.mitochondrial_biogenesis_rate =
-            (self.mitochondrial_function.mitochondrial_biogenesis_rate + boost_factor * 0.15).min(1.0);
+            (self.mitochondrial_function.mitochondrial_biogenesis_rate + boost_factor * 0.15)
+                .min(1.0);
         self.hallmarks.mitochondrial_dysfunction_score *= 1.0 - boost_factor * 0.3;
     }
 

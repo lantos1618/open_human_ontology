@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::biology::BiologyResult;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum ABOAllele {
@@ -41,13 +41,18 @@ pub enum BloodType {
 impl BloodType {
     pub fn from_genotype(abo: ABOGenotype, rh: RhGenotype) -> Self {
         let phenotype = match (abo.allele1, abo.allele2) {
-            (ABOAllele::A, ABOAllele::A) | (ABOAllele::A, ABOAllele::O) | (ABOAllele::O, ABOAllele::A) => "A",
-            (ABOAllele::B, ABOAllele::B) | (ABOAllele::B, ABOAllele::O) | (ABOAllele::O, ABOAllele::B) => "B",
+            (ABOAllele::A, ABOAllele::A)
+            | (ABOAllele::A, ABOAllele::O)
+            | (ABOAllele::O, ABOAllele::A) => "A",
+            (ABOAllele::B, ABOAllele::B)
+            | (ABOAllele::B, ABOAllele::O)
+            | (ABOAllele::O, ABOAllele::B) => "B",
             (ABOAllele::A, ABOAllele::B) | (ABOAllele::B, ABOAllele::A) => "AB",
             (ABOAllele::O, ABOAllele::O) => "O",
         };
 
-        let rh_positive = matches!(rh.allele1, RhAllele::Positive) || matches!(rh.allele2, RhAllele::Positive);
+        let rh_positive =
+            matches!(rh.allele1, RhAllele::Positive) || matches!(rh.allele2, RhAllele::Positive);
 
         match (phenotype, rh_positive) {
             ("O", true) => BloodType::OPositive,
@@ -64,23 +69,32 @@ impl BloodType {
 
     pub fn can_receive_from(&self, donor: BloodType) -> bool {
         match self {
-            BloodType::OPositive => matches!(donor,
-                BloodType::OPositive | BloodType::ONegative),
+            BloodType::OPositive => matches!(donor, BloodType::OPositive | BloodType::ONegative),
             BloodType::ONegative => matches!(donor, BloodType::ONegative),
-            BloodType::APositive => matches!(donor,
-                BloodType::APositive | BloodType::ANegative |
-                BloodType::OPositive | BloodType::ONegative),
-            BloodType::ANegative => matches!(donor,
-                BloodType::ANegative | BloodType::ONegative),
-            BloodType::BPositive => matches!(donor,
-                BloodType::BPositive | BloodType::BNegative |
-                BloodType::OPositive | BloodType::ONegative),
-            BloodType::BNegative => matches!(donor,
-                BloodType::BNegative | BloodType::ONegative),
+            BloodType::APositive => matches!(
+                donor,
+                BloodType::APositive
+                    | BloodType::ANegative
+                    | BloodType::OPositive
+                    | BloodType::ONegative
+            ),
+            BloodType::ANegative => matches!(donor, BloodType::ANegative | BloodType::ONegative),
+            BloodType::BPositive => matches!(
+                donor,
+                BloodType::BPositive
+                    | BloodType::BNegative
+                    | BloodType::OPositive
+                    | BloodType::ONegative
+            ),
+            BloodType::BNegative => matches!(donor, BloodType::BNegative | BloodType::ONegative),
             BloodType::ABPositive => true,
-            BloodType::ABNegative => matches!(donor,
-                BloodType::ANegative | BloodType::BNegative |
-                BloodType::ABNegative | BloodType::ONegative),
+            BloodType::ABNegative => matches!(
+                donor,
+                BloodType::ANegative
+                    | BloodType::BNegative
+                    | BloodType::ABNegative
+                    | BloodType::ONegative
+            ),
         }
     }
 
@@ -167,8 +181,12 @@ impl ABOGenotype {
 
     pub fn phenotype(&self) -> &'static str {
         match (self.allele1, self.allele2) {
-            (ABOAllele::A, ABOAllele::A) | (ABOAllele::A, ABOAllele::O) | (ABOAllele::O, ABOAllele::A) => "A",
-            (ABOAllele::B, ABOAllele::B) | (ABOAllele::B, ABOAllele::O) | (ABOAllele::O, ABOAllele::B) => "B",
+            (ABOAllele::A, ABOAllele::A)
+            | (ABOAllele::A, ABOAllele::O)
+            | (ABOAllele::O, ABOAllele::A) => "A",
+            (ABOAllele::B, ABOAllele::B)
+            | (ABOAllele::B, ABOAllele::O)
+            | (ABOAllele::O, ABOAllele::B) => "B",
             (ABOAllele::A, ABOAllele::B) | (ABOAllele::B, ABOAllele::A) => "AB",
             (ABOAllele::O, ABOAllele::O) => "O",
         }
@@ -181,7 +199,8 @@ impl RhGenotype {
     }
 
     pub fn phenotype(&self) -> &'static str {
-        if matches!(self.allele1, RhAllele::Positive) || matches!(self.allele2, RhAllele::Positive) {
+        if matches!(self.allele1, RhAllele::Positive) || matches!(self.allele2, RhAllele::Positive)
+        {
             "Positive"
         } else {
             "Negative"
@@ -192,7 +211,10 @@ impl RhGenotype {
 pub struct BloodTypeCompatibility;
 
 impl BloodTypeCompatibility {
-    pub fn check_transfusion(donor: BloodType, recipient: BloodType) -> BiologyResult<TransfusionCompatibility> {
+    pub fn check_transfusion(
+        donor: BloodType,
+        recipient: BloodType,
+    ) -> BiologyResult<TransfusionCompatibility> {
         let compatible = recipient.can_receive_from(donor);
 
         Ok(TransfusionCompatibility {
@@ -213,10 +235,20 @@ impl BloodTypeCompatibility {
     }
 
     pub fn check_pregnancy_risk(mother: BloodType, father: BloodType) -> PregnancyRiskAssessment {
-        let mother_rh_neg = matches!(mother, BloodType::ONegative | BloodType::ANegative |
-                                             BloodType::BNegative | BloodType::ABNegative);
-        let father_rh_pos = matches!(father, BloodType::OPositive | BloodType::APositive |
-                                             BloodType::BPositive | BloodType::ABPositive);
+        let mother_rh_neg = matches!(
+            mother,
+            BloodType::ONegative
+                | BloodType::ANegative
+                | BloodType::BNegative
+                | BloodType::ABNegative
+        );
+        let father_rh_pos = matches!(
+            father,
+            BloodType::OPositive
+                | BloodType::APositive
+                | BloodType::BPositive
+                | BloodType::ABPositive
+        );
 
         let rh_incompatibility_risk = mother_rh_neg && father_rh_pos;
 
@@ -240,10 +272,14 @@ impl BloodTypeCompatibility {
         let mut possible = Vec::new();
 
         for blood_type in [
-            BloodType::OPositive, BloodType::ONegative,
-            BloodType::APositive, BloodType::ANegative,
-            BloodType::BPositive, BloodType::BNegative,
-            BloodType::ABPositive, BloodType::ABNegative,
+            BloodType::OPositive,
+            BloodType::ONegative,
+            BloodType::APositive,
+            BloodType::ANegative,
+            BloodType::BPositive,
+            BloodType::BNegative,
+            BloodType::ABPositive,
+            BloodType::ABNegative,
         ] {
             possible.push(blood_type);
         }
@@ -320,20 +356,18 @@ mod tests {
 
     #[test]
     fn test_check_transfusion() {
-        let result = BloodTypeCompatibility::check_transfusion(
-            BloodType::ONegative,
-            BloodType::ABPositive
-        ).unwrap();
+        let result =
+            BloodTypeCompatibility::check_transfusion(BloodType::ONegative, BloodType::ABPositive)
+                .unwrap();
         assert!(result.compatible);
         assert_eq!(result.risk_level, RiskLevel::Safe);
     }
 
     #[test]
     fn test_incompatible_transfusion() {
-        let result = BloodTypeCompatibility::check_transfusion(
-            BloodType::ABPositive,
-            BloodType::ONegative
-        ).unwrap();
+        let result =
+            BloodTypeCompatibility::check_transfusion(BloodType::ABPositive, BloodType::ONegative)
+                .unwrap();
         assert!(!result.compatible);
         assert_eq!(result.risk_level, RiskLevel::Dangerous);
     }
@@ -342,7 +376,7 @@ mod tests {
     fn test_pregnancy_risk_rh_incompatible() {
         let assessment = BloodTypeCompatibility::check_pregnancy_risk(
             BloodType::ANegative,
-            BloodType::APositive
+            BloodType::APositive,
         );
         assert!(assessment.rh_incompatibility_risk);
         assert!(!assessment.recommendations.is_empty());
@@ -352,7 +386,7 @@ mod tests {
     fn test_pregnancy_risk_rh_compatible() {
         let assessment = BloodTypeCompatibility::check_pregnancy_risk(
             BloodType::APositive,
-            BloodType::APositive
+            BloodType::APositive,
         );
         assert!(!assessment.rh_incompatibility_risk);
     }

@@ -199,13 +199,14 @@ impl PainMedicationProfile {
                     rationale: "Novel preventive with good tolerability".to_string(),
                     dosing_notes: "70mg or 140mg monthly SC injection".to_string(),
                 });
-            },
+            }
             "cluster_headache" => {
                 recommendations.push(MedicationRecommendation {
                     medication: "100% Oxygen".to_string(),
                     response_level: self.cluster_medication.oxygen_efficacy,
                     rationale: "First-line abortive for cluster attacks".to_string(),
-                    dosing_notes: "12-15 L/min for 15-20 minutes via non-rebreather mask".to_string(),
+                    dosing_notes: "12-15 L/min for 15-20 minutes via non-rebreather mask"
+                        .to_string(),
                 });
 
                 recommendations.push(MedicationRecommendation {
@@ -219,15 +220,20 @@ impl PainMedicationProfile {
                     medication: "Verapamil".to_string(),
                     response_level: self.cluster_medication.verapamil_response,
                     rationale: "First-line preventive for episodic and chronic cluster".to_string(),
-                    dosing_notes: "Start 80mg TID, titrate up to 360-960mg daily with EKG monitoring".to_string(),
+                    dosing_notes:
+                        "Start 80mg TID, titrate up to 360-960mg daily with EKG monitoring"
+                            .to_string(),
                 });
-            },
+            }
             "chronic_pain" => {
                 if self.opioid_response.morphine_response == DrugResponseLevel::Good {
                     recommendations.push(MedicationRecommendation {
                         medication: "Morphine".to_string(),
                         response_level: self.opioid_response.morphine_response,
-                        rationale: format!("Good opioid response predicted. Addiction risk: {:?}", self.opioid_response.addiction_risk),
+                        rationale: format!(
+                            "Good opioid response predicted. Addiction risk: {:?}",
+                            self.opioid_response.addiction_risk
+                        ),
                         dosing_notes: "Start low and titrate. Monitor for dependence".to_string(),
                     });
                 } else {
@@ -235,11 +241,12 @@ impl PainMedicationProfile {
                         medication: "Gabapentin or Pregabalin".to_string(),
                         response_level: DrugResponseLevel::Good,
                         rationale: "Alternative to opioids for neuropathic pain".to_string(),
-                        dosing_notes: "Gabapentin 300mg TID or Pregabalin 75mg BID, titrate".to_string(),
+                        dosing_notes: "Gabapentin 300mg TID or Pregabalin 75mg BID, titrate"
+                            .to_string(),
                     });
                 }
-            },
-            _ => {},
+            }
+            _ => {}
         }
 
         recommendations
@@ -249,13 +256,14 @@ impl PainMedicationProfile {
         match self.migraine_medication.triptan_response {
             DrugResponseLevel::Excellent | DrugResponseLevel::Good => {
                 "Sumatriptan 50-100mg PO or 6mg SC. May repeat once after 2 hours".to_string()
-            },
+            }
             DrugResponseLevel::Moderate => {
                 "Sumatriptan 100mg PO or consider 6mg SC for better response".to_string()
-            },
+            }
             DrugResponseLevel::Poor => {
-                "Consider alternative triptan (rizatriptan, eletriptan) or CGRP antagonist".to_string()
-            },
+                "Consider alternative triptan (rizatriptan, eletriptan) or CGRP antagonist"
+                    .to_string()
+            }
             _ => "Consult specialist for alternative therapy".to_string(),
         }
     }
@@ -320,7 +328,10 @@ mod tests {
         let mut profile = PainMedicationProfile::new();
         profile.add_genotype(PainPharmacogene::OPRM1, "118A/118G".to_string());
 
-        assert_eq!(profile.opioid_response.morphine_response, DrugResponseLevel::Good);
+        assert_eq!(
+            profile.opioid_response.morphine_response,
+            DrugResponseLevel::Good
+        );
     }
 
     #[test]
@@ -354,6 +365,9 @@ mod tests {
         let mut profile = PainMedicationProfile::new();
         profile.add_genotype(PainPharmacogene::CYP2D6, "*4/*4".to_string());
 
-        assert_eq!(profile.opioid_response.codeine_response, DrugResponseLevel::VeryPoor);
+        assert_eq!(
+            profile.opioid_response.codeine_response,
+            DrugResponseLevel::VeryPoor
+        );
     }
 }

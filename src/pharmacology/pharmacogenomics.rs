@@ -1,6 +1,6 @@
+use crate::biology::BiologyResult;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::biology::BiologyResult;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum PharmacogeneticGene {
@@ -26,7 +26,9 @@ pub enum PharmacogeneticGene {
 impl PharmacogeneticGene {
     pub fn description(&self) -> &'static str {
         match self {
-            PharmacogeneticGene::CYP2D6 => "Metabolizes 25% of drugs including codeine, antidepressants",
+            PharmacogeneticGene::CYP2D6 => {
+                "Metabolizes 25% of drugs including codeine, antidepressants"
+            }
             PharmacogeneticGene::CYP2C19 => "Metabolizes clopidogrel, PPIs, some antidepressants",
             PharmacogeneticGene::CYP2C9 => "Metabolizes warfarin, NSAIDs, phenytoin",
             PharmacogeneticGene::CYP3A4 => "Metabolizes over 50% of drugs",
@@ -47,27 +49,39 @@ impl PharmacogeneticGene {
     pub fn affected_drugs(&self) -> Vec<&'static str> {
         match self {
             PharmacogeneticGene::CYP2D6 => vec![
-                "Codeine", "Tramadol", "Fluoxetine", "Paroxetine", "Risperidone",
-                "Metoprolol", "Tamoxifen", "Atomoxetine"
+                "Codeine",
+                "Tramadol",
+                "Fluoxetine",
+                "Paroxetine",
+                "Risperidone",
+                "Metoprolol",
+                "Tamoxifen",
+                "Atomoxetine",
             ],
             PharmacogeneticGene::CYP2C19 => vec![
-                "Clopidogrel", "Omeprazole", "Escitalopram", "Voriconazole",
-                "Diazepam", "Lansoprazole"
+                "Clopidogrel",
+                "Omeprazole",
+                "Escitalopram",
+                "Voriconazole",
+                "Diazepam",
+                "Lansoprazole",
             ],
             PharmacogeneticGene::CYP2C9 => vec![
-                "Warfarin", "Phenytoin", "Losartan", "Celecoxib", "Glipizide"
+                "Warfarin",
+                "Phenytoin",
+                "Losartan",
+                "Celecoxib",
+                "Glipizide",
             ],
-            PharmacogeneticGene::TPMT => vec![
-                "Azathioprine", "6-Mercaptopurine", "Thioguanine"
-            ],
-            PharmacogeneticGene::SLCO1B1 => vec![
-                "Simvastatin", "Atorvastatin", "Rosuvastatin", "Pravastatin"
-            ],
+            PharmacogeneticGene::TPMT => vec!["Azathioprine", "6-Mercaptopurine", "Thioguanine"],
+            PharmacogeneticGene::SLCO1B1 => {
+                vec!["Simvastatin", "Atorvastatin", "Rosuvastatin", "Pravastatin"]
+            }
             PharmacogeneticGene::VKORC1 => vec!["Warfarin"],
             PharmacogeneticGene::DPYD => vec!["5-Fluorouracil", "Capecitabine"],
-            PharmacogeneticGene::G6PD => vec![
-                "Primaquine", "Rasburicase", "Dapsone", "Nitrofurantoin"
-            ],
+            PharmacogeneticGene::G6PD => {
+                vec!["Primaquine", "Rasburicase", "Dapsone", "Nitrofurantoin"]
+            }
             PharmacogeneticGene::HLA_B5701 => vec!["Abacavir"],
             PharmacogeneticGene::HLA_B1502 => vec!["Carbamazepine", "Phenytoin"],
             _ => vec![],
@@ -98,14 +112,17 @@ impl MetabolizerPhenotype {
     pub fn dosing_recommendation(&self, drug: &str) -> String {
         match self {
             MetabolizerPhenotype::UltraRapid => {
-                format!("Consider alternative to {} or increased dose monitoring", drug)
-            },
+                format!(
+                    "Consider alternative to {} or increased dose monitoring",
+                    drug
+                )
+            }
             MetabolizerPhenotype::Poor => {
                 format!("Reduce {} dose by 50-75% or use alternative", drug)
-            },
+            }
             MetabolizerPhenotype::Intermediate => {
                 format!("Consider 25-50% dose reduction of {}", drug)
-            },
+            }
             _ => format!("Standard dosing of {}", drug),
         }
     }
@@ -149,7 +166,7 @@ impl PharmacogeneticProfile {
                             "Ultra-rapid metabolizer for {}: May have reduced efficacy",
                             gene.description()
                         ));
-                    },
+                    }
                     MetabolizerPhenotype::Poor => {
                         efficacy_modifier *= 1.5;
                         toxicity_risk = ToxicityRisk::High;
@@ -157,29 +174,40 @@ impl PharmacogeneticProfile {
                             "Poor metabolizer for {}: Increased toxicity risk",
                             gene.description()
                         ));
-                    },
+                    }
                     MetabolizerPhenotype::Intermediate => {
                         efficacy_modifier *= 1.2;
                         warnings.push(format!(
                             "Intermediate metabolizer for {}: Monitor closely",
                             gene.description()
                         ));
-                    },
-                    _ => {},
+                    }
+                    _ => {}
                 }
             }
         }
 
-        if drug == "Abacavir" && self.genotypes.get(&PharmacogeneticGene::HLA_B5701)
-            .is_some_and(|g| g.contains("*57:01")) {
+        if drug == "Abacavir"
+            && self
+                .genotypes
+                .get(&PharmacogeneticGene::HLA_B5701)
+                .is_some_and(|g| g.contains("*57:01"))
+        {
             toxicity_risk = ToxicityRisk::Contraindicated;
             warnings.push("HLA-B*57:01 positive: Abacavir is CONTRAINDICATED".to_string());
         }
 
-        if drug == "Carbamazepine" && self.genotypes.get(&PharmacogeneticGene::HLA_B1502)
-            .is_some_and(|g| g.contains("*15:02")) {
+        if drug == "Carbamazepine"
+            && self
+                .genotypes
+                .get(&PharmacogeneticGene::HLA_B1502)
+                .is_some_and(|g| g.contains("*15:02"))
+        {
             toxicity_risk = ToxicityRisk::Contraindicated;
-            warnings.push("HLA-B*15:02 positive: Carbamazepine is CONTRAINDICATED in Asian ancestry".to_string());
+            warnings.push(
+                "HLA-B*15:02 positive: Carbamazepine is CONTRAINDICATED in Asian ancestry"
+                    .to_string(),
+            );
         }
 
         Ok(DrugResponse {

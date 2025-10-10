@@ -51,7 +51,12 @@ impl AncestryComposition {
         }
     }
 
-    pub fn add_component(&mut self, population: AncestryPopulation, proportion: f64, ci: (f64, f64)) {
+    pub fn add_component(
+        &mut self,
+        population: AncestryPopulation,
+        proportion: f64,
+        ci: (f64, f64),
+    ) {
         self.proportions.insert(population, proportion);
         self.confidence_intervals.insert(population, ci);
     }
@@ -155,8 +160,14 @@ impl AncestryProfile {
         risks
     }
 
-    pub fn add_component(&mut self, population: AncestryPopulation, proportion: f64, ci: (f64, f64)) {
-        self.autosomal_ancestry.add_component(population, proportion, ci);
+    pub fn add_component(
+        &mut self,
+        population: AncestryPopulation,
+        proportion: f64,
+        ci: (f64, f64),
+    ) {
+        self.autosomal_ancestry
+            .add_component(population, proportion, ci);
     }
 
     pub fn is_mixed(&self) -> bool {
@@ -164,7 +175,9 @@ impl AncestryProfile {
     }
 
     pub fn has_population(&self, population: AncestryPopulation) -> bool {
-        self.autosomal_ancestry.proportions.contains_key(&population)
+        self.autosomal_ancestry
+            .proportions
+            .contains_key(&population)
             && self.autosomal_ancestry.proportions[&population] > 0.0
     }
 }
@@ -181,8 +194,10 @@ impl AncestryPopulation {
                 "Higher risk of type 2 diabetes",
                 "Higher risk of coronary artery disease",
             ],
-            AncestryPopulation::SubSaharanAfrican | AncestryPopulation::African |
-            AncestryPopulation::WestAfrican | AncestryPopulation::EastAfrican => vec![
+            AncestryPopulation::SubSaharanAfrican
+            | AncestryPopulation::African
+            | AncestryPopulation::WestAfrican
+            | AncestryPopulation::EastAfrican => vec![
                 "Sickle cell trait/disease",
                 "Higher risk of hypertension",
                 "Lower risk of skin cancer",

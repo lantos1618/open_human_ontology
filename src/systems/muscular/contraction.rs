@@ -65,7 +65,8 @@ impl ContractionMechanism {
         if self.calcium_concentration_um < ca_threshold {
             0.0
         } else {
-            let ca_factor = (self.calcium_concentration_um - ca_threshold) / (ca_max - ca_threshold);
+            let ca_factor =
+                (self.calcium_concentration_um - ca_threshold) / (ca_max - ca_threshold);
             ca_factor.min(1.0)
         }
     }

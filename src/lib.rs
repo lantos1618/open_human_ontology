@@ -44,36 +44,40 @@
 //! - Simulation: Simulation engine and state management
 //! - Diagnosis: Diagnostic tools and health assessment
 
+pub mod anthropometry;
 pub mod biology;
+pub mod biometric_authentication;
+pub mod biometrics;
 pub mod chemistry;
-pub mod physics;
-pub mod systems;
-pub mod human;
-pub mod pathology;
-pub mod pharmacology;
-pub mod metabolism;
+pub mod comprehensive_health;
+pub mod config;
+pub mod development;
 pub mod diagnosis;
-pub mod simulation;
+pub mod exercise;
+pub mod human;
+pub mod metabolism;
+pub mod microbiome;
+pub mod nutrition;
+pub mod pathology;
 pub mod personalized_medicine;
 pub mod personalized_testing;
-pub mod biometrics;
-pub mod anthropometry;
-pub mod comprehensive_health;
+pub mod pharmacology;
+pub mod physics;
 pub mod physiology;
-pub mod exercise;
-pub mod nutrition;
-pub mod development;
-pub mod microbiome;
-pub mod biometric_authentication;
+pub mod simulation;
+pub mod systems;
 pub mod validation;
 
 // Re-export commonly used types
 pub use biology::{
-    AminoAcid, BiologyError, BiologyResult, Compartment, Concentration,
-    ConcentrationUnit, Modification, Molecule,
+    AminoAcid, BiologyError, BiologyResult, Compartment, Concentration, ConcentrationUnit,
+    Modification, Molecule,
 };
 
-pub use human::{Human, BiologicalSex, HealthSummary, ComprehensiveHealthAssessment, GeneticProfile, HealthConditions};
+pub use human::{
+    BiologicalSex, ComprehensiveHealthAssessment, GeneticProfile, HealthConditions, HealthSummary,
+    Human,
+};
 
 /// Version information
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");

@@ -121,9 +121,7 @@ impl Skeleton {
             return 0.0;
         }
 
-        let total_density: f64 = all_bones.iter()
-            .map(|b| b.mineral_density_g_cm3)
-            .sum();
+        let total_density: f64 = all_bones.iter().map(|b| b.mineral_density_g_cm3).sum();
 
         total_density / all_bones.len() as f64
     }
@@ -136,7 +134,8 @@ impl Skeleton {
     }
 
     pub fn osteoporotic_bone_count(&self) -> usize {
-        self.all_bones().iter()
+        self.all_bones()
+            .iter()
             .filter(|b| b.is_osteoporotic())
             .count()
     }
@@ -147,9 +146,7 @@ impl Skeleton {
             return 0.0;
         }
 
-        let total_strength: f64 = bones.iter()
-            .map(|b| b.assess_strength())
-            .sum();
+        let total_strength: f64 = bones.iter().map(|b| b.assess_strength()).sum();
 
         total_strength / bones.len() as f64
     }
@@ -165,15 +162,14 @@ impl AxialSkeleton {
     }
 
     pub fn bone_count(&self) -> usize {
-        self.skull.bone_count()
-            + self.vertebral_column.bone_count()
-            + self.rib_cage.bone_count()
+        self.skull.bone_count() + self.vertebral_column.bone_count() + self.rib_cage.bone_count()
     }
 
     pub fn total_mass_kg(&self) -> f64 {
         (self.skull.total_mass_g()
             + self.vertebral_column.total_mass_g()
-            + self.rib_cage.total_mass_g()) / 1000.0
+            + self.rib_cage.total_mass_g())
+            / 1000.0
     }
 
     pub fn all_bones(&self) -> Vec<&Bone> {
@@ -354,16 +350,15 @@ impl AppendicularSkeleton {
     }
 
     pub fn bone_count(&self) -> usize {
-        self.upper_limbs.bone_count()
-            + self.lower_limbs.bone_count()
-            + 4 + 2
+        self.upper_limbs.bone_count() + self.lower_limbs.bone_count() + 4 + 2
     }
 
     pub fn total_mass_kg(&self) -> f64 {
         (self.upper_limbs.total_mass_g()
             + self.lower_limbs.total_mass_g()
             + self.pectoral_girdles.total_mass_g()
-            + self.pelvic_girdle.total_mass_g()) / 1000.0
+            + self.pelvic_girdle.total_mass_g())
+            / 1000.0
     }
 
     pub fn all_bones(&self) -> Vec<&Bone> {
@@ -423,26 +418,41 @@ impl UpperLimbs {
 
 impl UpperLimb {
     pub fn new_adult() -> Self {
-        let carpals: Vec<Bone> = ["Scaphoid", "Lunate", "Triquetrum", "Pisiform",
-            "Trapezium", "Trapezoid", "Capitate", "Hamate"].iter().map(|name| {
+        let carpals: Vec<Bone> = [
+            "Scaphoid",
+            "Lunate",
+            "Triquetrum",
+            "Pisiform",
+            "Trapezium",
+            "Trapezoid",
+            "Capitate",
+            "Hamate",
+        ]
+        .iter()
+        .map(|name| {
             let mut bone = Bone::new(name.to_string(), BoneType::Short);
             bone.mass_g = 5.0;
             bone
-        }).collect();
+        })
+        .collect();
 
-        let metacarpals: Vec<Bone> = (1..=5).map(|i| {
-            let mut bone = Bone::new(format!("Metacarpal {}", i), BoneType::Long);
-            bone.length_mm = 65.0;
-            bone.mass_g = 8.0;
-            bone
-        }).collect();
+        let metacarpals: Vec<Bone> = (1..=5)
+            .map(|i| {
+                let mut bone = Bone::new(format!("Metacarpal {}", i), BoneType::Long);
+                bone.length_mm = 65.0;
+                bone.mass_g = 8.0;
+                bone
+            })
+            .collect();
 
-        let phalanges: Vec<Bone> = (1..=14).map(|i| {
-            let mut bone = Bone::new(format!("Phalanx {}", i), BoneType::Long);
-            bone.length_mm = 30.0;
-            bone.mass_g = 3.0;
-            bone
-        }).collect();
+        let phalanges: Vec<Bone> = (1..=14)
+            .map(|i| {
+                let mut bone = Bone::new(format!("Phalanx {}", i), BoneType::Long);
+                bone.length_mm = 30.0;
+                bone.mass_g = 3.0;
+                bone
+            })
+            .collect();
 
         let mut radius = Bone::new("Radius".to_string(), BoneType::Long);
         radius.length_mm = 240.0;
@@ -495,26 +505,40 @@ impl LowerLimbs {
 
 impl LowerLimb {
     pub fn new_adult() -> Self {
-        let tarsals: Vec<Bone> = ["Calcaneus", "Talus", "Navicular", "Cuboid",
-            "Medial Cuneiform", "Intermediate Cuneiform", "Lateral Cuneiform"].iter().map(|name| {
+        let tarsals: Vec<Bone> = [
+            "Calcaneus",
+            "Talus",
+            "Navicular",
+            "Cuboid",
+            "Medial Cuneiform",
+            "Intermediate Cuneiform",
+            "Lateral Cuneiform",
+        ]
+        .iter()
+        .map(|name| {
             let mut bone = Bone::new(name.to_string(), BoneType::Short);
             bone.mass_g = 15.0;
             bone
-        }).collect();
+        })
+        .collect();
 
-        let metatarsals: Vec<Bone> = (1..=5).map(|i| {
-            let mut bone = Bone::new(format!("Metatarsal {}", i), BoneType::Long);
-            bone.length_mm = 70.0;
-            bone.mass_g = 10.0;
-            bone
-        }).collect();
+        let metatarsals: Vec<Bone> = (1..=5)
+            .map(|i| {
+                let mut bone = Bone::new(format!("Metatarsal {}", i), BoneType::Long);
+                bone.length_mm = 70.0;
+                bone.mass_g = 10.0;
+                bone
+            })
+            .collect();
 
-        let phalanges: Vec<Bone> = (1..=14).map(|i| {
-            let mut bone = Bone::new(format!("Toe Phalanx {}", i), BoneType::Long);
-            bone.length_mm = 25.0;
-            bone.mass_g = 2.0;
-            bone
-        }).collect();
+        let phalanges: Vec<Bone> = (1..=14)
+            .map(|i| {
+                let mut bone = Bone::new(format!("Toe Phalanx {}", i), BoneType::Long);
+                bone.length_mm = 25.0;
+                bone.mass_g = 2.0;
+                bone
+            })
+            .collect();
 
         let mut fibula = Bone::new("Fibula".to_string(), BoneType::Long);
         fibula.length_mm = 390.0;
@@ -571,8 +595,10 @@ impl PectoralGirdles {
     }
 
     pub fn total_mass_g(&self) -> f64 {
-        self.left_clavicle.mass_g + self.right_clavicle.mass_g
-            + self.left_scapula.mass_g + self.right_scapula.mass_g
+        self.left_clavicle.mass_g
+            + self.right_clavicle.mass_g
+            + self.left_scapula.mass_g
+            + self.right_scapula.mass_g
     }
 }
 

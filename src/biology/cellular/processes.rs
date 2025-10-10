@@ -29,7 +29,7 @@ impl EnergyProduction {
     pub fn aerobic_respiration(glucose_mm: f64) -> BiologyResult<Self> {
         if glucose_mm < 0.0 {
             return Err(BiologyError::InvalidValue(
-                "Glucose concentration cannot be negative".to_string()
+                "Glucose concentration cannot be negative".to_string(),
             ));
         }
 
@@ -44,7 +44,7 @@ impl EnergyProduction {
     pub fn anaerobic_glycolysis(glucose_mm: f64) -> BiologyResult<Self> {
         if glucose_mm < 0.0 {
             return Err(BiologyError::InvalidValue(
-                "Glucose concentration cannot be negative".to_string()
+                "Glucose concentration cannot be negative".to_string(),
             ));
         }
 
@@ -128,9 +128,7 @@ impl CellDivision {
             MitosisPhase::Anaphase => MitosisPhase::Telophase,
             MitosisPhase::Telophase => MitosisPhase::Cytokinesis,
             MitosisPhase::Cytokinesis => {
-                return Err(BiologyError::InvalidState(
-                    "Division complete".to_string()
-                ));
+                return Err(BiologyError::InvalidState("Division complete".to_string()));
             }
         };
         Ok(())
@@ -162,7 +160,7 @@ impl Autophagy {
     pub fn initiate(&mut self, stress_level: f64) -> BiologyResult<()> {
         if !(0.0..=1.0).contains(&stress_level) {
             return Err(BiologyError::InvalidValue(
-                "Stress level must be between 0 and 1".to_string()
+                "Stress level must be between 0 and 1".to_string(),
             ));
         }
 

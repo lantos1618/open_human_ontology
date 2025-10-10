@@ -231,16 +231,14 @@ impl Blood {
         self.components
             .iter()
             .filter_map(|c| match c {
-                BloodComponent::Cells(cell_count) => {
-                    match cell_count.cell_type {
-                        BloodCell::Neutrophil |
-                        BloodCell::Lymphocyte |
-                        BloodCell::Monocyte |
-                        BloodCell::Eosinophil |
-                        BloodCell::Basophil => Some(cell_count.count_per_ul),
-                        _ => None,
-                    }
-                }
+                BloodComponent::Cells(cell_count) => match cell_count.cell_type {
+                    BloodCell::Neutrophil
+                    | BloodCell::Lymphocyte
+                    | BloodCell::Monocyte
+                    | BloodCell::Eosinophil
+                    | BloodCell::Basophil => Some(cell_count.count_per_ul),
+                    _ => None,
+                },
                 _ => None,
             })
             .sum()
@@ -484,11 +482,26 @@ impl InflammatoryMarkers {
 impl Immunoglobulin {
     pub fn new_normal_panel() -> Vec<Self> {
         vec![
-            Self { ig_type: ImmunoglobulinType::IgG, concentration_mg_dl: 1000.0 },
-            Self { ig_type: ImmunoglobulinType::IgA, concentration_mg_dl: 200.0 },
-            Self { ig_type: ImmunoglobulinType::IgM, concentration_mg_dl: 100.0 },
-            Self { ig_type: ImmunoglobulinType::IgE, concentration_mg_dl: 0.05 },
-            Self { ig_type: ImmunoglobulinType::IgD, concentration_mg_dl: 3.0 },
+            Self {
+                ig_type: ImmunoglobulinType::IgG,
+                concentration_mg_dl: 1000.0,
+            },
+            Self {
+                ig_type: ImmunoglobulinType::IgA,
+                concentration_mg_dl: 200.0,
+            },
+            Self {
+                ig_type: ImmunoglobulinType::IgM,
+                concentration_mg_dl: 100.0,
+            },
+            Self {
+                ig_type: ImmunoglobulinType::IgE,
+                concentration_mg_dl: 0.05,
+            },
+            Self {
+                ig_type: ImmunoglobulinType::IgD,
+                concentration_mg_dl: 3.0,
+            },
         ]
     }
 }
@@ -496,17 +509,61 @@ impl Immunoglobulin {
 impl CoagulationFactor {
     pub fn new_normal_panel() -> Vec<Self> {
         vec![
-            Self { factor: ClottingFactor::FactorI, concentration_ug_ml: 3000.0, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::FactorII, concentration_ug_ml: 100.0, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::FactorV, concentration_ug_ml: 10.0, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::FactorVII, concentration_ug_ml: 0.5, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::FactorVIII, concentration_ug_ml: 0.1, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::FactorIX, concentration_ug_ml: 5.0, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::FactorX, concentration_ug_ml: 10.0, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::FactorXI, concentration_ug_ml: 5.0, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::FactorXII, concentration_ug_ml: 30.0, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::FactorXIII, concentration_ug_ml: 20.0, activity_percent: 100.0 },
-            Self { factor: ClottingFactor::VonWillebrandFactor, concentration_ug_ml: 10.0, activity_percent: 100.0 },
+            Self {
+                factor: ClottingFactor::FactorI,
+                concentration_ug_ml: 3000.0,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::FactorII,
+                concentration_ug_ml: 100.0,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::FactorV,
+                concentration_ug_ml: 10.0,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::FactorVII,
+                concentration_ug_ml: 0.5,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::FactorVIII,
+                concentration_ug_ml: 0.1,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::FactorIX,
+                concentration_ug_ml: 5.0,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::FactorX,
+                concentration_ug_ml: 10.0,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::FactorXI,
+                concentration_ug_ml: 5.0,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::FactorXII,
+                concentration_ug_ml: 30.0,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::FactorXIII,
+                concentration_ug_ml: 20.0,
+                activity_percent: 100.0,
+            },
+            Self {
+                factor: ClottingFactor::VonWillebrandFactor,
+                concentration_ug_ml: 10.0,
+                activity_percent: 100.0,
+            },
         ]
     }
 }

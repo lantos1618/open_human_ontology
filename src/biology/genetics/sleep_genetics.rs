@@ -206,13 +206,17 @@ impl SleepProfile {
         }
 
         if self.insomnia_risk_score > 1.5 {
-            recommendations.push("High insomnia risk: practice sleep hygiene, consider CBT-I".to_string());
+            recommendations
+                .push("High insomnia risk: practice sleep hygiene, consider CBT-I".to_string());
         }
 
         if self.chronotype == Chronotype::ExtremeEveningOwl
             || self.chronotype == Chronotype::EveningOwl
         {
-            recommendations.push("Evening chronotype: get bright light in morning, dim lights in evening".to_string());
+            recommendations.push(
+                "Evening chronotype: get bright light in morning, dim lights in evening"
+                    .to_string(),
+            );
         }
 
         if self.chronotype == Chronotype::ExtremeMorningLark
@@ -222,7 +226,8 @@ impl SleepProfile {
         }
 
         if self.deep_sleep_tendency > 1.2 {
-            recommendations.push("Good deep sleep genetics: maintain with regular exercise".to_string());
+            recommendations
+                .push("Good deep sleep genetics: maintain with regular exercise".to_string());
         }
 
         recommendations

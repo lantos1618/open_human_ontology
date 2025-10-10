@@ -398,8 +398,10 @@ impl BiomarkerPanel {
         let bilirubin_elevated = self.hepatic.bilirubin_total_mg_dl > 1.2;
         let albumin_low = self.hepatic.albumin_g_dl < 3.5;
 
-        let abnormalities = alt_elevated as i32 + ast_elevated as i32 +
-                           bilirubin_elevated as i32 + albumin_low as i32;
+        let abnormalities = alt_elevated as i32
+            + ast_elevated as i32
+            + bilirubin_elevated as i32
+            + albumin_low as i32;
 
         match abnormalities {
             0 => LiverFunctionStatus::Normal,

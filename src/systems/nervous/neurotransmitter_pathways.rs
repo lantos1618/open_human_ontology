@@ -179,7 +179,8 @@ impl SerotoninSystem {
     }
 
     pub fn calculate_serotonin_tone(&self) -> f64 {
-        (self.serotonin_synthesis_rate * self.tryptophan_availability) / self.serotonin_reuptake_rate
+        (self.serotonin_synthesis_rate * self.tryptophan_availability)
+            / self.serotonin_reuptake_rate
     }
 
     pub fn has_depression_like_pattern(&self) -> bool {
@@ -222,8 +223,8 @@ impl NorepinephrineSystem {
     }
 
     pub fn alpha_beta_balance(&self) -> f64 {
-        (self.alpha1_receptor_density + self.alpha2_receptor_density) /
-        (self.beta1_receptor_density + self.beta2_receptor_density)
+        (self.alpha1_receptor_density + self.alpha2_receptor_density)
+            / (self.beta1_receptor_density + self.beta2_receptor_density)
     }
 }
 
@@ -267,8 +268,8 @@ impl GlutamateSystem {
     }
 
     pub fn calculate_excitatory_tone(&self) -> f64 {
-        self.glutamate_concentration *
-        (self.nmda_receptor_density + self.ampa_receptor_density) / 2.0
+        self.glutamate_concentration * (self.nmda_receptor_density + self.ampa_receptor_density)
+            / 2.0
     }
 
     pub fn has_excitotoxicity_risk(&self) -> bool {
@@ -302,7 +303,8 @@ impl AcetylcholineSystem {
     }
 
     pub fn muscarinic_nicotinic_balance(&self) -> f64 {
-        (self.muscarinic_m1_density + self.muscarinic_m2_density) / (2.0 * self.nicotinic_receptor_density)
+        (self.muscarinic_m1_density + self.muscarinic_m2_density)
+            / (2.0 * self.nicotinic_receptor_density)
     }
 }
 
@@ -320,9 +322,10 @@ impl EndogenousOpioidSystem {
     }
 
     pub fn calculate_opioid_tone(&self) -> f64 {
-        (self.beta_endorphin_level * self.mu_receptor_density +
-         self.met_enkephalin_level * self.delta_receptor_density +
-         self.dynorphin_level * self.kappa_receptor_density) / 3.0
+        (self.beta_endorphin_level * self.mu_receptor_density
+            + self.met_enkephalin_level * self.delta_receptor_density
+            + self.dynorphin_level * self.kappa_receptor_density)
+            / 3.0
     }
 
     pub fn has_reduced_analgesia(&self) -> bool {
@@ -330,8 +333,8 @@ impl EndogenousOpioidSystem {
     }
 
     pub fn mu_delta_ratio(&self) -> f64 {
-        (self.beta_endorphin_level * self.mu_receptor_density) /
-        (self.met_enkephalin_level * self.delta_receptor_density)
+        (self.beta_endorphin_level * self.mu_receptor_density)
+            / (self.met_enkephalin_level * self.delta_receptor_density)
     }
 }
 

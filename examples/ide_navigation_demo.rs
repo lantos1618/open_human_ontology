@@ -6,11 +6,11 @@
 // Use Cmd+Click (macOS) or Ctrl+Click (Linux/Windows) to jump between definitions.
 // Hover over types to see documentation. This is biology as a browseable codebase.
 
-use human_biology::*;
-use human_biology::systems::cardiovascular::*;
-use human_biology::systems::nervous::brain_connectivity;
 use human_biology::biology::genetics::asian_variants;
 use human_biology::pathology::headache::*;
+use human_biology::systems::cardiovascular::*;
+use human_biology::systems::nervous::brain_connectivity;
+use human_biology::*;
 
 fn main() {
     println!("=== Navigate Human Biology with Your IDE ===\n");
@@ -23,8 +23,14 @@ fn main() {
     // → Explore "HeartChamber", "Valve", "HeartCycle" enums
     println!("1. CARDIOVASCULAR SYSTEM");
     let heart = Heart::new();
-    println!("   Cardiac Output: {:.2} L/min", heart.cardiac_output_l_min());
-    println!("   Ejection Fraction: {:.0}%", heart.ejection_fraction * 100.0);
+    println!(
+        "   Cardiac Output: {:.2} L/min",
+        heart.cardiac_output_l_min()
+    );
+    println!(
+        "   Ejection Fraction: {:.0}%",
+        heart.ejection_fraction * 100.0
+    );
     println!("   Heart Failure Risk: {}", heart.has_heart_failure());
     println!("   💡 Cmd+Click 'Heart' to see: heart_rate_bpm, stroke_volume_ml, etc.\n");
 
@@ -38,7 +44,10 @@ fn main() {
 
     let variants = asian_variants::AsianGeneticVariantsCatalog::get_metabolic_variants();
     if let Some(aldh2) = variants.get("ALDH2") {
-        println!("   Gene: {} on chromosome {}", aldh2.symbol, aldh2.chromosome);
+        println!(
+            "   Gene: {} on chromosome {}",
+            aldh2.symbol, aldh2.chromosome
+        );
         if let Some(v) = aldh2.clinical_variants.first() {
             println!("   Variant: {}", v.variant_name);
             println!("   Effect: {}", v.associated_conditions[0]);
@@ -79,16 +88,17 @@ fn main() {
             MigraineTrigger::LackOfSleep,
             MigraineTrigger::WeatherChanges,
         ],
-        aura_symptoms: vec![
-            AuraSymptom::VisualDisturbances,
-            AuraSymptom::Scintillations,
-        ],
+        aura_symptoms: vec![AuraSymptom::VisualDisturbances, AuraSymptom::Scintillations],
         genetic_variants: vec!["rs2075968".to_string()],
         comorbidities: vec![],
     };
     println!("   Type: {:?}", migraine.subtype);
     println!("   Frequency: {:.0}/month", migraine.frequency_per_month);
-    println!("   Pain Level: {:?} ({}/ 10)", migraine.intensity, migraine.intensity.score());
+    println!(
+        "   Pain Level: {:?} ({}/ 10)",
+        migraine.intensity,
+        migraine.intensity.score()
+    );
     println!("   💡 Cmd+Click 'MigraineTrigger' to see Caffeine, MSG, HormonalChanges, etc.\n");
 
     // Example 5: Integrated Human Model
@@ -103,9 +113,15 @@ fn main() {
         75.0,  // weight kg
     );
     println!("   BMI: {:.1}", person.bmi());
-    println!("   Cardiac Output: {:.1} L/min", person.cardiac_output_l_per_min());
+    println!(
+        "   Cardiac Output: {:.1} L/min",
+        person.cardiac_output_l_per_min()
+    );
     println!("   GFR (Kidney): {:.0} mL/min", person.gfr_ml_per_min());
-    println!("   Metabolic Rate: {:.0} kcal/day", person.metabolic_rate_kcal_per_day());
+    println!(
+        "   Metabolic Rate: {:.0} kcal/day",
+        person.metabolic_rate_kcal_per_day()
+    );
     println!("   💡 Cmd+Click 'Human' to explore all systems, genetics, health metrics\n");
 
     println!("=== Why This Matters ===");

@@ -93,7 +93,10 @@ impl PopulationVariant {
     }
 
     pub fn is_protective(&self) -> bool {
-        matches!(self.functional_impact, FunctionalImpact::ProtectiveVariant | FunctionalImpact::AdaptiveAdvantage)
+        matches!(
+            self.functional_impact,
+            FunctionalImpact::ProtectiveVariant | FunctionalImpact::AdaptiveAdvantage
+        )
     }
 }
 
@@ -108,7 +111,9 @@ pub fn east_asian_variants() -> Vec<PopulationVariant> {
             Population::EastAsian,
             0.35,
             FunctionalImpact::ProtectiveVariant,
-            Some("ALDH2 deficiency - alcohol flush reaction, lower alcohol consumption".to_string()),
+            Some(
+                "ALDH2 deficiency - alcohol flush reaction, lower alcohol consumption".to_string(),
+            ),
         ),
         PopulationVariant::new(
             "rs1229984".to_string(),
@@ -454,19 +459,22 @@ impl PopulationGeneticProfile {
     }
 
     pub fn get_protective_variants(&self) -> Vec<&PopulationVariant> {
-        self.population_variants.iter()
+        self.population_variants
+            .iter()
             .filter(|v| v.is_protective())
             .collect()
     }
 
     pub fn get_risk_variants(&self) -> Vec<&PopulationVariant> {
-        self.population_variants.iter()
+        self.population_variants
+            .iter()
             .filter(|v| matches!(v.functional_impact, FunctionalImpact::RiskVariant))
             .collect()
     }
 
     pub fn has_variant(&self, variant_id: &str) -> bool {
-        self.population_variants.iter()
+        self.population_variants
+            .iter()
             .any(|v| v.variant_id == variant_id)
     }
 }

@@ -1,6 +1,6 @@
+use crate::biology::genetics::*;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::biology::genetics::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GeneticRiskAssessment {
@@ -124,7 +124,8 @@ impl GeneticRiskAssessment {
     }
 
     pub fn add_polygenic_score(&mut self, score: PolygenicScore) {
-        self.polygenic_scores.insert(score.trait_name.clone(), score);
+        self.polygenic_scores
+            .insert(score.trait_name.clone(), score);
     }
 
     pub fn add_carrier_status(&mut self, carrier: CarrierStatus) {
@@ -136,20 +137,26 @@ impl GeneticRiskAssessment {
     }
 
     pub fn get_high_risk_conditions(&self) -> Vec<&DiseaseRisk> {
-        self.disease_risks.iter()
+        self.disease_risks
+            .iter()
             .filter(|r| r.relative_risk > 2.0 && r.confidence != RiskConfidence::Low)
             .collect()
     }
 
     pub fn get_risks_by_category(&self, category: DiseaseCategory) -> Vec<&DiseaseRisk> {
-        self.disease_risks.iter()
+        self.disease_risks
+            .iter()
             .filter(|r| r.category == category)
             .collect()
     }
 
     pub fn get_critical_drug_risks(&self) -> Vec<&DrugRisk> {
-        self.pharmacogenomic_risks.iter()
-            .filter(|r| r.severity == RiskSeverity::Critical || matches!(r.risk_type, DrugRiskType::Contraindication))
+        self.pharmacogenomic_risks
+            .iter()
+            .filter(|r| {
+                r.severity == RiskSeverity::Critical
+                    || matches!(r.risk_type, DrugRiskType::Contraindication)
+            })
             .collect()
     }
 
@@ -186,25 +193,25 @@ impl GeneticRiskAssessment {
                         "Cardiovascular monitoring recommended for {} ({}x population risk)",
                         risk.condition, risk.relative_risk
                     ));
-                },
+                }
                 DiseaseCategory::Cancer => {
                     recommendations.push(format!(
                         "Enhanced screening for {} recommended ({}x population risk)",
                         risk.condition, risk.relative_risk
                     ));
-                },
+                }
                 DiseaseCategory::Metabolic => {
                     recommendations.push(format!(
                         "Lifestyle modifications and regular monitoring for {} ({}x population risk)",
                         risk.condition, risk.relative_risk
                     ));
-                },
+                }
                 DiseaseCategory::Neurological => {
                     recommendations.push(format!(
                         "Neurological assessment for {} risk ({}x population risk)",
                         risk.condition, risk.relative_risk
                     ));
-                },
+                }
                 _ => {
                     recommendations.push(format!(
                         "Consider screening for {} ({}x population risk)",
@@ -263,7 +270,10 @@ pub fn assess_east_asian_individual() -> GeneticRiskAssessment {
         population_average: 0.15,
         relative_risk: 2.3,
         confidence: RiskConfidence::High,
-        contributing_variants: vec!["KCNQ1 rs2237892".to_string(), "CDKAL1 rs7754840".to_string()],
+        contributing_variants: vec![
+            "KCNQ1 rs2237892".to_string(),
+            "CDKAL1 rs7754840".to_string(),
+        ],
         evidence_level: EvidenceLevel::ClinicallyValidated,
     });
 
@@ -283,7 +293,8 @@ pub fn assess_east_asian_individual() -> GeneticRiskAssessment {
         gene: "ALDH2".to_string(),
         risk_type: DrugRiskType::IncreasedToxicity,
         severity: RiskSeverity::High,
-        recommendation: "ALDH2*2 carrier: Increased cancer risk with alcohol consumption".to_string(),
+        recommendation: "ALDH2*2 carrier: Increased cancer risk with alcohol consumption"
+            .to_string(),
     });
 
     assessment.add_carrier_status(CarrierStatus {
@@ -352,7 +363,8 @@ mod tests {
 
     #[test]
     fn test_add_disease_risk() {
-        let mut assessment = GeneticRiskAssessment::new("TEST_001".to_string(), AncestryProfile::new());
+        let mut assessment =
+            GeneticRiskAssessment::new("TEST_001".to_string(), AncestryProfile::new());
 
         let risk = DiseaseRisk {
             condition: "Type 2 Diabetes".to_string(),
@@ -371,7 +383,8 @@ mod tests {
 
     #[test]
     fn test_high_risk_filtering() {
-        let mut assessment = GeneticRiskAssessment::new("TEST_001".to_string(), AncestryProfile::new());
+        let mut assessment =
+            GeneticRiskAssessment::new("TEST_001".to_string(), AncestryProfile::new());
 
         assessment.add_disease_risk(DiseaseRisk {
             condition: "High Risk Condition".to_string(),

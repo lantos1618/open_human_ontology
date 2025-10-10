@@ -185,17 +185,29 @@ impl StressResponseSystem {
         self.chronic_stress_effects.hippocampal_volume_ml -= load_factor * 0.5;
         self.chronic_stress_effects.telomere_length_kb -= load_factor * 2.0;
 
-        self.allostatic_load.secondary_outcomes.immune_dysregulation.il6_pg_ml += load_factor * 5.0;
-        self.allostatic_load.secondary_outcomes.immune_dysregulation.crp_mg_l += load_factor * 3.0;
+        self.allostatic_load
+            .secondary_outcomes
+            .immune_dysregulation
+            .il6_pg_ml += load_factor * 5.0;
+        self.allostatic_load
+            .secondary_outcomes
+            .immune_dysregulation
+            .crp_mg_l += load_factor * 3.0;
 
         self.update_allostatic_load_index();
     }
 
     pub fn update_allostatic_load_index(&mut self) {
-        let primary_score =
-            (self.allostatic_load.primary_mediators.cortisol_dysregulation +
-             self.allostatic_load.primary_mediators.catecholamine_dysregulation +
-             self.allostatic_load.primary_mediators.inflammatory_burden) / 3.0;
+        let primary_score = (self
+            .allostatic_load
+            .primary_mediators
+            .cortisol_dysregulation
+            + self
+                .allostatic_load
+                .primary_mediators
+                .catecholamine_dysregulation
+            + self.allostatic_load.primary_mediators.inflammatory_burden)
+            / 3.0;
 
         let secondary_score = self.calculate_secondary_score();
         let tertiary_score = self.calculate_tertiary_score();
@@ -205,11 +217,20 @@ impl StressResponseSystem {
     }
 
     fn calculate_secondary_score(&self) -> f64 {
-        let metabolic = self.allostatic_load.secondary_outcomes.metabolic_dysregulation
+        let metabolic = self
+            .allostatic_load
+            .secondary_outcomes
+            .metabolic_dysregulation
             .metabolic_syndrome_score();
-        let cv = self.allostatic_load.secondary_outcomes.cardiovascular_strain
+        let cv = self
+            .allostatic_load
+            .secondary_outcomes
+            .cardiovascular_strain
             .cardiovascular_risk_score();
-        let immune = self.allostatic_load.secondary_outcomes.immune_dysregulation
+        let immune = self
+            .allostatic_load
+            .secondary_outcomes
+            .immune_dysregulation
             .immune_dysfunction_score();
 
         (metabolic + cv + immune) / 3.0
@@ -217,11 +238,12 @@ impl StressResponseSystem {
 
     fn calculate_tertiary_score(&self) -> f64 {
         let outcomes = &self.allostatic_load.tertiary_outcomes;
-        (outcomes.cardiovascular_disease_risk +
-         outcomes.metabolic_syndrome_risk +
-         outcomes.cognitive_decline_risk +
-         outcomes.depression_risk +
-         outcomes.overall_morbidity_risk) / 5.0
+        (outcomes.cardiovascular_disease_risk
+            + outcomes.metabolic_syndrome_risk
+            + outcomes.cognitive_decline_risk
+            + outcomes.depression_risk
+            + outcomes.overall_morbidity_risk)
+            / 5.0
     }
 
     pub fn assess_stress_classification(&self) -> StressClassification {
@@ -241,13 +263,14 @@ impl StressResponseSystem {
     pub fn calculate_resilience_score(&self) -> f64 {
         let factors = &self.resilience_factors;
 
-        (factors.coping_strategies_score * 0.2 +
-         factors.social_support_score * 0.2 +
-         factors.exercise_frequency_per_week * 2.0 +
-         factors.sleep_quality_score * 0.15 +
-         factors.mindfulness_practice_score * 0.15 +
-         factors.perceived_control_score * 0.15 +
-         factors.optimism_score * 0.15).clamp(0.0, 100.0)
+        (factors.coping_strategies_score * 0.2
+            + factors.social_support_score * 0.2
+            + factors.exercise_frequency_per_week * 2.0
+            + factors.sleep_quality_score * 0.15
+            + factors.mindfulness_practice_score * 0.15
+            + factors.perceived_control_score * 0.15
+            + factors.optimism_score * 0.15)
+            .clamp(0.0, 100.0)
     }
 
     pub fn hpa_axis_dysregulation(&self) -> HPADysregulation {
@@ -351,11 +374,21 @@ impl MetabolicDysregulation {
     pub fn metabolic_syndrome_score(&self) -> f64 {
         let mut score = 0.0;
 
-        if self.waist_hip_ratio > 0.90 { score += 2.0; }
-        if self.triglycerides_mg_dl > 150.0 { score += 2.0; }
-        if self.hdl_mg_dl < 40.0 { score += 2.0; }
-        if self.fasting_glucose_mg_dl > 100.0 { score += 2.0; }
-        if self.insulin_resistance_homa_ir > 2.5 { score += 2.0; }
+        if self.waist_hip_ratio > 0.90 {
+            score += 2.0;
+        }
+        if self.triglycerides_mg_dl > 150.0 {
+            score += 2.0;
+        }
+        if self.hdl_mg_dl < 40.0 {
+            score += 2.0;
+        }
+        if self.fasting_glucose_mg_dl > 100.0 {
+            score += 2.0;
+        }
+        if self.insulin_resistance_homa_ir > 2.5 {
+            score += 2.0;
+        }
 
         score
     }
@@ -375,11 +408,21 @@ impl CardiovascularStrain {
     pub fn cardiovascular_risk_score(&self) -> f64 {
         let mut score = 0.0;
 
-        if self.systolic_bp_mmhg > 130.0 { score += 2.0; }
-        if self.diastolic_bp_mmhg > 85.0 { score += 1.0; }
-        if self.resting_heart_rate_bpm > 80.0 { score += 1.0; }
-        if self.arterial_stiffness_pwv > 10.0 { score += 2.0; }
-        if self.endothelial_dysfunction > 0.5 { score += 2.0; }
+        if self.systolic_bp_mmhg > 130.0 {
+            score += 2.0;
+        }
+        if self.diastolic_bp_mmhg > 85.0 {
+            score += 1.0;
+        }
+        if self.resting_heart_rate_bpm > 80.0 {
+            score += 1.0;
+        }
+        if self.arterial_stiffness_pwv > 10.0 {
+            score += 2.0;
+        }
+        if self.endothelial_dysfunction > 0.5 {
+            score += 2.0;
+        }
 
         score
     }
@@ -399,11 +442,21 @@ impl ImmuneDysregulation {
     pub fn immune_dysfunction_score(&self) -> f64 {
         let mut score = 0.0;
 
-        if self.il6_pg_ml > 3.0 { score += 2.0; }
-        if self.tnf_alpha_pg_ml > 12.0 { score += 2.0; }
-        if self.crp_mg_l > 3.0 { score += 2.0; }
-        if self.nk_cell_activity < 0.7 { score += 1.0; }
-        if self.antibody_response < 0.7 { score += 1.0; }
+        if self.il6_pg_ml > 3.0 {
+            score += 2.0;
+        }
+        if self.tnf_alpha_pg_ml > 12.0 {
+            score += 2.0;
+        }
+        if self.crp_mg_l > 3.0 {
+            score += 2.0;
+        }
+        if self.nk_cell_activity < 0.7 {
+            score += 1.0;
+        }
+        if self.antibody_response < 0.7 {
+            score += 1.0;
+        }
 
         score
     }
@@ -473,7 +526,10 @@ mod tests {
     #[test]
     fn test_stress_response_system_creation() {
         let system = StressResponseSystem::new_normal();
-        assert_eq!(system.assess_stress_classification(), StressClassification::LowStress);
+        assert_eq!(
+            system.assess_stress_classification(),
+            StressClassification::LowStress
+        );
     }
 
     #[test]

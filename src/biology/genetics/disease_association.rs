@@ -1,6 +1,6 @@
+use super::gene_catalog::InheritancePattern;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use super::gene_catalog::InheritancePattern;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum DiseaseRiskLevel {
@@ -86,13 +86,20 @@ impl GeneticSusceptibility {
     }
 
     pub fn high_risk_conditions(&self) -> Vec<&DiseaseAssociation> {
-        self.monogenic_risks.iter()
-            .filter(|d| matches!(d.risk_level(), DiseaseRiskLevel::High | DiseaseRiskLevel::VeryHigh))
+        self.monogenic_risks
+            .iter()
+            .filter(|d| {
+                matches!(
+                    d.risk_level(),
+                    DiseaseRiskLevel::High | DiseaseRiskLevel::VeryHigh
+                )
+            })
             .collect()
     }
 
     pub fn elevated_polygenic_risks(&self) -> Vec<&DiseasePolygeneticScore> {
-        self.polygenic_scores.values()
+        self.polygenic_scores
+            .values()
             .filter(|s| s.percentile > 90.0)
             .collect()
     }

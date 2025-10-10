@@ -232,9 +232,7 @@ impl Neurotransmitter {
             neurotransmitter_type: NeurotransmitterType::Peptide,
             concentration_nm: 1.0,
             synthesis_location: BrainRegion::Striatum,
-            primary_receptors: vec![
-                ReceptorSubtype::Opioid(OpioidReceptor::Delta),
-            ],
+            primary_receptors: vec![ReceptorSubtype::Opioid(OpioidReceptor::Delta)],
         }
     }
 
@@ -267,9 +265,7 @@ impl Neurotransmitter {
             neurotransmitter_type: NeurotransmitterType::Lipid,
             concentration_nm: 0.1,
             synthesis_location: BrainRegion::Hippocampus,
-            primary_receptors: vec![
-                ReceptorSubtype::Cannabinoid(CannabinoidReceptor::CB1),
-            ],
+            primary_receptors: vec![ReceptorSubtype::Cannabinoid(CannabinoidReceptor::CB1)],
         }
     }
 
@@ -284,7 +280,10 @@ impl Neurotransmitter {
     }
 
     pub fn is_excitatory(&self) -> bool {
-        matches!(self.name.as_str(), "Glutamate" | "Acetylcholine" | "Norepinephrine")
+        matches!(
+            self.name.as_str(),
+            "Glutamate" | "Acetylcholine" | "Norepinephrine"
+        )
     }
 
     pub fn is_inhibitory(&self) -> bool {

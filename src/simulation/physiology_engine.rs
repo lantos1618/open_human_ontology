@@ -109,9 +109,12 @@ impl PhysiologyState {
 
     pub fn update(&mut self, dt: f64, stressors: &Stressors) {
         self.neurological.update(dt, stressors);
-        self.cardiovascular.update(dt, &self.neurological, &self.metabolic);
-        self.respiratory.update(dt, &self.metabolic, &self.cardiovascular);
-        self.metabolic.update(dt, &self.cardiovascular, &self.respiratory);
+        self.cardiovascular
+            .update(dt, &self.neurological, &self.metabolic);
+        self.respiratory
+            .update(dt, &self.metabolic, &self.cardiovascular);
+        self.metabolic
+            .update(dt, &self.cardiovascular, &self.respiratory);
         self.renal.update(dt, &self.cardiovascular);
 
         let metabolic_rate = self.metabolic.metabolic_rate_kcal_day;
@@ -167,7 +170,8 @@ impl CardiovascularState {
         let metabolic_demand = metabolic.vo2_ml_min / 250.0;
         let target_svr = 1200.0 / (0.5 + 0.5 * neuro.sympathetic_tone) * metabolic_demand;
         let svr_tau = 30.0;
-        self.systemic_vascular_resistance += (target_svr - self.systemic_vascular_resistance) * dt / svr_tau;
+        self.systemic_vascular_resistance +=
+            (target_svr - self.systemic_vascular_resistance) * dt / svr_tau;
 
         let map = self.cardiac_output_l_min * self.systemic_vascular_resistance / 80.0;
         self.systolic_bp_mmhg = map + 40.0;
@@ -177,10 +181,23 @@ impl CardiovascularState {
     }
 
     pub fn health_score(&self) -> f64 {
-        let hr_score = if (60.0..=100.0).contains(&self.heart_rate_bpm) { 1.0 } else { 0.5 };
-        let bp_score = if (90.0..=140.0).contains(&self.systolic_bp_mmhg) &&
-                          (60.0..=90.0).contains(&self.diastolic_bp_mmhg) { 1.0 } else { 0.5 };
-        let co_score = if (4.0..=7.0).contains(&self.cardiac_output_l_min) { 1.0 } else { 0.7 };
+        let hr_score = if (60.0..=100.0).contains(&self.heart_rate_bpm) {
+            1.0
+        } else {
+            0.5
+        };
+        let bp_score = if (90.0..=140.0).contains(&self.systolic_bp_mmhg)
+            && (60.0..=90.0).contains(&self.diastolic_bp_mmhg)
+        {
+            1.0
+        } else {
+            0.5
+        };
+        let co_score = if (4.0..=7.0).contains(&self.cardiac_output_l_min) {
+            1.0
+        } else {
+            0.7
+        };
 
         (hr_score + bp_score + co_score) / 3.0
     }
@@ -205,22 +222,37 @@ impl RespiratoryState {
         let rr_tau = 10.0;
         self.respiratory_rate_per_min += (target_rr - self.respiratory_rate_per_min) * dt / rr_tau;
 
-        self.minute_ventilation_l_min = (self.respiratory_rate_per_min * self.tidal_volume_ml) / 1000.0;
+        self.minute_ventilation_l_min =
+            (self.respiratory_rate_per_min * self.tidal_volume_ml) / 1000.0;
 
         let ventilation_perfusion_ratio = self.minute_ventilation_l_min / cv.cardiac_output_l_min;
         self.paco2_mmhg = 40.0 / ventilation_perfusion_ratio.max(0.5);
         self.pao2_mmhg = 100.0 * (ventilation_perfusion_ratio / 0.8).min(1.2);
 
-        self.sao2_percent = (100.0 * self.pao2_mmhg.powi(3)) /
-                           (self.pao2_mmhg.powi(3) + 26.0_f64.powi(3));
+        self.sao2_percent =
+            (100.0 * self.pao2_mmhg.powi(3)) / (self.pao2_mmhg.powi(3) + 26.0_f64.powi(3));
 
         self.ph = 7.40 - 0.01 * (self.paco2_mmhg - 40.0) / 10.0;
     }
 
     pub fn health_score(&self) -> f64 {
-        let rr_score = if (12.0..=20.0).contains(&self.respiratory_rate_per_min) { 1.0 } else { 0.7 };
-        let o2_score = if self.sao2_percent > 95.0 { 1.0 } else if self.sao2_percent > 90.0 { 0.8 } else { 0.5 };
-        let ph_score = if (7.35..=7.45).contains(&self.ph) { 1.0 } else { 0.6 };
+        let rr_score = if (12.0..=20.0).contains(&self.respiratory_rate_per_min) {
+            1.0
+        } else {
+            0.7
+        };
+        let o2_score = if self.sao2_percent > 95.0 {
+            1.0
+        } else if self.sao2_percent > 90.0 {
+            0.8
+        } else {
+            0.5
+        };
+        let ph_score = if (7.35..=7.45).contains(&self.ph) {
+            1.0
+        } else {
+            0.6
+        };
 
         (rr_score + o2_score + ph_score) / 3.0
     }
@@ -266,9 +298,21 @@ impl MetabolicState {
     }
 
     pub fn health_score(&self) -> f64 {
-        let glucose_score = if (70.0..=110.0).contains(&self.blood_glucose_mg_dl) { 1.0 } else { 0.7 };
-        let lactate_score = if self.blood_lactate_mmol_l < 2.0 { 1.0 } else { 0.6 };
-        let rq_score = if (0.7..=1.0).contains(&self.respiratory_quotient) { 1.0 } else { 0.8 };
+        let glucose_score = if (70.0..=110.0).contains(&self.blood_glucose_mg_dl) {
+            1.0
+        } else {
+            0.7
+        };
+        let lactate_score = if self.blood_lactate_mmol_l < 2.0 {
+            1.0
+        } else {
+            0.6
+        };
+        let rq_score = if (0.7..=1.0).contains(&self.respiratory_quotient) {
+            1.0
+        } else {
+            0.8
+        };
 
         (glucose_score + lactate_score + rq_score) / 3.0
     }
@@ -296,7 +340,8 @@ impl NeurologicalState {
 
         let target_cortisol = 8.0 + 15.0 * stressors.chronic_stress;
         let cortisol_tau = 1800.0;
-        self.cortisol_level_ug_dl += (target_cortisol - self.cortisol_level_ug_dl) * dt / cortisol_tau;
+        self.cortisol_level_ug_dl +=
+            (target_cortisol - self.cortisol_level_ug_dl) * dt / cortisol_tau;
     }
 }
 
@@ -327,8 +372,18 @@ impl RenalState {
     }
 
     pub fn health_score(&self) -> f64 {
-        let gfr_score = if self.gfr_ml_min > 90.0 { 1.0 } else if self.gfr_ml_min > 60.0 { 0.8 } else { 0.5 };
-        let sodium_score = if (135.0..=145.0).contains(&self.plasma_sodium_meq_l) { 1.0 } else { 0.6 };
+        let gfr_score = if self.gfr_ml_min > 90.0 {
+            1.0
+        } else if self.gfr_ml_min > 60.0 {
+            0.8
+        } else {
+            0.5
+        };
+        let sodium_score = if (135.0..=145.0).contains(&self.plasma_sodium_meq_l) {
+            1.0
+        } else {
+            0.6
+        };
 
         (gfr_score + sodium_score) / 2.0
     }
@@ -380,7 +435,8 @@ impl PhysiologySimulation {
         self.state.update(self.time.delta_seconds, stressors);
 
         if self.time.iteration % 10 == 0 {
-            self.history.push((self.time.elapsed_seconds, self.state.clone()));
+            self.history
+                .push((self.time.elapsed_seconds, self.state.clone()));
         }
 
         self.time.advance();
@@ -399,10 +455,9 @@ impl PhysiologySimulation {
     }
 
     pub fn get_state_at_time(&self, time: f64) -> Option<&PhysiologyState> {
-        self.history.iter()
-            .min_by(|(t1, _), (t2, _)| {
-                (t1 - time).abs().partial_cmp(&(t2 - time).abs()).unwrap()
-            })
+        self.history
+            .iter()
+            .min_by(|(t1, _), (t2, _)| (t1 - time).abs().partial_cmp(&(t2 - time).abs()).unwrap())
             .map(|(_, state)| state)
     }
 }

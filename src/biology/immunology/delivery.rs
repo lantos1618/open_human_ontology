@@ -2,8 +2,8 @@
 //!
 //! Models different vaccine delivery mechanisms and their properties.
 
-use serde::{Deserialize, Serialize};
 use super::vaccines::VaccineType;
+use serde::{Deserialize, Serialize};
 
 /// Properties of delivery routes
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -103,7 +103,7 @@ pub enum DeviceType {
 impl DeliveryRoute {
     /// Create a new delivery route with default properties
     pub fn new(route: RouteType) -> Self {
-        let (absorption_rate, local_response, systemic_distribution, discomfort, risk) = 
+        let (absorption_rate, local_response, systemic_distribution, discomfort, risk) =
             match &route {
                 RouteType::Intramuscular { .. } => (0.9, 0.7, 0.8, 0.6, 0.3),
                 RouteType::Subcutaneous { .. } => (0.8, 0.6, 0.7, 0.4, 0.2),
@@ -161,11 +161,12 @@ impl DeliveryDevice {
 
     /// Calculate delivery precision
     pub fn calculate_precision(&self) -> f64 {
-        self.accuracy * match &self.device_type {
-            DeviceType::Autoinjector { .. } => 1.0,
-            DeviceType::MicroinjectionDevice { precision, .. } => *precision,
-            _ => 0.9,
-        }
+        self.accuracy
+            * match &self.device_type {
+                DeviceType::Autoinjector { .. } => 1.0,
+                DeviceType::MicroinjectionDevice { precision, .. } => *precision,
+                _ => 0.9,
+            }
     }
 
     /// Check if device is suitable for route
@@ -270,7 +271,7 @@ mod tests {
     #[test]
     fn test_delivery_optimizer() {
         let mut optimizer = DeliveryOptimizer::new();
-        
+
         optimizer.add_route(DeliveryRoute::new(RouteType::Intramuscular {
             muscle: "deltoid".into(),
             depth: 25.0,
@@ -297,4 +298,4 @@ mod tests {
         let optimal = optimizer.optimize(&vaccine);
         assert!(optimal.is_some());
     }
-} 
+}

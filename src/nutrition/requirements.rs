@@ -134,7 +134,8 @@ mod tests {
 
     #[test]
     fn test_nutritional_requirements_male() {
-        let reqs = NutritionalRequirements::calculate(30.0, 75.0, 175.0, true, ActivityLevel::Moderate);
+        let reqs =
+            NutritionalRequirements::calculate(30.0, 75.0, 175.0, true, ActivityLevel::Moderate);
         assert!(reqs.macronutrients.calories_kcal_day > 2000.0);
         assert!(reqs.macronutrients.protein_g_day > 50.0);
         assert!(reqs.hydration.water_ml_day > 2000.0);
@@ -142,7 +143,8 @@ mod tests {
 
     #[test]
     fn test_nutritional_requirements_female() {
-        let reqs = NutritionalRequirements::calculate(28.0, 60.0, 165.0, false, ActivityLevel::Light);
+        let reqs =
+            NutritionalRequirements::calculate(28.0, 60.0, 165.0, false, ActivityLevel::Light);
         assert!(reqs.macronutrients.calories_kcal_day > 1500.0);
         assert!(reqs.macronutrients.calories_kcal_day < 2500.0);
     }

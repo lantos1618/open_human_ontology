@@ -216,16 +216,25 @@ impl ImmuneSynapse {
     }
 
     pub fn is_cytotoxic(&self) -> bool {
-        matches!(self.synapse_type, SynapseType::CTLTarget | SynapseType::NKTarget)
+        matches!(
+            self.synapse_type,
+            SynapseType::CTLTarget | SynapseType::NKTarget
+        )
     }
 
     pub fn has_costimulation(&self) -> bool {
-        !self.target_cell.antigen_presentation.costimulatory_molecules.is_empty()
+        !self
+            .target_cell
+            .antigen_presentation
+            .costimulatory_molecules
+            .is_empty()
     }
 
     pub fn signal_strength(&self) -> f64 {
         let area_factor = self.contact_area_um2 / 100.0;
-        let molecular_signal: f64 = self.signaling_molecules.iter()
+        let molecular_signal: f64 = self
+            .signaling_molecules
+            .iter()
             .map(|s| s.concentration_ng_per_ml)
             .sum();
 
@@ -245,23 +254,23 @@ impl EffectorCell {
     }
 
     pub fn is_activated(&self) -> bool {
-        matches!(self.activation_state,
-            ActivationState::Activated |
-            ActivationState::Effector
+        matches!(
+            self.activation_state,
+            ActivationState::Activated | ActivationState::Effector
         )
     }
 
     pub fn can_kill_target(&self) -> bool {
-        matches!(self.cell_type,
-            EffectorCellType::Cd8Tcell |
-            EffectorCellType::NKCell
+        matches!(
+            self.cell_type,
+            EffectorCellType::Cd8Tcell | EffectorCellType::NKCell
         ) && self.is_activated()
     }
 
     pub fn is_functional(&self) -> bool {
-        !matches!(self.activation_state,
-            ActivationState::Exhausted |
-            ActivationState::Anergic
+        !matches!(
+            self.activation_state,
+            ActivationState::Exhausted | ActivationState::Anergic
         )
     }
 }
@@ -283,16 +292,16 @@ impl TargetCell {
     }
 
     pub fn is_immunogenic(&self) -> bool {
-        self.infected ||
-        self.stressed ||
-        matches!(self.cell_type, TargetCellType::TumorCell) ||
-        self.antigen_presentation.expression_level > 0.5
+        self.infected
+            || self.stressed
+            || matches!(self.cell_type, TargetCellType::TumorCell)
+            || self.antigen_presentation.expression_level > 0.5
     }
 
     pub fn should_be_killed(&self) -> bool {
-        matches!(self.cell_type,
-            TargetCellType::InfectedCell |
-            TargetCellType::TumorCell
+        matches!(
+            self.cell_type,
+            TargetCellType::InfectedCell | TargetCellType::TumorCell
         )
     }
 }
@@ -340,10 +349,9 @@ impl TcellActivation {
     }
 
     pub fn check_activation(&mut self) {
-        self.activation_threshold_met =
-            self.signal1_tcr_engagement &&
-            self.signal2_costimulation &&
-            !self.signal3_cytokines.is_empty();
+        self.activation_threshold_met = self.signal1_tcr_engagement
+            && self.signal2_costimulation
+            && !self.signal3_cytokines.is_empty();
     }
 
     pub fn is_fully_activated(&self) -> bool {

@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
 use super::allele::AllelePair;
 use super::snp::SNPGenotype;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -66,8 +66,7 @@ impl Genotype {
     }
 
     pub fn is_admixed(&self) -> bool {
-        self.ancestry.len() > 1 &&
-        self.ancestry.iter().all(|a| a.percentage < 80.0)
+        self.ancestry.len() > 1 && self.ancestry.iter().all(|a| a.percentage < 80.0)
     }
 }
 
@@ -95,11 +94,7 @@ pub enum Severity {
 }
 
 impl PhenotypeAssociation {
-    pub fn new(
-        genotype_marker: String,
-        phenotype: String,
-        penetrance: f64,
-    ) -> Self {
+    pub fn new(genotype_marker: String, phenotype: String, penetrance: f64) -> Self {
         PhenotypeAssociation {
             genotype_marker,
             phenotype,
@@ -195,9 +190,9 @@ impl GenotypeRiskProfile {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::dna::DNASequence;
     use super::super::allele::{Allele, AlleleType};
+    use super::super::dna::DNASequence;
+    use super::*;
 
     #[test]
     fn test_genotype_creation() {

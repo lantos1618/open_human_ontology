@@ -198,10 +198,7 @@ impl Enzyme {
             vmax_umol_min: 35.0,
             optimal_ph: 7.5,
             optimal_temp_c: 37.0,
-            cofactors: vec![
-                Cofactor::ATP,
-                Cofactor::Vitamin(VitaminCofactor::Biotin),
-            ],
+            cofactors: vec![Cofactor::ATP, Cofactor::Vitamin(VitaminCofactor::Biotin)],
         }
     }
 
@@ -260,11 +257,15 @@ impl Enzyme {
     }
 
     pub fn requires_metal(&self) -> bool {
-        self.cofactors.iter().any(|c| matches!(c, Cofactor::Metal(_)))
+        self.cofactors
+            .iter()
+            .any(|c| matches!(c, Cofactor::Metal(_)))
     }
 
     pub fn requires_vitamin(&self) -> bool {
-        self.cofactors.iter().any(|c| matches!(c, Cofactor::Vitamin(_)))
+        self.cofactors
+            .iter()
+            .any(|c| matches!(c, Cofactor::Vitamin(_)))
     }
 }
 

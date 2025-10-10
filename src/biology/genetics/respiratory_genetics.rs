@@ -335,9 +335,7 @@ impl RespiratoryGeneticProfile {
             recs.extend(self.cftr.treatment_options());
         }
 
-        if self.serpina1.alpha1_antitrypsin_deficiency()
-            || self.serpina1 == SerpinA1Genotype::MZ
-        {
+        if self.serpina1.alpha1_antitrypsin_deficiency() || self.serpina1 == SerpinA1Genotype::MZ {
             recs.extend(self.serpina1.recommendations());
         }
 

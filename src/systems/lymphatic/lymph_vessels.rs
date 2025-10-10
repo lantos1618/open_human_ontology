@@ -62,24 +62,20 @@ impl LymphaticVesselNetwork {
     pub fn new() -> Self {
         LymphaticVesselNetwork {
             capillaries: vec![],
-            collecting_vessels: vec![
-                CollectingVessel {
-                    name: "Lower limb collector".to_string(),
-                    diameter_um: 150.0,
-                    has_valves: true,
-                    valve_count: 20,
-                    smooth_muscle_layers: 2,
-                    flow_ml_min: 0.5,
-                },
-            ],
-            lymphatic_trunks: vec![
-                LymphaticTrunk {
-                    trunk_type: TrunkType::Lumbar,
-                    diameter_mm: 2.0,
-                    flow_ml_min: 1.0,
-                    drains_from: vec!["Lower limbs".to_string(), "Pelvis".to_string()],
-                },
-            ],
+            collecting_vessels: vec![CollectingVessel {
+                name: "Lower limb collector".to_string(),
+                diameter_um: 150.0,
+                has_valves: true,
+                valve_count: 20,
+                smooth_muscle_layers: 2,
+                flow_ml_min: 0.5,
+            }],
+            lymphatic_trunks: vec![LymphaticTrunk {
+                trunk_type: TrunkType::Lumbar,
+                diameter_mm: 2.0,
+                flow_ml_min: 1.0,
+                drains_from: vec!["Lower limbs".to_string(), "Pelvis".to_string()],
+            }],
             lymphatic_ducts: vec![
                 LymphaticDuct {
                     duct_type: DuctType::ThoracicDuct,
@@ -99,7 +95,12 @@ impl LymphaticVesselNetwork {
     }
 
     pub fn calculate_total_flow(&self) -> f64 {
-        self.lymphatic_ducts.iter().map(|d| d.flow_ml_min).sum::<f64>() * 60.0 * 24.0
+        self.lymphatic_ducts
+            .iter()
+            .map(|d| d.flow_ml_min)
+            .sum::<f64>()
+            * 60.0
+            * 24.0
     }
 
     pub fn detect_lymphedema(&self, limb_volume_increase_percent: f64) -> Option<LymphedemaGrade> {
@@ -150,8 +151,17 @@ mod tests {
     fn test_lymphedema_detection() {
         let network = LymphaticVesselNetwork::new();
         assert_eq!(network.detect_lymphedema(5.0), None);
-        assert_eq!(network.detect_lymphedema(15.0), Some(LymphedemaGrade::Grade1));
-        assert_eq!(network.detect_lymphedema(25.0), Some(LymphedemaGrade::Grade2));
-        assert_eq!(network.detect_lymphedema(45.0), Some(LymphedemaGrade::Grade3));
+        assert_eq!(
+            network.detect_lymphedema(15.0),
+            Some(LymphedemaGrade::Grade1)
+        );
+        assert_eq!(
+            network.detect_lymphedema(25.0),
+            Some(LymphedemaGrade::Grade2)
+        );
+        assert_eq!(
+            network.detect_lymphedema(45.0),
+            Some(LymphedemaGrade::Grade3)
+        );
     }
 }

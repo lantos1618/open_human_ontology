@@ -249,7 +249,11 @@ impl PainProfile {
             return 0.0;
         }
 
-        let sum: f64 = self.pain_sites.iter().map(|site| site.intensity.vas_score).sum();
+        let sum: f64 = self
+            .pain_sites
+            .iter()
+            .map(|site| site.intensity.vas_score)
+            .sum();
         sum / self.pain_sites.len() as f64
     }
 
@@ -266,7 +270,10 @@ impl PainProfile {
     pub fn is_chronic_pain_patient(&self) -> bool {
         !self.chronic_pain_conditions.is_empty()
             || self.pain_sites.iter().any(|site| {
-                matches!(site.temporal_pattern, TemporalPattern::Constant | TemporalPattern::Progressive)
+                matches!(
+                    site.temporal_pattern,
+                    TemporalPattern::Constant | TemporalPattern::Progressive
+                )
             })
     }
 
@@ -505,7 +512,8 @@ mod tests {
     fn test_multimodal_pain_management() {
         let mut plan = PainManagementPlan::new();
 
-        plan.non_pharmacological.push(NonPharmacologicalIntervention::PhysicalTherapy);
+        plan.non_pharmacological
+            .push(NonPharmacologicalIntervention::PhysicalTherapy);
         plan.pharmacological.push(PharmacologicalIntervention {
             medication_class: MedicationClass::NSAIDs,
             dose: "400mg".to_string(),
@@ -529,6 +537,9 @@ mod tests {
             relieving_factors: vec![],
         });
 
-        assert_eq!(profile.calculate_disability_impact(), DisabilityImpact::Severe);
+        assert_eq!(
+            profile.calculate_disability_impact(),
+            DisabilityImpact::Severe
+        );
     }
 }

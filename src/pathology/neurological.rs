@@ -124,7 +124,9 @@ impl NeurologicalProfile {
     }
 
     pub fn has_condition(&self, condition_type: &NeurologicalCondition) -> bool {
-        self.conditions.iter().any(|c| std::mem::discriminant(c) == std::mem::discriminant(condition_type))
+        self.conditions
+            .iter()
+            .any(|c| std::mem::discriminant(c) == std::mem::discriminant(condition_type))
     }
 
     pub fn calculate_burden_score(&self) -> f64 {
@@ -147,7 +149,10 @@ impl NeurologicalProfile {
                 "Low"
             };
 
-            insights.push(format!("{}: {} risk (OR: {:.2})", gene, risk_level, risk_score));
+            insights.push(format!(
+                "{}: {} risk (OR: {:.2})",
+                gene, risk_level, risk_score
+            ));
         }
 
         insights

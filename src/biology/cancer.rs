@@ -21,12 +21,14 @@ impl Oncogene {
     pub fn normal_function(&self) -> &str {
         match self {
             Oncogene::MYC => "Cell cycle progression, transcription factor",
-            Oncogene::RAS | Oncogene::KRAS | Oncogene::NRAS | Oncogene::HRAS =>
-                "Signal transduction, GTPase",
+            Oncogene::RAS | Oncogene::KRAS | Oncogene::NRAS | Oncogene::HRAS => {
+                "Signal transduction, GTPase"
+            }
             Oncogene::BRAF => "Serine/threonine kinase, MAPK pathway",
             Oncogene::HER2 | Oncogene::EGFR => "Receptor tyrosine kinase",
-            Oncogene::ALK | Oncogene::RET | Oncogene::NTRK =>
-                "Receptor tyrosine kinase, fusion protein",
+            Oncogene::ALK | Oncogene::RET | Oncogene::NTRK => {
+                "Receptor tyrosine kinase, fusion protein"
+            }
             Oncogene::PIK3CA => "PI3K pathway, lipid kinase",
             Oncogene::AKT => "Serine/threonine kinase, survival signaling",
         }
@@ -81,8 +83,9 @@ impl TumorSuppressorGene {
     pub fn normal_function(&self) -> &str {
         match self {
             TumorSuppressorGene::TP53 => "Guardian of the genome, apoptosis, cell cycle arrest",
-            TumorSuppressorGene::BRCA1 | TumorSuppressorGene::BRCA2 =>
-                "DNA repair, homologous recombination",
+            TumorSuppressorGene::BRCA1 | TumorSuppressorGene::BRCA2 => {
+                "DNA repair, homologous recombination"
+            }
             TumorSuppressorGene::PTEN => "PI3K pathway inhibitor, tumor suppressor",
             TumorSuppressorGene::RB1 => "Cell cycle regulation, G1/S checkpoint",
             TumorSuppressorGene::APC => "Wnt pathway inhibitor, colon development",
@@ -99,8 +102,9 @@ impl TumorSuppressorGene {
     pub fn associated_cancer(&self) -> &str {
         match self {
             TumorSuppressorGene::TP53 => "50% of all cancers, Li-Fraumeni syndrome",
-            TumorSuppressorGene::BRCA1 | TumorSuppressorGene::BRCA2 =>
-                "Breast, ovarian, pancreatic, prostate",
+            TumorSuppressorGene::BRCA1 | TumorSuppressorGene::BRCA2 => {
+                "Breast, ovarian, pancreatic, prostate"
+            }
             TumorSuppressorGene::PTEN => "Breast, prostate, thyroid (Cowden syndrome)",
             TumorSuppressorGene::RB1 => "Retinoblastoma, osteosarcoma",
             TumorSuppressorGene::APC => "Colorectal (FAP)",
@@ -137,24 +141,27 @@ pub enum DNARepairGene {
 impl DNARepairGene {
     pub fn pathway(&self) -> &str {
         match self {
-            DNARepairGene::MLH1 | DNARepairGene::MSH2 |
-            DNARepairGene::MSH6 | DNARepairGene::PMS2 =>
-                "Mismatch repair (MMR)",
-            DNARepairGene::BRCA1 | DNARepairGene::BRCA2 |
-            DNARepairGene::PALB2 | DNARepairGene::RAD51 =>
-                "Homologous recombination (HR)",
-            DNARepairGene::ATM | DNARepairGene::CHEK2 =>
-                "DNA damage checkpoint",
+            DNARepairGene::MLH1
+            | DNARepairGene::MSH2
+            | DNARepairGene::MSH6
+            | DNARepairGene::PMS2 => "Mismatch repair (MMR)",
+            DNARepairGene::BRCA1
+            | DNARepairGene::BRCA2
+            | DNARepairGene::PALB2
+            | DNARepairGene::RAD51 => "Homologous recombination (HR)",
+            DNARepairGene::ATM | DNARepairGene::CHEK2 => "DNA damage checkpoint",
         }
     }
 
     pub fn deficiency_syndrome(&self) -> &str {
         match self {
-            DNARepairGene::MLH1 | DNARepairGene::MSH2 |
-            DNARepairGene::MSH6 | DNARepairGene::PMS2 =>
-                "Lynch syndrome (HNPCC)",
-            DNARepairGene::BRCA1 | DNARepairGene::BRCA2 =>
-                "Hereditary breast-ovarian cancer syndrome",
+            DNARepairGene::MLH1
+            | DNARepairGene::MSH2
+            | DNARepairGene::MSH6
+            | DNARepairGene::PMS2 => "Lynch syndrome (HNPCC)",
+            DNARepairGene::BRCA1 | DNARepairGene::BRCA2 => {
+                "Hereditary breast-ovarian cancer syndrome"
+            }
             DNARepairGene::ATM => "Ataxia telangiectasia",
             _ => "Increased cancer risk",
         }
@@ -162,11 +169,13 @@ impl DNARepairGene {
 
     pub fn therapeutic_target(&self) -> Option<&str> {
         match self {
-            DNARepairGene::BRCA1 | DNARepairGene::BRCA2 =>
-                Some("PARP inhibitors (olaparib, rucaparib)"),
-            DNARepairGene::MLH1 | DNARepairGene::MSH2 |
-            DNARepairGene::MSH6 | DNARepairGene::PMS2 =>
-                Some("Immune checkpoint inhibitors (pembrolizumab)"),
+            DNARepairGene::BRCA1 | DNARepairGene::BRCA2 => {
+                Some("PARP inhibitors (olaparib, rucaparib)")
+            }
+            DNARepairGene::MLH1
+            | DNARepairGene::MSH2
+            | DNARepairGene::MSH6
+            | DNARepairGene::PMS2 => Some("Immune checkpoint inhibitors (pembrolizumab)"),
             _ => None,
         }
     }
@@ -286,7 +295,13 @@ impl CancerCell {
         let metastatic_score = self.metastatic_potential * 0.25;
         let angiogenesis_score = if self.angiogenesis_active { 0.10 } else { 0.0 };
 
-        (oncogene_score + tsg_score + prolif_score + apoptosis_score + metastatic_score + angiogenesis_score).min(1.0)
+        (oncogene_score
+            + tsg_score
+            + prolif_score
+            + apoptosis_score
+            + metastatic_score
+            + angiogenesis_score)
+            .min(1.0)
     }
 }
 
@@ -385,8 +400,8 @@ impl TumorMicroenvironment {
     }
 
     pub fn immunosuppressive_index(&self) -> f64 {
-        (self.regulatory_t_cells + self.tumor_associated_macrophages) /
-        (self.cytotoxic_t_cells + 0.01)
+        (self.regulatory_t_cells + self.tumor_associated_macrophages)
+            / (self.cytotoxic_t_cells + 0.01)
     }
 
     pub fn is_immunosuppressive(&self) -> bool {

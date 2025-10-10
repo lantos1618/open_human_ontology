@@ -1,6 +1,5 @@
 use human_biology::metabolism::{
-    AlcoholMetabolismSimulation, ALDH2Genotype, ADH1BGenotype,
-    AlcoholIngestion, Sex,
+    ADH1BGenotype, ALDH2Genotype, AlcoholIngestion, AlcoholMetabolismSimulation, Sex,
 };
 
 fn main() {
@@ -52,31 +51,48 @@ fn main() {
 
     println!("Peak Acetaldehyde Comparison:");
     println!("  Wild-type:  {:.1} µmol/L", wt_peak);
-    println!("  ALDH2*1/*2: {:.1} µmol/L ({:.1}x higher)", def_peak, def_peak / wt_peak);
+    println!(
+        "  ALDH2*1/*2: {:.1} µmol/L ({:.1}x higher)",
+        def_peak,
+        def_peak / wt_peak
+    );
 
     let wt_auc = wildtype_sim.area_under_curve_acetaldehyde();
     let def_auc = deficient_sim.area_under_curve_acetaldehyde();
 
     println!("\nAcetaldehyde Exposure (AUC):");
     println!("  Wild-type:  {:.1} µmol·h/L", wt_auc);
-    println!("  ALDH2*1/*2: {:.1} µmol·h/L ({:.1}x higher)", def_auc, def_auc / wt_auc);
+    println!(
+        "  ALDH2*1/*2: {:.1} µmol·h/L ({:.1}x higher)",
+        def_auc,
+        def_auc / wt_auc
+    );
 
     println!("\n\n━━━ Detailed Timeline (ALDH2*1/*2 carrier) ━━━");
-    println!("\n{:>6} {:>12} {:>15} {:>10} {:>6} {}",
-        "Time", "Ethanol", "Acetaldehyde", "Acetate", "Flush", "Symptoms");
-    println!("{:>6} {:>12} {:>15} {:>10} {:>6} {}",
-        "(hr)", "(mmol/L)", "(µmol/L)", "(mmol/L)", "Score", "");
+    println!(
+        "\n{:>6} {:>12} {:>15} {:>10} {:>6} {}",
+        "Time", "Ethanol", "Acetaldehyde", "Acetate", "Flush", "Symptoms"
+    );
+    println!(
+        "{:>6} {:>12} {:>15} {:>10} {:>6} {}",
+        "(hr)", "(mmol/L)", "(µmol/L)", "(mmol/L)", "Score", ""
+    );
     println!("{}", "─".repeat(85));
 
     for (i, tp) in deficient_sim.timeline.iter().enumerate() {
         if i % 10 == 0 {
-            println!("{:>6.2} {:>12.2} {:>15.1} {:>10.2} {:>6.1} {}",
+            println!(
+                "{:>6.2} {:>12.2} {:>15.1} {:>10.2} {:>6.1} {}",
                 tp.time_hours,
                 tp.ethanol_mmol_l,
                 tp.acetaldehyde_umol_l,
                 tp.acetate_mmol_l,
                 tp.flush_response_score,
-                if tp.symptoms.is_empty() { "-".to_string() } else { tp.symptoms.join(", ") }
+                if tp.symptoms.is_empty() {
+                    "-".to_string()
+                } else {
+                    tp.symptoms.join(", ")
+                }
             );
         }
     }

@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use super::dna::Nucleotide;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct SNP {
@@ -58,10 +58,10 @@ impl SNP {
     fn is_transition_pair(&self, n1: &Nucleotide, n2: &Nucleotide) -> bool {
         matches!(
             (n1, n2),
-            (Nucleotide::Adenine, Nucleotide::Guanine) |
-            (Nucleotide::Guanine, Nucleotide::Adenine) |
-            (Nucleotide::Cytosine, Nucleotide::Thymine) |
-            (Nucleotide::Thymine, Nucleotide::Cytosine)
+            (Nucleotide::Adenine, Nucleotide::Guanine)
+                | (Nucleotide::Guanine, Nucleotide::Adenine)
+                | (Nucleotide::Cytosine, Nucleotide::Thymine)
+                | (Nucleotide::Thymine, Nucleotide::Cytosine)
         )
     }
 }
@@ -140,8 +140,8 @@ impl SNPGenotype {
     }
 
     pub fn has_alternate_allele(&self) -> bool {
-        self.snp.alternate_alleles.contains(&self.allele1) ||
-        self.snp.alternate_alleles.contains(&self.allele2)
+        self.snp.alternate_alleles.contains(&self.allele1)
+            || self.snp.alternate_alleles.contains(&self.allele2)
     }
 
     pub fn allele_count(&self, allele: &Nucleotide) -> u8 {
@@ -168,7 +168,8 @@ mod tests {
             1000000,
             Nucleotide::Adenine,
             vec![Nucleotide::Guanine],
-        ).with_maf(0.25);
+        )
+        .with_maf(0.25);
 
         assert_eq!(snp.rs_id, "rs123456");
         assert!(snp.is_common());

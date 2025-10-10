@@ -221,7 +221,9 @@ impl TransplantCandidate {
 
         let crossmatch_compatible = self.panel_reactive_antibody < 0.8;
 
-        let size_compatible = self.body_size.is_compatible_with(&donor.body_size, self.organ_needed);
+        let size_compatible = self
+            .body_size
+            .is_compatible_with(&donor.body_size, self.organ_needed);
 
         let viral_risk = ViralStatus::assess_transmission_risk(
             &self.calculate_recipient_viral_status(),
@@ -287,7 +289,10 @@ impl BodySize {
 }
 
 impl ViralStatus {
-    pub fn assess_transmission_risk(recipient: &ViralStatus, donor: &ViralStatus) -> ViralTransmissionRisk {
+    pub fn assess_transmission_risk(
+        recipient: &ViralStatus,
+        donor: &ViralStatus,
+    ) -> ViralTransmissionRisk {
         let mut risk_factors = 0;
 
         if donor.hiv == SerologyStatus::Positive {
@@ -483,7 +488,8 @@ impl BiopsyFindings {
     }
 
     pub fn suggests_antibody_mediated_rejection(&self) -> bool {
-        self.c4d_positive || (self.glomerulitis_score > 0 && self.peritubular_capillaritis_score > 0)
+        self.c4d_positive
+            || (self.glomerulitis_score > 0 && self.peritubular_capillaritis_score > 0)
     }
 }
 
@@ -621,7 +627,11 @@ impl TransplantOutcome {
     }
 
     pub fn requires_intensive_monitoring(&self) -> bool {
-        self.has_rejection() || matches!(self.graft_function, GraftFunction::Fair | GraftFunction::ChronicDysfunction)
+        self.has_rejection()
+            || matches!(
+                self.graft_function,
+                GraftFunction::Fair | GraftFunction::ChronicDysfunction
+            )
     }
 }
 

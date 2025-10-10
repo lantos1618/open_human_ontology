@@ -227,14 +227,19 @@ impl InflammationSystem {
         self.acute_inflammation.cardinal_signs.dolor_pain = inflammatory_stimulus * 0.9;
 
         self.acute_inflammation.vascular_response.vasodilation = inflammatory_stimulus;
-        self.acute_inflammation.vascular_response.increased_permeability = inflammatory_stimulus * 0.8;
+        self.acute_inflammation
+            .vascular_response
+            .increased_permeability = inflammatory_stimulus * 0.8;
 
-        self.cytokine_network.pro_inflammatory.tnf_alpha_pg_ml = 50.0 + (inflammatory_stimulus * 100.0);
-        self.cytokine_network.pro_inflammatory.il1_beta_pg_ml = 10.0 + (inflammatory_stimulus * 50.0);
+        self.cytokine_network.pro_inflammatory.tnf_alpha_pg_ml =
+            50.0 + (inflammatory_stimulus * 100.0);
+        self.cytokine_network.pro_inflammatory.il1_beta_pg_ml =
+            10.0 + (inflammatory_stimulus * 50.0);
         self.cytokine_network.pro_inflammatory.il6_pg_ml = 5.0 + (inflammatory_stimulus * 80.0);
 
         self.inflammatory_markers.crp_mg_l = 1.0 + (inflammatory_stimulus * 20.0);
-        self.inflammatory_markers.white_blood_cell_count_per_ul = 7000.0 + (inflammatory_stimulus * 8000.0);
+        self.inflammatory_markers.white_blood_cell_count_per_ul =
+            7000.0 + (inflammatory_stimulus * 8000.0);
     }
 
     pub fn activate_resolution(&mut self) {
@@ -247,13 +252,18 @@ impl InflammationSystem {
 
         self.acute_inflammation.resolution_phase = true;
 
-        self.acute_inflammation.cellular_response.macrophage_activation.m2_polarization += 0.3;
+        self.acute_inflammation
+            .cellular_response
+            .macrophage_activation
+            .m2_polarization += 0.3;
     }
 
     pub fn progress_to_chronic(&mut self, duration_weeks: f64) {
         self.chronic_inflammation.duration_weeks = duration_weeks;
 
-        self.chronic_inflammation.tissue_remodeling.collagen_deposition += duration_weeks * 0.1;
+        self.chronic_inflammation
+            .tissue_remodeling
+            .collagen_deposition += duration_weeks * 0.1;
         self.chronic_inflammation.fibrosis_score = (duration_weeks * 0.05).min(1.0);
 
         self.inflammaging.age_related_inflammation_score += duration_weeks * 0.02;
@@ -263,20 +273,22 @@ impl InflammationSystem {
     }
 
     pub fn calculate_inflammatory_index(&self) -> f64 {
-        let pro_inflammatory_score =
-            (self.cytokine_network.pro_inflammatory.tnf_alpha_pg_ml / 100.0 +
-             self.cytokine_network.pro_inflammatory.il6_pg_ml / 50.0 +
-             self.cytokine_network.pro_inflammatory.il1_beta_pg_ml / 30.0) / 3.0;
+        let pro_inflammatory_score = (self.cytokine_network.pro_inflammatory.tnf_alpha_pg_ml
+            / 100.0
+            + self.cytokine_network.pro_inflammatory.il6_pg_ml / 50.0
+            + self.cytokine_network.pro_inflammatory.il1_beta_pg_ml / 30.0)
+            / 3.0;
 
-        let anti_inflammatory_score =
-            (self.cytokine_network.anti_inflammatory.il10_pg_ml / 100.0 +
-             self.cytokine_network.anti_inflammatory.tgf_beta_pg_ml / 500.0) / 2.0;
+        let anti_inflammatory_score = (self.cytokine_network.anti_inflammatory.il10_pg_ml / 100.0
+            + self.cytokine_network.anti_inflammatory.tgf_beta_pg_ml / 500.0)
+            / 2.0;
 
-        let resolution_score =
-            (self.resolution_mediators.lipoxins.lxa4_pg_ml / 100.0 +
-             self.resolution_mediators.resolvins.rvd1_pg_ml / 50.0) / 2.0;
+        let resolution_score = (self.resolution_mediators.lipoxins.lxa4_pg_ml / 100.0
+            + self.resolution_mediators.resolvins.rvd1_pg_ml / 50.0)
+            / 2.0;
 
-        let inflammatory_balance = pro_inflammatory_score - anti_inflammatory_score - resolution_score;
+        let inflammatory_balance =
+            pro_inflammatory_score - anti_inflammatory_score - resolution_score;
 
         inflammatory_balance.max(0.0).min(10.0)
     }
@@ -452,9 +464,7 @@ impl ResolutionMediators {
                 pd1_pg_ml: 15.0,
                 npd1_pg_ml: 10.0,
             },
-            maresins: Maresins {
-                mar1_pg_ml: 12.0,
-            },
+            maresins: Maresins { mar1_pg_ml: 12.0 },
         }
     }
 }
@@ -486,7 +496,10 @@ mod tests {
     #[test]
     fn test_inflammation_system_creation() {
         let system = InflammationSystem::new_normal();
-        assert_eq!(system.assess_inflammation_state(), InflammationState::Quiescent);
+        assert_eq!(
+            system.assess_inflammation_state(),
+            InflammationState::Quiescent
+        );
     }
 
     #[test]

@@ -325,7 +325,8 @@ impl NeurologicalGeneticProfile {
     pub fn psychiatric_risk_factors(&self) -> Vec<String> {
         let mut factors = Vec::new();
 
-        let depression_risk = self.bdnf.depression_risk() * self.slc6a4.depression_risk_with_stress();
+        let depression_risk =
+            self.bdnf.depression_risk() * self.slc6a4.depression_risk_with_stress();
         if depression_risk > 2.0 {
             factors.push(format!(
                 "Elevated depression risk with stress ({:.1}x)",
@@ -405,7 +406,9 @@ mod tests {
         let warrior = Comt158Variant::ValVal;
         let worrier = Comt158Variant::MetMet;
 
-        assert!(warrior.stress_response().contains("Better performance under stress"));
+        assert!(warrior
+            .stress_response()
+            .contains("Better performance under stress"));
         assert!(worrier.stress_response().contains("worse under stress"));
         assert!(worrier.opioid_requirement_multiplier() > 1.0);
     }

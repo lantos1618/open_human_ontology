@@ -146,12 +146,22 @@ impl AllergyImmunologyProfile {
     }
 
     pub fn anaphylaxis_risk(&self) -> AnaphylaxisRisk {
-        let has_anaphylactic = self.allergies.iter()
+        let has_anaphylactic = self
+            .allergies
+            .iter()
             .any(|a| a.severity == AllergySeverity::Anaphylactic);
 
-        let multiple_severe = self.allergies.iter()
-            .filter(|a| matches!(a.severity, AllergySeverity::Severe | AllergySeverity::Anaphylactic))
-            .count() > 1;
+        let multiple_severe = self
+            .allergies
+            .iter()
+            .filter(|a| {
+                matches!(
+                    a.severity,
+                    AllergySeverity::Severe | AllergySeverity::Anaphylactic
+                )
+            })
+            .count()
+            > 1;
 
         match (has_anaphylactic, multiple_severe) {
             (true, _) => AnaphylaxisRisk::High,
@@ -162,13 +172,16 @@ impl AllergyImmunologyProfile {
 
     pub fn requires_epipen(&self) -> bool {
         self.allergies.iter().any(|a| {
-            matches!(a.severity, AllergySeverity::Anaphylactic) ||
-            (matches!(a.severity, AllergySeverity::Severe) &&
-             a.symptoms.iter().any(|s| matches!(s,
-                AllergySymptom::Dyspnea |
-                AllergySymptom::Hypotension |
-                AllergySymptom::Angioedema
-             )))
+            matches!(a.severity, AllergySeverity::Anaphylactic)
+                || (matches!(a.severity, AllergySeverity::Severe)
+                    && a.symptoms.iter().any(|s| {
+                        matches!(
+                            s,
+                            AllergySymptom::Dyspnea
+                                | AllergySymptom::Hypotension
+                                | AllergySymptom::Angioedema
+                        )
+                    }))
         })
     }
 
@@ -189,13 +202,19 @@ impl AllergyImmunologyProfile {
     }
 
     pub fn atopic_march_present(&self) -> bool {
-        let has_atopic_dermatitis = self.allergies.iter()
+        let has_atopic_dermatitis = self
+            .allergies
+            .iter()
             .any(|a| matches!(a.allergen.category, AllergenCategory::ContactAllergen));
 
-        let has_food_allergy = self.allergies.iter()
+        let has_food_allergy = self
+            .allergies
+            .iter()
             .any(|a| matches!(a.allergen.category, AllergenCategory::Food));
 
-        let has_environmental = self.allergies.iter()
+        let has_environmental = self
+            .allergies
+            .iter()
             .any(|a| matches!(a.allergen.category, AllergenCategory::Environmental));
 
         has_atopic_dermatitis && has_food_allergy && has_environmental
@@ -247,13 +266,19 @@ impl ImmunoglobulinLevels {
 
 impl Allergy {
     pub fn requires_avoidance(&self) -> bool {
-        matches!(self.severity, AllergySeverity::Severe | AllergySeverity::Anaphylactic)
+        matches!(
+            self.severity,
+            AllergySeverity::Severe | AllergySeverity::Anaphylactic
+        )
     }
 
     pub fn suitable_for_immunotherapy(&self) -> bool {
-        matches!(self.reaction_type, AllergyType::IgEMediated) &&
-        matches!(self.allergen.category, AllergenCategory::Environmental | AllergenCategory::Venom) &&
-        !matches!(self.severity, AllergySeverity::Anaphylactic)
+        matches!(self.reaction_type, AllergyType::IgEMediated)
+            && matches!(
+                self.allergen.category,
+                AllergenCategory::Environmental | AllergenCategory::Venom
+            )
+            && !matches!(self.severity, AllergySeverity::Anaphylactic)
     }
 }
 
@@ -261,20 +286,23 @@ impl AllergenCategory {
     pub fn common_allergens(&self) -> Vec<&'static str> {
         match self {
             AllergenCategory::Food => vec![
-                "Peanuts", "Tree nuts", "Milk", "Eggs", "Wheat", "Soy", "Fish", "Shellfish"
+                "Peanuts",
+                "Tree nuts",
+                "Milk",
+                "Eggs",
+                "Wheat",
+                "Soy",
+                "Fish",
+                "Shellfish",
             ],
-            AllergenCategory::Environmental => vec![
-                "Pollen", "Dust mites", "Mold", "Pet dander", "Cockroach"
-            ],
-            AllergenCategory::Medication => vec![
-                "Penicillin", "Sulfa drugs", "NSAIDs", "Aspirin"
-            ],
-            AllergenCategory::Venom => vec![
-                "Bee sting", "Wasp sting", "Fire ant"
-            ],
-            AllergenCategory::ContactAllergen => vec![
-                "Nickel", "Latex", "Fragrances", "Preservatives"
-            ],
+            AllergenCategory::Environmental => {
+                vec!["Pollen", "Dust mites", "Mold", "Pet dander", "Cockroach"]
+            }
+            AllergenCategory::Medication => vec!["Penicillin", "Sulfa drugs", "NSAIDs", "Aspirin"],
+            AllergenCategory::Venom => vec!["Bee sting", "Wasp sting", "Fire ant"],
+            AllergenCategory::ContactAllergen => {
+                vec!["Nickel", "Latex", "Fragrances", "Preservatives"]
+            }
         }
     }
 }

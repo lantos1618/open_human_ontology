@@ -467,11 +467,16 @@ impl OrganPathophysiology {
     }
 
     pub fn calculate_meld_score(&self) -> i32 {
-        let bilirubin = self.hepatic_pathology.liver_function_tests.bilirubin_mg_per_dl.max(1.0);
+        let bilirubin = self
+            .hepatic_pathology
+            .liver_function_tests
+            .bilirubin_mg_per_dl
+            .max(1.0);
         let creatinine = ((100.0 - self.renal_pathology.gfr_ml_per_min) / 10.0).max(1.0);
         let inr = self.hepatic_pathology.liver_function_tests.inr.max(1.0);
 
-        let score = 10.0 * (0.957 * creatinine.ln() + 0.378 * bilirubin.ln() + 1.12 * inr.ln() + 0.643);
+        let score =
+            10.0 * (0.957 * creatinine.ln() + 0.378 * bilirubin.ln() + 1.12 * inr.ln() + 0.643);
 
         score.round() as i32
     }
@@ -484,7 +489,10 @@ mod tests {
     #[test]
     fn test_healthy_baseline_creation() {
         let pathology = OrganPathophysiology::healthy_baseline();
-        assert_eq!(pathology.cardiac_pathology.cardiac_output_status, CardiacOutputStatus::Normal);
+        assert_eq!(
+            pathology.cardiac_pathology.cardiac_output_status,
+            CardiacOutputStatus::Normal
+        );
         assert!(pathology.pulmonary_pathology.fev1_percent_predicted > 90.0);
     }
 

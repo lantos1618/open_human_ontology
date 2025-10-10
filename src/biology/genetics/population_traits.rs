@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
 use super::ancestry::Ancestry;
 pub use super::phenotype::EarwaxType;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PopulationSpecificTraits {
@@ -45,7 +45,6 @@ pub enum SkinPigmentation {
     Dark,
     VeryDark,
 }
-
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HairTraits {
@@ -237,7 +236,8 @@ impl PopulationSpecificTraits {
                 recommendations.push("Consider calcium from non-dairy sources".to_string());
             }
             LactoseTolerance::PartiallyTolerant => {
-                recommendations.push("Limit dairy intake or use lactose-free alternatives".to_string());
+                recommendations
+                    .push("Limit dairy intake or use lactose-free alternatives".to_string());
             }
             LactoseTolerance::Tolerant => {
                 recommendations.push("Can consume dairy freely".to_string());
@@ -246,8 +246,10 @@ impl PopulationSpecificTraits {
 
         match self.alcohol_metabolism {
             AlcoholMetabolism::AldehDehydrogenaseDeficient => {
-                recommendations.push("AVOID alcohol - increased cancer risk with consumption".to_string());
-                recommendations.push("Severe flushing and discomfort expected with alcohol".to_string());
+                recommendations
+                    .push("AVOID alcohol - increased cancer risk with consumption".to_string());
+                recommendations
+                    .push("Severe flushing and discomfort expected with alcohol".to_string());
             }
             AlcoholMetabolism::Slow => {
                 recommendations.push("Limit alcohol consumption - slower metabolism".to_string());

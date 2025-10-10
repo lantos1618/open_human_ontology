@@ -1,10 +1,10 @@
 //! # Neuron Module
-//! 
+//!
 //! Models neurons and their electrical/chemical properties.
 
+use crate::biology::BiologyResult;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::biology::BiologyResult;
 
 /// Types of neurons based on morphology
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -109,9 +109,9 @@ impl IonChannel {
     /// Update channel state based on voltage
     pub fn update_state(&mut self, voltage: f64) {
         match &self.channel_type {
-            ChannelType::VoltageGatedSodium | 
-            ChannelType::VoltageGatedPotassium |
-            ChannelType::VoltageGatedCalcium => {
+            ChannelType::VoltageGatedSodium
+            | ChannelType::VoltageGatedPotassium
+            | ChannelType::VoltageGatedCalcium => {
                 if let Some(threshold) = self.voltage_threshold {
                     if voltage >= threshold {
                         self.state = ChannelState::Open;
@@ -119,7 +119,7 @@ impl IonChannel {
                         self.state = ChannelState::Closed;
                     }
                 }
-            },
+            }
             _ => {}
         }
     }
@@ -127,9 +127,7 @@ impl IonChannel {
     /// Calculate current through channel
     pub fn calculate_current(&self, voltage: f64, ion_concentration: f64) -> f64 {
         match self.state {
-            ChannelState::Open => {
-                self.conductance * (voltage - ion_concentration)
-            },
+            ChannelState::Open => self.conductance * (voltage - ion_concentration),
             _ => 0.0,
         }
     }
@@ -142,12 +140,18 @@ impl Membrane {
         let mut ion_concentrations = HashMap::new();
 
         // Initialize with basic channels
-        channels.insert(ChannelType::VoltageGatedSodium, 
-            vec![IonChannel::new(ChannelType::VoltageGatedSodium, 120.0)]);
-        channels.insert(ChannelType::VoltageGatedPotassium,
-            vec![IonChannel::new(ChannelType::VoltageGatedPotassium, 36.0)]);
-        channels.insert(ChannelType::LeakChannel,
-            vec![IonChannel::new(ChannelType::LeakChannel, 0.3)]);
+        channels.insert(
+            ChannelType::VoltageGatedSodium,
+            vec![IonChannel::new(ChannelType::VoltageGatedSodium, 120.0)],
+        );
+        channels.insert(
+            ChannelType::VoltageGatedPotassium,
+            vec![IonChannel::new(ChannelType::VoltageGatedPotassium, 36.0)],
+        );
+        channels.insert(
+            ChannelType::LeakChannel,
+            vec![IonChannel::new(ChannelType::LeakChannel, 0.3)],
+        );
 
         // Set ion concentrations (mM)
         ion_concentrations.insert("Na+".into(), 140.0);
@@ -178,18 +182,22 @@ impl Membrane {
     /// Calculate total membrane current
     pub fn calculate_total_current(&self) -> f64 {
         let mut total_current = 0.0;
-        
+
         for channels in self.channels.values() {
             for channel in channels {
                 let ion_conc = match &channel.channel_type {
-                    ChannelType::VoltageGatedSodium => *self.ion_concentrations.get("Na+").unwrap_or(&140.0),
-                    ChannelType::VoltageGatedPotassium => *self.ion_concentrations.get("K+").unwrap_or(&5.0),
+                    ChannelType::VoltageGatedSodium => {
+                        *self.ion_concentrations.get("Na+").unwrap_or(&140.0)
+                    }
+                    ChannelType::VoltageGatedPotassium => {
+                        *self.ion_concentrations.get("K+").unwrap_or(&5.0)
+                    }
                     _ => 0.0,
                 };
                 total_current += channel.calculate_current(self.voltage, ion_conc);
             }
         }
-        
+
         total_current
     }
 }
@@ -221,7 +229,7 @@ impl Synapse {
         } else {
             self.plasticity_state *= 0.9; // LTD
         }
-        
+
         // Bound plasticity
         self.plasticity_state = self.plasticity_state.clamp(0.1, 5.0);
     }
@@ -258,7 +266,7 @@ impl Neuron {
     /// Fire an action potential
     fn fire_action_potential(&mut self) {
         self.is_firing = true;
-        
+
         // Release neurotransmitters from all synapses
         for synapse in &mut self.synapses {
             synapse.release_neurotransmitter();
@@ -293,11 +301,11 @@ mod tests {
     #[test]
     fn test_action_potential() {
         let mut neuron = Neuron::new(NeuronType::Multipolar);
-        
+
         // Simulate strong input
         neuron.membrane.voltage = -54.0; // Above threshold
         neuron.update(0.1).unwrap();
-        
+
         assert!(neuron.membrane.voltage <= neuron.resting_potential);
     }
 
@@ -308,4 +316,4 @@ mod tests {
         assert!(released > 0);
         assert!(synapse.vesicle_count < 100);
     }
-} 
+}

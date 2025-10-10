@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use nalgebra::Vector3;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Kinematics {
@@ -137,7 +137,10 @@ impl JointForces {
     }
 
     pub fn resultant_force(&self) -> f64 {
-        (self.compression_force_n.powi(2) + self.shear_force_n.powi(2) + self.tensile_force_n.powi(2)).sqrt()
+        (self.compression_force_n.powi(2)
+            + self.shear_force_n.powi(2)
+            + self.tensile_force_n.powi(2))
+        .sqrt()
     }
 }
 

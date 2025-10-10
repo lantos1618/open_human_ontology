@@ -225,14 +225,12 @@ impl HormoneAxis {
             hypothalamic_hormone: Some("TRH".to_string()),
             pituitary_hormone: Some("TSH".to_string()),
             peripheral_hormone: "T3/T4".to_string(),
-            negative_feedback_loops: vec![
-                FeedbackLoop {
-                    sensor_location: "Pituitary".to_string(),
-                    target_location: "Pituitary".to_string(),
-                    feedback_type: FeedbackType::Negative,
-                    sensitivity: 0.9,
-                },
-            ],
+            negative_feedback_loops: vec![FeedbackLoop {
+                sensor_location: "Pituitary".to_string(),
+                target_location: "Pituitary".to_string(),
+                feedback_type: FeedbackType::Negative,
+                sensitivity: 0.9,
+            }],
         }
     }
 }
@@ -380,7 +378,7 @@ mod tests {
     fn test_steroid_hormone_action() {
         let action = SteroidHormoneAction::new(
             "Cortisol".to_string(),
-            "Glucocorticoid receptor".to_string()
+            "Glucocorticoid receptor".to_string(),
         );
 
         assert_eq!(action.genomic_lag_time_minutes, 30.0);

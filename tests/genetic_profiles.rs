@@ -1,38 +1,27 @@
-use human_biology::comprehensive_health::*;
+use human_biology::anthropometry::{
+    AnthropometricProfile, BiologicalSex, BodyComposition, BodyMeasurements, Ethnicity,
+};
+use human_biology::biology::genetics::dermatology;
+use human_biology::biology::genetics::ophthalmology;
 use human_biology::biology::genetics::*;
-use human_biology::biology::genetics::dermatology::*;
-use human_biology::biology::genetics::ophthalmology::*;
-use human_biology::anthropometry::{BiologicalSex, BodyMeasurements, BodyComposition, AnthropometricProfile, Ethnicity};
+use human_biology::comprehensive_health::*;
 
 #[test]
 fn test_asian_genetic_profile() {
-    let mut profile = ComprehensiveHealthProfile::new(
-        "TEST_ASIAN_001".to_string(),
-        25,
-        BiologicalSex::Female,
-    );
+    let mut profile =
+        ComprehensiveHealthProfile::new("TEST_ASIAN_001".to_string(), 25, BiologicalSex::Female);
 
     let mut ancestry = AncestryProfile::new();
     ancestry.add_component(AncestryPopulation::EastAsian, 0.95, (0.92, 0.98));
     ancestry.add_component(AncestryPopulation::SouthAsian, 0.05, (0.02, 0.08));
     profile.genetics.ancestry = Some(ancestry);
 
-    profile.genetics.eye_genetics = Some(EyeColorGenetics::new(
-        "GG".to_string(),
-        "TT".to_string(),
-    ));
+    profile.genetics.eye_genetics = Some(EyeColorGenetics::new("GG".to_string(), "TT".to_string()));
 
     let eye_genetics = profile.genetics.eye_genetics.as_ref().unwrap();
-    assert_eq!(eye_genetics.predicted_color, EyeColor::Brown);
+    assert_eq!(eye_genetics.predicted_color, ophthalmology::EyeColor::Brown);
 
-    profile.genetics.myopia_risk = Some(MyopiaGenetics::new(
-        true,
-        true,
-        true,
-        true,
-        1.5,
-        8.0,
-    ));
+    profile.genetics.myopia_risk = Some(MyopiaGenetics::new(true, true, true, true, 1.5, 8.0));
 
     let myopia_risk = profile.genetics.myopia_risk.as_ref().unwrap();
     assert!(myopia_risk.risk_level != MyopiaRisk::Low);
@@ -40,26 +29,20 @@ fn test_asian_genetic_profile() {
 
 #[test]
 fn test_european_genetic_profile() {
-    let mut profile = ComprehensiveHealthProfile::new(
-        "TEST_EUR_001".to_string(),
-        30,
-        BiologicalSex::Male,
-    );
+    let mut profile =
+        ComprehensiveHealthProfile::new("TEST_EUR_001".to_string(), 30, BiologicalSex::Male);
 
     let mut ancestry = AncestryProfile::new();
     ancestry.add_component(AncestryPopulation::European, 0.98, (0.95, 1.0));
     ancestry.neanderthal_percentage = 2.5;
     profile.genetics.ancestry = Some(ancestry);
 
-    profile.genetics.eye_genetics = Some(EyeColorGenetics::new(
-        "AA".to_string(),
-        "CC".to_string(),
-    ));
+    profile.genetics.eye_genetics = Some(EyeColorGenetics::new("AA".to_string(), "CC".to_string()));
 
     let eye_genetics = profile.genetics.eye_genetics.as_ref().unwrap();
     assert!(matches!(
         eye_genetics.predicted_color,
-        EyeColor::Blue | EyeColor::Green
+        ophthalmology::EyeColor::Blue | ophthalmology::EyeColor::Green
     ));
 
     profile.genetics.skin_genetics = Some(SkinPigmentationGenetics::new(
@@ -78,11 +61,8 @@ fn test_european_genetic_profile() {
 
 #[test]
 fn test_african_genetic_profile() {
-    let mut profile = ComprehensiveHealthProfile::new(
-        "TEST_AFR_001".to_string(),
-        28,
-        BiologicalSex::Female,
-    );
+    let mut profile =
+        ComprehensiveHealthProfile::new("TEST_AFR_001".to_string(), 28, BiologicalSex::Female);
 
     let mut ancestry = AncestryProfile::new();
     ancestry.add_component(AncestryPopulation::African, 0.92, (0.88, 0.96));
@@ -106,19 +86,13 @@ fn test_african_genetic_profile() {
 
 #[test]
 fn test_athletic_genetics() {
-    let mut profile = ComprehensiveHealthProfile::new(
-        "TEST_ATHLETE_001".to_string(),
-        22,
-        BiologicalSex::Male,
-    );
+    let mut profile =
+        ComprehensiveHealthProfile::new("TEST_ATHLETE_001".to_string(), 22, BiologicalSex::Male);
 
     profile.genetics.athletic_genetics.actn3 = Some(Actn3Genotype::RR);
     profile.genetics.athletic_genetics.ace = Some(AceGenotype::DD);
 
-    let fiber_ratio = FiberTypeRatio::from_genetics(
-        Some(Actn3Genotype::RR),
-        Some(AceGenotype::DD),
-    );
+    let fiber_ratio = FiberTypeRatio::from_genetics(Some(Actn3Genotype::RR), Some(AceGenotype::DD));
 
     assert!(fiber_ratio.type_iix_percentage > fiber_ratio.type_i_percentage);
 }
@@ -134,51 +108,37 @@ fn test_endurance_genetics() {
     profile.genetics.athletic_genetics.actn3 = Some(Actn3Genotype::XX);
     profile.genetics.athletic_genetics.ace = Some(AceGenotype::II);
 
-    let fiber_ratio = FiberTypeRatio::from_genetics(
-        Some(Actn3Genotype::XX),
-        Some(AceGenotype::II),
-    );
+    let fiber_ratio = FiberTypeRatio::from_genetics(Some(Actn3Genotype::XX), Some(AceGenotype::II));
 
     assert!(fiber_ratio.type_i_percentage > fiber_ratio.type_iix_percentage);
 }
 
 #[test]
 fn test_dermatology_risks() {
-    let mut profile = ComprehensiveHealthProfile::new(
-        "TEST_DERM_001".to_string(),
-        20,
-        BiologicalSex::Female,
-    );
+    let mut profile =
+        ComprehensiveHealthProfile::new("TEST_DERM_001".to_string(), 20, BiologicalSex::Female);
 
-    profile.genetics.dermatology_risks.acne = Some(AcneRisk::new(
-        true,
-        true,
-        true,
-        true,
-    ));
+    profile.genetics.dermatology_risks.acne = Some(AcneRisk::new(true, true, true, true));
 
     let acne_risk = profile.genetics.dermatology_risks.acne.as_ref().unwrap();
     assert!(acne_risk.calculate_risk_score() > 1.5);
 
-    profile.genetics.dermatology_risks.psoriasis = Some(PsoriasisRisk::new(
-        true,
-        false,
-        true,
-        true,
-        true,
-    ));
+    profile.genetics.dermatology_risks.psoriasis =
+        Some(PsoriasisRisk::new(true, false, true, true, true));
 
-    let psoriasis_risk = profile.genetics.dermatology_risks.psoriasis.as_ref().unwrap();
+    let psoriasis_risk = profile
+        .genetics
+        .dermatology_risks
+        .psoriasis
+        .as_ref()
+        .unwrap();
     assert!(psoriasis_risk.calculate_risk_score() > 1.0);
 }
 
 #[test]
 fn test_color_vision_deficiency() {
-    let mut profile = ComprehensiveHealthProfile::new(
-        "TEST_CVD_001".to_string(),
-        35,
-        BiologicalSex::Male,
-    );
+    let mut profile =
+        ComprehensiveHealthProfile::new("TEST_CVD_001".to_string(), 35, BiologicalSex::Male);
 
     profile.genetics.color_vision = Some(ColorVisionGenetics::new(
         GeneStatus::Defective,
@@ -187,25 +147,18 @@ fn test_color_vision_deficiency() {
     ));
 
     let color_vision = profile.genetics.color_vision.as_ref().unwrap();
-    assert!(matches!(color_vision.color_blindness_type, ColorBlindnessType::Protanopia | ColorBlindnessType::Protanomaly));
+    assert!(matches!(
+        color_vision.color_blindness_type,
+        ColorBlindnessType::Protanopia | ColorBlindnessType::Protanomaly
+    ));
 }
 
 #[test]
 fn test_glaucoma_risk_assessment() {
-    let mut profile = ComprehensiveHealthProfile::new(
-        "TEST_GLAUCOMA_001".to_string(),
-        45,
-        BiologicalSex::Male,
-    );
+    let mut profile =
+        ComprehensiveHealthProfile::new("TEST_GLAUCOMA_001".to_string(), 45, BiologicalSex::Male);
 
-    profile.genetics.glaucoma_risk = Some(GlaucomaRisk::new(
-        true,
-        true,
-        true,
-        true,
-        22.0,
-        45,
-    ));
+    profile.genetics.glaucoma_risk = Some(GlaucomaRisk::new(true, true, true, true, 22.0, 45));
 
     let glaucoma = profile.genetics.glaucoma_risk.as_ref().unwrap();
     assert!(glaucoma.risk_score > 0.0);
@@ -214,11 +167,8 @@ fn test_glaucoma_risk_assessment() {
 
 #[test]
 fn test_anthropometric_measurements() {
-    let mut profile = ComprehensiveHealthProfile::new(
-        "TEST_ANTHRO_001".to_string(),
-        30,
-        BiologicalSex::Male,
-    );
+    let mut profile =
+        ComprehensiveHealthProfile::new("TEST_ANTHRO_001".to_string(), 30, BiologicalSex::Male);
 
     let measurements = BodyMeasurements {
         height_cm: 178.0,
@@ -259,11 +209,8 @@ fn test_anthropometric_measurements() {
 
 #[test]
 fn test_comprehensive_profile_serialization() {
-    let profile = ComprehensiveHealthProfile::new(
-        "TEST_SERIAL_001".to_string(),
-        25,
-        BiologicalSex::Female,
-    );
+    let profile =
+        ComprehensiveHealthProfile::new("TEST_SERIAL_001".to_string(), 25, BiologicalSex::Female);
 
     let json = serde_json::to_string(&profile).unwrap();
     assert!(!json.is_empty());

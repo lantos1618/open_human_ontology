@@ -72,8 +72,7 @@ impl DoseResponseCurve {
 
     pub fn response_at_dose(&self, dose: f64) -> f64 {
         let numerator = self.emax * dose.powf(self.hill_coefficient);
-        let denominator = self.ed50.powf(self.hill_coefficient) +
-                         dose.powf(self.hill_coefficient);
+        let denominator = self.ed50.powf(self.hill_coefficient) + dose.powf(self.hill_coefficient);
         numerator / denominator
     }
 
@@ -178,7 +177,8 @@ mod tests {
             },
             5.0,
             100.0,
-        ).with_therapeutic_index(15.0);
+        )
+        .with_therapeutic_index(15.0);
 
         assert!(pd.is_safe());
         assert!(!pd.is_narrow_therapeutic_window());
@@ -189,11 +189,8 @@ mod tests {
 
     #[test]
     fn test_drug_target() {
-        let mut target = DrugTarget::new(
-            TargetType::Receptor,
-            "ACE".to_string(),
-            "RAAS".to_string(),
-        );
+        let mut target =
+            DrugTarget::new(TargetType::Receptor, "ACE".to_string(), "RAAS".to_string());
 
         target.add_downstream_effect("Decreased angiotensin II".to_string());
         target.add_downstream_effect("Decreased blood pressure".to_string());

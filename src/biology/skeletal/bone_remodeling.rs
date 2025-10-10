@@ -1,5 +1,5 @@
-use crate::biology::{BiologyError, BiologyResult};
 use crate::biology::cellular::{Cell, CellType};
+use crate::biology::{BiologyError, BiologyResult};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -41,7 +41,7 @@ impl BoneRemodeling {
     pub fn activate(&mut self) -> BiologyResult<()> {
         if self.phase != RemodelingPhase::Quiescence {
             return Err(BiologyError::InvalidState(
-                "Can only activate from quiescence".to_string()
+                "Can only activate from quiescence".to_string(),
             ));
         }
 
@@ -67,7 +67,7 @@ impl BoneRemodeling {
     pub fn resorb_bone(&mut self, duration_days: f64) -> BiologyResult<f64> {
         if self.phase != RemodelingPhase::Activation && self.phase != RemodelingPhase::Resorption {
             return Err(BiologyError::InvalidState(
-                "Not in resorption phase".to_string()
+                "Not in resorption phase".to_string(),
             ));
         }
 
@@ -76,7 +76,8 @@ impl BoneRemodeling {
         let resorption_rate_um_per_day = 20.0;
         let active_osteoclasts = self.osteoclasts.len();
 
-        self.resorption_depth_um += resorption_rate_um_per_day * duration_days * active_osteoclasts as f64;
+        self.resorption_depth_um +=
+            resorption_rate_um_per_day * duration_days * active_osteoclasts as f64;
 
         Ok(self.resorption_depth_um)
     }
@@ -84,7 +85,7 @@ impl BoneRemodeling {
     pub fn form_bone(&mut self, duration_days: f64) -> BiologyResult<f64> {
         if self.phase != RemodelingPhase::Reversal && self.phase != RemodelingPhase::Formation {
             return Err(BiologyError::InvalidState(
-                "Not in formation phase".to_string()
+                "Not in formation phase".to_string(),
             ));
         }
 
@@ -106,7 +107,7 @@ impl BoneRemodeling {
             RemodelingPhase::Activation => {
                 if self.osteoclasts.is_empty() {
                     return Err(BiologyError::InvalidState(
-                        "Need osteoclasts before resorption".to_string()
+                        "Need osteoclasts before resorption".to_string(),
                     ));
                 }
                 RemodelingPhase::Resorption
@@ -122,9 +123,9 @@ impl BoneRemodeling {
 
     pub fn is_balanced(&self) -> bool {
         let resorption = self.resorption_depth_um;
-        let formation_capacity = self.formation_rate_um_per_day *
-            (self.cycle_duration_days - self.mineralization_lag_time_days) *
-            self.osteoblasts.len() as f64;
+        let formation_capacity = self.formation_rate_um_per_day
+            * (self.cycle_duration_days - self.mineralization_lag_time_days)
+            * self.osteoblasts.len() as f64;
 
         (resorption - formation_capacity).abs() < 10.0
     }

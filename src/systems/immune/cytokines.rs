@@ -141,9 +141,21 @@ impl CytokineNetwork {
     }
 
     pub fn cytokine_storm_assessment(&mut self) {
-        let il6_storm: f64 = if self.pro_inflammatory.il6_pg_ml > 1000.0 { 0.4 } else { 0.0 };
-        let tnf_storm: f64 = if self.pro_inflammatory.tnf_alpha_pg_ml > 500.0 { 0.3 } else { 0.0 };
-        let ifn_storm: f64 = if self.pro_inflammatory.ifn_gamma_pg_ml > 500.0 { 0.3 } else { 0.0 };
+        let il6_storm: f64 = if self.pro_inflammatory.il6_pg_ml > 1000.0 {
+            0.4
+        } else {
+            0.0
+        };
+        let tnf_storm: f64 = if self.pro_inflammatory.tnf_alpha_pg_ml > 500.0 {
+            0.3
+        } else {
+            0.0
+        };
+        let ifn_storm: f64 = if self.pro_inflammatory.ifn_gamma_pg_ml > 500.0 {
+            0.3
+        } else {
+            0.0
+        };
 
         self.cytokine_storm_risk = (il6_storm + tnf_storm + ifn_storm).min(1.0);
     }
@@ -174,25 +186,21 @@ impl ProInflammatoryCytokines {
     }
 
     pub fn total_score(&self) -> f64 {
-        (self.tnf_alpha_pg_ml * 2.0) +
-        (self.il1_beta_pg_ml * 2.5) +
-        (self.il6_pg_ml * 1.5) +
-        (self.il8_pg_ml * 0.5) +
-        (self.il12_pg_ml * 1.0) +
-        (self.il17_pg_ml * 1.8) +
-        (self.ifn_gamma_pg_ml * 1.2)
+        (self.tnf_alpha_pg_ml * 2.0)
+            + (self.il1_beta_pg_ml * 2.5)
+            + (self.il6_pg_ml * 1.5)
+            + (self.il8_pg_ml * 0.5)
+            + (self.il12_pg_ml * 1.0)
+            + (self.il17_pg_ml * 1.8)
+            + (self.ifn_gamma_pg_ml * 1.2)
     }
 
     pub fn sepsis_indicators(&self) -> bool {
-        self.tnf_alpha_pg_ml > 100.0 ||
-        self.il6_pg_ml > 500.0 ||
-        self.il1_beta_pg_ml > 50.0
+        self.tnf_alpha_pg_ml > 100.0 || self.il6_pg_ml > 500.0 || self.il1_beta_pg_ml > 50.0
     }
 
     pub fn autoimmune_pattern(&self) -> bool {
-        self.il17_pg_ml > 20.0 &&
-        self.ifn_gamma_pg_ml > 50.0 &&
-        self.tnf_alpha_pg_ml > 20.0
+        self.il17_pg_ml > 20.0 && self.ifn_gamma_pg_ml > 50.0 && self.tnf_alpha_pg_ml > 20.0
     }
 }
 
@@ -207,10 +215,10 @@ impl AntiInflammatoryCytokines {
     }
 
     pub fn total_score(&self) -> f64 {
-        (self.il4_pg_ml * 1.5) +
-        (self.il10_pg_ml * 2.0) +
-        (self.il13_pg_ml * 1.2) +
-        (self.tgf_beta_pg_ml * 1.0)
+        (self.il4_pg_ml * 1.5)
+            + (self.il10_pg_ml * 2.0)
+            + (self.il13_pg_ml * 1.2)
+            + (self.tgf_beta_pg_ml * 1.0)
     }
 
     pub fn immunosuppression_risk(&self) -> f64 {
@@ -234,10 +242,10 @@ impl RegulatoryCytokines {
     }
 
     pub fn t_cell_proliferation_signal(&self) -> f64 {
-        (self.il2_pg_ml * 0.4) +
-        (self.il7_pg_ml * 0.3) +
-        (self.il15_pg_ml * 0.2) +
-        (self.il21_pg_ml * 0.1)
+        (self.il2_pg_ml * 0.4)
+            + (self.il7_pg_ml * 0.3)
+            + (self.il15_pg_ml * 0.2)
+            + (self.il21_pg_ml * 0.1)
     }
 
     pub fn lymphocyte_homeostasis(&self) -> bool {
@@ -294,9 +302,8 @@ impl Interferons {
 
     pub fn antiviral_state_strength(&self) -> f64 {
         if self.viral_response_active {
-            (self.ifn_alpha_iu_ml * 0.5 +
-             self.ifn_beta_iu_ml * 0.3 +
-             self.ifn_gamma_iu_ml * 0.2).min(100.0)
+            (self.ifn_alpha_iu_ml * 0.5 + self.ifn_beta_iu_ml * 0.3 + self.ifn_gamma_iu_ml * 0.2)
+                .min(100.0)
         } else {
             0.0
         }
@@ -332,10 +339,10 @@ impl GrowthFactors {
     }
 
     pub fn hematopoietic_stimulus(&self) -> f64 {
-        (self.gm_csf_pg_ml * 0.3) +
-        (self.g_csf_pg_ml * 0.3) +
-        (self.m_csf_pg_ml * 0.01) +
-        (self.erythropoietin_u_l * 0.5)
+        (self.gm_csf_pg_ml * 0.3)
+            + (self.g_csf_pg_ml * 0.3)
+            + (self.m_csf_pg_ml * 0.01)
+            + (self.erythropoietin_u_l * 0.5)
     }
 }
 
@@ -405,11 +412,21 @@ impl CytokineTherapy {
 
     pub fn therapy_count(&self) -> u32 {
         let mut count = 0;
-        if self.il2_therapy_active { count += 1; }
-        if self.ifn_alpha_therapy_active { count += 1; }
-        if self.anti_tnf_therapy_active { count += 1; }
-        if self.anti_il6_therapy_active { count += 1; }
-        if self.anti_il17_therapy_active { count += 1; }
+        if self.il2_therapy_active {
+            count += 1;
+        }
+        if self.ifn_alpha_therapy_active {
+            count += 1;
+        }
+        if self.anti_tnf_therapy_active {
+            count += 1;
+        }
+        if self.anti_il6_therapy_active {
+            count += 1;
+        }
+        if self.anti_il17_therapy_active {
+            count += 1;
+        }
         count
     }
 }

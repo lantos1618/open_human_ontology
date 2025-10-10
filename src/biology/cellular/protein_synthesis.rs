@@ -206,11 +206,11 @@ impl Transcription {
             ChromatinState::Heterochromatin => 0.01,
         };
 
-        let enhancer_factor: f64 = self.enhancers.iter()
-            .map(|e| e.fold_activation)
-            .product();
+        let enhancer_factor: f64 = self.enhancers.iter().map(|e| e.fold_activation).product();
 
-        let silencer_factor: f64 = self.silencers.iter()
+        let silencer_factor: f64 = self
+            .silencers
+            .iter()
             .map(|s| 1.0 / s.fold_repression)
             .product();
 
@@ -239,7 +239,9 @@ impl Translation {
         let kozak_factor = self.kozak_sequence_strength;
         let ribosome_factor = self.ribosome_count as f64;
 
-        let utr_factor: f64 = self.utr3_regulatory_elements.iter()
+        let utr_factor: f64 = self
+            .utr3_regulatory_elements
+            .iter()
             .map(|elem| match elem.effect {
                 RegulatoryEffect::Activation => 1.5,
                 RegulatoryEffect::Repression => 0.3,
@@ -271,9 +273,9 @@ impl ProteinFolding {
     }
 
     pub fn requires_chaperone_assistance(&self) -> bool {
-        matches!(self.folding_state,
-            FoldingState::Misfolded |
-            FoldingState::PartiallyFolded
+        matches!(
+            self.folding_state,
+            FoldingState::Misfolded | FoldingState::PartiallyFolded
         )
     }
 
@@ -374,10 +376,7 @@ mod tests {
 
     #[test]
     fn test_protein_degradation() {
-        let degradation = ProteinDegradation::new(
-            DegradationPathway::UbiquitinProteasome,
-            12.0,
-        );
+        let degradation = ProteinDegradation::new(DegradationPathway::UbiquitinProteasome, 12.0);
 
         assert!(!degradation.is_rapidly_degraded());
         assert!(!degradation.is_stable());

@@ -125,8 +125,10 @@ impl MuscularPerformance {
     }
 
     pub fn apply_fatigue(&mut self, exercise_intensity_percentage: f64, duration_min: f64) {
-        let fatigue_increment = (exercise_intensity_percentage / 100.0) * (duration_min / 60.0) * 30.0;
-        self.fatigue.current_fatigue_percentage = (self.fatigue.current_fatigue_percentage + fatigue_increment).min(100.0);
+        let fatigue_increment =
+            (exercise_intensity_percentage / 100.0) * (duration_min / 60.0) * 30.0;
+        self.fatigue.current_fatigue_percentage =
+            (self.fatigue.current_fatigue_percentage + fatigue_increment).min(100.0);
 
         self.fatigue.metabolic_fatigue = fatigue_increment * 0.6;
         self.fatigue.neural_fatigue = fatigue_increment * 0.2;
@@ -136,7 +138,8 @@ impl MuscularPerformance {
 
     pub fn recover(&mut self, rest_duration_min: f64) {
         let recovery_amount = self.endurance.recovery_rate_percentage_per_min * rest_duration_min;
-        self.fatigue.current_fatigue_percentage = (self.fatigue.current_fatigue_percentage - recovery_amount).max(0.0);
+        self.fatigue.current_fatigue_percentage =
+            (self.fatigue.current_fatigue_percentage - recovery_amount).max(0.0);
     }
 
     pub fn current_strength_capacity(&self) -> f64 {
@@ -150,8 +153,7 @@ impl MuscularPerformance {
     }
 
     pub fn assess_overtraining(&self) -> bool {
-        self.fatigue.current_fatigue_percentage > 80.0 &&
-        self.fatigue.central_fatigue > 15.0
+        self.fatigue.current_fatigue_percentage > 80.0 && self.fatigue.central_fatigue > 15.0
     }
 }
 
@@ -211,7 +213,9 @@ impl MusculoskeletalPerformance {
     }
 
     pub fn muscle_quality_index(&self) -> f64 {
-        let total_mvc: f64 = self.muscle_groups.iter()
+        let total_mvc: f64 = self
+            .muscle_groups
+            .iter()
             .map(|g| g.max_voluntary_contraction_n)
             .sum();
 
@@ -254,7 +258,10 @@ impl MuscleGroupPerformance {
 
     pub fn predicted_power(&self, velocity_m_s: f64) -> f64 {
         let optimal_velocity = 0.3;
-        let velocity_factor = 1.0 - ((velocity_m_s - optimal_velocity) / optimal_velocity).abs().min(1.0);
+        let velocity_factor = 1.0
+            - ((velocity_m_s - optimal_velocity) / optimal_velocity)
+                .abs()
+                .min(1.0);
 
         self.max_voluntary_contraction_n * velocity_m_s * velocity_factor
     }

@@ -1,13 +1,15 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-use crate::biology::genetics::{
-    AncestryProfile, EyeColorGenetics, SkinPigmentationGenetics, HairGenetics,
-    ColorVisionGenetics, MyopiaGenetics, GlaucomaRisk,
-    PharmacogenomicProfile, Actn3Genotype, AceGenotype, ChemosensoryProfile,
+use crate::anthropometry::{
+    AnthropometricProfile, BiologicalSex, BodyComposition, BodyMeasurements,
 };
-use crate::biology::genetics::dermatology::{AcneRisk, PsoriasisRisk, EczemaRisk};
-use crate::anthropometry::{BodyMeasurements, BodyComposition, AnthropometricProfile, BiologicalSex};
+use crate::biology::genetics::dermatology::{AcneRisk, EczemaRisk, PsoriasisRisk};
+use crate::biology::genetics::{
+    AceGenotype, Actn3Genotype, AncestryProfile, ChemosensoryProfile, ColorVisionGenetics,
+    EyeColorGenetics, GlaucomaRisk, HairGenetics, MyopiaGenetics, PharmacogenomicProfile,
+    SkinPigmentationGenetics,
+};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ComprehensiveHealthProfile {
@@ -131,7 +133,10 @@ pub struct BloodPressure {
 
 impl BloodPressure {
     pub fn new(systolic: f64, diastolic: f64) -> Self {
-        Self { systolic, diastolic }
+        Self {
+            systolic,
+            diastolic,
+        }
     }
 
     pub fn category(&self) -> BloodPressureCategory {
@@ -180,10 +185,10 @@ impl CholesterolPanel {
     }
 
     pub fn is_optimal(&self) -> bool {
-        self.total_cholesterol < 200.0 &&
-        self.ldl < 100.0 &&
-        self.hdl > 60.0 &&
-        self.triglycerides < 150.0
+        self.total_cholesterol < 200.0
+            && self.ldl < 100.0
+            && self.hdl > 60.0
+            && self.triglycerides < 150.0
     }
 }
 
@@ -303,7 +308,8 @@ impl ComprehensiveHealthProfile {
         if let Some(ref ancestry) = self.genetics.ancestry {
             let risks = ancestry.genetic_risk_factors();
             if risks.iter().any(|r| r.contains("diabetes")) {
-                recommendations.push("Monitor carbohydrate intake due to genetic diabetes risk".to_string());
+                recommendations
+                    .push("Monitor carbohydrate intake due to genetic diabetes risk".to_string());
                 recommendations.push("Consider lower glycemic index foods".to_string());
             }
         }
@@ -331,23 +337,33 @@ impl ComprehensiveHealthProfile {
 
         if let Some(fiber_ratio) = self.genetics.athletic_genetics.predicted_fiber_type_ratio {
             if fiber_ratio.is_endurance_oriented() {
-                recommendations.push("Genetic profile favors endurance training (running, cycling, swimming)".to_string());
+                recommendations.push(
+                    "Genetic profile favors endurance training (running, cycling, swimming)"
+                        .to_string(),
+                );
                 recommendations.push("Consider marathon/triathlon training".to_string());
             } else if fiber_ratio.is_power_oriented() {
                 recommendations.push("Genetic profile favors power/strength training".to_string());
-                recommendations.push("Consider weightlifting, sprinting, or explosive sports".to_string());
+                recommendations
+                    .push("Consider weightlifting, sprinting, or explosive sports".to_string());
             } else {
-                recommendations.push("Balanced muscle fiber profile - suitable for mixed training".to_string());
+                recommendations.push(
+                    "Balanced muscle fiber profile - suitable for mixed training".to_string(),
+                );
             }
         }
 
         if let Some(ref ace) = self.genetics.athletic_genetics.ace {
             match ace {
                 AceGenotype::II => {
-                    recommendations.push("Strong genetic endurance capacity - prioritize aerobic training".to_string());
+                    recommendations.push(
+                        "Strong genetic endurance capacity - prioritize aerobic training"
+                            .to_string(),
+                    );
                 }
                 AceGenotype::DD => {
-                    recommendations.push("Better suited for anaerobic/power activities".to_string());
+                    recommendations
+                        .push("Better suited for anaerobic/power activities".to_string());
                 }
                 _ => {}
             }
@@ -355,7 +371,8 @@ impl ComprehensiveHealthProfile {
 
         let bmi = self.anthropometry.measurements.bmi();
         if bmi > 25.0 {
-            recommendations.push("Regular cardio exercise recommended for weight management".to_string());
+            recommendations
+                .push("Regular cardio exercise recommended for weight management".to_string());
             recommendations.push("Aim for 150+ minutes moderate activity per week".to_string());
         }
 
@@ -373,7 +390,9 @@ impl ComprehensiveHealthProfile {
 
             let melanoma_risk = skin.fitzpatrick_type.melanoma_baseline_risk();
             if melanoma_risk > 0.7 {
-                recommendations.push("High melanoma risk - regular skin cancer screening recommended".to_string());
+                recommendations.push(
+                    "High melanoma risk - regular skin cancer screening recommended".to_string(),
+                );
             }
         }
 
@@ -401,20 +420,24 @@ impl ComprehensiveHealthProfile {
 
         if let Some(ref glaucoma) = self.genetics.glaucoma_risk {
             if glaucoma.is_high_risk() {
-                recommendations.push("Annual comprehensive eye exam recommended due to glaucoma risk".to_string());
+                recommendations.push(
+                    "Annual comprehensive eye exam recommended due to glaucoma risk".to_string(),
+                );
                 recommendations.push("Monitor intraocular pressure regularly".to_string());
             }
         }
 
         if let Some(ref psoriasis) = self.genetics.dermatology_risks.psoriasis {
             if psoriasis.is_high_risk() {
-                recommendations.push("Elevated genetic risk for psoriasis - monitor skin changes".to_string());
+                recommendations
+                    .push("Elevated genetic risk for psoriasis - monitor skin changes".to_string());
             }
         }
 
         if let Some(ref eczema) = self.genetics.dermatology_risks.eczema {
             if eczema.is_high_risk() {
-                recommendations.push("High eczema risk - maintain skin barrier with moisturizers".to_string());
+                recommendations
+                    .push("High eczema risk - maintain skin barrier with moisturizers".to_string());
             }
         }
 
@@ -483,11 +506,8 @@ mod tests {
 
     #[test]
     fn test_comprehensive_profile_creation() {
-        let profile = ComprehensiveHealthProfile::new(
-            "TEST001".to_string(),
-            30,
-            BiologicalSex::Male,
-        );
+        let profile =
+            ComprehensiveHealthProfile::new("TEST001".to_string(), 30, BiologicalSex::Male);
 
         assert_eq!(profile.personal_info.age, 30);
         assert_eq!(profile.personal_info.biological_sex, BiologicalSex::Male);
@@ -495,10 +515,7 @@ mod tests {
 
     #[test]
     fn test_fiber_type_ratio() {
-        let ratio = FiberTypeRatio::from_genetics(
-            Some(Actn3Genotype::RR),
-            Some(AceGenotype::DD),
-        );
+        let ratio = FiberTypeRatio::from_genetics(Some(Actn3Genotype::RR), Some(AceGenotype::DD));
 
         assert!(ratio.is_power_oriented());
         assert!(!ratio.is_endurance_oriented());
@@ -531,11 +548,8 @@ mod tests {
 
     #[test]
     fn test_health_score() {
-        let mut profile = ComprehensiveHealthProfile::new(
-            "TEST002".to_string(),
-            35,
-            BiologicalSex::Female,
-        );
+        let mut profile =
+            ComprehensiveHealthProfile::new("TEST002".to_string(), 35, BiologicalSex::Female);
 
         profile.health_metrics.blood_pressure = Some(BloodPressure::new(120.0, 80.0));
 

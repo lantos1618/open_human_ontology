@@ -361,7 +361,12 @@ mod tests {
     fn test_digestion() {
         let digestion = Digestion::new();
         assert!(!digestion.assess_malabsorption());
-        assert!(digestion.carbohydrate_digestion.breakdown_efficiency_percent > 90.0);
+        assert!(
+            digestion
+                .carbohydrate_digestion
+                .breakdown_efficiency_percent
+                > 90.0
+        );
     }
 
     #[test]

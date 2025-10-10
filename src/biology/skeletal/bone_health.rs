@@ -204,8 +204,10 @@ impl BoneHealthProfile {
     }
 
     pub fn requires_treatment(&self) -> bool {
-        matches!(self.bone_density.diagnosis, BoneDensityDiagnosis::Osteoporosis | BoneDensityDiagnosis::SevereOsteoporosis)
-            || self.fracture_risk.intervention_threshold_met
+        matches!(
+            self.bone_density.diagnosis,
+            BoneDensityDiagnosis::Osteoporosis | BoneDensityDiagnosis::SevereOsteoporosis
+        ) || self.fracture_risk.intervention_threshold_met
     }
 
     pub fn treatment_recommendations(&self) -> HashMap<String, String> {
@@ -214,18 +216,28 @@ impl BoneHealthProfile {
         if self.requires_treatment() {
             recommendations.insert(
                 "pharmacotherapy".to_string(),
-                "Consider bisphosphonate therapy (alendronate, risedronate, zoledronic acid)".to_string(),
+                "Consider bisphosphonate therapy (alendronate, risedronate, zoledronic acid)"
+                    .to_string(),
             );
         }
 
-        if matches!(self.vitamin_d_status.status, VitaminDLevel::Deficient | VitaminDLevel::Insufficient) {
+        if matches!(
+            self.vitamin_d_status.status,
+            VitaminDLevel::Deficient | VitaminDLevel::Insufficient
+        ) {
             recommendations.insert(
                 "vitamin_d".to_string(),
-                format!("Vitamin D supplementation: {} IU/day", self.vitamin_d_status.supplementation_need),
+                format!(
+                    "Vitamin D supplementation: {} IU/day",
+                    self.vitamin_d_status.supplementation_need
+                ),
             );
         }
 
-        if matches!(self.calcium_balance.balance_state, CalciumBalanceState::Deficient) {
+        if matches!(
+            self.calcium_balance.balance_state,
+            CalciumBalanceState::Deficient
+        ) {
             let needed = 1200.0 - self.calcium_balance.total_intake_mg_day;
             recommendations.insert(
                 "calcium".to_string(),
@@ -313,7 +325,11 @@ impl FractureRiskAssessment {
         Self {
             frax_major_fracture_10yr: major_fracture_risk.min(0.99),
             frax_hip_fracture_10yr: hip_fracture_risk.min(0.99),
-            falls_risk_score: if risk_factors.age_years > 75.0 { 0.7 } else { 0.3 },
+            falls_risk_score: if risk_factors.age_years > 75.0 {
+                0.7
+            } else {
+                0.3
+            },
             prior_fractures: vec![],
             intervention_threshold_met,
         }
@@ -412,13 +428,19 @@ mod tests {
     #[test]
     fn test_osteopenia() {
         let profile = BoneHealthProfile::new(60.0, BiologicalSex::Female, 60.0, -1.5, -1.3);
-        assert_eq!(profile.bone_density.diagnosis, BoneDensityDiagnosis::Osteopenia);
+        assert_eq!(
+            profile.bone_density.diagnosis,
+            BoneDensityDiagnosis::Osteopenia
+        );
     }
 
     #[test]
     fn test_osteoporosis() {
         let profile = BoneHealthProfile::new(70.0, BiologicalSex::Female, 55.0, -2.8, -2.6);
-        assert_eq!(profile.bone_density.diagnosis, BoneDensityDiagnosis::Osteoporosis);
+        assert_eq!(
+            profile.bone_density.diagnosis,
+            BoneDensityDiagnosis::Osteoporosis
+        );
         assert!(profile.requires_treatment());
     }
 

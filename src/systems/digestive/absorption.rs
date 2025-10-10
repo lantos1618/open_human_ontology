@@ -102,9 +102,7 @@ impl Enterocyte {
                 Transporter::new_pept1(),
                 Transporter::new_npc1l1(),
             ],
-            basolateral_transporters: vec![
-                Transporter::new_glut2(),
-            ],
+            basolateral_transporters: vec![Transporter::new_glut2()],
             intracellular_enzymes: vec![
                 DigestiveEnzyme::new_lactase(),
                 DigestiveEnzyme::new_sucrase(),

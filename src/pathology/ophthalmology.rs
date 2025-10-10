@@ -139,13 +139,15 @@ impl OphthalmologyProfile {
     pub fn glaucoma_risk(&self) -> GlaucomaRisk {
         let mut risk_score = 0;
 
-        if self.intraocular_pressure.right_eye_mmhg > 21.0 ||
-           self.intraocular_pressure.left_eye_mmhg > 21.0 {
+        if self.intraocular_pressure.right_eye_mmhg > 21.0
+            || self.intraocular_pressure.left_eye_mmhg > 21.0
+        {
             risk_score += 2;
         }
 
-        if self.retinal_health.cup_to_disc_ratio.right_eye > 0.6 ||
-           self.retinal_health.cup_to_disc_ratio.left_eye > 0.6 {
+        if self.retinal_health.cup_to_disc_ratio.right_eye > 0.6
+            || self.retinal_health.cup_to_disc_ratio.left_eye > 0.6
+        {
             risk_score += 2;
         }
 
@@ -189,9 +191,18 @@ impl Default for OphthalmologyProfile {
 impl VisualAcuity {
     pub fn normal() -> Self {
         Self {
-            right_eye: SnellenAcuity { numerator: 20, denominator: 20 },
-            left_eye: SnellenAcuity { numerator: 20, denominator: 20 },
-            binocular: SnellenAcuity { numerator: 20, denominator: 15 },
+            right_eye: SnellenAcuity {
+                numerator: 20,
+                denominator: 20,
+            },
+            left_eye: SnellenAcuity {
+                numerator: 20,
+                denominator: 20,
+            },
+            binocular: SnellenAcuity {
+                numerator: 20,
+                denominator: 15,
+            },
         }
     }
 }
@@ -271,7 +282,10 @@ mod tests {
 
     #[test]
     fn test_snellen_acuity_conversions() {
-        let acuity = SnellenAcuity { numerator: 20, denominator: 40 };
+        let acuity = SnellenAcuity {
+            numerator: 20,
+            denominator: 40,
+        };
         assert_eq!(acuity.decimal(), 0.5);
         assert!((acuity.logmar() - 0.301).abs() < 0.01);
     }

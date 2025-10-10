@@ -121,17 +121,17 @@ pub struct SensoryStudy {
 
 impl MotorStudy {
     pub fn is_abnormal(&self) -> bool {
-        self.distal_latency_ms > 4.5 ||
-        self.amplitude_mv < 4.0 ||
-        self.conduction_velocity_m_s < 45.0
+        self.distal_latency_ms > 4.5
+            || self.amplitude_mv < 4.0
+            || self.conduction_velocity_m_s < 45.0
     }
 }
 
 impl SensoryStudy {
     pub fn is_abnormal(&self) -> bool {
-        self.peak_latency_ms > 3.5 ||
-        self.amplitude_uv < 10.0 ||
-        self.conduction_velocity_m_s < 40.0
+        self.peak_latency_ms > 3.5
+            || self.amplitude_uv < 10.0
+            || self.conduction_velocity_m_s < 40.0
     }
 }
 
@@ -169,18 +169,27 @@ pub enum RecruitmentPattern {
 
 impl EMGFindings {
     pub fn suggests_myopathy(&self) -> bool {
-        matches!(self.motor_unit_potentials, MotorUnitPotentialPattern::LowAmplitudeShortDuration) &&
-        matches!(self.recruitment_pattern, RecruitmentPattern::Increased)
+        matches!(
+            self.motor_unit_potentials,
+            MotorUnitPotentialPattern::LowAmplitudeShortDuration
+        ) && matches!(self.recruitment_pattern, RecruitmentPattern::Increased)
     }
 
     pub fn suggests_neuropathy(&self) -> bool {
-        matches!(self.motor_unit_potentials, MotorUnitPotentialPattern::HighAmplitudeLongDuration) &&
-        matches!(self.recruitment_pattern, RecruitmentPattern::Reduced)
+        matches!(
+            self.motor_unit_potentials,
+            MotorUnitPotentialPattern::HighAmplitudeLongDuration
+        ) && matches!(self.recruitment_pattern, RecruitmentPattern::Reduced)
     }
 
     pub fn suggests_motor_neuron_disease(&self) -> bool {
-        matches!(self.spontaneous_activity, SpontaneousActivity::Fibrillations | SpontaneousActivity::Fasciculations) &&
-        matches!(self.motor_unit_potentials, MotorUnitPotentialPattern::HighAmplitudeLongDuration)
+        matches!(
+            self.spontaneous_activity,
+            SpontaneousActivity::Fibrillations | SpontaneousActivity::Fasciculations
+        ) && matches!(
+            self.motor_unit_potentials,
+            MotorUnitPotentialPattern::HighAmplitudeLongDuration
+        )
     }
 }
 
@@ -197,7 +206,8 @@ impl NeuromuscularProfile {
     }
 
     pub fn mrc_sum_score(&self) -> u32 {
-        self.muscle_strength.values()
+        self.muscle_strength
+            .values()
             .map(|g| g.to_mrc_scale() as u32)
             .sum()
     }
@@ -210,7 +220,8 @@ impl NeuromuscularProfile {
         ];
 
         proximal_groups.iter().any(|group| {
-            self.muscle_strength.get(group)
+            self.muscle_strength
+                .get(group)
                 .map(|s| s.to_mrc_scale() < 4)
                 .unwrap_or(false)
         })
@@ -225,7 +236,8 @@ impl NeuromuscularProfile {
         ];
 
         distal_groups.iter().any(|group| {
-            self.muscle_strength.get(group)
+            self.muscle_strength
+                .get(group)
                 .map(|s| s.to_mrc_scale() < 4)
                 .unwrap_or(false)
         })
@@ -297,7 +309,9 @@ impl MyastheniaGravisProfile {
     }
 
     pub fn is_ocular_only(&self) -> bool {
-        let ocular_symptoms = self.symptoms.iter()
+        let ocular_symptoms = self
+            .symptoms
+            .iter()
             .filter(|s| matches!(s, MyastheniaSymptom::Ptosis | MyastheniaSymptom::Diplopia))
             .count();
 
@@ -305,10 +319,13 @@ impl MyastheniaGravisProfile {
     }
 
     pub fn requires_immunotherapy(&self) -> bool {
-        matches!(self.mgfa_class,
-            MGFAClass::Class3a | MGFAClass::Class3b |
-            MGFAClass::Class4a | MGFAClass::Class4b |
-            MGFAClass::Class5
+        matches!(
+            self.mgfa_class,
+            MGFAClass::Class3a
+                | MGFAClass::Class3b
+                | MGFAClass::Class4a
+                | MGFAClass::Class4b
+                | MGFAClass::Class5
         )
     }
 }
@@ -367,8 +384,7 @@ impl ALSProfile {
     }
 
     pub fn meets_el_escorial_criteria(&self) -> bool {
-        !self.upper_motor_neuron_signs.is_empty() &&
-        !self.lower_motor_neuron_signs.is_empty()
+        !self.upper_motor_neuron_signs.is_empty() && !self.lower_motor_neuron_signs.is_empty()
     }
 
     pub fn requires_ventilatory_support(&self) -> bool {
@@ -393,8 +409,12 @@ mod tests {
     #[test]
     fn test_neuromuscular_profile() {
         let mut profile = NeuromuscularProfile::new();
-        profile.muscle_strength.insert(MuscleGroup::HipFlexors, StrengthGrade::Poor);
-        profile.muscle_strength.insert(MuscleGroup::AnkleDorsiflexors, StrengthGrade::Good);
+        profile
+            .muscle_strength
+            .insert(MuscleGroup::HipFlexors, StrengthGrade::Poor);
+        profile
+            .muscle_strength
+            .insert(MuscleGroup::AnkleDorsiflexors, StrengthGrade::Good);
 
         assert!(profile.has_proximal_weakness());
     }

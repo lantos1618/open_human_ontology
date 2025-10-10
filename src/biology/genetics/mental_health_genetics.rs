@@ -153,7 +153,9 @@ impl MentalHealthProfile {
             medication_class: "SSRI".to_string(),
             response_likelihood: response,
             side_effect_risk: side_effects,
-            notes: "SLC6A4 short allele associated with reduced response and increased side effects".to_string(),
+            notes:
+                "SLC6A4 short allele associated with reduced response and increased side effects"
+                    .to_string(),
         }
     }
 
@@ -205,7 +207,9 @@ impl MentalHealthProfile {
             medication_class: "Lithium".to_string(),
             response_likelihood: response,
             side_effect_risk: RiskLevel::Moderate,
-            notes: "CACNA1C and ANK3 variants associated with bipolar disorder and lithium response".to_string(),
+            notes:
+                "CACNA1C and ANK3 variants associated with bipolar disorder and lithium response"
+                    .to_string(),
         }
     }
 
@@ -233,7 +237,10 @@ impl MentalHealthProfile {
             }
         }
 
-        let has_npy = self.variants.iter().any(|v| v.gene == MentalHealthGene::NPY);
+        let has_npy = self
+            .variants
+            .iter()
+            .any(|v| v.gene == MentalHealthGene::NPY);
         if has_npy {
             factors.push("NPY variant associated with stress resilience".to_string());
         }
@@ -256,7 +263,9 @@ pub fn get_common_mental_health_variants() -> Vec<MentalHealthVariant> {
             variant: "short/short".to_string(),
             condition: MentalHealthCondition::MajorDepression,
             risk_multiplier: 1.4,
-            description: "Serotonin transporter short allele, increased depression risk with stress".to_string(),
+            description:
+                "Serotonin transporter short allele, increased depression risk with stress"
+                    .to_string(),
         },
         MentalHealthVariant {
             gene: MentalHealthGene::BDNF,
@@ -264,7 +273,8 @@ pub fn get_common_mental_health_variants() -> Vec<MentalHealthVariant> {
             variant: "Val66Met".to_string(),
             condition: MentalHealthCondition::MajorDepression,
             risk_multiplier: 1.3,
-            description: "Brain-derived neurotrophic factor variant affecting neuroplasticity".to_string(),
+            description: "Brain-derived neurotrophic factor variant affecting neuroplasticity"
+                .to_string(),
         },
         MentalHealthVariant {
             gene: MentalHealthGene::COMT,
@@ -272,7 +282,9 @@ pub fn get_common_mental_health_variants() -> Vec<MentalHealthVariant> {
             variant: "Val158Met".to_string(),
             condition: MentalHealthCondition::GeneralizedAnxiety,
             risk_multiplier: 1.5,
-            description: "Met allele: slower dopamine breakdown, higher anxiety risk, better memory".to_string(),
+            description:
+                "Met allele: slower dopamine breakdown, higher anxiety risk, better memory"
+                    .to_string(),
         },
         MentalHealthVariant {
             gene: MentalHealthGene::MAOA,
@@ -280,7 +292,9 @@ pub fn get_common_mental_health_variants() -> Vec<MentalHealthVariant> {
             variant: "low activity".to_string(),
             condition: MentalHealthCondition::MajorDepression,
             risk_multiplier: 1.3,
-            description: "Monoamine oxidase A low activity, increased risk with childhood adversity".to_string(),
+            description:
+                "Monoamine oxidase A low activity, increased risk with childhood adversity"
+                    .to_string(),
         },
         MentalHealthVariant {
             gene: MentalHealthGene::DRD4,
@@ -288,7 +302,8 @@ pub fn get_common_mental_health_variants() -> Vec<MentalHealthVariant> {
             variant: "7-repeat".to_string(),
             condition: MentalHealthCondition::ADHD,
             risk_multiplier: 1.9,
-            description: "Dopamine D4 receptor 7-repeat allele, strongly associated with ADHD".to_string(),
+            description: "Dopamine D4 receptor 7-repeat allele, strongly associated with ADHD"
+                .to_string(),
         },
         MentalHealthVariant {
             gene: MentalHealthGene::CACNA1C,
@@ -320,7 +335,8 @@ pub fn get_common_mental_health_variants() -> Vec<MentalHealthVariant> {
             variant: "T allele".to_string(),
             condition: MentalHealthCondition::PTSD,
             risk_multiplier: 2.0,
-            description: "FK506 binding protein, strong PTSD risk with childhood trauma".to_string(),
+            description: "FK506 binding protein, strong PTSD risk with childhood trauma"
+                .to_string(),
         },
         MentalHealthVariant {
             gene: MentalHealthGene::OXTR,
@@ -328,7 +344,9 @@ pub fn get_common_mental_health_variants() -> Vec<MentalHealthVariant> {
             variant: "GG".to_string(),
             condition: MentalHealthCondition::Autism,
             risk_multiplier: 0.7,
-            description: "Oxytocin receptor variant, associated with better social cognition (protective)".to_string(),
+            description:
+                "Oxytocin receptor variant, associated with better social cognition (protective)"
+                    .to_string(),
         },
         MentalHealthVariant {
             gene: MentalHealthGene::SLC6A3,

@@ -1,6 +1,5 @@
 use human_biology::metabolism::{
-    AlcoholMetabolismSimulation, ALDH2Genotype, ADH1BGenotype,
-    AlcoholIngestion, Sex,
+    ADH1BGenotype, ALDH2Genotype, AlcoholIngestion, AlcoholMetabolismSimulation, Sex,
 };
 use human_biology::validation::ground_truth::GroundTruthDatabase;
 
@@ -63,7 +62,7 @@ fn demonstration_1_simple_vs_complex_aldh2_models() {
     if let Some(ground_truth) = db.get_parameter("acetaldehyde_peak_multiplier_aldh2_het") {
         let expected_range = (
             ground_truth.min_value.unwrap_or(2.0),
-            ground_truth.max_value.unwrap_or(10.0)
+            ground_truth.max_value.unwrap_or(10.0),
         );
 
         let wildtype_sim = AlcoholMetabolismSimulation::simulate(
@@ -78,26 +77,43 @@ fn demonstration_1_simple_vs_complex_aldh2_models() {
         let model_a_multiplier = model_a_peak / 1000.0;
         let model_b_multiplier = model_b_peak / wt_peak;
 
-        println!("Expected multiplier: {:.1}x - {:.1}x (from literature)",
-                expected_range.0, expected_range.1);
-        println!("Model A result: {:.1}x - {}", model_a_multiplier,
-                if model_a_multiplier >= expected_range.0 && model_a_multiplier <= expected_range.1 {
-                    "✓ WITHIN RANGE"
-                } else {
-                    "✗ OUT OF RANGE"
-                });
-        println!("Model B result: {:.1}x - {}", model_b_multiplier,
-                if model_b_multiplier >= expected_range.0 && model_b_multiplier <= expected_range.1 {
-                    "✓ WITHIN RANGE"
-                } else {
-                    "✗ OUT OF RANGE"
-                });
+        println!(
+            "Expected multiplier: {:.1}x - {:.1}x (from literature)",
+            expected_range.0, expected_range.1
+        );
+        println!(
+            "Model A result: {:.1}x - {}",
+            model_a_multiplier,
+            if model_a_multiplier >= expected_range.0 && model_a_multiplier <= expected_range.1 {
+                "✓ WITHIN RANGE"
+            } else {
+                "✗ OUT OF RANGE"
+            }
+        );
+        println!(
+            "Model B result: {:.1}x - {}",
+            model_b_multiplier,
+            if model_b_multiplier >= expected_range.0 && model_b_multiplier <= expected_range.1 {
+                "✓ WITHIN RANGE"
+            } else {
+                "✗ OUT OF RANGE"
+            }
+        );
 
         println!("\n📚 Citation: {}", ground_truth.reference.citation);
-        println!("   PMID: {}", ground_truth.reference.pmid.clone().unwrap_or("N/A".to_string()));
-        println!("   Evidence Level: {:?} (Quality: {:.0}%)",
-                ground_truth.reference.evidence_level,
-                ground_truth.reference.evidence_level.quality_score() * 100.0);
+        println!(
+            "   PMID: {}",
+            ground_truth
+                .reference
+                .pmid
+                .clone()
+                .unwrap_or("N/A".to_string())
+        );
+        println!(
+            "   Evidence Level: {:?} (Quality: {:.0}%)",
+            ground_truth.reference.evidence_level,
+            ground_truth.reference.evidence_level.quality_score() * 100.0
+        );
 
         println!("\n✅ Result: Model B is superior - validated against clinical data");
     }
@@ -134,40 +150,54 @@ fn demonstration_2_quantitative_comparison() {
     for (param, predicted) in &model_predictions {
         if let Some(ground_truth) = db.get_parameter(param) {
             let error = (predicted - ground_truth.expected_value).abs()
-                        / ground_truth.expected_value * 100.0;
+                / ground_truth.expected_value
+                * 100.0;
             total_mape += error;
             total += 1;
 
-            let within_range = if let (Some(min), Some(max)) =
-                (ground_truth.min_value, ground_truth.max_value) {
-                predicted >= &min && predicted <= &max
-            } else {
-                error < 20.0
-            };
+            let within_range =
+                if let (Some(min), Some(max)) = (ground_truth.min_value, ground_truth.max_value) {
+                    predicted >= &min && predicted <= &max
+                } else {
+                    error < 20.0
+                };
 
             if within_range {
                 passed += 1;
             }
 
-            println!("{:<32} | {:>9.1} | {:>8.1} | {:>5.1}% | {}",
-                    param.split("::").last().unwrap_or(param),
-                    predicted,
-                    ground_truth.expected_value,
-                    error,
-                    if within_range { "✓" } else { "✗" });
+            println!(
+                "{:<32} | {:>9.1} | {:>8.1} | {:>5.1}% | {}",
+                param.split("::").last().unwrap_or(param),
+                predicted,
+                ground_truth.expected_value,
+                error,
+                if within_range { "✓" } else { "✗" }
+            );
         }
     }
 
     let avg_mape = total_mape / total as f64;
     println!("\n### Summary");
-    println!("Average MAPE: {:.2}% - {}",
-            avg_mape,
-            if avg_mape < 5.0 { "Excellent ⭐⭐⭐" }
-            else if avg_mape < 10.0 { "Good ⭐⭐" }
-            else if avg_mape < 20.0 { "Acceptable ⭐" }
-            else { "Poor ⚠️" });
-    println!("Pass Rate: {}/{} ({:.1}%)", passed, total,
-            passed as f64 / total as f64 * 100.0);
+    println!(
+        "Average MAPE: {:.2}% - {}",
+        avg_mape,
+        if avg_mape < 5.0 {
+            "Excellent ⭐⭐⭐"
+        } else if avg_mape < 10.0 {
+            "Good ⭐⭐"
+        } else if avg_mape < 20.0 {
+            "Acceptable ⭐"
+        } else {
+            "Poor ⚠️"
+        }
+    );
+    println!(
+        "Pass Rate: {}/{} ({:.1}%)",
+        passed,
+        total,
+        passed as f64 / total as f64 * 100.0
+    );
 
     println!("\n### Model Selection Criterion");
     println!("If Model A has MAPE=15% and Model B has MAPE=8%:");
@@ -205,17 +235,21 @@ fn demonstration_3_predictive_power() {
     for (i, tp) in sim.timeline.iter().enumerate() {
         if i % 10 == 0 {
             let bac = tp.ethanol_mmol_l * 46.07 / 10.0;
-            println!("{:>8.2} | {:>11.3} | {:>17.1} | {:>12.2} | {:>5.1}/10",
-                    tp.time_hours,
-                    bac,
-                    tp.acetaldehyde_umol_l,
-                    tp.acetate_mmol_l,
-                    tp.flush_response_score);
+            println!(
+                "{:>8.2} | {:>11.3} | {:>17.1} | {:>12.2} | {:>5.1}/10",
+                tp.time_hours,
+                bac,
+                tp.acetaldehyde_umol_l,
+                tp.acetate_mmol_l,
+                tp.flush_response_score
+            );
         }
     }
 
     let peak = sim.peak_acetaldehyde();
-    let peak_time_idx = sim.timeline.iter()
+    let peak_time_idx = sim
+        .timeline
+        .iter()
         .position(|tp| (tp.acetaldehyde_umol_l - peak).abs() < 10.0)
         .unwrap_or(0);
     let peak_time = sim.timeline[peak_time_idx].time_hours;
@@ -237,14 +271,29 @@ fn demonstration_4_mechanistic_vs_static() {
     println!("## 4. Mechanistic Model vs. Static Text Search");
     println!("\n### Task: Answer patient questions about ALDH2 deficiency\n");
 
-    println!("{:<50} | {:<20} | {:<25}", "Question", "Textbook + Search", "Mechanistic Model");
+    println!(
+        "{:<50} | {:<20} | {:<25}",
+        "Question", "Textbook + Search", "Mechanistic Model"
+    );
     println!("{}", "-".repeat(100));
 
     let capabilities = vec![
         ("What is ALDH2 deficiency?", "✓ Can answer", "✓ Can answer"),
-        ("Predict 2 beers effect?", "✗ No prediction", "✓ Predicts 3755 µM"),
-        ("How long flushed?", "✗ No time course", "✓ Predicts 2-3 hours"),
-        ("What if drink faster?", "✗ Static text", "✓ Re-run simulation"),
+        (
+            "Predict 2 beers effect?",
+            "✗ No prediction",
+            "✓ Predicts 3755 µM",
+        ),
+        (
+            "How long flushed?",
+            "✗ No time course",
+            "✓ Predicts 2-3 hours",
+        ),
+        (
+            "What if drink faster?",
+            "✗ Static text",
+            "✓ Re-run simulation",
+        ),
         ("Cancer risk?", "~ Mentions risk", "✓ Quantifies 5-10x"),
         ("Compare to normal?", "~ Says 'higher'", "✓ Quantifies 2.4x"),
     ];

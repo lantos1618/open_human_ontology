@@ -156,11 +156,16 @@ impl DermatologyProfile {
     fn update_melanoma_risk(&mut self) {
         let mut risk_factors = Vec::new();
 
-        if matches!(self.skin_type, FitzpatrickType::TypeI | FitzpatrickType::TypeII) {
+        if matches!(
+            self.skin_type,
+            FitzpatrickType::TypeI | FitzpatrickType::TypeII
+        ) {
             risk_factors.push(RiskFactor::FairSkin);
         }
 
-        let nevi_count = self.lesions.iter()
+        let nevi_count = self
+            .lesions
+            .iter()
             .filter(|l| l.lesion_type == LesionType::Nevus)
             .count();
 
@@ -189,7 +194,10 @@ impl DermatologyProfile {
             border_irregularity: matches!(lesion.border, BorderCharacteristic::Irregular),
             color_variation: matches!(lesion.color, LesionColor::Variegated),
             diameter_gt_6mm: lesion.size_mm > 6.0,
-            evolving: matches!(lesion.evolution, EvolutionPattern::Growing | EvolutionPattern::Changing),
+            evolving: matches!(
+                lesion.evolution,
+                EvolutionPattern::Growing | EvolutionPattern::Changing
+            ),
         }
     }
 }
@@ -236,14 +244,12 @@ impl FitzpatrickType {
 
     pub fn sun_protection_recommendation(&self) -> &'static str {
         match self {
-            FitzpatrickType::TypeI | FitzpatrickType::TypeII =>
-                "SPF 50+, avoid midday sun, protective clothing essential",
-            FitzpatrickType::TypeIII =>
-                "SPF 30-50, limit sun exposure during peak hours",
-            FitzpatrickType::TypeIV =>
-                "SPF 30, moderate sun protection recommended",
-            FitzpatrickType::TypeV | FitzpatrickType::TypeVI =>
-                "SPF 15-30, basic sun protection",
+            FitzpatrickType::TypeI | FitzpatrickType::TypeII => {
+                "SPF 50+, avoid midday sun, protective clothing essential"
+            }
+            FitzpatrickType::TypeIII => "SPF 30-50, limit sun exposure during peak hours",
+            FitzpatrickType::TypeIV => "SPF 30, moderate sun protection recommended",
+            FitzpatrickType::TypeV | FitzpatrickType::TypeVI => "SPF 15-30, basic sun protection",
         }
     }
 }
@@ -274,8 +280,14 @@ mod tests {
             });
         }
 
-        assert!(profile.melanoma_risk.risk_factors.contains(&RiskFactor::MultipleNevi));
-        assert!(matches!(profile.melanoma_risk.overall_risk, RiskLevel::Moderate | RiskLevel::High));
+        assert!(profile
+            .melanoma_risk
+            .risk_factors
+            .contains(&RiskFactor::MultipleNevi));
+        assert!(matches!(
+            profile.melanoma_risk.overall_risk,
+            RiskLevel::Moderate | RiskLevel::High
+        ));
     }
 
     #[test]
@@ -300,6 +312,9 @@ mod tests {
 
     #[test]
     fn test_fitzpatrick_risk() {
-        assert!(FitzpatrickType::TypeI.melanoma_relative_risk() > FitzpatrickType::TypeVI.melanoma_relative_risk());
+        assert!(
+            FitzpatrickType::TypeI.melanoma_relative_risk()
+                > FitzpatrickType::TypeVI.melanoma_relative_risk()
+        );
     }
 }

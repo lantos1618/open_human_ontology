@@ -76,7 +76,11 @@ impl Hormone {
             hormone_type: HormoneType::Peptide,
             concentration_ng_ml: 5.0,
             half_life_minutes: 20.0,
-            target_tissues: vec!["Liver".to_string(), "Bone".to_string(), "Muscle".to_string()],
+            target_tissues: vec![
+                "Liver".to_string(),
+                "Bone".to_string(),
+                "Muscle".to_string(),
+            ],
             source_gland: EndocrineGland::Pituitary,
         }
     }
@@ -175,7 +179,11 @@ impl Hormone {
             hormone_type: HormoneType::Steroid,
             concentration_ng_ml: 5.0,
             half_life_minutes: 100.0,
-            target_tissues: vec!["Muscle".to_string(), "Bone".to_string(), "Reproductive".to_string()],
+            target_tissues: vec![
+                "Muscle".to_string(),
+                "Bone".to_string(),
+                "Reproductive".to_string(),
+            ],
             source_gland: EndocrineGland::Testis,
         }
     }
@@ -186,7 +194,11 @@ impl Hormone {
             hormone_type: HormoneType::Steroid,
             concentration_ng_ml: 0.1,
             half_life_minutes: 120.0,
-            target_tissues: vec!["Uterus".to_string(), "Breast".to_string(), "Bone".to_string()],
+            target_tissues: vec![
+                "Uterus".to_string(),
+                "Breast".to_string(),
+                "Bone".to_string(),
+            ],
             source_gland: EndocrineGland::Ovary,
         }
     }

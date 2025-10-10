@@ -128,14 +128,18 @@ impl Neuroplasticity {
     }
 
     pub fn enhance_learning(&mut self) {
-        self.synaptic_plasticity.long_term_potentiation.induce_early_ltp();
+        self.synaptic_plasticity
+            .long_term_potentiation
+            .induce_early_ltp();
         self.structural_plasticity.synaptogenesis_rate *= 1.5;
     }
 
     pub fn aging_effect(&mut self, age_years: u32) {
         if age_years > 60 {
             let factor = 1.0 - ((age_years as f64 - 60.0) / 100.0).min(0.4);
-            self.synaptic_plasticity.long_term_potentiation.late_ltp_magnitude *= factor;
+            self.synaptic_plasticity
+                .long_term_potentiation
+                .late_ltp_magnitude *= factor;
             self.structural_plasticity.synaptogenesis_rate *= factor;
         }
     }
@@ -143,7 +147,9 @@ impl Neuroplasticity {
     pub fn stress_effect(&mut self, cortisol_ug_dl: f64) {
         if cortisol_ug_dl > 20.0 {
             let inhibition = ((cortisol_ug_dl - 20.0) / 30.0).min(0.5);
-            self.synaptic_plasticity.long_term_potentiation.protein_synthesis_rate *= 1.0 - inhibition;
+            self.synaptic_plasticity
+                .long_term_potentiation
+                .protein_synthesis_rate *= 1.0 - inhibition;
             self.structural_plasticity.synaptic_pruning_rate *= 1.0 + inhibition;
         }
     }
@@ -166,8 +172,8 @@ impl SynapticPlasticity {
     }
 
     pub fn bidirectional_modification_range(&self) -> f64 {
-        self.long_term_potentiation.late_ltp_magnitude +
-        self.long_term_depression.depression_magnitude
+        self.long_term_potentiation.late_ltp_magnitude
+            + self.long_term_depression.depression_magnitude
     }
 }
 
@@ -483,8 +489,8 @@ impl LearningAndMemory {
     }
 
     pub fn memory_formation_potential(&self) -> f64 {
-        (self.long_term_memory_consolidation * 0.6) +
-        ((self.hippocampal_neurogenesis_rate / 1000.0) * 0.4).min(0.4)
+        (self.long_term_memory_consolidation * 0.6)
+            + ((self.hippocampal_neurogenesis_rate / 1000.0) * 0.4).min(0.4)
     }
 }
 
@@ -619,7 +625,13 @@ mod tests {
         let mut plasticity = Neuroplasticity::new_normal();
         plasticity.aging_effect(75);
 
-        assert!(plasticity.synaptic_plasticity.long_term_potentiation.late_ltp_magnitude < 2.0);
+        assert!(
+            plasticity
+                .synaptic_plasticity
+                .long_term_potentiation
+                .late_ltp_magnitude
+                < 2.0
+        );
     }
 
     #[test]

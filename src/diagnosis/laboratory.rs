@@ -291,7 +291,14 @@ impl LabValue {
         }
     }
 
-    pub fn with_critical(value: f64, unit: &str, low: f64, high: f64, crit_low: f64, crit_high: f64) -> Self {
+    pub fn with_critical(
+        value: f64,
+        unit: &str,
+        low: f64,
+        high: f64,
+        crit_low: f64,
+        crit_high: f64,
+    ) -> Self {
         Self {
             value,
             unit: unit.to_string(),
@@ -426,15 +433,13 @@ impl ComprehensiveMetabolicPanel {
     }
 
     pub fn has_liver_dysfunction(&self) -> bool {
-        self.alanine_aminotransferase.is_high() ||
-        self.aspartate_aminotransferase.is_high() ||
-        self.bilirubin_total.is_high()
+        self.alanine_aminotransferase.is_high()
+            || self.aspartate_aminotransferase.is_high()
+            || self.bilirubin_total.is_high()
     }
 
     pub fn has_electrolyte_imbalance(&self) -> bool {
-        !self.sodium.is_normal() ||
-        !self.potassium.is_normal() ||
-        !self.chloride.is_normal()
+        !self.sodium.is_normal() || !self.potassium.is_normal() || !self.chloride.is_normal()
     }
 }
 
@@ -546,8 +551,8 @@ impl DiabetesMarkers {
     }
 
     pub fn has_prediabetes(&self) -> bool {
-        (self.fasting_glucose.value >= 100.0 && self.fasting_glucose.value < 126.0) ||
-        (self.hba1c.value >= 5.7 && self.hba1c.value < 6.5)
+        (self.fasting_glucose.value >= 100.0 && self.fasting_glucose.value < 126.0)
+            || (self.hba1c.value >= 5.7 && self.hba1c.value < 6.5)
     }
 
     pub fn has_insulin_resistance(&self) -> bool {

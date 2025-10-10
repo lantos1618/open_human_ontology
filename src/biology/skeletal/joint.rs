@@ -1,5 +1,5 @@
-use crate::biology::{BiologyError, BiologyResult};
 use crate::biology::tissue::ExtracellularMatrix;
+use crate::biology::{BiologyError, BiologyResult};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
@@ -122,23 +122,27 @@ impl Joint {
         self.cartilage_thickness_mm < 1.5 || self.synovial_fluid_volume_ml < 0.5
     }
 
-    pub fn perform_movement(&mut self, movement: JointMovement, angle_degrees: f64) -> BiologyResult<()> {
+    pub fn perform_movement(
+        &mut self,
+        movement: JointMovement,
+        angle_degrees: f64,
+    ) -> BiologyResult<()> {
         if angle_degrees < 0.0 {
             return Err(BiologyError::InvalidValue(
-                "Angle cannot be negative".to_string()
+                "Angle cannot be negative".to_string(),
             ));
         }
 
         if angle_degrees > self.range_of_motion_degrees {
-            return Err(BiologyError::InvalidValue(
-                format!("Angle {} exceeds range of motion {}",
-                    angle_degrees, self.range_of_motion_degrees)
-            ));
+            return Err(BiologyError::InvalidValue(format!(
+                "Angle {} exceeds range of motion {}",
+                angle_degrees, self.range_of_motion_degrees
+            )));
         }
 
         if movement == JointMovement::None && self.joint_type == JointType::Fibrous {
             return Err(BiologyError::InvalidState(
-                "Fibrous joints do not permit movement".to_string()
+                "Fibrous joints do not permit movement".to_string(),
             ));
         }
 
@@ -154,7 +158,7 @@ impl Joint {
         if self.cartilage_thickness_mm < 0.0 {
             self.cartilage_thickness_mm = 0.0;
             return Err(BiologyError::InvalidState(
-                "Cartilage completely worn away".to_string()
+                "Cartilage completely worn away".to_string(),
             ));
         }
 

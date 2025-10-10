@@ -1,5 +1,5 @@
-use human_biology::validation::GroundTruthDatabase;
 use human_biology::simulation::physiology_engine::PhysiologySimulation;
+use human_biology::validation::GroundTruthDatabase;
 
 fn main() {
     println!("=== Expanded Ground Truth Validation Framework Demo ===\n");
@@ -40,10 +40,18 @@ fn validate_cardiovascular(db: &GroundTruthDatabase) {
     if let Some(expected) = cv.get_expected_value("resting_heart_rate_bpm") {
         let error_pct = (hr - expected).abs() / expected * 100.0;
         println!("  Expected: {:.1} bpm (Error: {:.2}%)", expected, error_pct);
-        println!("  Within Range: {}", cv.is_within_expected_range("resting_heart_rate_bpm", hr));
+        println!(
+            "  Within Range: {}",
+            cv.is_within_expected_range("resting_heart_rate_bpm", hr)
+        );
 
-        if let Some(dp) = cv.data_points.iter().find(|d| d.parameter_name == "resting_heart_rate_bpm") {
-            println!("  Reference: {} (PMID: {})",
+        if let Some(dp) = cv
+            .data_points
+            .iter()
+            .find(|d| d.parameter_name == "resting_heart_rate_bpm")
+        {
+            println!(
+                "  Reference: {} (PMID: {})",
                 dp.reference.citation,
                 dp.reference.pmid.as_ref().unwrap_or(&"N/A".to_string())
             );
@@ -56,11 +64,17 @@ fn validate_cardiovascular(db: &GroundTruthDatabase) {
     println!("\nBlood Pressure: {:.0}/{:.0} mmHg", sbp, dbp);
     if let Some(expected_sbp) = cv.get_expected_value("systolic_bp_mmhg") {
         println!("  Systolic Expected: {:.0} mmHg", expected_sbp);
-        println!("  Within Range: {}", cv.is_within_expected_range("systolic_bp_mmhg", sbp));
+        println!(
+            "  Within Range: {}",
+            cv.is_within_expected_range("systolic_bp_mmhg", sbp)
+        );
     }
     if let Some(expected_dbp) = cv.get_expected_value("diastolic_bp_mmhg") {
         println!("  Diastolic Expected: {:.0} mmHg", expected_dbp);
-        println!("  Within Range: {}", cv.is_within_expected_range("diastolic_bp_mmhg", dbp));
+        println!(
+            "  Within Range: {}",
+            cv.is_within_expected_range("diastolic_bp_mmhg", dbp)
+        );
     }
 }
 
@@ -79,36 +93,61 @@ fn validate_respiratory(db: &GroundTruthDatabase) {
     if let Some(expected) = resp.get_expected_value("resting_respiratory_rate_per_min") {
         let error_pct = (rr - expected).abs() / expected * 100.0;
         println!("  Expected: {:.1} (Error: {:.2}%)", expected, error_pct);
-        println!("  Within Range: {}", resp.is_within_expected_range("resting_respiratory_rate_per_min", rr));
+        println!(
+            "  Within Range: {}",
+            resp.is_within_expected_range("resting_respiratory_rate_per_min", rr)
+        );
     }
 
     println!("\nTidal Volume: {:.0} mL", tv);
     if let Some(expected) = resp.get_expected_value("tidal_volume_ml") {
         println!("  Expected: {:.0} mL", expected);
-        println!("  Within Range: {}", resp.is_within_expected_range("tidal_volume_ml", tv));
+        println!(
+            "  Within Range: {}",
+            resp.is_within_expected_range("tidal_volume_ml", tv)
+        );
     }
 
     println!("\nBlood Gas Analysis:");
-    println!("  PaO2: {:.1} mmHg (Expected: {:.0})", pao2,
-        resp.get_expected_value("pao2_mmhg").unwrap_or(0.0));
-    println!("  PaCO2: {:.1} mmHg (Expected: {:.0})", paco2,
-        resp.get_expected_value("paco2_mmhg").unwrap_or(0.0));
-    println!("  SaO2: {:.1}% (Expected: {:.0}%)", sao2,
-        resp.get_expected_value("sao2_percent").unwrap_or(0.0));
-    println!("  pH: {:.2} (Expected: {:.2})", ph,
-        resp.get_expected_value("arterial_ph").unwrap_or(0.0));
+    println!(
+        "  PaO2: {:.1} mmHg (Expected: {:.0})",
+        pao2,
+        resp.get_expected_value("pao2_mmhg").unwrap_or(0.0)
+    );
+    println!(
+        "  PaCO2: {:.1} mmHg (Expected: {:.0})",
+        paco2,
+        resp.get_expected_value("paco2_mmhg").unwrap_or(0.0)
+    );
+    println!(
+        "  SaO2: {:.1}% (Expected: {:.0}%)",
+        sao2,
+        resp.get_expected_value("sao2_percent").unwrap_or(0.0)
+    );
+    println!(
+        "  pH: {:.2} (Expected: {:.2})",
+        ph,
+        resp.get_expected_value("arterial_ph").unwrap_or(0.0)
+    );
 
-    let all_in_range =
-        resp.is_within_expected_range("pao2_mmhg", pao2) &&
-        resp.is_within_expected_range("paco2_mmhg", paco2) &&
-        resp.is_within_expected_range("sao2_percent", sao2) &&
-        resp.is_within_expected_range("arterial_ph", ph);
+    let all_in_range = resp.is_within_expected_range("pao2_mmhg", pao2)
+        && resp.is_within_expected_range("paco2_mmhg", paco2)
+        && resp.is_within_expected_range("sao2_percent", sao2)
+        && resp.is_within_expected_range("arterial_ph", ph);
 
-    println!("\n  All Blood Gas Parameters Within Range: {}", all_in_range);
+    println!(
+        "\n  All Blood Gas Parameters Within Range: {}",
+        all_in_range
+    );
 
-    if let Some(dp) = resp.data_points.iter().find(|d| d.parameter_name == "pao2_mmhg") {
+    if let Some(dp) = resp
+        .data_points
+        .iter()
+        .find(|d| d.parameter_name == "pao2_mmhg")
+    {
         println!("\n  Reference: {}", dp.reference.citation);
-        println!("  Evidence Level: {:?} (Quality: {:.1})",
+        println!(
+            "  Evidence Level: {:?} (Quality: {:.1})",
             dp.reference.evidence_level,
             dp.reference.evidence_level.quality_score()
         );
@@ -127,10 +166,20 @@ fn validate_renal(db: &GroundTruthDatabase) {
     println!("Glomerular Filtration Rate: {:.1} mL/min", gfr);
     if let Some(expected) = renal.get_expected_value("gfr_ml_per_min_1_73m2") {
         let error_pct = (gfr - expected).abs() / expected * 100.0;
-        println!("  Expected: {:.0} mL/min/1.73m² (Error: {:.2}%)", expected, error_pct);
-        println!("  Within Range: {}", renal.is_within_expected_range("gfr_ml_per_min_1_73m2", gfr));
+        println!(
+            "  Expected: {:.0} mL/min/1.73m² (Error: {:.2}%)",
+            expected, error_pct
+        );
+        println!(
+            "  Within Range: {}",
+            renal.is_within_expected_range("gfr_ml_per_min_1_73m2", gfr)
+        );
 
-        if let Some(dp) = renal.data_points.iter().find(|d| d.parameter_name == "gfr_ml_per_min_1_73m2") {
+        if let Some(dp) = renal
+            .data_points
+            .iter()
+            .find(|d| d.parameter_name == "gfr_ml_per_min_1_73m2")
+        {
             println!("  Reference: {}", dp.reference.citation);
             if let Some(n) = dp.reference.sample_size {
                 println!("  Meta-analysis of {} subjects", n);
@@ -139,18 +188,37 @@ fn validate_renal(db: &GroundTruthDatabase) {
     }
 
     println!("\nElectrolytes:");
-    println!("  Sodium: {:.1} mEq/L (Expected: {:.0})", sodium,
-        renal.get_expected_value("plasma_sodium_meq_l").unwrap_or(0.0));
-    println!("    In Range: {}", renal.is_within_expected_range("plasma_sodium_meq_l", sodium));
+    println!(
+        "  Sodium: {:.1} mEq/L (Expected: {:.0})",
+        sodium,
+        renal
+            .get_expected_value("plasma_sodium_meq_l")
+            .unwrap_or(0.0)
+    );
+    println!(
+        "    In Range: {}",
+        renal.is_within_expected_range("plasma_sodium_meq_l", sodium)
+    );
 
-    println!("  Potassium: {:.2} mEq/L (Expected: {:.1})", potassium,
-        renal.get_expected_value("plasma_potassium_meq_l").unwrap_or(0.0));
-    println!("    In Range: {}", renal.is_within_expected_range("plasma_potassium_meq_l", potassium));
+    println!(
+        "  Potassium: {:.2} mEq/L (Expected: {:.1})",
+        potassium,
+        renal
+            .get_expected_value("plasma_potassium_meq_l")
+            .unwrap_or(0.0)
+    );
+    println!(
+        "    In Range: {}",
+        renal.is_within_expected_range("plasma_potassium_meq_l", potassium)
+    );
 
     println!("\nUrine Output: {:.1} mL/hr", urine);
     if let Some(expected) = renal.get_expected_value("urine_output_ml_per_hr") {
         println!("  Expected: {:.0} mL/hr", expected);
-        println!("  Within Range: {}", renal.is_within_expected_range("urine_output_ml_per_hr", urine));
+        println!(
+            "  Within Range: {}",
+            renal.is_within_expected_range("urine_output_ml_per_hr", urine)
+        );
     }
 }
 
@@ -163,10 +231,20 @@ fn validate_metabolic(db: &GroundTruthDatabase) {
     println!("Fasting Glucose: {:.1} mg/dL", glucose);
     if let Some(expected) = metabolic.get_expected_value("fasting_glucose_mg_dl") {
         let error_pct = (glucose - expected).abs() / expected * 100.0;
-        println!("  Expected: {:.0} mg/dL (Error: {:.2}%)", expected, error_pct);
-        println!("  Within Range: {}", metabolic.is_within_expected_range("fasting_glucose_mg_dl", glucose));
+        println!(
+            "  Expected: {:.0} mg/dL (Error: {:.2}%)",
+            expected, error_pct
+        );
+        println!(
+            "  Within Range: {}",
+            metabolic.is_within_expected_range("fasting_glucose_mg_dl", glucose)
+        );
 
-        if let Some(dp) = metabolic.data_points.iter().find(|d| d.parameter_name == "fasting_glucose_mg_dl") {
+        if let Some(dp) = metabolic
+            .data_points
+            .iter()
+            .find(|d| d.parameter_name == "fasting_glucose_mg_dl")
+        {
             println!("  Reference: {}", dp.reference.citation);
         }
     }
@@ -180,7 +258,10 @@ fn validate_integrated_physiology(db: &GroundTruthDatabase) {
     let mut total_error = 0.0;
 
     let cv = db.get_dataset("cardiovascular").unwrap();
-    if cv.is_within_expected_range("resting_heart_rate_bpm", sim.state.cardiovascular.heart_rate_bpm) {
+    if cv.is_within_expected_range(
+        "resting_heart_rate_bpm",
+        sim.state.cardiovascular.heart_rate_bpm,
+    ) {
         in_range += 1;
     }
     if let Some(expected) = cv.get_expected_value("resting_heart_rate_bpm") {
@@ -188,7 +269,10 @@ fn validate_integrated_physiology(db: &GroundTruthDatabase) {
     }
     total_params += 1;
 
-    if cv.is_within_expected_range("systolic_bp_mmhg", sim.state.cardiovascular.systolic_bp_mmhg) {
+    if cv.is_within_expected_range(
+        "systolic_bp_mmhg",
+        sim.state.cardiovascular.systolic_bp_mmhg,
+    ) {
         in_range += 1;
     }
     if let Some(expected) = cv.get_expected_value("systolic_bp_mmhg") {
@@ -269,7 +353,9 @@ fn print_database_stats(db: &GroundTruthDatabase) {
                 }
 
                 match dp.reference.evidence_level {
-                    human_biology::validation::EvidenceLevel::SystematicReview => systematic_reviews += 1,
+                    human_biology::validation::EvidenceLevel::SystematicReview => {
+                        systematic_reviews += 1
+                    }
                     human_biology::validation::EvidenceLevel::MetaAnalysis => meta_analyses += 1,
                     _ => {}
                 }

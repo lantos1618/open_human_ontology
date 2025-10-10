@@ -169,17 +169,26 @@ impl PsychiatricProfile {
     }
 
     fn update_risk_assessments(&mut self) {
-        let has_depression = self.diagnoses.iter()
+        let has_depression = self
+            .diagnoses
+            .iter()
             .any(|d| matches!(d.disorder, DisorderType::MajorDepressiveDisorder));
 
-        let has_bipolar = self.diagnoses.iter()
+        let has_bipolar = self
+            .diagnoses
+            .iter()
             .any(|d| matches!(d.disorder, DisorderType::BipolarI | DisorderType::BipolarII));
 
         if has_depression && self.symptom_severity.depression_score.phq9_score > 15 {
             self.risk_assessments.suicide_risk = SuicideRisk::Moderate;
         }
 
-        if has_bipolar && matches!(self.mood_state.current_mood, Mood::Elevated | Mood::Irritable) {
+        if has_bipolar
+            && matches!(
+                self.mood_state.current_mood,
+                Mood::Elevated | Mood::Irritable
+            )
+        {
             self.risk_assessments.self_harm_risk = SelfHarmRisk::Moderate;
         }
     }
@@ -284,10 +293,10 @@ impl CognitiveFunction {
     }
 
     pub fn is_impaired(&self) -> bool {
-        self.attention.percentile < 16.0 ||
-        self.memory.percentile < 16.0 ||
-        self.executive_function.percentile < 16.0 ||
-        self.processing_speed.percentile < 16.0
+        self.attention.percentile < 16.0
+            || self.memory.percentile < 16.0
+            || self.executive_function.percentile < 16.0
+            || self.processing_speed.percentile < 16.0
     }
 }
 
@@ -311,8 +320,8 @@ impl RiskAssessments {
     }
 
     pub fn requires_immediate_intervention(&self) -> bool {
-        matches!(self.suicide_risk, SuicideRisk::Imminent) ||
-        matches!(self.violence_risk, ViolenceRisk::High)
+        matches!(self.suicide_risk, SuicideRisk::Imminent)
+            || matches!(self.violence_risk, ViolenceRisk::High)
     }
 }
 
@@ -354,7 +363,10 @@ mod tests {
         profile.symptom_severity.depression_score.phq9_score = 20;
 
         let functioning = profile.overall_functioning();
-        assert!(matches!(functioning, GlobalFunctioning::Poor | GlobalFunctioning::Serious));
+        assert!(matches!(
+            functioning,
+            GlobalFunctioning::Poor | GlobalFunctioning::Serious
+        ));
     }
 
     #[test]
@@ -378,6 +390,9 @@ mod tests {
             episode_type: Some(EpisodeType::Depressive),
         });
 
-        assert!(matches!(profile.risk_assessments.suicide_risk, SuicideRisk::Moderate | SuicideRisk::High));
+        assert!(matches!(
+            profile.risk_assessments.suicide_risk,
+            SuicideRisk::Moderate | SuicideRisk::High
+        ));
     }
 }

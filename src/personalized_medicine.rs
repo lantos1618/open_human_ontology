@@ -1,10 +1,7 @@
-use serde::{Deserialize, Serialize};
-use crate::biology::genetics::{
-    AncestryProfile, GeneEnvironmentProfile,
-    PolygeneticRiskScore,
-};
-use crate::pharmacology::pharmacogenomics::PharmacogeneticProfile;
+use crate::biology::genetics::{AncestryProfile, GeneEnvironmentProfile, PolygeneticRiskScore};
 use crate::human::BiologicalSex;
+use crate::pharmacology::pharmacogenomics::PharmacogeneticProfile;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PersonalizedMedicineProfile {
@@ -184,7 +181,10 @@ impl PersonalizedMedicineProfile {
 
         for interaction in &gene_env_profile.interactions {
             if interaction.affected_trait == condition {
-                if let Some(&exposure) = gene_env_profile.lifestyle_factors.get(&interaction.environmental_factor) {
+                if let Some(&exposure) = gene_env_profile
+                    .lifestyle_factors
+                    .get(&interaction.environmental_factor)
+                {
                     env_risk *= 1.0 + (interaction.interaction_strength * exposure * 0.1);
                 }
             }
@@ -206,11 +206,7 @@ impl PersonalizedMedicineProfile {
             .collect()
     }
 
-    fn generate_surveillance_recommendations(
-        &self,
-        condition: &str,
-        risk: f64,
-    ) -> Vec<String> {
+    fn generate_surveillance_recommendations(&self, condition: &str, risk: f64) -> Vec<String> {
         let mut recommendations = Vec::new();
 
         if condition.contains("cancer") || condition.contains("Cancer") {
@@ -322,8 +318,6 @@ impl PersonalizedMedicineEngine {
         _sex: BiologicalSex,
         _age: f64,
     ) -> PersonalizedMedicineProfile {
-        
-
         PersonalizedMedicineProfile::new(patient_id, ancestry)
     }
 

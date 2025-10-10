@@ -125,7 +125,8 @@ impl TissueRepair {
     }
 
     pub fn with_cytokines(mut self) -> Self {
-        self.inflammatory_cytokines.insert("TNF-alpha".to_string(), 1.0);
+        self.inflammatory_cytokines
+            .insert("TNF-alpha".to_string(), 1.0);
         self.inflammatory_cytokines.insert("IL-1".to_string(), 1.0);
         self.inflammatory_cytokines.insert("IL-6".to_string(), 1.0);
         self
@@ -213,10 +214,11 @@ impl RegenerativeCapacity {
     }
 
     pub fn overall_capacity(&self) -> f64 {
-        (self.stem_cell_activity +
-         self.growth_factor_responsiveness +
-         self.extracellular_matrix_quality +
-         self.vascularization_potential) / 4.0
+        (self.stem_cell_activity
+            + self.growth_factor_responsiveness
+            + self.extracellular_matrix_quality
+            + self.vascularization_potential)
+            / 4.0
     }
 
     pub fn healing_modifier(&self) -> f64 {
@@ -276,7 +278,9 @@ impl HealingFactors {
         }
 
         for med in &self.medications {
-            if med.to_lowercase().contains("steroid") || med.to_lowercase().contains("immunosuppressant") {
+            if med.to_lowercase().contains("steroid")
+                || med.to_lowercase().contains("immunosuppressant")
+            {
                 impairment *= 1.3;
             }
         }
@@ -287,7 +291,10 @@ impl HealingFactors {
     pub fn recommendations(&self) -> Vec<String> {
         let mut recs = Vec::new();
 
-        if matches!(self.nutrition_status, NutritionStatus::Deficient | NutritionStatus::SeverelyDeficient) {
+        if matches!(
+            self.nutrition_status,
+            NutritionStatus::Deficient | NutritionStatus::SeverelyDeficient
+        ) {
             recs.push("Optimize nutrition with protein, vitamin C, and zinc".to_string());
         }
 

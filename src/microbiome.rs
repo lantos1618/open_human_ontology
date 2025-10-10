@@ -204,7 +204,8 @@ impl GutMicrobiome {
             0.0_f64
         };
 
-        self.dysbiosis_score = (diversity_component + ratio_component + beneficial_component).min(1.0);
+        self.dysbiosis_score =
+            (diversity_component + ratio_component + beneficial_component).min(1.0);
     }
 
     pub fn microbiome_type(&self) -> &str {

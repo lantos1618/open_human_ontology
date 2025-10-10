@@ -160,7 +160,9 @@ impl DrugMetabolismProfile {
     }
 
     pub fn predict_drug_response(&self, drug: &str, enzyme: CytochromeP450) -> DrugResponse {
-        let status = self.metabolizer_status.get(&enzyme)
+        let status = self
+            .metabolizer_status
+            .get(&enzyme)
             .copied()
             .unwrap_or(MetabolizerStatus::Normal);
 
@@ -266,7 +268,9 @@ mod tests {
     #[test]
     fn test_drug_metabolism() {
         let mut profile = DrugMetabolismProfile::new();
-        profile.metabolizer_status.insert(CytochromeP450::CYP2D6, MetabolizerStatus::Poor);
+        profile
+            .metabolizer_status
+            .insert(CytochromeP450::CYP2D6, MetabolizerStatus::Poor);
 
         let response = profile.predict_drug_response("codeine", CytochromeP450::CYP2D6);
         assert_eq!(response.expected_efficacy, 0.5);

@@ -1,6 +1,6 @@
+use super::ancestry::AncestryPopulation;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use super::ancestry::AncestryPopulation;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AlleleFrequency {
@@ -34,7 +34,11 @@ impl AlleleFrequency {
         high_freq_count == 1
     }
 
-    pub fn fst_between_populations(&self, pop1: AncestryPopulation, pop2: AncestryPopulation) -> Option<f64> {
+    pub fn fst_between_populations(
+        &self,
+        pop1: AncestryPopulation,
+        pop2: AncestryPopulation,
+    ) -> Option<f64> {
         let p1 = self.get_frequency(pop1)?;
         let p2 = self.get_frequency(pop2)?;
 
@@ -109,19 +113,43 @@ impl HardyWeinbergEquilibrium {
         self.allele_b_frequency.powi(2)
     }
 
-    pub fn chi_square_test(&self, observed_aa: f64, observed_ab: f64, observed_bb: f64, total: f64) -> f64 {
+    pub fn chi_square_test(
+        &self,
+        observed_aa: f64,
+        observed_ab: f64,
+        observed_bb: f64,
+        total: f64,
+    ) -> f64 {
         let exp_aa = self.expected_aa_frequency() * total;
         let exp_ab = self.expected_ab_frequency() * total;
         let exp_bb = self.expected_bb_frequency() * total;
 
-        let chi_aa = if exp_aa > 0.0 { (observed_aa - exp_aa).powi(2) / exp_aa } else { 0.0 };
-        let chi_ab = if exp_ab > 0.0 { (observed_ab - exp_ab).powi(2) / exp_ab } else { 0.0 };
-        let chi_bb = if exp_bb > 0.0 { (observed_bb - exp_bb).powi(2) / exp_bb } else { 0.0 };
+        let chi_aa = if exp_aa > 0.0 {
+            (observed_aa - exp_aa).powi(2) / exp_aa
+        } else {
+            0.0
+        };
+        let chi_ab = if exp_ab > 0.0 {
+            (observed_ab - exp_ab).powi(2) / exp_ab
+        } else {
+            0.0
+        };
+        let chi_bb = if exp_bb > 0.0 {
+            (observed_bb - exp_bb).powi(2) / exp_bb
+        } else {
+            0.0
+        };
 
         chi_aa + chi_ab + chi_bb
     }
 
-    pub fn is_in_equilibrium(&self, observed_aa: f64, observed_ab: f64, observed_bb: f64, total: f64) -> bool {
+    pub fn is_in_equilibrium(
+        &self,
+        observed_aa: f64,
+        observed_ab: f64,
+        observed_bb: f64,
+        total: f64,
+    ) -> bool {
         let chi_square = self.chi_square_test(observed_aa, observed_ab, observed_bb, total);
         chi_square < 3.841
     }
@@ -145,12 +173,7 @@ impl LinkageDisequilibrium {
         }
     }
 
-    pub fn calculate(
-        &mut self,
-        freq_a1: f64,
-        freq_b1: f64,
-        freq_a1b1: f64,
-    ) {
+    pub fn calculate(&mut self, freq_a1: f64, freq_b1: f64, freq_a1b1: f64) {
         let d = freq_a1b1 - (freq_a1 * freq_b1);
 
         let freq_a2 = 1.0 - freq_a1;
@@ -197,10 +220,8 @@ mod tests {
         af.set_frequency(AncestryPopulation::EastAsian, 0.8);
         af.set_frequency(AncestryPopulation::European, 0.2);
 
-        let fst = af.fst_between_populations(
-            AncestryPopulation::EastAsian,
-            AncestryPopulation::European
-        );
+        let fst =
+            af.fst_between_populations(AncestryPopulation::EastAsian, AncestryPopulation::European);
         assert!(fst.is_some());
         assert!(fst.unwrap() > 0.0);
     }

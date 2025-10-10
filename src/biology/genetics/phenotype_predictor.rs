@@ -1,6 +1,6 @@
+use super::*;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use super::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct FullBodyPhenotypePredictor {
@@ -8,8 +8,7 @@ pub struct FullBodyPhenotypePredictor {
     pub predicted_traits: PredictedTraits,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[derive(Default)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct PredictedTraits {
     pub physical_appearance: PhysicalAppearance,
     pub physiology: PhysiologyTraits,
@@ -487,15 +486,35 @@ impl FullBodyPhenotypePredictor {
             Total genotypes analyzed: {}\n",
             self.predicted_traits.physical_appearance.height_cm_range.0,
             self.predicted_traits.physical_appearance.height_cm_range.1,
-            self.predicted_traits.physical_appearance.height_genetic_potential,
-            self.predicted_traits.physical_appearance.eye_color.most_likely,
-            self.predicted_traits.physical_appearance.hair_color.most_likely,
-            self.predicted_traits.physical_appearance.hair_texture.curl_type,
-            self.predicted_traits.physical_appearance.skin_tone.fitzpatrick_scale,
+            self.predicted_traits
+                .physical_appearance
+                .height_genetic_potential,
+            self.predicted_traits
+                .physical_appearance
+                .eye_color
+                .most_likely,
+            self.predicted_traits
+                .physical_appearance
+                .hair_color
+                .most_likely,
+            self.predicted_traits
+                .physical_appearance
+                .hair_texture
+                .curl_type,
+            self.predicted_traits
+                .physical_appearance
+                .skin_tone
+                .fitzpatrick_scale,
             self.predicted_traits.physiology.blood_type,
             self.predicted_traits.physiology.lactose_tolerance,
-            self.predicted_traits.physiology.alcohol_metabolism.metabolism_rate,
-            self.predicted_traits.physiology.caffeine_metabolism.metabolism_speed,
+            self.predicted_traits
+                .physiology
+                .alcohol_metabolism
+                .metabolism_rate,
+            self.predicted_traits
+                .physiology
+                .caffeine_metabolism
+                .metabolism_speed,
             self.predicted_traits.performance.vo2_max_potential,
             self.predicted_traits.performance.endurance_capacity,
             self.predicted_traits.performance.power_capacity,
@@ -509,7 +528,6 @@ impl Default for FullBodyPhenotypePredictor {
         Self::new()
     }
 }
-
 
 impl Default for PhysicalAppearance {
     fn default() -> Self {
@@ -670,7 +688,13 @@ mod tests {
         let mut predictor = FullBodyPhenotypePredictor::new();
         predictor.predict_all_traits();
 
-        assert!(predictor.predicted_traits.physical_appearance.height_genetic_potential > 0.0);
+        assert!(
+            predictor
+                .predicted_traits
+                .physical_appearance
+                .height_genetic_potential
+                > 0.0
+        );
     }
 
     #[test]

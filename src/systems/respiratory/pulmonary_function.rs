@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::biology::{BiologyError, BiologyResult};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PulmonaryFunctionTest {
@@ -71,11 +71,7 @@ pub struct OxygenationMetrics {
 }
 
 impl PulmonaryFunctionTest {
-    pub fn new(
-        height_cm: f64,
-        age_years: u32,
-        is_male: bool,
-    ) -> Self {
+    pub fn new(height_cm: f64, age_years: u32, is_male: bool) -> Self {
         let predicted_fvc = if is_male {
             (0.0576 * height_cm) - (0.026 * age_years as f64) - 4.34
         } else {

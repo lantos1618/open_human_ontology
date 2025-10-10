@@ -114,15 +114,25 @@ impl ColorVisionGenetics {
         }
     }
 
-    fn determine_color_blindness(lw: GeneStatus, mw: GeneStatus, sw: GeneStatus) -> ColorBlindnessType {
+    fn determine_color_blindness(
+        lw: GeneStatus,
+        mw: GeneStatus,
+        sw: GeneStatus,
+    ) -> ColorBlindnessType {
         match (lw, mw, sw) {
             (GeneStatus::Absent, _, GeneStatus::Normal) => ColorBlindnessType::Protanopia,
             (_, GeneStatus::Absent, GeneStatus::Normal) => ColorBlindnessType::Deuteranopia,
-            (GeneStatus::Normal, GeneStatus::Normal, GeneStatus::Absent) => ColorBlindnessType::Tritanopia,
+            (GeneStatus::Normal, GeneStatus::Normal, GeneStatus::Absent) => {
+                ColorBlindnessType::Tritanopia
+            }
             (GeneStatus::Defective, _, GeneStatus::Normal) => ColorBlindnessType::Protanomaly,
             (_, GeneStatus::Defective, GeneStatus::Normal) => ColorBlindnessType::Deuteranomaly,
-            (GeneStatus::Normal, GeneStatus::Normal, GeneStatus::Defective) => ColorBlindnessType::Tritanomaly,
-            (GeneStatus::Absent, GeneStatus::Absent, GeneStatus::Absent) => ColorBlindnessType::Achromatopsia,
+            (GeneStatus::Normal, GeneStatus::Normal, GeneStatus::Defective) => {
+                ColorBlindnessType::Tritanomaly
+            }
+            (GeneStatus::Absent, GeneStatus::Absent, GeneStatus::Absent) => {
+                ColorBlindnessType::Achromatopsia
+            }
             _ => ColorBlindnessType::Normal,
         }
     }
@@ -131,9 +141,9 @@ impl ColorVisionGenetics {
         matches!(
             self.color_blindness_type,
             ColorBlindnessType::Protanopia
-            | ColorBlindnessType::Deuteranopia
-            | ColorBlindnessType::Protanomaly
-            | ColorBlindnessType::Deuteranomaly
+                | ColorBlindnessType::Deuteranopia
+                | ColorBlindnessType::Protanomaly
+                | ColorBlindnessType::Deuteranomaly
         )
     }
 }
@@ -188,10 +198,18 @@ impl MyopiaGenetics {
         near_work: f64,
     ) -> MyopiaRisk {
         let mut genetic_score = 0;
-        if gja1 { genetic_score += 1; }
-        if rasgrf1 { genetic_score += 1; }
-        if actc1 { genetic_score += 1; }
-        if zic2 { genetic_score += 1; }
+        if gja1 {
+            genetic_score += 1;
+        }
+        if rasgrf1 {
+            genetic_score += 1;
+        }
+        if actc1 {
+            genetic_score += 1;
+        }
+        if zic2 {
+            genetic_score += 1;
+        }
 
         let environmental_risk = (near_work / 8.0) - (outdoor / 2.0);
 
@@ -225,14 +243,7 @@ pub struct GlaucomaRisk {
 }
 
 impl GlaucomaRisk {
-    pub fn new(
-        myoc: bool,
-        optn: bool,
-        tmco1: bool,
-        cdkn2b: bool,
-        iop: f64,
-        age: u32,
-    ) -> Self {
+    pub fn new(myoc: bool, optn: bool, tmco1: bool, cdkn2b: bool, iop: f64, age: u32) -> Self {
         let score = Self::calculate_score(myoc, optn, tmco1, cdkn2b, iop, age);
 
         Self {
@@ -256,10 +267,18 @@ impl GlaucomaRisk {
     ) -> f64 {
         let mut score = 0.0;
 
-        if myoc { score += 2.0; }
-        if optn { score += 1.5; }
-        if tmco1 { score += 1.0; }
-        if cdkn2b { score += 1.0; }
+        if myoc {
+            score += 2.0;
+        }
+        if optn {
+            score += 1.5;
+        }
+        if tmco1 {
+            score += 1.0;
+        }
+        if cdkn2b {
+            score += 1.0;
+        }
 
         if iop > 21.0 {
             score += (iop - 21.0) * 0.5;
@@ -293,29 +312,32 @@ mod tests {
 
     #[test]
     fn test_color_blindness() {
-        let normal = ColorVisionGenetics::new(
-            GeneStatus::Normal,
-            GeneStatus::Normal,
-            GeneStatus::Normal,
-        );
+        let normal =
+            ColorVisionGenetics::new(GeneStatus::Normal, GeneStatus::Normal, GeneStatus::Normal);
         assert_eq!(normal.color_blindness_type, ColorBlindnessType::Normal);
 
-        let protanopia = ColorVisionGenetics::new(
-            GeneStatus::Absent,
-            GeneStatus::Normal,
-            GeneStatus::Normal,
+        let protanopia =
+            ColorVisionGenetics::new(GeneStatus::Absent, GeneStatus::Normal, GeneStatus::Normal);
+        assert_eq!(
+            protanopia.color_blindness_type,
+            ColorBlindnessType::Protanopia
         );
-        assert_eq!(protanopia.color_blindness_type, ColorBlindnessType::Protanopia);
         assert!(protanopia.is_x_linked());
     }
 
     #[test]
     fn test_myopia_risk() {
         let high_risk = MyopiaGenetics::new(true, true, true, true, 0.5, 8.0);
-        assert!(matches!(high_risk.risk_level, MyopiaRisk::High | MyopiaRisk::VeryHigh));
+        assert!(matches!(
+            high_risk.risk_level,
+            MyopiaRisk::High | MyopiaRisk::VeryHigh
+        ));
 
         let low_risk = MyopiaGenetics::new(false, false, false, false, 3.0, 2.0);
-        assert!(matches!(low_risk.risk_level, MyopiaRisk::Low | MyopiaRisk::Moderate));
+        assert!(matches!(
+            low_risk.risk_level,
+            MyopiaRisk::Low | MyopiaRisk::Moderate
+        ));
     }
 
     #[test]

@@ -35,7 +35,9 @@ impl DetailedGlycolysis {
 
     pub fn step_1_hexokinase(&mut self) -> BiologyResult<()> {
         if self.glucose < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient glucose".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient glucose".to_string(),
+            ));
         }
         self.glucose -= 1.0;
         self.glucose_6_phosphate += 1.0;
@@ -64,7 +66,9 @@ impl DetailedGlycolysis {
 
     pub fn step_4_aldolase(&mut self) -> BiologyResult<()> {
         if self.fructose_1_6_bisphosphate < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient F-1,6-BP".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient F-1,6-BP".to_string(),
+            ));
         }
         self.fructose_1_6_bisphosphate -= 1.0;
         self.glyceraldehyde_3_phosphate += 1.0;
@@ -140,7 +144,9 @@ impl KrebsCycle {
 
     pub fn step_1_citrate_synthase(&mut self) -> BiologyResult<()> {
         if self.acetyl_coa < 0.1 || self.oxaloacetate < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient substrates".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient substrates".to_string(),
+            ));
         }
         self.acetyl_coa -= 1.0;
         self.oxaloacetate -= 1.0;
@@ -150,7 +156,9 @@ impl KrebsCycle {
 
     pub fn step_2_aconitase(&mut self) -> BiologyResult<()> {
         if self.citrate < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient citrate".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient citrate".to_string(),
+            ));
         }
         self.citrate -= 1.0;
         self.isocitrate += 1.0;
@@ -159,7 +167,9 @@ impl KrebsCycle {
 
     pub fn step_3_isocitrate_dehydrogenase(&mut self) -> BiologyResult<()> {
         if self.isocitrate < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient isocitrate".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient isocitrate".to_string(),
+            ));
         }
         self.isocitrate -= 1.0;
         self.alpha_ketoglutarate += 1.0;
@@ -170,7 +180,9 @@ impl KrebsCycle {
 
     pub fn step_4_alpha_ketoglutarate_dehydrogenase(&mut self) -> BiologyResult<()> {
         if self.alpha_ketoglutarate < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient α-ketoglutarate".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient α-ketoglutarate".to_string(),
+            ));
         }
         self.alpha_ketoglutarate -= 1.0;
         self.succinyl_coa += 1.0;
@@ -181,7 +193,9 @@ impl KrebsCycle {
 
     pub fn step_5_succinyl_coa_synthetase(&mut self) -> BiologyResult<()> {
         if self.succinyl_coa < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient succinyl-CoA".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient succinyl-CoA".to_string(),
+            ));
         }
         self.succinyl_coa -= 1.0;
         self.succinate += 1.0;
@@ -191,7 +205,9 @@ impl KrebsCycle {
 
     pub fn step_6_succinate_dehydrogenase(&mut self) -> BiologyResult<()> {
         if self.succinate < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient succinate".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient succinate".to_string(),
+            ));
         }
         self.succinate -= 1.0;
         self.fumarate += 1.0;
@@ -201,7 +217,9 @@ impl KrebsCycle {
 
     pub fn step_7_fumarase(&mut self) -> BiologyResult<()> {
         if self.fumarate < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient fumarate".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient fumarate".to_string(),
+            ));
         }
         self.fumarate -= 1.0;
         self.malate += 1.0;
@@ -210,7 +228,9 @@ impl KrebsCycle {
 
     pub fn step_8_malate_dehydrogenase(&mut self) -> BiologyResult<()> {
         if self.malate < 0.1 {
-            return Err(BiologyError::InvalidValue("Insufficient malate".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Insufficient malate".to_string(),
+            ));
         }
         self.malate -= 1.0;
         self.oxaloacetate += 1.0;
@@ -254,12 +274,12 @@ impl BetaOxidation {
     pub fn new(carbon_count: u32) -> BiologyResult<Self> {
         if carbon_count % 2 != 0 {
             return Err(BiologyError::InvalidValue(
-                "Fatty acids must have even number of carbons".to_string()
+                "Fatty acids must have even number of carbons".to_string(),
             ));
         }
         if carbon_count < 4 {
             return Err(BiologyError::InvalidValue(
-                "Fatty acid too short".to_string()
+                "Fatty acid too short".to_string(),
             ));
         }
 
@@ -275,7 +295,7 @@ impl BetaOxidation {
     pub fn oxidize_one_cycle(&mut self) -> BiologyResult<()> {
         if self.fatty_acid_carbons < 4 {
             return Err(BiologyError::InvalidValue(
-                "Cannot oxidize further".to_string()
+                "Cannot oxidize further".to_string(),
             ));
         }
 
@@ -353,7 +373,9 @@ impl ElectronTransportChain {
 
     pub fn process_fadh2(&mut self, fadh2_count: u32) -> BiologyResult<()> {
         if !self.complex_ii_active {
-            return Err(BiologyError::InvalidValue("Complex II inactive".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Complex II inactive".to_string(),
+            ));
         }
 
         self.fadh2_input += fadh2_count;
@@ -406,7 +428,9 @@ impl PentosePhosphatePathway {
 
     pub fn oxidative_phase(&mut self) -> BiologyResult<()> {
         if !self.oxidative_phase_active {
-            return Err(BiologyError::InvalidValue("Oxidative phase inactive".to_string()));
+            return Err(BiologyError::InvalidValue(
+                "Oxidative phase inactive".to_string(),
+            ));
         }
 
         if self.glucose_6_phosphate < 0.1 {

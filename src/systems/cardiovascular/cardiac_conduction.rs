@@ -94,7 +94,8 @@ impl ConductionSystem {
         let pr_interval = 120.0 + self.av_node.conduction_delay_ms;
 
         let qrs_duration = if self.bundle_branches.left_bundle.is_blocked
-            || self.bundle_branches.right_bundle.is_blocked {
+            || self.bundle_branches.right_bundle.is_blocked
+        {
             120.0
         } else {
             90.0

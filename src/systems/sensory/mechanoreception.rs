@@ -269,7 +269,10 @@ mod tests {
     #[test]
     fn test_normal_mechanoreceptor_system() {
         let system = MechanoreceptorSystem::new_normal();
-        assert_eq!(system.cutaneous_receptors.meissners_corpuscles.count, 150_000);
+        assert_eq!(
+            system.cutaneous_receptors.meissners_corpuscles.count,
+            150_000
+        );
     }
 
     #[test]

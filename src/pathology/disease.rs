@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::biology::genetics::snp::SNP;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum DiseaseCategory {
@@ -82,8 +82,7 @@ impl Disease {
     }
 
     pub fn is_genetic(&self) -> bool {
-        self.genetic_component.is_some() ||
-        matches!(self.category, DiseaseCategory::Genetic)
+        self.genetic_component.is_some() || matches!(self.category, DiseaseCategory::Genetic)
     }
 
     pub fn is_rare(&self) -> bool {
@@ -95,7 +94,8 @@ impl Disease {
     }
 
     pub fn modifiable_risk_factors(&self) -> Vec<&RiskFactor> {
-        self.risk_factors.iter()
+        self.risk_factors
+            .iter()
             .filter(|rf| rf.modifiable)
             .collect()
     }
@@ -151,7 +151,8 @@ impl DiseaseProgression {
     }
 
     pub fn current_severity(&self) -> Option<Severity> {
-        self.stages.get(self.current_stage)
+        self.stages
+            .get(self.current_stage)
             .map(|stage| stage.severity)
     }
 
@@ -168,12 +169,9 @@ mod tests {
 
     #[test]
     fn test_disease_creation() {
-        let disease = Disease::new(
-            "Type 2 Diabetes".to_string(),
-            DiseaseCategory::Metabolic,
-        )
-        .with_icd10("E11".to_string())
-        .with_prevalence(0.095);
+        let disease = Disease::new("Type 2 Diabetes".to_string(), DiseaseCategory::Metabolic)
+            .with_icd10("E11".to_string())
+            .with_prevalence(0.095);
 
         assert_eq!(disease.name, "Type 2 Diabetes");
         assert!(disease.is_common());
@@ -204,10 +202,7 @@ mod tests {
 
     #[test]
     fn test_disease_progression() {
-        let disease = Disease::new(
-            "Cancer".to_string(),
-            DiseaseCategory::Oncological,
-        );
+        let disease = Disease::new("Cancer".to_string(), DiseaseCategory::Oncological);
 
         let mut progression = DiseaseProgression::new(disease);
 

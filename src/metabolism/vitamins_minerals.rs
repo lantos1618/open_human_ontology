@@ -91,7 +91,10 @@ impl Vitamin {
             daily_requirement_mg: 1.2,
             serum_level_ng_ml: 50.0,
             storage_location: vec![],
-            functions: vec![VitaminFunction::EnergyMetabolism, VitaminFunction::NeurologicalFunction],
+            functions: vec![
+                VitaminFunction::EnergyMetabolism,
+                VitaminFunction::NeurologicalFunction,
+            ],
         }
     }
 
@@ -102,7 +105,10 @@ impl Vitamin {
             daily_requirement_mg: 1.3,
             serum_level_ng_ml: 100.0,
             storage_location: vec![],
-            functions: vec![VitaminFunction::EnergyMetabolism, VitaminFunction::CofactorEnzyme],
+            functions: vec![
+                VitaminFunction::EnergyMetabolism,
+                VitaminFunction::CofactorEnzyme,
+            ],
         }
     }
 
@@ -124,7 +130,10 @@ impl Vitamin {
             daily_requirement_mg: 1.7,
             serum_level_ng_ml: 30.0,
             storage_location: vec![],
-            functions: vec![VitaminFunction::CofactorEnzyme, VitaminFunction::NeurologicalFunction],
+            functions: vec![
+                VitaminFunction::CofactorEnzyme,
+                VitaminFunction::NeurologicalFunction,
+            ],
         }
     }
 
@@ -135,7 +144,10 @@ impl Vitamin {
             daily_requirement_mg: 0.0024,
             serum_level_ng_ml: 400.0,
             storage_location: vec!["Liver".to_string()],
-            functions: vec![VitaminFunction::DNASynthesis, VitaminFunction::NeurologicalFunction],
+            functions: vec![
+                VitaminFunction::DNASynthesis,
+                VitaminFunction::NeurologicalFunction,
+            ],
         }
     }
 

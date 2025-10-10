@@ -66,13 +66,15 @@ impl Microbiome {
     }
 
     pub fn firmicutes_bacteroidetes_ratio(&self) -> f64 {
-        let firmicutes: f64 = self.bacteria
+        let firmicutes: f64 = self
+            .bacteria
             .iter()
             .filter(|b| b.phylum == BacterialPhylum::Firmicutes)
             .map(|b| b.relative_abundance_percent)
             .sum();
 
-        let bacteroidetes: f64 = self.bacteria
+        let bacteroidetes: f64 = self
+            .bacteria
             .iter()
             .filter(|b| b.phylum == BacterialPhylum::Bacteroidetes)
             .map(|b| b.relative_abundance_percent)
@@ -177,9 +179,7 @@ impl Bacteria {
             species: "Escherichia coli".to_string(),
             phylum: BacterialPhylum::Proteobacteria,
             relative_abundance_percent: 1.0,
-            metabolic_functions: vec![
-                MetabolicFunction::VitaminSynthesis,
-            ],
+            metabolic_functions: vec![MetabolicFunction::VitaminSynthesis],
             is_pathogenic: false,
         }
     }

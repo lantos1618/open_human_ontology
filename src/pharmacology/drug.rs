@@ -96,13 +96,14 @@ impl Drug {
     }
 
     pub fn has_severe_side_effects(&self) -> bool {
-        self.side_effects.iter().any(|se|
-            matches!(se.severity, Severity::Severe | Severity::LifeThreatening)
-        )
+        self.side_effects
+            .iter()
+            .any(|se| matches!(se.severity, Severity::Severe | Severity::LifeThreatening))
     }
 
     pub fn common_side_effects(&self) -> Vec<&SideEffect> {
-        self.side_effects.iter()
+        self.side_effects
+            .iter()
             .filter(|se| matches!(se.frequency, Frequency::VeryCommon | Frequency::Common))
             .collect()
     }
@@ -207,22 +208,16 @@ mod tests {
 
     #[test]
     fn test_dosage() {
-        let dosage = Dosage::new(
-            500.0,
-            DosageUnit::Milligram,
-            RouteOfAdministration::Oral,
-        ).with_frequency(DosageFrequency::TwiceDaily);
+        let dosage = Dosage::new(500.0, DosageUnit::Milligram, RouteOfAdministration::Oral)
+            .with_frequency(DosageFrequency::TwiceDaily);
 
         assert_eq!(dosage.daily_dose(), Some(1000.0));
     }
 
     #[test]
     fn test_dosage_every_n_hours() {
-        let dosage = Dosage::new(
-            200.0,
-            DosageUnit::Milligram,
-            RouteOfAdministration::Oral,
-        ).with_frequency(DosageFrequency::EveryNHours(6.0));
+        let dosage = Dosage::new(200.0, DosageUnit::Milligram, RouteOfAdministration::Oral)
+            .with_frequency(DosageFrequency::EveryNHours(6.0));
 
         assert_eq!(dosage.daily_dose(), Some(800.0));
     }

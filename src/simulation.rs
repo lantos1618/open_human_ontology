@@ -1,8 +1,8 @@
-use serde::{Deserialize, Serialize};
-use crate::human::Human;
-use crate::metabolism::ComprehensiveMetabolicNetwork;
 use crate::biology::epigenetics::EpigeneticProfile;
 use crate::biology::proteomics::ProteomicsProfile;
+use crate::human::Human;
+use crate::metabolism::ComprehensiveMetabolicNetwork;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 pub mod physiology_engine;
@@ -71,7 +71,11 @@ impl SimulationEngine {
         }
     }
 
-    pub fn run_simulation(&mut self, human: &Human, interventions: Vec<Intervention>) -> SimulationResult {
+    pub fn run_simulation(
+        &mut self,
+        human: &Human,
+        interventions: Vec<Intervention>,
+    ) -> SimulationResult {
         let mut current_metabolic = ComprehensiveMetabolicNetwork::new_resting_state();
         let mut current_epigenetic = EpigeneticProfile::new();
         let mut current_proteomic = ProteomicsProfile::new();
@@ -121,17 +125,23 @@ impl SimulationEngine {
             time_hours: self.current_time_hours,
             metabolic_state: MetabolicSnapshot {
                 glucose_mg_per_dl: 90.0 + metabolic.carbohydrate_metabolism.glycolysis_rate / 10.0,
-                insulin_uiu_per_ml: 8.0 + metabolic.carbohydrate_metabolism.glycogen_synthesis_rate / 20.0,
+                insulin_uiu_per_ml: 8.0
+                    + metabolic.carbohydrate_metabolism.glycogen_synthesis_rate / 20.0,
                 ketones_mmol_per_l: metabolic.lipid_metabolism.ketogenesis_rate / 10.0,
                 lactate_mmol_per_l: 1.0 + metabolic.carbohydrate_metabolism.glycolysis_rate / 100.0,
                 fatty_acids_mmol_per_l: metabolic.lipid_metabolism.fatty_acid_oxidation_rate / 20.0,
                 atp_production_rate: metabolic.energy_coupling.atp_production_rate,
-                oxygen_consumption_ml_min: 250.0 + metabolic.energy_coupling.atp_production_rate / 4.0,
+                oxygen_consumption_ml_min: 250.0
+                    + metabolic.energy_coupling.atp_production_rate / 4.0,
             },
             epigenetic_state: EpigeneticSnapshot {
                 global_methylation: epigenetic.methylation_patterns.global_methylation_level,
-                histone_acetylation_index: epigenetic.histone_modifications.h3k27ac_sites.len() as f64 / 100.0,
-                chromatin_accessibility: epigenetic.chromatin_accessibility.open_chromatin_percentage,
+                histone_acetylation_index: epigenetic.histone_modifications.h3k27ac_sites.len()
+                    as f64
+                    / 100.0,
+                chromatin_accessibility: epigenetic
+                    .chromatin_accessibility
+                    .open_chromatin_percentage,
                 epigenetic_age: epigenetic.age_related_changes.average_epigenetic_age(),
             },
             proteomic_state: ProteomicSnapshot {
@@ -141,10 +151,12 @@ impl SimulationEngine {
                 protein_degradation_rate: 230.0 + circadian_factor * 30.0,
             },
             physiological_metrics: PhysiologicalMetrics {
-                heart_rate_bpm: human.systems.cardiovascular.heart.heart_rate_bpm + circadian_factor * 10.0,
+                heart_rate_bpm: human.systems.cardiovascular.heart.heart_rate_bpm
+                    + circadian_factor * 10.0,
                 blood_pressure_systolic: 120.0 + circadian_factor * 10.0,
                 blood_pressure_diastolic: 80.0 + circadian_factor * 5.0,
-                respiratory_rate: human.systems.respiratory.breathing_pattern.rate_bpm + circadian_factor * 2.0,
+                respiratory_rate: human.systems.respiratory.breathing_pattern.rate_bpm
+                    + circadian_factor * 2.0,
                 core_temperature_c: 37.0 + circadian_factor * 0.3,
                 cardiac_output_l_min: human.cardiac_output_l_per_min() + circadian_factor * 0.5,
             },
@@ -171,11 +183,16 @@ impl SimulationEngine {
                 metabolic.carbohydrate_metabolism.gluconeogenesis_rate *= 1.0 + factor;
                 metabolic.lipid_metabolism.ketogenesis_rate *= 3.0 + factor * 2.0;
             }
-            InterventionType::NutrientIntake { nutrient_type, amount } => {
+            InterventionType::NutrientIntake {
+                nutrient_type,
+                amount,
+            } => {
                 metabolic.simulate_nutrient_intake(*nutrient_type, *amount);
             }
-            InterventionType::Medication { drug_name: _, dose: _ } => {
-            }
+            InterventionType::Medication {
+                drug_name: _,
+                dose: _,
+            } => {}
             InterventionType::Sleep => {
                 metabolic.energy_coupling.atp_consumption_rate *= 0.7;
                 metabolic.amino_acid_metabolism.protein_synthesis_rate *= 1.3;
@@ -183,21 +200,27 @@ impl SimulationEngine {
         }
     }
 
-    fn update_metabolic_state(&self, metabolic: &mut ComprehensiveMetabolicNetwork, delta_hours: f64) {
+    fn update_metabolic_state(
+        &self,
+        metabolic: &mut ComprehensiveMetabolicNetwork,
+        delta_hours: f64,
+    ) {
         let decay_factor = (-0.1 * delta_hours).exp();
 
         metabolic.carbohydrate_metabolism.glycolysis_rate *= decay_factor;
         metabolic.lipid_metabolism.fatty_acid_oxidation_rate *= decay_factor;
 
-        metabolic.carbohydrate_metabolism.glycolysis_rate = metabolic.carbohydrate_metabolism.glycolysis_rate.max(50.0);
-        metabolic.lipid_metabolism.fatty_acid_oxidation_rate = metabolic.lipid_metabolism.fatty_acid_oxidation_rate.max(30.0);
+        metabolic.carbohydrate_metabolism.glycolysis_rate =
+            metabolic.carbohydrate_metabolism.glycolysis_rate.max(50.0);
+        metabolic.lipid_metabolism.fatty_acid_oxidation_rate = metabolic
+            .lipid_metabolism
+            .fatty_acid_oxidation_rate
+            .max(30.0);
     }
 
-    fn update_epigenetic_state(&self, _epigenetic: &mut EpigeneticProfile, _delta_hours: f64) {
-    }
+    fn update_epigenetic_state(&self, _epigenetic: &mut EpigeneticProfile, _delta_hours: f64) {}
 
-    fn update_proteomic_state(&self, _proteomic: &mut ProteomicsProfile, _delta_hours: f64) {
-    }
+    fn update_proteomic_state(&self, _proteomic: &mut ProteomicsProfile, _delta_hours: f64) {}
 
     fn analyze_simulation_results(&self) -> SimulationResult {
         if self.state_history.is_empty() {
@@ -212,7 +235,8 @@ impl SimulationEngine {
             };
         }
 
-        let glucose_values: Vec<f64> = self.state_history
+        let glucose_values: Vec<f64> = self
+            .state_history
             .iter()
             .map(|s| s.metabolic_state.glucose_mg_per_dl)
             .collect();
@@ -222,20 +246,27 @@ impl SimulationEngine {
         let glucose_variance = glucose_values
             .iter()
             .map(|g| (g - average_glucose).powi(2))
-            .sum::<f64>() / glucose_values.len() as f64;
+            .sum::<f64>()
+            / glucose_values.len() as f64;
         let glucose_variability = glucose_variance.sqrt();
 
-        let average_heart_rate = self.state_history
+        let average_heart_rate = self
+            .state_history
             .iter()
             .map(|s| s.physiological_metrics.heart_rate_bpm)
-            .sum::<f64>() / self.state_history.len() as f64;
+            .sum::<f64>()
+            / self.state_history.len() as f64;
 
         let metabolic_stress_score = self.calculate_metabolic_stress();
 
-        let initial_epi_age = self.state_history.first()
+        let initial_epi_age = self
+            .state_history
+            .first()
             .map(|s| s.epigenetic_state.epigenetic_age)
             .unwrap_or(0.0);
-        let final_epi_age = self.state_history.last()
+        let final_epi_age = self
+            .state_history
+            .last()
             .map(|s| s.epigenetic_state.epigenetic_age)
             .unwrap_or(0.0);
         let epigenetic_drift = final_epi_age - initial_epi_age;
@@ -257,13 +288,15 @@ impl SimulationEngine {
         self.state_history
             .iter()
             .map(|s| {
-                let glucose_stress = ((s.metabolic_state.glucose_mg_per_dl - 90.0).abs() / 90.0).min(1.0);
+                let glucose_stress =
+                    ((s.metabolic_state.glucose_mg_per_dl - 90.0).abs() / 90.0).min(1.0);
                 let ketone_stress = (s.metabolic_state.ketones_mmol_per_l / 5.0).min(1.0);
                 let lactate_stress = ((s.metabolic_state.lactate_mmol_per_l - 1.0) / 10.0).min(1.0);
 
                 (glucose_stress + ketone_stress + lactate_stress) / 3.0
             })
-            .sum::<f64>() / self.state_history.len() as f64
+            .sum::<f64>()
+            / self.state_history.len() as f64
     }
 
     fn identify_key_events(&self) -> Vec<KeyEvent> {
@@ -296,7 +329,9 @@ impl SimulationEngine {
 
             if i > 0 {
                 let prev_state = &self.state_history[i - 1];
-                let hr_change = (state.physiological_metrics.heart_rate_bpm - prev_state.physiological_metrics.heart_rate_bpm).abs();
+                let hr_change = (state.physiological_metrics.heart_rate_bpm
+                    - prev_state.physiological_metrics.heart_rate_bpm)
+                    .abs();
                 if hr_change > 30.0 {
                     events.push(KeyEvent {
                         time_hours: state.time_hours,
@@ -314,19 +349,23 @@ impl SimulationEngine {
         let mut series: HashMap<String, Vec<(f64, f64)>> = HashMap::new();
 
         for state in &self.state_history {
-            series.entry("glucose".to_string())
+            series
+                .entry("glucose".to_string())
                 .or_default()
                 .push((state.time_hours, state.metabolic_state.glucose_mg_per_dl));
 
-            series.entry("heart_rate".to_string())
+            series
+                .entry("heart_rate".to_string())
                 .or_default()
                 .push((state.time_hours, state.physiological_metrics.heart_rate_bpm));
 
-            series.entry("ketones".to_string())
+            series
+                .entry("ketones".to_string())
                 .or_default()
                 .push((state.time_hours, state.metabolic_state.ketones_mmol_per_l));
 
-            series.entry("atp_production".to_string())
+            series
+                .entry("atp_production".to_string())
                 .or_default()
                 .push((state.time_hours, state.metabolic_state.atp_production_rate));
         }
@@ -344,10 +383,20 @@ pub struct Intervention {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum InterventionType {
-    Exercise { intensity: f64 },
-    Fasting { hours: f64 },
-    NutrientIntake { nutrient_type: crate::metabolism::comprehensive_pathways::NutrientType, amount: f64 },
-    Medication { drug_name: String, dose: f64 },
+    Exercise {
+        intensity: f64,
+    },
+    Fasting {
+        hours: f64,
+    },
+    NutrientIntake {
+        nutrient_type: crate::metabolism::comprehensive_pathways::NutrientType,
+        amount: f64,
+    },
+    Medication {
+        drug_name: String,
+        dose: f64,
+    },
     Sleep,
 }
 
@@ -415,13 +464,11 @@ mod tests {
         let mut engine = SimulationEngine::new(1.0, 24.0);
         let human = Human::new_adult_male("sim_test".to_string(), 30.0, 175.0, 75.0);
 
-        let interventions = vec![
-            Intervention {
-                start_time_hours: 8.0,
-                duration_hours: 1.0,
-                intervention_type: InterventionType::Exercise { intensity: 0.6 },
-            },
-        ];
+        let interventions = vec![Intervention {
+            start_time_hours: 8.0,
+            duration_hours: 1.0,
+            intervention_type: InterventionType::Exercise { intensity: 0.6 },
+        }];
 
         let result = engine.run_simulation(&human, interventions);
 
@@ -448,16 +495,17 @@ mod tests {
         let mut engine = SimulationEngine::new(1.0, 24.0);
         let human = Human::new_adult_male("fast_test".to_string(), 30.0, 175.0, 75.0);
 
-        let interventions = vec![
-            Intervention {
-                start_time_hours: 0.0,
-                duration_hours: 16.0,
-                intervention_type: InterventionType::Fasting { hours: 16.0 },
-            },
-        ];
+        let interventions = vec![Intervention {
+            start_time_hours: 0.0,
+            duration_hours: 16.0,
+            intervention_type: InterventionType::Fasting { hours: 16.0 },
+        }];
 
         let result = engine.run_simulation(&human, interventions);
 
-        assert!(result.key_events.iter().any(|e| matches!(e.event_type, EventType::Ketosis)));
+        assert!(result
+            .key_events
+            .iter()
+            .any(|e| matches!(e.event_type, EventType::Ketosis)));
     }
 }
