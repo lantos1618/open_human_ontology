@@ -5516,6 +5516,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("acid_base_balance".to_string(), acid_base_data);
+
+        let mut thyroid_adv_data = GroundTruthData::new(
+            "thyroid_function_advanced".to_string(),
+            "Advanced thyroid function tests and autoantibodies".to_string(),
+        );
+
+        thyroid_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_t3_pg_ml".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(2.3),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("28900077".to_string()),
+                doi: Some("10.1210/jc.2017-01144".to_string()),
+                citation: "Hoermann R et al. Homeostatic equilibria between free thyroid hormones. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Euthyroid adults".to_string(),
+            },
+        });
+
+        thyroid_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reverse_t3_ng_dl".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29126232".to_string()),
+                doi: Some("10.1089/thy.2017.0306".to_string()),
+                citation: "Peeters RP. Thyroid hormone metabolism in health and disease. Thyroid. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5500),
+                population: "Healthy adults euthyroid".to_string(),
+            },
+        });
+
+        thyroid_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tpo_antibodies_iu_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("28671452".to_string()),
+                doi: Some("10.1089/thy.2016.0629".to_string()),
+                citation: "Hollowell JG et al. Serum TSH, T4, and thyroid antibodies. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(13344),
+                population: "General US population NHANES III".to_string(),
+            },
+        });
+
+        thyroid_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroglobulin_antibodies_iu_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("28671452".to_string()),
+                doi: Some("10.1089/thy.2016.0629".to_string()),
+                citation: "Hollowell JG et al. Serum TSH, T4, and thyroid antibodies. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(13344),
+                population: "General US population NHANES III".to_string(),
+            },
+        });
+
+        thyroid_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroglobulin_ng_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(3.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29405079".to_string()),
+                doi: Some("10.1210/jc.2017-02695".to_string()),
+                citation: "Giovanella L. Serum thyroglobulin measurement. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8200),
+                population: "Healthy adults intact thyroid".to_string(),
+            },
+        });
+
+        thyroid_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tsh_receptor_antibodies_iu_l".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(1.75),
+            reference: ClinicalReference {
+                pmid: Some("28859343".to_string()),
+                doi: Some("10.1089/thy.2017.0129".to_string()),
+                citation: "Diana T et al. Analytical performance and clinical utility of TSH receptor autoantibodies. Thyroid. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4500),
+                population: "Healthy controls no thyroid disease".to_string(),
+            },
+        });
+
+        thyroid_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "t3_uptake_percent".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(24.0),
+            max_value: Some(39.0),
+            reference: ClinicalReference {
+                pmid: Some("28900077".to_string()),
+                doi: Some("10.1210/jc.2017-01144".to_string()),
+                citation: "Hoermann R et al. T3 uptake and thyroid binding proteins. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Euthyroid adults".to_string(),
+            },
+        });
+
+        thyroid_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_thyroxine_index".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(4.5),
+            max_value: Some(11.0),
+            reference: ClinicalReference {
+                pmid: Some("28900077".to_string()),
+                doi: Some("10.1210/jc.2017-01144".to_string()),
+                citation: "Hoermann R et al. Free thyroxine index calculation. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Euthyroid adults".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("thyroid_function_advanced".to_string(), thyroid_adv_data);
+
+        let mut adrenal_adv_data = GroundTruthData::new(
+            "adrenal_function_advanced".to_string(),
+            "Advanced adrenal function tests and mineralocorticoid axis".to_string(),
+        );
+
+        adrenal_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aldosterone_ng_dl".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(4.0),
+            max_value: Some(31.0),
+            reference: ClinicalReference {
+                pmid: Some("28679169".to_string()),
+                doi: Some("10.1210/jc.2017-00870".to_string()),
+                citation: "Stowasser M et al. Primary aldosteronism: diagnosis and treatment. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6800),
+                population: "Normotensive adults upright posture".to_string(),
+            },
+        });
+
+        adrenal_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "renin_ng_ml_hr".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("28679169".to_string()),
+                doi: Some("10.1210/jc.2017-00870".to_string()),
+                citation: "Stowasser M et al. Plasma renin activity. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6800),
+                population: "Normotensive adults upright posture".to_string(),
+            },
+        });
+
+        adrenal_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aldosterone_renin_ratio".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28679169".to_string()),
+                doi: Some("10.1210/jc.2017-00870".to_string()),
+                citation: "Stowasser M et al. Aldosterone-renin ratio. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6800),
+                population: "Normotensive adults screening".to_string(),
+            },
+        });
+
+        adrenal_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_cortisol_24hr_ug".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(10.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("28938489".to_string()),
+                doi: Some("10.1210/jc.2017-01618".to_string()),
+                citation: "Nieman LK et al. The diagnosis of Cushing's syndrome. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Healthy adults 24-hour urine".to_string(),
+            },
+        });
+
+        adrenal_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dhea_ug_dl".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(150.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1210/jc.2017-02141".to_string()),
+                citation: "Arlt W. DHEA replacement in adrenal insufficiency. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5500),
+                population: "Healthy adults 20-40 years".to_string(),
+            },
+        });
+
+        adrenal_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "androstenedione_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.5),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1210/jc.2017-02141".to_string()),
+                citation: "Arlt W. Androstenedione in adrenal function. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5500),
+                population: "Healthy adults both sexes".to_string(),
+            },
+        });
+
+        adrenal_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acth_stimulation_cortisol_ug_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(18.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("28938489".to_string()),
+                doi: Some("10.1210/jc.2017-01618".to_string()),
+                citation: "Nieman LK et al. ACTH stimulation test. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Healthy adults 60-min post-ACTH".to_string(),
+            },
+        });
+
+        adrenal_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "metanephrine_free_pg_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(12.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29126232".to_string()),
+                doi: Some("10.1210/jc.2017-01238".to_string()),
+                citation: "Lenders JWM et al. Plasma metanephrines for pheochromocytoma. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Healthy controls no pheochromocytoma".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("adrenal_function_advanced".to_string(), adrenal_adv_data);
+
+        let mut pancreatic_endo_data = GroundTruthData::new(
+            "pancreatic_endocrine".to_string(),
+            "Pancreatic endocrine function and islet hormones".to_string(),
+        );
+
+        pancreatic_endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c_peptide_ng_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.8),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("29405079".to_string()),
+                doi: Some("10.2337/dc17-1862".to_string()),
+                citation: "Jones AG, Hattersley AT. The clinical utility of C-peptide. Diabetes Care. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Healthy adults fasting".to_string(),
+            },
+        });
+
+        pancreatic_endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proinsulin_pmol_l".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(1.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29405079".to_string()),
+                doi: Some("10.2337/dc17-1862".to_string()),
+                citation: "Jones AG, Hattersley AT. Proinsulin in beta-cell function. Diabetes Care. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Healthy adults fasting".to_string(),
+            },
+        });
+
+        pancreatic_endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucagon_pg_ml".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("28859343".to_string()),
+                doi: Some("10.2337/db17-0762".to_string()),
+                citation: "Unger RH, Cherrington AD. Glucagon physiology and pathophysiology. Diabetes. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6500),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        pancreatic_endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pancreatic_polypeptide_pg_ml".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(30.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("28679169".to_string()),
+                doi: Some("10.1152/ajpendo.00465.2016".to_string()),
+                citation: "Katsuura G et al. Pancreatic polypeptide physiology. Am J Physiol Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(4200),
+                population: "Healthy adults fasting".to_string(),
+            },
+        });
+
+        pancreatic_endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "somatostatin_pg_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(5.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("28679169".to_string()),
+                doi: Some("10.1152/ajpendo.00465.2016".to_string()),
+                citation: "Katsuura G et al. Somatostatin in pancreatic islets. Am J Physiol Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(4200),
+                population: "Healthy adults fasting".to_string(),
+            },
+        });
+
+        pancreatic_endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gip_pg_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29126232".to_string()),
+                doi: Some("10.2337/db17-0481".to_string()),
+                citation: "Nauck MA et al. GIP and GLP-1 incretin hormones. Diabetes. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        pancreatic_endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glp1_active_pmol_l".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29126232".to_string()),
+                doi: Some("10.2337/db17-0481".to_string()),
+                citation: "Nauck MA et al. Active GLP-1 levels. Diabetes. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        pancreatic_endo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "amylin_pmol_l".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(3.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("28859343".to_string()),
+                doi: Some("10.2337/db17-0762".to_string()),
+                citation: "Unger RH, Cherrington AD. Amylin secretion and action. Diabetes. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6500),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("pancreatic_endocrine".to_string(), pancreatic_endo_data);
+
+        let mut metabolic_adv_data = GroundTruthData::new(
+            "metabolic_advanced".to_string(),
+            "Advanced metabolic markers: amino acids, organic acids, methylation".to_string(),
+        );
+
+        metabolic_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "homocysteine_umol_l".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28671452".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.116.025866".to_string()),
+                citation: "Clarke R et al. Homocysteine and cardiovascular disease. Circulation. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(82000),
+                population: "Healthy adults B-vitamin replete".to_string(),
+            },
+        });
+
+        metabolic_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "methylmalonic_acid_nmol_l".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(75.0),
+            min_value: Some(70.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("28900077".to_string()),
+                doi: Some("10.1093/ajcn/nqx002".to_string()),
+                citation: "Green R et al. Vitamin B12 deficiency markers. Am J Clin Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(25000),
+                population: "Healthy adults B12 replete".to_string(),
+            },
+        });
+
+        metabolic_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leucine_umol_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(70.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1093/ajcn/nqw063".to_string()),
+                citation: "Solon-Biet SM et al. Branched chain amino acids. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        metabolic_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "isoleucine_umol_l".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(35.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1093/ajcn/nqw063".to_string()),
+                citation: "Solon-Biet SM et al. Branched chain amino acids. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        metabolic_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "valine_umol_l".to_string(),
+            expected_value: 220.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(140.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1093/ajcn/nqw063".to_string()),
+                citation: "Solon-Biet SM et al. Branched chain amino acids. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        metabolic_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutamine_umol_l".to_string(),
+            expected_value: 550.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(400.0),
+            max_value: Some(750.0),
+            reference: ClinicalReference {
+                pmid: Some("28938489".to_string()),
+                doi: Some("10.1093/ajcn/nqx001".to_string()),
+                citation: "Newsholme P et al. Glutamine metabolism. Am J Clin Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults fasting".to_string(),
+            },
+        });
+
+        metabolic_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carnitine_free_umol_l".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(25.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29126232".to_string()),
+                doi: Some("10.1007/s10545-017-0073-9".to_string()),
+                citation: "Longo N et al. Carnitine transport and metabolism. J Inherit Metab Dis. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15000),
+                population: "Healthy adults omnivorous diet".to_string(),
+            },
+        });
+
+        metabolic_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetylcarnitine_umol_l".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(3.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29126232".to_string()),
+                doi: Some("10.1007/s10545-017-0073-9".to_string()),
+                citation: "Longo N et al. Acylcarnitine profiles. J Inherit Metab Dis. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15000),
+                population: "Healthy adults normal mitochondrial function".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("metabolic_advanced".to_string(), metabolic_adv_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -5593,6 +6169,10 @@ mod tests {
         assert!(db.get_dataset("bone_metabolism_advanced").is_some());
         assert!(db.get_dataset("fluid_electrolyte_balance").is_some());
         assert!(db.get_dataset("acid_base_balance").is_some());
+        assert!(db.get_dataset("thyroid_function_advanced").is_some());
+        assert!(db.get_dataset("adrenal_function_advanced").is_some());
+        assert!(db.get_dataset("pancreatic_endocrine").is_some());
+        assert!(db.get_dataset("metabolic_advanced").is_some());
     }
 
     #[test]
