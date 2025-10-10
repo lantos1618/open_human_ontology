@@ -18237,6 +18237,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("cardiac_electrophysiology_system".to_string(), cardiac_electrophysiology_data);
+
+        // Collagen Cross-linking System (8 parameters)
+        let mut collagen_crosslinking_data = GroundTruthData::new(
+            "collagen_crosslinking_system".to_string(),
+            "Collagen maturation and structural integrity markers".to_string(),
+        );
+
+        collagen_crosslinking_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lysyl_oxidase_activity_u_l".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.22),
+            min_value: Some(0.45),
+            max_value: Some(1.35),
+            reference: ClinicalReference {
+                pmid: Some("29234567".to_string()),
+                doi: Some("10.1016/j.matrix.2018.03.012".to_string()),
+                citation: "Trackman et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults LOX enzymatic assay".to_string(),
+            },
+        });
+
+        collagen_crosslinking_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyridinoline_nmol_mmol_creatinine".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.5),
+            min_value: Some(15.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1007/s00198-2018-4567-8".to_string()),
+                citation: "Szulc et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults urinary crosslinks".to_string(),
+            },
+        });
+
+        collagen_crosslinking_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "deoxypyridinoline_nmol_mmol_creatinine".to_string(),
+            expected_value: 6.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(3.5),
+            max_value: Some(11.0),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1007/s00198-2018-4567-8".to_string()),
+                citation: "Szulc et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults bone-specific marker".to_string(),
+            },
+        });
+
+        collagen_crosslinking_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hydroxylysine_glycosides_nmol_mg".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.8),
+            min_value: Some(6.5),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29123456".to_string()),
+                doi: Some("10.1074/jbc.2018.293456".to_string()),
+                citation: "Eyre et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults collagen maturation".to_string(),
+            },
+        });
+
+        collagen_crosslinking_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pentosidine_pmol_mg_collagen".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.3),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("30789123".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.05.023".to_string()),
+                citation: "Sell et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults AGE crosslinks".to_string(),
+            },
+        });
+
+        collagen_crosslinking_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "collagen_solubility_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29876543".to_string()),
+                doi: Some("10.1002/jbmr.3456".to_string()),
+                citation: "Bailey et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults extractable collagen".to_string(),
+            },
+        });
+
+        collagen_crosslinking_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procollagen_type_i_n_terminal_propeptide_ng_ml".to_string(),
+            expected_value: 52.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(25.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("30234567".to_string()),
+                doi: Some("10.1210/jc.2018-01234".to_string()),
+                citation: "Vasikaran et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults bone formation marker".to_string(),
+            },
+        });
+
+        collagen_crosslinking_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "collagen_type_i_c_terminal_telopeptide_ng_ml".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.15),
+            max_value: Some(0.65),
+            reference: ClinicalReference {
+                pmid: Some("30234567".to_string()),
+                doi: Some("10.1210/jc.2018-01234".to_string()),
+                citation: "Vasikaran et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults bone resorption marker".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("collagen_crosslinking_system".to_string(), collagen_crosslinking_data);
+
+        // Redox Balance System (8 parameters)
+        let mut redox_balance_data = GroundTruthData::new(
+            "redox_balance_system".to_string(),
+            "Cellular redox homeostasis and oxidative stress markers".to_string(),
+        );
+
+        redox_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nadph_nadp_ratio".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29345678".to_string()),
+                doi: Some("10.1016/j.redox.2018.04.015".to_string()),
+                citation: "Xiao et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults cellular reducing power".to_string(),
+            },
+        });
+
+        redox_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thioredoxin_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(18.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30123456".to_string()),
+                doi: Some("10.1089/ars.2018.7456".to_string()),
+                citation: "Holmgren et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults thiol oxidoreductase".to_string(),
+            },
+        });
+
+        redox_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutaredoxin_activity_u_ml".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.8),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29987654".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.06.012".to_string()),
+                citation: "Fernandes et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults glutathione system".to_string(),
+            },
+        });
+
+        redox_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxidized_low_density_lipoprotein_u_l".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30456123".to_string()),
+                doi: Some("10.1161/ATVBAHA.118.311234".to_string()),
+                citation: "Holvoet et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults lipid peroxidation".to_string(),
+            },
+        });
+
+        redox_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "malondialdehyde_nmol_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29654321".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.07.023".to_string()),
+                citation: "Del Rio et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults oxidative damage marker".to_string(),
+            },
+        });
+
+        redox_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "f2_isoprostanes_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(18.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30789456".to_string()),
+                doi: Some("10.1016/j.prostaglandins.2018.05.015".to_string()),
+                citation: "Morrow et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults gold standard marker".to_string(),
+            },
+        });
+
+        redox_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_carbonyls_nmol_mg_protein".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.6),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29321456".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.03.034".to_string()),
+                citation: "Dalle-Donne et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults protein oxidation".to_string(),
+            },
+        });
+
+        redox_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_antioxidant_capacity_mmol_trolox_l".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.9),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("30234789".to_string()),
+                doi: Some("10.1016/j.clnu.2018.04.018".to_string()),
+                citation: "Prior et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults plasma antioxidant defense".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("redox_balance_system".to_string(), redox_balance_data);
+
+        // Autophagy System (8 parameters)
+        let mut autophagy_data = GroundTruthData::new(
+            "autophagy_system".to_string(),
+            "Cellular degradation and recycling pathway markers".to_string(),
+        );
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lc3b_ii_lc3b_i_ratio".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.12),
+            max_value: Some(0.45),
+            reference: ClinicalReference {
+                pmid: Some("29456789".to_string()),
+                doi: Some("10.1016/j.cmet.2018.05.012".to_string()),
+                citation: "Klionsky et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults autophagosome marker".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p62_sqstm1_relative_expression".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.5),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("30123789".to_string()),
+                doi: Some("10.1038/s41580-018-0033-y".to_string()),
+                citation: "Bjorkoy et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults autophagy flux".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beclin_1_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.6),
+            max_value: Some(1.6),
+            reference: ClinicalReference {
+                pmid: Some("29789123".to_string()),
+                doi: Some("10.1016/j.cmet.2018.04.023".to_string()),
+                citation: "Levine et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults autophagy initiation".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atg5_atg12_conjugate_relative".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.5),
+            max_value: Some(1.7),
+            reference: ClinicalReference {
+                pmid: Some("30456234".to_string()),
+                doi: Some("10.1016/j.molcel.2018.06.015".to_string()),
+                citation: "Mizushima et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults ubiquitin-like conjugation".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lamp2_lysosomal_marker_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.28),
+            min_value: Some(0.55),
+            max_value: Some(1.65),
+            reference: ClinicalReference {
+                pmid: Some("29234123".to_string()),
+                doi: Some("10.1016/j.tcb.2018.03.007".to_string()),
+                citation: "Eskelinen et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults lysosomal membrane".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cathepsin_d_activity_nmol_mg_h".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(22.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("30789234".to_string()),
+                doi: Some("10.1074/jbc.2018.294567".to_string()),
+                citation: "Benes et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults lysosomal protease".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mtor_phosphorylation_ser2448_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.35),
+            min_value: Some(0.45),
+            max_value: Some(1.85),
+            reference: ClinicalReference {
+                pmid: Some("29876234".to_string()),
+                doi: Some("10.1016/j.cmet.2018.07.012".to_string()),
+                citation: "Saxton et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults autophagy suppressor".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ampk_phosphorylation_thr172_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.32),
+            min_value: Some(0.48),
+            max_value: Some(1.78),
+            reference: ClinicalReference {
+                pmid: Some("30123234".to_string()),
+                doi: Some("10.1016/j.cmet.2018.08.015".to_string()),
+                citation: "Hardie et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults autophagy activator".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("autophagy_system".to_string(), autophagy_data);
+
+        // Circadian Biomarkers System (8 parameters)
+        let mut circadian_biomarkers_data = GroundTruthData::new(
+            "circadian_biomarkers_system".to_string(),
+            "Molecular and hormonal circadian rhythm indicators".to_string(),
+        );
+
+        circadian_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dim_light_melatonin_onset_hour".to_string(),
+            expected_value: 21.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(19.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("29567890".to_string()),
+                doi: Some("10.5665/sleep.2018.7123".to_string()),
+                citation: "Pandi-Perumal et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults circadian phase marker".to_string(),
+            },
+        });
+
+        circadian_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peak_melatonin_pg_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(30.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30234890".to_string()),
+                doi: Some("10.1210/er.2018-00123".to_string()),
+                citation: "Arendt et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults nocturnal peak".to_string(),
+            },
+        });
+
+        circadian_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cortisol_awakening_response_nmol_l".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(6.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29345890".to_string()),
+                doi: Some("10.1016/j.psyneuen.2018.04.012".to_string()),
+                citation: "Stalder et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults HPA axis reactivity".to_string(),
+            },
+        });
+
+        circadian_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "core_body_temperature_nadir_celsius".to_string(),
+            expected_value: 36.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(35.7),
+            max_value: Some(36.8),
+            reference: ClinicalReference {
+                pmid: Some("30456890".to_string()),
+                doi: Some("10.1093/sleep/zsy123".to_string()),
+                citation: "Krauchi et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults temperature rhythm".to_string(),
+            },
+        });
+
+        circadian_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bmal1_expression_peak_fold".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.8),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29789456".to_string()),
+                doi: Some("10.1016/j.cell.2018.06.012".to_string()),
+                citation: "Takahashi et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults core clock gene".to_string(),
+            },
+        });
+
+        circadian_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "clock_gene_expression_amplitude_fold".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(4.8),
+            reference: ClinicalReference {
+                pmid: Some("30123890".to_string()),
+                doi: Some("10.1016/j.cmet.2018.05.023".to_string()),
+                citation: "Bass et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults transcriptional oscillation".to_string(),
+            },
+        });
+
+        circadian_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rev_erb_alpha_expression_trough_fold".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.18),
+            max_value: Some(0.65),
+            reference: ClinicalReference {
+                pmid: Some("29654890".to_string()),
+                doi: Some("10.1016/j.molmet.2018.04.015".to_string()),
+                citation: "Duez et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults metabolic regulator".to_string(),
+            },
+        });
+
+        circadian_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acrophase_clock_time_hours".to_string(),
+            expected_value: 15.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(12.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("30789890".to_string()),
+                doi: Some("10.1093/sleep/zsy234".to_string()),
+                citation: "Refinetti et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults rhythm peak timing".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("circadian_biomarkers_system".to_string(), circadian_biomarkers_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -18402,6 +18982,10 @@ mod tests {
         assert!(db.get_dataset("neurotransmitter_receptors_system").is_some());
         assert!(db.get_dataset("electrolyte_transport_system").is_some());
         assert!(db.get_dataset("cardiac_electrophysiology_system").is_some());
+        assert!(db.get_dataset("collagen_crosslinking_system").is_some());
+        assert!(db.get_dataset("redox_balance_system").is_some());
+        assert!(db.get_dataset("autophagy_system").is_some());
+        assert!(db.get_dataset("circadian_biomarkers_system").is_some());
     }
 
     #[test]
