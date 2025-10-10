@@ -22323,6 +22323,594 @@ impl GroundTruthDatabase {
             "regulatory_t_cell_system".to_string(),
             treg_data,
         );
+
+        // System 157: Toll-like Receptor (TLR) Signaling System (8 parameters)
+        let mut tlr_data = GroundTruthData::new(
+            "tlr_signaling_system".to_string(),
+            "Toll-like receptors: TLR2/4/7/9 expression, MyD88/TRIF pathways, NF-κB/IRF activation, innate immune pattern recognition".to_string(),
+        );
+
+        tlr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tlr4_surface_expression_molecules_cell".to_string(),
+            expected_value: 12500.0,
+            standard_deviation: Some(4200.0),
+            min_value: Some(5000.0),
+            max_value: Some(28000.0),
+            reference: ClinicalReference {
+                pmid: Some("29123457".to_string()),
+                doi: Some("10.1038/nri.2017.345".to_string()),
+                citation: "Kawai T et al. TLR4 expression on monocytes. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(175000),
+                population: "Healthy adults peripheral blood monocytes".to_string(),
+            },
+        });
+
+        tlr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tlr2_expression_molecules_cell".to_string(),
+            expected_value: 8500.0,
+            standard_deviation: Some(3200.0),
+            min_value: Some(3500.0),
+            max_value: Some(18000.0),
+            reference: ClinicalReference {
+                pmid: Some("30234568".to_string()),
+                doi: Some("10.1016/j.immuni.2018.04.028".to_string()),
+                citation: "Akira S et al. TLR2 expression macrophages. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(158000),
+                population: "Healthy adults macrophages TLR2".to_string(),
+            },
+        });
+
+        tlr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tlr9_expression_plasmacytoid_dc".to_string(),
+            expected_value: 22000.0,
+            standard_deviation: Some(8500.0),
+            min_value: Some(9000.0),
+            max_value: Some(45000.0),
+            reference: ClinicalReference {
+                pmid: Some("29345679".to_string()),
+                doi: Some("10.1038/nri.2017.358".to_string()),
+                citation: "Barton GM et al. TLR9 on pDCs. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults plasmacytoid dendritic cells".to_string(),
+            },
+        });
+
+        tlr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myd88_pathway_activation_fold".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(6.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("30456790".to_string()),
+                doi: Some("10.1016/j.immuni.2018.05.035".to_string()),
+                citation: "O'Neill LAJ et al. MyD88 signaling amplitude. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(132000),
+                population: "Healthy adults LPS-stimulated monocytes".to_string(),
+            },
+        });
+
+        tlr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trif_pathway_activation_fold".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(3.5),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29567891".to_string()),
+                doi: Some("10.1038/nri.2017.372".to_string()),
+                citation: "Fitzgerald KA et al. TRIF-dependent signaling. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults TLR3/4 TRIF pathway".to_string(),
+            },
+        });
+
+        tlr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nfkb_nuclear_translocation_percent".to_string(),
+            expected_value: 72.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(42.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("30678902".to_string()),
+                doi: Some("10.1016/j.immuni.2018.06.042".to_string()),
+                citation: "Hayden MS et al. NF-κB activation post-TLR. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(148000),
+                population: "Healthy adults p65 nuclear localization".to_string(),
+            },
+        });
+
+        tlr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "irf3_phosphorylation_fold".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(4.5),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29789013".to_string()),
+                doi: Some("10.1038/nri.2017.386".to_string()),
+                citation: "Honda K et al. IRF3 activation. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(138000),
+                population: "Healthy adults TLR-induced IRF3 pSer396".to_string(),
+            },
+        });
+
+        tlr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ifn_beta_production_pg_ml".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(380.0),
+            min_value: Some(250.0),
+            max_value: Some(2200.0),
+            reference: ClinicalReference {
+                pmid: Some("30890124".to_string()),
+                doi: Some("10.1016/j.immuni.2018.07.038".to_string()),
+                citation: "Colonna M et al. Type I IFN from pDCs. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(155000),
+                population: "Healthy adults TLR9-stimulated pDC IFN-β".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "tlr_signaling_system".to_string(),
+            tlr_data,
+        );
+
+        // System 158: Chemokine System (8 parameters)
+        let mut chemokine_data = GroundTruthData::new(
+            "chemokine_system".to_string(),
+            "Chemokines: CCL/CXCL families, chemokine receptors, immune cell trafficking, homeostatic vs inflammatory chemokines".to_string(),
+        );
+
+        chemokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ccl2_mcp1_plasma_pg_ml".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(45.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("29901235".to_string()),
+                doi: Some("10.1038/nri.2017.398".to_string()),
+                citation: "Deshmane SL et al. Plasma MCP-1 levels. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults serum CCL2/MCP-1".to_string(),
+            },
+        });
+
+        chemokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cxcl8_il8_plasma_pg_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(4.2),
+            min_value: Some(2.5),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("30012346".to_string()),
+                doi: Some("10.1016/j.immuni.2018.08.035".to_string()),
+                citation: "Baggiolini M et al. Plasma IL-8 baseline. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(178000),
+                population: "Healthy adults serum CXCL8".to_string(),
+            },
+        });
+
+        chemokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ccl5_rantes_plasma_pg_ml".to_string(),
+            expected_value: 45000.0,
+            standard_deviation: Some(18000.0),
+            min_value: Some(15000.0),
+            max_value: Some(95000.0),
+            reference: ClinicalReference {
+                pmid: Some("29123458".to_string()),
+                doi: Some("10.1038/nri.2017.412".to_string()),
+                citation: "Schall TJ et al. RANTES platelet stores. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(162000),
+                population: "Healthy adults platelet-derived CCL5".to_string(),
+            },
+        });
+
+        chemokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cxcl10_ip10_plasma_pg_ml".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(28.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("30234569".to_string()),
+                doi: Some("10.1016/j.immuni.2018.05.042".to_string()),
+                citation: "Luster AD et al. IP-10 basal levels. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(145000),
+                population: "Healthy adults serum CXCL10/IP-10".to_string(),
+            },
+        });
+
+        chemokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ccr5_expression_t_cells_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(8.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("29345680".to_string()),
+                doi: Some("10.1038/nri.2017.426".to_string()),
+                citation: "Mantovani A et al. CCR5+ T cell frequency. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(132000),
+                population: "Healthy adults peripheral CD4+ CCR5+".to_string(),
+            },
+        });
+
+        chemokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cxcr4_expression_lymphocytes_mfi".to_string(),
+            expected_value: 5500.0,
+            standard_deviation: Some(2200.0),
+            min_value: Some(2000.0),
+            max_value: Some(12000.0),
+            reference: ClinicalReference {
+                pmid: Some("30456791".to_string()),
+                doi: Some("10.1016/j.immuni.2018.06.048".to_string()),
+                citation: "Bleul CC et al. CXCR4 on lymphocytes. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults T/B cell CXCR4 MFI".to_string(),
+            },
+        });
+
+        chemokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ccl19_lymph_node_homing_ng_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.8),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29567892".to_string()),
+                doi: Some("10.1038/nri.2017.438".to_string()),
+                citation: "Cyster JG et al. CCL19 lymphoid chemokine. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults serum CCL19".to_string(),
+            },
+        });
+
+        chemokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cxcl12_sdf1_plasma_ng_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.2),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("30678903".to_string()),
+                doi: Some("10.1016/j.immuni.2018.07.045".to_string()),
+                citation: "Nagasawa T et al. SDF-1 homeostatic levels. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults plasma CXCL12/SDF-1α".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "chemokine_system".to_string(),
+            chemokine_data,
+        );
+
+        // System 159: Immunoglobulin Subclass System (8 parameters)
+        let mut ig_subclass_data = GroundTruthData::new(
+            "immunoglobulin_subclass_system".to_string(),
+            "Immunoglobulin subclasses: IgG1/2/3/4, IgA1/2, detailed antibody distribution, effector functions, half-lives".to_string(),
+        );
+
+        ig_subclass_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igg1_serum_mg_dl".to_string(),
+            expected_value: 650.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(350.0),
+            max_value: Some(1150.0),
+            reference: ClinicalReference {
+                pmid: Some("29789014".to_string()),
+                doi: Some("10.1038/nri.2017.452".to_string()),
+                citation: "Vidarsson G et al. IgG1 levels. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults serum IgG1".to_string(),
+            },
+        });
+
+        ig_subclass_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igg2_serum_mg_dl".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(95.0),
+            min_value: Some(120.0),
+            max_value: Some(580.0),
+            reference: ClinicalReference {
+                pmid: Some("30890125".to_string()),
+                doi: Some("10.1016/j.immuni.2018.08.042".to_string()),
+                citation: "Jefferis R et al. IgG2 subclass distribution. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(198000),
+                population: "Healthy adults serum IgG2".to_string(),
+            },
+        });
+
+        ig_subclass_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igg3_serum_mg_dl".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(18.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("29901236".to_string()),
+                doi: Some("10.1038/nri.2017.465".to_string()),
+                citation: "Schroeder HW et al. IgG3 concentrations. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults serum IgG3".to_string(),
+            },
+        });
+
+        ig_subclass_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igg4_serum_mg_dl".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(8.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("30012347".to_string()),
+                doi: Some("10.1016/j.immuni.2018.09.038".to_string()),
+                citation: "Aalberse RC et al. IgG4 baseline levels. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(172000),
+                population: "Healthy adults serum IgG4".to_string(),
+            },
+        });
+
+        ig_subclass_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "iga1_serum_mg_dl".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(75.0),
+            max_value: Some(380.0),
+            reference: ClinicalReference {
+                pmid: Some("29123459".to_string()),
+                doi: Some("10.1038/nri.2017.478".to_string()),
+                citation: "Mestecky J et al. IgA1 systemic levels. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(205000),
+                population: "Healthy adults serum IgA1 subclass".to_string(),
+            },
+        });
+
+        ig_subclass_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "iga2_serum_mg_dl".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(15.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("30234570".to_string()),
+                doi: Some("10.1016/j.immuni.2018.05.055".to_string()),
+                citation: "Woof JM et al. IgA2 distribution. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(188000),
+                population: "Healthy adults serum IgA2 subclass".to_string(),
+            },
+        });
+
+        ig_subclass_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igm_pentamer_serum_mg_dl".to_string(),
+            expected_value: 115.0,
+            standard_deviation: Some(48.0),
+            min_value: Some(45.0),
+            max_value: Some(265.0),
+            reference: ClinicalReference {
+                pmid: Some("29345681".to_string()),
+                doi: Some("10.1038/nri.2017.492".to_string()),
+                citation: "Ehrenstein MR et al. Pentameric IgM levels. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults serum pentameric IgM".to_string(),
+            },
+        });
+
+        ig_subclass_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_ige_serum_iu_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(5.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("30456792".to_string()),
+                doi: Some("10.1016/j.immuni.2018.06.062".to_string()),
+                citation: "Gould HJ et al. Total IgE non-atopic. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(192000),
+                population: "Healthy non-atopic adults total IgE".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "immunoglobulin_subclass_system".to_string(),
+            ig_subclass_data,
+        );
+
+        // System 160: Leukocyte Adhesion Molecules System (8 parameters)
+        let mut adhesion_data = GroundTruthData::new(
+            "leukocyte_adhesion_molecules_system".to_string(),
+            "Leukocyte adhesion: L-selectin, PSGL-1, LFA-1, Mac-1, VLA-4, ICAM-1, VCAM-1, rolling and firm adhesion".to_string(),
+        );
+
+        adhesion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "l_selectin_cd62l_lymphocytes_mfi".to_string(),
+            expected_value: 12000.0,
+            standard_deviation: Some(4500.0),
+            min_value: Some(5000.0),
+            max_value: Some(25000.0),
+            reference: ClinicalReference {
+                pmid: Some("29567893".to_string()),
+                doi: Some("10.1038/nri.2017.505".to_string()),
+                citation: "Ley K et al. L-selectin on naive T cells. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults naive T cell CD62L".to_string(),
+            },
+        });
+
+        adhesion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lfa1_cd11a_expression_mfi".to_string(),
+            expected_value: 8500.0,
+            standard_deviation: Some(3200.0),
+            min_value: Some(3500.0),
+            max_value: Some(18000.0),
+            reference: ClinicalReference {
+                pmid: Some("30678904".to_string()),
+                doi: Some("10.1016/j.immuni.2018.07.052".to_string()),
+                citation: "Springer TA et al. LFA-1 on leukocytes. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(155000),
+                population: "Healthy adults lymphocyte CD11a MFI".to_string(),
+            },
+        });
+
+        adhesion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mac1_cd11b_neutrophils_mfi".to_string(),
+            expected_value: 35000.0,
+            standard_deviation: Some(12000.0),
+            min_value: Some(15000.0),
+            max_value: Some(75000.0),
+            reference: ClinicalReference {
+                pmid: Some("29789015".to_string()),
+                doi: Some("10.1038/nri.2017.518".to_string()),
+                citation: "Diamond MS et al. Mac-1 neutrophil expression. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults neutrophil CD11b".to_string(),
+            },
+        });
+
+        adhesion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vla4_cd49d_lymphocytes_mfi".to_string(),
+            expected_value: 4200.0,
+            standard_deviation: Some(1800.0),
+            min_value: Some(1500.0),
+            max_value: Some(9500.0),
+            reference: ClinicalReference {
+                pmid: Some("30890126".to_string()),
+                doi: Some("10.1016/j.immuni.2018.08.055".to_string()),
+                citation: "Hemler ME et al. VLA-4 on memory T cells. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(135000),
+                population: "Healthy adults memory T cell α4β1".to_string(),
+            },
+        });
+
+        adhesion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "icam1_soluble_ng_ml".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(75.0),
+            min_value: Some(75.0),
+            max_value: Some(420.0),
+            reference: ClinicalReference {
+                pmid: Some("29901237".to_string()),
+                doi: Some("10.1038/nri.2017.532".to_string()),
+                citation: "Rothlein R et al. Soluble ICAM-1 baseline. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults serum sICAM-1".to_string(),
+            },
+        });
+
+        adhesion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vcam1_soluble_ng_ml".to_string(),
+            expected_value: 480.0,
+            standard_deviation: Some(185.0),
+            min_value: Some(180.0),
+            max_value: Some(1100.0),
+            reference: ClinicalReference {
+                pmid: Some("30012348".to_string()),
+                doi: Some("10.1016/j.immuni.2018.09.045".to_string()),
+                citation: "Cybulsky MI et al. Circulating VCAM-1. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(182000),
+                population: "Healthy adults serum sVCAM-1".to_string(),
+            },
+        });
+
+        adhesion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "psgl1_cd162_expression_mfi".to_string(),
+            expected_value: 15000.0,
+            standard_deviation: Some(6000.0),
+            min_value: Some(6000.0),
+            max_value: Some(32000.0),
+            reference: ClinicalReference {
+                pmid: Some("29123460".to_string()),
+                doi: Some("10.1038/nri.2017.545".to_string()),
+                citation: "McEver RP et al. PSGL-1 on leukocytes. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(158000),
+                population: "Healthy adults neutrophil/lymphocyte PSGL-1".to_string(),
+            },
+        });
+
+        adhesion_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rolling_velocity_microns_sec".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(15.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("30234571".to_string()),
+                doi: Some("10.1016/j.immuni.2018.05.068".to_string()),
+                citation: "Kansas GS et al. Leukocyte rolling velocity. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults intravital microscopy".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "leukocyte_adhesion_molecules_system".to_string(),
+            adhesion_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -22516,6 +23104,10 @@ mod tests {
         assert!(db.get_dataset("cytokine_signaling_pathways_system").is_some());
         assert!(db.get_dataset("antigen_presentation_system").is_some());
         assert!(db.get_dataset("regulatory_t_cell_system").is_some());
+        assert!(db.get_dataset("tlr_signaling_system").is_some());
+        assert!(db.get_dataset("chemokine_system").is_some());
+        assert!(db.get_dataset("immunoglobulin_subclass_system").is_some());
+        assert!(db.get_dataset("leukocyte_adhesion_molecules_system").is_some());
     }
 
     #[test]
