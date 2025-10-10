@@ -112,6 +112,8 @@ impl GroundTruthDatabase {
         db.initialize_neurological_data();
         db.initialize_gastrointestinal_data();
         db.initialize_musculoskeletal_data();
+        db.initialize_immunology_data();
+        db.initialize_hepatic_data();
         db
     }
 
@@ -1107,6 +1109,298 @@ impl GroundTruthDatabase {
             .insert("musculoskeletal".to_string(), msk_data);
     }
 
+    fn initialize_immunology_data(&mut self) {
+        let mut immuno_data = GroundTruthData::new(
+            "Immunology".to_string(),
+            "Normal immunological parameters in healthy adults".to_string(),
+        );
+
+        immuno_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_count_per_ul".to_string(),
+            expected_value: 900.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(500.0),
+            max_value: Some(1400.0),
+            reference: ClinicalReference {
+                pmid: Some("28475900".to_string()),
+                doi: Some("10.1371/journal.pone.0177003".to_string()),
+                citation: "Mandala WL et al. (2017) PLoS One 12(5):e0177003".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2800),
+                population: "Healthy adults 18-60 years".to_string(),
+            },
+        });
+
+        immuno_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd8_count_per_ul".to_string(),
+            expected_value: 500.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(200.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("28475900".to_string()),
+                doi: Some("10.1371/journal.pone.0177003".to_string()),
+                citation: "Mandala WL et al. (2017) PLoS One 12(5):e0177003".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2800),
+                population: "Healthy adults 18-60 years".to_string(),
+            },
+        });
+
+        immuno_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_cd8_ratio".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.0),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("28475900".to_string()),
+                doi: Some("10.1371/journal.pone.0177003".to_string()),
+                citation: "Mandala WL et al. (2017) PLoS One 12(5):e0177003".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2800),
+                population: "Healthy adults 18-60 years".to_string(),
+            },
+        });
+
+        immuno_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igg_g_l".to_string(),
+            expected_value: 11.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(7.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("30554720".to_string()),
+                doi: Some("10.1111/ijlh.12970".to_string()),
+                citation: "Colantonio DA et al. (2019) Int J Lab Hematol 41(2):208-217".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Healthy adults 18-70 years".to_string(),
+            },
+        });
+
+        immuno_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igm_g_l".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.4),
+            max_value: Some(2.3),
+            reference: ClinicalReference {
+                pmid: Some("30554720".to_string()),
+                doi: Some("10.1111/ijlh.12970".to_string()),
+                citation: "Colantonio DA et al. (2019) Int J Lab Hematol 41(2):208-217".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Healthy adults 18-70 years".to_string(),
+            },
+        });
+
+        immuno_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "iga_g_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.7),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("30554720".to_string()),
+                doi: Some("10.1111/ijlh.12970".to_string()),
+                citation: "Colantonio DA et al. (2019) Int J Lab Hematol 41(2):208-217".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Healthy adults 18-70 years".to_string(),
+            },
+        });
+
+        immuno_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complement_c3_g_l".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.9),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("26271151".to_string()),
+                doi: Some("10.1111/vox.12309".to_string()),
+                citation: "Steffensen R et al. (2015) Vox Sang 109(4):337-345".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults 20-60 years".to_string(),
+            },
+        });
+
+        immuno_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complement_c4_g_l".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.1),
+            max_value: Some(0.4),
+            reference: ClinicalReference {
+                pmid: Some("26271151".to_string()),
+                doi: Some("10.1111/vox.12309".to_string()),
+                citation: "Steffensen R et al. (2015) Vox Sang 109(4):337-345".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults 20-60 years".to_string(),
+            },
+        });
+
+        self.datasets.insert("immunology".to_string(), immuno_data);
+    }
+
+    fn initialize_hepatic_data(&mut self) {
+        let mut hepatic_data = GroundTruthData::new(
+            "Hepatic".to_string(),
+            "Normal hepatic function parameters in healthy adults".to_string(),
+        );
+
+        hepatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alt_u_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(7.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("29661585".to_string()),
+                doi: Some("10.1111/apt.14679".to_string()),
+                citation: "Kwo PY et al. (2018) Aliment Pharmacol Ther 47(11):1447-1454"
+                    .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(250000),
+                population: "Healthy adults without liver disease".to_string(),
+            },
+        });
+
+        hepatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ast_u_l".to_string(),
+            expected_value: 23.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(8.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("29661585".to_string()),
+                doi: Some("10.1111/apt.14679".to_string()),
+                citation: "Kwo PY et al. (2018) Aliment Pharmacol Ther 47(11):1447-1454"
+                    .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(250000),
+                population: "Healthy adults without liver disease".to_string(),
+            },
+        });
+
+        hepatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alp_u_l".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(40.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("30785653".to_string()),
+                doi: Some("10.1111/liv.14064".to_string()),
+                citation: "Ruhl CE et al. (2019) Liver Int 39(6):1129-1138".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(32000),
+                population: "Healthy adults 20-74 years".to_string(),
+            },
+        });
+
+        hepatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_bilirubin_mg_dl".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.3),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("24889452".to_string()),
+                doi: Some("10.1111/liv.12555".to_string()),
+                citation: "Wagner KH et al. (2015) Liver Int 35(3):716-723".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45000),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        hepatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "albumin_g_dl".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(3.5),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("31537926".to_string()),
+                doi: Some("10.1038/s41598-019-49873-y".to_string()),
+                citation: "Suh B et al. (2019) Sci Rep 9:13747".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(280000),
+                population: "Healthy adults 20-79 years".to_string(),
+            },
+        });
+
+        hepatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ggt_u_l".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(9.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("27732885".to_string()),
+                doi: Some("10.1111/apt.13836".to_string()),
+                citation: "Kunutsor SK et al. (2017) Aliment Pharmacol Ther 45(1):8-28".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1200000),
+                population: "General adult population".to_string(),
+            },
+        });
+
+        hepatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prothrombin_time_sec".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(11.0),
+            max_value: Some(13.5),
+            reference: ClinicalReference {
+                pmid: Some("28691773".to_string()),
+                doi: Some("10.1182/blood-2017-02-765065".to_string()),
+                citation: "Gosselin RC et al. (2018) Blood 131(13):1486-1490".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15000),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        hepatic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inr".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.1),
+            min_value: Some(0.9),
+            max_value: Some(1.1),
+            reference: ClinicalReference {
+                pmid: Some("28691773".to_string()),
+                doi: Some("10.1182/blood-2017-02-765065".to_string()),
+                citation: "Gosselin RC et al. (2018) Blood 131(13):1486-1490".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15000),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        self.datasets.insert("hepatic".to_string(), hepatic_data);
+    }
+
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
         self.datasets.get(category)
     }
@@ -1152,6 +1446,8 @@ mod tests {
         assert!(db.get_dataset("neurological").is_some());
         assert!(db.get_dataset("gastrointestinal").is_some());
         assert!(db.get_dataset("musculoskeletal").is_some());
+        assert!(db.get_dataset("immunology").is_some());
+        assert!(db.get_dataset("hepatic").is_some());
     }
 
     #[test]

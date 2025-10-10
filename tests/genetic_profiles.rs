@@ -1,8 +1,8 @@
 use human_biology::anthropometry::{
     AnthropometricProfile, BiologicalSex, BodyComposition, BodyMeasurements, Ethnicity,
 };
-use human_biology::biology::genetics::dermatology;
-use human_biology::biology::genetics::ophthalmology;
+use human_biology::biology::genetics::dermatology::{AcneRisk, PsoriasisRisk};
+use human_biology::biology::genetics::ophthalmology::{ColorBlindnessType, MyopiaRisk};
 use human_biology::biology::genetics::*;
 use human_biology::comprehensive_health::*;
 
