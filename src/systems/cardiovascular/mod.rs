@@ -11,6 +11,7 @@ pub mod coronary_arteries;
 pub mod hematopoiesis;
 pub mod hematology;
 pub mod arrhythmia;
+pub mod cardiac_mechanics;
 
 pub use heart::{Heart, HeartChamber, Valve, HeartCycle};
 pub use blood_vessel::{BloodVessel, VesselType, VesselLayer};
@@ -22,3 +23,4 @@ pub use cardiac_conduction::{ConductionNode, SinusNode, AVNode, AVBlock, BundleB
 pub use coronary_arteries::{CoronaryArterySystem, CoronaryArtery, AtheroscleroticPlaque, PlaqueStability, CADSeverity, MyocardialPerfusion};
 pub use hematopoiesis::{HematopoieticSystem, BoneMarrow, StemCellPool, CellLineage, ProductionRates, ErythropoiesisStages, Granulopoiesis, Lymphopoiesis, Thrombopoiesis, GrowthFactors, MarrowFunction};
 pub use hematology::{HematologyProfile, CompleteBloodCount, CoagulationSystem, AnemiaRisk, BleedingRisk, ThrombosisRisk};
+pub use cardiac_mechanics::{CardiacMechanics, VentricularGeometry, PressureVolumeLoop, FrankStarlingCurve, MyocardialOxygenDemand};

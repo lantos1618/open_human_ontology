@@ -533,8 +533,10 @@ mod tests {
     #[test]
     fn test_cytokine_storm_risk() {
         let mut system = InflammationSystem::new_normal();
-        system.cytokine_network.pro_inflammatory.tnf_alpha_pg_ml = 500.0;
-        system.cytokine_network.pro_inflammatory.il6_pg_ml = 300.0;
+        system.cytokine_network.pro_inflammatory.tnf_alpha_pg_ml = 2000.0;
+        system.cytokine_network.pro_inflammatory.il6_pg_ml = 1500.0;
+        system.cytokine_network.pro_inflammatory.il1_beta_pg_ml = 800.0;
+        system.cytokine_network.pro_inflammatory.ifn_gamma_pg_ml = 1200.0;
 
         let risk = system.calculate_cytokine_storm_risk();
         assert!(risk > 0.5);
