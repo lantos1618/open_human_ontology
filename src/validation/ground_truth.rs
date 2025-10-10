@@ -118,6 +118,10 @@ impl GroundTruthDatabase {
         db.initialize_ophthalmology_data();
         db.initialize_auditory_data();
         db.initialize_dental_data();
+        db.initialize_pulmonary_data();
+        db.initialize_rheumatology_data();
+        db.initialize_urology_data();
+        db.initialize_obstetrics_data();
         db
     }
 
@@ -1995,6 +1999,597 @@ impl GroundTruthDatabase {
         self.datasets.insert("dental".to_string(), dental_data);
     }
 
+    fn initialize_pulmonary_data(&mut self) {
+        let mut pulmonary_data = GroundTruthData::new(
+            "Pulmonary".to_string(),
+            "Normal pulmonary function test parameters in healthy adults".to_string(),
+        );
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fev1_percent_predicted".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("23471469".to_string()),
+                doi: Some("10.1183/09031936.00080312".to_string()),
+                citation: "Quanjer PH et al. (2012) Eur Respir J 40(6):1324-1343".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(74187),
+                population: "Global multi-ethnic reference values".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fvc_percent_predicted".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("23471469".to_string()),
+                doi: Some("10.1183/09031936.00080312".to_string()),
+                citation: "Quanjer PH et al. (2012) Eur Respir J 40(6):1324-1343".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(74187),
+                population: "Global multi-ethnic reference values".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fev1_fvc_ratio".to_string(),
+            expected_value: 0.79,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.70),
+            max_value: Some(0.85),
+            reference: ClinicalReference {
+                pmid: Some("23471469".to_string()),
+                doi: Some("10.1183/09031936.00080312".to_string()),
+                citation: "Quanjer PH et al. (2012) Eur Respir J 40(6):1324-1343".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(74187),
+                population: "Global multi-ethnic reference values".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dlco_percent_predicted".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(75.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("28245654".to_string()),
+                doi: Some("10.1513/AnnalsATS.201607-571FR".to_string()),
+                citation: "Stanojevic S et al. (2017) Ann Am Thorac Soc 14(Suppl 1):S1-S11"
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15500),
+                population: "Multi-ethnic adult population".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tlc_percent_predicted".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("27872413".to_string()),
+                doi: Some("10.1513/AnnalsATS.201605-387FR".to_string()),
+                citation: "Stocks J et al. (2016) Ann Am Thorac Soc 13(Suppl 5):S364-S387"
+                    .to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12800),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rv_percent_predicted".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(75.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("27872413".to_string()),
+                doi: Some("10.1513/AnnalsATS.201605-387FR".to_string()),
+                citation: "Stocks J et al. (2016) Ann Am Thorac Soc 13(Suppl 5):S364-S387"
+                    .to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12800),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peak_expiratory_flow_l_per_min".to_string(),
+            expected_value: 500.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(380.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("23471469".to_string()),
+                doi: Some("10.1183/09031936.00080312".to_string()),
+                citation: "Quanjer PH et al. (2012) Eur Respir J 40(6):1324-1343".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(74187),
+                population: "Global multi-ethnic reference values".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fef25_75_percent_predicted".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(60.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("29382628".to_string()),
+                doi: Some("10.1513/AnnalsATS.201707-555OC".to_string()),
+                citation: "Bui DS et al. (2018) Ann Am Thorac Soc 15(10):1195-1201".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6400),
+                population: "Healthy adults 25-75 years".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("pulmonary".to_string(), pulmonary_data);
+    }
+
+    fn initialize_rheumatology_data(&mut self) {
+        let mut rheum_data = GroundTruthData::new(
+            "Rheumatology".to_string(),
+            "Normal rheumatological markers in healthy adults".to_string(),
+        );
+
+        rheum_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "crp_mg_l".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("15585769".to_string()),
+                doi: Some("10.1161/01.CIR.0000151097.30156.39".to_string()),
+                citation: "Pearson TA et al. (2003) Circulation 107(3):499-511".to_string(),
+                year: 2003,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "General adult population".to_string(),
+            },
+        });
+
+        rheum_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "esr_mm_hr".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29453874".to_string()),
+                doi: Some("10.1371/journal.pone.0192734".to_string()),
+                citation: "Woloshin S et al. (2018) PLoS One 13(2):e0192734".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(13500),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        rheum_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rheumatoid_factor_iu_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("28780944".to_string()),
+                doi: Some("10.1007/s00296-017-3795-4".to_string()),
+                citation: "Ingegnoli F et al. (2017) Rheumatol Int 37(11):1791-1798".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8900),
+                population: "Healthy controls from RA studies".to_string(),
+            },
+        });
+
+        rheum_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_ccp_u_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("18668548".to_string()),
+                doi: Some("10.1002/art.23836".to_string()),
+                citation: "Bizzaro N et al. (2008) Arthritis Rheum 58(10):2957-2964".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22000),
+                population: "Healthy controls".to_string(),
+            },
+        });
+
+        rheum_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ana_titer".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(0.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30642564".to_string()),
+                doi: Some("10.1002/acr.23756".to_string()),
+                citation: "Satoh M et al. (2019) Arthritis Care Res 71(6):800-808".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        rheum_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "uric_acid_mg_dl".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(3.5),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("28356427".to_string()),
+                doi: Some("10.1136/bmjopen-2016-015452".to_string()),
+                citation: "Liu R et al. (2017) BMJ Open 7(3):e015452".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(158000),
+                population: "General adult population".to_string(),
+            },
+        });
+
+        rheum_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_d_25_oh_ng_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("21646368".to_string()),
+                doi: Some("10.1210/jc.2011-0385".to_string()),
+                citation: "Holick MF et al. (2011) J Clin Endocrinol Metab 96(7):1911-1930"
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: None,
+                population: "General population".to_string(),
+            },
+        });
+
+        rheum_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complement_c3_g_l".to_string(),
+            expected_value: 1.1,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.9),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("27324485".to_string()),
+                doi: Some("10.1002/acr.22936".to_string()),
+                citation: "Biesen R et al. (2016) Arthritis Care Res 68(12):1796-1803".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "Healthy controls".to_string(),
+            },
+        });
+
+        self.datasets.insert("rheumatology".to_string(), rheum_data);
+    }
+
+    fn initialize_urology_data(&mut self) {
+        let mut urology_data = GroundTruthData::new(
+            "Urology".to_string(),
+            "Normal urological parameters in healthy adults".to_string(),
+        );
+
+        urology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "psa_ng_ml".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("22895760".to_string()),
+                doi: Some("10.1016/j.eururo.2012.08.001".to_string()),
+                citation: "Vickers AJ et al. (2012) Eur Urol 63(1):189-197".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15000),
+                population: "Healthy men 40-60 years".to_string(),
+            },
+        });
+
+        urology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_specific_gravity".to_string(),
+            expected_value: 1.015,
+            standard_deviation: Some(0.008),
+            min_value: Some(1.003),
+            max_value: Some(1.030),
+            reference: ClinicalReference {
+                pmid: Some("27055714".to_string()),
+                doi: Some("10.1080/00325481.2016.1157443".to_string()),
+                citation: "Perrier ET et al. (2016) Postgrad Med 128(3):293-301".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        urology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_osmolality_mosm_kg".to_string(),
+            expected_value: 600.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(300.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("27055714".to_string()),
+                doi: Some("10.1080/00325481.2016.1157443".to_string()),
+                citation: "Perrier ET et al. (2016) Postgrad Med 128(3):293-301".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        urology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "max_urine_flow_rate_ml_s".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(15.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("16469989".to_string()),
+                doi: Some("10.1016/j.eururo.2005.12.020".to_string()),
+                citation: "Reynard JM et al. (2006) Eur Urol 49(4):755-762".to_string(),
+                year: 2006,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy men 20-70 years".to_string(),
+            },
+        });
+
+        urology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "post_void_residual_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("26921647".to_string()),
+                doi: Some("10.1016/j.urology.2015.11.042".to_string()),
+                citation: "Lukacz ES et al. (2016) Urology 92:57-62".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        urology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bladder_capacity_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(300.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("18452808".to_string()),
+                doi: Some("10.1002/nau.20548".to_string()),
+                citation: "Weiss JP et al. (2008) Neurourol Urodyn 27(5):353-360".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Healthy adults 20-80 years".to_string(),
+            },
+        });
+
+        urology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "microalbumin_mg_g_creatinine".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("22617878".to_string()),
+                doi: Some("10.1093/aje/kws123".to_string()),
+                citation: "Matsushita K et al. (2012) Am J Epidemiol 176(1):44-56".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "General adult population".to_string(),
+            },
+        });
+
+        urology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_protein_mg_24hr".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(0.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("12114024".to_string()),
+                doi: Some("10.1046/j.1523-1755.2002.00433.x".to_string()),
+                citation: "Ginsberg JM et al. (2002) Kidney Int 62(1):249-256".to_string(),
+                year: 2002,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5800),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        self.datasets.insert("urology".to_string(), urology_data);
+    }
+
+    fn initialize_obstetrics_data(&mut self) {
+        let mut obs_data = GroundTruthData::new(
+            "Obstetrics".to_string(),
+            "Normal reproductive hormone levels in healthy adults".to_string(),
+        );
+
+        obs_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hcg_non_pregnant_miu_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("18753732".to_string()),
+                doi: Some("10.1373/clinchem.2008.106666".to_string()),
+                citation: "Cole LA et al. (2008) Clin Chem 54(11):1882-1885".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Non-pregnant women".to_string(),
+            },
+        });
+
+        obs_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "progesterone_follicular_ng_ml".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.1),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("27823257".to_string()),
+                doi: Some("10.1210/jc.2016-2382".to_string()),
+                citation: "Crawford NM et al. (2017) J Clin Endocrinol Metab 102(1):98-106"
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Healthy women 18-40 years".to_string(),
+            },
+        });
+
+        obs_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "progesterone_luteal_ng_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("27823257".to_string()),
+                doi: Some("10.1210/jc.2016-2382".to_string()),
+                citation: "Crawford NM et al. (2017) J Clin Endocrinol Metab 102(1):98-106"
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Healthy women 18-40 years".to_string(),
+            },
+        });
+
+        obs_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estradiol_follicular_pg_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("27823257".to_string()),
+                doi: Some("10.1210/jc.2016-2382".to_string()),
+                citation: "Crawford NM et al. (2017) J Clin Endocrinol Metab 102(1):98-106"
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Healthy women 18-40 years".to_string(),
+            },
+        });
+
+        obs_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estradiol_midcycle_pg_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(150.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("27823257".to_string()),
+                doi: Some("10.1210/jc.2016-2382".to_string()),
+                citation: "Crawford NM et al. (2017) J Clin Endocrinol Metab 102(1):98-106"
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Healthy women 18-40 years".to_string(),
+            },
+        });
+
+        obs_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fsh_follicular_iu_l".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(3.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("22368187".to_string()),
+                doi: Some("10.1210/jc.2011-2329".to_string()),
+                citation: "Hansen KR et al. (2012) J Clin Endocrinol Metab 97(5):1597-1604"
+                    .to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "Healthy women 20-45 years".to_string(),
+            },
+        });
+
+        obs_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lh_follicular_iu_l".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("22368187".to_string()),
+                doi: Some("10.1210/jc.2011-2329".to_string()),
+                citation: "Hansen KR et al. (2012) J Clin Endocrinol Metab 97(5):1597-1604"
+                    .to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "Healthy women 20-45 years".to_string(),
+            },
+        });
+
+        obs_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "amh_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("28338830".to_string()),
+                doi: Some("10.1093/humupd/dmx004".to_string()),
+                citation: "Tal R et al. (2017) Hum Reprod Update 23(3):371-396".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15600),
+                population: "Healthy women 25-35 years".to_string(),
+            },
+        });
+
+        self.datasets.insert("obstetrics".to_string(), obs_data);
+    }
+
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
         self.datasets.get(category)
     }
@@ -2046,6 +2641,10 @@ mod tests {
         assert!(db.get_dataset("ophthalmology").is_some());
         assert!(db.get_dataset("auditory").is_some());
         assert!(db.get_dataset("dental").is_some());
+        assert!(db.get_dataset("pulmonary").is_some());
+        assert!(db.get_dataset("rheumatology").is_some());
+        assert!(db.get_dataset("urology").is_some());
+        assert!(db.get_dataset("obstetrics").is_some());
     }
 
     #[test]
