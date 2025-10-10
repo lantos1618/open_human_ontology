@@ -321,8 +321,8 @@ impl BodyComposition {
         height_cm: f64,
         age_years: f64,
         is_male: bool,
-        waist_cm: f64,
-        hip_cm: f64,
+        _waist_cm: f64,
+        _hip_cm: f64,
     ) -> Self {
         let bmi = weight_kg / ((height_cm / 100.0).powi(2));
 
@@ -352,7 +352,7 @@ impl BodyComposition {
         if is_male {
             if bf < 6.0 {
                 "Essential fat"
-            } else if bf < 14.0 {
+            } else if bf < 16.0 {
                 "Athletes"
             } else if bf < 18.0 {
                 "Fitness"

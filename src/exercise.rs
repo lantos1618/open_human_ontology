@@ -230,7 +230,7 @@ impl ExercisePhysiology {
         self.metabolic_response.lactate_mmol_l = if vo2_percent < 0.6 {
             1.0 + vo2_percent
         } else {
-            1.0 + (vo2_percent - 0.6) * 10.0
+            1.0 + (vo2_percent - 0.6) * 15.0
         };
 
         self.respiratory_response.exercise_rate_bpm =

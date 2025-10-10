@@ -142,11 +142,12 @@ impl DevelopmentalStage {
             DevelopmentalStatus::SignificantConcern
         };
 
+        let recommendations = self.generate_recommendations(&concerns);
         DevelopmentalAssessment {
             status: overall_status,
             concerns,
             strengths,
-            recommendations: self.generate_recommendations(&concerns),
+            recommendations,
         }
     }
 
@@ -291,7 +292,7 @@ impl MaturationStatus {
             TannerStage::Stage1
         } else if age_years < 10.0 {
             TannerStage::Stage2
-        } else if age_years < 12.0 {
+        } else if age_years < 13.0 {
             TannerStage::Stage3
         } else if age_years < 15.0 {
             TannerStage::Stage4

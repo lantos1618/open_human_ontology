@@ -197,11 +197,11 @@ impl GutMicrobiome {
                 .unwrap_or(0.0);
 
         let beneficial_component = if beneficial_bacteria < 15.0 {
-            0.2
+            0.2_f64
         } else if beneficial_bacteria < 25.0 {
-            0.1
+            0.1_f64
         } else {
-            0.0
+            0.0_f64
         };
 
         self.dysbiosis_score = (diversity_component + ratio_component + beneficial_component).min(1.0);

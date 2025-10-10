@@ -1,6 +1,4 @@
 use serde::{Deserialize, Serialize};
-use crate::systems::*;
-use crate::metabolism::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct IntegratedPhysiology {
@@ -213,7 +211,7 @@ impl AcidBaseBalance {
 }
 
 impl OxygenDeliverySystem {
-    pub fn new_normal(body_weight_kg: f64) -> Self {
+    pub fn new_normal(_body_weight_kg: f64) -> Self {
         let cardiac_output_l_min = 5.0;
         let arterial_content = 20.0;
         let venous_content = 15.0;
