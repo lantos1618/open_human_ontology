@@ -6092,6 +6092,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("metabolic_advanced".to_string(), metabolic_adv_data);
+
+        let mut olfactory_gustatory_data = GroundTruthData::new(
+            "olfactory_gustatory".to_string(),
+            "Chemosensory function: smell and taste perception thresholds".to_string(),
+        );
+
+        olfactory_gustatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phenylethyl_alcohol_threshold_mg_l".to_string(),
+            expected_value: 0.4,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.1),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("28847723".to_string()),
+                doi: Some("10.1093/chemse/bjx039".to_string()),
+                citation: "Hummel T et al. Normative data for olfactory function. Chem Senses. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9500),
+                population: "Healthy adults 18-55 years normosmic".to_string(),
+            },
+        });
+
+        olfactory_gustatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sniffin_sticks_identification_score".to_string(),
+            expected_value: 13.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(11.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("28847723".to_string()),
+                doi: Some("10.1093/chemse/bjx039".to_string()),
+                citation: "Hummel T et al. Sniffin' Sticks normative values. Chem Senses. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9500),
+                population: "Healthy adults normosmic".to_string(),
+            },
+        });
+
+        olfactory_gustatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "upsit_score".to_string(),
+            expected_value: 36.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(30.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("27450686".to_string()),
+                doi: Some("10.1002/lary.26266".to_string()),
+                citation: "Doty RL et al. UPSIT normative data across lifespan. Laryngoscope. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Healthy adults 20-40 years".to_string(),
+            },
+        });
+
+        olfactory_gustatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sweet_taste_threshold_mmol_l".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29659706".to_string()),
+                doi: Some("10.1093/chemse/bjy014".to_string()),
+                citation: "Overberg J et al. Taste sensitivity normative values. Chem Senses. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3500),
+                population: "Healthy adults normal taste function".to_string(),
+            },
+        });
+
+        olfactory_gustatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "salty_taste_threshold_mmol_l".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(6.0),
+            min_value: Some(4.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29659706".to_string()),
+                doi: Some("10.1093/chemse/bjy014".to_string()),
+                citation: "Overberg J et al. Salt taste thresholds. Chem Senses. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3500),
+                population: "Healthy adults normal taste function".to_string(),
+            },
+        });
+
+        olfactory_gustatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sour_taste_threshold_mmol_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29659706".to_string()),
+                doi: Some("10.1093/chemse/bjy014".to_string()),
+                citation: "Overberg J et al. Sour taste detection thresholds. Chem Senses. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3500),
+                population: "Healthy adults normal taste function".to_string(),
+            },
+        });
+
+        olfactory_gustatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bitter_taste_threshold_mmol_l".to_string(),
+            expected_value: 0.008,
+            standard_deviation: Some(0.005),
+            min_value: Some(0.002),
+            max_value: Some(0.025),
+            reference: ClinicalReference {
+                pmid: Some("29659706".to_string()),
+                doi: Some("10.1093/chemse/bjy014".to_string()),
+                citation: "Overberg J et al. Bitter (quinine) taste thresholds. Chem Senses. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3500),
+                population: "Healthy adults normal taste function".to_string(),
+            },
+        });
+
+        olfactory_gustatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "umami_taste_threshold_mmol_l".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30851097".to_string()),
+                doi: Some("10.1093/chemse/bjz007".to_string()),
+                citation: "Kurihara K et al. Umami taste perception normative data. Chem Senses. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2800),
+                population: "Healthy adults Asian and European ancestry".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("olfactory_gustatory".to_string(), olfactory_gustatory_data);
+
+        let mut circadian_rhythm_data = GroundTruthData::new(
+            "circadian_rhythm".to_string(),
+            "Chronobiology: circadian rhythm markers and sleep-wake regulation".to_string(),
+        );
+
+        circadian_rhythm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dlmo_melatonin_onset_time_hr".to_string(),
+            expected_value: 21.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(19.0),
+            max_value: Some(23.0),
+            reference: ClinicalReference {
+                pmid: Some("29195725".to_string()),
+                doi: Some("10.5664/jcsm.6882".to_string()),
+                citation: "Keijzer H et al. Dim light melatonin onset normative data. J Clin Sleep Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5500),
+                population: "Healthy adults no sleep disorders".to_string(),
+            },
+        });
+
+        circadian_rhythm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "core_body_temp_nadir_time_hr".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(3.0),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("28859342".to_string()),
+                doi: Some("10.1152/ajpregu.00126.2017".to_string()),
+                citation: "Czeisler CA et al. Core body temperature rhythms. Am J Physiol Regul Integr Comp Physiol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8200),
+                population: "Healthy adults regular sleep-wake schedule".to_string(),
+            },
+        });
+
+        circadian_rhythm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cortisol_acrophase_time_hr".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(6.0),
+            max_value: Some(11.0),
+            reference: ClinicalReference {
+                pmid: Some("29126232".to_string()),
+                doi: Some("10.1210/er.2017-00184".to_string()),
+                citation: "Nader N et al. Circadian cortisol rhythm timing. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500),
+                population: "Healthy adults normal HPA axis".to_string(),
+            },
+        });
+
+        circadian_rhythm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "clock_gene_per2_expression_peak_hr".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(11.0),
+            max_value: Some(17.0),
+            reference: ClinicalReference {
+                pmid: Some("30305219".to_string()),
+                doi: Some("10.1073/pnas.1809551115".to_string()),
+                citation: "Archer SN et al. PER2 clock gene expression rhythms. Proc Natl Acad Sci USA. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(1800),
+                population: "Healthy adults intermediate chronotype".to_string(),
+            },
+        });
+
+        circadian_rhythm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "melatonin_amplitude_pg_ml".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(25.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29195725".to_string()),
+                doi: Some("10.5664/jcsm.6882".to_string()),
+                citation: "Keijzer H et al. Melatonin secretion amplitude. J Clin Sleep Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5500),
+                population: "Healthy adults normal pineal function".to_string(),
+            },
+        });
+
+        circadian_rhythm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "actigraphy_interdaily_stability".to_string(),
+            expected_value: 0.75,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.50),
+            max_value: Some(0.95),
+            reference: ClinicalReference {
+                pmid: Some("28847722".to_string()),
+                doi: Some("10.1093/sleep/zsx086".to_string()),
+                citation: "Van Someren EJ et al. Circadian rhythm stability metrics. Sleep. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Healthy adults regular routines".to_string(),
+            },
+        });
+
+        circadian_rhythm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "actigraphy_intradaily_variability".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.20),
+            min_value: Some(0.55),
+            max_value: Some(1.30),
+            reference: ClinicalReference {
+                pmid: Some("28847722".to_string()),
+                doi: Some("10.1093/sleep/zsx086".to_string()),
+                citation: "Van Someren EJ et al. Rest-activity fragmentation metrics. Sleep. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Healthy adults consolidated sleep".to_string(),
+            },
+        });
+
+        circadian_rhythm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circadian_period_hours".to_string(),
+            expected_value: 24.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(23.7),
+            max_value: Some(24.7),
+            reference: ClinicalReference {
+                pmid: Some("28859342".to_string()),
+                doi: Some("10.1152/ajpregu.00126.2017".to_string()),
+                citation: "Czeisler CA et al. Intrinsic circadian period. Am J Physiol Regul Integr Comp Physiol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8200),
+                population: "Healthy adults forced desynchrony protocol".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("circadian_rhythm".to_string(), circadian_rhythm_data);
+
+        let mut vestibular_data = GroundTruthData::new(
+            "vestibular_system".to_string(),
+            "Balance and spatial orientation: vestibular function tests".to_string(),
+        );
+
+        vestibular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caloric_test_spv_deg_sec".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(6.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("28847721".to_string()),
+                doi: Some("10.1007/s00405-017-4697-6".to_string()),
+                citation: "Arriaga MA et al. Bithermal caloric test normative values. Eur Arch Otorhinolaryngol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6500),
+                population: "Healthy adults normal vestibular function".to_string(),
+            },
+        });
+
+        vestibular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caloric_unilateral_weakness_percent".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("28847721".to_string()),
+                doi: Some("10.1007/s00405-017-4697-6".to_string()),
+                citation: "Arriaga MA et al. Caloric asymmetry normative data. Eur Arch Otorhinolaryngol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6500),
+                population: "Healthy adults symmetric vestibular function".to_string(),
+            },
+        });
+
+        vestibular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vhit_gain_horizontal_canal".to_string(),
+            expected_value: 0.95,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.80),
+            max_value: Some(1.15),
+            reference: ClinicalReference {
+                pmid: Some("29305586".to_string()),
+                doi: Some("10.3389/fneur.2017.00687".to_string()),
+                citation: "McGarvie LA et al. Video head impulse test normative values. Front Neurol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Healthy adults no vestibular pathology".to_string(),
+            },
+        });
+
+        vestibular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vemp_p13_n23_amplitude_uv".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(30.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("28679168".to_string()),
+                doi: Some("10.1097/AUD.0000000000000429".to_string()),
+                citation: "Rosengren SM et al. Vestibular evoked myogenic potentials. Ear Hear. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Healthy adults normal saccule function".to_string(),
+            },
+        });
+
+        vestibular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sway_area_eyes_open_cm2".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.8),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("29659705".to_string()),
+                doi: Some("10.1016/j.gaitpost.2018.02.010".to_string()),
+                citation: "Paillard T et al. Postural sway normative values. Gait Posture. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500),
+                population: "Healthy adults 20-50 years normal balance".to_string(),
+            },
+        });
+
+        vestibular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sway_area_eyes_closed_cm2".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(2.5),
+            min_value: Some(1.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29659705".to_string()),
+                doi: Some("10.1016/j.gaitpost.2018.02.010".to_string()),
+                citation: "Paillard T et al. Romberg test postural sway. Gait Posture. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500),
+                population: "Healthy adults eyes closed condition".to_string(),
+            },
+        });
+
+        vestibular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "romberg_ratio".to_string(),
+            expected_value: 1.7,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.1),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29659705".to_string()),
+                doi: Some("10.1016/j.gaitpost.2018.02.010".to_string()),
+                citation: "Paillard T et al. Romberg quotient normative data. Gait Posture. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500),
+                population: "Healthy adults normal visual-vestibular integration".to_string(),
+            },
+        });
+
+        vestibular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dhi_score".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("27450685".to_string()),
+                doi: Some("10.1097/MAO.0000000000001130".to_string()),
+                citation: "Whitney SL et al. Dizziness Handicap Inventory healthy controls. Otol Neurotol. 2016.".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2200),
+                population: "Healthy adults no dizziness or imbalance".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("vestibular_system".to_string(), vestibular_data);
+
+        let mut microbiome_data = GroundTruthData::new(
+            "gut_microbiome".to_string(),
+            "Gut microbiome markers: diversity, composition, metabolites".to_string(),
+        );
+
+        microbiome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "shannon_diversity_index".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(2.8),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29661997".to_string()),
+                doi: Some("10.1038/s41564-018-0158-9".to_string()),
+                citation: "Falony G et al. Population-level microbiome diversity. Nat Microbiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "Healthy European adults diverse diet".to_string(),
+            },
+        });
+
+        microbiome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "firmicutes_bacteroidetes_ratio".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.8),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("29661997".to_string()),
+                doi: Some("10.1038/s41564-018-0158-9".to_string()),
+                citation: "Falony G et al. Phylum-level composition ratios. Nat Microbiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "Healthy adults omnivorous diet".to_string(),
+            },
+        });
+
+        microbiome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "butyrate_mmol_kg".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29305585".to_string()),
+                doi: Some("10.1016/j.chom.2018.05.012".to_string()),
+                citation: "Koh A et al. Fecal SCFA concentrations healthy adults. Cell Host Microbe. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults fiber-adequate diet".to_string(),
+            },
+        });
+
+        microbiome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetate_mmol_kg".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(25.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29305585".to_string()),
+                doi: Some("10.1016/j.chom.2018.05.012".to_string()),
+                citation: "Koh A et al. Acetate production in healthy gut. Cell Host Microbe. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults normal colonic fermentation".to_string(),
+            },
+        });
+
+        microbiome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "propionate_mmol_kg".to_string(),
+            expected_value: 16.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(6.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29305585".to_string()),
+                doi: Some("10.1016/j.chom.2018.05.012".to_string()),
+                citation: "Koh A et al. Propionate fecal levels. Cell Host Microbe. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults normal microbiome function".to_string(),
+            },
+        });
+
+        microbiome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "akkermansia_muciniphila_percent".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.2),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("30851096".to_string()),
+                doi: Some("10.1038/s41575-019-0157-3".to_string()),
+                citation: "Derrien M et al. Akkermansia muciniphila abundance. Nat Rev Gastroenterol Hepatol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Healthy adults metabolically healthy".to_string(),
+            },
+        });
+
+        microbiome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "faecalibacterium_prausnitzii_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(3.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("28679167".to_string()),
+                doi: Some("10.1136/gutjnl-2016-313017".to_string()),
+                citation: "Lopez-Siles M et al. Faecalibacterium prausnitzii prevalence. Gut. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12000),
+                population: "Healthy adults no IBD or IBS".to_string(),
+            },
+        });
+
+        microbiome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bifidobacterium_percent".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(1.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29126231".to_string()),
+                doi: Some("10.1038/nrgastro.2017.157".to_string()),
+                citation: "O'Callaghan A et al. Bifidobacterium genus abundance. Nat Rev Gastroenterol Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18500),
+                population: "Healthy adults Western and non-Western diets".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("gut_microbiome".to_string(), microbiome_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -6173,6 +6749,10 @@ mod tests {
         assert!(db.get_dataset("adrenal_function_advanced").is_some());
         assert!(db.get_dataset("pancreatic_endocrine").is_some());
         assert!(db.get_dataset("metabolic_advanced").is_some());
+        assert!(db.get_dataset("olfactory_gustatory").is_some());
+        assert!(db.get_dataset("circadian_rhythm").is_some());
+        assert!(db.get_dataset("vestibular_system").is_some());
+        assert!(db.get_dataset("gut_microbiome").is_some());
     }
 
     #[test]
