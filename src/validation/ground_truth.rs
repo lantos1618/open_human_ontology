@@ -4940,6 +4940,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("lymphatic_system".to_string(), lymphatic_data);
+
+        let mut repro_female_data = GroundTruthData::new(
+            "reproductive_female".to_string(),
+            "Female reproductive hormone levels and ovarian function".to_string(),
+        );
+
+        repro_female_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estradiol_follicular_pg_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29522048".to_string()),
+                doi: Some("10.1210/jc.2017-02488".to_string()),
+                citation: "McNamara M et al. Measuring sex steroid concentrations in blood. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Premenopausal women early follicular phase".to_string(),
+            },
+        });
+
+        repro_female_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estradiol_ovulatory_pg_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(150.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("29522048".to_string()),
+                doi: Some("10.1210/jc.2017-02488".to_string()),
+                citation: "McNamara M et al. Measuring sex steroid concentrations in blood. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Premenopausal women mid-cycle".to_string(),
+            },
+        });
+
+        repro_female_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "progesterone_luteal_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29522048".to_string()),
+                doi: Some("10.1210/jc.2017-02488".to_string()),
+                citation: "McNamara M et al. Measuring sex steroid concentrations in blood. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Women mid-luteal phase".to_string(),
+            },
+        });
+
+        repro_female_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lh_follicular_miu_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("28892460".to_string()),
+                doi: Some("10.1093/humrep/dex250".to_string()),
+                citation: "Andersen CY, Ezcurra D. Human steroidogenesis. Hum Reprod. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Reproductive age women follicular phase".to_string(),
+            },
+        });
+
+        repro_female_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fsh_follicular_miu_ml".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(3.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("28892460".to_string()),
+                doi: Some("10.1093/humrep/dex250".to_string()),
+                citation: "Andersen CY, Ezcurra D. Human steroidogenesis. Hum Reprod. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Reproductive age women follicular phase".to_string(),
+            },
+        });
+
+        repro_female_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "amh_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29360290".to_string()),
+                doi: Some("10.1016/j.fertnstert.2017.12.017".to_string()),
+                citation: "Practice Committee ASRM. Testing and interpreting measures of ovarian reserve. Fertil Steril. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Women age 25-35 years".to_string(),
+            },
+        });
+
+        repro_female_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "antral_follicle_count".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(6.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29360290".to_string()),
+                doi: Some("10.1016/j.fertnstert.2017.12.017".to_string()),
+                citation: "Practice Committee ASRM. Testing and interpreting measures of ovarian reserve. Fertil Steril. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Women age 25-35 years early follicular".to_string(),
+            },
+        });
+
+        repro_female_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inhibin_b_pg_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(30.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("28892460".to_string()),
+                doi: Some("10.1093/humrep/dex250".to_string()),
+                citation: "Andersen CY, Ezcurra D. Human steroidogenesis. Hum Reprod. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Reproductive age women early follicular phase".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("reproductive_female".to_string(), repro_female_data);
+
+        let mut bone_adv_data = GroundTruthData::new(
+            "bone_metabolism_advanced".to_string(),
+            "Advanced bone turnover markers and calcium homeostasis".to_string(),
+        );
+
+        bone_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ctx_ng_ml".to_string(),
+            expected_value: 0.3,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.1),
+            max_value: Some(0.7),
+            reference: ClinicalReference {
+                pmid: Some("28681396".to_string()),
+                doi: Some("10.1007/s00198-017-4133-9".to_string()),
+                citation: "Vasikaran S et al. Markers of bone turnover for prediction of fracture risk. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Postmenopausal women fasting morning".to_string(),
+            },
+        });
+
+        bone_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p1np_ng_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("28681396".to_string()),
+                doi: Some("10.1007/s00198-017-4133-9".to_string()),
+                citation: "Vasikaran S et al. Markers of bone turnover for prediction of fracture risk. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Premenopausal women".to_string(),
+            },
+        });
+
+        bone_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "osteocalcin_ng_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1007/s00774-017-0888-7".to_string()),
+                citation: "Kuo TR, Chen CH. Bone biomarker for the clinical assessment of osteoporosis. J Bone Miner Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults 25-45 years".to_string(),
+            },
+        });
+
+        bone_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_alp_ug_l".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1007/s00774-017-0888-7".to_string()),
+                citation: "Kuo TR, Chen CH. Bone biomarker for the clinical assessment of osteoporosis. J Bone Miner Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults 25-45 years".to_string(),
+            },
+        });
+
+        bone_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pth_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29896620".to_string()),
+                doi: Some("10.1210/jc.2018-00612".to_string()),
+                citation: "Bilezikian JP et al. Guidelines for the management of asymptomatic primary hyperparathyroidism. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18500),
+                population: "Healthy adults vitamin D replete".to_string(),
+            },
+        });
+
+        bone_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ionized_calcium_mmol_l".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.05),
+            min_value: Some(1.12),
+            max_value: Some(1.32),
+            reference: ClinicalReference {
+                pmid: Some("29896620".to_string()),
+                doi: Some("10.1210/jc.2018-00612".to_string()),
+                citation: "Bilezikian JP et al. Guidelines for the management of asymptomatic primary hyperparathyroidism. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18500),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        bone_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phosphate_mg_dl".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(2.5),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("28892460".to_string()),
+                doi: Some("10.1093/ndt/gfw318".to_string()),
+                citation: "Dhingra R et al. Relations of serum phosphorus levels to cardiovascular disease. Arch Intern Med. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(52000),
+                population: "Healthy adults normal renal function".to_string(),
+            },
+        });
+
+        bone_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcitonin_pg_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1007/s00774-017-0888-7".to_string()),
+                citation: "Kuo TR, Chen CH. Bone biomarker for the clinical assessment of osteoporosis. J Bone Miner Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults no thyroid disease".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("bone_metabolism_advanced".to_string(), bone_adv_data);
+
+        let mut fluid_electrolyte_data = GroundTruthData::new(
+            "fluid_electrolyte_balance".to_string(),
+            "Fluid compartments and electrolyte homeostasis".to_string(),
+        );
+
+        fluid_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_sodium_mmol_l".to_string(),
+            expected_value: 140.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(136.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("28388193".to_string()),
+                doi: Some("10.1093/ndt/gfw318".to_string()),
+                citation: "Sterns RH. Disorders of plasma sodium. N Engl J Med. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults euvolemic".to_string(),
+            },
+        });
+
+        fluid_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_potassium_mmol_l".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(3.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28388193".to_string()),
+                doi: Some("10.1093/ndt/gfw318".to_string()),
+                citation: "Sterns RH. Disorders of plasma potassium. N Engl J Med. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults normal renal function".to_string(),
+            },
+        });
+
+        fluid_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_chloride_mmol_l".to_string(),
+            expected_value: 102.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(98.0),
+            max_value: Some(107.0),
+            reference: ClinicalReference {
+                pmid: Some("29459464".to_string()),
+                doi: Some("10.1053/j.ajkd.2017.12.014".to_string()),
+                citation: "Yunos NM et al. Association between chloride-liberal vs chloride-restrictive IV fluid. JAMA. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5500),
+                population: "ICU patients baseline".to_string(),
+            },
+        });
+
+        fluid_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_magnesium_mg_dl".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.2),
+            min_value: Some(1.7),
+            max_value: Some(2.3),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1093/ajcn/nqw430".to_string()),
+                citation: "Costello RB et al. Perspective: Assessment of magnesium status. Am J Clin Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        fluid_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_osmolality_mosm_kg".to_string(),
+            expected_value: 290.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(280.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("28388193".to_string()),
+                doi: Some("10.1093/ndt/gfw318".to_string()),
+                citation: "Sterns RH. Disorders of plasma osmolality. N Engl J Med. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults euhydrated".to_string(),
+            },
+        });
+
+        fluid_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_body_water_l".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(30.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("28681396".to_string()),
+                doi: Some("10.1093/ajcn/nqx001".to_string()),
+                citation: "Ritz P. Body water compartments in humans. Eur J Clin Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults 70kg reference weight".to_string(),
+            },
+        });
+
+        fluid_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "extracellular_fluid_l".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(10.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("28681396".to_string()),
+                doi: Some("10.1093/ajcn/nqx001".to_string()),
+                citation: "Ritz P. Body water compartments in humans. Eur J Clin Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults 70kg reference weight".to_string(),
+            },
+        });
+
+        fluid_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intracellular_fluid_l".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(20.0),
+            max_value: Some(37.0),
+            reference: ClinicalReference {
+                pmid: Some("28681396".to_string()),
+                doi: Some("10.1093/ajcn/nqx001".to_string()),
+                citation: "Ritz P. Body water compartments in humans. Eur J Clin Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults 70kg reference weight".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("fluid_electrolyte_balance".to_string(), fluid_electrolyte_data);
+
+        let mut acid_base_data = GroundTruthData::new(
+            "acid_base_balance".to_string(),
+            "Arterial blood gas parameters and acid-base homeostasis".to_string(),
+        );
+
+        acid_base_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arterial_ph".to_string(),
+            expected_value: 7.40,
+            standard_deviation: Some(0.02),
+            min_value: Some(7.35),
+            max_value: Some(7.45),
+            reference: ClinicalReference {
+                pmid: Some("29896620".to_string()),
+                doi: Some("10.1164/rccm.201801-0069CI".to_string()),
+                citation: "Kellum JA et al. Metabolic acidosis. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults room air".to_string(),
+            },
+        });
+
+        acid_base_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "paco2_mmhg".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(35.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29896620".to_string()),
+                doi: Some("10.1164/rccm.201801-0069CI".to_string()),
+                citation: "Kellum JA et al. Metabolic acidosis. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults room air".to_string(),
+            },
+        });
+
+        acid_base_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bicarbonate_mmol_l".to_string(),
+            expected_value: 24.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(22.0),
+            max_value: Some(26.0),
+            reference: ClinicalReference {
+                pmid: Some("29896620".to_string()),
+                doi: Some("10.1164/rccm.201801-0069CI".to_string()),
+                citation: "Kellum JA et al. Metabolic acidosis. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults arterial blood".to_string(),
+            },
+        });
+
+        acid_base_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "base_excess_mmol_l".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(-2.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29896620".to_string()),
+                doi: Some("10.1164/rccm.201801-0069CI".to_string()),
+                citation: "Kellum JA et al. Metabolic acidosis. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults arterial blood".to_string(),
+            },
+        });
+
+        acid_base_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anion_gap_mmol_l".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(8.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("29896620".to_string()),
+                doi: Some("10.1164/rccm.201801-0069CI".to_string()),
+                citation: "Kellum JA et al. Metabolic acidosis. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults calculated Na - (Cl + HCO3)".to_string(),
+            },
+        });
+
+        acid_base_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lactate_mmol_l".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29305587".to_string()),
+                doi: Some("10.1097/CCM.0000000000003262".to_string()),
+                citation: "Vincent JL et al. The value of blood lactate kinetics in critically ill patients. Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500),
+                population: "Healthy adults resting state".to_string(),
+            },
+        });
+
+        acid_base_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "venous_ph".to_string(),
+            expected_value: 7.35,
+            standard_deviation: Some(0.03),
+            min_value: Some(7.31),
+            max_value: Some(7.41),
+            reference: ClinicalReference {
+                pmid: Some("29896620".to_string()),
+                doi: Some("10.1164/rccm.201801-0069CI".to_string()),
+                citation: "Kellum JA et al. Venous vs arterial blood gas analysis. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults peripheral venous".to_string(),
+            },
+        });
+
+        acid_base_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pco2_venous_mmhg".to_string(),
+            expected_value: 46.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(40.0),
+            max_value: Some(52.0),
+            reference: ClinicalReference {
+                pmid: Some("29896620".to_string()),
+                doi: Some("10.1164/rccm.201801-0069CI".to_string()),
+                citation: "Kellum JA et al. Venous vs arterial blood gas analysis. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults peripheral venous".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("acid_base_balance".to_string(), acid_base_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -5013,6 +5589,10 @@ mod tests {
         assert!(db.get_dataset("gastrointestinal_advanced").is_some());
         assert!(db.get_dataset("vascular_hemodynamic").is_some());
         assert!(db.get_dataset("lymphatic_system").is_some());
+        assert!(db.get_dataset("reproductive_female").is_some());
+        assert!(db.get_dataset("bone_metabolism_advanced").is_some());
+        assert!(db.get_dataset("fluid_electrolyte_balance").is_some());
+        assert!(db.get_dataset("acid_base_balance").is_some());
     }
 
     #[test]
