@@ -64,6 +64,7 @@ pub mod exercise;
 pub mod nutrition;
 pub mod development;
 pub mod microbiome;
+pub mod biometric_authentication;
 
 // Re-export commonly used types
 pub use biology::{
