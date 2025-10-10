@@ -1,4 +1,11 @@
+pub mod thermoregulation;
+
 use serde::{Deserialize, Serialize};
+
+pub use thermoregulation::{
+    ThermoregulationSystem as ThermoSystem, HeatProduction, HeatLoss, TemperatureZone, ThermalZone,
+    AcclimatizationStatus, ThermalStress, BehavioralResponse,
+};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct IntegratedPhysiology {

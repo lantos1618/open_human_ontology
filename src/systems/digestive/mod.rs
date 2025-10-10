@@ -4,6 +4,7 @@ pub mod digestion;
 pub mod liver;
 pub mod pancreas;
 pub mod motility;
+pub mod gut_brain_axis;
 
 pub use gi_tract::{GITract, Stomach, SmallIntestine, LargeIntestine};
 pub use absorption::{NutrientAbsorption, Villus, Enterocyte};
@@ -11,3 +12,4 @@ pub use digestion::{DigestiveEnzymes, MacronutrientDigestion, GastricSecretion, 
 pub use liver::{Liver, DetoxificationCapacity, HepaticMetabolism, BileProduction, LiverFunctionAssessment, HepatocyteZone, ProteinSynthesis};
 pub use pancreas::Pancreas;
 pub use motility::{GutMotility, MotilityPattern, GIRegion, EntericNervousSystem, EntericNeurotransmitter, EntericReflex, SmoothMuscleLayers, GastricEmptying, MealComposition, ColonTransit, BristolStoolScale};
+pub use gut_brain_axis::{GutBrainAxis, NeurotransmitterProduction, HPAAxisActivity, ImmuneSignaling, StressResponse, GutBrainCommunicationPathway, GutBrainDisorder, GutBrainDisorderType};
