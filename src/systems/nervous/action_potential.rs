@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::f64::consts::E;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionPotentialDynamics {

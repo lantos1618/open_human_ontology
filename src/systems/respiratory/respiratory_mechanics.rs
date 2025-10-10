@@ -296,7 +296,7 @@ mod tests {
 
     #[test]
     fn test_respiratory_mechanics() {
-        let mut mech = RespiratoryMechanics::new_normal();
+        let mech = RespiratoryMechanics::new_normal();
         assert!(mech.total_compliance_l_cmh2o > 0.0);
         assert!(mech.total_compliance_l_cmh2o < mech.lung_compliance_l_cmh2o);
 
