@@ -16,9 +16,10 @@ A comprehensive computational model of human biology using Rust's type system to
 
 ## Current Status
 ✅ **Compilation**: Project builds successfully
-✅ **Tests**: All 1611 tests passing (+50 new tests)
+✅ **Tests**: All tests passing
 ✅ **Documentation**: Rust docs generated
-✅ **Core Modules**: Biology, Chemistry, Physics, Systems all implemented
+✅ **Core Modules**: Biology, Chemistry, Physics, Systems, Physiology all implemented
+✅ **New Systems**: Stress response, aging, inflammation, mitochondrial function added
 
 ## Implemented Systems
 
@@ -29,7 +30,7 @@ A comprehensive computational model of human biology using Rust's type system to
 - **Immunology**: Vaccines, ImmuneResponse, Delivery systems, Allergies
 - **Genetics**: 50+ genetic modules including ancestry variants (Asian, African, European, Native American)
 - **Skeletal**: Bone health, BMD, FRAX scores, osteoporosis assessment
-- **Cellular**: Protein synthesis, membranes, organelles
+- **Cellular**: Protein synthesis, membranes, organelles, mitochondria (detailed ETC, OXPHOS, dynamics)
 - **Biomarkers**: Comprehensive health markers and risk assessment
 
 ### Chemistry Module (`src/chemistry/`)
@@ -44,6 +45,13 @@ A comprehensive computational model of human biology using Rust's type system to
 - Stress/strain modeling
 - Vector3 mathematics
 
+### Physiology Module (`src/physiology/`)
+- **Thermoregulation**: Core/skin temp, heat production/loss, thermal zones, acclimatization
+- **Stress Response**: HPA/SAM axes, allostatic load, resilience factors, chronic stress effects
+- **Aging**: Biological age, cellular aging, organ aging, hallmarks, longevity factors, frailty
+- **Inflammation**: Acute/chronic, cytokine networks, resolution mediators, inflammaging
+- **Integrated Physiology**: Metabolic state, hydration, electrolytes, acid-base, oxygen delivery
+
 ## Project Architecture
 
 See `agent/docs/ARCHITECTURE.md` for full architectural details.
@@ -57,7 +65,63 @@ The project uses:
 
 ## Recently Completed (Latest Session)
 
-### Physiological Systems Integration (Oct 2025)
+### Advanced Physiological Modeling (Oct 10, 2025)
+- **Stress Response System** (`src/physiology/stress_response.rs`)
+  - HPA Axis: CRH, ACTH, cortisol regulation with feedback sensitivity
+  - SAM Axis: Epinephrine, norepinephrine, HRV, vagal tone
+  - Allostatic Load: Primary mediators, secondary outcomes (metabolic/CV/immune), tertiary disease risks
+  - Stress biomarkers: Salivary cortisol (awakening/evening), DHEA-S, hair cortisol, alpha-amylase
+  - Resilience factors: Coping strategies, social support, exercise, sleep quality, mindfulness
+  - Chronic stress effects: Hippocampal volume loss, telomere shortening, immune aging
+  - Stress classification: Low/Moderate/High/Severe based on allostatic load index
+  - HPA dysregulation assessment: Hypocortisolism, hypercortisolism, feedback dysfunction
+
+- **Aging and Senescence System** (`src/physiology/aging.rs`)
+  - Biological age calculation: Epigenetic, telomeric, metabolic, immune ages
+  - Cellular aging: Telomere attrition (50 bp/year), senescence with SASP factors
+  - Mitochondrial dysfunction: Copy number, deletions, ATP production, ROS
+  - Stem cell exhaustion: HSC, MSC, neural, satellite cells
+  - Organ aging: Brain (volume, Aβ, tau), cardiovascular (PWV, IMT, EF), musculoskeletal (sarcopenia, BMD)
+  - Immune aging: Thymic output, naive T cells, inflammaging, immunosenescence
+  - Metabolic aging: BMR decline, insulin sensitivity, NAD+ levels, autophagy
+  - Hallmarks of aging: All 9 hallmarks quantified (genomic instability, telomeres, epigenetics, proteostasis, nutrient sensing, mitochondria, senescence, stem cells, communication)
+  - Longevity factors: Sirtuins (1,3,6), mTOR, AMPK, FOXO, Nrf2, GH/IGF-1 axis
+  - Frailty index and aging rate classification (slow/normal/accelerated/rapid)
+  - Longevity potential scoring based on telomeres, sirtuins, AMPK, autophagy
+
+- **Mitochondrial Function** (`src/biology/cellular/mitochondria.rs`)
+  - Structure: Inner/outer membranes, cristae, membrane potential (-180 mV)
+  - Energy production: ATP synthesis rate, NADH/NAD+ ratios, ATP/ADP ratios
+  - Electron transport chain: All 5 complexes with activity, efficiency, ROS production
+  - Complex I, III, IV: Proton pumping with 90%, 85%, 80% efficiency
+  - Complex V (ATP synthase): F0/F1 subunits, 150 rotations/sec, coupling efficiency
+  - Oxidative phosphorylation: O2 consumption, proton motive force, RCR, P/O ratio
+  - Metabolic pathways: TCA cycle (8 enzymes), β-oxidation (CPT1, ACAD), amino acid metabolism
+  - Ketone production: Acetoacetate, β-hydroxybutyrate, HMG-CoA synthase
+  - Dynamics: Fusion/fission rates, mitofusins, OPA1, DRP1, network connectivity
+  - Quality control: Mitophagy (PINK1/Parkin), proteases (YME1L, OMA1, LONP1, CLPP)
+  - Antioxidant defenses: SOD2, catalase, GPx, glutathione pool, peroxiredoxin
+  - Biogenergetic health index: Composite score from ATP, ΔΨm, respiratory capacity, QC
+  - Simulations: Substrate/O2-dependent ATP production, oxidative stress, biogenesis
+
+- **Inflammation System** (`src/physiology/inflammation.rs`)
+  - Acute inflammation: 5 cardinal signs (rubor, tumor, calor, dolor, functio laesa)
+  - Vascular response: Vasodilation, permeability, exudation, blood flow
+  - Cellular response: Neutrophil recruitment (margination→rolling→adhesion→transmigration)
+  - Monocyte/macrophage: M1/M2 polarization, phagocytosis, antigen presentation
+  - Lymphocyte activation: T cells, B cells, NK cells
+  - Chronic inflammation: Duration tracking, tissue remodeling, fibrosis, granulomas
+  - Pro-inflammatory cytokines: TNF-α, IL-1β, IL-6, IL-8, IL-12, IL-17, IFN-γ
+  - Anti-inflammatory: IL-4, IL-10, IL-13, TGF-β
+  - Chemokines: CCL2 (MCP-1), CCL5 (RANTES), CXCL8 (IL-8), CXCL10 (IP-10)
+  - Resolution mediators: Lipoxins (LXA4, LXB4), Resolvins (RvD1, RvD2, RvE1), Protectins (PD1), Maresins (MaR1)
+  - Inflammatory markers: CRP, ESR, procalcitonin, WBC, neutrophil/lymphocyte ratio
+  - Acute phase response: CRP, SAA, fibrinogen, ferritin, albumin
+  - Inflammaging: Age-related inflammation, SASP burden, mitochondrial DAMPs, gut barrier dysfunction
+  - Inflammatory index calculation and state classification
+  - Cytokine storm risk assessment
+
+### Previous Sessions - Physiological Systems Integration (Oct 2025)
 - **Gut-Brain Axis** (`src/systems/digestive/gut_brain_axis.rs`)
   - Neurotransmitter production: serotonin (95% gut), GABA, dopamine
   - HPA axis activity: cortisol, ACTH, CRH, feedback sensitivity
