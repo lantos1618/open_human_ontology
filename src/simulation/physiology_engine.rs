@@ -423,7 +423,6 @@ mod tests {
         let mut sim = PhysiologySimulation::new(1.0);
         let stressors = Stressors::new_resting();
 
-        let initial_hr = sim.state.cardiovascular.heart_rate_bpm;
         sim.step(&stressors);
 
         assert_eq!(sim.time.iteration, 1);
