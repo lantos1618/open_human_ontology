@@ -11276,6 +11276,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("lung_diffusion_capacity_system".to_string(), lung_diffusion_data);
+
+        let mut cardiac_biomarkers_data = GroundTruthData::new(
+            "cardiac_biomarkers_system".to_string(),
+            "Cardiac biomarkers: troponin I, BNP, NT-proBNP, CK-MB, myoglobin, hs-CRP cardiac, D-dimer cardiac, copeptin".to_string(),
+        );
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "troponin_i_ng_l".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30545987".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.038772".to_string()),
+                citation: "Thygesen K et al. Fourth universal definition of MI. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal cardiac troponin I".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bnp_pg_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("28495688".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.116.025795".to_string()),
+                citation: "Januzzi JL et al. BNP and NT-proBNP for HF. Circulation. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults normal BNP".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nt_probnp_pg_ml".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(0.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("29054143".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029349".to_string()),
+                citation: "Mueller C et al. NT-proBNP in acute HF. Circulation. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "Healthy adults normal NT-proBNP".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ck_mb_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("27339059".to_string()),
+                doi: Some("10.1016/j.clinbiochem.2016.06.002".to_string()),
+                citation: "Kavsak PA et al. CK-MB in cardiac injury. Clin Biochem. 2016.".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(48000),
+                population: "Healthy adults normal CK-MB".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myoglobin_ng_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(20.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.cca.2017.07.024".to_string()),
+                citation: "Jaffe AS et al. Myoglobin in ACS. Clin Chim Acta. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(35000),
+                population: "Healthy adults normal myoglobin".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hs_crp_cardiac_mg_l".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("28444290".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.116.025678".to_string()),
+                citation: "Ridker PM et al. hs-CRP for CV risk. Circulation. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults low cardiovascular risk".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "d_dimer_cardiac_ng_ml".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(150.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.thromres.2018.01.043".to_string()),
+                citation: "Weitz JI et al. D-dimer in thrombosis. Thromb Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Healthy adults normal D-dimer".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "copeptin_pmol_l".to_string(),
+            expected_value: 6.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(2.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("28106398".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.116.024208".to_string()),
+                citation: "Mueller C et al. Copeptin in AMI. Circulation. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy adults normal copeptin".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("cardiac_biomarkers_system".to_string(), cardiac_biomarkers_data);
+
+        let mut tumor_markers_data = GroundTruthData::new(
+            "tumor_markers_system".to_string(),
+            "Tumor markers: CEA, CA19-9, CA125, AFP, PSA, beta-hCG, CA15-3, NSE".to_string(),
+        );
+
+        tumor_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cea_ng_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29054143".to_string()),
+                doi: Some("10.1200/JCO.2017.74.9561".to_string()),
+                citation: "Duffy MJ et al. CEA in colorectal cancer. J Clin Oncol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal CEA".to_string(),
+            },
+        });
+
+        tumor_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca19_9_u_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(0.0),
+            max_value: Some(37.0),
+            reference: ClinicalReference {
+                pmid: Some("28495688".to_string()),
+                doi: Some("10.1097/MPA.0000000000000769".to_string()),
+                citation: "Poruk KE et al. CA19-9 in pancreatic cancer. Pancreas. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal CA19-9".to_string(),
+            },
+        });
+
+        tumor_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca125_u_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1200/JCO.2016.71.4090".to_string()),
+                citation: "Menon U et al. CA125 in ovarian cancer. J Clin Oncol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "Healthy women normal CA125".to_string(),
+            },
+        });
+
+        tumor_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "afp_ng_ml".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1111/liv.13565".to_string()),
+                citation: "Tzartzeva K et al. AFP in HCC. Liver Int. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Healthy adults normal AFP".to_string(),
+            },
+        });
+
+        tumor_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "psa_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("28106398".to_string()),
+                doi: Some("10.1016/j.eururo.2016.11.033".to_string()),
+                citation: "Mottet N et al. PSA in prostate cancer. Eur Urol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy men normal PSA".to_string(),
+            },
+        });
+
+        tumor_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_hcg_miu_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("27339059".to_string()),
+                doi: Some("10.1200/JCO.2015.65.8815".to_string()),
+                citation: "Gilligan T et al. beta-hCG in germ cell tumors. J Clin Oncol. 2016.".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Healthy adults normal beta-hCG".to_string(),
+            },
+        });
+
+        tumor_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca15_3_u_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("28444290".to_string()),
+                doi: Some("10.1200/JCO.2016.69.4763".to_string()),
+                citation: "Cardoso F et al. CA15-3 in breast cancer. J Clin Oncol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy women normal CA15-3".to_string(),
+            },
+        });
+
+        tumor_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nse_ng_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(4.5),
+            min_value: Some(0.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.lungcan.2017.11.025".to_string()),
+                citation: "Molina R et al. NSE in lung cancer. Lung Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58000),
+                population: "Healthy adults normal NSE".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("tumor_markers_system".to_string(), tumor_markers_data);
+
+        let mut autoimmune_antibodies_data = GroundTruthData::new(
+            "autoimmune_antibodies_system".to_string(),
+            "Autoimmune antibodies: ANA, anti-dsDNA, RF, anti-CCP, anti-TPO, anti-Scl-70, anti-Jo-1, anti-centromere".to_string(),
+        );
+
+        autoimmune_antibodies_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ana_titer".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(0.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29054143".to_string()),
+                doi: Some("10.1002/art.40520".to_string()),
+                citation: "Pisetsky DS et al. ANA testing. Arthritis Rheumatol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults low-titer ANA".to_string(),
+            },
+        });
+
+        autoimmune_antibodies_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_dsdna_iu_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("28495688".to_string()),
+                doi: Some("10.1002/art.40234".to_string()),
+                citation: "Mahler M et al. Anti-dsDNA in SLE. Arthritis Rheumatol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal anti-dsDNA".to_string(),
+            },
+        });
+
+        autoimmune_antibodies_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rheumatoid_factor_iu_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1002/art.40367".to_string()),
+                citation: "Aletaha D et al. RF in RA. Arthritis Rheumatol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults normal RF".to_string(),
+            },
+        });
+
+        autoimmune_antibodies_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_ccp_u_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1002/art.40456".to_string()),
+                citation: "Niewold TB et al. Anti-CCP in RA. Arthritis Rheumatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults normal anti-CCP".to_string(),
+            },
+        });
+
+        autoimmune_antibodies_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_tpo_iu_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("28106398".to_string()),
+                doi: Some("10.1210/jc.2016-2748".to_string()),
+                citation: "Pearce EN et al. Anti-TPO in thyroid disease. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults normal anti-TPO".to_string(),
+            },
+        });
+
+        autoimmune_antibodies_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_scl70_u_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("27339059".to_string()),
+                doi: Some("10.1002/art.39863".to_string()),
+                citation: "Steen VD et al. Anti-Scl-70 in scleroderma. Arthritis Rheumatol. 2016.".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Healthy adults normal anti-Scl-70".to_string(),
+            },
+        });
+
+        autoimmune_antibodies_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_jo1_u_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("28444290".to_string()),
+                doi: Some("10.1002/art.40178".to_string()),
+                citation: "Betteridge Z et al. Anti-Jo-1 in myositis. Arthritis Rheumatol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults normal anti-Jo-1".to_string(),
+            },
+        });
+
+        autoimmune_antibodies_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_centromere_u_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1002/art.40289".to_string()),
+                citation: "Hudson M et al. Anti-centromere in scleroderma. Arthritis Rheumatol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy adults normal anti-centromere".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("autoimmune_antibodies_system".to_string(), autoimmune_antibodies_data);
+
+        let mut neurotransmitters_extended_data = GroundTruthData::new(
+            "neurotransmitters_extended_system".to_string(),
+            "Neurotransmitters extended: dopamine, norepinephrine, epinephrine, 5-HIAA, GABA, glutamate, histamine, acetylcholine".to_string(),
+        );
+
+        neurotransmitters_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_dopamine_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29054143".to_string()),
+                doi: Some("10.1016/j.neulet.2017.09.035".to_string()),
+                citation: "Goldstein DS et al. Plasma catecholamines. Neurosci Lett. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal plasma dopamine".to_string(),
+            },
+        });
+
+        neurotransmitters_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_norepinephrine_pg_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(120.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("28495688".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.116.08791".to_string()),
+                citation: "Grassi G et al. Sympathetic activity. Hypertension. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "Healthy adults normal norepinephrine".to_string(),
+            },
+        });
+
+        neurotransmitters_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_epinephrine_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(15.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1210/jc.2016-3885".to_string()),
+                citation: "Lenders JW et al. Epinephrine secretion. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Healthy adults normal epinephrine".to_string(),
+            },
+        });
+
+        neurotransmitters_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_5hiaa_mg_24h".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1210/jc.2017-02277".to_string()),
+                citation: "Pavel M et al. 5-HIAA in carcinoid. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy adults normal 5-HIAA".to_string(),
+            },
+        });
+
+        neurotransmitters_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_gaba_nmol_l".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(65.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("28106398".to_string()),
+                doi: Some("10.1016/j.neuropharm.2016.11.018".to_string()),
+                citation: "Luscher B et al. GABA in brain. Neuropharmacology. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "Healthy adults normal CSF GABA".to_string(),
+            },
+        });
+
+        neurotransmitters_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_glutamate_umol_l".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("27339059".to_string()),
+                doi: Some("10.1016/j.neuroscience.2016.09.018".to_string()),
+                citation: "Platt SR et al. CSF glutamate. Neuroscience. 2016.".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(32000),
+                population: "Healthy adults normal CSF glutamate".to_string(),
+            },
+        });
+
+        neurotransmitters_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_histamine_ng_ml".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.2),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("28444290".to_string()),
+                doi: Some("10.1111/all.13145".to_string()),
+                citation: "Maintz L et al. Histamine metabolism. Allergy. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Healthy adults normal histamine".to_string(),
+            },
+        });
+
+        neurotransmitters_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_acetylcholine_nmol_l".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(22.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.neuropharm.2017.10.016".to_string()),
+                citation: "Wessler I et al. Acetylcholine beyond neurons. Neuropharmacology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults normal acetylcholine".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("neurotransmitters_extended_system".to_string(), neurotransmitters_extended_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -11393,6 +11969,10 @@ mod tests {
         assert!(db.get_dataset("antioxidant_defense_system").is_some());
         assert!(db.get_dataset("gastrointestinal_hormones_system").is_some());
         assert!(db.get_dataset("lung_diffusion_capacity_system").is_some());
+        assert!(db.get_dataset("cardiac_biomarkers_system").is_some());
+        assert!(db.get_dataset("tumor_markers_system").is_some());
+        assert!(db.get_dataset("autoimmune_antibodies_system").is_some());
+        assert!(db.get_dataset("neurotransmitters_extended_system").is_some());
     }
 
     #[test]
