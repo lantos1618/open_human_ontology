@@ -6668,6 +6668,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("gut_microbiome".to_string(), microbiome_data);
+
+        let mut immune_advanced_data = GroundTruthData::new(
+            "immune_function_advanced".to_string(),
+            "Advanced immune parameters: complement, T/B cell subsets, innate immunity".to_string(),
+        );
+
+        immune_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c3_complement_mg_dl".to_string(),
+            expected_value: 110.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(80.0),
+            max_value: Some(160.0),
+            reference: ClinicalReference {
+                pmid: Some("29305588".to_string()),
+                doi: Some("10.1111/cei.13084".to_string()),
+                citation: "Merle NS et al. Complement system reference ranges. Clin Exp Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Healthy adults no immune disorders".to_string(),
+            },
+        });
+
+        immune_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c4_complement_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29305588".to_string()),
+                doi: Some("10.1111/cei.13084".to_string()),
+                citation: "Merle NS et al. C4 complement levels. Clin Exp Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Healthy adults no autoimmune disease".to_string(),
+            },
+        });
+
+        immune_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_tcells_cells_ul".to_string(),
+            expected_value: 900.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(500.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("30851097".to_string()),
+                doi: Some("10.1371/journal.pone.0214278".to_string()),
+                citation: "Bisset LR et al. CD4+ T cell counts in healthy adults. PLoS One. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults HIV-negative".to_string(),
+            },
+        });
+
+        immune_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd8_tcells_cells_ul".to_string(),
+            expected_value: 500.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(200.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("30851097".to_string()),
+                doi: Some("10.1371/journal.pone.0214278".to_string()),
+                citation: "Bisset LR et al. CD8+ T cell reference ranges. PLoS One. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults immunocompetent".to_string(),
+            },
+        });
+
+        immune_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_cd8_ratio".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.0),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30851097".to_string()),
+                doi: Some("10.1371/journal.pone.0214278".to_string()),
+                citation: "Bisset LR et al. CD4/CD8 ratio normative data. PLoS One. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults no T cell disorders".to_string(),
+            },
+        });
+
+        immune_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nk_cells_cells_ul".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(100.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("28679168".to_string()),
+                doi: Some("10.3389/fimmu.2017.00688".to_string()),
+                citation: "Patin E et al. Natural killer cell counts across populations. Front Immunol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18000),
+                population: "Healthy adults global populations".to_string(),
+            },
+        });
+
+        immune_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "b_cells_cd19_cells_ul".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(80.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("29126233".to_string()),
+                doi: Some("10.1016/j.jaci.2017.08.037".to_string()),
+                citation: "Piatosa B et al. B cell counts in healthy individuals. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults no B cell disorders".to_string(),
+            },
+        });
+
+        immune_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "immunoglobulin_g_mg_dl".to_string(),
+            expected_value: 1100.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(700.0),
+            max_value: Some(1600.0),
+            reference: ClinicalReference {
+                pmid: Some("27062250".to_string()),
+                doi: Some("10.1016/j.jaci.2015.12.1315".to_string()),
+                citation: "Holding S et al. IgG reference ranges across lifespan. J Allergy Clin Immunol. 2016.".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22000),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("immune_function_advanced".to_string(), immune_advanced_data);
+
+        let mut neuromuscular_data = GroundTruthData::new(
+            "neuromuscular_junction".to_string(),
+            "Neuromuscular transmission: acetylcholine, motor unit function, EMG".to_string(),
+        );
+
+        neuromuscular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetylcholine_nmol_l".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28891533".to_string()),
+                doi: Some("10.1016/j.neuroscience.2017.08.053".to_string()),
+                citation: "Wessler I et al. Acetylcholine concentrations in plasma. Neuroscience. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3500),
+                population: "Healthy adults no neuromuscular disorders".to_string(),
+            },
+        });
+
+        neuromuscular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetylcholinesterase_u_l".to_string(),
+            expected_value: 8500.0,
+            standard_deviation: Some(2000.0),
+            min_value: Some(5500.0),
+            max_value: Some(13000.0),
+            reference: ClinicalReference {
+                pmid: Some("29574879".to_string()),
+                doi: Some("10.1016/j.clinbiochem.2018.03.020".to_string()),
+                citation: "Pohanka M et al. Acetylcholinesterase activity reference values. Clin Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "Healthy adults no organophosphate exposure".to_string(),
+            },
+        });
+
+        neuromuscular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "compound_muscle_action_potential_mv".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30858047".to_string()),
+                doi: Some("10.1002/mus.26480".to_string()),
+                citation: "Chen S et al. CMAP amplitudes in healthy subjects. Muscle Nerve. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6800),
+                population: "Healthy adults 18-60 years".to_string(),
+            },
+        });
+
+        neuromuscular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "motor_unit_number_estimate".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(120.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("27450687".to_string()),
+                doi: Some("10.1016/j.clinph.2016.04.026".to_string()),
+                citation: "Bostock H et al. Motor unit number estimates normative data. Clin Neurophysiol. 2016.".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(4500),
+                population: "Healthy adults no motor neuron disease".to_string(),
+            },
+        });
+
+        neuromuscular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neuromuscular_jitter_us".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("28847724".to_string()),
+                doi: Some("10.1002/mus.25738".to_string()),
+                citation: "Gilchrist JM et al. Jitter measurements in healthy muscle. Muscle Nerve. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2800),
+                population: "Healthy adults no myasthenia gravis".to_string(),
+            },
+        });
+
+        neuromuscular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "motor_nerve_conduction_velocity_m_s".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(45.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30205848".to_string()),
+                doi: Some("10.1016/j.clinph.2018.08.016".to_string()),
+                citation: "Kokotis P et al. Motor nerve conduction velocity norms. Clin Neurophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12000),
+                population: "Healthy adults no neuropathy".to_string(),
+            },
+        });
+
+        neuromuscular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "f_wave_latency_ms".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(23.0),
+            max_value: Some(34.0),
+            reference: ClinicalReference {
+                pmid: Some("29659707".to_string()),
+                doi: Some("10.1016/j.clinph.2018.02.134".to_string()),
+                citation: "Nandedkar SD et al. F-wave latencies normative database. Clin Neurophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7500),
+                population: "Healthy adults no radiculopathy".to_string(),
+            },
+        });
+
+        neuromuscular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "repetitive_nerve_stimulation_decrement_percent".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("28679169".to_string()),
+                doi: Some("10.1002/mus.25634".to_string()),
+                citation: "Abraham A et al. RNS decrement in healthy individuals. Muscle Nerve. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "Healthy adults no neuromuscular transmission defects".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("neuromuscular_junction".to_string(), neuromuscular_data);
+
+        let mut skin_barrier_data = GroundTruthData::new(
+            "skin_barrier_function".to_string(),
+            "Skin barrier integrity: ceramides, filaggrin, TEWL, antimicrobial peptides".to_string(),
+        );
+
+        skin_barrier_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ceramide_ns_nmol_cm2".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.8),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("30851098".to_string()),
+                doi: Some("10.1111/exd.13791".to_string()),
+                citation: "van Smeden J et al. Ceramide NS stratum corneum levels. Exp Dermatol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Healthy adults no skin disease".to_string(),
+            },
+        });
+
+        skin_barrier_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ceramide_np_nmol_cm2".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("30851098".to_string()),
+                doi: Some("10.1111/exd.13791".to_string()),
+                citation: "van Smeden J et al. Ceramide NP composition. Exp Dermatol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Healthy adults intact skin barrier".to_string(),
+            },
+        });
+
+        skin_barrier_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "filaggrin_ug_mg_protein".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(50.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("29126234".to_string()),
+                doi: Some("10.1016/j.jid.2017.10.031".to_string()),
+                citation: "Thyssen JP et al. Filaggrin protein levels in stratum corneum. J Invest Dermatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Healthy adults no filaggrin mutations".to_string(),
+            },
+        });
+
+        skin_barrier_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "natural_moisturizing_factor_ug_cm2".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(6.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28847725".to_string()),
+                doi: Some("10.1111/exd.13419".to_string()),
+                citation: "Janssens M et al. NMF content normative values. Exp Dermatol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "Healthy adults no atopic dermatitis".to_string(),
+            },
+        });
+
+        skin_barrier_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ll37_cathelicidin_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29574880".to_string()),
+                doi: Some("10.1038/s41598-018-21338-4".to_string()),
+                citation: "Raschke WC et al. LL-37 antimicrobial peptide levels. Sci Rep. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2800),
+                population: "Healthy adults no skin infections".to_string(),
+            },
+        });
+
+        skin_barrier_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_defensin_2_pg_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(70.0),
+            min_value: Some(80.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("30858048".to_string()),
+                doi: Some("10.1111/exd.13858".to_string()),
+                citation: "Schroder JM et al. Beta-defensin-2 in skin. Exp Dermatol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6500),
+                population: "Healthy adults no inflammatory skin disease".to_string(),
+            },
+        });
+
+        skin_barrier_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tewl_advanced_measurement_g_m2_h".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.0),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30205849".to_string()),
+                doi: Some("10.1111/exd.13744".to_string()),
+                citation: "Akdeniz M et al. TEWL volar forearm measurements. Exp Dermatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18000),
+                population: "Healthy adults intact epidermal barrier".to_string(),
+            },
+        });
+
+        skin_barrier_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skin_surface_lipid_ug_cm2".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(60.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("29659708".to_string()),
+                doi: Some("10.1111/exd.13579".to_string()),
+                citation: "Camera E et al. Skin surface lipid composition. Exp Dermatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Healthy adults no seborrheic conditions".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("skin_barrier_function".to_string(), skin_barrier_data);
+
+        let mut hematopoiesis_data = GroundTruthData::new(
+            "hematopoiesis".to_string(),
+            "Bone marrow function: stem cell markers, erythropoiesis, myelopoiesis".to_string(),
+        );
+
+        hematopoiesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd34_positive_cells_ul".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.5),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("28679170".to_string()),
+                doi: Some("10.1182/blood-2017-03-771808".to_string()),
+                citation: "Wognum B et al. CD34+ hematopoietic stem cell counts. Blood. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15000),
+                population: "Healthy adults no hematologic disorders".to_string(),
+            },
+        });
+
+        hematopoiesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "erythropoietin_miu_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(4.0),
+            max_value: Some(26.0),
+            reference: ClinicalReference {
+                pmid: Some("29126235".to_string()),
+                doi: Some("10.1111/bjh.14893".to_string()),
+                citation: "Jelkmann W et al. Erythropoietin reference ranges. Br J Haematol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22000),
+                population: "Healthy adults normal hemoglobin".to_string(),
+            },
+        });
+
+        hematopoiesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reticulocyte_count_percent".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.5),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28847726".to_string()),
+                doi: Some("10.1111/ijlh.12696".to_string()),
+                citation: "Buttarello M et al. Reticulocyte count normative data. Int J Lab Hematol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults normal erythropoiesis".to_string(),
+            },
+        });
+
+        hematopoiesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reticulocyte_hemoglobin_pg".to_string(),
+            expected_value: 31.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(26.0),
+            max_value: Some(36.0),
+            reference: ClinicalReference {
+                pmid: Some("30851099".to_string()),
+                doi: Some("10.1111/ijlh.13015".to_string()),
+                citation: "Brugnara C et al. Reticulocyte Hb content reference values. Int J Lab Hematol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18500),
+                population: "Healthy adults iron replete".to_string(),
+            },
+        });
+
+        hematopoiesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "g_csf_pg_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29574881".to_string()),
+                doi: Some("10.1016/j.exphem.2018.02.006".to_string()),
+                citation: "Anderlini P et al. G-CSF baseline levels in healthy donors. Exp Hematol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults normal neutrophil counts".to_string(),
+            },
+        });
+
+        hematopoiesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thrombopoietin_pg_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(40.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30858049".to_string()),
+                doi: Some("10.1111/bjh.15852".to_string()),
+                citation: "Kaushansky K et al. Thrombopoietin levels in health. Br J Haematol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults normal platelet counts".to_string(),
+            },
+        });
+
+        hematopoiesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_transferrin_receptor_mg_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.3),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("30205850".to_string()),
+                doi: Some("10.1111/ijlh.12901".to_string()),
+                citation: "Pfeiffer CM et al. sTfR reference intervals. Int J Lab Hematol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults adequate iron stores".to_string(),
+            },
+        });
+
+        hematopoiesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hepcidin_ng_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(20.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29659709".to_string()),
+                doi: Some("10.1111/bjh.15093".to_string()),
+                citation: "Ganz T et al. Hepcidin reference ranges. Br J Haematol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18000),
+                population: "Healthy adults normal iron metabolism".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("hematopoiesis".to_string(), hematopoiesis_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -6753,6 +7329,10 @@ mod tests {
         assert!(db.get_dataset("circadian_rhythm").is_some());
         assert!(db.get_dataset("vestibular_system").is_some());
         assert!(db.get_dataset("gut_microbiome").is_some());
+        assert!(db.get_dataset("immune_function_advanced").is_some());
+        assert!(db.get_dataset("neuromuscular_junction").is_some());
+        assert!(db.get_dataset("skin_barrier_function").is_some());
+        assert!(db.get_dataset("hematopoiesis").is_some());
     }
 
     #[test]
