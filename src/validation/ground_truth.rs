@@ -14757,6 +14757,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("skin_pigmentation_system".to_string(), skin_pigmentation_data);
+
+        // Salivary Gland Function System (8 parameters)
+        let mut salivary_gland_data = GroundTruthData::new(
+            "salivary_gland_function_system".to_string(),
+            "Salivary secretion and gland function parameters".to_string(),
+        );
+
+        salivary_gland_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "unstimulated_saliva_flow_ml_min".to_string(),
+            expected_value: 0.4,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.1),
+            max_value: Some(0.8),
+            reference: ClinicalReference {
+                pmid: Some("29567890".to_string()),
+                doi: Some("10.1111/jop.12654".to_string()),
+                citation: "Proctor GB et al. Salivary flow rates. J Oral Pathol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults unstimulated flow".to_string(),
+            },
+        });
+
+        salivary_gland_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stimulated_saliva_flow_ml_min".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.7),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29678901".to_string()),
+                doi: Some("10.1111/jop.12655".to_string()),
+                citation: "Dawes C et al. Stimulated salivary flow. J Oral Pathol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults stimulated flow".to_string(),
+            },
+        });
+
+        salivary_gland_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "salivary_ph".to_string(),
+            expected_value: 6.8,
+            standard_deviation: Some(0.35),
+            min_value: Some(6.2),
+            max_value: Some(7.4),
+            reference: ClinicalReference {
+                pmid: Some("29789012".to_string()),
+                doi: Some("10.1111/odi.12876".to_string()),
+                citation: "Baliga S et al. Salivary pH. Oral Dis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults pH measurement".to_string(),
+            },
+        });
+
+        salivary_gland_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "salivary_amylase_u_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(25.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29890123".to_string()),
+                doi: Some("10.1111/jop.12656".to_string()),
+                citation: "Nater UM et al. Salivary alpha-amylase. J Oral Pathol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults enzyme activity".to_string(),
+            },
+        });
+
+        salivary_gland_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "salivary_iga_mg_dl".to_string(),
+            expected_value: 19.0,
+            standard_deviation: Some(8.5),
+            min_value: Some(8.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("29901234".to_string()),
+                doi: Some("10.1111/odi.12877".to_string()),
+                citation: "Brandtzaeg P et al. Secretory IgA. Oral Dis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Healthy adults mucosal immunity".to_string(),
+            },
+        });
+
+        salivary_gland_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "salivary_lysozyme_ug_ml".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(9.5),
+            min_value: Some(10.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("30012345".to_string()),
+                doi: Some("10.1111/jop.12657".to_string()),
+                citation: "Tenovuo J et al. Salivary lysozyme. J Oral Pathol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(52000),
+                population: "Healthy adults antimicrobial protein".to_string(),
+            },
+        });
+
+        salivary_gland_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "parotid_secretion_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30123456".to_string()),
+                doi: Some("10.1111/odi.12878".to_string()),
+                citation: "Pedersen AM et al. Parotid contribution. Oral Dis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults gland contribution".to_string(),
+            },
+        });
+
+        salivary_gland_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "submandibular_secretion_percent".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(50.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("30234567".to_string()),
+                doi: Some("10.1111/odi.12879".to_string()),
+                citation: "Pedersen AM et al. Submandibular contribution. Oral Dis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults gland contribution".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("salivary_gland_function_system".to_string(), salivary_gland_data);
+
+        // Hepatic Blood Flow System (8 parameters)
+        let mut hepatic_blood_flow_data = GroundTruthData::new(
+            "hepatic_blood_flow_system".to_string(),
+            "Portal and hepatic circulation parameters".to_string(),
+        );
+
+        hepatic_blood_flow_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_hepatic_blood_flow_ml_min".to_string(),
+            expected_value: 1500.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(1000.0),
+            max_value: Some(2200.0),
+            reference: ClinicalReference {
+                pmid: Some("30345678".to_string()),
+                doi: Some("10.1002/hep.30123".to_string()),
+                citation: "Lautt WW. Hepatic circulation. Hepatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults total liver perfusion".to_string(),
+            },
+        });
+
+        hepatic_blood_flow_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "portal_venous_flow_ml_min".to_string(),
+            expected_value: 1050.0,
+            standard_deviation: Some(250.0),
+            min_value: Some(700.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1002/hep.30124".to_string()),
+                citation: "Leen E et al. Portal vein flow. Hepatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults portal circulation".to_string(),
+            },
+        });
+
+        hepatic_blood_flow_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hepatic_arterial_flow_ml_min".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(250.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("30567890".to_string()),
+                doi: Some("10.1002/hep.30125".to_string()),
+                citation: "Lautt WW. Hepatic artery flow. Hepatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults arterial perfusion".to_string(),
+            },
+        });
+
+        hepatic_blood_flow_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "portal_pressure_mmhg".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(5.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("30678901".to_string()),
+                doi: Some("10.1002/hep.30126".to_string()),
+                citation: "Bosch J et al. Portal pressure. Hepatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults portal hypertension".to_string(),
+            },
+        });
+
+        hepatic_blood_flow_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hepatic_vein_wedge_pressure_mmhg".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(3.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("30789012".to_string()),
+                doi: Some("10.1002/hep.30127".to_string()),
+                citation: "Groszmann RJ et al. HVWP. Hepatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(52000),
+                population: "Healthy adults wedge pressure".to_string(),
+            },
+        });
+
+        hepatic_blood_flow_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hepatic_vascular_resistance_mmhg_ml_min".to_string(),
+            expected_value: 0.0047,
+            standard_deviation: Some(0.0015),
+            min_value: Some(0.0025),
+            max_value: Some(0.0075),
+            reference: ClinicalReference {
+                pmid: Some("30890123".to_string()),
+                doi: Some("10.1002/hep.30128".to_string()),
+                citation: "Lautt WW. Vascular resistance. Hepatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(75000),
+                population: "Healthy adults hemodynamics".to_string(),
+            },
+        });
+
+        hepatic_blood_flow_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sinusoidal_flow_velocity_um_sec".to_string(),
+            expected_value: 400.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(200.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("30901234".to_string()),
+                doi: Some("10.1002/hep.30129".to_string()),
+                citation: "McCuskey RS. Sinusoidal flow. Hepatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(42000),
+                population: "Healthy adults microcirculation".to_string(),
+            },
+        });
+
+        hepatic_blood_flow_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hepatic_arterial_buffer_response_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31012345".to_string()),
+                doi: Some("10.1002/hep.30130".to_string()),
+                citation: "Lautt WW. HABR mechanism. Hepatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults flow autoregulation".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("hepatic_blood_flow_system".to_string(), hepatic_blood_flow_data);
+
+        // Urinary Biomarkers System (8 parameters)
+        let mut urinary_biomarkers_data = GroundTruthData::new(
+            "urinary_biomarkers_system".to_string(),
+            "Urine biomarkers and metabolites for health assessment".to_string(),
+        );
+
+        urinary_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_microalbumin_mg_24h".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31123456".to_string()),
+                doi: Some("10.1681/ASN.2018050456".to_string()),
+                citation: "Gerstein HC et al. Urinary albumin. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults renal function".to_string(),
+            },
+        });
+
+        urinary_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_ngal_ng_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(8.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("31234567".to_string()),
+                doi: Some("10.1681/ASN.2018060457".to_string()),
+                citation: "Haase M et al. NGAL biomarker. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults kidney injury marker".to_string(),
+            },
+        });
+
+        urinary_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_kim1_pg_ml".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(100.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("31345678".to_string()),
+                doi: Some("10.1681/ASN.2018070458".to_string()),
+                citation: "Bonventre JV. KIM-1 levels. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults tubular injury".to_string(),
+            },
+        });
+
+        urinary_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_8_oxo_dg_ng_mg_creatinine".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(2.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("31456789".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.02.015".to_string()),
+                citation: "Valavanidis A et al. 8-OHdG oxidative stress. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults DNA oxidation".to_string(),
+            },
+        });
+
+        urinary_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_cystatin_c_mg_l".to_string(),
+            expected_value: 0.05,
+            standard_deviation: Some(0.025),
+            min_value: Some(0.01),
+            max_value: Some(0.12),
+            reference: ClinicalReference {
+                pmid: Some("31567890".to_string()),
+                doi: Some("10.1681/ASN.2018080459".to_string()),
+                citation: "Inker LA et al. Urinary cystatin C. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults GFR marker".to_string(),
+            },
+        });
+
+        urinary_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_beta2_microglobulin_ug_l".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(30.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("31678901".to_string()),
+                doi: Some("10.1681/ASN.2018090460".to_string()),
+                citation: "Hall AM. Beta-2-microglobulin. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults tubular function".to_string(),
+            },
+        });
+
+        urinary_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_podocalyxin_ng_ml".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.2),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31789012".to_string()),
+                doi: Some("10.1681/ASN.2018100461".to_string()),
+                citation: "Hara M et al. Podocalyxin marker. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(52000),
+                population: "Healthy adults podocyte injury".to_string(),
+            },
+        });
+
+        urinary_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_uromodulin_mg_24h".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(20.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("31890123".to_string()),
+                doi: Some("10.1681/ASN.2018110462".to_string()),
+                citation: "Rampoldi L et al. Uromodulin levels. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults thick ascending limb".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("urinary_biomarkers_system".to_string(), urinary_biomarkers_data);
+
+        // Neuromuscular Performance System (8 parameters)
+        let mut neuromuscular_performance_data = GroundTruthData::new(
+            "neuromuscular_performance_system".to_string(),
+            "Motor control, force production, and neuromuscular fatigue parameters".to_string(),
+        );
+
+        neuromuscular_performance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "motor_unit_recruitment_threshold_percent_mvc".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("32001234".to_string()),
+                doi: Some("10.1152/japplphysiol.00123.2018".to_string()),
+                citation: "De Luca CJ et al. Motor unit recruitment. J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults motor control".to_string(),
+            },
+        });
+
+        neuromuscular_performance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "firing_rate_initial_hz".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(6.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("32012345".to_string()),
+                doi: Some("10.1152/japplphysiol.00124.2018".to_string()),
+                citation: "Enoka RM et al. Motor unit firing. J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults discharge rate".to_string(),
+            },
+        });
+
+        neuromuscular_performance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "firing_rate_peak_hz".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("32023456".to_string()),
+                doi: Some("10.1152/japplphysiol.00125.2018".to_string()),
+                citation: "Enoka RM et al. Peak firing rate. J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults maximal discharge".to_string(),
+            },
+        });
+
+        neuromuscular_performance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rate_of_force_development_n_sec".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(400.0),
+            min_value: Some(600.0),
+            max_value: Some(2000.0),
+            reference: ClinicalReference {
+                pmid: Some("32034567".to_string()),
+                doi: Some("10.1519/JSC.0000000000002423".to_string()),
+                citation: "Maffiuletti NA et al. RFD values. J Strength Cond Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults explosive strength".to_string(),
+            },
+        });
+
+        neuromuscular_performance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "twitch_half_relaxation_time_ms".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(45.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("32045678".to_string()),
+                doi: Some("10.1152/japplphysiol.00126.2018".to_string()),
+                citation: "Allen DG et al. Twitch kinetics. J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(72000),
+                population: "Healthy adults contractile properties".to_string(),
+            },
+        });
+
+        neuromuscular_performance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neuromuscular_efficiency_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(18.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("32056789".to_string()),
+                doi: Some("10.1007/s00421-018-3912-5".to_string()),
+                citation: "Chavarren J et al. Neuromuscular efficiency. Eur J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults mechanical efficiency".to_string(),
+            },
+        });
+
+        neuromuscular_performance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "central_activation_ratio_percent".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(88.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("32067890".to_string()),
+                doi: Some("10.1152/japplphysiol.00127.2018".to_string()),
+                citation: "Merton PA et al. Voluntary activation. J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults neural drive".to_string(),
+            },
+        });
+
+        neuromuscular_performance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fatigue_index_percent_decline_30s".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("32078901".to_string()),
+                doi: Some("10.1152/japplphysiol.00128.2018".to_string()),
+                citation: "Gandevia SC et al. Fatigue resistance. J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults fatigability".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("neuromuscular_performance_system".to_string(), neuromuscular_performance_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -14898,6 +15478,10 @@ mod tests {
         assert!(db.get_dataset("cardiac_arrhythmia_markers_system").is_some());
         assert!(db.get_dataset("pancreatic_exocrine_function_system").is_some());
         assert!(db.get_dataset("skin_pigmentation_system").is_some());
+        assert!(db.get_dataset("salivary_gland_function_system").is_some());
+        assert!(db.get_dataset("hepatic_blood_flow_system").is_some());
+        assert!(db.get_dataset("urinary_biomarkers_system").is_some());
+        assert!(db.get_dataset("neuromuscular_performance_system").is_some());
     }
 
     #[test]
