@@ -51,10 +51,11 @@ A comprehensive computational model of human biology using Rust's type system to
 
 ## Current Status
 ✅ **Compilation**: Project builds successfully
-✅ **Tests**: All tests passing
+✅ **Tests**: All tests passing (1661 tests)
 ✅ **Documentation**: Rust docs generated
 ✅ **Core Modules**: Biology, Chemistry, Physics, Systems, Physiology all implemented
-✅ **New Systems**: Stress response, aging, inflammation, mitochondrial function added
+✅ **Advanced Modeling**: Cardiac mechanics, neurological ion channels, respiratory mechanics, integrated simulation
+✅ **Physiological Systems**: Stress response, aging, inflammation, mitochondrial function, thermoregulation
 
 ## Implemented Systems
 
@@ -100,7 +101,50 @@ The project uses:
 
 ## Recently Completed (Latest Session)
 
-### Advanced Physiological Modeling (Oct 10, 2025)
+### Advanced Biomechanical & Neurological Systems (Oct 10, 2025 - Latest)
+- **Cardiac Mechanics** (`src/systems/cardiovascular/cardiac_mechanics.rs`)
+  - Preload, afterload, contractility modeling with LaPlace's law for wall stress
+  - Ventricular geometry: EDV, ESV, wall thickness, chamber radius, mass
+  - Frank-Starling curves: Preload-dependent stroke volume with ascending/descending limbs
+  - Pressure-volume loops: Stroke work, potential energy, cardiac efficiency, elastance
+  - Myocardial oxygen demand: Heart rate, wall stress, contractility factors, MVO2 calculation
+  - Pressure-rate product and triple product for ischemia assessment
+  - Supply-demand ratio tracking with ischemic threshold detection
+
+- **Neurological Ion Channels & Action Potentials** (`src/systems/nervous/action_potential.rs`)
+  - Hodgkin-Huxley model: Complete implementation with m, h, n gating variables
+  - Ion channel populations: Na+, K+, Ca2+ channels with reversal potentials
+  - Action potential dynamics: Membrane potential integration, threshold detection, refractory periods
+  - Synaptic transmission: Neurotransmitter release, receptor binding, EPSP/IPSP
+  - Neurotransmitter types: Glutamate, GABA, ACh, dopamine, serotonin, norepinephrine
+  - Channel kinetics: Activation/inactivation gates with voltage-dependent time constants
+  - Current calculations: INa, IK, ICa, Ileak with proper conductances
+
+- **Respiratory Mechanics** (`src/systems/respiratory/respiratory_mechanics.rs`)
+  - Lung & chest wall compliance: Total compliance calculation with series combination
+  - Airway resistance: Resistive pressure drop modeling
+  - Work of breathing: Elastic + resistive work, power calculations
+  - Pressure-volume curves: Hysteresis, upper/lower inflection points
+  - Respiratory muscles: Diaphragm force, transdiaphragmatic pressure, MIP/MEP
+  - Pressure-time index: Muscle fatigue assessment
+  - V/Q matching: Dead space fraction, shunt fraction, alveolar ventilation
+  - Surfactant system: Surface tension, phosphatidylcholine, SP-A/D proteins, LaPlace pressure
+  - Time constants: RC time constant for ventilator settings
+
+- **Integrated Physiology Simulation Engine** (`src/simulation/physiology_engine.rs`)
+  - Time-stepped simulation: Configurable delta-time integration
+  - Multi-system coupling: Cardiovascular ↔ Respiratory ↔ Metabolic ↔ Neurological ↔ Renal
+  - Cardiovascular state: HR, BP, CO, SVR, venous return with autonomic regulation
+  - Respiratory state: RR, TV, MV, PaO2, PaCO2, SaO2, pH
+  - Metabolic state: VO2, VCO2, RQ, glucose, lactate, metabolic rate
+  - Neurological state: Sympathetic/parasympathetic tone, catecholamines, cortisol
+  - Renal state: GFR, urine output, electrolytes (Na+, K+)
+  - Temperature regulation: Heat production, heat loss, thermal mass
+  - Stressor modeling: Physical stress, mental stress, chronic stress, exercise
+  - Health scoring: Per-system and overall health assessment
+  - History tracking: State snapshots at regular intervals for analysis
+
+### Previous Session - Advanced Physiological Modeling (Oct 10, 2025)
 - **Stress Response System** (`src/physiology/stress_response.rs`)
   - HPA Axis: CRH, ACTH, cortisol regulation with feedback sensitivity
   - SAM Axis: Epinephrine, norepinephrine, HRV, vagal tone
