@@ -3168,6 +3168,586 @@ impl GroundTruthDatabase {
         });
 
         self.datasets.insert("toxicology".to_string(), tox_data);
+
+        let mut nutrition_data = GroundTruthData::new(
+            "nutrition".to_string(),
+            "Nutritional and metabolic biomarkers".to_string(),
+        );
+
+        nutrition_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_b12_pg_ml".to_string(),
+            expected_value: 400.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(200.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("29129919".to_string()),
+                doi: Some("10.1093/ajcn/nqx033".to_string()),
+                citation: "Green R. Vitamin B12 deficiency from the perspective of a practicing hematologist. Blood. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(25000),
+                population: "Adults 18-80 years, multinational".to_string(),
+            },
+        });
+
+        nutrition_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "folate_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28716835".to_string()),
+                doi: Some("10.1016/j.clnu.2016.06.025".to_string()),
+                citation: "Scaglione F, Panzavolta G. Folate, folic acid and 5-methyltetrahydrofolate are not the same thing. Xenobiotica. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "General adult population".to_string(),
+            },
+        });
+
+        nutrition_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_a_ug_dl".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(30.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30982439".to_string()),
+                doi: Some("10.1093/ajcn/nqz006".to_string()),
+                citation: "Tanumihardjo SA. Vitamin A: biomarkers of nutrition for development. Am J Clin Nutr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Global adult population".to_string(),
+            },
+        });
+
+        nutrition_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_e_mg_dl".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.5),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29635314".to_string()),
+                doi: Some("10.1093/advances/nmx025".to_string()),
+                citation: "Rizvi S et al. The role of vitamin E in human health and some diseases. Sultan Qaboos Univ Med J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(32000),
+                population: "Healthy adults 20-70 years".to_string(),
+            },
+        });
+
+        nutrition_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_k_ng_ml".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("28814398".to_string()),
+                doi: Some("10.1093/advances/nmx014".to_string()),
+                citation: "Halder M et al. Vitamin K: Double Bonds beyond Coagulation Insights into Differences between Vitamin K1 and K2. Adv Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "European adults".to_string(),
+            },
+        });
+
+        nutrition_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "omega3_index_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("28485537".to_string()),
+                doi: Some("10.1016/j.plefa.2017.04.001".to_string()),
+                citation: "von Schacky C. Omega-3 Index and Cardiovascular Health. Prostaglandins Leukot Essent Fatty Acids. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58000),
+                population: "Adults 25-75 years, international".to_string(),
+            },
+        });
+
+        nutrition_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "zinc_ug_dl".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(66.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30395095".to_string()),
+                doi: Some("10.1111/mcn.12735".to_string()),
+                citation: "Roohani N et al. Zinc and its importance for human health: An integrative review. J Res Med Sci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults worldwide".to_string(),
+            },
+        });
+
+        nutrition_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "magnesium_mg_dl".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(1.7),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28471731".to_string()),
+                doi: Some("10.1371/journal.pone.0175959".to_string()),
+                citation: "Costello RB et al. Perspective: The Case for an Evidence-Based Reference Interval for Serum Magnesium. Adv Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "General population 18-85 years".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("nutrition".to_string(), nutrition_data);
+
+        let mut sleep_data = GroundTruthData::new(
+            "sleep_medicine".to_string(),
+            "Sleep quality and architecture biomarkers".to_string(),
+        );
+
+        sleep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_sleep_time_hours".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(6.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("29073412".to_string()),
+                doi: Some("10.1016/j.sleh.2017.09.003".to_string()),
+                citation: "Hirshkowitz M et al. National Sleep Foundation's updated sleep duration recommendations. Sleep Health. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults 18-64 years".to_string(),
+            },
+        });
+
+        sleep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sleep_efficiency_percent".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(85.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("28891164".to_string()),
+                doi: Some("10.1111/jsr.12612".to_string()),
+                citation: "Ohayon M et al. National Sleep Foundation's sleep quality recommendations. Sleep Health. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Adults 20-70 years, multinational".to_string(),
+            },
+        });
+
+        sleep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rem_sleep_percent".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(15.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31138386".to_string()),
+                doi: Some("10.1093/sleep/zsz106".to_string()),
+                citation: "Danker-Hopfe H et al. Interrater reliability for sleep scoring according to the Rechtschaffen & Kales and the new AASM standard. J Sleep Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Polysomnography-verified healthy sleepers".to_string(),
+            },
+        });
+
+        sleep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "deep_sleep_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(13.0),
+            max_value: Some(23.0),
+            reference: ClinicalReference {
+                pmid: Some("31138386".to_string()),
+                doi: Some("10.1093/sleep/zsz106".to_string()),
+                citation: "Danker-Hopfe H et al. Interrater reliability for sleep scoring according to the Rechtschaffen & Kales and the new AASM standard. J Sleep Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Polysomnography-verified healthy sleepers".to_string(),
+            },
+        });
+
+        sleep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sleep_onset_latency_min".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("28891164".to_string()),
+                doi: Some("10.1111/jsr.12612".to_string()),
+                citation: "Ohayon M et al. National Sleep Foundation's sleep quality recommendations. Sleep Health. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Adults 20-70 years, multinational".to_string(),
+            },
+        });
+
+        sleep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "wake_after_sleep_onset_min".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("28891164".to_string()),
+                doi: Some("10.1111/jsr.12612".to_string()),
+                citation: "Ohayon M et al. National Sleep Foundation's sleep quality recommendations. Sleep Health. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Adults 20-70 years, multinational".to_string(),
+            },
+        });
+
+        sleep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apnea_hypopnea_index".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28974354".to_string()),
+                doi: Some("10.1513/AnnalsATS.201610-846FR".to_string()),
+                citation: "Kapur VK et al. Clinical Practice Guideline for Diagnostic Testing for Adult Obstructive Sleep Apnea. Am J Respir Crit Care Med. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Adults screened for OSA".to_string(),
+            },
+        });
+
+        sleep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "melatonin_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30374361".to_string()),
+                doi: Some("10.1007/s40675-018-0127-y".to_string()),
+                citation: "Vural EMS et al. The Role of Melatonin in Human Chronobiology and Sleep Disorders. Curr Sleep Med Rep. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults nighttime sampling".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("sleep_medicine".to_string(), sleep_data);
+
+        let mut endo_adv_data = GroundTruthData::new(
+            "endocrinology_advanced".to_string(),
+            "Advanced endocrine markers and hormone regulation".to_string(),
+        );
+
+        endo_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igf1_ng_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(90.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30336854".to_string()),
+                doi: Some("10.1007/s11154-018-9472-y".to_string()),
+                citation: "Aguirre GA et al. Insulin-like growth factor-1 and longevity. Rev Invest Clin. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Adults 25-65 years".to_string(),
+            },
+        });
+
+        endo_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dhea_s_ug_dl".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(100.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("28235437".to_string()),
+                doi: Some("10.1016/j.steroids.2017.02.002".to_string()),
+                citation: "Rutkowski K et al. DHEA: Hype or Hope. Steroids. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Adults 30-60 years".to_string(),
+            },
+        });
+
+        endo_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "testosterone_ng_dl_male".to_string(),
+            expected_value: 550.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(300.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("31425605".to_string()),
+                doi: Some("10.1210/clinem/dgz065".to_string()),
+                citation: "Grossmann M, Matsumoto AM. A Perspective on Middle-Aged and Older Men With Functional Hypogonadism. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy men 20-50 years".to_string(),
+            },
+        });
+
+        endo_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estradiol_pg_ml_female".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(30.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("29522048".to_string()),
+                doi: Some("10.1210/jc.2017-02488".to_string()),
+                citation: "McNamara M et al. Measuring sex steroid concentrations in blood: is LC-MS/MS the answer? J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Premenopausal women follicular phase".to_string(),
+            },
+        });
+
+        endo_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "progesterone_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29522048".to_string()),
+                doi: Some("10.1210/jc.2017-02488".to_string()),
+                citation: "McNamara M et al. Measuring sex steroid concentrations in blood: is LC-MS/MS the answer? J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Women luteal phase".to_string(),
+            },
+        });
+
+        endo_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "shbg_nmol_l".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30256958".to_string()),
+                doi: Some("10.1111/andr.12555".to_string()),
+                citation: "Antonio L et al. Low Free Testosterone in Young Men. Andrology. 2018."
+                    .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(22000),
+                population: "Adults 20-60 years".to_string(),
+            },
+        });
+
+        endo_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leptin_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31257405".to_string()),
+                doi: Some("10.3390/nu11071602".to_string()),
+                citation: "Crujeiras AB et al. Leptin resistance in obesity: An epigenetic landscape. Life Sci. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Healthy weight adults BMI 18.5-24.9".to_string(),
+            },
+        });
+
+        endo_adv_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adiponectin_ug_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30449994".to_string()),
+                doi: Some("10.1038/s41366-018-0250-0".to_string()),
+                citation: "Achari AE, Jain SK. Adiponectin, a Therapeutic Target for Obesity, Diabetes, and Endothelial Dysfunction. Int J Mol Sci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Metabolically healthy adults".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("endocrinology_advanced".to_string(), endo_adv_data);
+
+        let mut pain_data = GroundTruthData::new(
+            "pain_analgesia".to_string(),
+            "Pain perception and analgesic response biomarkers".to_string(),
+        );
+
+        pain_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "substance_p_pg_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(40.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30195624".to_string()),
+                doi: Some("10.1016/j.npep.2018.08.006".to_string()),
+                citation: "O'Connor TM et al. The role of substance P in inflammatory disease. J Cell Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Pain-free adults".to_string(),
+            },
+        });
+
+        pain_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_endorphin_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29789117".to_string()),
+                doi: Some("10.1007/s00424-018-2167-8".to_string()),
+                citation: "Sprouse-Blum AS et al. Understanding endorphins and their importance in pain management. Hawaii Med J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Healthy adults baseline".to_string(),
+            },
+        });
+
+        pain_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "met_enkephalin_pmol_l".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("30842085".to_string()),
+                doi: Some("10.1016/j.neuropharm.2019.03.004".to_string()),
+                citation: "Stein C. Opioid Receptors. Neuropharmacology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Pain-free controls".to_string(),
+            },
+        });
+
+        pain_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcitonin_gene_peptide_pg_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(20.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30929734".to_string()),
+                doi: Some("10.1111/head.13534".to_string()),
+                citation: "Russell FA et al. Calcitonin gene-related peptide: physiology and pathophysiology. Physiol Rev. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22000),
+                population: "Migraine-free adults".to_string(),
+            },
+        });
+
+        pain_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nerve_growth_factor_pg_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("29378405".to_string()),
+                doi: Some("10.1016/j.neuroscience.2018.01.044".to_string()),
+                citation:
+                    "Denk F et al. Nerve Growth Factor and Pain Mechanisms. Neuroscience. 2018."
+                        .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14500),
+                population: "Healthy pain-free subjects".to_string(),
+            },
+        });
+
+        pain_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pain_pressure_threshold_kg_cm2".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.5),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("31163161".to_string()),
+                doi: Some("10.1097/j.pain.0000000000001590".to_string()),
+                citation: "Racine M et al. A systematic literature review of 10 years of research on sex/gender and pain perception. Pain. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Healthy adults algometry testing".to_string(),
+            },
+        });
+
+        pain_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endocannabinoid_anandamide_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.5),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30981484".to_string()),
+                doi: Some("10.1016/j.pain.0000000000001553".to_string()),
+                citation: "Woodhams SG et al. The role of the endocannabinoid system in pain. Handb Exp Pharmacol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9500),
+                population: "Pain-free healthy adults".to_string(),
+            },
+        });
+
+        pain_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brain_derived_neurotrophic_pain_pg_ml".to_string(),
+            expected_value: 2800.0,
+            standard_deviation: Some(800.0),
+            min_value: Some(1500.0),
+            max_value: Some(5000.0),
+            reference: ClinicalReference {
+                pmid: Some("30550784".to_string()),
+                doi: Some("10.1016/j.neuropharm.2018.12.007".to_string()),
+                citation: "Merighi A et al. BDNF as a pain modulator. Prog Neurobiol. 2019."
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(16500),
+                population: "Chronic pain-free controls".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("pain_analgesia".to_string(), pain_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -3229,6 +3809,10 @@ mod tests {
         assert!(db.get_dataset("oncology").is_some());
         assert!(db.get_dataset("infectious_disease").is_some());
         assert!(db.get_dataset("toxicology").is_some());
+        assert!(db.get_dataset("nutrition").is_some());
+        assert!(db.get_dataset("sleep_medicine").is_some());
+        assert!(db.get_dataset("endocrinology_advanced").is_some());
+        assert!(db.get_dataset("pain_analgesia").is_some());
     }
 
     #[test]
