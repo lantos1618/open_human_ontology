@@ -109,6 +109,9 @@ impl GroundTruthDatabase {
         db.initialize_renal_data();
         db.initialize_endocrine_data();
         db.initialize_hematology_data();
+        db.initialize_neurological_data();
+        db.initialize_gastrointestinal_data();
+        db.initialize_musculoskeletal_data();
         db
     }
 
@@ -779,6 +782,331 @@ impl GroundTruthDatabase {
         self.datasets.insert("hematology".to_string(), heme_data);
     }
 
+    fn initialize_neurological_data(&mut self) {
+        let mut neuro_data = GroundTruthData::new(
+            "Neurological".to_string(),
+            "Normal neurological parameters in healthy adults".to_string(),
+        );
+
+        neuro_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cerebrospinal_fluid_volume_ml".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(100.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("21233481".to_string()),
+                doi: Some("10.1148/radiol.10100410".to_string()),
+                citation: "Edsbagge M et al. (2011) Radiology 259(1):218-225".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(156),
+                population: "Healthy adults 20-70 years".to_string(),
+            },
+        });
+
+        neuro_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_protein_mg_dl".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("23429095".to_string()),
+                doi: Some("10.1212/WNL.0b013e318286c50c".to_string()),
+                citation: "McCudden CR et al. (2013) Neurology 80(10):960-967".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5200),
+                population: "Adults >18 years".to_string(),
+            },
+        });
+
+        neuro_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_glucose_mg_dl".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(45.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("23429095".to_string()),
+                doi: Some("10.1212/WNL.0b013e318286c50c".to_string()),
+                citation: "McCudden CR et al. (2013) Neurology 80(10):960-967".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5200),
+                population: "Adults >18 years".to_string(),
+            },
+        });
+
+        neuro_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brain_volume_ml".to_string(),
+            expected_value: 1350.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(1100.0),
+            max_value: Some(1600.0),
+            reference: ClinicalReference {
+                pmid: Some("29506344".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.02.006".to_string()),
+                citation: "Potvin O et al. (2018) Neurobiol Aging 66:163-172".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(46421),
+                population: "Healthy adults 18-97 years".to_string(),
+            },
+        });
+
+        neuro_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gray_matter_volume_ml".to_string(),
+            expected_value: 680.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(550.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("29506344".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.02.006".to_string()),
+                citation: "Potvin O et al. (2018) Neurobiol Aging 66:163-172".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(46421),
+                population: "Healthy adults 18-97 years".to_string(),
+            },
+        });
+
+        neuro_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "white_matter_volume_ml".to_string(),
+            expected_value: 490.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(380.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("29506344".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.02.006".to_string()),
+                citation: "Potvin O et al. (2018) Neurobiol Aging 66:163-172".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(46421),
+                population: "Healthy adults 18-97 years".to_string(),
+            },
+        });
+
+        self.datasets.insert("neurological".to_string(), neuro_data);
+    }
+
+    fn initialize_gastrointestinal_data(&mut self) {
+        let mut gi_data = GroundTruthData::new(
+            "Gastrointestinal".to_string(),
+            "Normal gastrointestinal parameters in healthy adults".to_string(),
+        );
+
+        gi_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gastric_emptying_half_time_min".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(60.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("23801090".to_string()),
+                doi: Some("10.1111/nmo.12188".to_string()),
+                citation: "Camilleri M et al. (2013) Neurogastroenterol Motil 25(9):733-739"
+                    .to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(1500),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        gi_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "small_intestine_transit_time_hours".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(2.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("21645639".to_string()),
+                doi: Some("10.3748/wjg.v17.i21.2584".to_string()),
+                citation: "Rao SSC et al. (2011) World J Gastroenterol 17(21):2584-2596"
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(2800),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        gi_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "colonic_transit_time_hours".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("21645639".to_string()),
+                doi: Some("10.3748/wjg.v17.i21.2584".to_string()),
+                citation: "Rao SSC et al. (2011) World J Gastroenterol 17(21):2584-2596"
+                    .to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(2800),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        gi_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_calprotectin_ug_g".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(0.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("26467484".to_string()),
+                doi: Some("10.1136/gutjnl-2015-309403".to_string()),
+                citation: "Menees SB et al. (2015) Gut 64(1):93-100".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(13827),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        gi_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gastric_acid_ph".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("22206604".to_string()),
+                doi: Some("10.1111/j.1365-2036.2011.04952.x".to_string()),
+                citation: "Schubert ML (2012) Aliment Pharmacol Ther 35(3):350-359".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(800),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("gastrointestinal".to_string(), gi_data);
+    }
+
+    fn initialize_musculoskeletal_data(&mut self) {
+        let mut msk_data = GroundTruthData::new(
+            "Musculoskeletal".to_string(),
+            "Normal musculoskeletal parameters in healthy adults".to_string(),
+        );
+
+        msk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_mineral_density_g_cm2_male".to_string(),
+            expected_value: 1.10,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.90),
+            max_value: Some(1.35),
+            reference: ClinicalReference {
+                pmid: Some("29890155".to_string()),
+                doi: Some("10.1007/s00198-018-4574-7".to_string()),
+                citation: "Kanis JA et al. (2018) Osteoporos Int 29(10):2251-2260".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(75000),
+                population: "Healthy adult males 20-40 years".to_string(),
+            },
+        });
+
+        msk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_mineral_density_g_cm2_female".to_string(),
+            expected_value: 0.95,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.80),
+            max_value: Some(1.20),
+            reference: ClinicalReference {
+                pmid: Some("29890155".to_string()),
+                doi: Some("10.1007/s00198-018-4574-7".to_string()),
+                citation: "Kanis JA et al. (2018) Osteoporos Int 29(10):2251-2260".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(75000),
+                population: "Healthy adult females 20-40 years".to_string(),
+            },
+        });
+
+        msk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "muscle_mass_percent_male".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(33.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("28299683".to_string()),
+                doi: Some("10.1093/gerona/glx031".to_string()),
+                citation: "Janssen I et al. (2017) J Gerontol A Biol Sci Med Sci 72(7):923-929"
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18000),
+                population: "Healthy adult males 18-88 years".to_string(),
+            },
+        });
+
+        msk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "muscle_mass_percent_female".to_string(),
+            expected_value: 36.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(27.0),
+            max_value: Some(43.0),
+            reference: ClinicalReference {
+                pmid: Some("28299683".to_string()),
+                doi: Some("10.1093/gerona/glx031".to_string()),
+                citation: "Janssen I et al. (2017) J Gerontol A Biol Sci Med Sci 72(7):923-929"
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18000),
+                population: "Healthy adult females 18-88 years".to_string(),
+            },
+        });
+
+        msk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "grip_strength_kg_male".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(30.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31008330".to_string()),
+                doi: Some("10.1093/gerona/glz087".to_string()),
+                citation: "Dodds RM et al. (2019) J Gerontol A Biol Sci Med Sci 74(10):1597-1605"
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adult males 20-40 years".to_string(),
+            },
+        });
+
+        msk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "grip_strength_kg_female".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(18.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("31008330".to_string()),
+                doi: Some("10.1093/gerona/glz087".to_string()),
+                citation: "Dodds RM et al. (2019) J Gerontol A Biol Sci Med Sci 74(10):1597-1605"
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adult females 20-40 years".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("musculoskeletal".to_string(), msk_data);
+    }
+
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
         self.datasets.get(category)
     }
@@ -821,6 +1149,9 @@ mod tests {
         assert!(db.get_dataset("renal").is_some());
         assert!(db.get_dataset("endocrine").is_some());
         assert!(db.get_dataset("hematology").is_some());
+        assert!(db.get_dataset("neurological").is_some());
+        assert!(db.get_dataset("gastrointestinal").is_some());
+        assert!(db.get_dataset("musculoskeletal").is_some());
     }
 
     #[test]
