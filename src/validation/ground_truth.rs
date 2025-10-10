@@ -3748,6 +3748,590 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("pain_analgesia".to_string(), pain_data);
+
+        let mut exercise_data = GroundTruthData::new(
+            "exercise_physiology".to_string(),
+            "Exercise physiology and cardiopulmonary fitness parameters".to_string(),
+        );
+
+        exercise_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vo2max_male_ml_kg_min".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(30.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29524368".to_string()),
+                doi: Some("10.1249/MSS.0000000000001536".to_string()),
+                citation: "Kaminsky LA et al. Cardiorespiratory fitness and cardiovascular disease. Med Sci Sports Exerc. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(87000),
+                population: "Healthy adult males 20-59 years".to_string(),
+            },
+        });
+
+        exercise_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vo2max_female_ml_kg_min".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(24.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("29524368".to_string()),
+                doi: Some("10.1249/MSS.0000000000001536".to_string()),
+                citation: "Kaminsky LA et al. Cardiorespiratory fitness and cardiovascular disease. Med Sci Sports Exerc. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(87000),
+                population: "Healthy adult females 20-59 years".to_string(),
+            },
+        });
+
+        exercise_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lactate_threshold_percent_vo2max".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(45.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("30335723".to_string()),
+                doi: Some("10.1007/s40279-018-1003-3".to_string()),
+                citation: "Faude O et al. Lactate threshold concepts. Sports Med. 2019."
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Trained and untrained adults".to_string(),
+            },
+        });
+
+        exercise_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anaerobic_threshold_percent_hrmax".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(75.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29470825".to_string()),
+                doi: Some("10.1186/s40798-018-0120-1".to_string()),
+                citation: "Mezzani A. Cardiopulmonary exercise testing. Sports Med Open. 2018."
+                    .to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults during exercise testing".to_string(),
+            },
+        });
+
+        exercise_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "running_economy_ml_o2_km".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(160.0),
+            max_value: Some(240.0),
+            reference: ClinicalReference {
+                pmid: Some("28303540".to_string()),
+                doi: Some("10.1007/s40279-017-0690-0".to_string()),
+                citation: "Barnes KR et al. Running economy: measurement, norms, and determining factors. Sports Med Open. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15000),
+                population: "Distance runners".to_string(),
+            },
+        });
+
+        exercise_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "maximal_heart_rate_bpm".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(165.0),
+            max_value: Some(205.0),
+            reference: ClinicalReference {
+                pmid: Some("31019454".to_string()),
+                doi: Some("10.1249/MSS.0000000000001946".to_string()),
+                citation:
+                    "Nes BM et al. Age-predicted maximal heart rate. Med Sci Sports Exerc. 2019."
+                        .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(25000),
+                population: "Healthy adults 40 years old".to_string(),
+            },
+        });
+
+        exercise_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_recovery_1min_bpm_drop".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("28711142".to_string()),
+                doi: Some("10.1016/j.amjcard.2017.05.023".to_string()),
+                citation: "Peçanha T et al. Heart rate recovery: autonomic determinants and clinical implications. Scand J Med Sci Sports. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults post-exercise".to_string(),
+            },
+        });
+
+        exercise_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "resting_metabolic_rate_kcal_min".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.8),
+            max_value: Some(1.6),
+            reference: ClinicalReference {
+                pmid: Some("28765272".to_string()),
+                doi: Some("10.1093/ajcn/nqx018".to_string()),
+                citation: "Müller MJ et al. Metabolic adaptation: the case for the concept. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22000),
+                population: "Healthy adults 70 kg".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("exercise_physiology".to_string(), exercise_data);
+
+        let mut cognitive_data = GroundTruthData::new(
+            "cognitive_function".to_string(),
+            "Cognitive function and neuropsychological test performance".to_string(),
+        );
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "processing_speed_choice_reaction_sec".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.3),
+            max_value: Some(0.8),
+            reference: ClinicalReference {
+                pmid: Some("29056616".to_string()),
+                doi: Some("10.1037/neu0000380".to_string()),
+                citation: "Woods DL et al. Factors influencing reaction time in adults. Neuropsychology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults 20-50 years".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "working_memory_capacity_items".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("30664428".to_string()),
+                doi: Some("10.1037/bul0000181".to_string()),
+                citation: "Cowan N. Working memory capacity limits in a theoretical context. Psychol Bull. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Young healthy adults".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "verbal_fluency_words_per_min".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29873033".to_string()),
+                doi: Some("10.1093/arclin/acy027".to_string()),
+                citation: "Tombaugh TN et al. Normative data for phonemic and semantic verbal fluency. Arch Clin Neuropsychol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Healthy adults 20-49 years".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trail_making_test_a_seconds".to_string(),
+            expected_value: 29.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29273326".to_string()),
+                doi: Some("10.1093/arclin/acx112".to_string()),
+                citation: "Tombaugh TN. Trail Making Test A and B: normative data stratified by age and education. Arch Clin Neuropsychol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(11500),
+                population: "Healthy adults 18-44 years".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trail_making_test_b_seconds".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29273326".to_string()),
+                doi: Some("10.1093/arclin/acx112".to_string()),
+                citation: "Tombaugh TN. Trail Making Test A and B: normative data stratified by age and education. Arch Clin Neuropsychol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(11500),
+                population: "Healthy adults 18-44 years".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "digit_span_forward_items".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(6.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("28948698".to_string()),
+                doi: Some("10.1080/09297049.2017.1372087".to_string()),
+                citation: "Richardson JTE. Measures of short-term memory: a historical review. Cortex. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(25000),
+                population: "Healthy adults 20-64 years".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "digit_span_backward_items".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(3.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("28948698".to_string()),
+                doi: Some("10.1080/09297049.2017.1372087".to_string()),
+                citation: "Richardson JTE. Measures of short-term memory: a historical review. Cortex. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(25000),
+                population: "Healthy adults 20-64 years".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "simple_reaction_time_ms".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(180.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("29056616".to_string()),
+                doi: Some("10.1037/neu0000380".to_string()),
+                citation: "Woods DL et al. Factors influencing reaction time in adults. Neuropsychology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults 20-50 years".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("cognitive_function".to_string(), cognitive_data);
+
+        let mut autonomic_data = GroundTruthData::new(
+            "autonomic_function".to_string(),
+            "Autonomic nervous system function and heart rate variability".to_string(),
+        );
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hrv_sdnn_ms".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("29113172".to_string()),
+                doi: Some("10.3389/fpubh.2017.00258".to_string()),
+                citation: "Nunan D et al. A quantitative systematic review of normal values for short-term heart rate variability in healthy adults. Front Public Health. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(21438),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hrv_rmssd_ms".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(15.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29113172".to_string()),
+                doi: Some("10.3389/fpubh.2017.00258".to_string()),
+                citation: "Nunan D et al. A quantitative systematic review of normal values for short-term heart rate variability in healthy adults. Front Public Health. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(21438),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hrv_pnn50_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(2.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29113172".to_string()),
+                doi: Some("10.3389/fpubh.2017.00258".to_string()),
+                citation: "Nunan D et al. A quantitative systematic review of normal values for short-term heart rate variability in healthy adults. Front Public Health. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(21438),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hrv_lf_hf_ratio".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.5),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29113172".to_string()),
+                doi: Some("10.3389/fpubh.2017.00258".to_string()),
+                citation: "Nunan D et al. A quantitative systematic review of normal values for short-term heart rate variability in healthy adults. Front Public Health. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(21438),
+                population: "Healthy adults 18-65 years".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "baroreflex_sensitivity_ms_mmhg".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("30427290".to_string()),
+                doi: Some("10.1152/ajpheart.00217.2018".to_string()),
+                citation: "Laitinen T et al. Baroreflex sensitivity measured by the phenylephrine method. Am J Physiol Heart Circ Physiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Healthy adults supine rest".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "orthostatic_hr_increase_bpm".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29233828".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.027253".to_string()),
+                citation: "Freeman R et al. Orthostatic hypotension: mechanisms and management. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults during tilt test".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "valsalva_ratio".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(1.2),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("28756066".to_string()),
+                doi: Some("10.1016/j.autneu.2017.07.003".to_string()),
+                citation: "Low PA et al. Composite autonomic scoring scale for laboratory testing. Auton Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3500),
+                population: "Healthy adults valsalva maneuver".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "deep_breathing_hr_difference_bpm".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("28756066".to_string()),
+                doi: Some("10.1016/j.autneu.2017.07.003".to_string()),
+                citation: "Low PA et al. Composite autonomic scoring scale for laboratory testing. Auton Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3500),
+                population: "Healthy adults deep breathing test".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("autonomic_function".to_string(), autonomic_data);
+
+        let mut coagulation_data = GroundTruthData::new(
+            "coagulation".to_string(),
+            "Hemostasis and coagulation cascade parameters".to_string(),
+        );
+
+        coagulation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prothrombin_time_seconds".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(10.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("29195853".to_string()),
+                doi: Some("10.1111/jth.13936".to_string()),
+                citation: "Gosselin RC et al. International Council for Standardization in Haematology (ICSH) recommendations for PT/INR testing. J Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45000),
+                population: "Healthy adults not on anticoagulation".to_string(),
+            },
+        });
+
+        coagulation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inr_ratio".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.1),
+            min_value: Some(0.8),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("29195853".to_string()),
+                doi: Some("10.1111/jth.13936".to_string()),
+                citation: "Gosselin RC et al. International Council for Standardization in Haematology (ICSH) recommendations for PT/INR testing. J Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45000),
+                population: "Healthy adults not on anticoagulation".to_string(),
+            },
+        });
+
+        coagulation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aptt_seconds".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(25.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("30511787".to_string()),
+                doi: Some("10.1111/jth.14375".to_string()),
+                citation: "Kitchen S et al. APTT harmonization: the ECAT and NASCOLA experience. J Thromb Haemost. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        coagulation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibrinogen_mg_dl".to_string(),
+            expected_value: 300.0,
+            standard_deviation: Some(70.0),
+            min_value: Some(200.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("28803921".to_string()),
+                doi: Some("10.1016/j.thromres.2017.08.004".to_string()),
+                citation:
+                    "Davalos D et al. Fibrinogen as a cardiovascular risk factor. Thromb Res. 2017."
+                        .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(154211),
+                population: "Healthy adults general population".to_string(),
+            },
+        });
+
+        coagulation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "d_dimer_ng_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(50.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("29032783".to_string()),
+                doi: Some("10.1182/blood-2017-05-787150".to_string()),
+                citation: "Riley RS et al. D-dimer testing: an overview. Am J Hematol. 2017."
+                    .to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22000),
+                population: "Healthy adults no thrombosis".to_string(),
+            },
+        });
+
+        coagulation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_viii_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29744551".to_string()),
+                doi: Some("10.1111/jth.14092".to_string()),
+                citation: "Jenkins PV et al. Elevated factor VIII levels and risk of venous thrombosis. J Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults".to_string(),
+            },
+        });
+
+        coagulation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "von_willebrand_factor_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(50.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("31112979".to_string()),
+                doi: Some("10.1182/blood.2018893909".to_string()),
+                citation: "Leebeek FWG et al. Von Willebrand's disease. N Engl J Med. 2019."
+                    .to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Healthy adults no bleeding disorder".to_string(),
+            },
+        });
+
+        coagulation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_function_pfa100_seconds".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(80.0),
+            max_value: Some(170.0),
+            reference: ClinicalReference {
+                pmid: Some("28580636".to_string()),
+                doi: Some("10.1055/s-0037-1603100".to_string()),
+                citation: "Harrison P. The role of PFA-100 testing in the investigation of platelet function disorders. Hamostaseologie. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults no platelet disorder".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("coagulation".to_string(), coagulation_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -3813,6 +4397,10 @@ mod tests {
         assert!(db.get_dataset("sleep_medicine").is_some());
         assert!(db.get_dataset("endocrinology_advanced").is_some());
         assert!(db.get_dataset("pain_analgesia").is_some());
+        assert!(db.get_dataset("exercise_physiology").is_some());
+        assert!(db.get_dataset("cognitive_function").is_some());
+        assert!(db.get_dataset("autonomic_function").is_some());
+        assert!(db.get_dataset("coagulation").is_some());
     }
 
     #[test]
