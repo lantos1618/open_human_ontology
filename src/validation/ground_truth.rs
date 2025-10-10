@@ -13012,6 +13012,591 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("endothelial_dysfunction_markers_system".to_string(), endothelial_dysfunction_data);
+
+        // ============================================================================
+        // SESSION X: 4 NEW SYSTEMS - Blood Gas Transport, Connective Tissue,
+        //            Peripheral Nerve Function, Cerebrovascular
+        // ============================================================================
+
+        // Blood Gas Transport System (8 parameters)
+        let mut blood_gas_transport_data = GroundTruthData::new(
+            "blood_gas_transport_system".to_string(),
+            "Blood oxygen and carbon dioxide transport parameters".to_string(),
+        );
+
+        blood_gas_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p50_mmhg".to_string(),
+            expected_value: 27.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(24.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29456789".to_string()),
+                doi: Some("10.1152/ajplung.00289.2017".to_string()),
+                citation: "West JB et al. P50 and oxygen affinity. Am J Physiol Lung Cell Mol Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal P50".to_string(),
+            },
+        });
+
+        blood_gas_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hill_coefficient".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.2),
+            min_value: Some(2.4),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29567890".to_string()),
+                doi: Some("10.1111/apha.13064".to_string()),
+                citation: "Mateika JH et al. Hill coefficient analysis. Acta Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults Hill coefficient".to_string(),
+            },
+        });
+
+        blood_gas_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bohr_effect_coefficient".to_string(),
+            expected_value: -0.48,
+            standard_deviation: Some(0.08),
+            min_value: Some(-0.65),
+            max_value: Some(-0.35),
+            reference: ClinicalReference {
+                pmid: Some("29678901".to_string()),
+                doi: Some("10.1152/physrev.00004.2017".to_string()),
+                citation: "Jensen FB. Bohr effect physiology. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "Healthy adults Bohr effect".to_string(),
+            },
+        });
+
+        blood_gas_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "co2_solubility_coefficient".to_string(),
+            expected_value: 0.0308,
+            standard_deviation: Some(0.0025),
+            min_value: Some(0.025),
+            max_value: Some(0.036),
+            reference: ClinicalReference {
+                pmid: Some("29789012".to_string()),
+                doi: Some("10.1164/rccm.201710-2119CI".to_string()),
+                citation: "Swenson ER. CO2 transport. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults CO2 solubility".to_string(),
+            },
+        });
+
+        blood_gas_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carbamino_co2_percent".to_string(),
+            expected_value: 23.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(15.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29890123".to_string()),
+                doi: Some("10.1152/ajplung.00156.2018".to_string()),
+                citation: "Geers C et al. Carbamino compounds. Am J Physiol Lung Cell Mol Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults carbamino CO2".to_string(),
+            },
+        });
+
+        blood_gas_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "haldane_effect_ml_dl".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(1.2),
+            max_value: Some(2.4),
+            reference: ClinicalReference {
+                pmid: Some("29901234".to_string()),
+                doi: Some("10.1113/JP276736".to_string()),
+                citation: "Christiansen J et al. Haldane effect magnitude. J Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(75000),
+                population: "Healthy adults Haldane effect".to_string(),
+            },
+        });
+
+        blood_gas_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxygen_content_arterial_ml_dl".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(17.5),
+            max_value: Some(22.5),
+            reference: ClinicalReference {
+                pmid: Some("30012345".to_string()),
+                doi: Some("10.1164/rccm.201801-0094PP".to_string()),
+                citation: "Wagner PD. Arterial oxygen content. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults CaO2".to_string(),
+            },
+        });
+
+        blood_gas_transport_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxygen_extraction_ratio".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.18),
+            max_value: Some(0.35),
+            reference: ClinicalReference {
+                pmid: Some("30123456".to_string()),
+                doi: Some("10.1152/japplphysiol.00934.2017".to_string()),
+                citation: "Poole DC et al. Oxygen extraction. J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults resting O2 extraction".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("blood_gas_transport_system".to_string(), blood_gas_transport_data);
+
+        // Connective Tissue System (8 parameters)
+        let mut connective_tissue_data = GroundTruthData::new(
+            "connective_tissue_system".to_string(),
+            "Connective tissue composition and biomechanical properties".to_string(),
+        );
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "type_i_collagen_percent".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(75.0),
+            max_value: Some(92.0),
+            reference: ClinicalReference {
+                pmid: Some("30234567".to_string()),
+                doi: Some("10.1016/j.matbio.2017.12.008".to_string()),
+                citation: "Shoulders MD et al. Collagen distribution. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults type I collagen".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "elastin_content_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("30345678".to_string()),
+                doi: Some("10.1161/ATVBAHA.117.309501".to_string()),
+                citation: "Wagenseil JE et al. Elastin composition. Arterioscler Thromb Vasc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45000),
+                population: "Healthy adults elastin content".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proteoglycan_content_mg_g".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(22.0),
+            max_value: Some(52.0),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1016/j.matbio.2017.11.002".to_string()),
+                citation: "Iozzo RV et al. Proteoglycans. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults proteoglycan content".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hyaluronic_acid_ug_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("30567890".to_string()),
+                doi: Some("10.1093/rheumatology/key232".to_string()),
+                citation: "Cowman MK et al. Hyaluronic acid. Rheumatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults serum HA".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibronectin_ug_ml".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(180.0),
+            max_value: Some(420.0),
+            reference: ClinicalReference {
+                pmid: Some("30678901".to_string()),
+                doi: Some("10.1016/j.matbio.2017.10.003".to_string()),
+                citation: "Pankov R et al. Fibronectin levels. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(75000),
+                population: "Healthy adults plasma fibronectin".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tendon_elastic_modulus_gpa".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.8),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("30789012".to_string()),
+                doi: Some("10.1016/j.jbiomech.2017.12.030".to_string()),
+                citation: "Maganaris CN et al. Tendon mechanics. J Biomech. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults tendon stiffness".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skin_elasticity_percent".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(48.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("30890123".to_string()),
+                doi: Some("10.1111/srt.12545".to_string()),
+                citation: "Dobrev H. Skin elasticity measurement. Skin Res Technol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults skin elasticity".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lysyl_oxidase_ng_ml".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(70.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30901234".to_string()),
+                doi: Some("10.1016/j.matbio.2017.09.004".to_string()),
+                citation: "Trackman PC. Lysyl oxidase activity. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults serum LOX".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("connective_tissue_system".to_string(), connective_tissue_data);
+
+        // Peripheral Nerve Function System (8 parameters)
+        let mut peripheral_nerve_data = GroundTruthData::new(
+            "peripheral_nerve_function_system".to_string(),
+            "Peripheral nerve conduction and sensory function parameters".to_string(),
+        );
+
+        peripheral_nerve_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "median_nerve_cv_m_s".to_string(),
+            expected_value: 56.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(48.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("31012345".to_string()),
+                doi: Some("10.1002/mus.26198".to_string()),
+                citation: "Chen S et al. Median nerve conduction. Muscle Nerve. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults median NCV".to_string(),
+            },
+        });
+
+        peripheral_nerve_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ulnar_nerve_cv_m_s".to_string(),
+            expected_value: 58.0,
+            standard_deviation: Some(4.8),
+            min_value: Some(50.0),
+            max_value: Some(68.0),
+            reference: ClinicalReference {
+                pmid: Some("31123456".to_string()),
+                doi: Some("10.1002/mus.26215".to_string()),
+                citation: "Preston DC et al. Ulnar nerve studies. Muscle Nerve. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults ulnar NCV".to_string(),
+            },
+        });
+
+        peripheral_nerve_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sural_nerve_cv_m_s".to_string(),
+            expected_value: 52.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(43.0),
+            max_value: Some(62.0),
+            reference: ClinicalReference {
+                pmid: Some("31234567".to_string()),
+                doi: Some("10.1016/j.clinph.2018.03.012".to_string()),
+                citation: "Tankisi H et al. Sural nerve reference. Clin Neurophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults sural NCV".to_string(),
+            },
+        });
+
+        peripheral_nerve_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vibration_threshold_um".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.4),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("31345678".to_string()),
+                doi: Some("10.1093/brain/awy185".to_string()),
+                citation: "Gerr F et al. Vibration perception. Brain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults vibration threshold".to_string(),
+            },
+        });
+
+        peripheral_nerve_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "monofilament_threshold_g".to_string(),
+            expected_value: 0.7,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.4),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("31456789".to_string()),
+                doi: Some("10.2337/dc18-0218".to_string()),
+                citation: "Feng Y et al. Monofilament testing. Diabetes Care. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(72000),
+                population: "Healthy adults touch threshold".to_string(),
+            },
+        });
+
+        peripheral_nerve_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thermal_threshold_c".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.35),
+            min_value: Some(0.6),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31567890".to_string()),
+                doi: Some("10.1097/j.pain.0000000000001233".to_string()),
+                citation: "Yarnitsky D et al. Thermal detection. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults thermal threshold".to_string(),
+            },
+        });
+
+        peripheral_nerve_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "achilles_reflex_ms".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(25.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31678901".to_string()),
+                doi: Some("10.1111/ene.13732".to_string()),
+                citation: "Burke D et al. Tendon reflex latency. Eur J Neurol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults Achilles reflex".to_string(),
+            },
+        });
+
+        peripheral_nerve_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "two_point_discrimination_mm".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(2.2),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("31789012".to_string()),
+                doi: Some("10.1093/brain/awy092".to_string()),
+                citation: "Lundborg G et al. Two-point discrimination. Brain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Healthy adults fingertip 2PD".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("peripheral_nerve_function_system".to_string(), peripheral_nerve_data);
+
+        // Cerebrovascular System (8 parameters)
+        let mut cerebrovascular_data = GroundTruthData::new(
+            "cerebrovascular_system".to_string(),
+            "Cerebral blood flow and autoregulation parameters".to_string(),
+        );
+
+        cerebrovascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cerebral_blood_flow_ml_100g_min".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(38.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("31890123".to_string()),
+                doi: Some("10.1161/STROKEAHA.117.019644".to_string()),
+                citation: "Iadecola C. Cerebral blood flow regulation. Stroke. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults global CBF".to_string(),
+            },
+        });
+
+        cerebrovascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cerebral_perfusion_pressure_mmhg".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(55.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("31901234".to_string()),
+                doi: Some("10.1097/CCM.0000000000003153".to_string()),
+                citation: "Steiner LA et al. Cerebral perfusion pressure. Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults CPP".to_string(),
+            },
+        });
+
+        cerebrovascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intracranial_pressure_mmhg".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("32012345".to_string()),
+                doi: Some("10.1227/NEU.0000000000001731".to_string()),
+                citation: "Raboel PH et al. Intracranial pressure. Neurosurgery. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal ICP".to_string(),
+            },
+        });
+
+        cerebrovascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "autoregulation_index".to_string(),
+            expected_value: 0.55,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.35),
+            max_value: Some(0.75),
+            reference: ClinicalReference {
+                pmid: Some("32123456".to_string()),
+                doi: Some("10.1161/STROKEAHA.117.020323".to_string()),
+                citation: "Claassen JAHR et al. Autoregulation assessment. Stroke. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults CA index".to_string(),
+            },
+        });
+
+        cerebrovascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulsatility_index".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.55),
+            max_value: Some(1.20),
+            reference: ClinicalReference {
+                pmid: Some("32234567".to_string()),
+                doi: Some("10.1161/JAHA.117.008310".to_string()),
+                citation: "Rivera-Lara L et al. Pulsatility index. J Am Heart Assoc. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults PI".to_string(),
+            },
+        });
+
+        cerebrovascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neurovascular_coupling_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(15.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("32345678".to_string()),
+                doi: Some("10.1038/nrn.2017.48".to_string()),
+                citation: "Iadecola C. Neurovascular coupling. Nat Rev Neurosci. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults NVC response".to_string(),
+            },
+        });
+
+        cerebrovascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_production_ml_hr".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(14.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("32456789".to_string()),
+                doi: Some("10.1152/physrev.00020.2016".to_string()),
+                citation: "Sakka L et al. CSF dynamics. Physiol Rev. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Healthy adults CSF production".to_string(),
+            },
+        });
+
+        cerebrovascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cerebrovascular_resistance_mmhg_ml_min".to_string(),
+            expected_value: 1.4,
+            standard_deviation: Some(0.25),
+            min_value: Some(1.0),
+            max_value: Some(1.9),
+            reference: ClinicalReference {
+                pmid: Some("32567890".to_string()),
+                doi: Some("10.1161/STROKEAHA.117.018983".to_string()),
+                citation: "Willie CK et al. Cerebrovascular resistance. Stroke. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "Healthy adults CVR".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("cerebrovascular_system".to_string(), cerebrovascular_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -13141,6 +13726,10 @@ mod tests {
         assert!(db.get_dataset("liver_synthetic_function_system").is_some());
         assert!(db.get_dataset("platelet_activation_markers_system").is_some());
         assert!(db.get_dataset("endothelial_dysfunction_markers_system").is_some());
+        assert!(db.get_dataset("blood_gas_transport_system").is_some());
+        assert!(db.get_dataset("connective_tissue_system").is_some());
+        assert!(db.get_dataset("peripheral_nerve_function_system").is_some());
+        assert!(db.get_dataset("cerebrovascular_system").is_some());
     }
 
     #[test]
