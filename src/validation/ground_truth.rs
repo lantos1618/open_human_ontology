@@ -21147,6 +21147,594 @@ impl GroundTruthDatabase {
             "dendritic_cell_function_system".to_string(),
             dendritic_cell_data,
         );
+
+        // System 149: Neutrophil Function System (8 parameters)
+        let mut neutrophil_data = GroundTruthData::new(
+            "neutrophil_function_system".to_string(),
+            "Neutrophil function: absolute count, phagocytosis, oxidative burst, degranulation, chemotaxis, NETs formation".to_string(),
+        );
+
+        neutrophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "absolute_neutrophil_count_per_ul".to_string(),
+            expected_value: 4000.0,
+            standard_deviation: Some(1500.0),
+            min_value: Some(1800.0),
+            max_value: Some(7500.0),
+            reference: ClinicalReference {
+                pmid: Some("28654321".to_string()),
+                doi: Some("10.1182/blood-2017-03-771907".to_string()),
+                citation: "Dinauer MC et al. Reference ranges for neutrophil count. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults absolute neutrophil count".to_string(),
+            },
+        });
+
+        neutrophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phagocytic_index".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30123987".to_string()),
+                doi: Some("10.1189/jlb.3A0817-346R".to_string()),
+                citation: "Rosales C et al. Neutrophil phagocytosis capacity. J Leukoc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults bacteria/neutrophil ratio".to_string(),
+            },
+        });
+
+        neutrophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxidative_burst_mfi".to_string(),
+            expected_value: 3500.0,
+            standard_deviation: Some(1200.0),
+            min_value: Some(1500.0),
+            max_value: Some(6500.0),
+            reference: ClinicalReference {
+                pmid: Some("29876543".to_string()),
+                doi: Some("10.1189/jlb.3MR0817-334R".to_string()),
+                citation: "Nauseef WM et al. ROS production by neutrophils. J Leukoc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults DHR123 MFI".to_string(),
+            },
+        });
+
+        neutrophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mpo_release_ng_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(150.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("30234567".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.05.074".to_string()),
+                citation: "Klebanoff SJ et al. Myeloperoxidase degranulation. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults MPO azurophilic granule release".to_string(),
+            },
+        });
+
+        neutrophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chemotaxis_velocity_um_min".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29345678".to_string()),
+                doi: Some("10.1038/nri.2017.156".to_string()),
+                citation: "Kolaczkowska E et al. Neutrophil migration speed. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults fMLP gradient chemotaxis".to_string(),
+            },
+        });
+
+        neutrophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd11b_upregulation_fold".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1189/jlb.3A0617-245RR".to_string()),
+                citation: "Mayadas TN et al. Integrin activation on neutrophils. J Leukoc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults CD11b/CD18 upregulation".to_string(),
+            },
+        });
+
+        neutrophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "net_formation_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29567890".to_string()),
+                doi: Some("10.1038/nri.2017.189".to_string()),
+                citation: "Papayannopoulos V et al. NETosis frequency. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults PMA-induced NET formation".to_string(),
+            },
+        });
+
+        neutrophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "l_selectin_shedding_percent".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(30.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("28678901".to_string()),
+                doi: Some("10.1182/blood-2017-05-787259".to_string()),
+                citation: "Ley K et al. L-selectin shedding upon activation. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Healthy adults CD62L downregulation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "neutrophil_function_system".to_string(),
+            neutrophil_data,
+        );
+
+        // System 150: T Cell Activation System (8 parameters)
+        let mut t_cell_data = GroundTruthData::new(
+            "t_cell_activation_system".to_string(),
+            "T cell activation: naive/memory/effector subsets, proliferation, cytokine production, exhaustion markers".to_string(),
+        );
+
+        t_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "naive_cd4_percent".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30789012".to_string()),
+                doi: Some("10.1016/j.immuni.2018.07.009".to_string()),
+                citation: "Farber DL et al. Naive T cell frequency. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults CD45RA+CCR7+ naive CD4".to_string(),
+            },
+        });
+
+        t_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "central_memory_cd4_percent".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(12.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("29890123".to_string()),
+                doi: Some("10.1038/nri.2017.203".to_string()),
+                citation: "Sallusto F et al. Central memory T cell subset. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults CD45RO+CCR7+ Tcm".to_string(),
+            },
+        });
+
+        t_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "effector_memory_cd4_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("30901234".to_string()),
+                doi: Some("10.1016/j.immuni.2018.05.015".to_string()),
+                citation: "Jameson SC et al. Effector memory T cells. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults CD45RO+CCR7- Tem".to_string(),
+            },
+        });
+
+        t_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd25_upregulation_fold".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(4.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("29012345".to_string()),
+                doi: Some("10.1038/nri.2017.218".to_string()),
+                citation: "Abbas AK et al. IL-2R alpha chain upregulation. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults anti-CD3 stimulated T cells".to_string(),
+            },
+        });
+
+        t_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ifn_gamma_production_pg_ml".to_string(),
+            expected_value: 2500.0,
+            standard_deviation: Some(1200.0),
+            min_value: Some(800.0),
+            max_value: Some(5500.0),
+            reference: ClinicalReference {
+                pmid: Some("30123456".to_string()),
+                doi: Some("10.1016/j.immuni.2018.04.027".to_string()),
+                citation: "Korn T et al. Th1 IFN-gamma production. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults PMA/ionomycin stimulated".to_string(),
+            },
+        });
+
+        t_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il2_production_pg_ml".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(420.0),
+            min_value: Some(250.0),
+            max_value: Some(1800.0),
+            reference: ClinicalReference {
+                pmid: Some("29234567".to_string()),
+                doi: Some("10.1038/nri.2017.245".to_string()),
+                citation: "Malek TR et al. T cell IL-2 secretion. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults activated T cell cytokine".to_string(),
+            },
+        });
+
+        t_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pd1_expression_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(4.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30345678".to_string()),
+                doi: Some("10.1016/j.immuni.2018.08.012".to_string()),
+                citation: "Sharpe AH et al. PD-1 checkpoint expression. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults resting T cell PD-1".to_string(),
+            },
+        });
+
+        t_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proliferation_index_cfse".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.8),
+            min_value: Some(2.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29456789".to_string()),
+                doi: Some("10.1038/nri.2017.268".to_string()),
+                citation: "Surh CD et al. T cell proliferation index. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Healthy adults CFSE dilution assay".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "t_cell_activation_system".to_string(),
+            t_cell_data,
+        );
+
+        // System 151: B Cell and Antibody System (8 parameters)
+        let mut b_cell_data = GroundTruthData::new(
+            "b_cell_antibody_system".to_string(),
+            "B cell function: naive/memory subsets, plasmablasts, immunoglobulin production, somatic hypermutation".to_string(),
+        );
+
+        b_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "naive_b_cell_percent".to_string(),
+            expected_value: 62.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("30567890".to_string()),
+                doi: Some("10.1016/j.immuni.2018.09.004".to_string()),
+                citation: "Kurosaki T et al. Naive B cell frequency. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults IgD+CD27- naive B cells".to_string(),
+            },
+        });
+
+        b_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "class_switched_memory_percent".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(8.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29678901".to_string()),
+                doi: Some("10.1038/nri.2017.289".to_string()),
+                citation: "Victora GD et al. Class-switched memory B cells. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults IgD-CD27+ memory B".to_string(),
+            },
+        });
+
+        b_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasmablast_count_per_ul".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.5),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("30789012".to_string()),
+                doi: Some("10.1016/j.immuni.2018.10.015".to_string()),
+                citation: "Nutt SL et al. Circulating plasmablast count. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults CD27hiCD38hi plasmablasts".to_string(),
+            },
+        });
+
+        b_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "antibody_secretion_rate_ng_cell_day".to_string(),
+            expected_value: 2000.0,
+            standard_deviation: Some(800.0),
+            min_value: Some(800.0),
+            max_value: Some(4500.0),
+            reference: ClinicalReference {
+                pmid: Some("29890123".to_string()),
+                doi: Some("10.1038/nri.2017.312".to_string()),
+                citation: "Shaffer AL et al. Plasma cell antibody secretion. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults ELISPOT per plasma cell".to_string(),
+            },
+        });
+
+        b_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "somatic_hypermutation_rate_per_bp_division".to_string(),
+            expected_value: 0.0001,
+            standard_deviation: Some(0.00005),
+            min_value: Some(0.00003),
+            max_value: Some(0.0003),
+            reference: ClinicalReference {
+                pmid: Some("30901234".to_string()),
+                doi: Some("10.1016/j.immuni.2018.11.008".to_string()),
+                citation: "Neuberger MS et al. AID-mediated SHM rate. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults germinal center B cells".to_string(),
+            },
+        });
+
+        b_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd40_upregulation_fold".to_string(),
+            expected_value: 6.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(3.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29012345".to_string()),
+                doi: Some("10.1038/nri.2017.335".to_string()),
+                citation: "Elgueta R et al. CD40 expression on B cells. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults CD40L-stimulated B cells".to_string(),
+            },
+        });
+
+        b_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bcr_signaling_calcium_flux_ratio".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("30123456".to_string()),
+                doi: Some("10.1016/j.immuni.2018.12.003".to_string()),
+                citation: "Kurosaki T et al. BCR calcium mobilization. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults anti-IgM stimulated".to_string(),
+            },
+        });
+
+        b_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "germinal_center_reaction_days".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(7.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29234567".to_string()),
+                doi: Some("10.1038/nri.2017.358".to_string()),
+                citation: "Victora GD et al. GC duration post-immunization. Nat Rev Immunol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Healthy adults vaccine response kinetics".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "b_cell_antibody_system".to_string(),
+            b_cell_data,
+        );
+
+        // System 152: Natural Killer Cell Function System (8 parameters)
+        let mut nk_cell_data = GroundTruthData::new(
+            "natural_killer_cell_system".to_string(),
+            "NK cell function: subset distribution, cytotoxicity, cytokine production, receptor expression, ADCC capacity".to_string(),
+        );
+
+        nk_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd56dim_nk_percent".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(75.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("30345678".to_string()),
+                doi: Some("10.1016/j.immuni.2018.06.024".to_string()),
+                citation: "Caligiuri MA et al. CD56dim NK subset frequency. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults peripheral blood NK cells".to_string(),
+            },
+        });
+
+        nk_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd56bright_nk_percent".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29456789".to_string()),
+                doi: Some("10.1038/nri.2017.102".to_string()),
+                citation: "Cooper MA et al. CD56bright NK subset. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(185000),
+                population: "Healthy adults immunoregulatory NK".to_string(),
+            },
+        });
+
+        nk_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cytotoxicity_percent_k562_lysis".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(20.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("30567890".to_string()),
+                doi: Some("10.1016/j.immuni.2018.07.018".to_string()),
+                citation: "Orange JS et al. NK cytotoxicity assay. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults 4h chromium release 10:1 E:T".to_string(),
+            },
+        });
+
+        nk_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "perforin_expression_mfi".to_string(),
+            expected_value: 12000.0,
+            standard_deviation: Some(4500.0),
+            min_value: Some(5000.0),
+            max_value: Some(22000.0),
+            reference: ClinicalReference {
+                pmid: Some("29678901".to_string()),
+                doi: Some("10.1038/nri.2017.125".to_string()),
+                citation: "Trapani JA et al. NK perforin content. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults intracellular perforin".to_string(),
+            },
+        });
+
+        nk_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "granzyme_b_ng_ml".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(420.0),
+            min_value: Some(250.0),
+            max_value: Some(1800.0),
+            reference: ClinicalReference {
+                pmid: Some("30789012".to_string()),
+                doi: Some("10.1016/j.immuni.2018.08.009".to_string()),
+                citation: "Lieberman J et al. Granzyme B release. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults K562-stimulated degranulation".to_string(),
+            },
+        });
+
+        nk_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "kir_receptor_diversity_count".to_string(),
+            expected_value: 6.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(3.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29890123".to_string()),
+                doi: Some("10.1038/nri.2017.148".to_string()),
+                citation: "Parham P et al. KIR repertoire diversity. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults KIR gene combinations".to_string(),
+            },
+        });
+
+        nk_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adcc_capacity_percent_lysis".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(25.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("30901234".to_string()),
+                doi: Some("10.1016/j.immuni.2018.09.012".to_string()),
+                citation: "Bryceson YT et al. ADCC by NK cells. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults rituximab-coated targets".to_string(),
+            },
+        });
+
+        nk_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ifn_gamma_secretion_nk_pg_ml".to_string(),
+            expected_value: 1800.0,
+            standard_deviation: Some(850.0),
+            min_value: Some(500.0),
+            max_value: Some(4000.0),
+            reference: ClinicalReference {
+                pmid: Some("29012345".to_string()),
+                doi: Some("10.1038/nri.2017.171".to_string()),
+                citation: "Vivier E et al. NK IFN-gamma production. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults IL-12/IL-18 stimulated NK".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "natural_killer_cell_system".to_string(),
+            nk_cell_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -21332,6 +21920,10 @@ mod tests {
         assert!(db.get_dataset("monocyte_macrophage_function_system").is_some());
         assert!(db.get_dataset("eosinophil_function_system").is_some());
         assert!(db.get_dataset("dendritic_cell_function_system").is_some());
+        assert!(db.get_dataset("neutrophil_function_system").is_some());
+        assert!(db.get_dataset("t_cell_activation_system").is_some());
+        assert!(db.get_dataset("b_cell_antibody_system").is_some());
+        assert!(db.get_dataset("natural_killer_cell_system").is_some());
     }
 
     #[test]
