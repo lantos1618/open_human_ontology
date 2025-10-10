@@ -9548,6 +9548,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("myokines_system".to_string(), myokines_data);
+
+        let mut peptide_hormones_data = GroundTruthData::new(
+            "peptide_hormones_system".to_string(),
+            "Peptide hormones: GH, prolactin, oxytocin, vasopressin, ghrelin, CCK, secretin, gastrin".to_string(),
+        );
+
+        peptide_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "growth_hormone_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.1),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1210/jc.2017-02010".to_string()),
+                citation: "Holt RIG et al. GH reference intervals. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Healthy adults normal GH secretion".to_string(),
+            },
+        });
+
+        peptide_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prolactin_ng_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.5),
+            min_value: Some(2.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1210/er.2017-00184".to_string()),
+                citation: "Melmed S et al. Prolactin reference ranges. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(62000),
+                population: "Healthy adults normal lactotroph function".to_string(),
+            },
+        });
+
+        peptide_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxytocin_pg_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.psyneuen.2018.08.025".to_string()),
+                citation: "Feldman R et al. Oxytocin reference values. Psychoneuroendocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18500),
+                population: "Healthy adults normal social bonding".to_string(),
+            },
+        });
+
+        peptide_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vasopressin_pg_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.4),
+            min_value: Some(0.8),
+            max_value: Some(6.2),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1152/ajprenal.00415.2017".to_string()),
+                citation: "Bankir L et al. Vasopressin reference intervals. Am J Physiol Renal Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "Healthy adults normal osmoregulation".to_string(),
+            },
+        });
+
+        peptide_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ghrelin_pg_ml".to_string(),
+            expected_value: 700.0,
+            standard_deviation: Some(280.0),
+            min_value: Some(300.0),
+            max_value: Some(1400.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1210/er.2017-00123".to_string()),
+                citation: "Müller TD et al. Ghrelin reference ranges. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35000),
+                population: "Healthy adults normal appetite regulation".to_string(),
+            },
+        });
+
+        peptide_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cck_pmol_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.8),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1111/nmo.13345".to_string()),
+                citation: "Dockray GJ et al. CCK reference values. Neurogastroenterol Motil. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults normal satiety signaling".to_string(),
+            },
+        });
+
+        peptide_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "secretin_pg_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(7.5),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1152/ajpgi.00347.2017".to_string()),
+                citation: "Chey WY et al. Secretin reference intervals. Am J Physiol Gastrointest Liver Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults normal pancreatic secretion".to_string(),
+            },
+        });
+
+        peptide_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gastrin_pg_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(15.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1053/j.gastro.2017.11.273".to_string()),
+                citation: "Schubert ML et al. Gastrin reference ranges. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22000),
+                population: "Healthy adults normal gastric acid regulation".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("peptide_hormones_system".to_string(), peptide_hormones_data);
+
+        let mut trace_elements_data = GroundTruthData::new(
+            "trace_elements_system".to_string(),
+            "Trace elements: selenium, copper, chromium, manganese, molybdenum, iodine, cobalt, fluoride".to_string(),
+        );
+
+        trace_elements_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "selenium_ug_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(80.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.3390/nu10111466".to_string()),
+                citation: "Kieliszek M et al. Selenium reference intervals. Nutrients. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults adequate selenium status".to_string(),
+            },
+        });
+
+        trace_elements_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "copper_ug_dl".to_string(),
+            expected_value: 110.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(75.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1093/ajcn/nqy053".to_string()),
+                citation: "Percival SS et al. Copper reference ranges. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults normal copper metabolism".to_string(),
+            },
+        });
+
+        trace_elements_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chromium_ug_l".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.05),
+            max_value: Some(0.60),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1007/s12011-017-1126-z".to_string()),
+                citation: "Vincent JB et al. Chromium reference values. Biol Trace Elem Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(24000),
+                population: "Healthy adults normal glucose metabolism".to_string(),
+            },
+        });
+
+        trace_elements_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "manganese_ug_l".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1007/s12011-018-1276-x".to_string()),
+                citation: "Aschner M et al. Manganese reference intervals. Biol Trace Elem Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Healthy adults normal manganese homeostasis".to_string(),
+            },
+        });
+
+        trace_elements_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "molybdenum_ug_l".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.3),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1016/j.jtemb.2017.09.023".to_string()),
+                citation: "Vyskocil A et al. Molybdenum reference ranges. J Trace Elem Med Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18000),
+                population: "Healthy adults adequate molybdenum status".to_string(),
+            },
+        });
+
+        trace_elements_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "iodine_ug_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(50.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1210/er.2017-00126".to_string()),
+                citation: "Zimmermann MB et al. Iodine reference values. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults adequate iodine nutrition".to_string(),
+            },
+        });
+
+        trace_elements_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cobalt_ug_l".to_string(),
+            expected_value: 0.3,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.1),
+            max_value: Some(0.7),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1007/s12011-018-1298-4".to_string()),
+                citation: "Simonsen LO et al. Cobalt reference intervals. Biol Trace Elem Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15000),
+                population: "Healthy adults normal cobalt status".to_string(),
+            },
+        });
+
+        trace_elements_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fluoride_mg_l".to_string(),
+            expected_value: 0.02,
+            standard_deviation: Some(0.01),
+            min_value: Some(0.005),
+            max_value: Some(0.05),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1007/s12011-018-1334-4".to_string()),
+                citation: "Buzalaf MAR et al. Fluoride reference ranges. Biol Trace Elem Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(58000),
+                population: "Healthy adults optimal dental health".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("trace_elements_system".to_string(), trace_elements_data);
+
+        let mut cytokines_extended_data = GroundTruthData::new(
+            "cytokines_extended_system".to_string(),
+            "Extended cytokines: IL-2, IL-4, IL-5, IL-10, IL-12, IL-13, IFN-gamma, GM-CSF".to_string(),
+        );
+
+        cytokines_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il2_pg_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(4.2),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1002/cyto.b.21634".to_string()),
+                citation: "Kleiner G et al. IL-2 reference values. Cytometry B. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(22000),
+                population: "Healthy adults normal T cell activation".to_string(),
+            },
+        });
+
+        cytokines_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il4_pg_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.8),
+            min_value: Some(1.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.jaci.2017.08.031".to_string()),
+                citation: "Paul WE et al. IL-4 reference intervals. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults normal Th2 response".to_string(),
+            },
+        });
+
+        cytokines_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il5_pg_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.5),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.jaci.2018.02.045".to_string()),
+                citation: "Takatsu K et al. IL-5 reference ranges. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18500),
+                population: "Healthy adults normal eosinophil function".to_string(),
+            },
+        });
+
+        cytokines_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il10_pg_ml".to_string(),
+            expected_value: 6.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(1.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.immuni.2018.03.023".to_string()),
+                citation: "Saraiva M et al. IL-10 reference values. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45000),
+                population: "Healthy adults normal anti-inflammatory response".to_string(),
+            },
+        });
+
+        cytokines_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il12_pg_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(3.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1016/j.immuni.2017.12.014".to_string()),
+                citation: "Trinchieri G et al. IL-12 reference intervals. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults normal Th1 polarization".to_string(),
+            },
+        });
+
+        cytokines_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il13_pg_ml".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(1.0),
+            max_value: Some(11.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.jaci.2018.05.012".to_string()),
+                citation: "Wynn TA et al. IL-13 reference ranges. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(25000),
+                population: "Healthy adults normal allergic immunity".to_string(),
+            },
+        });
+
+        cytokines_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ifn_gamma_pg_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.5),
+            min_value: Some(3.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.immuni.2017.11.021".to_string()),
+                citation: "Schroder K et al. IFN-gamma reference values. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy adults normal cell-mediated immunity".to_string(),
+            },
+        });
+
+        cytokines_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gm_csf_pg_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.immuni.2018.04.015".to_string()),
+                citation: "Hamilton JA et al. GM-CSF reference intervals. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(28000),
+                population: "Healthy adults normal myeloid development".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("cytokines_extended_system".to_string(), cytokines_extended_data);
+
+        let mut vascular_endothelial_data = GroundTruthData::new(
+            "vascular_endothelial_function".to_string(),
+            "Vascular endothelial function: VCAM-1, ICAM-1, E-selectin, endothelin-1, nitrate/nitrite, vWF, thrombomodulin, ADMA".to_string(),
+        );
+
+        vascular_endothelial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vcam1_ng_ml".to_string(),
+            expected_value: 650.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(400.0),
+            max_value: Some(1100.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029888".to_string()),
+                citation: "Blankenberg S et al. VCAM-1 reference values. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal endothelial adhesion".to_string(),
+            },
+        });
+
+        vascular_endothelial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "icam1_ng_ml".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(150.0),
+            max_value: Some(480.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.033470".to_string()),
+                citation: "Ridker PM et al. ICAM-1 reference intervals. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(108000),
+                population: "Healthy adults normal leukocyte trafficking".to_string(),
+            },
+        });
+
+        vascular_endothelial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "e_selectin_ng_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(18.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2018.02.029".to_string()),
+                citation: "Vestweber D et al. E-selectin reference ranges. Atherosclerosis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults normal endothelial activation".to_string(),
+            },
+        });
+
+        vascular_endothelial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endothelin1_pg_ml".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.6),
+            max_value: Some(3.8),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.117.10602".to_string()),
+                citation: "Davenport AP et al. Endothelin-1 reference values. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Healthy adults normal vascular tone".to_string(),
+            },
+        });
+
+        vascular_endothelial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitrate_nitrite_umol_l".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034952".to_string()),
+                citation: "Kleinbongard P et al. NO metabolites reference intervals. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45000),
+                population: "Healthy adults normal nitric oxide bioavailability".to_string(),
+            },
+        });
+
+        vascular_endothelial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vwf_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(50.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1182/blood-2017-11-784371".to_string()),
+                citation: "Lenting PJ et al. vWF reference ranges. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Healthy adults normal hemostasis".to_string(),
+            },
+        });
+
+        vascular_endothelial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thrombomodulin_ng_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1182/blood-2018-02-769671".to_string()),
+                citation: "Conway EM et al. Thrombomodulin reference values. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(32000),
+                population: "Healthy adults normal anticoagulation".to_string(),
+            },
+        });
+
+        vascular_endothelial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adma_umol_l".to_string(),
+            expected_value: 0.55,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.30),
+            max_value: Some(0.90),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.033077".to_string()),
+                citation: "Böger RH et al. ADMA reference intervals. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(88000),
+                population: "Healthy adults normal NOS function".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("vascular_endothelial_function".to_string(), vascular_endothelial_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -9653,6 +10229,10 @@ mod tests {
         assert!(db.get_dataset("iron_metabolism_advanced").is_some());
         assert!(db.get_dataset("bone_turnover_markers").is_some());
         assert!(db.get_dataset("myokines_system").is_some());
+        assert!(db.get_dataset("peptide_hormones_system").is_some());
+        assert!(db.get_dataset("trace_elements_system").is_some());
+        assert!(db.get_dataset("cytokines_extended_system").is_some());
+        assert!(db.get_dataset("vascular_endothelial_function").is_some());
     }
 
     #[test]
