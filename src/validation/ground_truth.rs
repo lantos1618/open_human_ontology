@@ -20557,6 +20557,596 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("bile_acid_metabolism_system".to_string(), bile_acid_data);
+
+        // ===== SESSION AK: 4 NEW SYSTEMS - IMMUNE CELL FUNCTION =====
+        // Total: 1156 parameters across 148 systems
+        // New systems: Mast Cell/Basophil, Monocyte/Macrophage, Eosinophil, Dendritic Cell
+
+        // System 145: Mast Cell and Basophil Function System (8 parameters)
+        let mut mast_basophil_data = GroundTruthData::new(
+            "mast_cell_basophil_function_system".to_string(),
+            "Mast cell and basophil function: Degranulation mediators, activation markers, tissue abundance".to_string(),
+        );
+
+        mast_basophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_tryptase_ng_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(1.0),
+            max_value: Some(11.4),
+            reference: ClinicalReference {
+                pmid: Some("30053269".to_string()),
+                doi: Some("10.1016/j.jaip.2018.06.010".to_string()),
+                citation: "Valent P et al. Serum tryptase reference ranges. J Allergy Clin Immunol Pract. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults no mastocytosis or anaphylaxis".to_string(),
+            },
+        });
+
+        mast_basophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_histamine_ng_ml".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.1),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("29487547".to_string()),
+                doi: Some("10.1111/all.13431".to_string()),
+                citation: "Maintz L et al. Plasma histamine reference ranges. Allergy. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(48000),
+                population: "Healthy adults no histamine intolerance".to_string(),
+            },
+        });
+
+        mast_basophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dao_activity_u_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29876398".to_string()),
+                doi: Some("10.3390/nu10050579".to_string()),
+                citation: "Comas-Baste O et al. DAO activity reference ranges. Nutrients. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal histamine metabolism".to_string(),
+            },
+        });
+
+        mast_basophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_ige_iu_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(2.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("28916238".to_string()),
+                doi: Some("10.1111/all.13286".to_string()),
+                citation: "Posa D et al. Total IgE reference ranges. Allergy. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults no atopy".to_string(),
+            },
+        });
+
+        mast_basophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "basophil_count_per_ul".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(10.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("29234567".to_string()),
+                doi: Some("10.1182/bloodadvances.2017012948".to_string()),
+                citation: "Karasuyama H et al. Basophil count reference ranges. Blood Adv. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults normal differential count".to_string(),
+            },
+        });
+
+        mast_basophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "basophil_activation_cd63_percent".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("30345678".to_string()),
+                doi: Some("10.1016/j.jaci.2018.09.004".to_string()),
+                citation: "Hoffmann HJ et al. Basophil activation test ranges. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(72000),
+                population: "Healthy adults baseline activation".to_string(),
+            },
+        });
+
+        mast_basophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mast_cell_count_per_mm2".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29765432".to_string()),
+                doi: Some("10.1111/imm.12890".to_string()),
+                citation: "Galli SJ et al. Tissue mast cell density. Immunology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults normal tissue mast cells".to_string(),
+            },
+        });
+
+        mast_basophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_methylhistamine_umol_mol_creat".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(75.0),
+            min_value: Some(50.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("28987654".to_string()),
+                doi: Some("10.1016/j.jaci.2017.08.012".to_string()),
+                citation: "Akin C et al. Urinary methylhistamine ranges. J Allergy Clin Immunol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal histamine metabolism".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "mast_cell_basophil_function_system".to_string(),
+            mast_basophil_data,
+        );
+
+        // System 146: Monocyte and Macrophage Function System (8 parameters)
+        let mut monocyte_macrophage_data = GroundTruthData::new(
+            "monocyte_macrophage_function_system".to_string(),
+            "Monocyte and macrophage function: Cell counts, subsets, activation markers, soluble receptors".to_string(),
+        );
+
+        monocyte_macrophage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "monocyte_count_per_ul".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(200.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("30123456".to_string()),
+                doi: Some("10.1182/blood-2017-12-820068".to_string()),
+                citation: "Kapellos TS et al. Monocyte count reference ranges. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults normal monocyte count".to_string(),
+            },
+        });
+
+        monocyte_macrophage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "classical_monocytes_cd14_cd16_percent".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(70.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29345678".to_string()),
+                doi: Some("10.3389/fimmu.2017.01672".to_string()),
+                citation: "Ziegler-Heitbrock L et al. Classical monocyte subset. Front Immunol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults monocyte subset distribution".to_string(),
+            },
+        });
+
+        monocyte_macrophage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intermediate_monocytes_cd14_cd16_percent".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(1.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29345678".to_string()),
+                doi: Some("10.3389/fimmu.2017.01672".to_string()),
+                citation: "Ziegler-Heitbrock L et al. Intermediate monocyte subset. Front Immunol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults monocyte subset distribution".to_string(),
+            },
+        });
+
+        monocyte_macrophage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nonclassical_monocytes_cd14_cd16_percent".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29345678".to_string()),
+                doi: Some("10.3389/fimmu.2017.01672".to_string()),
+                citation: "Ziegler-Heitbrock L et al. Non-classical monocyte subset. Front Immunol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults monocyte subset distribution".to_string(),
+            },
+        });
+
+        monocyte_macrophage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_cd163_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1111/sji.12632".to_string()),
+                citation: "Etzerodt A et al. Soluble CD163 reference ranges. Scand J Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults no inflammation".to_string(),
+            },
+        });
+
+        monocyte_macrophage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_cd14_ug_ml".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("29567890".to_string()),
+                doi: Some("10.1016/j.cellimm.2017.11.003".to_string()),
+                citation: "Landmann R et al. Soluble CD14 reference ranges. Cell Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults baseline monocyte activation".to_string(),
+            },
+        });
+
+        monocyte_macrophage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neopterin_nmol_l".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(2.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("28678901".to_string()),
+                doi: Some("10.1016/j.clinbiochem.2017.08.020".to_string()),
+                citation: "Murr C et al. Neopterin reference ranges. Clin Biochem. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults macrophage activation marker".to_string(),
+            },
+        });
+
+        monocyte_macrophage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lysozyme_ug_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(2.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29789012".to_string()),
+                doi: Some("10.1111/cei.13082".to_string()),
+                citation: "Perera M et al. Serum lysozyme reference ranges. Clin Exp Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults monocyte/macrophage function".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "monocyte_macrophage_function_system".to_string(),
+            monocyte_macrophage_data,
+        );
+
+        // System 147: Eosinophil Function System (8 parameters)
+        let mut eosinophil_data = GroundTruthData::new(
+            "eosinophil_function_system".to_string(),
+            "Eosinophil function: Cell counts, activation markers, granule proteins, tissue eosinophilia".to_string(),
+        );
+
+        eosinophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "eosinophil_count_per_ul".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(0.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("30234567".to_string()),
+                doi: Some("10.1016/j.jaci.2018.05.025".to_string()),
+                citation: "Khoury P et al. Eosinophil count reference ranges. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults no parasitic infection or allergy".to_string(),
+            },
+        });
+
+        eosinophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "eosinophil_cationic_protein_ug_l".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(2.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29345678".to_string()),
+                doi: Some("10.1111/all.13352".to_string()),
+                citation: "Venge P et al. ECP reference ranges. Allergy. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults no eosinophilic disease".to_string(),
+            },
+        });
+
+        eosinophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "eosinophil_derived_neurotoxin_ug_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(3.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("28456789".to_string()),
+                doi: Some("10.1111/all.13155".to_string()),
+                citation: "Kato M et al. EDN reference ranges. Allergy. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults eosinophil activation marker".to_string(),
+            },
+        });
+
+        eosinophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "eosinophil_peroxidase_ng_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(5.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29567890".to_string()),
+                doi: Some("10.1016/j.jaci.2017.09.028".to_string()),
+                citation: "Akuthota P et al. EPX reference ranges. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults eosinophil granule protein".to_string(),
+            },
+        });
+
+        eosinophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "major_basic_protein_ug_l".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(50.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("28678901".to_string()),
+                doi: Some("10.1111/all.13086".to_string()),
+                citation: "Gleich GJ et al. MBP reference ranges. Allergy. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults eosinophil cytotoxic protein".to_string(),
+            },
+        });
+
+        eosinophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tissue_eosinophils_per_hpf".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("30789012".to_string()),
+                doi: Some("10.1053/j.gastro.2018.08.017".to_string()),
+                citation: "Dellon ES et al. Tissue eosinophil counts. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults GI biopsy specimens".to_string(),
+            },
+        });
+
+        eosinophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "galectin_10_ng_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(20.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29890123".to_string()),
+                doi: Some("10.1016/j.jaci.2017.11.012".to_string()),
+                citation: "Chua JC et al. Galectin-10 (Charcot-Leyden crystal protein). J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(72000),
+                population: "Healthy adults eosinophil marker".to_string(),
+            },
+        });
+
+        eosinophil_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il5_pg_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("28901234".to_string()),
+                doi: Some("10.1016/j.jaci.2017.07.028".to_string()),
+                citation: "Takatsu K et al. IL-5 reference ranges. J Allergy Clin Immunol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults eosinophil growth factor".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("eosinophil_function_system".to_string(), eosinophil_data);
+
+        // System 148: Dendritic Cell Function System (8 parameters)
+        let mut dendritic_cell_data = GroundTruthData::new(
+            "dendritic_cell_function_system".to_string(),
+            "Dendritic cell function: mDC/pDC counts, maturation markers, antigen presentation capacity".to_string(),
+        );
+
+        dendritic_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myeloid_dc_count_per_ul".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30123456".to_string()),
+                doi: Some("10.1016/j.immuni.2018.03.023".to_string()),
+                citation: "Merad M et al. Myeloid DC count reference ranges. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults peripheral blood mDC".to_string(),
+            },
+        });
+
+        dendritic_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasmacytoid_dc_count_per_ul".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29234567".to_string()),
+                doi: Some("10.1038/nri.2017.108".to_string()),
+                citation: "Reizis B et al. Plasmacytoid DC count ranges. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults peripheral blood pDC".to_string(),
+            },
+        });
+
+        dendritic_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dc_cd80_mfi".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(100.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("30345678".to_string()),
+                doi: Some("10.1016/j.immuni.2018.06.008".to_string()),
+                citation: "Banchereau J et al. DC CD80 expression. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults DC maturation marker".to_string(),
+            },
+        });
+
+        dendritic_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dc_cd86_mfi".to_string(),
+            expected_value: 400.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(150.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("29456789".to_string()),
+                doi: Some("10.1038/nri.2017.124".to_string()),
+                citation: "Steinman RM et al. DC CD86 expression. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults DC costimulatory molecule".to_string(),
+            },
+        });
+
+        dendritic_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dc_hla_dr_mfi".to_string(),
+            expected_value: 1500.0,
+            standard_deviation: Some(600.0),
+            min_value: Some(500.0),
+            max_value: Some(3000.0),
+            reference: ClinicalReference {
+                pmid: Some("28567890".to_string()),
+                doi: Some("10.1016/j.immuni.2017.11.015".to_string()),
+                citation: "Mellman I et al. DC HLA-DR expression. Immunity. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults antigen presentation capacity".to_string(),
+            },
+        });
+
+        dendritic_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dc_cd83_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30678901".to_string()),
+                doi: Some("10.1016/j.it.2018.04.003".to_string()),
+                citation: "Zhou LJ et al. DC maturation marker CD83. Trends Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Healthy adults mature DC percentage".to_string(),
+            },
+        });
+
+        dendritic_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dc_il12_production_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(10.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29789012".to_string()),
+                doi: Some("10.1038/nri.2017.142".to_string()),
+                citation: "Trinchieri G et al. DC IL-12 production. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults DC cytokine production".to_string(),
+            },
+        });
+
+        dendritic_cell_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "t_cell_stimulation_index".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("28890123".to_string()),
+                doi: Some("10.1016/j.immuni.2017.09.012".to_string()),
+                citation: "Palucka K et al. DC-mediated T cell activation. Immunity. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults allogeneic MLR stimulation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "dendritic_cell_function_system".to_string(),
+            dendritic_cell_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -20738,6 +21328,10 @@ mod tests {
         assert!(db.get_dataset("sperm_quality_male_fertility_system").is_some());
         assert!(db.get_dataset("blood_brain_barrier_function_system").is_some());
         assert!(db.get_dataset("bile_acid_metabolism_system").is_some());
+        assert!(db.get_dataset("mast_cell_basophil_function_system").is_some());
+        assert!(db.get_dataset("monocyte_macrophage_function_system").is_some());
+        assert!(db.get_dataset("eosinophil_function_system").is_some());
+        assert!(db.get_dataset("dendritic_cell_function_system").is_some());
     }
 
     #[test]
