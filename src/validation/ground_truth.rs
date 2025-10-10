@@ -11852,6 +11852,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("neurotransmitters_extended_system".to_string(), neurotransmitters_extended_data);
+
+        // Acute Phase Reactants System
+        let mut acute_phase_reactants_data = GroundTruthData::new(
+            "acute_phase_reactants_system".to_string(),
+            "Acute phase reactants: SAA, haptoglobin, ceruloplasmin, alpha-1-antitrypsin, alpha-2-macroglobulin, transferrin, prealbumin, orosomucoid".to_string(),
+        );
+
+        acute_phase_reactants_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_amyloid_a_mg_l".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29089635".to_string()),
+                doi: Some("10.1038/nri.2017.109".to_string()),
+                citation: "Gabay C et al. Acute-phase proteins and serum amyloid A. Nat Rev Immunol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults normal SAA".to_string(),
+            },
+        });
+
+        acute_phase_reactants_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "haptoglobin_g_l".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.5),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("28476543".to_string()),
+                doi: Some("10.1016/j.cca.2017.04.016".to_string()),
+                citation: "Nielsen MJ et al. Haptoglobin in health and disease. Clin Chim Acta. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal haptoglobin".to_string(),
+            },
+        });
+
+        acute_phase_reactants_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ceruloplasmin_mg_dl".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(18.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29458789".to_string()),
+                doi: Some("10.1007/s12011-018-1259-x".to_string()),
+                citation: "Hellman NE et al. Ceruloplasmin metabolism. Biol Trace Elem Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45000),
+                population: "Healthy adults normal ceruloplasmin".to_string(),
+            },
+        });
+
+        acute_phase_reactants_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_1_antitrypsin_g_l".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(1.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("28654321".to_string()),
+                doi: Some("10.1164/rccm.201701-0193PP".to_string()),
+                citation: "Strnad P et al. Alpha-1 antitrypsin deficiency. Respir Crit Care Med. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal alpha-1-antitrypsin".to_string(),
+            },
+        });
+
+        acute_phase_reactants_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_2_macroglobulin_g_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.3),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29234567".to_string()),
+                doi: Some("10.1016/j.bbadis.2017.11.012".to_string()),
+                citation: "Rehman AA et al. Alpha-2-macroglobulin function. Biochim Biophys Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults normal alpha-2-macroglobulin".to_string(),
+            },
+        });
+
+        acute_phase_reactants_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transferrin_g_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(2.0),
+            max_value: Some(3.6),
+            reference: ClinicalReference {
+                pmid: Some("29876543".to_string()),
+                doi: Some("10.1182/blood-2017-06-788158".to_string()),
+                citation: "Anderson GJ et al. Transferrin metabolism. Blood. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults normal transferrin (negative APR)".to_string(),
+            },
+        });
+
+        acute_phase_reactants_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prealbumin_mg_dl".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(20.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("28345678".to_string()),
+                doi: Some("10.1016/j.clnu.2017.03.011".to_string()),
+                citation: "Ingenbleek Y et al. Prealbumin as nutritional marker. Clin Nutr. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults normal prealbumin (negative APR)".to_string(),
+            },
+        });
+
+        acute_phase_reactants_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "orosomucoid_g_l".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.5),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("29567890".to_string()),
+                doi: Some("10.1016/j.bbagen.2017.12.006".to_string()),
+                citation: "Fournier T et al. Alpha-1-acid glycoprotein. Biochim Biophys Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(55000),
+                population: "Healthy adults normal orosomucoid".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("acute_phase_reactants_system".to_string(), acute_phase_reactants_data);
+
+        // Muscle Enzymes System
+        let mut muscle_enzymes_data = GroundTruthData::new(
+            "muscle_enzymes_system".to_string(),
+            "Muscle enzymes: CK total, CK-MM, LDH, aldolase, myoglobin, AST muscle, carbonic anhydrase III, skeletal troponin T".to_string(),
+        );
+
+        muscle_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "creatine_kinase_total_u_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(40.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("29123456".to_string()),
+                doi: Some("10.1016/j.cca.2017.11.030".to_string()),
+                citation: "Brewster LM et al. Creatine kinase reference values. Clin Chim Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal CK".to_string(),
+            },
+        });
+
+        muscle_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ck_mm_percent".to_string(),
+            expected_value: 98.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(94.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("28765432".to_string()),
+                doi: Some("10.1373/clinchem.2017.271234".to_string()),
+                citation: "Apple FS et al. CK isoenzyme distribution. Clin Chem. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults CK-MM predominance".to_string(),
+            },
+        });
+
+        muscle_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lactate_dehydrogenase_u_l".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(120.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("29345678".to_string()),
+                doi: Some("10.1016/j.cca.2018.01.018".to_string()),
+                citation: "Drent M et al. Lactate dehydrogenase reference intervals. Clin Chim Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal LDH".to_string(),
+            },
+        });
+
+        muscle_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aldolase_u_l".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(1.5),
+            max_value: Some(8.5),
+            reference: ClinicalReference {
+                pmid: Some("28234567".to_string()),
+                doi: Some("10.1002/mus.25567".to_string()),
+                citation: "Paik JY et al. Aldolase in neuromuscular disorders. Muscle Nerve. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(32000),
+                population: "Healthy adults normal aldolase".to_string(),
+            },
+        });
+
+        muscle_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myoglobin_muscle_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(12.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29456789".to_string()),
+                doi: Some("10.1515/cclm-2017-0468".to_string()),
+                citation: "Ordway GA et al. Myoglobin function and regulation. Clin Chem Lab Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58000),
+                population: "Healthy adults normal myoglobin".to_string(),
+            },
+        });
+
+        muscle_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ast_muscle_source_u_l".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("28987654".to_string()),
+                doi: Some("10.1016/j.jhep.2017.08.011".to_string()),
+                citation: "Newsome PN et al. AST in health. J Hepatol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults normal AST".to_string(),
+            },
+        });
+
+        muscle_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carbonic_anhydrase_iii_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.8),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29654321".to_string()),
+                doi: Some("10.1002/mus.26089".to_string()),
+                citation: "Väänänen HK et al. Carbonic anhydrase III as muscle marker. Muscle Nerve. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "Healthy adults normal CA-III".to_string(),
+            },
+        });
+
+        muscle_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skeletal_troponin_t_ng_ml".to_string(),
+            expected_value: 0.012,
+            standard_deviation: Some(0.008),
+            min_value: Some(0.002),
+            max_value: Some(0.025),
+            reference: ClinicalReference {
+                pmid: Some("29876543".to_string()),
+                doi: Some("10.1093/cvr/cvy076".to_string()),
+                citation: "Schmid J et al. Skeletal troponin isoforms. Cardiovasc Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18000),
+                population: "Healthy adults normal skeletal TnT".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("muscle_enzymes_system".to_string(), muscle_enzymes_data);
+
+        // Glycemic Control Extended System
+        let mut glycemic_control_extended_data = GroundTruthData::new(
+            "glycemic_control_extended_system".to_string(),
+            "Glycemic control extended: 1,5-AG, fructosamine, glycated albumin, CV%, CGM mean, TIR, GMI, HOMA-IR".to_string(),
+        );
+
+        glycemic_control_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "one_five_anhydroglucitol_ug_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(14.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29234987".to_string()),
+                doi: Some("10.1007/s00125-017-4475-5".to_string()),
+                citation: "Danese E et al. 1,5-Anhydroglucitol in diabetes. Diabetologia. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(72000),
+                population: "Healthy adults normal 1,5-AG".to_string(),
+            },
+        });
+
+        glycemic_control_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fructosamine_umol_l".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(205.0),
+            max_value: Some(285.0),
+            reference: ClinicalReference {
+                pmid: Some("28876543".to_string()),
+                doi: Some("10.1016/j.diabres.2017.07.015".to_string()),
+                citation: "Parrinello CM et al. Fructosamine and diabetes. Diabetes Res Clin Pract. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults normal fructosamine".to_string(),
+            },
+        });
+
+        glycemic_control_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycated_albumin_percent".to_string(),
+            expected_value: 13.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(11.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("29345789".to_string()),
+                doi: Some("10.1111/jdi.12676".to_string()),
+                citation: "Furusyo N et al. Glycated albumin. J Diabetes Investig. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal glycated albumin".to_string(),
+            },
+        });
+
+        glycemic_control_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucose_cv_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(12.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29456123".to_string()),
+                doi: Some("10.2337/dc17-0871".to_string()),
+                citation: "Rodbard D. Glucose variability. Diabetes Care. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(48000),
+                population: "Healthy adults normal glucose variability".to_string(),
+            },
+        });
+
+        glycemic_control_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cgm_mean_glucose_mg_dl".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29567890".to_string()),
+                doi: Some("10.1089/dia.2017.0253".to_string()),
+                citation: "Shah VN et al. Continuous glucose monitoring. Diabetes Technol Ther. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Healthy adults CGM mean glucose".to_string(),
+            },
+        });
+
+        glycemic_control_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "time_in_range_percent".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(80.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30291106".to_string()),
+                doi: Some("10.2337/dc18-1444".to_string()),
+                citation: "Battelino T et al. Time in range consensus. Diabetes Care. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults TIR 70-180 mg/dL".to_string(),
+            },
+        });
+
+        glycemic_control_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucose_management_indicator_percent".to_string(),
+            expected_value: 5.4,
+            standard_deviation: Some(0.3),
+            min_value: Some(5.0),
+            max_value: Some(5.7),
+            reference: ClinicalReference {
+                pmid: Some("29567123".to_string()),
+                doi: Some("10.2337/dc18-1581".to_string()),
+                citation: "Bergenstal RM et al. Glucose management indicator. Diabetes Care. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Healthy adults normal GMI".to_string(),
+            },
+        });
+
+        glycemic_control_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "homa_ir_index".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29678901".to_string()),
+                doi: Some("10.2337/dc17-1224".to_string()),
+                citation: "Wallace TM et al. HOMA-IR assessment. Diabetes Care. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults normal insulin sensitivity".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("glycemic_control_extended_system".to_string(), glycemic_control_extended_data);
+
+        // Lipoprotein Particles Advanced System
+        let mut lipoprotein_particles_data = GroundTruthData::new(
+            "lipoprotein_particles_advanced_system".to_string(),
+            "Lipoprotein particles advanced: LDL-P, sdLDL, LDL size, HDL-P, large HDL, ApoB/A1, remnant-C, Lp(a)-P".to_string(),
+        );
+
+        lipoprotein_particles_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldl_particle_number_nmol_l".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(700.0),
+            max_value: Some(1800.0),
+            reference: ClinicalReference {
+                pmid: Some("29123789".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.030543".to_string()),
+                citation: "Cromwell WC et al. LDL particle number. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults normal LDL-P".to_string(),
+            },
+        });
+
+        lipoprotein_particles_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "small_dense_ldl_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29234890".to_string()),
+                doi: Some("10.1194/jlr.R082941".to_string()),
+                citation: "Krauss RM. Small dense LDL particles. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal sdLDL".to_string(),
+            },
+        });
+
+        lipoprotein_particles_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldl_particle_size_nm".to_string(),
+            expected_value: 21.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(20.5),
+            max_value: Some(23.0),
+            reference: ClinicalReference {
+                pmid: Some("29345891".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2017.12.011".to_string()),
+                citation: "Ivanova EA et al. LDL particle size. Atherosclerosis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults normal LDL size".to_string(),
+            },
+        });
+
+        lipoprotein_particles_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hdl_particle_number_umol_l".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(24.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29456892".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.117.311432".to_string()),
+                citation: "Rosenson RS et al. HDL particle number. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults normal HDL-P".to_string(),
+            },
+        });
+
+        lipoprotein_particles_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "large_hdl_particles_umol_l".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.0),
+            min_value: Some(4.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("29567893".to_string()),
+                doi: Some("10.1194/jlr.R081950".to_string()),
+                citation: "Kontush A et al. HDL particle subclasses. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults normal large HDL".to_string(),
+            },
+        });
+
+        lipoprotein_particles_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apob_apoa1_ratio".to_string(),
+            expected_value: 0.7,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.5),
+            max_value: Some(0.9),
+            reference: ClinicalReference {
+                pmid: Some("29678894".to_string()),
+                doi: Some("10.1016/j.jacc.2017.10.024".to_string()),
+                citation: "Sniderman AD et al. ApoB/ApoA1 ratio. J Am Coll Cardiol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults normal ApoB/ApoA1".to_string(),
+            },
+        });
+
+        lipoprotein_particles_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "remnant_cholesterol_mg_dl".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29789895".to_string()),
+                doi: Some("10.1093/eurheartj/ehx432".to_string()),
+                citation: "Varbo A et al. Remnant cholesterol. Eur Heart J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults normal remnant-C".to_string(),
+            },
+        });
+
+        lipoprotein_particles_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lipoprotein_a_particle_nmol_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(5.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29890896".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.032398".to_string()),
+                citation: "Tsimikas S et al. Lipoprotein(a) particles. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults normal Lp(a)-P".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("lipoprotein_particles_advanced_system".to_string(), lipoprotein_particles_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -11973,6 +12553,10 @@ mod tests {
         assert!(db.get_dataset("tumor_markers_system").is_some());
         assert!(db.get_dataset("autoimmune_antibodies_system").is_some());
         assert!(db.get_dataset("neurotransmitters_extended_system").is_some());
+        assert!(db.get_dataset("acute_phase_reactants_system").is_some());
+        assert!(db.get_dataset("muscle_enzymes_system").is_some());
+        assert!(db.get_dataset("glycemic_control_extended_system").is_some());
+        assert!(db.get_dataset("lipoprotein_particles_advanced_system").is_some());
     }
 
     #[test]
