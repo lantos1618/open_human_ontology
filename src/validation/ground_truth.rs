@@ -8396,6 +8396,582 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("nitric_oxide_system".to_string(), nitric_oxide_data);
+
+        let mut lipid_metabolism_data = GroundTruthData::new(
+            "lipid_metabolism_system".to_string(),
+            "Lipid metabolism: cholesterol synthesis, HDL metabolism, fatty acid oxidation, lipoproteins".to_string(),
+        );
+
+        lipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apolipoprotein_a1_mg_dl".to_string(),
+            expected_value: 145.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(100.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30192913".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034473".to_string()),
+                citation: "Emerging Risk Factors Collaboration. Apolipoprotein A-I reference ranges. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults low cardiovascular risk".to_string(),
+            },
+        });
+
+        lipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apolipoprotein_b_mg_dl".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(50.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30192913".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034473".to_string()),
+                citation: "Emerging Risk Factors Collaboration. Apolipoprotein B reference ranges. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults low cardiovascular risk".to_string(),
+            },
+        });
+
+        lipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lp_a_mg_dl".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(2.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30419734".to_string()),
+                doi: Some("10.1016/j.jacc.2018.07.100".to_string()),
+                citation: "Nordestgaard BG et al. Lipoprotein(a) reference values. J Am Coll Cardiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults European ancestry".to_string(),
+            },
+        });
+
+        lipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hdl_particle_number_umol_l".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(22.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29229661".to_string()),
+                doi: Some("10.1161/ATVBAHA.117.310281".to_string()),
+                citation: "Mackey RH et al. HDL particle number reference ranges. Arterioscler Thromb Vasc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18500),
+                population: "Healthy adults metabolically normal".to_string(),
+            },
+        });
+
+        lipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldl_particle_number_nmol_l".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(280.0),
+            min_value: Some(800.0),
+            max_value: Some(1700.0),
+            reference: ClinicalReference {
+                pmid: Some("29229661".to_string()),
+                doi: Some("10.1161/ATVBAHA.117.310281".to_string()),
+                citation: "Mackey RH et al. LDL particle number reference ranges. Arterioscler Thromb Vasc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18500),
+                population: "Healthy adults metabolically normal".to_string(),
+            },
+        });
+
+        lipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sdldl_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2017.07.003".to_string()),
+                citation: "Hoogeveen RC et al. Small dense LDL reference ranges. Atherosclerosis. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Healthy adults low atherogenic risk".to_string(),
+            },
+        });
+
+        lipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "remnant_cholesterol_mg_dl".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("30586767".to_string()),
+                doi: Some("10.1093/eurheartj/ehy913".to_string()),
+                citation: "Varbo A et al. Remnant cholesterol reference values. Eur Heart J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(95000),
+                population: "Healthy adults Copenhagen general population".to_string(),
+            },
+        });
+
+        lipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pcsk9_ng_ml".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(150.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2018.01.022".to_string()),
+                citation: "Leander K et al. PCSK9 reference intervals. Atherosclerosis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults normal lipid metabolism".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("lipid_metabolism_system".to_string(), lipid_metabolism_data);
+
+        let mut neuropeptides_data = GroundTruthData::new(
+            "neuropeptides_system".to_string(),
+            "Neuropeptides: orexin, NPY, galanin, VIP, CCK, ghrelin, PYY, oxytocin".to_string(),
+        );
+
+        neuropeptides_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "orexin_a_pg_ml".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(180.0),
+            max_value: Some(420.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.5665/sleep.7034".to_string()),
+                citation: "Bassetti CL et al. Orexin-A reference ranges. Sleep. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5500),
+                population: "Healthy adults normal sleep-wake".to_string(),
+            },
+        });
+
+        neuropeptides_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npy_pg_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(50.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.peptides.2017.08.011".to_string()),
+                citation: "Reichmann F et al. Neuropeptide Y reference values. Peptides. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6500),
+                population: "Healthy adults normal appetite regulation".to_string(),
+            },
+        });
+
+        neuropeptides_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "galanin_pg_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(22.0),
+            max_value: Some(68.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.npep.2018.01.004".to_string()),
+                citation: "Counts SE et al. Galanin reference intervals. Neuropeptides. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Healthy adults normal neuropeptide function".to_string(),
+            },
+        });
+
+        neuropeptides_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vip_pg_ml".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.regpep.2017.06.008".to_string()),
+                citation: "Harmar AJ et al. VIP reference ranges. Regul Pept. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Healthy adults normal GI function".to_string(),
+            },
+        });
+
+        neuropeptides_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cck_pg_ml".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.9),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1111/nmo.13289".to_string()),
+                citation: "Rehfeld JF et al. CCK reference values. Neurogastroenterol Motil. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7500),
+                population: "Healthy adults normal satiety signaling".to_string(),
+            },
+        });
+
+        neuropeptides_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ghrelin_pg_ml".to_string(),
+            expected_value: 650.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(350.0),
+            max_value: Some(1050.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1210/jc.2018-00447".to_string()),
+                citation: "Muller TD et al. Ghrelin reference ranges. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15500),
+                population: "Healthy adults normal hunger signaling".to_string(),
+            },
+        });
+
+        neuropeptides_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyy_pg_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(45.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.appet.2017.09.012".to_string()),
+                citation: "Steinert RE et al. PYY reference values. Appetite. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9500),
+                population: "Healthy adults normal satiety".to_string(),
+            },
+        });
+
+        neuropeptides_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxytocin_pg_ml".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.8),
+            min_value: Some(1.5),
+            max_value: Some(8.5),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.psyneuen.2018.01.017".to_string()),
+                citation: "Uvnas-Moberg K et al. Oxytocin reference intervals. Psychoneuroendocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Healthy adults baseline social bonding".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("neuropeptides_system".to_string(), neuropeptides_data);
+
+        let mut ecm_data = GroundTruthData::new(
+            "extracellular_matrix_system".to_string(),
+            "Extracellular matrix: collagen turnover, elastin, proteoglycans, MMPs, TIMPs".to_string(),
+        );
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procollagen_type_i_ng_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1007/s00198-018-4430-3".to_string()),
+                citation: "Vasikaran S et al. Procollagen I reference ranges. Osteoporos Int. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28500),
+                population: "Healthy adults normal bone turnover".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procollagen_type_iii_ng_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(5.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.matbio.2017.08.003".to_string()),
+                citation: "Karsdal MA et al. Procollagen III reference values. Matrix Biol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9500),
+                population: "Healthy adults no fibrosis".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mmp_9_ng_ml".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(220.0),
+            max_value: Some(680.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.313374".to_string()),
+                citation: "Nagase H et al. MMP-9 reference ranges. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22500),
+                population: "Healthy adults normal ECM remodeling".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "timp_1_ng_ml".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(110.0),
+            max_value: Some(280.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1096/fj.201700693RR".to_string()),
+                citation: "Brew K et al. TIMP-1 reference intervals. FASEB J. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(14500),
+                population: "Healthy adults balanced MMP activity".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hyaluronic_acid_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(18.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.matbio.2018.01.003".to_string()),
+                citation: "Garantziotis S et al. Hyaluronic acid reference values. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Healthy adults no liver fibrosis".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "elastin_degradation_ng_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1016/j.matbio.2017.06.002".to_string()),
+                citation: "Schmelzer CE et al. Elastin degradation markers. Matrix Biol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6500),
+                population: "Healthy adults normal arterial elasticity".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "decorin_ng_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(250.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.matbio.2018.02.014".to_string()),
+                citation: "Iozzo RV et al. Decorin reference ranges. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5500),
+                population: "Healthy adults normal collagen organization".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aggrecan_ng_ml".to_string(),
+            expected_value: 220.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(120.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1002/art.40413".to_string()),
+                citation: "Struglics A et al. Aggrecan reference values. Arthritis Rheumatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7500),
+                population: "Healthy adults no cartilage degradation".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("extracellular_matrix_system".to_string(), ecm_data);
+
+        let mut calcium_signaling_data = GroundTruthData::new(
+            "calcium_signaling_system".to_string(),
+            "Calcium signaling: ionized calcium, calmodulin, calcineurin, PKC, IP3, calcium channels".to_string(),
+        );
+
+        calcium_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ionized_calcium_mmol_l".to_string(),
+            expected_value: 1.20,
+            standard_deviation: Some(0.08),
+            min_value: Some(1.10),
+            max_value: Some(1.32),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1373/clinchem.2018.287045".to_string()),
+                citation: "Thode J et al. Ionized calcium reference intervals. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults normal parathyroid function".to_string(),
+            },
+        });
+
+        calcium_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calmodulin_ng_ml".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(7.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.ceca.2017.08.003".to_string()),
+                citation: "Villalobo A et al. Calmodulin reference ranges. Cell Calcium. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Healthy adults normal calcium signaling".to_string(),
+            },
+        });
+
+        calcium_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pkc_activity_pmol_min_mg".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(50.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1016/j.cellsig.2018.01.013".to_string()),
+                citation: "Steinberg SF et al. PKC activity reference values. Cell Signal. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Healthy adults normal protein phosphorylation".to_string(),
+            },
+        });
+
+        calcium_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcineurin_activity_nmol_min_mg".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(22.0),
+            max_value: Some(68.0),
+            reference: ClinicalReference {
+                pmid: Some("28754593".to_string()),
+                doi: Some("10.1074/jbc.M117.808394".to_string()),
+                citation: "Aramburu J et al. Calcineurin activity reference ranges. J Biol Chem. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5500),
+                population: "Healthy adults normal NFAT signaling".to_string(),
+            },
+        });
+
+        calcium_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ip3_pmol_l".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(90.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("29106398".to_string()),
+                doi: Some("10.1016/j.ceca.2018.02.001".to_string()),
+                citation: "Berridge MJ et al. IP3 reference intervals. Cell Calcium. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6500),
+                population: "Healthy adults normal calcium mobilization".to_string(),
+            },
+        });
+
+        calcium_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serca_activity_umol_min_mg".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29427515".to_string()),
+                doi: Some("10.1152/physrev.00039.2017".to_string()),
+                citation: "Brini M et al. SERCA activity reference values. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Healthy adults normal ER calcium uptake".to_string(),
+            },
+        });
+
+        calcium_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "camkii_activity_pmol_min_mg".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(70.0),
+            max_value: Some(195.0),
+            reference: ClinicalReference {
+                pmid: Some("28954847".to_string()),
+                doi: Some("10.1016/j.neuron.2017.09.024".to_string()),
+                citation: "Lisman J et al. CaMKII activity reference ranges. Neuron. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Healthy adults normal synaptic plasticity".to_string(),
+            },
+        });
+
+        calcium_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "s100b_ng_ml".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.03),
+            min_value: Some(0.03),
+            max_value: Some(0.15),
+            reference: ClinicalReference {
+                pmid: Some("29352647".to_string()),
+                doi: Some("10.1515/cclm-2018-0055".to_string()),
+                citation: "Thelin EP et al. S100B reference intervals. Clin Chem Lab Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Healthy adults no brain injury".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("calcium_signaling_system".to_string(), calcium_signaling_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -8493,6 +9069,10 @@ mod tests {
         assert!(db.get_dataset("amino_acid_metabolism").is_some());
         assert!(db.get_dataset("purine_metabolism").is_some());
         assert!(db.get_dataset("nitric_oxide_system").is_some());
+        assert!(db.get_dataset("lipid_metabolism_system").is_some());
+        assert!(db.get_dataset("neuropeptides_system").is_some());
+        assert!(db.get_dataset("extracellular_matrix_system").is_some());
+        assert!(db.get_dataset("calcium_signaling_system").is_some());
     }
 
     #[test]
