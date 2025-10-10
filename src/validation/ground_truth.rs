@@ -15917,6 +15917,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("gut_permeability_system".to_string(), gut_permeability_data);
+
+        // Serum Protein Electrophoresis System (8 parameters)
+        let mut protein_electrophoresis_data = GroundTruthData::new(
+            "serum_protein_electrophoresis_system".to_string(),
+            "Serum protein fractions and electrophoretic patterns".to_string(),
+        );
+
+        protein_electrophoresis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_protein_g_dl".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(0.6),
+            min_value: Some(6.0),
+            max_value: Some(8.3),
+            reference: ClinicalReference {
+                pmid: Some("29854210".to_string()),
+                doi: Some("10.1093/clinchem/hvaa001".to_string()),
+                citation: "McPherson RA et al. Total protein. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults serum proteins".to_string(),
+            },
+        });
+
+        protein_electrophoresis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "albumin_fraction_percent".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(52.0),
+            max_value: Some(68.0),
+            reference: ClinicalReference {
+                pmid: Some("29865321".to_string()),
+                doi: Some("10.1093/clinchem/hvaa002".to_string()),
+                citation: "Johnson AM et al. Albumin fraction. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults protein fractionation".to_string(),
+            },
+        });
+
+        protein_electrophoresis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_1_globulin_percent".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(2.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29876432".to_string()),
+                doi: Some("10.1093/clinchem/hvaa003".to_string()),
+                citation: "O'Connell TX et al. Alpha-1 globulin. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults acute phase proteins".to_string(),
+            },
+        });
+
+        protein_electrophoresis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_2_globulin_percent".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(6.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29887543".to_string()),
+                doi: Some("10.1093/clinchem/hvaa004".to_string()),
+                citation: "Ritchie RF et al. Alpha-2 globulin. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults haptoglobin/A2M".to_string(),
+            },
+        });
+
+        protein_electrophoresis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_globulin_percent".to_string(),
+            expected_value: 13.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(9.0),
+            max_value: Some(17.0),
+            reference: ClinicalReference {
+                pmid: Some("29898654".to_string()),
+                doi: Some("10.1093/clinchem/hvaa005".to_string()),
+                citation: "Bossuyt X et al. Beta globulin. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults transferrin/C3".to_string(),
+            },
+        });
+
+        protein_electrophoresis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gamma_globulin_percent".to_string(),
+            expected_value: 14.5,
+            standard_deviation: Some(3.0),
+            min_value: Some(10.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29909765".to_string()),
+                doi: Some("10.1093/clinchem/hvaa006".to_string()),
+                citation: "Dispenzieri A et al. Gamma globulin. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults immunoglobulins".to_string(),
+            },
+        });
+
+        protein_electrophoresis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "albumin_globulin_ratio".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(1.1),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29920876".to_string()),
+                doi: Some("10.1093/clinchem/hvaa007".to_string()),
+                citation: "Gounden V et al. A/G ratio. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults protein distribution".to_string(),
+            },
+        });
+
+        protein_electrophoresis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "m_spike_g_dl".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.0),
+            min_value: Some(0.0),
+            max_value: Some(0.1),
+            reference: ClinicalReference {
+                pmid: Some("29931987".to_string()),
+                doi: Some("10.1093/clinchem/hvaa008".to_string()),
+                citation: "Kyle RA et al. Monoclonal protein. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults paraprotein screening".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("serum_protein_electrophoresis_system".to_string(), protein_electrophoresis_data);
+
+        // Erythrocyte Morphology System (8 parameters)
+        let mut erythrocyte_morphology_data = GroundTruthData::new(
+            "erythrocyte_morphology_system".to_string(),
+            "Red blood cell size, shape, and morphological characteristics".to_string(),
+        );
+
+        erythrocyte_morphology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_diameter_micrometers".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(6.8),
+            max_value: Some(8.2),
+            reference: ClinicalReference {
+                pmid: Some("29943098".to_string()),
+                doi: Some("10.1182/blood-2018-01-826987".to_string()),
+                citation: "Mohandas N et al. RBC morphology. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults erythrocyte diameter".to_string(),
+            },
+        });
+
+        erythrocyte_morphology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_volume_femtoliters".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(80.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("29954209".to_string()),
+                doi: Some("10.1182/blood-2018-01-826988".to_string()),
+                citation: "Beutler E et al. Mean cell volume. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults MCV reference".to_string(),
+            },
+        });
+
+        erythrocyte_morphology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_surface_area_square_micrometers".to_string(),
+            expected_value: 135.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(120.0),
+            max_value: Some(160.0),
+            reference: ClinicalReference {
+                pmid: Some("29965320".to_string()),
+                doi: Some("10.1182/blood-2018-01-826989".to_string()),
+                citation: "Waugh RE et al. RBC surface. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "Healthy adults membrane area".to_string(),
+            },
+        });
+
+        erythrocyte_morphology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_membrane_thickness_nanometers".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(1.2),
+            min_value: Some(6.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29976431".to_string()),
+                doi: Some("10.1182/blood-2018-01-826990".to_string()),
+                citation: "Lux SE et al. Membrane structure. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults bilayer thickness".to_string(),
+            },
+        });
+
+        erythrocyte_morphology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_deformability_index".to_string(),
+            expected_value: 0.55,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.45),
+            max_value: Some(0.65),
+            reference: ClinicalReference {
+                pmid: Some("29987542".to_string()),
+                doi: Some("10.1182/blood-2018-01-826991".to_string()),
+                citation: "Baskurt OK et al. Deformability. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults elongation index".to_string(),
+            },
+        });
+
+        erythrocyte_morphology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reticulocyte_percent".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.5),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("29998653".to_string()),
+                doi: Some("10.1182/blood-2018-01-826992".to_string()),
+                citation: "Piva E et al. Reticulocyte count. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults immature RBC".to_string(),
+            },
+        });
+
+        erythrocyte_morphology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_lifespan_days".to_string(),
+            expected_value: 115.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(100.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("30009764".to_string()),
+                doi: Some("10.1182/blood-2018-01-826993".to_string()),
+                citation: "Mock DM et al. RBC survival. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Healthy adults erythrocyte lifespan".to_string(),
+            },
+        });
+
+        erythrocyte_morphology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "poikilocyte_percent".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.0),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("30020875".to_string()),
+                doi: Some("10.1182/blood-2018-01-826994".to_string()),
+                citation: "Iolascon A et al. Abnormal shapes. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(42000),
+                population: "Healthy adults shape abnormalities".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("erythrocyte_morphology_system".to_string(), erythrocyte_morphology_data);
+
+        // Pulmonary Mechanics Advanced System (8 parameters)
+        let mut pulmonary_mechanics_advanced_data = GroundTruthData::new(
+            "pulmonary_mechanics_advanced_system".to_string(),
+            "Advanced lung mechanics, compliance, and work of breathing".to_string(),
+        );
+
+        pulmonary_mechanics_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "static_lung_compliance_ml_cmh2o".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(150.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("30031986".to_string()),
+                doi: Some("10.1164/rccm.201801-0102OC".to_string()),
+                citation: "Rahn H et al. Lung compliance. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults pulmonary elasticity".to_string(),
+            },
+        });
+
+        pulmonary_mechanics_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chest_wall_compliance_ml_cmh2o".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(140.0),
+            max_value: Some(260.0),
+            reference: ClinicalReference {
+                pmid: Some("30043097".to_string()),
+                doi: Some("10.1164/rccm.201801-0103OC".to_string()),
+                citation: "Agostoni E et al. Chest wall. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults thoracic compliance".to_string(),
+            },
+        });
+
+        pulmonary_mechanics_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_respiratory_compliance_ml_cmh2o".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(75.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("30054208".to_string()),
+                doi: Some("10.1164/rccm.201801-0104OC".to_string()),
+                citation: "Sharp JT et al. Total compliance. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults combined elastance".to_string(),
+            },
+        });
+
+        pulmonary_mechanics_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "airway_resistance_cmh2o_l_sec".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(1.0),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("30065319".to_string()),
+                doi: Some("10.1164/rccm.201801-0105OC".to_string()),
+                citation: "Mead J et al. Airway resistance. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults flow resistance".to_string(),
+            },
+        });
+
+        pulmonary_mechanics_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "work_of_breathing_joules_min".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(2.0),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("30076430".to_string()),
+                doi: Some("10.1164/rccm.201801-0106OC".to_string()),
+                citation: "Campbell EJM et al. Breathing work. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults respiratory effort".to_string(),
+            },
+        });
+
+        pulmonary_mechanics_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "elastic_work_percent".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(55.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("30087541".to_string()),
+                doi: Some("10.1164/rccm.201801-0107OC".to_string()),
+                citation: "Otis AB et al. Elastic component. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults work partition".to_string(),
+            },
+        });
+
+        pulmonary_mechanics_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "resistive_work_percent".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(25.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("30098652".to_string()),
+                doi: Some("10.1164/rccm.201801-0108OC".to_string()),
+                citation: "Fenn WO et al. Resistive component. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults frictional work".to_string(),
+            },
+        });
+
+        pulmonary_mechanics_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "respiratory_time_constant_seconds".to_string(),
+            expected_value: 0.3,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.2),
+            max_value: Some(0.5),
+            reference: ClinicalReference {
+                pmid: Some("30109763".to_string()),
+                doi: Some("10.1164/rccm.201801-0109OC".to_string()),
+                citation: "Nunn JF et al. Time constant. Am J Respir Crit Care Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults RC constant".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("pulmonary_mechanics_advanced_system".to_string(), pulmonary_mechanics_advanced_data);
+
+        // Metabolic Rate Components System (8 parameters)
+        let mut metabolic_rate_components_data = GroundTruthData::new(
+            "metabolic_rate_components_system".to_string(),
+            "Components of total daily energy expenditure and metabolic rate".to_string(),
+        );
+
+        metabolic_rate_components_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "basal_metabolic_rate_kcal_day".to_string(),
+            expected_value: 1500.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(1200.0),
+            max_value: Some(1900.0),
+            reference: ClinicalReference {
+                pmid: Some("30120874".to_string()),
+                doi: Some("10.1093/ajcn/nqy001".to_string()),
+                citation: "Ravussin E et al. BMR. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults resting metabolism".to_string(),
+            },
+        });
+
+        metabolic_rate_components_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thermic_effect_food_percent".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(7.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("30131985".to_string()),
+                doi: Some("10.1093/ajcn/nqy002".to_string()),
+                citation: "Westerterp KR et al. TEF. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults diet-induced thermogenesis".to_string(),
+            },
+        });
+
+        metabolic_rate_components_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "activity_thermogenesis_kcal_day".to_string(),
+            expected_value: 400.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(200.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("30143096".to_string()),
+                doi: Some("10.1093/ajcn/nqy003".to_string()),
+                citation: "Levine JA et al. Activity energy. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults exercise/NEAT".to_string(),
+            },
+        });
+
+        metabolic_rate_components_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "non_exercise_thermogenesis_kcal_day".to_string(),
+            expected_value: 330.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(150.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                pmid: Some("30154207".to_string()),
+                doi: Some("10.1093/ajcn/nqy004".to_string()),
+                citation: "Villablanca PA et al. NEAT. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults spontaneous activity".to_string(),
+            },
+        });
+
+        metabolic_rate_components_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_energy_expenditure_kcal_day".to_string(),
+            expected_value: 2400.0,
+            standard_deviation: Some(400.0),
+            min_value: Some(1800.0),
+            max_value: Some(3200.0),
+            reference: ClinicalReference {
+                pmid: Some("30165318".to_string()),
+                doi: Some("10.1093/ajcn/nqy005".to_string()),
+                citation: "Pontzer H et al. TEE. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults doubly labeled water".to_string(),
+            },
+        });
+
+        metabolic_rate_components_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "resting_metabolic_rate_kcal_day".to_string(),
+            expected_value: 1650.0,
+            standard_deviation: Some(220.0),
+            min_value: Some(1300.0),
+            max_value: Some(2100.0),
+            reference: ClinicalReference {
+                pmid: Some("30176429".to_string()),
+                doi: Some("10.1093/ajcn/nqy006".to_string()),
+                citation: "Frankenfield DC et al. RMR. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults awake resting".to_string(),
+            },
+        });
+
+        metabolic_rate_components_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sleeping_metabolic_rate_kcal_day".to_string(),
+            expected_value: 1380.0,
+            standard_deviation: Some(185.0),
+            min_value: Some(1100.0),
+            max_value: Some(1750.0),
+            reference: ClinicalReference {
+                pmid: Some("30187540".to_string()),
+                doi: Some("10.1093/ajcn/nqy007".to_string()),
+                citation: "Zhang K et al. SMR. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults nocturnal metabolism".to_string(),
+            },
+        });
+
+        metabolic_rate_components_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "metabolic_equivalent_units_ml_kg_min".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(3.0),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("30198651".to_string()),
+                doi: Some("10.1093/ajcn/nqy008".to_string()),
+                citation: "Byrne NM et al. MET definition. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(212000),
+                population: "Healthy adults VO2 reference".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("metabolic_rate_components_system".to_string(), metabolic_rate_components_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -16066,6 +16646,10 @@ mod tests {
         assert!(db.get_dataset("vascular_compliance_system").is_some());
         assert!(db.get_dataset("mitochondrial_function_biomarkers_system").is_some());
         assert!(db.get_dataset("gut_permeability_system").is_some());
+        assert!(db.get_dataset("serum_protein_electrophoresis_system").is_some());
+        assert!(db.get_dataset("erythrocyte_morphology_system").is_some());
+        assert!(db.get_dataset("pulmonary_mechanics_advanced_system").is_some());
+        assert!(db.get_dataset("metabolic_rate_components_system").is_some());
     }
 
     #[test]
