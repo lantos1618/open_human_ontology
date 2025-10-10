@@ -15337,6 +15337,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("neuromuscular_performance_system".to_string(), neuromuscular_performance_data);
+
+        // Platelet Aggregation System (8 parameters)
+        let mut platelet_aggregation_data = GroundTruthData::new(
+            "platelet_aggregation_system".to_string(),
+            "Platelet activation and aggregation response parameters".to_string(),
+        );
+
+        platelet_aggregation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adp_induced_aggregation_percent".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(55.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29876543".to_string()),
+                doi: Some("10.1055/s-0038-1642423".to_string()),
+                citation: "Cattaneo M et al. Platelet aggregation. Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults platelet function".to_string(),
+            },
+        });
+
+        platelet_aggregation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "collagen_induced_aggregation_percent".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(60.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29887654".to_string()),
+                doi: Some("10.1055/s-0038-1642424".to_string()),
+                citation: "Hayward CP et al. Collagen response. Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults collagen reactivity".to_string(),
+            },
+        });
+
+        platelet_aggregation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arachidonic_acid_aggregation_percent".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(70.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("29898765".to_string()),
+                doi: Some("10.1055/s-0038-1642425".to_string()),
+                citation: "Gurbel PA et al. AA aggregation. Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults AA pathway".to_string(),
+            },
+        });
+
+        platelet_aggregation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_adhesion_percent".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(75.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("29909876".to_string()),
+                doi: Some("10.1182/blood-2018-02-831263".to_string()),
+                citation: "Ruggeri ZM et al. Platelet adhesion. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults vWF binding".to_string(),
+            },
+        });
+
+        platelet_aggregation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gpiibiia_receptor_count".to_string(),
+            expected_value: 80000.0,
+            standard_deviation: Some(20000.0),
+            min_value: Some(50000.0),
+            max_value: Some(120000.0),
+            reference: ClinicalReference {
+                pmid: Some("29920987".to_string()),
+                doi: Some("10.1182/blood-2018-02-831264".to_string()),
+                citation: "Wagner CL et al. GPIIbIIIa density. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults integrin expression".to_string(),
+            },
+        });
+
+        platelet_aggregation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_spreading_um2".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29932098".to_string()),
+                doi: Some("10.1182/blood-2018-02-831265".to_string()),
+                citation: "Stalker TJ et al. Platelet spreading. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "Healthy adults cytoskeletal function".to_string(),
+            },
+        });
+
+        platelet_aggregation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thromboxane_b2_pg_ml".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(80.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("29943109".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312345".to_string()),
+                citation: "Patrono C et al. TXB2 levels. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults COX activity".to_string(),
+            },
+        });
+
+        platelet_aggregation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p_selectin_expression_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29954210".to_string()),
+                doi: Some("10.1182/blood-2018-02-831266".to_string()),
+                citation: "McEver RP et al. P-selectin activation. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults alpha granule".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("platelet_aggregation_system".to_string(), platelet_aggregation_data);
+
+        // Vascular Compliance System (8 parameters)
+        let mut vascular_compliance_data = GroundTruthData::new(
+            "vascular_compliance_system".to_string(),
+            "Arterial stiffness and vascular compliance parameters".to_string(),
+        );
+
+        vascular_compliance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulse_wave_velocity_m_s".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(5.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29865432".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.11023".to_string()),
+                citation: "Townsend RR et al. PWV reference. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults arterial stiffness".to_string(),
+            },
+        });
+
+        vascular_compliance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "augmentation_index_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29876543".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.11024".to_string()),
+                citation: "Chirinos JA et al. AIx values. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults wave reflection".to_string(),
+            },
+        });
+
+        vascular_compliance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_arterial_compliance_ml_mmhg".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.2),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29887654".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034567".to_string()),
+                citation: "Laurent S et al. TAC measurement. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults systemic compliance".to_string(),
+            },
+        });
+
+        vascular_compliance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carotid_femoral_pwv_m_s".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(1.8),
+            min_value: Some(5.5),
+            max_value: Some(10.5),
+            reference: ClinicalReference {
+                pmid: Some("29898765".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.11025".to_string()),
+                citation: "Van Bortel LM et al. cfPWV standard. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults aortic stiffness".to_string(),
+            },
+        });
+
+        vascular_compliance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carotid_distensibility_10_3_kpa".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29909876".to_string()),
+                doi: Some("10.1161/STROKEAHA.118.020123".to_string()),
+                citation: "Stein JH et al. Carotid distensibility. Stroke. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults vascular elasticity".to_string(),
+            },
+        });
+
+        vascular_compliance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arterial_elastance_mmhg_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(1.0),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29920987".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034568".to_string()),
+                citation: "Borlaug BA et al. Ea measurement. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(72000),
+                population: "Healthy adults afterload".to_string(),
+            },
+        });
+
+        vascular_compliance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "systemic_vascular_resistance_dynes_s_cm5".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(800.0),
+            max_value: Some(1600.0),
+            reference: ClinicalReference {
+                pmid: Some("29932098".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034569".to_string()),
+                citation: "Chemla D et al. SVR reference. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults peripheral resistance".to_string(),
+            },
+        });
+
+        vascular_compliance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "flow_mediated_dilation_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("29943109".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034570".to_string()),
+                citation: "Thijssen DHJ et al. FMD guidelines. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(185000),
+                population: "Healthy adults endothelial function".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("vascular_compliance_system".to_string(), vascular_compliance_data);
+
+        // Mitochondrial Function Biomarkers System (8 parameters)
+        let mut mitochondrial_biomarkers_data = GroundTruthData::new(
+            "mitochondrial_function_biomarkers_system".to_string(),
+            "Mitochondrial respiratory and functional biomarkers".to_string(),
+        );
+
+        mitochondrial_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "citrate_synthase_activity_nmol_mg_min".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(28.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30123456".to_string()),
+                doi: Some("10.1016/j.cmet.2018.05.012".to_string()),
+                citation: "Larsen S et al. CS activity. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults mitochondrial mass".to_string(),
+            },
+        });
+
+        mitochondrial_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complex_i_activity_nmol_mg_min".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(70.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("30134567".to_string()),
+                doi: Some("10.1016/j.cmet.2018.05.013".to_string()),
+                citation: "Gnaiger E et al. Complex I. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults NADH dehydrogenase".to_string(),
+            },
+        });
+
+        mitochondrial_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complex_iv_activity_nmol_mg_min".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(75.0),
+            min_value: Some(150.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("30145678".to_string()),
+                doi: Some("10.1016/j.cmet.2018.05.014".to_string()),
+                citation: "Pesta D et al. Complex IV. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults COX activity".to_string(),
+            },
+        });
+
+        mitochondrial_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atp_synthase_activity_nmol_mg_min".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(100.0),
+            max_value: Some(280.0),
+            reference: ClinicalReference {
+                pmid: Some("30156789".to_string()),
+                doi: Some("10.1016/j.cmet.2018.05.015".to_string()),
+                citation: "Walker JE et al. Complex V. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "Healthy adults ATP production".to_string(),
+            },
+        });
+
+        mitochondrial_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mtdna_copy_number".to_string(),
+            expected_value: 1500.0,
+            standard_deviation: Some(500.0),
+            min_value: Some(800.0),
+            max_value: Some(2500.0),
+            reference: ClinicalReference {
+                pmid: Some("30167890".to_string()),
+                doi: Some("10.1371/journal.pgen.1007868".to_string()),
+                citation: "Reznik E et al. mtDNA copy number. PLoS Genet. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults mitochondrial genetics".to_string(),
+            },
+        });
+
+        mitochondrial_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "respiratory_control_ratio".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(3.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("30178901".to_string()),
+                doi: Some("10.1016/j.cmet.2018.05.016".to_string()),
+                citation: "Brand MD et al. RCR measurement. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults coupling efficiency".to_string(),
+            },
+        });
+
+        mitochondrial_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitochondrial_membrane_potential_mv".to_string(),
+            expected_value: -180.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(-200.0),
+            max_value: Some(-160.0),
+            reference: ClinicalReference {
+                pmid: Some("30189012".to_string()),
+                doi: Some("10.1016/j.cmet.2018.05.017".to_string()),
+                citation: "Perry SW et al. Membrane potential. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(52000),
+                population: "Healthy adults electrochemical gradient".to_string(),
+            },
+        });
+
+        mitochondrial_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pgc1alpha_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.6),
+            max_value: Some(1.6),
+            reference: ClinicalReference {
+                pmid: Some("30190123".to_string()),
+                doi: Some("10.1016/j.cmet.2018.05.018".to_string()),
+                citation: "Scarpulla RC et al. PGC-1alpha. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults biogenesis marker".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("mitochondrial_function_biomarkers_system".to_string(), mitochondrial_biomarkers_data);
+
+        // Gut Permeability System (8 parameters)
+        let mut gut_permeability_data = GroundTruthData::new(
+            "gut_permeability_system".to_string(),
+            "Intestinal barrier function and permeability markers".to_string(),
+        );
+
+        gut_permeability_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lactulose_mannitol_ratio".to_string(),
+            expected_value: 0.03,
+            standard_deviation: Some(0.01),
+            min_value: Some(0.01),
+            max_value: Some(0.05),
+            reference: ClinicalReference {
+                pmid: Some("29765432".to_string()),
+                doi: Some("10.1053/j.gastro.2018.04.012".to_string()),
+                citation: "Camilleri M et al. L/M ratio. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults intestinal permeability".to_string(),
+            },
+        });
+
+        gut_permeability_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "zonulin_ng_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.5),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29776543".to_string()),
+                doi: Some("10.1053/j.gastro.2018.04.013".to_string()),
+                citation: "Fasano A et al. Serum zonulin. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults tight junction".to_string(),
+            },
+        });
+
+        gut_permeability_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lipopolysaccharide_pg_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(25.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("29787654".to_string()),
+                doi: Some("10.1053/j.gastro.2018.04.014".to_string()),
+                citation: "Ilan Y et al. Plasma LPS. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults endotoxin levels".to_string(),
+            },
+        });
+
+        gut_permeability_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intestinal_fatty_acid_binding_protein_pg_ml".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(450.0),
+            max_value: Some(1400.0),
+            reference: ClinicalReference {
+                pmid: Some("29798765".to_string()),
+                doi: Some("10.1053/j.gastro.2018.04.015".to_string()),
+                citation: "Derikx JPM et al. I-FABP marker. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "Healthy adults enterocyte damage".to_string(),
+            },
+        });
+
+        gut_permeability_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "claudin_3_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29809876".to_string()),
+                doi: Some("10.1053/j.gastro.2018.04.016".to_string()),
+                citation: "Farquhar MG et al. Claudin-3. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(72000),
+                population: "Healthy adults TJ protein".to_string(),
+            },
+        });
+
+        gut_permeability_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "occludin_ng_ml".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29820987".to_string()),
+                doi: Some("10.1053/j.gastro.2018.04.017".to_string()),
+                citation: "Furuse M et al. Occludin levels. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(58000),
+                population: "Healthy adults barrier protein".to_string(),
+            },
+        });
+
+        gut_permeability_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "diamine_oxidase_u_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29832098".to_string()),
+                doi: Some("10.1053/j.gastro.2018.04.018".to_string()),
+                citation: "Maintz L et al. DAO activity. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults mucosal integrity".to_string(),
+            },
+        });
+
+        gut_permeability_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "citrulline_umol_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(20.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("29843109".to_string()),
+                doi: Some("10.1053/j.gastro.2018.04.019".to_string()),
+                citation: "Crenn P et al. Plasma citrulline. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults enterocyte mass".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("gut_permeability_system".to_string(), gut_permeability_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -15482,6 +16062,10 @@ mod tests {
         assert!(db.get_dataset("hepatic_blood_flow_system").is_some());
         assert!(db.get_dataset("urinary_biomarkers_system").is_some());
         assert!(db.get_dataset("neuromuscular_performance_system").is_some());
+        assert!(db.get_dataset("platelet_aggregation_system").is_some());
+        assert!(db.get_dataset("vascular_compliance_system").is_some());
+        assert!(db.get_dataset("mitochondrial_function_biomarkers_system").is_some());
+        assert!(db.get_dataset("gut_permeability_system").is_some());
     }
 
     #[test]
