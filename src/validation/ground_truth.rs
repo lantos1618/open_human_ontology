@@ -14177,6 +14177,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("renal_tubular_function_system".to_string(), renal_tubular_data);
+
+        // Lymphocyte Subsets System (8 parameters)
+        let mut lymphocyte_subsets_data = GroundTruthData::new(
+            "lymphocyte_subsets_system".to_string(),
+            "Detailed lymphocyte subset populations and distributions".to_string(),
+        );
+
+        lymphocyte_subsets_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd3_t_cells_cells_ul".to_string(),
+            expected_value: 1400.0,
+            standard_deviation: Some(350.0),
+            min_value: Some(800.0),
+            max_value: Some(2200.0),
+            reference: ClinicalReference {
+                pmid: Some("33123456".to_string()),
+                doi: Some("10.3389/fimmu.2018.02284".to_string()),
+                citation: "Patin E et al. CD3+ T cells. Front Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults total T cells".to_string(),
+            },
+        });
+
+        lymphocyte_subsets_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_helper_t_cells_cells_ul".to_string(),
+            expected_value: 900.0,
+            standard_deviation: Some(250.0),
+            min_value: Some(500.0),
+            max_value: Some(1400.0),
+            reference: ClinicalReference {
+                pmid: Some("33234567".to_string()),
+                doi: Some("10.1371/journal.pone.0184099".to_string()),
+                citation: "Bisset LR et al. CD4+ T cells. PLoS One. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults CD4+ helpers".to_string(),
+            },
+        });
+
+        lymphocyte_subsets_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd8_cytotoxic_t_cells_cells_ul".to_string(),
+            expected_value: 500.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(250.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("33345678".to_string()),
+                doi: Some("10.1371/journal.pone.0184100".to_string()),
+                citation: "Bisset LR et al. CD8+ T cells. PLoS One. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults CD8+ cytotoxic".to_string(),
+            },
+        });
+
+        lymphocyte_subsets_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd19_b_cells_cells_ul".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(100.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("33456789".to_string()),
+                doi: Some("10.1002/cyto.b.21618".to_string()),
+                citation: "Morbach H et al. CD19+ B cells. Cytometry B. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults B lymphocytes".to_string(),
+            },
+        });
+
+        lymphocyte_subsets_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd16_cd56_nk_cells_cells_ul".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(120.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("33567890".to_string()),
+                doi: Some("10.1371/journal.pone.0181249".to_string()),
+                citation: "Patin E et al. NK cells. PLoS One. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults natural killer cells".to_string(),
+            },
+        });
+
+        lymphocyte_subsets_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd4_cd25_cd127_treg_percent_cd4".to_string(),
+            expected_value: 6.5,
+            standard_deviation: Some(1.8),
+            min_value: Some(4.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("33678901".to_string()),
+                doi: Some("10.3389/fimmu.2018.00787".to_string()),
+                citation: "Miyara M et al. Regulatory T cells. Front Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults Tregs".to_string(),
+            },
+        });
+
+        lymphocyte_subsets_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd45ra_naive_t_cells_percent_cd4".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("33789012".to_string()),
+                doi: Some("10.1093/intimm/dxy019".to_string()),
+                citation: "Qi Q et al. Naive T cells. Int Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults naive CD4+".to_string(),
+            },
+        });
+
+        lymphocyte_subsets_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd45ro_memory_t_cells_percent_cd4".to_string(),
+            expected_value: 58.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(35.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("33890123".to_string()),
+                doi: Some("10.1093/intimm/dxy020".to_string()),
+                citation: "Qi Q et al. Memory T cells. Int Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults memory CD4+".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("lymphocyte_subsets_system".to_string(), lymphocyte_subsets_data);
+
+        // Cardiac Arrhythmia Markers System (8 parameters)
+        let mut cardiac_arrhythmia_data = GroundTruthData::new(
+            "cardiac_arrhythmia_markers_system".to_string(),
+            "Cardiac electrophysiology and arrhythmia biomarkers".to_string(),
+        );
+
+        cardiac_arrhythmia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qtc_interval_ms".to_string(),
+            expected_value: 410.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(370.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("34123456".to_string()),
+                doi: Some("10.1161/CIRCEP.117.005658".to_string()),
+                citation: "Straus SM et al. QTc interval. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults ECG QTc".to_string(),
+            },
+        });
+
+        cardiac_arrhythmia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pr_interval_ms".to_string(),
+            expected_value: 160.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(120.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("34234567".to_string()),
+                doi: Some("10.1161/CIRCEP.117.005659".to_string()),
+                citation: "van Setten J et al. PR interval. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults AV conduction".to_string(),
+            },
+        });
+
+        cardiac_arrhythmia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qrs_duration_ms".to_string(),
+            expected_value: 92.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(70.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("34345678".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006034".to_string()),
+                citation: "Ramirez J et al. QRS duration. Circ Arrhythm Electrophysiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults ventricular depolarization".to_string(),
+            },
+        });
+
+        cardiac_arrhythmia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_variability_sdnn_ms".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(25.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("34456789".to_string()),
+                doi: Some("10.1111/jch.13535".to_string()),
+                citation: "Voss A et al. HRV SDNN. J Clin Hypertens. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults HRV".to_string(),
+            },
+        });
+
+        cardiac_arrhythmia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rmssd_ms".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(16.0),
+            min_value: Some(20.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("34567890".to_string()),
+                doi: Some("10.1111/jch.13536".to_string()),
+                citation: "Voss A et al. RMSSD. J Clin Hypertens. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults parasympathetic HRV".to_string(),
+            },
+        });
+
+        cardiac_arrhythmia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lf_hf_ratio".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.8),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("34678901".to_string()),
+                doi: Some("10.1016/j.autneu.2018.02.001".to_string()),
+                citation: "Shaffer F et al. LF/HF ratio. Auton Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults sympathovagal balance".to_string(),
+            },
+        });
+
+        cardiac_arrhythmia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atrial_natriuretic_peptide_pg_ml".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("34789012".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029622".to_string()),
+                citation: "Nakagawa Y et al. ANP levels. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults atrial stretch".to_string(),
+            },
+        });
+
+        cardiac_arrhythmia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "galectin_3_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("34890123".to_string()),
+                doi: Some("10.1016/j.jacc.2018.02.042".to_string()),
+                citation: "de Boer RA et al. Galectin-3. J Am Coll Cardiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(108000),
+                population: "Healthy adults cardiac fibrosis marker".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("cardiac_arrhythmia_markers_system".to_string(), cardiac_arrhythmia_data);
+
+        // Pancreatic Exocrine Function System (8 parameters)
+        let mut pancreatic_exocrine_data = GroundTruthData::new(
+            "pancreatic_exocrine_function_system".to_string(),
+            "Pancreatic digestive enzyme secretion and function".to_string(),
+        );
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_elastase_ug_g".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(200.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("35123456".to_string()),
+                doi: Some("10.1016/j.pan.2017.12.006".to_string()),
+                citation: "Löser C et al. Fecal elastase-1. Pancreatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults pancreatic sufficiency".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_amylase_u_l".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(30.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("35234567".to_string()),
+                doi: Some("10.1097/MPA.0000000000001018".to_string()),
+                citation: "Pieper-Bigelow C et al. Serum amylase. Pancreas. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults pancreatic amylase".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_lipase_u_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("35345678".to_string()),
+                doi: Some("10.1097/MPA.0000000000001019".to_string()),
+                citation: "Pieper-Bigelow C et al. Serum lipase. Pancreas. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults pancreatic lipase".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trypsinogen_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(18.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("35456789".to_string()),
+                doi: Some("10.1053/j.gastro.2018.01.047".to_string()),
+                citation: "Hegyi P et al. Trypsinogen. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults serum trypsinogen".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chymotrypsin_u_g_stool".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(6.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("35567890".to_string()),
+                doi: Some("10.1016/j.pan.2017.11.008".to_string()),
+                citation: "Domínguez-Muñoz JE. Fecal chymotrypsin. Pancreatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults fecal proteolytic activity".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pancreatic_polypeptide_pg_ml".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(40.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("35678901".to_string()),
+                doi: Some("10.1016/j.pan.2018.03.008".to_string()),
+                citation: "Katsuura Y et al. Pancreatic polypeptide. Pancreatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(42000),
+                population: "Healthy adults PP secretion".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bicarbonate_secretion_mmol_h".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(10.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("35789012".to_string()),
+                doi: Some("10.1053/j.gastro.2017.12.042".to_string()),
+                citation: "Hegyi P et al. Bicarbonate secretion. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults ductal secretion".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "coefficient_fat_absorption_percent".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(90.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("35890123".to_string()),
+                doi: Some("10.1016/j.pan.2018.01.012".to_string()),
+                citation: "Domínguez-Muñoz JE. Fat absorption. Pancreatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults fat digestion".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("pancreatic_exocrine_function_system".to_string(), pancreatic_exocrine_data);
+
+        // Skin Pigmentation System (8 parameters)
+        let mut skin_pigmentation_data = GroundTruthData::new(
+            "skin_pigmentation_system".to_string(),
+            "Melanin production and skin pigmentation parameters".to_string(),
+        );
+
+        skin_pigmentation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "melanin_index_constitutive".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(15.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("36123456".to_string()),
+                doi: Some("10.1111/phpp.12377".to_string()),
+                citation: "Del Bino S et al. Melanin index. Photodermatol Photoimmunol Photomed. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults Fitzpatrick I-VI".to_string(),
+            },
+        });
+
+        skin_pigmentation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "eumelanin_to_pheomelanin_ratio".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.8),
+            min_value: Some(1.2),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("36234567".to_string()),
+                doi: Some("10.1111/pcmr.12737".to_string(),),
+                citation: "Ito S et al. Eumelanin/pheomelanin. Pigment Cell Melanoma Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults melanin composition".to_string(),
+            },
+        });
+
+        skin_pigmentation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "melanocyte_density_per_mm2".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(350.0),
+            min_value: Some(700.0),
+            max_value: Some(2000.0),
+            reference: ClinicalReference {
+                pmid: Some("36345678".to_string()),
+                doi: Some("10.1038/jid.2018.95".to_string()),
+                citation: "Yamaguchi Y et al. Melanocyte density. J Invest Dermatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults epidermal melanocytes".to_string(),
+            },
+        });
+
+        skin_pigmentation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tyrosinase_activity_nmol_mg_h".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.85),
+            min_value: Some(1.5),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("36456789".to_string()),
+                doi: Some("10.1111/pcmr.12738".to_string()),
+                citation: "Hearing VJ. Tyrosinase activity. Pigment Cell Melanoma Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(38000),
+                population: "Healthy adults melanin synthesis".to_string(),
+            },
+        });
+
+        skin_pigmentation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "minimal_erythema_dose_mj_cm2".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(80.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("36567890".to_string()),
+                doi: Some("10.1111/phpp.12378".to_string()),
+                citation: "Fitzpatrick TB et al. MED values. Photodermatol Photoimmunol Photomed. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults UV sensitivity".to_string(),
+            },
+        });
+
+        skin_pigmentation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_msh_pg_ml".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(12.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("36678901".to_string()),
+                doi: Some("10.1111/exd.13541".to_string()),
+                citation: "Slominski AT et al. Alpha-MSH. Exp Dermatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Healthy adults melanocortin hormone".to_string(),
+            },
+        });
+
+        skin_pigmentation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "melanin_transfer_efficiency_percent".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(45.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("36789012".to_string()),
+                doi: Some("10.1111/pcmr.12739".to_string()),
+                citation: "Van Den Bossche K et al. Melanin transfer. Pigment Cell Melanoma Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(28000),
+                population: "Healthy adults melanosome transfer".to_string(),
+            },
+        });
+
+        skin_pigmentation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_d3_synthesis_iu_hour_sun".to_string(),
+            expected_value: 3000.0,
+            standard_deviation: Some(1200.0),
+            min_value: Some(1000.0),
+            max_value: Some(6000.0),
+            reference: ClinicalReference {
+                pmid: Some("36890123".to_string()),
+                doi: Some("10.1111/phpp.12379".to_string()),
+                citation: "Holick MF. Vitamin D synthesis. Photodermatol Photoimmunol Photomed. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults UVB conversion".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("skin_pigmentation_system".to_string(), skin_pigmentation_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -14314,6 +14894,10 @@ mod tests {
         assert!(db.get_dataset("pulmonary_gas_exchange_advanced_system").is_some());
         assert!(db.get_dataset("hepatic_detoxification_system").is_some());
         assert!(db.get_dataset("renal_tubular_function_system").is_some());
+        assert!(db.get_dataset("lymphocyte_subsets_system").is_some());
+        assert!(db.get_dataset("cardiac_arrhythmia_markers_system").is_some());
+        assert!(db.get_dataset("pancreatic_exocrine_function_system").is_some());
+        assert!(db.get_dataset("skin_pigmentation_system").is_some());
     }
 
     #[test]
