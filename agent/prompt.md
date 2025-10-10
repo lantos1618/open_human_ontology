@@ -82,13 +82,15 @@ I would like to encourage you to take a scientist's view: if you had not just on
 ## Vision
 A comprehensive computational model of human biology using Rust's type system to enable simulation, analysis, and diagnosis of biological systems.
 
-## Current Status
-✅ **Compilation**: Project builds successfully
-✅ **Tests**: All tests passing (1661 tests)
-✅ **Documentation**: Rust docs generated
+## Current Status (Updated: Oct 10, 2025)
+✅ **Compilation**: Clean build (no warnings)
+✅ **Tests**: All tests passing (1716 tests)
+✅ **Files**: 313 Rust source files, ~100K LOC
+✅ **Documentation**: Consolidated and accurate
 ✅ **Core Modules**: Biology, Chemistry, Physics, Systems, Physiology all implemented
 ✅ **Advanced Modeling**: Cardiac mechanics, neurological ion channels, respiratory mechanics, integrated simulation
 ✅ **Physiological Systems**: Stress response, aging, inflammation, mitochondrial function, thermoregulation
+✅ **Simulation Engine**: Multi-system time-stepped integration with example
 
 ## Implemented Systems
 
@@ -134,7 +136,34 @@ The project uses:
 
 ## Recently Completed (Latest Session)
 
-### Advanced Biomechanical & Neurological Systems (Oct 10, 2025 - Latest)
+### Session Oct 10, 2025 - Evening: Project Consolidation & Documentation
+- **Documentation Consolidation**:
+  - Created clean README.md with accurate project statistics (313 files, 1716 tests, ~100K LOC)
+  - Archived conflicting documentation to `agent/docs_archive/`
+  - Created new canonical ARCHITECTURE.md
+  - Unified project name consistently across all files ("Human Biology")
+
+- **Simulation Engine Export**:
+  - Properly exported physiology_engine module from simulation
+  - Fixed borrow checker issues in PhysiologyState::update
+  - Improved metabolic VO2 calculation with baseline and time constant to prevent circular dependency
+  - Added moderate_exercise() helper to Stressors
+
+- **New Comprehensive Example** (`examples/physiology_simulation.rs`):
+  - Multi-scenario simulation: resting baseline → moderate exercise → recovery → mental stress → final recovery
+  - Demonstrates time-stepped integration with configurable delta-t
+  - Shows multi-system coupling (cardiovascular ↔ respiratory ↔ metabolic ↔ neurological ↔ renal)
+  - Real-time tracking of all physiological parameters
+  - Health score progression analysis
+  - Homeostatic regulation demonstration
+
+- **Quality Improvements**:
+  - Fixed all compiler warnings (unused imports, unnecessary mut)
+  - All 1716 tests passing cleanly
+  - Clean compilation with no warnings
+  - Code pushed to remote repository
+
+### Advanced Biomechanical & Neurological Systems (Oct 10, 2025 - Morning)
 - **Cardiac Mechanics** (`src/systems/cardiovascular/cardiac_mechanics.rs`)
   - Preload, afterload, contractility modeling with LaPlace's law for wall stress
   - Ventricular geometry: EDV, ESV, wall thickness, chamber radius, mass
