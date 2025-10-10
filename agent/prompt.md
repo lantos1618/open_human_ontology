@@ -16,7 +16,7 @@ A comprehensive computational model of human biology using Rust's type system to
 
 ## Current Status
 ✅ **Compilation**: Project builds successfully
-✅ **Tests**: All 1561 tests passing
+✅ **Tests**: All 1611 tests passing (+50 new tests)
 ✅ **Documentation**: Rust docs generated
 ✅ **Core Modules**: Biology, Chemistry, Physics, Systems all implemented
 
@@ -57,23 +57,63 @@ The project uses:
 
 ## Recently Completed (Latest Session)
 
-### Ancestry Genetics
+### Physiological Systems Integration (Oct 2025)
+- **Gut-Brain Axis** (`src/systems/digestive/gut_brain_axis.rs`)
+  - Neurotransmitter production: serotonin (95% gut), GABA, dopamine
+  - HPA axis activity: cortisol, ACTH, CRH, feedback sensitivity
+  - Immune signaling: cytokines, inflammatory markers, BBB integrity
+  - Stress response with gut motility and microbiome shifts
+  - Interventions: probiotics, vagus nerve stimulation
+  - Disorders: IBS, depression with GI symptoms
+
+- **Thermoregulation System** (`src/physiology/thermoregulation.rs`)
+  - Core/skin temperature tracking and thermal gradients
+  - Heat production: BMR, shivering, non-shivering (BAT), DIT
+  - Heat loss: radiation, convection, evaporation, conduction
+  - Thermal zones: hypothermia, cold stress, thermoneutral, heat stress, hyperthermia
+  - Acclimatization modeling (heat: 14 days, cold: 21 days)
+  - Environmental calculations: heat index, wind chill
+  - Fever induction with pyrogen response
+
+- **Wound Healing** (`src/systems/integumentary/wound_healing.rs`)
+  - Four healing phases: hemostasis → inflammation → proliferation → remodeling
+  - Cellular response: neutrophils, macrophages, fibroblasts, keratinocytes
+  - Growth factors: PDGF, TGF-β, VEGF, EGF, FGF
+  - Healing factors: age, nutrition, perfusion, oxygenation, smoking, diabetes
+  - Infection risk assessment with multiple factors
+  - Scar types: normal, hypertrophic, keloid, atrophic, contracture
+  - Treatments: debridement, antibiotics, growth factors, NPWT, HBO
+  - Time-to-heal estimation based on wound type and factors
+
+- **Renal Fluid Balance** (`src/systems/renal/fluid_balance.rs`)
+  - Fluid compartments: TBW, ICF (67%), ECF (33%), plasma (8%), interstitial (25%)
+  - Daily intake/output tracking with insensible losses
+  - Renal regulation: GFR, urine concentration, specific gravity, osmolality
+  - Hormonal control: ADH, aldosterone, ANP, renin activity
+  - Edema assessment: location, severity, pitting, cause
+  - Dehydration types: isotonic, hypertonic, hypotonic
+  - Clinical assessments with severity grading
+  - Plasma osmolality and water deficit calculations
+
+### Previous Sessions
+
+#### Ancestry Genetics
 - AfricanGeneticVariants: Sickle cell, G6PD deficiency, APOL1 kidney risk, malaria resistance
 - EuropeanGeneticVariants: Hemochromatosis, celiac disease, lactase persistence, thrombophilia
 - NativeAmericanGeneticVariants: Type 2 diabetes risk, gallbladder disease, APOE status
 
-### Biometric Authentication
+#### Biometric Authentication
 - Comprehensive BiometricProfile with 10 modalities
 - Fingerprint, facial, iris, voice, gait, retinal, palm, vein, DNA, ear shape biometrics
 - Multi-factor authentication scoring
 
-### Reproductive Health
+#### Reproductive Health
 - MenstrualCycle tracking with hormone levels
 - FertilityProfile with ovarian reserve assessment
 - OvulationTracking and fertility window prediction
 - Age-based conception probability
 
-### Bone Health
+#### Bone Health
 - BoneHealthProfile with BMD and T-scores
 - FRAX 10-year fracture probability
 - VitaminDStatus and CalciumBalance
