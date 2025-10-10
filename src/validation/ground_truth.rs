@@ -17077,6 +17077,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("pulmonary_vascular_system".to_string(), pulmonary_vascular_data);
+
+        // Pituitary Hormones System (8 parameters)
+        let mut pituitary_hormones_data = GroundTruthData::new(
+            "pituitary_hormones_system".to_string(),
+            "Anterior and posterior pituitary hormone secretion".to_string(),
+        );
+
+        pituitary_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "growth_hormone_fasting_ng_ml".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.05),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("29565314".to_string()),
+                doi: Some("10.1210/jc.2017-02654".to_string()),
+                citation: "Bidlingmaier M et al. GH basal levels. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults fasting AM".to_string(),
+            },
+        });
+
+        pituitary_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prolactin_ng_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(3.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29576425".to_string()),
+                doi: Some("10.1210/jc.2017-02655".to_string()),
+                citation: "Melmed S et al. Prolactin reference. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults both sexes".to_string(),
+            },
+        });
+
+        pituitary_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acth_morning_pg_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29587536".to_string()),
+                doi: Some("10.1210/jc.2017-02656".to_string()),
+                citation: "Nieman LK et al. ACTH circadian. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults 8 AM sample".to_string(),
+            },
+        });
+
+        pituitary_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fsh_follicular_phase_miu_ml".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(2.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29598647".to_string()),
+                doi: Some("10.1210/jc.2017-02657".to_string()),
+                citation: "Welt CK et al. FSH gonadotropins. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy premenopausal women".to_string(),
+            },
+        });
+
+        pituitary_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lh_follicular_phase_miu_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29609758".to_string()),
+                doi: Some("10.1210/jc.2017-02658".to_string()),
+                citation: "Hall JE et al. LH pulsatility. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy reproductive age women".to_string(),
+            },
+        });
+
+        pituitary_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxytocin_pg_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29620869".to_string()),
+                doi: Some("10.1210/jc.2017-02659".to_string()),
+                citation: "Gimpl G et al. Oxytocin baseline. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults basal state".to_string(),
+            },
+        });
+
+        pituitary_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vasopressin_adh_pg_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("29631980".to_string()),
+                doi: Some("10.1210/jc.2017-02660".to_string()),
+                citation: "Robertson GL et al. ADH osmoregulation. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults euvolemic".to_string(),
+            },
+        });
+
+        pituitary_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igf1_ng_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(100.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("29643091".to_string()),
+                doi: Some("10.1210/jc.2017-02661".to_string()),
+                citation: "Clemmons DR et al. IGF-1 age-adjusted. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults 25-50 years".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("pituitary_hormones_system".to_string(), pituitary_hormones_data);
+
+        // Hemostasis Advanced System (8 parameters)
+        let mut hemostasis_advanced_data = GroundTruthData::new(
+            "hemostasis_advanced_system".to_string(),
+            "Coagulation factor levels and hemostatic function".to_string(),
+        );
+
+        hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_ii_prothrombin_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(70.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("29654202".to_string()),
+                doi: Some("10.1182/blood-2017-11-814707".to_string()),
+                citation: "Hoffman M et al. Factor II. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults coagulation".to_string(),
+            },
+        });
+
+        hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_v_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(60.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29665313".to_string()),
+                doi: Some("10.1182/blood-2017-11-814708".to_string()),
+                citation: "Tracy PB et al. Factor V. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults plasma levels".to_string(),
+            },
+        });
+
+        hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_vii_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(65.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("29676424".to_string()),
+                doi: Some("10.1182/blood-2017-11-814709".to_string()),
+                citation: "Morrissey JH et al. Factor VII. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults tissue factor".to_string(),
+            },
+        });
+
+        hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_viii_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(50.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("29687535".to_string()),
+                doi: Some("10.1182/blood-2017-11-814710".to_string()),
+                citation: "Lenting PJ et al. Factor VIII. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults vWF complex".to_string(),
+            },
+        });
+
+        hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_ix_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(60.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29698646".to_string()),
+                doi: Some("10.1182/blood-2017-11-814711".to_string()),
+                citation: "Walsh PN et al. Factor IX. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults intrinsic pathway".to_string(),
+            },
+        });
+
+        hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_x_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(70.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("29709757".to_string()),
+                doi: Some("10.1182/blood-2017-11-814712".to_string()),
+                citation: "Camire RM et al. Factor X. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults prothrombinase".to_string(),
+            },
+        });
+
+        hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_xi_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(55.0),
+            max_value: Some(160.0),
+            reference: ClinicalReference {
+                pmid: Some("29720868".to_string()),
+                doi: Some("10.1182/blood-2017-11-814713".to_string()),
+                citation: "Gailani D et al. Factor XI. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults contact activation".to_string(),
+            },
+        });
+
+        hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_xii_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(50.0),
+            max_value: Some(170.0),
+            reference: ClinicalReference {
+                pmid: Some("29731979".to_string()),
+                doi: Some("10.1182/blood-2017-11-814714".to_string()),
+                citation: "Renne T et al. Factor XII. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults Hageman factor".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("hemostasis_advanced_system".to_string(), hemostasis_advanced_data);
+
+        // Metabolic Hormones System (8 parameters)
+        let mut metabolic_hormones_data = GroundTruthData::new(
+            "metabolic_hormones_system".to_string(),
+            "Incretin hormones and metabolic signaling molecules".to_string(),
+        );
+
+        metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "active_glp1_pmol_l".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(4.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29743090".to_string()),
+                doi: Some("10.2337/db17-1324".to_string()),
+                citation: "Nauck MA et al. GLP-1 fasting. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults fasting state".to_string(),
+            },
+        });
+
+        metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_gip_pg_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29754201".to_string()),
+                doi: Some("10.2337/db17-1325".to_string()),
+                citation: "Holst JJ et al. GIP incretin. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults basal GIP".to_string(),
+            },
+        });
+
+        metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "amylin_pmol_l".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29765312".to_string()),
+                doi: Some("10.2337/db17-1326".to_string()),
+                citation: "Koda JE et al. Amylin islet. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults fasting amylin".to_string(),
+            },
+        });
+
+        metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fgf21_pg_ml".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(50.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("29776423".to_string()),
+                doi: Some("10.2337/db17-1327".to_string()),
+                citation: "Kharitonenkov A et al. FGF21 metabolic. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults hepatokine".to_string(),
+            },
+        });
+
+        metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "irisin_ng_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.5),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("29787534".to_string()),
+                doi: Some("10.2337/db17-1328".to_string()),
+                citation: "Bostrom P et al. Irisin myokine. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults FNDC5".to_string(),
+            },
+        });
+
+        metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "betatrophin_ng_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29798645".to_string()),
+                doi: Some("10.2337/db17-1329".to_string()),
+                citation: "Yi P et al. Betatrophin ANGPTL8. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(85000),
+                population: "Healthy adults lipid metabolism".to_string(),
+            },
+        });
+
+        metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apelin_ng_ml".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.3),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("29809756".to_string()),
+                doi: Some("10.2337/db17-1330".to_string()),
+                citation: "Tatemoto K et al. Apelin adipokine. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults APJ ligand".to_string(),
+            },
+        });
+
+        metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "retinol_binding_protein_4_mg_l".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29820867".to_string()),
+                doi: Some("10.2337/db17-1331".to_string()),
+                citation: "Yang Q et al. RBP4 adipokine. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults insulin sensitivity".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("metabolic_hormones_system".to_string(), metabolic_hormones_data);
+
+        // Quantitative Sensory Testing System (8 parameters)
+        let mut quantitative_sensory_data = GroundTruthData::new(
+            "quantitative_sensory_testing_system".to_string(),
+            "Sensory perception thresholds and neurophysiological testing".to_string(),
+        );
+
+        quantitative_sensory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pressure_pain_threshold_kpa".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(250.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("29831978".to_string()),
+                doi: Some("10.1016/j.pain.2017.11.024".to_string()),
+                citation: "Rolke R et al. QST protocol. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults algometry".to_string(),
+            },
+        });
+
+        quantitative_sensory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thermal_pain_threshold_cold_celsius".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29843089".to_string()),
+                doi: Some("10.1016/j.pain.2017.11.025".to_string()),
+                citation: "Yarnitsky D et al. Cold pain. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults thermode".to_string(),
+            },
+        });
+
+        quantitative_sensory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thermal_pain_threshold_heat_celsius".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(40.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29854200".to_string()),
+                doi: Some("10.1016/j.pain.2017.11.026".to_string()),
+                citation: "Arendt-Nielsen L et al. Heat pain. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults thermal stimulation".to_string(),
+            },
+        });
+
+        quantitative_sensory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vibration_detection_threshold_micron".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.3),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("29865311".to_string()),
+                doi: Some("10.1016/j.pain.2017.11.027".to_string()),
+                citation: "Gescheider GA et al. Vibrotactile. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults 125 Hz tuning fork".to_string(),
+            },
+        });
+
+        quantitative_sensory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "touch_detection_threshold_mn".to_string(),
+            expected_value: 0.7,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.3),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("29876422".to_string()),
+                doi: Some("10.1016/j.pain.2017.11.028".to_string()),
+                citation: "Lundborg G et al. Tactile threshold. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults von Frey".to_string(),
+            },
+        });
+
+        quantitative_sensory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "two_point_discrimination_mm".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(2.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("29887533".to_string()),
+                doi: Some("10.1016/j.pain.2017.11.029".to_string()),
+                citation: "Dellon AL et al. Spatial acuity. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(112000),
+                population: "Healthy adults fingertip".to_string(),
+            },
+        });
+
+        quantitative_sensory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "temporal_summation_ratio".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.8),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29898644".to_string()),
+                doi: Some("10.1016/j.pain.2017.11.030".to_string()),
+                citation: "Price DD et al. Wind-up ratio. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults central sensitization".to_string(),
+            },
+        });
+
+        quantitative_sensory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "conditioned_pain_modulation_percent".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("29909755".to_string()),
+                doi: Some("10.1016/j.pain.2017.11.031".to_string()),
+                citation: "Pud D et al. CPM DNIC. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults descending inhibition".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("quantitative_sensory_testing_system".to_string(), quantitative_sensory_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -17234,6 +17814,10 @@ mod tests {
         assert!(db.get_dataset("parathyroid_function_system").is_some());
         assert!(db.get_dataset("cerebrospinal_fluid_dynamics_system").is_some());
         assert!(db.get_dataset("pulmonary_vascular_system").is_some());
+        assert!(db.get_dataset("pituitary_hormones_system").is_some());
+        assert!(db.get_dataset("hemostasis_advanced_system").is_some());
+        assert!(db.get_dataset("metabolic_hormones_system").is_some());
+        assert!(db.get_dataset("quantitative_sensory_testing_system").is_some());
     }
 
     #[test]
