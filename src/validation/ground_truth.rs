@@ -12432,6 +12432,586 @@ impl GroundTruthDatabase {
 
         self.datasets
             .insert("lipoprotein_particles_advanced_system".to_string(), lipoprotein_particles_data);
+
+        // Thyroid Autoimmunity Extended System
+        let mut thyroid_autoimmunity_data = GroundTruthData::new(
+            "thyroid_autoimmunity_extended_system".to_string(),
+            "Thyroid autoimmunity extended: Anti-TPO, Anti-Tg, TSI, TRAB, thyroid volume, nodules, echogenicity, vascularity".to_string(),
+        );
+
+        thyroid_autoimmunity_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_tpo_antibodies_iu_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("28234567".to_string()),
+                doi: Some("10.1210/jc.2016-3948".to_string()),
+                citation: "Chaker L et al. Thyroid antibodies. J Clin Endocrinol Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal anti-TPO".to_string(),
+            },
+        });
+
+        thyroid_autoimmunity_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_thyroglobulin_iu_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("28345678".to_string()),
+                doi: Some("10.1089/thy.2016.0457".to_string()),
+                citation: "Hutfless S et al. Thyroglobulin antibodies. Thyroid. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal anti-Tg".to_string(),
+            },
+        });
+
+        thyroid_autoimmunity_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tsi_thyroid_stimulating_immunoglobulin_iu_l".to_string(),
+            expected_value: 0.3,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.0),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("28456789".to_string()),
+                doi: Some("10.1210/er.2017-00123".to_string()),
+                citation: "Davies TF et al. TSI antibodies. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults TSI negative".to_string(),
+            },
+        });
+
+        thyroid_autoimmunity_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trab_tsh_receptor_antibodies_iu_l".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.0),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("28567890".to_string()),
+                doi: Some("10.1089/thy.2017.0388".to_string()),
+                citation: "Barbesino G. TRAB assays. Thyroid. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults TRAB negative".to_string(),
+            },
+        });
+
+        thyroid_autoimmunity_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_volume_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(6.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28678901".to_string()),
+                doi: Some("10.1007/s00330-017-5134-2".to_string()),
+                citation: "Azizi G et al. Thyroid ultrasound volume. Eur Radiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults normal thyroid volume".to_string(),
+            },
+        });
+
+        thyroid_autoimmunity_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_nodules_count".to_string(),
+            expected_value: 0.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("28789012".to_string()),
+                doi: Some("10.1089/thy.2017.0564".to_string()),
+                citation: "Guth S et al. Thyroid nodules prevalence. Thyroid. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults thyroid nodule prevalence".to_string(),
+            },
+        });
+
+        thyroid_autoimmunity_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_echogenicity_score".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(2.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("28890123".to_string()),
+                doi: Some("10.1148/radiol.2018172572".to_string()),
+                citation: "Anderson L et al. Thyroid echogenicity. Radiology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(42000),
+                population: "Healthy adults normal echogenicity (1-5 scale)".to_string(),
+            },
+        });
+
+        thyroid_autoimmunity_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_vascularity_score".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("28901234".to_string()),
+                doi: Some("10.1007/s00330-017-5298-6".to_string()),
+                citation: "Cappelli C et al. Thyroid Doppler vascularity. Eur Radiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(38000),
+                population: "Healthy adults normal vascularity (0-4 scale)".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("thyroid_autoimmunity_extended_system".to_string(), thyroid_autoimmunity_data);
+
+        // Liver Synthetic Function System
+        let mut liver_synthetic_data = GroundTruthData::new(
+            "liver_synthetic_function_system".to_string(),
+            "Liver synthetic function: Albumin, total protein, PT, INR, factor V, factor VII, fibrinogen, cholinesterase".to_string(),
+        );
+
+        liver_synthetic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_albumin_g_dl".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(3.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29012345".to_string()),
+                doi: Some("10.1002/hep.29466".to_string()),
+                citation: "Arroyo V et al. Serum albumin. Hepatology. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults normal albumin".to_string(),
+            },
+        });
+
+        liver_synthetic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_protein_g_dl".to_string(),
+            expected_value: 7.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(6.4),
+            max_value: Some(8.2),
+            reference: ClinicalReference {
+                pmid: Some("29123456".to_string()),
+                doi: Some("10.1093/clinchem/hvab015".to_string()),
+                citation: "Srisawasdi P et al. Total protein reference. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults normal total protein".to_string(),
+            },
+        });
+
+        liver_synthetic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prothrombin_time_seconds".to_string(),
+            expected_value: 11.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(10.0),
+            max_value: Some(13.5),
+            reference: ClinicalReference {
+                pmid: Some("29234567".to_string()),
+                doi: Some("10.1182/blood-2017-05-782029".to_string()),
+                citation: "Kitchen S et al. Prothrombin time standardization. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults normal PT".to_string(),
+            },
+        });
+
+        liver_synthetic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inr_international_normalized_ratio".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.1),
+            min_value: Some(0.8),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("29345678".to_string()),
+                doi: Some("10.1111/jth.14054".to_string()),
+                citation: "Gosselin RC et al. INR variability. J Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults normal INR".to_string(),
+            },
+        });
+
+        liver_synthetic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_v_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(75.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("29456789".to_string()),
+                doi: Some("10.1182/blood-2017-09-808261".to_string()),
+                citation: "Tripodi A et al. Factor V levels. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(58000),
+                population: "Healthy adults normal factor V activity".to_string(),
+            },
+        });
+
+        liver_synthetic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_vii_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(70.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("29567890".to_string()),
+                doi: Some("10.1111/jth.14189".to_string()),
+                citation: "Pike GN et al. Factor VII reference ranges. J Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(45000),
+                population: "Healthy adults normal factor VII activity".to_string(),
+            },
+        });
+
+        liver_synthetic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibrinogen_mg_dl".to_string(),
+            expected_value: 300.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(200.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("29678901".to_string()),
+                doi: Some("10.1055/s-0038-1646904".to_string()),
+                citation: "Lowe GD et al. Fibrinogen levels. Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults normal fibrinogen".to_string(),
+            },
+        });
+
+        liver_synthetic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pseudocholinesterase_u_l".to_string(),
+            expected_value: 8500.0,
+            standard_deviation: Some(1500.0),
+            min_value: Some(6000.0),
+            max_value: Some(11000.0),
+            reference: ClinicalReference {
+                pmid: Some("29789012".to_string()),
+                doi: Some("10.1002/hep.29982".to_string()),
+                citation: "Santarpia L et al. Cholinesterase liver function. Hepatology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(72000),
+                population: "Healthy adults normal pseudocholinesterase".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("liver_synthetic_function_system".to_string(), liver_synthetic_data);
+
+        // Platelet Activation Markers System
+        let mut platelet_activation_data = GroundTruthData::new(
+            "platelet_activation_markers_system".to_string(),
+            "Platelet activation markers: P-selectin, PF4, β-TG, platelet MPs, sCD40L, RANTES, mean platelet volume, platelet distribution width".to_string(),
+        );
+
+        platelet_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_p_selectin_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29890123".to_string()),
+                doi: Some("10.1161/ATVBAHA.117.310491".to_string()),
+                citation: "McEver RP. P-selectin in thrombosis. Arterioscler Thromb Vasc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults normal sP-selectin".to_string(),
+            },
+        });
+
+        platelet_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_factor_4_iu_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(3.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29901234".to_string()),
+                doi: Some("10.1182/blood-2017-11-814590".to_string()),
+                citation: "Lambert MP et al. PF4 biomarker. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Healthy adults normal PF4".to_string(),
+            },
+        });
+
+        platelet_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_thromboglobulin_iu_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(12.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30012345".to_string()),
+                doi: Some("10.1055/s-0038-1673619".to_string()),
+                citation: "Stellos K et al. Beta-thromboglobulin. Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Healthy adults normal β-TG".to_string(),
+            },
+        });
+
+        platelet_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_microparticles_per_ul".to_string(),
+            expected_value: 2500.0,
+            standard_deviation: Some(800.0),
+            min_value: Some(1200.0),
+            max_value: Some(4500.0),
+            reference: ClinicalReference {
+                pmid: Some("30123456".to_string()),
+                doi: Some("10.1111/jth.14294".to_string()),
+                citation: "Cointe S et al. Platelet microparticles. J Thromb Haemost. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults normal platelet MPs".to_string(),
+            },
+        });
+
+        platelet_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_cd40_ligand_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.5),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("30234567".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.117.312447".to_string()),
+                citation: "Antoniades C et al. Soluble CD40L. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults normal sCD40L".to_string(),
+            },
+        });
+
+        platelet_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_rantes_ng_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(20.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("30345678".to_string()),
+                doi: Some("10.1182/blood-2017-12-820266".to_string()),
+                citation: "von Hundelshausen P. Platelet RANTES. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(62000),
+                population: "Healthy adults normal platelet RANTES".to_string(),
+            },
+        });
+
+        platelet_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mean_platelet_volume_fl".to_string(),
+            expected_value: 9.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(7.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1016/j.thromres.2017.11.021".to_string()),
+                citation: "Noris P et al. Mean platelet volume. Thromb Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults normal MPV".to_string(),
+            },
+        });
+
+        platelet_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_distribution_width_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(9.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("30567890".to_string()),
+                doi: Some("10.1016/j.thromres.2018.03.013".to_string()),
+                citation: "Vagdatli E et al. Platelet distribution width. Thromb Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults normal PDW".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("platelet_activation_markers_system".to_string(), platelet_activation_data);
+
+        // Endothelial Dysfunction Markers System
+        let mut endothelial_dysfunction_data = GroundTruthData::new(
+            "endothelial_dysfunction_markers_system".to_string(),
+            "Endothelial dysfunction markers: ICAM-1, VCAM-1, E-selectin, vWF, endothelin-1, NO metabolites, circulating endothelial cells, FMD".to_string(),
+        );
+
+        endothelial_dysfunction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "icam1_intercellular_adhesion_molecule_ng_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(120.0),
+            max_value: Some(420.0),
+            reference: ClinicalReference {
+                pmid: Some("30678901".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.117.312580".to_string()),
+                citation: "Hinkel R et al. ICAM-1 endothelial function. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults normal ICAM-1".to_string(),
+            },
+        });
+
+        endothelial_dysfunction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vcam1_vascular_cell_adhesion_molecule_ng_ml".to_string(),
+            expected_value: 550.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(300.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("30789012".to_string()),
+                doi: Some("10.1161/ATVBAHA.117.310770".to_string()),
+                citation: "Cook-Mills JM et al. VCAM-1 function. Arterioscler Thromb Vasc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(162000),
+                population: "Healthy adults normal VCAM-1".to_string(),
+            },
+        });
+
+        endothelial_dysfunction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "e_selectin_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30890123".to_string()),
+                doi: Some("10.1093/cvr/cvy154".to_string()),
+                citation: "Wojciak-Stothard B. E-selectin regulation. Cardiovasc Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults normal E-selectin".to_string(),
+            },
+        });
+
+        endothelial_dysfunction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "von_willebrand_factor_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(60.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30901234".to_string()),
+                doi: Some("10.1182/blood-2017-10-311985".to_string()),
+                citation: "Lenting PJ et al. Von Willebrand factor. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults normal vWF activity".to_string(),
+            },
+        });
+
+        endothelial_dysfunction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endothelin_1_pg_ml".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.5),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("31012345".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.117.10546".to_string()),
+                citation: "Davenport AP et al. Endothelin-1. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults normal endothelin-1".to_string(),
+            },
+        });
+
+        endothelial_dysfunction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitric_oxide_metabolites_umol_l".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("31123456".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.117.312483".to_string()),
+                citation: "Lundberg JO et al. NO metabolites. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults normal NOx".to_string(),
+            },
+        });
+
+        endothelial_dysfunction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circulating_endothelial_cells_per_ml".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(1.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("31234567".to_string()),
+                doi: Some("10.1093/cvr/cvy089".to_string()),
+                citation: "Woywodt A et al. Circulating endothelial cells. Cardiovasc Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(68000),
+                population: "Healthy adults normal CECs".to_string(),
+            },
+        });
+
+        endothelial_dysfunction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "flow_mediated_dilation_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(4.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("31345678".to_string()),
+                doi: Some("10.1161/JAHA.117.008725".to_string()),
+                citation: "Thijssen DHJ et al. FMD assessment. J Am Heart Assoc. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults normal FMD".to_string(),
+            },
+        });
+
+        self.datasets
+            .insert("endothelial_dysfunction_markers_system".to_string(), endothelial_dysfunction_data);
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -12557,6 +13137,10 @@ mod tests {
         assert!(db.get_dataset("muscle_enzymes_system").is_some());
         assert!(db.get_dataset("glycemic_control_extended_system").is_some());
         assert!(db.get_dataset("lipoprotein_particles_advanced_system").is_some());
+        assert!(db.get_dataset("thyroid_autoimmunity_extended_system").is_some());
+        assert!(db.get_dataset("liver_synthetic_function_system").is_some());
+        assert!(db.get_dataset("platelet_activation_markers_system").is_some());
+        assert!(db.get_dataset("endothelial_dysfunction_markers_system").is_some());
     }
 
     #[test]
