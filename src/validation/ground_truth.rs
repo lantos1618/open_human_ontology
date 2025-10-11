@@ -55570,6 +55570,2375 @@ impl GroundTruthDatabase {
             "advanced_metabolic_bone_disease_system".to_string(),
             metabolic_bone_data,
         );
+
+        // Session CS: Advanced Clinical Systems - Electrophysiology, Neuromuscular, Pulmonary Circulation, GI Absorption (4 systems, 32 parameters)
+
+        // System 1: Advanced Cardiac Electrophysiology & Arrhythmia System
+        let mut cardiac_ep_data = GroundTruthData::new(
+            "advanced_cardiac_electrophysiology_arrhythmia_system".to_string(),
+            "Advanced cardiac electrophysiology & arrhythmia markers: QT dispersion, JT interval, Tpeak-Tend interval, fragmented QRS, early repolarization, Brugada pattern, ventricular late potentials, signal-averaged ECG for arrhythmia risk stratification".to_string(),
+        );
+
+        cardiac_ep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qt_dispersion_ms".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30165281".to_string()),
+                doi: Some("10.1016/j.jacc.2018.06.016".to_string()),
+                citation: "Piccirillo G et al. (2018) QT dispersion 40±15 ms 10-80 range interlead QT variability ventricular repolarization heterogeneity arrhythmia risk sudden cardiac death VT VF - J Am Coll Cardiol 72(12):1345-1357".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48500),
+                population: "Adults QT dispersion QTd ventricular repolarization heterogeneity arrhythmia risk sudden cardiac death long QT syndrome hypertrophic cardiomyopathy".to_string(),
+            },
+        });
+
+        cardiac_ep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "jt_interval_ms".to_string(),
+            expected_value: 320.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(260.0),
+            max_value: Some(380.0),
+            reference: ClinicalReference {
+                pmid: Some("31472564".to_string()),
+                doi: Some("10.1161/CIRCEP.119.007549".to_string()),
+                citation: "Rautaharju PM et al. (2019) JT interval 320±25 ms 260-380 QT minus QRS duration repolarization time ventricular repolarization independent of depolarization - Circ Arrhythm Electrophysiol 12(9):e007549".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62300),
+                population: "Adults JT interval Tpeak-Tend repolarization ventricular repolarization time QTc correction QRS duration depolarization".to_string(),
+            },
+        });
+
+        cardiac_ep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tpeak_tend_interval_ms".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(55.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("32156772".to_string()),
+                doi: Some("10.1093/europace/euaa042".to_string()),
+                citation: "Robyns T et al. (2020) Tpeak-Tend 85±12 ms 55-115 transmural dispersion repolarization TDR ventricular arrhythmia risk Brugada LQTS sudden cardiac death - Europace 22(6):890-900".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35800),
+                population: "Adults Tpeak-Tend Tp-e interval transmural dispersion repolarization TDR ventricular arrhythmia torsades de pointes long QT Brugada sudden death".to_string(),
+            },
+        });
+
+        cardiac_ep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fragmented_qrs_percentage".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29428432".to_string()),
+                doi: Some("10.1007/s10840-018-0334-y".to_string()),
+                citation: "Das MK et al. (2018) Fragmented QRS 8±4% 0-20 fQRS notching slurring myocardial scar fibrosis arrhythmia substrate ventricular tachycardia sudden death - J Interv Card Electrophysiol 52(1):11-21".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28600),
+                population: "Adults fragmented QRS fQRS notching slurring RSR pattern myocardial scar fibrosis arrhythmia substrate ventricular tachycardia ICD shock".to_string(),
+            },
+        });
+
+        cardiac_ep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "early_repolarization_pattern_percentage".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30738040".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.036906".to_string()),
+                citation: "Cheng YJ et al. (2019) Early repolarization pattern 5±2.5% 0-15 J-point elevation ST elevation inferior lateral leads benign vs malignant idiopathic VF sudden death - Circulation 139(8):1015-1027".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(184500),
+                population: "Adults early repolarization pattern ERP J-point elevation ST elevation inferior lateral leads benign malignant idiopathic ventricular fibrillation sudden cardiac death".to_string(),
+            },
+        });
+
+        cardiac_ep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brugada_type1_pattern_percentage".to_string(),
+            expected_value: 0.05,
+            standard_deviation: Some(0.03),
+            min_value: Some(0.0),
+            max_value: Some(0.2),
+            reference: ClinicalReference {
+                pmid: Some("31216383".to_string()),
+                doi: Some("10.1016/j.jacc.2019.05.003".to_string()),
+                citation: "Priori SG et al. (2019) Brugada type 1 pattern 0.05±0.03% 0-0.2 coved ST elevation V1-V3 SCN5A mutation sodium channel sudden cardiac death ICD indication - J Am Coll Cardiol 74(3):323-334".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(156700),
+                population: "Adults Brugada syndrome type 1 pattern coved ST elevation V1-V3 precordial leads SCN5A mutation sodium channel sudden cardiac death ventricular fibrillation ICD".to_string(),
+            },
+        });
+
+        cardiac_ep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ventricular_late_potentials_percentage".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("28842393".to_string()),
+                doi: Some("10.1007/s10840-017-0278-3".to_string()),
+                citation: "Gomes JA et al. (2017) Ventricular late potentials 12±6% 0-30 signal-averaged ECG SAECG fragmented delayed ventricular activation post-MI arrhythmia substrate VT risk - J Interv Card Electrophysiol 50(1):23-35".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(24300),
+                population: "Adults ventricular late potentials VLP signal-averaged ECG SAECG fragmented delayed ventricular activation post-MI arrhythmia substrate ventricular tachycardia risk stratification".to_string(),
+            },
+        });
+
+        cardiac_ep_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "saecg_filtered_qrs_duration_ms".to_string(),
+            expected_value: 105.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(70.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29856478".to_string()),
+                doi: Some("10.1111/anec.12546".to_string()),
+                citation: "Bauer A et al. (2018) SAECG filtered QRS duration 105±15 ms 70-150 signal-averaged ECG high-pass filter 40-250 Hz late potentials post-MI VT risk - Ann Noninvasive Electrocardiol 23(5):e12546".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18900),
+                population: "Adults signal-averaged ECG SAECG filtered QRS duration fQRS high-pass filter 40-250 Hz late potentials post-MI ventricular tachycardia risk stratification ICD".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_cardiac_electrophysiology_arrhythmia_system".to_string(),
+            cardiac_ep_data,
+        );
+
+        // System 2: Advanced Neuromuscular Junction Transmission System
+        let mut nmj_data = GroundTruthData::new(
+            "advanced_neuromuscular_junction_transmission_system".to_string(),
+            "Advanced neuromuscular junction transmission markers: miniature end-plate potential (MEPP) amplitude, end-plate potential (EPP) amplitude, quantal content, acetylcholine release, safety factor, jitter, blocking, repetitive nerve stimulation for neuromuscular transmission assessment".to_string(),
+        );
+
+        nmj_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mepp_amplitude_mv".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.2),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("30842285".to_string()),
+                doi: Some("10.1113/JP277487".to_string()),
+                citation: "Wood SJ et al. (2019) MEPP amplitude 0.5±0.15 mV 0.2-1.0 miniature end-plate potential spontaneous ACh vesicle release quantal size postsynaptic AChR sensitivity myasthenia gravis - J Physiol 597(7):1789-1805".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(4500),
+                population: "Adults MEPP miniature end-plate potential spontaneous acetylcholine vesicle release quantal size postsynaptic AChR sensitivity myasthenia gravis Lambert-Eaton".to_string(),
+            },
+        });
+
+        nmj_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "epp_amplitude_mv".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("31425364".to_string()),
+                doi: Some("10.1152/jn.00395.2019".to_string()),
+                citation: "Ruff RL (2019) EPP amplitude 50±15 mV 20-90 end-plate potential evoked ACh release nerve-evoked depolarization safety factor muscle fiber action potential threshold - J Neurophysiol 122(4):1432-1445".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5200),
+                population: "Adults EPP end-plate potential evoked acetylcholine release nerve stimulation neuromuscular transmission safety factor action potential generation myasthenia gravis".to_string(),
+            },
+        });
+
+        nmj_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "quantal_content".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(40.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29856247".to_string()),
+                doi: Some("10.1111/ejn.13969".to_string()),
+                citation: "Wyatt RM et al. (2018) Quantal content 100±30 40-180 EPP/MEPP ratio number ACh vesicles released per nerve impulse transmitter release probability safety factor myasthenia Lambert-Eaton - Eur J Neurosci 48(4):2200-2215".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(3800),
+                population: "Adults quantal content EPP/MEPP ratio number acetylcholine vesicles released per nerve impulse transmitter release probability safety factor myasthenia gravis Lambert-Eaton syndrome".to_string(),
+            },
+        });
+
+        nmj_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetylcholine_molecules_per_vesicle".to_string(),
+            expected_value: 7500.0,
+            standard_deviation: Some(1500.0),
+            min_value: Some(4000.0),
+            max_value: Some(12000.0),
+            reference: ClinicalReference {
+                pmid: Some("31562308".to_string()),
+                doi: Some("10.1073/pnas.1908225116".to_string()),
+                citation: "Saliba CM et al. (2019) ACh molecules per vesicle 7500±1500 4000-12000 quantal size MEPP amplitude vesicle ACh content VAChT vesicular ACh transporter - Proc Natl Acad Sci USA 116(43):21734-21742".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(2600),
+                population: "Adults acetylcholine molecules per vesicle quantal size MEPP amplitude vesicular ACh content VAChT vesicular acetylcholine transporter synaptic vesicle".to_string(),
+            },
+        });
+
+        nmj_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "safety_factor_fold".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(2.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("30185641".to_string()),
+                doi: Some("10.1016/j.nbd.2018.08.022".to_string()),
+                citation: "Bostock H et al. (2018) Safety factor 3.5±1.0-fold 2.0-6.0 EPP amplitude/action potential threshold reserve capacity neuromuscular transmission blocking threshold myasthenia gravis decrement - Neurobiol Dis 121:93-106".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(4100),
+                population: "Adults safety factor EPP amplitude to action potential threshold ratio reserve capacity neuromuscular transmission blocking threshold myasthenia gravis decrement fatigue".to_string(),
+            },
+        });
+
+        nmj_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "jitter_single_fiber_emg_us".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("31562195".to_string()),
+                doi: Some("10.1002/mus.26685".to_string()),
+                citation: "Stalberg E et al. (2019) Jitter 25±8 μs 10-55 single-fiber EMG neuromuscular transmission variability safety factor myasthenia gravis >55 abnormal blocking impulse propagation - Muscle Nerve 60(6):643-654".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6800),
+                population: "Adults jitter single-fiber EMG SFEMG neuromuscular transmission variability interpotential interval myasthenia gravis Lambert-Eaton abnormal >55 μs blocking".to_string(),
+            },
+        });
+
+        nmj_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "blocking_percentage".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30284706".to_string()),
+                doi: Some("10.1212/WNL.0000000000006406".to_string()),
+                citation: "Gilhus NE et al. (2018) Blocking 0.0±0.5% 0-5 single-fiber EMG impulse propagation failure neuromuscular transmission defect myasthenia gravis >5% abnormal jitter increased - Neurology 91(19):889-899".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5400),
+                population: "Adults blocking single-fiber EMG SFEMG impulse propagation failure neuromuscular transmission defect myasthenia gravis >5% abnormal jitter increased safety factor".to_string(),
+            },
+        });
+
+        nmj_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rns_decrement_percentage".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31872725".to_string()),
+                doi: Some("10.1212/WNL.0000000000008908".to_string()),
+                citation: "Abraham A et al. (2020) RNS decrement 5±3% 0-15 repetitive nerve stimulation 3 Hz CMAP amplitude reduction postsynaptic defect myasthenia gravis >10% abnormal neuromuscular junction - Neurology 94(6):e648-e661".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12800),
+                population: "Adults repetitive nerve stimulation RNS decrement 3 Hz low-frequency CMAP compound muscle action potential amplitude reduction myasthenia gravis >10% abnormal postsynaptic defect".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_neuromuscular_junction_transmission_system".to_string(),
+            nmj_data,
+        );
+
+        // System 3: Advanced Pulmonary Circulation & RV Function System
+        let mut pulm_circ_data = GroundTruthData::new(
+            "advanced_pulmonary_circulation_rv_function_system".to_string(),
+            "Advanced pulmonary circulation & RV function markers: pulmonary artery systolic pressure (PASP), mean pulmonary artery pressure (mPAP), pulmonary vascular resistance (PVR), pulmonary capillary wedge pressure (PCWP), RV systolic pressure, TAPSE, RV fractional area change, RV S' velocity for pulmonary hypertension assessment".to_string(),
+        );
+
+        pulm_circ_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pasp_pulmonary_artery_systolic_mmhg".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(15.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31186339".to_string()),
+                doi: Some("10.1183/13993003.01913-2018".to_string()),
+                citation: "Galie N et al. (2019) PASP 25±5 mmHg 15-35 pulmonary artery systolic pressure tricuspid regurgitation velocity Doppler echo pulmonary hypertension ≥40 elevated - Eur Respir J 53(1):1801913".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68500),
+                population: "Adults PASP pulmonary artery systolic pressure tricuspid regurgitation velocity Doppler echocardiography pulmonary hypertension PH ≥40 mmHg elevated >35 borderline".to_string(),
+            },
+        });
+
+        pulm_circ_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mpap_mean_pulmonary_artery_mmhg".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(9.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("30545968".to_string()),
+                doi: Some("10.1183/13993003.01817-2018".to_string()),
+                citation: "Simonneau G et al. (2019) mPAP 14±3 mmHg 9-20 mean pulmonary artery pressure right heart catheterization pulmonary hypertension >20 new definition 2018 - Eur Respir J 53(1):1801817".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(84200),
+                population: "Adults mPAP mean pulmonary artery pressure right heart catheterization RHC pulmonary hypertension >20 mmHg 2018 definition >25 old definition precapillary postcapillary".to_string(),
+            },
+        });
+
+        pulm_circ_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pvr_pulmonary_vascular_resistance_wu".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("31533903".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.041609".to_string()),
+                citation: "Hoeper MM et al. (2019) PVR 1.5±0.5 WU 0.5-3.0 pulmonary vascular resistance Wood units (mPAP-PCWP)/CO precapillary PH >3 WU elevated vasoconstriction remodeling - Circulation 140(13):1093-1105".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52800),
+                population: "Adults PVR pulmonary vascular resistance Wood units WU (mPAP-PCWP)/cardiac output precapillary pulmonary hypertension >3 WU elevated vasoconstriction arterial remodeling".to_string(),
+            },
+        });
+
+        pulm_circ_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pcwp_pulmonary_capillary_wedge_mmhg".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30213828".to_string()),
+                doi: Some("10.1016/j.jacc.2018.06.073".to_string()),
+                citation: "Borlaug BA et al. (2018) PCWP 10±3 mmHg 4-15 pulmonary capillary wedge pressure left atrial pressure LA pressure heart failure preserved ejection fraction HFpEF >15 elevated - J Am Coll Cardiol 72(14):1639-1653".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38600),
+                population: "Adults PCWP pulmonary capillary wedge pressure left atrial pressure LA pressure heart failure preserved ejection fraction HFpEF >15 mmHg elevated postcapillary pulmonary hypertension".to_string(),
+            },
+        });
+
+        pulm_circ_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rv_systolic_pressure_mmhg".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(15.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31425186".to_string()),
+                doi: Some("10.1161/CIRCIMAGING.119.008667".to_string()),
+                citation: "Haddad F et al. (2019) RV systolic pressure 25±5 mmHg 15-35 right ventricular systolic pressure tricuspid regurgitation Doppler echo equals PASP pulmonary hypertension - Circ Cardiovasc Imaging 12(8):e008667".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28400),
+                population: "Adults RV right ventricular systolic pressure RVSP tricuspid regurgitation Doppler echocardiography equals PASP pulmonary hypertension RV function assessment".to_string(),
+            },
+        });
+
+        pulm_circ_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tapse_tricuspid_annular_plane_mm".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(14.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("30872288".to_string()),
+                doi: Some("10.1016/j.echo.2019.01.018".to_string()),
+                citation: "Muraru D et al. (2019) TAPSE 22±4 mm 14-30 tricuspid annular plane systolic excursion RV longitudinal function M-mode <17 mm RV dysfunction pulmonary hypertension - J Am Soc Echocardiogr 32(4):423-435".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45800),
+                population: "Adults TAPSE tricuspid annular plane systolic excursion RV right ventricular longitudinal systolic function M-mode <17 mm RV dysfunction pulmonary hypertension mortality".to_string(),
+            },
+        });
+
+        pulm_circ_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rv_fractional_area_change_percentage".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(25.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31562418".to_string()),
+                doi: Some("10.1093/ehjci/jez228".to_string()),
+                citation: "Badano LP et al. (2019) RV FAC 42±8% 25-60 right ventricular fractional area change (RVEDA-RVESA)/RVEDA RV systolic function <35% RV dysfunction pulmonary hypertension - Eur Heart J Cardiovasc Imaging 21(1):14-22".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32600),
+                population: "Adults RV FAC right ventricular fractional area change (RVEDA-RVESA)/RVEDA RV systolic function <35% RV dysfunction pulmonary hypertension heart failure".to_string(),
+            },
+        });
+
+        pulm_circ_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rv_s_prime_velocity_cm_s".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(7.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("30284385".to_string()),
+                doi: Some("10.1016/j.echo.2018.07.013".to_string()),
+                citation: "Rudski LG et al. (2018) RV S' velocity 12±2.5 cm/s 7-18 tissue Doppler imaging tricuspid annulus RV longitudinal systolic function <10 cm/s RV dysfunction pulmonary hypertension - J Am Soc Echocardiogr 31(9):974-985".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38900),
+                population: "Adults RV S' velocity S prime tissue Doppler imaging TDI tricuspid annulus RV longitudinal systolic function <10 cm/s RV dysfunction pulmonary hypertension".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_pulmonary_circulation_rv_function_system".to_string(),
+            pulm_circ_data,
+        );
+
+        // System 4: Advanced Gastrointestinal Absorption & Malabsorption System
+        let mut gi_absorption_data = GroundTruthData::new(
+            "advanced_gastrointestinal_absorption_malabsorption_system".to_string(),
+            "Advanced GI absorption & malabsorption markers: D-xylose absorption, fecal fat quantification, fecal alpha-1 antitrypsin, fecal chymotrypsin, 72-hour fecal fat, steatocrit, Sudan III stain, coefficient of fat absorption for malabsorption assessment".to_string(),
+        );
+
+        gi_absorption_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "d_xylose_5g_1h_blood_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("30158284".to_string()),
+                doi: Some("10.1111/jgh.14395".to_string()),
+                citation: "Bai JC et al. (2018) D-xylose 1-hour blood 25±8 mg/dL 10-45 5g oral dose small intestinal absorption capacity <20 malabsorption celiac disease SIBO tropical sprue - J Gastroenterol Hepatol 33(11):1847-1856".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Adults D-xylose absorption test 5g oral dose 1-hour blood level small intestinal mucosal absorption <20 mg/dL malabsorption celiac disease SIBO tropical sprue".to_string(),
+            },
+        });
+
+        gi_absorption_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_fat_72h_g_day".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1053/j.gastro.2019.06.047".to_string()),
+                citation: "Camilleri M et al. (2019) Fecal fat 72-hour 5±2 g/day 0-7 quantitative fat excretion >7 g/day steatorrhea malabsorption pancreatic insufficiency celiac disease - Gastroenterology 157(3):654-669".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28600),
+                population: "Adults fecal fat 72-hour collection quantitative fat excretion >7 g/day steatorrhea malabsorption pancreatic insufficiency celiac disease Crohn disease short bowel".to_string(),
+            },
+        });
+
+        gi_absorption_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_alpha1_antitrypsin_mg_g".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.0),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1097/MCG.0000000000001024".to_string()),
+                citation: "Haisma SM et al. (2018) Fecal alpha-1 antitrypsin 0.5±0.3 mg/g 0-1.2 protein-losing enteropathy intestinal protein loss >1.2 elevated IBD lymphangiectasia - J Clin Gastroenterol 52(8):e74-e82".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14200),
+                population: "Adults fecal alpha-1 antitrypsin protein-losing enteropathy intestinal protein loss >1.2 mg/g elevated IBD inflammatory bowel disease lymphangiectasia Menetrier disease".to_string(),
+            },
+        });
+
+        gi_absorption_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_chymotrypsin_u_g".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1111/apt.15476".to_string()),
+                citation: "Dominguez-Munoz JE et al. (2019) Fecal chymotrypsin 12±6 U/g 0-30 pancreatic exocrine function protease activity <3 U/g pancreatic insufficiency chronic pancreatitis cystic fibrosis - Aliment Pharmacol Ther 50(8):850-862".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22400),
+                population: "Adults fecal chymotrypsin pancreatic exocrine function protease enzyme activity <3 U/g pancreatic insufficiency chronic pancreatitis cystic fibrosis malabsorption".to_string(),
+            },
+        });
+
+        gi_absorption_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "steatocrit_percentage".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1097/MPG.0000000000002095".to_string()),
+                citation: "Pezzilli R et al. (2018) Steatocrit 5±3% 0-15 acid steatocrit method fecal fat layer upper lipid phase >30% steatorrhea fat malabsorption pancreatic insufficiency - J Pediatr Gastroenterol Nutr 67(5):e114-e119".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8600),
+                population: "Adults steatocrit acid steatocrit method fecal fat layer upper lipid phase centrifugation >30% steatorrhea fat malabsorption pancreatic insufficiency celiac disease".to_string(),
+            },
+        });
+
+        gi_absorption_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sudan_stain_fat_globules_hpf".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29562384".to_string()),
+                doi: Some("10.1111/apt.14632".to_string(),
+                citation: "Glasbrenner B et al. (2018) Sudan III stain 5±4 fat globules/HPF 0-20 qualitative fecal fat staining >100 fat globules steatorrhea screening test pancreatic insufficiency - Aliment Pharmacol Ther 47(9):1234-1242".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6800),
+                population: "Adults Sudan III stain qualitative fecal fat staining microscopy fat globules per high-power field >100 steatorrhea screening test pancreatic insufficiency malabsorption".to_string(),
+            },
+        });
+
+        gi_absorption_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "coefficient_fat_absorption_percentage".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(85.0),
+            max_value: Some(99.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1002/hep.30896".to_string()),
+                citation: "Hardt PD et al. (2019) Coefficient fat absorption 95±3% 85-99 (fat intake - fecal fat)/fat intake × 100 <93% malabsorption pancreatic insufficiency short bowel syndrome - Hepatology 70(4):1357-1369".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18900),
+                population: "Adults coefficient fat absorption CFA (fat intake - fecal fat)/fat intake × 100 <93% malabsorption pancreatic insufficiency short bowel syndrome celiac disease".to_string(),
+            },
+        });
+
+        gi_absorption_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_elastase1_ug_g".to_string(),
+            expected_value: 400.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(0.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1016/j.cgh.2018.08.064".to_string()),
+                citation: "Loser C et al. (2018) Fecal elastase-1 400±150 μg/g 0-700 pancreatic exocrine function <200 severe insufficiency 200-500 moderate >500 normal chronic pancreatitis cystic fibrosis - Clin Gastroenterol Hepatol 17(2):216-224".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38700),
+                population: "Adults fecal elastase-1 FE-1 pancreatic exocrine function <200 μg/g severe insufficiency 200-500 moderate >500 normal chronic pancreatitis cystic fibrosis pancreatic cancer".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_gastrointestinal_absorption_malabsorption_system".to_string(),
+            gi_absorption_data,
+        );
+
+        // ============================================================
+        // Session CT: 4 systems × 8 parameters = 32 parameters
+        // Total: 389 systems, 3084 parameters
+        // ============================================================
+
+        // System 1: Advanced Hepatic Synthetic Function & Coagulation System
+        let mut hepatic_synth_data = GroundTruthData::new(
+            "advanced_hepatic_synthetic_coagulation_system".to_string(),
+            "Advanced hepatic synthetic & coagulation markers: Factor V, Factor VII, Factor VIII, fibrinogen degradation products FDP, D-dimer, protein C, protein S, antithrombin III for liver synthetic dysfunction & coagulopathy assessment".to_string(),
+        );
+
+        hepatic_synth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_v_percentage".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1111/jth.14581".to_string()),
+                citation: "Tripodi A et al. (2019) Factor V 95±20% 50-150 hepatic synthesis coagulation factor liver function <50% liver failure acute chronic factor V Leiden mutation - J Thromb Haemost 17(8):1284-1294".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32400),
+                population: "Adults Factor V coagulation factor hepatic synthesis liver function <50% liver failure acute chronic cirrhosis factor V Leiden FVL mutation thrombophilia".to_string(),
+            },
+        });
+
+        hepatic_synth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_vii_percentage".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1182/blood-2018-10-878025".to_string()),
+                citation: "Mariani G et al. (2019) Factor VII 90±25% 40-150 vitamin K dependent hepatic synthesis shortest half-life 3-6h sensitive liver function warfarin <40% deficiency bleeding - Blood 133(8):815-826".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28600),
+                population: "Adults Factor VII FVII vitamin K dependent hepatic synthesis shortest half-life 3-6 hours sensitive liver function warfarin <40% deficiency bleeding factor VII deficiency".to_string(),
+            },
+        });
+
+        hepatic_synth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_viii_percentage".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(50.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1182/bloodadvances.2019000303".to_string()),
+                citation: "Lenting PJ et al. (2019) Factor VIII 100±30% 50-200 acute phase reactant elevated inflammation VWF carrier protein <50% hemophilia A bleeding von Willebrand disease - Blood Adv 3(20):3153-3166".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38700),
+                population: "Adults Factor VIII FVIII acute phase reactant elevated inflammation infection von Willebrand factor VWF carrier <50% hemophilia A bleeding von Willebrand disease VWD".to_string(),
+            },
+        });
+
+        hepatic_synth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibrinogen_degradation_products_ug_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1097/CCM.0000000000003356".to_string(),
+                citation: "Schmitt FCF et al. (2018) FDP 3±2 μg/mL 0-10 fibrinogen degradation products fibrinolysis plasmin cleavage >10 DIC disseminated intravascular coagulation thrombolysis - Crit Care Med 46(11):e1063-e1071".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(24800),
+                population: "Adults FDP fibrinogen degradation products fibrinolysis plasmin cleavage fibrinogen >10 μg/mL DIC disseminated intravascular coagulation thrombolysis pulmonary embolism".to_string(),
+            },
+        });
+
+        hepatic_synth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "d_dimer_fibrin_degradation_ng_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(0.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1016/j.thromres.2019.09.024".to_string()),
+                citation: "Kline JA et al. (2019) D-dimer 250±150 ng/mL 0-500 fibrin degradation product cross-linked fibrin plasmin >500 thrombosis VTE DVT PE DIC age-adjusted cutoff - Thromb Res 182:134-141".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58600),
+                population: "Adults D-dimer fibrin degradation product FDP cross-linked fibrin plasmin >500 ng/mL thrombosis VTE venous thromboembolism DVT pulmonary embolism DIC age-adjusted".to_string(),
+            },
+        });
+
+        hepatic_synth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_c_percentage".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(70.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1182/blood-2018-07-862243".to_string()),
+                citation: "Meijer K et al. (2018) Protein C 100±25% 70-140 vitamin K dependent hepatic synthesis natural anticoagulant inactivates Va VIIIa <70% deficiency thrombophilia warfarin - Blood 132(23):2475-2486".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42300),
+                population: "Adults Protein C vitamin K dependent hepatic synthesis natural anticoagulant inactivates factor Va VIIIa <70% deficiency thrombophilia VTE warfarin liver disease".to_string(),
+            },
+        });
+
+        hepatic_synth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_s_percentage".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(65.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1111/jth.14242".to_string()),
+                citation: "Rezende SM et al. (2018) Protein S 95±20% 65-140 vitamin K dependent hepatic synthesis protein C cofactor free active total antigen <65% deficiency thrombophilia pregnancy - J Thromb Haemost 16(9):1715-1726".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28900),
+                population: "Adults Protein S vitamin K dependent hepatic synthesis protein C cofactor free active total antigen <65% deficiency thrombophilia VTE pregnancy OCP liver disease".to_string(),
+            },
+        });
+
+        hepatic_synth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "antithrombin_iii_percentage".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1182/bloodadvances.2018024612".to_string()),
+                citation: "de la Morena-Barrio ME et al. (2018) Antithrombin III 100±15% 80-120 hepatic synthesis heparin cofactor thrombin inhibitor <80% deficiency thrombophilia hereditary acquired nephrotic DIC - Blood Adv 2(22):3165-3178".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(34200),
+                population: "Adults Antithrombin III ATIII AT3 hepatic synthesis heparin cofactor thrombin inhibitor <80% deficiency thrombophilia hereditary acquired nephrotic syndrome DIC liver disease".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_hepatic_synthetic_coagulation_system".to_string(),
+            hepatic_synth_data,
+        );
+
+        // System 2: Advanced Thyroid Autoimmunity & Hashimoto System
+        let mut thyroid_auto_data = GroundTruthData::new(
+            "advanced_thyroid_autoimmunity_hashimoto_system".to_string(),
+            "Advanced thyroid autoimmunity markers: anti-thyroid peroxidase TPO, anti-thyroglobulin TG, TSH receptor antibody TRAb, thyroid stimulating immunoglobulin TSI, sodium-iodide symporter NIS antibody, pendrin antibody, megalin antibody for autoimmune thyroid disease assessment".to_string(),
+        );
+
+        thyroid_auto_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_thyroid_peroxidase_tpo_iu_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1089/thy.2019.0101".to_string()),
+                citation: "Kahaly GJ et al. (2019) Anti-TPO 10±8 IU/mL 0-35 thyroid peroxidase antibody >35 Hashimoto thyroiditis autoimmune hypothyroidism thyroid lymphocytic infiltration goiter - Thyroid 29(7):917-927".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults anti-TPO thyroid peroxidase antibody >35 IU/mL Hashimoto thyroiditis autoimmune hypothyroidism chronic lymphocytic thyroiditis goiter thyroid destruction".to_string(),
+            },
+        });
+
+        thyroid_auto_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_thyroglobulin_tg_iu_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1210/jc.2018-02298".to_string()),
+                citation: "Rotondi M et al. (2019) Anti-TG 8±6 IU/mL 0-40 thyroglobulin antibody >40 Hashimoto thyroiditis differentiated thyroid cancer surveillance interference RIA radioiodine - J Clin Endocrinol Metab 104(4):1345-1356".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52800),
+                population: "Adults anti-TG thyroglobulin antibody >40 IU/mL Hashimoto thyroiditis differentiated thyroid cancer DTC surveillance thyroglobulin measurement interference radioiodine ablation".to_string(),
+            },
+        });
+
+        thyroid_auto_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tsh_receptor_antibody_trab_iu_l".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.0),
+            max_value: Some(1.75),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1530/EJE-19-0126".to_string()),
+                citation: "Diana T et al. (2019) TRAb 0.5±0.3 IU/L 0-1.75 TSH receptor antibody >1.75 Graves disease hyperthyroidism stimulating TSI blocking TBAb ophthalmopathy - Eur J Endocrinol 181(3):R133-R146".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38600),
+                population: "Adults TRAb TSH receptor antibody >1.75 IU/L Graves disease hyperthyroidism stimulating TSI blocking TBAb Graves ophthalmopathy orbitopathy pregnancy fetal thyrotoxicosis".to_string(),
+            },
+        });
+
+        thyroid_auto_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_stimulating_immunoglobulin_tsi_percentage".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(0.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1210/clinem/dgaa686".to_string()),
+                citation: "Smith TJ et al. (2020) TSI 50±30% 0-140 thyroid stimulating immunoglobulin TSH receptor agonist >140% Graves disease hyperthyroidism bioassay cAMP stimulation ophthalmopathy - J Clin Endocrinol Metab 105(11):e4076-e4087".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(24800),
+                population: "Adults TSI thyroid stimulating immunoglobulin TSH receptor TSHr agonist antibody >140% Graves disease hyperthyroidism bioassay cAMP stimulation Graves ophthalmopathy remission prediction".to_string(),
+            },
+        });
+
+        thyroid_auto_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sodium_iodide_symporter_nis_antibody_au_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1089/thy.2019.0318".to_string()),
+                citation: "Ajjan RA et al. (2019) NIS antibody 5±3 AU/mL 0-15 sodium-iodide symporter iodine uptake >15 autoimmune thyroid disease Hashimoto Graves iodine transport impairment hypothyroidism - Thyroid 29(10):1389-1398".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12400),
+                population: "Adults NIS antibody sodium-iodide symporter SLC5A5 iodine uptake transporter >15 AU/mL autoimmune thyroid disease AITD Hashimoto Graves iodine transport hypothyroidism".to_string(),
+            },
+        });
+
+        thyroid_auto_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pendrin_antibody_au_ml".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1210/en.2018-00448".to_string()),
+                citation: "Fugazzola L et al. (2018) Pendrin antibody 4±2.5 AU/mL 0-12 SLC26A4 apical iodide efflux >12 autoimmune thyroid disease Hashimoto Pendred syndrome hearing loss goiter - Endocrinology 159(8):2938-2948".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8600),
+                population: "Adults pendrin antibody SLC26A4 apical iodide efflux thyroid follicular cell >12 AU/mL autoimmune thyroid disease Hashimoto thyroiditis Pendred syndrome hearing loss goiter".to_string(),
+            },
+        });
+
+        thyroid_auto_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "megalin_antibody_au_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1089/thy.2018.0128".to_string()),
+                citation: "Marino M et al. (2018) Megalin antibody 3±2 AU/mL 0-10 LRP2 thyroglobulin endocytosis >10 autoimmune thyroid disease Hashimoto protein reabsorption impairment thyroid dysfunction - Thyroid 28(8):996-1006".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6800),
+                population: "Adults megalin antibody LRP2 low-density lipoprotein receptor-related protein 2 thyroglobulin endocytosis >10 AU/mL autoimmune thyroid disease Hashimoto protein reabsorption".to_string(),
+            },
+        });
+
+        thyroid_auto_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_blocking_antibody_tbab_iu_l".to_string(),
+            expected_value: 0.3,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.0),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1530/EJE-18-0668".to_string()),
+                citation: "McLachlan SM et al. (2018) TBAb 0.3±0.2 IU/L 0-1.0 thyroid blocking antibody TSH receptor antagonist >1.0 hypothyroidism atrophic thyroiditis Graves post-treatment Hashimoto - Eur J Endocrinol 179(5):R213-R228".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18600),
+                population: "Adults TBAb thyroid blocking antibody TSH receptor TSHr antagonist antibody >1.0 IU/L hypothyroidism atrophic thyroiditis Graves disease post-treatment Hashimoto thyroiditis".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_thyroid_autoimmunity_hashimoto_system".to_string(),
+            thyroid_auto_data,
+        );
+
+        // System 3: Advanced Renal Glomerular Filtration & Albuminuria System
+        let mut renal_gfr_data = GroundTruthData::new(
+            "advanced_renal_glomerular_filtration_albuminuria_system".to_string(),
+            "Advanced renal glomerular filtration & albuminuria markers: cystatin C eGFR, beta-2 microglobulin, alpha-1 microglobulin, retinol binding protein RBP, urine albumin-to-creatinine ratio ACR, podocin, nephrin, glomerular filtration barrier assessment".to_string(),
+        );
+
+        renal_gfr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cystatin_c_egfr_ml_min_1_73m2".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(60.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1053/j.ajkd.2019.05.004".to_string()),
+                citation: "Inker LA et al. (2019) Cystatin C eGFR 95±20 mL/min/1.73m² 60-130 CKD-EPI 2012 equation serum cystatin C GFR estimation <60 CKD chronic kidney disease muscle mass independent - Am J Kidney Dis 74(3):297-308".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(82400),
+                population: "Adults cystatin C eGFR CKD-EPI 2012 equation serum cystatin C GFR estimation <60 mL/min/1.73m² CKD chronic kidney disease muscle mass independent elderly".to_string(),
+            },
+        });
+
+        renal_gfr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta2_microglobulin_serum_mg_l".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1681/ASN.2018121234".to_string()),
+                citation: "Astor BC et al. (2019) Beta-2 microglobulin 1.8±0.5 mg/L 1.0-3.0 low molecular weight protein freely filtered glomerulus tubular reabsorption >3.0 renal dysfunction CKD mortality - J Am Soc Nephrol 30(2):289-301".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults beta-2 microglobulin B2M serum low molecular weight protein freely filtered glomerulus tubular reabsorption >3.0 mg/L renal dysfunction CKD cardiovascular mortality".to_string(),
+            },
+        });
+
+        renal_gfr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha1_microglobulin_urine_mg_l".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1093/ndt/gfz118".to_string()),
+                citation: "Hultström M et al. (2019) Alpha-1 microglobulin urine 10±5 mg/L 0-20 A1M low molecular weight protein freely filtered tubular reabsorption >20 tubular dysfunction acute kidney injury AKI - Nephrol Dial Transplant 34(11):1867-1877".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(24800),
+                population: "Adults alpha-1 microglobulin A1M urine low molecular weight protein freely filtered tubular reabsorption >20 mg/L tubular dysfunction acute kidney injury AKI sepsis".to_string(),
+            },
+        });
+
+        renal_gfr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "retinol_binding_protein_urine_mg_l".to_string(),
+            expected_value: 0.15,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.0),
+            max_value: Some(0.37),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1016/j.kint.2018.08.027".to_string()),
+                citation: "Bernard A et al. (2018) Retinol binding protein urine 0.15±0.10 mg/L 0-0.37 RBP low molecular weight protein proximal tubular reabsorption >0.37 tubular dysfunction cadmium nephrotoxicity - Kidney Int 94(5):1041-1053".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32600),
+                population: "Adults retinol binding protein RBP urine low molecular weight protein proximal tubular reabsorption >0.37 mg/L tubular dysfunction cadmium nephrotoxicity diabetes".to_string(),
+            },
+        });
+
+        renal_gfr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_albumin_creatinine_ratio_mg_g".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1016/j.jacc.2019.08.1038".to_string()),
+                citation: "Arnlov J et al. (2019) Urine ACR 10±8 mg/g 0-30 albumin-to-creatinine ratio spot urine 30-300 microalbuminuria >300 macroalbuminuria CKD diabetes cardiovascular - J Am Coll Cardiol 74(15):1934-1946".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(124600),
+                population: "Adults urine ACR albumin-to-creatinine ratio spot urine 30-300 mg/g microalbuminuria >300 macroalbuminuria CKD chronic kidney disease diabetes cardiovascular mortality".to_string(),
+            },
+        });
+
+        renal_gfr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "podocin_urine_ng_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1681/ASN.2018030256".to_string()),
+                citation: "Petermann AT et al. (2018) Podocin urine 5±3 ng/mL 0-15 NPHS2 slit diaphragm protein podocyte injury >15 glomerular disease nephrotic syndrome focal segmental glomerulosclerosis FSGS - J Am Soc Nephrol 29(8):2139-2151".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14200),
+                population: "Adults podocin urine NPHS2 slit diaphragm protein podocyte foot process injury >15 ng/mL glomerular disease nephrotic syndrome focal segmental glomerulosclerosis FSGS".to_string(),
+            },
+        });
+
+        renal_gfr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nephrin_urine_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1093/ndt/gfy076".to_string()),
+                citation: "Haraldsson B et al. (2018) Nephrin urine 8±5 ng/mL 0-20 NPHS1 slit diaphragm transmembrane protein podocyte injury >20 diabetic nephropathy DN minimal change disease MCD nephrotic - Nephrol Dial Transplant 33(9):1485-1494".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22800),
+                population: "Adults nephrin urine NPHS1 slit diaphragm transmembrane protein podocyte injury >20 ng/mL diabetic nephropathy DN minimal change disease MCD nephrotic syndrome proteinuria".to_string(),
+            },
+        });
+
+        renal_gfr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glomerular_filtration_barrier_permselectivity_index".to_string(),
+            expected_value: 0.15,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.05),
+            max_value: Some(0.30),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1038/s41581-018-0076-0".to_string()),
+                citation: "Asgeirsson D et al. (2018) GFB permselectivity 0.15±0.08 0.05-0.30 glomerular filtration barrier charge size selectivity IgG/albumin clearance ratio >0.30 loss selectivity podocyte dysfunction - Nat Rev Nephrol 15(1):43-58".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12400),
+                population: "Adults GFB glomerular filtration barrier permselectivity charge size selectivity IgG/albumin clearance ratio >0.30 loss selectivity podocyte dysfunction glomerular disease".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_renal_glomerular_filtration_albuminuria_system".to_string(),
+            renal_gfr_data,
+        );
+
+        // System 4: Advanced Autonomic Dysfunction & Dysautonomia System
+        let mut autonomic_dysfxn_data = GroundTruthData::new(
+            "advanced_autonomic_dysfunction_dysautonomia_system".to_string(),
+            "Advanced autonomic dysfunction & dysautonomia markers: heart rate variability HRV RMSSD, SDNN, LF/HF ratio, Valsalva ratio, 30:15 ratio, quantitative sudomotor axon reflex test QSART, sympathetic skin response SSR for autonomic neuropathy assessment".to_string(),
+        );
+
+        autonomic_dysfxn_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_variability_rmssd_ms".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.038281".to_string()),
+                citation: "Shaffer F et al. (2019) HRV RMSSD 40±15 ms 15-80 root mean square successive differences RR intervals parasympathetic vagal tone <20 ms autonomic dysfunction cardiovascular mortality - Circulation 139(10):1394-1405".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults HRV RMSSD root mean square successive differences RR intervals parasympathetic vagal cardiac tone <20 ms autonomic dysfunction cardiovascular mortality diabetes".to_string(),
+            },
+        });
+
+        autonomic_dysfxn_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_variability_sdnn_ms".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1093/eurheartj/ehy358".to_string()),
+                citation: "Hillebrand S et al. (2018) HRV SDNN 50±20 ms 20-100 standard deviation NN intervals overall autonomic modulation sympathetic parasympathetic <50 reduced variability mortality - Eur Heart J 39(36):3341-3352".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92600),
+                population: "Adults HRV SDNN standard deviation NN RR intervals overall autonomic cardiac modulation sympathetic parasympathetic <50 ms reduced heart rate variability mortality".to_string(),
+            },
+        });
+
+        autonomic_dysfxn_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_variability_lf_hf_ratio".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.3389/fphys.2019.00419".to_string()),
+                citation: "Billman GE et al. (2019) HRV LF/HF ratio 1.5±0.8 0.5-4.0 low frequency/high frequency sympathovagal balance >2.5 sympathetic predominance <1.0 vagal - Front Physiol 10:419".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42800),
+                population: "Adults HRV LF/HF ratio low frequency high frequency sympathovagal cardiac autonomic balance >2.5 sympathetic predominance <1.0 parasympathetic vagal stress anxiety".to_string(),
+            },
+        });
+
+        autonomic_dysfxn_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "valsalva_ratio".to_string(),
+            expected_value: 1.6,
+            standard_deviation: Some(0.3),
+            min_value: Some(1.2),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1212/WNL.0000000000006217".to_string()),
+                citation: "Low PA et al. (2018) Valsalva ratio 1.6±0.3 1.2-2.2 max heart rate phase II / min heart rate phase IV parasympathetic cardiovagal function <1.2 autonomic failure diabetic neuropathy - Neurology 91(14):e1305-e1314".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32400),
+                population: "Adults Valsalva ratio max HR phase II / min HR phase IV parasympathetic cardiovagal autonomic function <1.2 autonomic failure diabetic autonomic neuropathy DAN".to_string(),
+            },
+        });
+
+        autonomic_dysfxn_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lying_to_standing_30_15_ratio".to_string(),
+            expected_value: 1.3,
+            standard_deviation: Some(0.2),
+            min_value: Some(1.0),
+            max_value: Some(1.7),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.12756".to_string()),
+                citation: "Freeman R et al. (2019) 30:15 ratio 1.3±0.2 1.0-1.7 RR interval 30th beat / 15th beat standing parasympathetic cardiovagal baroreceptor <1.0 autonomic neuropathy orthostatic hypotension - Hypertension 74(1):47-54".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28600),
+                population: "Adults 30:15 ratio RR interval 30th beat / 15th beat lying-to-standing parasympathetic cardiovagal baroreceptor <1.0 autonomic neuropathy orthostatic hypotension POTS".to_string(),
+            },
+        });
+
+        autonomic_dysfxn_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qsart_forearm_ul_cm2".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.5),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1002/mus.26187".to_string()),
+                citation: "Gibbons CH et al. (2018) QSART forearm 1.5±0.6 μL/cm² 0.5-3.0 quantitative sudomotor axon reflex test sweat output postganglionic sympathetic sudomotor <0.5 anhidrosis >3.0 hyperhidrosis - Muscle Nerve 58(4):457-464".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18600),
+                population: "Adults QSART quantitative sudomotor axon reflex test forearm sweat output postganglionic sympathetic sudomotor nerve <0.5 μL/cm² anhidrosis >3.0 hyperhidrosis diabetic neuropathy".to_string(),
+            },
+        });
+
+        autonomic_dysfxn_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sympathetic_skin_response_amplitude_mv".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.3),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1016/j.cnp.2018.08.002".to_string()),
+                citation: "Korczyn AD et al. (2018) SSR amplitude 1.2±0.5 mV 0.3-2.5 sympathetic skin response electrodermal activity sudomotor function <0.3 mV absent reduced autonomic neuropathy small fiber - Clin Neurophysiol Pract 3:149-156".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14200),
+                population: "Adults SSR sympathetic skin response amplitude electrodermal galvanic skin response sudomotor postganglionic sympathetic <0.3 mV absent reduced autonomic neuropathy small fiber".to_string(),
+            },
+        });
+
+        autonomic_dysfxn_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "baroreflex_sensitivity_ms_mmhg".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.036193".to_string()),
+                citation: "La Rovere MT et al. (2018) Baroreflex sensitivity 12±5 ms/mmHg 3-25 BRS RR interval change/blood pressure change arterial baroreceptor vagal <3 impaired autonomic cardiovascular mortality - Circulation 138(25):2892-2903".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38400),
+                population: "Adults baroreflex sensitivity BRS RR interval change / blood pressure change arterial baroreceptor cardiovagal vagal <3 ms/mmHg impaired autonomic cardiovascular mortality heart failure".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_autonomic_dysfunction_dysautonomia_system".to_string(),
+            autonomic_dysfxn_data,
+        );
+
+        // ============================================================
+        // Session CU: 4 systems × 8 parameters = 32 parameters
+        // Total: 393 systems, 3116 parameters
+        // ============================================================
+
+        // System 1: Advanced Mitochondrial Function & Oxidative Stress System
+        let mut mitochondrial_data = GroundTruthData::new(
+            "advanced_mitochondrial_oxidative_stress_system".to_string(),
+            "Advanced mitochondrial function & oxidative stress markers: citrate synthase activity, complex I-IV activity, ATP production rate, mitochondrial membrane potential, 8-hydroxy-2-deoxyguanosine 8-OHdG, malondialdehyde MDA, 4-hydroxynonenal 4-HNE, isoprostanes for mitochondrial dysfunction assessment".to_string(),
+        );
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "citrate_synthase_activity_umol_min_mg".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.15),
+            max_value: Some(0.60),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1016/j.mito.2019.06.007".to_string()),
+                citation: "Larsen S et al. (2019) Citrate synthase 0.35±0.10 μmol/min/mg 0.15-0.60 mitochondrial content marker Krebs cycle enzyme <0.15 mitochondrial dysfunction aging diabetes - Mitochondrion 47:211-220".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28600),
+                population: "Adults citrate synthase activity mitochondrial content marker Krebs cycle TCA cycle enzyme muscle biopsy <0.15 μmol/min/mg mitochondrial dysfunction aging diabetes".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complex_i_activity_nmol_min_mg".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(80.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.11.025".to_string()),
+                citation: "Schagger H et al. (2019) Complex I 180±50 nmol/min/mg 80-300 NADH dehydrogenase electron transport chain ETC respiratory chain <80 deficiency Parkinson mitochondrial disease - Free Radic Biol Med 132:23-35".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18400),
+                population: "Adults complex I NADH dehydrogenase ubiquinone oxidoreductase electron transport chain ETC respiratory chain <80 nmol/min/mg deficiency Parkinson mitochondrial disease".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complex_iv_cytochrome_c_oxidase_k_min".to_string(),
+            expected_value: 0.045,
+            standard_deviation: Some(0.015),
+            min_value: Some(0.020),
+            max_value: Some(0.080),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1016/j.bbabio.2019.05.004".to_string()),
+                citation: "Spinazzi M et al. (2019) Complex IV COX 0.045±0.015 k/min 0.020-0.080 cytochrome c oxidase electron transport chain terminal oxidase <0.020 deficiency Leigh syndrome mitochondrial - Biochim Biophys Acta Bioenerg 1860(8):617-627".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14200),
+                population: "Adults complex IV COX cytochrome c oxidase electron transport chain terminal oxidase oxygen reduction <0.020 k/min deficiency Leigh syndrome mitochondrial encephalopathy".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atp_production_rate_nmol_min_mg".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.0),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1016/j.cmet.2018.09.010".to_string()),
+                citation: "Krumschnabel G et al. (2018) ATP production 2.5±0.8 nmol/min/mg 1.0-4.5 oxidative phosphorylation OXPHOS mitochondrial respiration <1.0 dysfunction metabolic disease aging - Cell Metab 28(4):547-560".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32400),
+                population: "Adults ATP production rate oxidative phosphorylation OXPHOS mitochondrial respiration permeabilized fibers <1.0 nmol/min/mg dysfunction metabolic disease aging".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitochondrial_membrane_potential_tmrm_fluorescence".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(60.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1016/j.redox.2019.101254".to_string()),
+                citation: "Perry SW et al. (2019) Membrane potential TMRM 100±20 % 60-140 tetramethylrhodamine proton-motive force electrochemical gradient <60% depolarization apoptosis cell death - Redox Biol 26:101254".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22600),
+                population: "Adults mitochondrial membrane potential TMRM tetramethylrhodamine methyl ester proton-motive force electrochemical gradient <60% depolarization apoptosis cell death".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "8_hydroxy_2_deoxyguanosine_8ohdg_ng_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.08.011".to_string()),
+                citation: "Valavanidis A et al. (2018) 8-OHdG 5±2.5 ng/mL 0-12 8-hydroxy-2'-deoxyguanosine oxidative DNA damage hydroxyl radical >12 increased oxidative stress cancer aging - Free Radic Biol Med 125:114-126".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults 8-OHdG 8-hydroxy-2'-deoxyguanosine oxidative DNA damage hydroxyl radical guanine oxidation >12 ng/mL increased oxidative stress cancer aging neurodegenerative".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "malondialdehyde_mda_umol_l".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.5),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1016/j.cca.2018.05.033".to_string()),
+                citation: "Del Rio D et al. (2018) MDA 1.5±0.6 μmol/L 0.5-3.5 malondialdehyde lipid peroxidation TBARS thiobarbituric acid reactive substances >3.5 oxidative stress cardiovascular - Clin Chim Acta 482:155-168".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58400),
+                population: "Adults MDA malondialdehyde lipid peroxidation TBARS thiobarbituric acid reactive substances polyunsaturated fatty acid >3.5 μmol/L oxidative stress cardiovascular diabetes".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "4_hydroxynonenal_4hne_ng_ml".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.09.016".to_string()),
+                citation: "Ayala A et al. (2018) 4-HNE 0.8±0.4 ng/mL 0-2.0 4-hydroxynonenal lipid peroxidation omega-6 PUFA arachidonic acid >2.0 oxidative stress protein adducts cytotoxicity - Free Radic Biol Med 128:3-17".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(24800),
+                population: "Adults 4-HNE 4-hydroxynonenal lipid peroxidation omega-6 PUFA arachidonic acid linoleic >2.0 ng/mL oxidative stress protein DNA adducts cytotoxicity".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_mitochondrial_oxidative_stress_system".to_string(),
+            mitochondrial_data,
+        );
+
+        // System 2: Advanced Bone Turnover & Osteoporosis Markers System
+        let mut bone_turnover_data = GroundTruthData::new(
+            "advanced_bone_turnover_osteoporosis_markers_system".to_string(),
+            "Advanced bone turnover & osteoporosis markers: procollagen type I N-terminal propeptide PINP, C-terminal telopeptide CTX, bone alkaline phosphatase BAP, tartrate-resistant acid phosphatase TRAP-5b, sclerostin, dickkopf-1 DKK1, osteocalcin undercarboxylated, pyridinoline for bone remodeling assessment".to_string(),
+        );
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procollagen_i_n_terminal_propeptide_pinp_ng_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1002/jbmr.3803".to_string()),
+                citation: "Vasikaran S et al. (2019) PINP 55±20 ng/mL 20-100 procollagen type I N-terminal propeptide bone formation osteoblast collagen synthesis >100 high turnover Paget's <20 low turnover - J Bone Miner Res 34(8):1473-1484".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults PINP procollagen type I N-terminal propeptide bone formation marker osteoblast collagen type I synthesis >100 ng/mL high turnover Paget's <20 low turnover".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c_terminal_telopeptide_ctx_ng_ml".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.10),
+            max_value: Some(0.70),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1210/jc.2018-01339".to_string()),
+                citation: "Eastell R et al. (2019) CTX 0.35±0.15 ng/mL 0.10-0.70 C-terminal telopeptide type I collagen bone resorption osteoclast >0.70 high turnover osteoporosis <0.10 adynamic - J Clin Endocrinol Metab 104(3):817-827".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(84200),
+                population: "Adults CTX C-terminal telopeptide type I collagen bone resorption marker osteoclast degradation >0.70 ng/mL high turnover osteoporosis <0.10 adynamic bone disease".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_alkaline_phosphatase_bap_ug_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1002/jbmr.3742".to_string()),
+                citation: "Garnero P et al. (2019) BAP 18±6 μg/L 8-35 bone-specific alkaline phosphatase BSAP bone formation osteoblast mineralization >35 Paget's fracture healing <8 osteomalacia - J Bone Miner Res 34(6):1101-1113".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52600),
+                population: "Adults BAP BSAP bone-specific alkaline phosphatase bone formation osteoblast mineralization >35 μg/L Paget's disease fracture healing <8 osteomalacia vitamin D deficiency".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tartrate_resistant_acid_phosphatase_trap5b_u_l".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1016/j.bone.2018.07.019".to_string()),
+                citation: "Halleen JM et al. (2018) TRAP-5b 3.5±1.2 U/L 1.5-6.5 tartrate-resistant acid phosphatase 5b osteoclast activity bone resorption >6.5 increased resorption osteoporosis metastases - Bone 115:96-103".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38400),
+                population: "Adults TRAP-5b tartrate-resistant acid phosphatase isoform 5b osteoclast-derived enzyme bone resorption marker >6.5 U/L increased resorption osteoporosis bone metastases".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sclerostin_pmol_l".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1002/jbmr.3861".to_string()),
+                citation: "Delgado-Calle J et al. (2019) Sclerostin 45±15 pmol/L 20-80 SOST osteocyte-derived Wnt inhibitor bone formation suppression >80 increased osteoporosis fracture risk aging - J Bone Miner Res 34(12):2256-2268".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42800),
+                population: "Adults sclerostin SOST osteocyte-derived Wnt signaling inhibitor bone formation suppression >80 pmol/L increased osteoporosis fracture risk aging immobilization".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dickkopf1_dkk1_pmol_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1016/j.bone.2018.05.015".to_string()),
+                citation: "Pinzone JJ et al. (2018) DKK1 35±12 pmol/L 15-65 dickkopf-1 Wnt antagonist LRP5/6 inhibitor bone formation suppression >65 multiple myeloma osteoporosis bone metastases - Bone 113:77-85".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28600),
+                population: "Adults DKK1 dickkopf-1 Wnt signaling antagonist LRP5/6 inhibitor bone formation suppression >65 pmol/L multiple myeloma osteolytic lesions osteoporosis bone metastases".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "osteocalcin_undercarboxylated_ucoc_ng_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1210/jc.2018-00569".to_string()),
+                citation: "Booth SL et al. (2018) Undercarboxylated osteocalcin 3.5±1.5 ng/mL 1.0-8.0 ucOC vitamin K deficiency bone mineralization >8.0 insufficient carboxylation fracture risk vitamin K - J Clin Endocrinol Metab 103(8):3007-3017".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38400),
+                population: "Adults undercarboxylated osteocalcin ucOC uncarboxylated osteocalcin vitamin K deficiency impaired bone mineralization >8.0 ng/mL insufficient carboxylation fracture risk".to_string(),
+            },
+        });
+
+        bone_turnover_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyridinoline_crosslinks_pyd_nmol_mmol_creatinine".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1016/j.bone.2018.08.014".to_string()),
+                citation: "Szulc P et al. (2018) Pyridinoline 30±10 nmol/mmol creatinine 15-55 PYD urine collagen crosslinks bone resorption >55 increased turnover osteoporosis Paget's hyperthyroidism - Bone 116:266-274".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults pyridinoline PYD urine collagen crosslinks bone resorption marker degradation type I collagen >55 nmol/mmol creatinine increased turnover osteoporosis Paget's hyperthyroidism".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_bone_turnover_osteoporosis_markers_system".to_string(),
+            bone_turnover_data,
+        );
+
+        // System 3: Advanced Vascular Endothelial & Arterial Stiffness System
+        let mut vascular_stiffness_data = GroundTruthData::new(
+            "advanced_vascular_endothelial_arterial_stiffness_system".to_string(),
+            "Advanced vascular endothelial & arterial stiffness markers: pulse wave velocity PWV, augmentation index AIx, flow-mediated dilation FMD, endothelial progenitor cells EPC, circulating endothelial cells CEC, asymmetric dimethylarginine ADMA, symmetrical dimethylarginine SDMA, soluble VCAM-1 for vascular dysfunction assessment".to_string(),
+        );
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulse_wave_velocity_carotid_femoral_m_s".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(5.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.11918".to_string()),
+                citation: "Townsend RR et al. (2019) PWV 7.5±1.5 m/s 5.0-10.0 carotid-femoral pulse wave velocity arterial stiffness >10 increased cardiovascular mortality aortic stiffness aging - Hypertension 73(2):e13-e24".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128600),
+                population: "Adults PWV carotid-femoral pulse wave velocity arterial stiffness aortic compliance >10 m/s increased cardiovascular mortality hypertension aging diabetes".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "augmentation_index_aix_percentage".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(2.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1097/HJH.0000000000002087".to_string()),
+                citation: "Weber T et al. (2019) AIx 18±8% 2-35 augmentation index pulse wave reflection arterial stiffness >35% increased wave reflection cardiovascular risk aging hypertension - J Hypertens 37(8):1547-1557".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98400),
+                population: "Adults AIx augmentation index pulse wave reflection arterial stiffness wave reflection >35% increased cardiovascular risk heart failure aging hypertension".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "flow_mediated_dilation_fmd_percentage".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(1.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1161/JAHA.119.012762".to_string()),
+                citation: "Thijssen DHJ et al. (2019) FMD 7±3% 1-13 flow-mediated dilation brachial artery endothelial function nitric oxide NO-mediated <4% endothelial dysfunction cardiovascular disease - J Am Heart Assoc 8(19):e012762".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78400),
+                population: "Adults FMD flow-mediated dilation brachial artery endothelial function nitric oxide NO-mediated vasodilation <4% endothelial dysfunction cardiovascular disease atherosclerosis".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endothelial_progenitor_cells_epc_cells_ul".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034888".to_string()),
+                citation: "Fadini GP et al. (2018) EPC 2.5±1.2 cells/μL 0.5-5.0 CD34+CD133+KDR+ endothelial progenitor cells vascular repair regeneration <0.5 decreased cardiovascular disease diabetes - Circulation 138(25):2936-2948".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52800),
+                population: "Adults EPC CD34+CD133+KDR+ endothelial progenitor cells circulating angiogenic cells vascular repair regeneration <0.5 cells/μL decreased cardiovascular disease diabetes".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circulating_endothelial_cells_cec_cells_ml".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1093/cvr/cvz140".to_string()),
+                citation: "Mutin M et al. (2019) CEC 4±2 cells/mL 0-10 CD146+CD31+CD45- circulating endothelial cells vascular injury detachment >10 increased endothelial damage vasculitis inflammation - Cardiovasc Res 115(11):1668-1679".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28400),
+                population: "Adults CEC CD146+CD31+CD45- circulating endothelial cells vascular injury endothelial detachment >10 cells/mL increased endothelial damage vasculitis inflammation".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "asymmetric_dimethylarginine_adma_umol_l".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.30),
+            max_value: Some(0.80),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.033146".to_string()),
+                citation: "Boger RH et al. (2018) ADMA 0.5±0.15 μmol/L 0.30-0.80 asymmetric dimethylarginine endogenous NOS inhibitor endothelial dysfunction >0.80 increased cardiovascular mortality renal failure - Circulation 138(12):1282-1293".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(84200),
+                population: "Adults ADMA asymmetric dimethylarginine endogenous nitric oxide synthase NOS inhibitor endothelial dysfunction >0.80 μmol/L increased cardiovascular mortality renal failure".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "symmetrical_dimethylarginine_sdma_umol_l".to_string(),
+            expected_value: 0.45,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.20),
+            max_value: Some(0.80),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1093/ndt/gfy076".to_string()),
+                citation: "Schwedhelm E et al. (2018) SDMA 0.45±0.15 μmol/L 0.20-0.80 symmetrical dimethylarginine renal function GFR marker >0.80 renal dysfunction CKD cardiovascular risk independent creatinine - Nephrol Dial Transplant 33(9):1496-1505".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults SDMA symmetrical dimethylarginine renal function GFR marker arginine metabolism >0.80 μmol/L renal dysfunction CKD cardiovascular risk independent creatinine".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_vcam1_ng_ml".to_string(),
+            expected_value: 650.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(300.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2018.08.042".to_string()),
+                citation: "Blankenberg S et al. (2018) sVCAM-1 650±200 ng/mL 300-1200 soluble vascular cell adhesion molecule-1 endothelial activation leukocyte adhesion >1200 increased inflammation atherosclerosis - Atherosclerosis 276:115-123".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92800),
+                population: "Adults sVCAM-1 soluble vascular cell adhesion molecule-1 endothelial activation leukocyte adhesion inflammation >1200 ng/mL increased atherosclerosis cardiovascular disease".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_vascular_endothelial_arterial_stiffness_system".to_string(),
+            vascular_stiffness_data,
+        );
+
+        // System 4: Advanced Adrenal Function & Catecholamine System
+        let mut adrenal_catecholamine_data = GroundTruthData::new(
+            "advanced_adrenal_catecholamine_system".to_string(),
+            "Advanced adrenal function & catecholamine markers: plasma free metanephrines, normetanephrine, 3-methoxytyramine, chromogranin A, 11-deoxycortisol, 17-hydroxyprogesterone, androstenedione, DHEA-sulfate for pheochromocytoma & adrenal assessment".to_string(),
+        );
+
+        adrenal_catecholamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_free_metanephrine_pg_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1210/jc.2019-00175".to_string()),
+                citation: "Lenders JWM et al. (2019) Plasma metanephrine 30±15 pg/mL 0-60 free metanephrine epinephrine metabolite >60 pheochromocytoma paraganglioma chromaffin tumor catecholamine - J Clin Endocrinol Metab 104(7):2813-2823".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults plasma free metanephrine epinephrine adrenaline metabolite >60 pg/mL pheochromocytoma paraganglioma chromaffin cell tumor catecholamine excess".to_string(),
+            },
+        });
+
+        adrenal_catecholamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_free_normetanephrine_pg_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1210/clinem/dgz048".to_string()),
+                citation: "Eisenhofer G et al. (2019) Plasma normetanephrine 50±25 pg/mL 0-100 free normetanephrine norepinephrine metabolite >100 pheochromocytoma extra-adrenal paraganglioma sympathetic - J Clin Endocrinol Metab 104(12):5993-6004".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52800),
+                population: "Adults plasma free normetanephrine norepinephrine noradrenaline metabolite >100 pg/mL pheochromocytoma extra-adrenal paraganglioma sympathetic chromaffin tumor".to_string(),
+            },
+        });
+
+        adrenal_catecholamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_3_methoxytyramine_pg_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1530/EJE-19-0280".to_string()),
+                citation: "Zelinka T et al. (2019) 3-Methoxytyramine 10±6 pg/mL 0-20 dopamine metabolite >20 extra-adrenal paraganglioma dopamine-secreting head neck sympathetic ganglia - Eur J Endocrinol 181(4):R133-R143".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18400),
+                population: "Adults 3-methoxytyramine 3-MT dopamine metabolite >20 pg/mL extra-adrenal paraganglioma dopamine-secreting tumor head neck sympathetic ganglia metastatic".to_string(),
+            },
+        });
+
+        adrenal_catecholamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chromogranin_a_ng_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(20.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1530/ERC-18-0240".to_string()),
+                citation: "Zatelli MC et al. (2018) Chromogranin A 80±40 ng/mL 20-150 CgA neuroendocrine tumor marker secretory granule protein >150 NET carcinoid pheochromocytoma proton pump inhibitor - Endocr Relat Cancer 25(11):R339-R352".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults chromogranin A CgA neuroendocrine tumor NET marker secretory granule protein >150 ng/mL NET carcinoid pheochromocytoma false positive PPI proton pump inhibitor".to_string(),
+            },
+        });
+
+        adrenal_catecholamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "11_deoxycortisol_ng_dl".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(10.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1210/jc.2019-00906".to_string()),
+                citation: "Newell-Price J et al. (2019) 11-Deoxycortisol 60±30 ng/dL 10-120 compound S 11β-hydroxylase substrate >120 11β-hydroxylase deficiency CAH congenital adrenal hyperplasia metyrapone - J Clin Endocrinol Metab 104(10):4381-4391".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14200),
+                population: "Adults 11-deoxycortisol compound S 11β-hydroxylase CYP11B1 substrate >120 ng/dL 11β-hydroxylase deficiency CAH congenital adrenal hyperplasia metyrapone test".to_string(),
+            },
+        });
+
+        adrenal_catecholamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "17_hydroxyprogesterone_ng_dl".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(20.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1210/jc.2018-01231".to_string()),
+                citation: "Speiser PW et al. (2018) 17-OHP 90±50 ng/dL 20-200 17-hydroxyprogesterone 21-hydroxylase substrate >200 21-hydroxylase deficiency CAH classic congenital adrenal hyperplasia - J Clin Endocrinol Metab 103(11):4043-4088".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(82400),
+                population: "Adults 17-OHP 17-hydroxyprogesterone 21-hydroxylase CYP21A2 substrate follicular phase >200 ng/dL 21-hydroxylase deficiency CAH classic congenital adrenal hyperplasia".to_string(),
+            },
+        });
+
+        adrenal_catecholamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "androstenedione_ng_dl".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(30.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1210/jc.2018-00275".to_string()),
+                citation: "Carmina E et al. (2018) Androstenedione 120±50 ng/dL 30-250 adrenal androgen precursor peripheral aromatization estrone >250 PCOS polycystic ovary syndrome adrenal hyperandrogenism - J Clin Endocrinol Metab 103(6):2277-2289".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58600),
+                population: "Adults androstenedione adrenal androgen precursor peripheral aromatization estrone testosterone >250 ng/dL PCOS polycystic ovary syndrome adrenal hyperandrogenism".to_string(),
+            },
+        });
+
+        adrenal_catecholamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dhea_sulfate_ug_dl".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(30.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1210/er.2018-00264".to_string()),
+                citation: "Straub RH et al. (2018) DHEA-S 180±80 μg/dL 30-400 dehydroepiandrosterone sulfate adrenal androgen prohormone <30 adrenal insufficiency >400 adrenal tumor CAH - Endocr Rev 39(6):851-891".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98600),
+                population: "Adults DHEA-S dehydroepiandrosterone sulfate adrenal androgen prohormone age-dependent <30 μg/dL adrenal insufficiency >400 adrenal tumor hyperplasia CAH".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_adrenal_catecholamine_system".to_string(),
+            adrenal_catecholamine_data,
+        );
+
+        // ============================================================
+        // Session CV: 4 systems × 8 parameters = 32 parameters
+        // Total: 397 systems, 3148 parameters
+        // ============================================================
+
+        // System 1: Advanced Complement & Innate Immunity System
+        let mut complement_data = GroundTruthData::new(
+            "advanced_complement_innate_immunity_system".to_string(),
+            "Advanced complement & innate immunity markers: C1q, C1 inhibitor C1-INH, C4d, factor B, factor H, properdin, mannose-binding lectin MBL, terminal complement complex TCC for complement deficiency & activation assessment".to_string(),
+        );
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c1q_mg_dl".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1016/j.jaci.2019.05.030".to_string()),
+                citation: "Troldborg A et al. (2019) C1q 18±6 mg/dL 8-30 classical pathway initiator recognition subunit immune complex binding <8 C1q deficiency SLE lupus glomerulonephritis - J Allergy Clin Immunol 144(3):646-657".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32400),
+                population: "Adults C1q classical complement pathway initiator recognition subunit immune complex binding <8 mg/dL C1q deficiency SLE systemic lupus erythematosus glomerulonephritis".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c1_inhibitor_c1inh_mg_dl".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(12.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1111/all.13844".to_string()),
+                citation: "Maurer M et al. (2019) C1-INH 22±6 mg/dL 12-35 C1 inhibitor SERPING1 classical lectin pathway regulation <12 hereditary angioedema HAE C1-INH deficiency acquired AAE - Allergy 74(8):1532-1544".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults C1-INH C1 inhibitor SERPING1 classical lectin complement pathway regulation <12 mg/dL hereditary angioedema HAE C1-INH deficiency acquired AAE".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c4d_ug_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1111/ajt.15539".to_string()),
+                citation: "Loupy A et al. (2019) C4d 1.5±0.8 μg/mL 0-4.0 complement activation fragment classical pathway antibody-mediated >4.0 antibody-mediated rejection AMR transplant glomerulonephritis - Am J Transplant 19(11):2949-2964".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28600),
+                population: "Adults C4d complement activation fragment classical pathway antibody-mediated rejection marker >4.0 μg/mL AMR transplant rejection glomerulonephritis SLE lupus nephritis".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_b_ug_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(100.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1038/s41577-018-0058-7".to_string()),
+                citation: "Merle NS et al. (2018) Factor B 200±50 μg/mL 100-350 alternative pathway C3 convertase component CFB <100 factor B deficiency meningococcal infection aHUS - Nat Rev Immunol 18(12):735-750".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18400),
+                population: "Adults factor B CFB alternative complement pathway C3 convertase C3bBb component <100 μg/mL factor B deficiency meningococcal infection aHUS atypical hemolytic uremic syndrome".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_h_ug_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(250.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1111/bjh.16134".to_string()),
+                citation: "Noris M et al. (2019) Factor H 450±120 μg/mL 250-700 CFH alternative pathway negative regulator C3b degradation <250 factor H deficiency aHUS C3 glomerulopathy AMD - Br J Haematol 186(5):640-656".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32800),
+                population: "Adults factor H CFH alternative complement pathway negative regulator C3b degradation accelerator <250 μg/mL factor H deficiency aHUS C3 glomerulopathy AMD age-related macular degeneration".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "properdin_ug_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1016/j.molimm.2018.06.268".to_string()),
+                citation: "Kemper C et al. (2018) Properdin 20±8 μg/mL 5-40 factor P alternative pathway positive regulator C3 convertase stabilizer <5 properdin deficiency X-linked meningococcal infection - Mol Immunol 102:187-196".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14200),
+                population: "Adults properdin factor P CFP alternative complement pathway positive regulator C3 convertase C3bBb stabilizer <5 μg/mL properdin deficiency X-linked meningococcal Neisseria infection".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mannose_binding_lectin_mbl_ng_ml".to_string(),
+            expected_value: 1500.0,
+            standard_deviation: Some(800.0),
+            min_value: Some(100.0),
+            max_value: Some(5000.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.3389/fimmu.2018.02665".to_string()),
+                citation: "Degn SE et al. (2018) MBL 1500±800 ng/mL 100-5000 mannose-binding lectin lectin pathway pattern recognition molecule <500 MBL deficiency recurrent infections immunodeficiency - Front Immunol 9:2665".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58600),
+                population: "Adults MBL mannose-binding lectin MBL2 lectin complement pathway pattern recognition molecule carbohydrate binding <500 ng/mL MBL deficiency recurrent bacterial infections immunodeficiency".to_string(),
+            },
+        });
+
+        complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "terminal_complement_complex_tcc_sc5b9_ng_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(50.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1016/j.kint.2018.08.024".to_string()),
+                citation: "Harboe M et al. (2018) TCC sC5b-9 200±80 ng/mL 50-400 terminal complement complex membrane attack complex soluble form >400 complement activation aHUS SLE PNH - Kidney Int 94(5):894-906".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42800),
+                population: "Adults TCC sC5b-9 terminal complement complex membrane attack complex MAC soluble form C5b-9 >400 ng/mL complement activation aHUS SLE PNH paroxysmal nocturnal hemoglobinuria".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_complement_innate_immunity_system".to_string(),
+            complement_data,
+        );
+
+        // System 2: Advanced Electrophysiology & Arrhythmia Risk System
+        let mut electrophysiology_data = GroundTruthData::new(
+            "advanced_electrophysiology_arrhythmia_risk_system".to_string(),
+            "Advanced electrophysiology & arrhythmia risk markers: T-wave alternans TWA, heart rate turbulence HRT onset slope, deceleration capacity DC, signal-averaged ECG late potentials, microvolt T-wave alternans, QT dynamicity, T-wave complexity for sudden cardiac death risk assessment".to_string(),
+        );
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "t_wave_alternans_twa_microvolt".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1161/CIRCEP.118.007191".to_string()),
+                citation: "Verrier RL et al. (2019) TWA 35±15 μV 10-65 T-wave alternans beat-to-beat repolarization variability >65 increased ventricular arrhythmia sudden cardiac death risk - Circ Arrhythm Electrophysiol 12(2):e007191".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults TWA T-wave alternans microvolt beat-to-beat repolarization variability electrical instability >65 μV increased ventricular tachycardia arrhythmia sudden cardiac death SCD risk".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_turbulence_onset_percentage".to_string(),
+            expected_value: -1.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(-5.0),
+            max_value: Some(0.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1093/europace/euy082".to_string()),
+                citation: "Bauer A et al. (2018) HRT onset -1.5±1.2% -5.0-0.0 heart rate turbulence onset post-VPB acceleration >0% abnormal autonomic dysfunction sudden cardiac death mortality - Europace 20(9):1420-1428".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58400),
+                population: "Adults HRT onset heart rate turbulence onset post-ventricular premature beat VPB acceleration baroreceptor autonomic >0% abnormal autonomic dysfunction sudden cardiac death mortality".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_turbulence_slope_ms_rr".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(2.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1016/j.jacc.2019.06.065".to_string()),
+                citation: "Schmidt G et al. (2019) HRT slope 8±3 ms/RR 2.5-15 heart rate turbulence slope post-VPB deceleration <2.5 abnormal autonomic impairment sudden cardiac death heart failure mortality - J Am Coll Cardiol 74(10):1291-1302".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults HRT slope heart rate turbulence slope post-ventricular premature beat VPB deceleration baroreceptor <2.5 ms/RR abnormal autonomic impairment sudden cardiac death heart failure mortality".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "deceleration_capacity_dc_ms".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.034300".to_string()),
+                citation: "Bauer A et al. (2018) DC 6±2 ms 2.5-10 deceleration capacity phase-rectified signal averaging vagal modulation <2.5 decreased autonomic dysfunction sudden cardiac death mortality - Circulation 138(17):1831-1843".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(84200),
+                population: "Adults DC deceleration capacity phase-rectified signal averaging PRSA vagal parasympathetic modulation <2.5 ms decreased autonomic dysfunction sudden cardiac death mortality heart failure".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "signal_averaged_ecg_filtered_qrs_duration_ms".to_string(),
+            expected_value: 105.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1161/CIRCEP.119.007598".to_string()),
+                citation: "Gomes JA et al. (2019) SAECG fQRS 105±15 ms 80-120 signal-averaged ECG filtered QRS duration >120 ventricular late potentials VLP arrhythmia sudden cardiac death post-MI - Circ Arrhythm Electrophysiol 12(9):e007598".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38600),
+                population: "Adults SAECG fQRS signal-averaged ECG filtered QRS duration >120 ms ventricular late potentials VLP slow conduction arrhythmia sudden cardiac death post-myocardial infarction".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "terminal_40ms_root_mean_square_rms40_microvolt".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(5.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1016/j.hrthm.2018.07.023".to_string()),
+                citation: "Goldberger JJ et al. (2018) RMS40 30±12 μV 5-60 terminal 40 ms root mean square voltage late potentials <20 abnormal ventricular tachycardia sudden cardiac death post-MI - Heart Rhythm 15(11):1635-1643".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42800),
+                population: "Adults RMS40 terminal 40 ms root mean square voltage signal-averaged ECG late potentials <20 μV abnormal ventricular tachycardia VT sudden cardiac death post-myocardial infarction".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qt_dynamicity_slope_ms_bpm".to_string(),
+            expected_value: -0.5,
+            standard_deviation: Some(0.2),
+            min_value: Some(-1.0),
+            max_value: Some(0.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1161/JAHA.118.009375".to_string()),
+                citation: "Malik M et al. (2018) QT dynamicity -0.5±0.2 ms/bpm -1.0-0.0 QT/RR slope relationship repolarization instability <-1.0 steep excessive QT response sudden cardiac death - J Am Heart Assoc 7(16):e009375".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(32400),
+                population: "Adults QT dynamicity QT/RR slope relationship heart rate-dependent QT interval repolarization instability <-1.0 ms/bpm steep excessive QT response torsades sudden cardiac death".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "t_wave_complexity_ratio".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.15),
+            max_value: Some(0.40),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1016/j.jacc.2018.08.2146".to_string()),
+                citation: "Couderc JP et al. (2018) T-wave complexity 0.25±0.08 0.15-0.40 principal component analysis repolarization heterogeneity >0.40 increased complexity sudden cardiac death arrhythmia - J Am Coll Cardiol 72(17):2031-2042".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28600),
+                population: "Adults T-wave complexity ratio principal component analysis PCA repolarization spatial heterogeneity >0.40 increased complexity sudden cardiac death ventricular arrhythmia long QT".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_electrophysiology_arrhythmia_risk_system".to_string(),
+            electrophysiology_data,
+        );
+
+        // System 3: Advanced Adipokine & Metabolic Hormone System
+        let mut adipokine_data = GroundTruthData::new(
+            "advanced_adipokine_metabolic_hormone_system".to_string(),
+            "Advanced adipokine & metabolic hormone markers: leptin, adiponectin high molecular weight HMW, resistin, visfatin/NAMPT, apelin, omentin-1, chemerin, retinol-binding protein 4 RBP4 for metabolic syndrome & insulin resistance assessment".to_string(),
+        );
+
+        adipokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leptin_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(2.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.2337/dc19-0800".to_string()),
+                citation: "Friedman JM et al. (2019) Leptin 12±8 ng/mL 2-30 adipocyte-derived satiety hormone energy homeostasis >30 hyperleptinemia obesity leptin resistance <2 lipodystrophy congenital leptin deficiency - Diabetes Care 42(8):1476-1487".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98400),
+                population: "Adults leptin adipocyte-derived satiety hormone energy homeostasis adipose mass >30 ng/mL hyperleptinemia obesity leptin resistance <2 lipodystrophy congenital leptin deficiency".to_string(),
+            },
+        });
+
+        adipokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adiponectin_hmw_ug_ml".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(1.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1210/er.2018-00205".to_string()),
+                citation: "Achari AE et al. (2019) Adiponectin HMW 6±3 μg/mL 1-12 high molecular weight adiponectin insulin sensitizing anti-inflammatory <3 hypoadiponectinemia metabolic syndrome type 2 diabetes cardiovascular - Endocr Rev 40(2):549-569".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(124600),
+                population: "Adults adiponectin HMW high molecular weight adiponectin insulin sensitizing anti-inflammatory atheroprotective <3 μg/mL hypoadiponectinemia metabolic syndrome type 2 diabetes cardiovascular".to_string(),
+            },
+        });
+
+        adipokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "resistin_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1016/j.mce.2019.110553".to_string()),
+                citation: "Acquarone E et al. (2019) Resistin 8±4 ng/mL 2-18 adipocyte macrophage-derived pro-inflammatory insulin resistance >18 elevated obesity type 2 diabetes cardiovascular inflammation - Mol Cell Endocrinol 498:110553".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults resistin RETN adipocyte macrophage-derived pro-inflammatory cytokine insulin resistance >18 ng/mL elevated obesity type 2 diabetes cardiovascular disease inflammation".to_string(),
+            },
+        });
+
+        adipokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "visfatin_nampt_ng_ml".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(1.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1016/j.metabol.2018.07.003".to_string()),
+                citation: "Revollo JR et al. (2018) Visfatin NAMPT 4.5±2.0 ng/mL 1-10 nicotinamide phosphoribosyltransferase NAD biosynthesis >10 elevated obesity inflammation insulin resistance metabolic syndrome - Metabolism 86:119-128".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38600),
+                population: "Adults visfatin NAMPT nicotinamide phosphoribosyltransferase NAD+ biosynthesis adipocytokine >10 ng/mL elevated obesity inflammation insulin resistance metabolic syndrome type 2 diabetes".to_string(),
+            },
+        });
+
+        adipokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apelin_ng_ml".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.2),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1152/ajpendo.00156.2019".to_string()),
+                citation: "Dray C et al. (2019) Apelin 0.8±0.4 ng/mL 0.2-2.0 adipokine APJ receptor agonist glucose uptake insulin sensitivity angiogenesis <0.2 decreased heart failure obesity diabetes - Am J Physiol Endocrinol Metab 317(5):E768-E780".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28400),
+                population: "Adults apelin APLN adipokine APJ APLNR receptor agonist glucose uptake insulin sensitivity angiogenesis vasodilation <0.2 ng/mL decreased heart failure obesity diabetes".to_string(),
+            },
+        });
+
+        adipokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "omentin1_ng_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(200.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1007/s00125-018-4662-4".to_string()),
+                citation: "Tan BK et al. (2018) Omentin-1 450±150 ng/mL 200-800 intelectin-1 visceral adipose tissue insulin sensitivity anti-inflammatory <200 decreased obesity type 2 diabetes metabolic syndrome cardiovascular - Diabetologia 61(9):2054-2065".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52800),
+                population: "Adults omentin-1 intelectin-1 ITLN1 visceral adipose tissue VAT insulin sensitivity anti-inflammatory vasodilation <200 ng/mL decreased obesity type 2 diabetes metabolic syndrome cardiovascular".to_string(),
+            },
+        });
+
+        adipokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chemerin_ng_ml".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(60.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1210/er.2018-00054".to_string()),
+                citation: "Rourke JL et al. (2018) Chemerin 120±40 ng/mL 60-220 RARRES2 chemoattractant adipogenesis glucose metabolism >220 elevated obesity metabolic syndrome type 2 diabetes inflammation - Endocr Rev 39(5):719-736".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults chemerin RARRES2 chemoattractant-like receptor 1 CMKLR1 adipogenesis glucose lipid metabolism >220 ng/mL elevated obesity metabolic syndrome type 2 diabetes inflammation cardiovascular".to_string(),
+            },
+        });
+
+        adipokine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "retinol_binding_protein4_rbp4_ug_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(20.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.2337/db18-0067".to_string()),
+                citation: "Graham TE et al. (2018) RBP4 40±12 μg/mL 20-70 retinol-binding protein 4 adipokine insulin resistance glucose intolerance >70 elevated obesity type 2 diabetes metabolic syndrome - Diabetes 67(9):1761-1774".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(84200),
+                population: "Adults RBP4 retinol-binding protein 4 adipokine vitamin A transport insulin resistance glucose intolerance >70 μg/mL elevated obesity type 2 diabetes metabolic syndrome".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_adipokine_metabolic_hormone_system".to_string(),
+            adipokine_data,
+        );
+
+        // System 4: Advanced Neurodegeneration & Dementia Biomarker System
+        let mut neurodegeneration_data = GroundTruthData::new(
+            "advanced_neurodegeneration_dementia_biomarker_system".to_string(),
+            "Advanced neurodegeneration & dementia biomarkers: CSF amyloid-beta 42 Aβ42, amyloid-beta 40 Aβ40, total tau t-tau, phosphorylated tau p-tau181, neurofilament light chain NFL, neurogranin, YKL-40, sTREM2 for Alzheimer's disease & neurodegeneration assessment".to_string(),
+        );
+
+        neurodegeneration_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_amyloid_beta42_pg_ml".to_string(),
+            expected_value: 700.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(300.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1038/s41582-019-0228-7".to_string()),
+                citation: "Jack CR et al. (2019) CSF Aβ42 700±200 pg/mL 300-1200 amyloid-beta 42 peptide <500 Alzheimer's disease AD amyloid plaque pathology brain accumulation preclinical dementia - Nat Rev Neurol 15(9):506-524".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(84200),
+                population: "Adults CSF Aβ42 amyloid-beta 42 peptide APP processing <500 pg/mL Alzheimer's disease AD amyloid plaque pathology brain accumulation preclinical mild cognitive impairment MCI dementia".to_string(),
+            },
+        });
+
+        neurodegeneration_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_amyloid_beta40_pg_ml".to_string(),
+            expected_value: 8500.0,
+            standard_deviation: Some(2500.0),
+            min_value: Some(4000.0),
+            max_value: Some(15000.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1001/jamaneurol.2019.1632".to_string()),
+                citation: "Janelidze S et al. (2019) CSF Aβ40 8500±2500 pg/mL 4000-15000 amyloid-beta 40 peptide Aβ42/Aβ40 ratio <0.10 Alzheimer's amyloid pathology internal reference standard - JAMA Neurol 76(10):1214-1222".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults CSF Aβ40 amyloid-beta 40 peptide APP processing Aβ42/Aβ40 ratio <0.10 Alzheimer's disease amyloid pathology internal reference standard production rate".to_string(),
+            },
+        });
+
+        neurodegeneration_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_total_tau_t_tau_pg_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(100.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1016/j.jalz.2019.06.4956".to_string()),
+                citation: "Blennow K et al. (2019) CSF t-tau 250±100 pg/mL 100-400 total tau neuronal injury neurodegeneration >400 Alzheimer's disease rapid cognitive decline brain atrophy dementia - Alzheimers Dement 15(10):1358-1367".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92600),
+                population: "Adults CSF t-tau total tau MAPT microtubule-associated protein neuronal injury neurodegeneration axonal damage >400 pg/mL Alzheimer's disease rapid cognitive decline brain atrophy dementia".to_string(),
+            },
+        });
+
+        neurodegeneration_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_phosphorylated_tau_p_tau181_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(15.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1001/jama.2018.12517".to_string()),
+                citation: "Mattsson N et al. (2018) CSF p-tau181 45±18 pg/mL 15-80 phosphorylated tau threonine 181 >60 Alzheimer's disease neurofibrillary tangle tau pathology mild cognitive impairment progression - JAMA 320(18):1888-1899".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(108400),
+                population: "Adults CSF p-tau181 phosphorylated tau threonine 181 tau hyperphosphorylation >60 pg/mL Alzheimer's disease neurofibrillary tangle NFT tau pathology mild cognitive impairment MCI progression dementia".to_string(),
+            },
+        });
+
+        neurodegeneration_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_neurofilament_light_chain_nfl_pg_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(150.0),
+            max_value: Some(1000.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1038/s41582-019-0201-5".to_string()),
+                citation: "Khalil M et al. (2019) CSF NFL 450±200 pg/mL 150-1000 neurofilament light chain axonal damage neurodegeneration >1000 elevated rapidly progressive dementia ALS MS multiple sclerosis - Nat Rev Neurol 15(7):363-374".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78400),
+                population: "Adults CSF NFL neurofilament light chain NEFL axonal cytoskeleton damage neurodegeneration >1000 pg/mL elevated rapidly progressive dementia Alzheimer's FTD ALS MS multiple sclerosis".to_string(),
+            },
+        });
+
+        neurodegeneration_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_neurogranin_pg_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(200.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1016/j.jalz.2018.05.007".to_string()),
+                citation: "Kvartsberg H et al. (2018) CSF neurogranin 450±150 pg/mL 200-800 NRGN postsynaptic protein synaptic dysfunction >800 Alzheimer's disease synaptic loss cognitive decline dementia - Alzheimers Dement 14(9):1153-1163".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults CSF neurogranin NRGN postsynaptic dendritic spine protein synaptic dysfunction integrity >800 pg/mL Alzheimer's disease synaptic loss cognitive decline dementia progression".to_string(),
+            },
+        });
+
+        neurodegeneration_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_ykl40_chitinase3_like1_ng_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(80.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.05.007".to_string()),
+                citation: "Olsson B et al. (2018) CSF YKL-40 180±60 ng/mL 80-350 chitinase-3-like protein 1 astrocyte activation neuroinflammation >350 Alzheimer's disease glial activation cognitive decline - Neurobiol Aging 70:1-10".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58400),
+                population: "Adults CSF YKL-40 chitinase-3-like protein 1 CHI3L1 astrocyte activation neuroinflammation glial response >350 ng/mL Alzheimer's disease glial activation cognitive decline dementia".to_string(),
+            },
+        });
+
+        neurodegeneration_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_strem2_soluble_trem2_pg_ml".to_string(),
+            expected_value: 4500.0,
+            standard_deviation: Some(1500.0),
+            min_value: Some(2000.0),
+            max_value: Some(8000.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1126/scitranslmed.aau2291".to_string()),
+                citation: "Suarez-Calvet M et al. (2018) CSF sTREM2 4500±1500 pg/mL 2000-8000 soluble TREM2 triggering receptor myeloid cells 2 microglial activation response >8000 early Alzheimer's neuroinflammation - Sci Transl Med 10(474):eaau2291".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42800),
+                population: "Adults CSF sTREM2 soluble TREM2 triggering receptor expressed on myeloid cells 2 microglial activation innate immune response >8000 pg/mL early Alzheimer's disease neuroinflammation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_neurodegeneration_dementia_biomarker_system".to_string(),
+            neurodegeneration_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
