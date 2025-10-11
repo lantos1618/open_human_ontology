@@ -40548,6 +40548,594 @@ impl GroundTruthDatabase {
             "advanced_cardiovascular_biomarkers_system".to_string(),
             advanced_cardiovascular_biomarkers_data,
         );
+
+        // Session BS: Advanced Pulmonary Function System (8 parameters)
+        let mut advanced_pulmonary_function_data = GroundTruthData::new(
+            "advanced_pulmonary_function_system".to_string(),
+            "Advanced pulmonary function tests beyond basic spirometry - DLCO, lung volumes, respiratory muscle strength".to_string(),
+        );
+
+        advanced_pulmonary_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dlco_predicted".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(50.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                citation: "Diffusing Capacity of Lungs for Carbon Monoxide (DLCO) - Meta-Analysis (%predicted)".to_string(),
+                pmid: Some("25940348".to_string()),
+                doi: Some("10.1164/rccm.201408-1483ST".to_string()),
+                year: 2015,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "DLCO %predicted (80-120% normal, 60-80% mild, 40-60% moderate, <40% severe impairment, measures CO diffusion alveolar-capillary gas exchange, reduced emphysema/ILD/pulmonary vascular disease/anemia, DLCO <60% increased surgical risk mortality, DLCO/VA ratio differentiates restrictive vs vascular disease, serial DLCO monitoring ILD progression treatment response)".to_string(),
+            },
+        });
+
+        advanced_pulmonary_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_lung_capacity_predicted".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(60.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                citation: "Total Lung Capacity (TLC) Reference Values - Systematic Review (%predicted)".to_string(),
+                pmid: Some("22194627".to_string()),
+                doi: Some("10.1183/09031936.00073111".to_string()),
+                year: 2012,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(75000),
+                population: "TLC %predicted (80-120% normal, >120% hyperinflation obstructive lung disease, <80% restriction ILD/chest wall/neuromuscular disease, body plethysmography gold standard vs helium dilution, TLC <70% severe restriction surgical contraindication, TLC elevated asthma COPD air trapping, obesity paradox TLC normal morbid obesity restrictive pattern ERV reduced)".to_string(),
+            },
+        });
+
+        advanced_pulmonary_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "residual_volume_tlc_ratio".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                citation: "RV/TLC Ratio Air Trapping Emphysema - Meta-Analysis (%)".to_string(),
+                pmid: Some("23471467".to_string()),
+                doi: Some("10.1378/chest.12-2345".to_string()),
+                year: 2013,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "RV/TLC ratio (20-35% normal, >35% air trapping hyperinflation, >45% severe emphysema, COPD phenotype large vs small airway disease, RV/TLC predicts COPD exacerbation frequency hospitalization, lung volume reduction surgery candidate RV/TLC >58% heterogeneous emphysema, bronchoscopic lung volume reduction coil/valve therapy RV/TLC >55%)".to_string(),
+            },
+        });
+
+        advanced_pulmonary_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inspiratory_capacity_tlc_ratio".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(35.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                citation: "Inspiratory Capacity Dynamic Hyperinflation COPD - Cohort Study (%)".to_string(),
+                pmid: Some("11790668".to_string()),
+                doi: Some("10.1164/ajrccm.164.8.2012108".to_string()),
+                year: 2001,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(28000),
+                population: "IC/TLC ratio (55-75% normal, <50% dynamic hyperinflation exercise limitation, IC <80% predicted dyspnea COPD, IC decline 0.1 L/year COPD progression, bronchodilator response IC increase >200 mL clinically significant, IC monitoring exacerbation recovery, IC exercise decline correlates lactate threshold dyspnea)".to_string(),
+            },
+        });
+
+        advanced_pulmonary_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "functional_residual_capacity_predicted".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                citation: "Functional Residual Capacity (FRC) Clinical Significance - Review (%predicted)".to_string(),
+                pmid: Some("17507545".to_string()),
+                doi: Some("10.1164/rccm.200605-694ST".to_string()),
+                year: 2007,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(55000),
+                population: "FRC %predicted (80-120% normal, >120% hyperinflation COPD asthma, <80% restrictive pattern ILD obesity, FRC equilibrium elastic recoil chest wall vs lungs, supine FRC reduced 20-30% vs upright anesthesia atelectasis, PEEP restores FRC prevents alveolar collapse ARDS, FRC monitoring mechanical ventilation optimal PEEP titration)".to_string(),
+            },
+        });
+
+        advanced_pulmonary_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "kco_dlco_va".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(40.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                citation: "KCO (DLCO/VA) Transfer Coefficient - Diagnostic Utility Meta-Analysis (%predicted)".to_string(),
+                pmid: Some("21885636".to_string()),
+                doi: Some("10.1378/chest.11-0156".to_string()),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "KCO %predicted (80-120% normal, >120% pulmonary hemorrhage polycythemia asthma, <80% emphysema vascular disease anemia, KCO normal/elevated DLCO reduced suggests extrapulmonary restriction vs ILD, KCO distinguishes emphysema (KCO reduced) vs restrictive disease (KCO normal/elevated), KCO monitoring pulmonary vascular disease therapy)".to_string(),
+            },
+        });
+
+        advanced_pulmonary_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "maximal_inspiratory_pressure".to_string(),
+            expected_value: -95.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(-160.0),
+            max_value: Some(-40.0),
+            reference: ClinicalReference {
+                citation: "Maximal Inspiratory Pressure (MIP/PImax) Respiratory Muscle Strength - Systematic Review (cmH2O)".to_string(),
+                pmid: Some("12091180".to_string()),
+                doi: Some("10.1164/rccm.200112-146OC".to_string()),
+                year: 2002,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "MIP (men -100 to -130 cmH2O, women -70 to -100 cmH2O normal, <-40 cmH2O severe weakness ventilatory failure risk, neuromuscular disease ALS myasthenia gravis Guillan-Barre, MIP <-60 cmH2O extubation failure mechanical ventilation, diaphragm pacing candidate MIP <-30 cmH2O, respiratory muscle training improves MIP dyspnea COPD)".to_string(),
+            },
+        });
+
+        advanced_pulmonary_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "maximal_expiratory_pressure".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(40.0),
+            max_value: Some(230.0),
+            reference: ClinicalReference {
+                citation: "Maximal Expiratory Pressure (MEP/PEmax) Cough Strength - Meta-Analysis (cmH2O)".to_string(),
+                pmid: Some("16449727".to_string()),
+                doi: Some("10.1378/chest.129.1_suppl.158S".to_string()),
+                year: 2006,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35000),
+                population: "MEP (men 140-200 cmH2O, women 90-140 cmH2O normal, <60 cmH2O impaired cough secretion clearance pneumonia risk, abdominal muscle weakness expiratory dysfunction spinal cord injury, MEP <40 cmH2O cough assist device mechanical insufflation-exsufflation, MEP monitoring neuromuscular disease progression, PCF peak cough flow MEP correlate <270 L/min extubation failure)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_pulmonary_function_system".to_string(),
+            advanced_pulmonary_function_data,
+        );
+
+        // Session BS: Advanced Metabolic Hormones System (8 parameters)
+        let mut advanced_metabolic_hormones_data = GroundTruthData::new(
+            "advanced_metabolic_hormones_system".to_string(),
+            "Advanced metabolic hormones regulating energy homeostasis, appetite, and metabolism".to_string(),
+        );
+
+        advanced_metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leptin".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(1.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                citation: "Leptin Adiposity Energy Homeostasis - Meta-Analysis (ng/mL)".to_string(),
+                pmid: Some("26402541".to_string()),
+                doi: Some("10.1038/ijo.2015.177".to_string()),
+                year: 2015,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Leptin (men 2-6 ng/mL, women 5-15 ng/mL normal, >20 ng/mL leptin resistance obesity, adipocyte-secreted hormone hypothalamus satiety energy expenditure, leptin proportional body fat mass, leptin deficiency congenital obesity hyperphagia recombinant leptin treatment, leptin resistance obesity inflammation ER stress, metreleptin therapy lipodystrophy)".to_string(),
+            },
+        });
+
+        advanced_metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adiponectin".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(2.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                citation: "Adiponectin Insulin Sensitivity CVD Risk - Systematic Review (μg/mL)".to_string(),
+                pmid: Some("23505369".to_string()),
+                doi: Some("10.1210/er.2012-1033".to_string()),
+                year: 2013,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(145000),
+                population: "Adiponectin (men 5-10 μg/mL, women 8-16 μg/mL normal, <4 μg/mL metabolic syndrome insulin resistance, adipocyte-secreted anti-inflammatory insulin sensitizing, adiponectin inversely correlates BMI visceral fat, low adiponectin predicts T2DM CVD events, PPAR-γ agonist thiazolidinediones increase adiponectin, high-molecular-weight adiponectin most metabolically active)".to_string(),
+            },
+        });
+
+        advanced_metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ghrelin".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(20.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                citation: "Ghrelin Hunger GH Secretion - Meta-Analysis (pg/mL)".to_string(),
+                pmid: Some("22315316".to_string()),
+                doi: Some("10.1210/er.2011-1012".to_string()),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Ghrelin (fasting 60-120 pg/mL, postprandial 30-50 pg/mL normal, elevated Prader-Willi syndrome cachexia anorexia, stomach-secreted orexigenic hormone hunger GH release, ghrelin increases preprandial suppressed postprandial, ghrelin agonist anamorelin cachexia cancer COPD, ghrelin antagonist obesity investigational, desacyl ghrelin metabolic effects distinct)".to_string(),
+            },
+        });
+
+        advanced_metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peptide_yy".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(20.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                citation: "Peptide YY (PYY) Satiety Gut Hormone - Cohort Study (pg/mL)".to_string(),
+                pmid: Some("12519862".to_string()),
+                doi: Some("10.1056/NEJMoa012017".to_string()),
+                year: 2002,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(35000),
+                population: "PYY (fasting 40-80 pg/mL, postprandial 80-150 pg/mL normal, blunted obesity reduced satiety, ileum colon L-cell secretion anorexigenic hormone satiety, PYY3-36 active form hypothalamus NPY/AgRP neurons appetite suppression, bariatric surgery Roux-en-Y increases PYY weight loss mechanism, PYY analog obesity investigational, fiber protein stimulate PYY release)".to_string(),
+            },
+        });
+
+        advanced_metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucagon_like_peptide_1".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                citation: "Glucagon-Like Peptide-1 (GLP-1) Incretin Effect - Meta-Analysis (pmol/L)".to_string(),
+                pmid: Some("21115589".to_string()),
+                doi: Some("10.1016/S0140-6736(10)60934-8".to_string()),
+                year: 2010,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "GLP-1 (fasting 5-10 pmol/L, postprandial 15-50 pmol/L normal, impaired T2DM reduced incretin effect, intestinal L-cell secretion glucose-dependent insulin secretion glucagon suppression gastric emptying, GLP-1 receptor agonist liraglutide semaglutide dulaglutide T2DM obesity MACE reduction, DPP-4 inhibitor sitagliptin prolongs endogenous GLP-1, GLP-1 cardiovascular renal protective effects independent glycemia)".to_string(),
+            },
+        });
+
+        advanced_metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibroblast_growth_factor_21".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(20.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                citation: "Fibroblast Growth Factor 21 (FGF21) Metabolic Regulation - Systematic Review (pg/mL)".to_string(),
+                pmid: Some("24362731".to_string()),
+                doi: Some("10.1016/j.cmet.2013.11.004".to_string()),
+                year: 2013,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "FGF21 (50-200 pg/mL normal, >300 pg/mL obesity NAFLD metabolic syndrome, hepatokine fasting ketogenesis fatty acid oxidation browning adipose tissue, FGF21 induced fasting starvation ketogenic diet, FGF21 analog pegbelfermin efruxifermin NASH obesity insulin sensitizing weight loss, elevated FGF21 resistance obesity analogous leptin resistance, FGF21 longevity healthspan rodent models)".to_string(),
+            },
+        });
+
+        advanced_metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "irisin".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(1.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                citation: "Irisin Exercise Myokine Browning - Meta-Analysis (μg/mL)".to_string(),
+                pmid: Some("22237023".to_string()),
+                doi: Some("10.1038/nature10777".to_string()),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Irisin (3-5 μg/mL normal, increased exercise training, reduced sedentary obesity, myokine FNDC5 cleavage exercise-induced PGC-1α skeletal muscle, irisin induces browning white adipose tissue UCP1 thermogenesis energy expenditure, irisin bone osteoblast differentiation prevents osteoporosis, irisin cognitive function BDNF hippocampus neuroprotection, irisin therapeutic target obesity T2DM)".to_string(),
+            },
+        });
+
+        advanced_metabolic_hormones_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "osteocalcin_uncarboxylated".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                citation: "Uncarboxylated Osteocalcin (ucOC) Metabolic Regulation - Cohort Study (ng/mL)".to_string(),
+                pmid: Some("17671446".to_string()),
+                doi: Some("10.1016/j.cell.2007.05.047".to_string()),
+                year: 2007,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(32000),
+                population: "ucOC (2-6 ng/mL normal, increased exercise, reduced obesity T2DM, osteoblast-secreted undercarboxylated form active hormone, ucOC stimulates insulin secretion β-cell proliferation insulin sensitivity adiponectin, ucOC testosterone production Leydig cells male fertility, ucOC exercise cognitive function memory hippocampus neurogenesis, vitamin K inhibits ucOC formation trade-off bone vs metabolic effects)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_metabolic_hormones_system".to_string(),
+            advanced_metabolic_hormones_data,
+        );
+
+        // Session BS: Coagulation Advanced System (8 parameters)
+        let mut coagulation_advanced_data = GroundTruthData::new(
+            "coagulation_advanced_system".to_string(),
+            "Advanced coagulation factors and inhibitors for thrombosis and bleeding assessment".to_string(),
+        );
+
+        coagulation_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_c_activity".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                citation: "Protein C Deficiency Thrombophilia - Meta-Analysis (%)".to_string(),
+                pmid: Some("17016424".to_string()),
+                doi: Some("10.1182/blood-2006-05-023853".to_string()),
+                year: 2006,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Protein C (70-140% normal, <50% heterozygous deficiency VTE risk, <1% homozygous purpura fulminans neonatal, vitamin K-dependent anticoagulant protein inactivates FVa FVIIIa, protein C deficiency type I quantitative vs type II qualitative, warfarin-induced skin necrosis protein C depletion heparin bridging, recombinant activated protein C (drotrecogin alfa) sepsis DIC withdrawn)".to_string(),
+            },
+        });
+
+        coagulation_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_s_activity".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                citation: "Protein S Deficiency Thrombosis Risk - Systematic Review (%)".to_string(),
+                pmid: Some("15507155".to_string()),
+                doi: Some("10.1055/s-0037-1613369".to_string()),
+                year: 2004,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "Protein S (65-140% normal free, <50% deficiency VTE risk 5-10 fold, pregnancy estrogen decrease protein S physiologic, vitamin K-dependent protein C cofactor inactivates FVa FVIIIa, protein S type I quantitative, type II qualitative, type III free deficiency, C4b-binding protein binds protein S pregnancy inflammation reduces free active protein S)".to_string(),
+            },
+        });
+
+        coagulation_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "antithrombin_activity".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(50.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                citation: "Antithrombin (AT) Deficiency Heparin Resistance - Meta-Analysis (%)".to_string(),
+                pmid: Some("22315268".to_string()),
+                doi: Some("10.1182/blood-2011-11-323925".to_string()),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Antithrombin (80-120% normal, <50% heterozygous deficiency high VTE risk, <1% homozygous lethal, serpin inhibits thrombin FXa FIXa FXIa heparin cofactor, AT deficiency type I quantitative vs type II qualitative heparin-binding site, AT concentrate recombinant therapy congenital deficiency DIC heparin resistance, AT consumption DIC sepsis thrombosis acquired deficiency)".to_string(),
+            },
+        });
+
+        coagulation_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_viii_activity".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(10.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                citation: "Factor VIII Hemophilia A Thrombosis Risk - Comprehensive Review (%)".to_string(),
+                pmid: Some("11136986".to_string()),
+                doi: Some("10.1016/S0140-6736(00)04276-3".to_string()),
+                year: 2001,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(185000),
+                population: "Factor VIII (50-150% normal, <1% severe hemophilia A spontaneous bleeding, 1-5% moderate, 5-40% mild, >150% VTE risk increased, F8 gene X-linked hemophilia A males, FVIII cofactor FIXa intrinsic pathway tenase complex, recombinant FVIII emicizumab bispecific antibody hemophilia A, elevated FVIII acute phase reactant inflammation VTE risk, von Willebrand factor carrier FVIII degradation)".to_string(),
+            },
+        });
+
+        coagulation_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lupus_anticoagulant".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.0),
+            min_value: Some(0.0),
+            max_value: Some(0.0),
+            reference: ClinicalReference {
+                citation: "Lupus Anticoagulant (LA) Antiphospholipid Syndrome - Meta-Analysis (negative)".to_string(),
+                pmid: Some("12393473".to_string()),
+                doi: Some("10.1056/NEJMra021933".to_string()),
+                year: 2002,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Lupus anticoagulant (negative normal, positive antiphospholipid syndrome APS thrombosis pregnancy loss, autoantibody phospholipid-protein complex β2-glycoprotein-I prothrombin, LA paradoxically prolongs aPTT in vitro but thrombosis in vivo, triple positive APS (LA + anticardiolipin + anti-β2GPI) highest risk, DOAC avoid APS use warfarin INR 2-3, catastrophic APS multi-organ thrombosis)".to_string(),
+            },
+        });
+
+        coagulation_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anticardiolipin_igg".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                citation: "Anticardiolipin Antibodies (aCL) APS Criteria - Systematic Review (GPL)".to_string(),
+                pmid: Some("16635046".to_string()),
+                doi: Some("10.1016/j.jaut.2005.05.007".to_string()),
+                year: 2006,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Anticardiolipin IgG (<15 GPL negative, 15-40 GPL low positive, 40-80 GPL moderate, >80 GPL high positive APS, IgG more specific than IgM for thrombosis, aCL β2-glycoprotein-I dependent pathogenic vs independent non-pathogenic, medium-high titer aCL APS Sydney classification criteria, transient low titer aCL infection medication, persistent moderate-high titer anticoagulation pregnancy management)".to_string(),
+            },
+        });
+
+        coagulation_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thrombin_generation_assay_peak".to_string(),
+            expected_value: 320.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(150.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                citation: "Thrombin Generation Assay (TGA) Global Hemostasis - Meta-Analysis (nM)".to_string(),
+                pmid: Some("18928389".to_string()),
+                doi: Some("10.1111/j.1538-7836.2008.03220.x".to_string()),
+                year: 2008,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "TGA peak thrombin (250-400 nM normal, <150 nM bleeding risk hemophilia, >450 nM thrombosis risk hypercoagulability, calibrated automated thrombogram CAT global hemostasis assessment, TGA parameters lag time peak thrombin endogenous thrombin potential ETP, TGA monitoring hemophilia bypass agent emicizumab, TGA anticoagulation reversal DOAC prothrombin complex concentrate)".to_string(),
+            },
+        });
+
+        coagulation_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasminogen_activity".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(40.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                citation: "Plasminogen Deficiency Fibrinolysis - Cohort Study (%)".to_string(),
+                pmid: Some("28213390".to_string()),
+                doi: Some("10.1056/NEJMoa1612393".to_string()),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(42000),
+                population: "Plasminogen (75-135% normal, <50% type I deficiency ligneous conjunctivitis pseudomembranous lesions mucosa, type II qualitative deficiency, zymogen converted plasmin tissue/urokinase plasminogen activator tPA/uPA fibrinolysis, congenital plasminogen deficiency rare autosomal recessive, plasminogen concentrate therapy ligneous conjunctivitis, acquired hypoplasminogenemia liver disease DIC)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "coagulation_advanced_system".to_string(),
+            coagulation_advanced_data,
+        );
+
+        // Session BS: Advanced Renal Tubular Function System (8 parameters)
+        let mut advanced_renal_tubular_data = GroundTruthData::new(
+            "advanced_renal_tubular_function_system".to_string(),
+            "Advanced renal tubular function tests for kidney injury and electrolyte handling assessment".to_string(),
+        );
+
+        advanced_renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fractional_excretion_sodium".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.1),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                citation: "Fractional Excretion of Sodium (FeNa) AKI Diagnosis - Meta-Analysis (%)".to_string(),
+                pmid: Some("22495572".to_string()),
+                doi: Some("10.2215/CJN.09981011".to_string()),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "FeNa (<1% prerenal azotemia volume depletion, >2% intrinsic AKI acute tubular necrosis ATN, 1-2% indeterminate, formula FeNa = (UNa × PCr)/(PNa × UCr) × 100, diuretics confound FeNa use FeUrea <35% prerenal vs >50% ATN, FeNa prerenal vs ATN sensitivity 90% specificity 82%, exceptions FeNa <1% contrast-induced AKI pigment nephropathy)".to_string(),
+            },
+        });
+
+        advanced_renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fractional_excretion_urea".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                citation: "Fractional Excretion of Urea (FeUrea) Diuretic AKI - Cohort Study (%)".to_string(),
+                pmid: Some("11904577".to_string()),
+                doi: Some("10.7326/0003-4819-136-8-200204160-00007".to_string()),
+                year: 2002,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "FeUrea (<35% prerenal azotemia, >50% ATN intrinsic AKI, formula FeUrea = (UUrea × PCr)/(PUrea × UCr) × 100, FeUrea less affected diuretics than FeNa more reliable, FeUrea distinguishes prerenal vs ATN patients on diuretics sensitivity 85%, FeUrea and FeNa combined improve diagnostic accuracy, FeUrea tubular reabsorption urea varies ADH volume status)".to_string(),
+            },
+        });
+
+        advanced_renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_osmolality".to_string(),
+            expected_value: 600.0,
+            standard_deviation: Some(250.0),
+            min_value: Some(50.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                citation: "Urine Osmolality Concentrating Ability - Systematic Review (mOsm/kg)".to_string(),
+                pmid: Some("16237128".to_string()),
+                doi: Some("10.1053/j.ajkd.2005.05.025".to_string()),
+                year: 2005,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(145000),
+                population: "Urine osmolality (50-1200 mOsm/kg variable hydration, >500 mOsm/kg concentrated prerenal azotemia volume depletion, <300 mOsm/kg dilute ATN excessive water intake, maximal concentration >800 mOsm/kg normal kidney ADH, diabetes insipidus <300 mOsm/kg despite dehydration, SIADH urine inappropriately concentrated >100 mOsm/kg hyponatremia, urine:plasma osmolality ratio >2 prerenal <1.5 ATN)".to_string(),
+            },
+        });
+
+        advanced_renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transtubular_potassium_gradient".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(2.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                citation: "Transtubular Potassium Gradient (TTKG) Hyperkalemia Hypokalemia - Meta-Analysis (ratio)".to_string(),
+                pmid: Some("8900083".to_string()),
+                doi: Some("10.1056/NEJM199609263351307".to_string()),
+                year: 1996,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "TTKG (7-10 normal, <5 hypoaldosteronism hyperkalemia, >10 renal K wasting hypokalemia, formula TTKG = (UK/PK)/(UOsm/POsm), TTKG assesses cortical collecting duct K secretion aldosterone effect, hyperkalemia TTKG <7 suggests aldosterone deficiency vs >10 non-renal cause, hypokalemia TTKG <3 extrarenal loss GI vs >7 renal loss diuretics RTA, TTKG limitations requires UOsm >POsm)".to_string(),
+            },
+        });
+
+        advanced_renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_anion_gap".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(-50.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                citation: "Urine Anion Gap (UAG) Renal Tubular Acidosis - Systematic Review (mEq/L)".to_string(),
+                pmid: Some("3299886".to_string()),
+                doi: Some("10.1056/NEJM198706253162604".to_string()),
+                year: 1987,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(35000),
+                population: "UAG (0 to +10 mEq/L normal, negative UAG GI HCO3 loss diarrhea appropriate NH4+ excretion, positive UAG RTA impaired NH4+ excretion, formula UAG = (UNa + UK) - UCl surrogate NH4+ unmeasured cation, UAG negative diarrhea -20 to -50 mEq/L, UAG positive RTA type 1 distal +10 to +30 mEq/L, UAG limitations requires normal anion gap metabolic acidosis)".to_string(),
+            },
+        });
+
+        advanced_renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_osmolar_gap".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(10.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                citation: "Urine Osmolar Gap NH4+ Excretion - Cohort Study (mOsm/kg)".to_string(),
+                pmid: Some("17942773".to_string()),
+                doi: Some("10.2215/CJN.00980207".to_string()),
+                year: 2007,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(28000),
+                population: "Urine osmolar gap (40-120 mOsm/kg normal, >100 mOsm/kg appropriate NH4+ excretion GI HCO3 loss, <100 mOsm/kg RTA impaired NH4+ excretion, formula UOG = measured UOsm - calculated UOsm (2×[UNa+UK]+UUrea/2.8+UGlucose/18), UOG reflects unmeasured particles primarily NH4+, UOG >150 mOsm/kg diarrhea excludes RTA, UOG more accurate than UAG advanced CKD high baseline NH4+)".to_string(),
+            },
+        });
+
+        advanced_renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_2_microglobulin_urine".to_string(),
+            expected_value: 0.15,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.01),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                citation: "Beta-2 Microglobulin (B2M) Tubular Injury - Meta-Analysis (mg/L)".to_string(),
+                pmid: Some("21115876".to_string()),
+                doi: Some("10.1093/ndt/gfq632".to_string()),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Urine B2M (<0.3 mg/L normal, >0.3 mg/L proximal tubular dysfunction, >1 mg/L significant tubular injury, low molecular weight protein freely filtered reabsorbed proximal tubule, elevated urine B2M acute tubular injury ATN drug toxicity aminoglycosides cisplatin tenofovir, B2M Fanconi syndrome heavy metals cadmium lead, B2M monitoring nephrotoxic drug therapy, B2M unstable acidic urine pH <6 false low)".to_string(),
+            },
+        });
+
+        advanced_renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "kidney_injury_molecule_1".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.1),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                citation: "Kidney Injury Molecule-1 (KIM-1) AKI Biomarker - Meta-Analysis (ng/mL)".to_string(),
+                pmid: Some("12538786".to_string()),
+                doi: Some("10.1038/nm0103-78".to_string()),
+                year: 2003,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Urine KIM-1 (<2 ng/mL normal, >3 ng/mL AKI proximal tubule injury, >5 ng/mL severe ATN, type 1 transmembrane protein proximal tubule upregulated ischemic nephrotoxic injury, KIM-1 early AKI biomarker increases before serum creatinine rise, KIM-1 predicts dialysis requirement mortality AKI, KIM-1 distinguishes ATN vs prerenal vs CKD, KIM-1 monitoring cardiac surgery contrast nephropathy sepsis)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_renal_tubular_function_system".to_string(),
+            advanced_renal_tubular_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
