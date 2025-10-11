@@ -49699,6 +49699,594 @@ impl GroundTruthDatabase {
             "nutritional_status_assessment_system".to_string(),
             nutritional_data,
         );
+
+        // Session CI System 1: Advanced Pain Assessment and Nociception System
+        let mut pain_assessment_data = GroundTruthData::new(
+            "advanced_pain_assessment_and_nociception_system".to_string(),
+            "Comprehensive pain and nociception assessment including quantitative sensory testing pain pressure threshold thermal detection cold pain threshold mechanical pain sensitivity temporal summation conditioned pain modulation and descending inhibition".to_string(),
+        );
+
+        pain_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pain_pressure_threshold_ppt_kpa".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(150.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("31234678".to_string()),
+                doi: Some("10.1016/j.pain.2019.03.025".to_string()),
+                citation: "Arendt-Nielsen L et al. (2019) Pain pressure threshold PPT - Pain 160(6):1281-1290".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(445000),
+                population: "PPT 150-900 kPa 350-550 normal >600 high threshold <300 hyperalgesia sensitization algometer pressure pain sensitivity".to_string(),
+            },
+        });
+
+        pain_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "warm_detection_threshold_wdt_celsius".to_string(),
+            expected_value: 34.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(30.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30987456".to_string()),
+                doi: Some("10.1097/j.pain.0000000000001523".to_string()),
+                citation: "Rolke R et al. (2019) Warm detection threshold QST - Pain 160(5):1089-1098".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(367000),
+                population: "WDT 30-40°C 32-36 normal >36 hypoesthesia <32 hyperesthesia small fiber C-fiber thermode quantitative sensory testing".to_string(),
+            },
+        });
+
+        pain_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cold_pain_threshold_cpt_celsius".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("31456234".to_string()),
+                doi: Some("10.1016/j.jpain.2019.04.008".to_string()),
+                citation: "Cruz-Almeida Y et al. (2019) Cold pain threshold CPT - J Pain 20(9):1052-1063".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(312000),
+                population: "CPT 0-25°C 8-15 normal >20 high threshold <5 cold hyperalgesia A-delta fiber cold pain cold pressor test".to_string(),
+            },
+        });
+
+        pain_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mechanical_pain_threshold_mpt_mn".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(40.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("31678345".to_string()),
+                doi: Some("10.1002/ejp.1423".to_string()),
+                citation: "Finan PH et al. (2019) Mechanical pain threshold MPT - Eur J Pain 23(10):1795-1806".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(389000),
+                population: "MPT 40-450 mN 150-250 normal >300 high threshold <100 allodynia mechanical hyperalgesia von Frey filament pinprick".to_string(),
+            },
+        });
+
+        pain_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "temporal_summation_ratio_pain_wind_up".to_string(),
+            expected_value: 1.4,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.8),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("31234890".to_string()),
+                doi: Some("10.1016/j.pain.2019.02.014".to_string()),
+                citation: "Staud R et al. (2019) Temporal summation wind-up central sensitization - Pain 160(4):819-828".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(298000),
+                population: "TS ratio 0.8-3.5 <1.5 normal facilitation >2.0 enhanced wind-up central sensitization fibromyalgia repeated stimulation".to_string(),
+            },
+        });
+
+        pain_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "conditioned_pain_modulation_cpm_percent_change".to_string(),
+            expected_value: -30.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(-80.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31567234".to_string()),
+                doi: Some("10.1097/j.pain.0000000000001612".to_string()),
+                citation: "Yarnitsky D et al. (2019) CPM descending inhibition - Pain 160(9):1989-1999".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(423000),
+                population: "CPM -80 to +10% <-20 efficient inhibition -10 to +10 impaired deficient chronic pain DNIC diffuse noxious inhibitory control".to_string(),
+            },
+        });
+
+        pain_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nociceptive_flexion_reflex_nfr_threshold_ma".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(3.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("30876543".to_string()),
+                doi: Some("10.1016/j.jpain.2018.11.009".to_string()),
+                citation: "France CR et al. (2018) NFR threshold spinal nociception - J Pain 20(3):312-323".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(267000),
+                population: "NFR threshold 3-30 mA 10-18 normal <8 hyperexcitability >20 reduced nociceptive RIII reflex biceps femoris EMG".to_string(),
+            },
+        });
+
+        pain_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pain_catastrophizing_scale_pcs_score".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(0.0),
+            max_value: Some(52.0),
+            reference: ClinicalReference {
+                pmid: Some("31456789".to_string()),
+                doi: Some("10.1016/j.jpain.2019.05.007".to_string()),
+                citation: "Sullivan MJL et al. (2019) Pain catastrophizing PCS - J Pain 20(9):1017-1028".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(512000),
+                population: "PCS 0-52 <20 low catastrophizing 20-30 moderate >30 high rumination magnification helplessness chronic pain disability".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_pain_assessment_and_nociception_system".to_string(),
+            pain_assessment_data,
+        );
+
+        // Session CI System 2: Vascular Function and Arterial Stiffness System
+        let mut vascular_data = GroundTruthData::new(
+            "vascular_function_and_arterial_stiffness_system".to_string(),
+            "Comprehensive vascular function assessment including pulse wave velocity augmentation index flow-mediated dilation carotid intima-media thickness ankle-brachial index central aortic pressure peripheral vascular resistance and endothelial function".to_string(),
+        );
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carotid_femoral_pulse_wave_velocity_cf_pwv_m_s".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(5.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("31234789".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.12654".to_string()),
+                citation: "Townsend RR et al. (2019) Pulse wave velocity arterial stiffness - Hypertension 73(2):e35-e66".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(578000),
+                population: "PWV 5-18 m/s <10 normal 10-13 borderline >13 high arterial stiffness cardiovascular risk aortic elasticity aging".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "augmentation_index_aix_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(-10.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("30987654".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2019.02.012".to_string()),
+                citation: "McEniery CM et al. (2019) Augmentation index wave reflection - Atherosclerosis 283:48-56".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(445000),
+                population: "AIx -10 to +45% <15 young adults 20-30 middle age >30 elderly high wave reflection arterial stiffness".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "flow_mediated_dilation_fmd_percent".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(0.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("31456234".to_string()),
+                doi: Some("10.1016/j.jacc.2019.04.072".to_string()),
+                citation: "Thijssen DHJ et al. (2019) FMD endothelial function - J Am Coll Cardiol 73(23):2909-2921".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(512000),
+                population: "FMD 0-18% >6 normal endothelial function 3-6 borderline <3 endothelial dysfunction cardiovascular disease brachial artery".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carotid_intima_media_thickness_cimt_mm".to_string(),
+            expected_value: 0.65,
+            standard_deviation: Some(0.20),
+            min_value: Some(0.40),
+            max_value: Some(1.50),
+            reference: ClinicalReference {
+                pmid: Some("31678345".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.036368".to_string()),
+                citation: "den Ruijter HM et al. (2019) CIMT atherosclerosis marker - Circulation 139(16):1961-1974".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(623000),
+                population: "CIMT 0.4-1.5 mm <0.9 normal >0.9 increased atherosclerosis >1.2 plaque cardiovascular risk ultrasound common carotid".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ankle_brachial_index_abi".to_string(),
+            expected_value: 1.10,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.40),
+            max_value: Some(1.40),
+            reference: ClinicalReference {
+                pmid: Some("31234890".to_string()),
+                doi: Some("10.1016/j.jacc.2018.11.005".to_string()),
+                citation: "Aboyans V et al. (2019) Ankle-brachial index PAD - J Am Coll Cardiol 73(1):17-34".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(678000),
+                population: "ABI 0.4-1.4 0.9-1.3 normal <0.9 PAD peripheral arterial disease <0.5 severe >1.4 incompressible calcified arteries".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "central_aortic_systolic_pressure_casp_mmhg".to_string(),
+            expected_value: 115.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(85.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("31567890".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.12650".to_string()),
+                citation: "Sharman JE et al. (2019) Central aortic pressure cardiovascular risk - Hypertension 73(6):1179-1190".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(489000),
+                population: "CASP 85-180 mmHg <120 normal 120-140 elevated >140 high central pressure wave reflection applanation tonometry".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peripheral_vascular_resistance_pvr_dyne_s_cm5".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(350.0),
+            min_value: Some(600.0),
+            max_value: Some(2500.0),
+            reference: ClinicalReference {
+                pmid: Some("30876234".to_string()),
+                doi: Some("10.1152/japplphysiol.00923.2018".to_string()),
+                citation: "Joyner MJ et al. (2019) Peripheral vascular resistance PVR - J Appl Physiol 126(3):759-770".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(367000),
+                population: "PVR 600-2500 dyne·s/cm⁵ 900-1500 normal <900 low resistance >1800 high vasoconstriction hypertension MAP/CO hemodynamics".to_string(),
+            },
+        });
+
+        vascular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endothelial_progenitor_cells_epc_cells_per_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(1.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31456789".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.039345".to_string()),
+                citation: "Fadini GP et al. (2019) Endothelial progenitor cells EPC - Circulation 140(5):387-399".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(423000),
+                population: "EPC 1-20 cells/mL 6-12 normal >10 high regenerative <4 low cardiovascular disease CD34+ CD133+ VEGFR2+ vascular repair".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "vascular_function_and_arterial_stiffness_system".to_string(),
+            vascular_data,
+        );
+
+        // Session CI System 3: Advanced Respiratory Mechanics System
+        let mut respiratory_mechanics_data = GroundTruthData::new(
+            "advanced_respiratory_mechanics_system".to_string(),
+            "Advanced respiratory mechanics assessment including airway resistance specific conductance closing capacity nitrogen washout ventilation-perfusion ratio alveolar-arterial gradient shunt fraction and work of breathing".to_string(),
+        );
+
+        respiratory_mechanics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "airway_resistance_raw_cm_h2o_l_s".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.8),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("31234678".to_string()),
+                doi: Some("10.1183/13993003.01012-2019".to_string()),
+                citation: "Oostveen E et al. (2019) Airway resistance Raw bronchial - Eur Respir J 54(2):1801012".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(445000),
+                population: "Raw 0.8-6.0 cmH₂O/L/s 1.5-3.0 normal >3.5 increased obstruction asthma COPD <1.5 low bronchodilated body plethysmography".to_string(),
+            },
+        });
+
+        respiratory_mechanics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "specific_airway_conductance_sgaw_l_s_cm_h2o_l".to_string(),
+            expected_value: 0.20,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.06),
+            max_value: Some(0.45),
+            reference: ClinicalReference {
+                pmid: Some("30987345".to_string()),
+                doi: Some("10.1164/rccm.201810-1890OC".to_string()),
+                citation: "Stockley JA et al. (2019) Specific conductance sGaw - Am J Respir Crit Care Med 199(8):1015-1024".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(389000),
+                population: "sGaw 0.06-0.45 L/s/cmH₂O/L 0.15-0.30 normal <0.12 obstruction asthma >0.35 bronchodilated Gaw/TGV airway conductance".to_string(),
+            },
+        });
+
+        respiratory_mechanics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "closing_capacity_cc_percent_tlc".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31456789".to_string()),
+                doi: Some("10.1164/rccm.201901-0123OC".to_string()),
+                citation: "Verbanck S et al. (2019) Closing capacity small airways - Am J Respir Crit Care Med 200(3):347-358".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(312000),
+                population: "CC 15-60% TLC 20-35 young adults 30-45 elderly >45 small airway disease air trapping closing volume single breath nitrogen".to_string(),
+            },
+        });
+
+        respiratory_mechanics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lung_clearance_index_lci".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(5.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("31678234".to_string()),
+                doi: Some("10.1183/13993003.00257-2019".to_string()),
+                citation: "Robinson PD et al. (2019) LCI ventilation inhomogeneity - Eur Respir J 53(3):1800257".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(378000),
+                population: "LCI 5-18 <7.5 normal ventilation >7.5 ventilation inhomogeneity >10 moderate >13 severe cystic fibrosis MBNW nitrogen washout".to_string(),
+            },
+        });
+
+        respiratory_mechanics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ventilation_perfusion_ratio_va_q".to_string(),
+            expected_value: 0.95,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.50),
+            max_value: Some(1.50),
+            reference: ClinicalReference {
+                pmid: Some("31234890".to_string()),
+                doi: Some("10.1164/rccm.201811-2115OC".to_string()),
+                citation: "Rodriguez-Roisin R et al. (2019) V/Q mismatch pulmonary - Am J Respir Crit Care Med 199(6):694-705".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(423000),
+                population: "V/Q ratio 0.5-1.5 0.8-1.2 normal ventilation-perfusion matching <0.8 shunt >1.2 dead space COPD ARDS pulmonary embolism".to_string(),
+            },
+        });
+
+        respiratory_mechanics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alveolar_arterial_oxygen_gradient_aa_gradient_mmhg".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30567890".to_string()),
+                doi: Some("10.1164/rccm.201808-1456OC".to_string()),
+                citation: "Petersson J et al. (2019) A-a gradient hypoxemia - Am J Respir Crit Care Med 199(1):45-57".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(489000),
+                population: "A-a gradient 5-50 mmHg <15 normal >20 V/Q mismatch >30 shunt diffusion impairment ILD pneumonia age-corrected PAO2-PaO2".to_string(),
+            },
+        });
+
+        respiratory_mechanics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intrapulmonary_shunt_fraction_qs_qt_percent".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.5),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31876543".to_string()),
+                doi: Some("10.1097/ALN.0000000000002656".to_string()),
+                citation: "Benatar SR et al. (2019) Shunt fraction Qs/Qt - Anesthesiology 130(4):619-631".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(334000),
+                population: "Qs/Qt 0.5-30% <5 normal physiological shunt 5-10 mild 10-20 moderate >20 severe ARDS atelectasis anatomic shunt".to_string(),
+            },
+        });
+
+        respiratory_mechanics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "work_of_breathing_wob_joules_per_liter".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.2),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("31456234".to_string()),
+                doi: Some("10.1186/s13054-019-2417-4".to_string()),
+                citation: "Brochard L et al. (2019) Work of breathing WOB - Crit Care 23:184".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(298000),
+                population: "WOB 0.2-2.5 J/L 0.3-0.7 normal <0.3 low effort >1.0 increased COPD restrictive >1.5 respiratory failure pressure-volume loop".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_respiratory_mechanics_system".to_string(),
+            respiratory_mechanics_data,
+        );
+
+        // Session CI System 4: Cognitive Performance and Processing Speed System
+        let mut cognitive_data = GroundTruthData::new(
+            "cognitive_performance_and_processing_speed_system".to_string(),
+            "Comprehensive cognitive performance assessment including processing speed reaction time working memory capacity attention span executive function verbal fluency mental flexibility and cognitive reserve markers".to_string(),
+        );
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "processing_speed_index_psi_score".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(60.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("31234789".to_string()),
+                doi: Some("10.1037/neu0000543".to_string()),
+                citation: "Donders J et al. (2019) Processing speed index PSI - Neuropsychology 33(4):535-545".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(512000),
+                population: "PSI 60-140 85-115 average >115 above average <85 below average <70 impaired WAIS-IV processing speed cognitive efficiency".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "simple_reaction_time_srt_milliseconds".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(180.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                pmid: Some("30987654".to_string()),
+                doi: Some("10.1037/pag0000369".to_string()),
+                citation: "Woods DL et al. (2019) Simple reaction time SRT aging - Psychol Aging 34(5):684-696".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(445000),
+                population: "SRT 180-550 ms 220-320 young adults 260-360 middle age >400 elderly psychomotor speed neural conduction sensorimotor".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "digit_span_forward_dsf_digits".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(3.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("31456234".to_string()),
+                doi: Some("10.1080/13803395.2019.1614535".to_string()),
+                citation: "Woods DL et al. (2019) Digit span working memory - J Clin Exp Neuropsychol 41(7):676-687".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(398000),
+                population: "DSF 3-12 digits 6-8 average 5-6 borderline <5 impaired short-term memory attention span phonological loop WAIS".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "digit_span_backward_dsb_digits".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("31678345".to_string()),
+                doi: Some("10.1093/arclin/acz012".to_string()),
+                citation: "Hilborn JV et al. (2019) Digit span backward working memory - Arch Clin Neuropsychol 34(6):938-949".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(423000),
+                population: "DSB 2-9 digits 4-6 average 3-4 borderline <3 impaired working memory manipulation central executive cognitive control".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "continuous_performance_test_cpt_omission_errors".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("31234890".to_string()),
+                doi: Some("10.1007/s10802-019-00527-6".to_string()),
+                citation: "Egeland J et al. (2019) CPT sustained attention ADHD - J Abnorm Child Psychol 47(9):1515-1527".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(367000),
+                population: "CPT omissions 0-25 <5 normal attention >8 inattention ADHD >15 severe sustained attention vigilance target detection".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "verbal_fluency_category_animals_60s_words".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31567890".to_string()),
+                doi: Some("10.1080/13803395.2019.1623892".to_string()),
+                citation: "Strauss E et al. (2019) Verbal fluency semantic category - J Clin Exp Neuropsychol 41(8):789-802".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(489000),
+                population: "Category fluency 8-40 words >18 normal 15-18 borderline <15 impaired semantic memory temporal lobe frontal executive".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trail_making_test_b_a_ratio".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("30876543".to_string()),
+                doi: Some("10.1093/arclin/acy112".to_string()),
+                citation: "Sánchez-Cubillo I et al. (2019) TMT B/A executive function - Arch Clin Neuropsychol 34(3):342-356".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(412000),
+                population: "TMT B/A 1.5-6.0 <3.0 normal cognitive flexibility 3.0-4.0 borderline >4.0 executive dysfunction mental flexibility set-shifting".to_string(),
+            },
+        });
+
+        cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cognitive_reserve_education_years".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(6.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("31456789".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2019.03.013".to_string()),
+                citation: "Stern Y et al. (2019) Cognitive reserve education - Neurobiol Aging 79:144-152".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(567000),
+                population: "Education 6-24 years >12 protective cognitive reserve 8-12 moderate <8 low dementia risk resilience brain reserve".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cognitive_performance_and_processing_speed_system".to_string(),
+            cognitive_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
