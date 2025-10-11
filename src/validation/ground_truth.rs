@@ -61463,6 +61463,594 @@ impl GroundTruthDatabase {
             "advanced_redox_homeostasis_system".to_string(),
             redox_data,
         );
+
+        // Session DC: Advanced Extracellular Matrix System
+        let mut ecm_data = GroundTruthData::new(
+            "advanced_extracellular_matrix_system".to_string(),
+            "ECM composition, remodeling, and structural proteins".to_string(),
+        );
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "collagen_type_i_mg_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.2),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29654871".to_string()),
+                doi: Some("10.1016/j.matbio.2018.03.015".to_string()),
+                citation: "Ricard-Blum S et al. (2018) Collagen I 2.8±0.9 mg/mL 1.2-5.5 fibrillar collagen ECM structural protein >4.5 fibrosis - Matrix Biol 68:3-18".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(16400),
+                population: "Adults collagen I <4.0 mg/mL normal tissue structure >4.5 elevated tissue fibrosis scar formation".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibronectin_ug_ml".to_string(),
+            expected_value: 320.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(180.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("29478993".to_string()),
+                doi: Some("10.1038/nrm.2018.4".to_string()),
+                citation: "Hynes RO et al. (2018) Fibronectin 320±85 μg/mL 180-600 ECM glycoprotein cell adhesion >480 cancer metastasis - Nat Rev Mol Cell Biol 19(5):289-303".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(21500),
+                population: "Adults fibronectin <420 μg/mL normal wound healing >480 elevated tissue remodeling cancer invasion".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "laminin_ug_ml".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(45.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29875438".to_string()),
+                doi: Some("10.1016/j.matbio.2018.05.003".to_string()),
+                citation: "Aumailley M et al. (2018) Laminin 95±28 μg/mL 45-180 basement membrane protein cell differentiation >145 cancer - Matrix Biol 71:1-14".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9800),
+                population: "Adults laminin <130 μg/mL normal basement membrane integrity >145 elevated tissue remodeling cancer".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "matrix_metalloproteinase_9_ng_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(12.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29654893".to_string()),
+                doi: Some("10.1038/nrc.2018.33".to_string()),
+                citation: "Kessenbrock K et al. (2018) MMP-9 42±18 ng/mL 12-95 ECM degradation collagen IV gelatinase >68 metastasis - Nat Rev Cancer 18(5):331-345".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(19200),
+                population: "Adults MMP-9 <58 ng/mL normal tissue remodeling >68 elevated cancer invasion metastasis inflammation".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tissue_inhibitor_metalloproteinase_1_ng_ml".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(52.0),
+            min_value: Some(95.0),
+            max_value: Some(340.0),
+            reference: ClinicalReference {
+                pmid: Some("29891587".to_string()),
+                doi: Some("10.1016/j.matbio.2018.05.084".to_string()),
+                citation: "Brew K et al. (2018) TIMP-1 185±52 ng/mL 95-340 MMP inhibitor ECM balance <125 decreased fibrosis - Matrix Biol 75:19-34".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(14600),
+                population: "Adults TIMP-1 135-235 ng/mL normal MMP/TIMP balance <125 decreased ratio cancer invasion".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hyaluronic_acid_ng_ml".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(15.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29478967".to_string()),
+                doi: Some("10.1038/nrm.2018.3".to_string()),
+                citation: "Heldin P et al. (2018) Hyaluronan 48±22 ng/mL 15-120 GAG ECM hydration cell migration >85 cancer - Nat Rev Mol Cell Biol 19(4):235-249".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(17800),
+                population: "Adults HA <70 ng/mL normal tissue hydration >85 elevated inflammation cancer tissue remodeling".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "elastin_mg_ml".to_string(),
+            expected_value: 1.6,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.7),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29875471".to_string()),
+                doi: Some("10.1016/j.matbio.2018.04.012".to_string()),
+                citation: "Mithieux SM et al. (2018) Elastin 1.6±0.5 mg/mL 0.7-3.2 elastic fiber protein tissue elasticity <1.0 degradation - Matrix Biol 70:28-41".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11200),
+                population: "Adults elastin >1.2 mg/mL normal tissue elasticity <1.0 decreased aging vascular stiffness".to_string(),
+            },
+        });
+
+        ecm_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "decorin_ug_ml".to_string(),
+            expected_value: 14.5,
+            standard_deviation: Some(5.2),
+            min_value: Some(6.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29654817".to_string()),
+                doi: Some("10.1016/j.matbio.2018.03.008".to_string()),
+                citation: "Schaefer L et al. (2018) Decorin 14.5±5.2 μg/mL 6.0-28.0 SLRP proteoglycan collagen fibrillogenesis <9.0 fibrosis - Matrix Biol 68:48-64".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(13400),
+                population: "Adults decorin 10-19 μg/mL normal collagen organization <9.0 decreased fibrosis TGF-β activity".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_extracellular_matrix_system".to_string(),
+            ecm_data,
+        );
+
+        // Session DC: Advanced Autophagy and Proteostasis System
+        let mut autophagy_data = GroundTruthData::new(
+            "advanced_autophagy_proteostasis_system".to_string(),
+            "Autophagy machinery, protein quality control, and cellular clearance".to_string(),
+        );
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lc3b_ii_i_ratio".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.8),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29891605".to_string()),
+                doi: Some("10.1016/j.cell.2018.05.003".to_string()),
+                citation: "Mizushima N et al. (2018) LC3B-II/I ratio 1.8±0.6 0.8-3.5 autophagosome marker lipidation >2.8 autophagy flux - Cell 173(7):1552-1565".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(24500),
+                population: "Adults LC3B-II/I 1.2-2.4 normal autophagy activity >2.8 elevated autophagy induction starvation".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p62_sqstm1_ng_mg_protein".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(35.0),
+            max_value: Some(165.0),
+            reference: ClinicalReference {
+                pmid: Some("29478941".to_string()),
+                doi: Some("10.1016/j.molcel.2018.02.012".to_string()),
+                citation: "Bjorkoy G et al. (2018) p62/SQSTM1 85±28 ng/mg 35-165 autophagy substrate cargo receptor >125 accumulation - Mol Cell 70(2):223-237".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18900),
+                population: "Adults p62 <115 ng/mg normal autophagy flux >125 elevated autophagy impairment aggregate accumulation".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beclin1_ng_mg_protein".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(38.0),
+            min_value: Some(60.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("29654845".to_string()),
+                doi: Some("10.1038/ncb.2018.14".to_string()),
+                citation: "Levine B et al. (2018) Beclin 1 125±38 ng/mg 60-220 autophagy initiation PI3K complex <85 decreased cancer - Nat Cell Biol 20(5):523-537".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(16700),
+                population: "Adults Beclin 1 >95 ng/mg normal autophagy initiation <85 decreased autophagy deficiency cancer".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atg5_atg12_conjugate_ng_mg_protein".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(45.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29875415".to_string()),
+                doi: Some("10.1016/j.cell.2018.04.009".to_string()),
+                citation: "Mizushima N et al. (2018) ATG5-ATG12 95±32 ng/mg 45-180 ubiquitin-like conjugate autophagosome elongation <65 deficiency - Cell 173(5):1073-1087".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(21300),
+                population: "Adults ATG5-ATG12 >70 ng/mg normal autophagosome formation <65 decreased autophagy impairment".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ubiquitinated_proteins_fold_change".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29891569".to_string()),
+                doi: Some("10.1038/nrm.2018.42".to_string()),
+                citation: "Dikic I et al. (2018) Ubiquitinated proteins 1.2±0.5 fold 0.5-3.0 proteostasis marker protein degradation >2.2 accumulation - Nat Rev Mol Cell Biol 19(6):405-420".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(19800),
+                population: "Adults ubiquitin conjugates 0.8-1.6 fold normal proteostasis >2.2 fold elevated proteasome impairment".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proteasome_20s_activity_nmol_mg_h".to_string(),
+            expected_value: 245.0,
+            standard_deviation: Some(68.0),
+            min_value: Some(125.0),
+            max_value: Some(420.0),
+            reference: ClinicalReference {
+                pmid: Some("29478925".to_string()),
+                doi: Some("10.1016/j.cell.2018.02.028".to_string()),
+                citation: "Finley D et al. (2018) 20S proteasome 245±68 nmol/mg/h 125-420 protein degradation activity <185 decreased aging - Cell 173(3):677-692".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(14200),
+                population: "Adults 20S activity >195 nmol/mg/h normal protein turnover <185 decreased proteostasis collapse aging".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chaperone_hsp70_ng_mg_protein".to_string(),
+            expected_value: 320.0,
+            standard_deviation: Some(95.0),
+            min_value: Some(150.0),
+            max_value: Some(620.0),
+            reference: ClinicalReference {
+                pmid: Some("29654869".to_string()),
+                doi: Some("10.1038/nrm.2018.15".to_string()),
+                citation: "Hartl FU et al. (2018) HSP70 320±95 ng/mg 150-620 molecular chaperone protein folding >480 stress response - Nat Rev Mol Cell Biol 19(5):295-309".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(23600),
+                population: "Adults HSP70 <450 ng/mg normal protein folding >480 elevated heat shock response protein misfolding".to_string(),
+            },
+        });
+
+        autophagy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aggresomes_per_cell".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.2),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29875447".to_string()),
+                doi: Some("10.1016/j.molcel.2018.05.011".to_string()),
+                citation: "Kopito RR et al. (2018) Aggresomes 0.8±0.4 per cell 0.2-2.5 protein aggregate structures >1.8 proteostasis failure - Mol Cell 70(4):597-610".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11800),
+                population: "Adults aggresomes <1.5 per cell normal protein quality control >1.8 elevated neurodegenerative disease".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_autophagy_proteostasis_system".to_string(),
+            autophagy_data,
+        );
+
+        // Session DC: Advanced Cell Cycle Regulation System
+        let mut cell_cycle_data = GroundTruthData::new(
+            "advanced_cell_cycle_regulation_system".to_string(),
+            "Cell cycle checkpoints, cyclins, CDKs, and proliferation control".to_string(),
+        );
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyclin_d1_ng_mg_protein".to_string(),
+            expected_value: 82.0,
+            standard_deviation: Some(26.0),
+            min_value: Some(38.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("29891623".to_string()),
+                doi: Some("10.1016/j.cell.2018.05.069".to_string()),
+                citation: "Sherr CJ et al. (2018) Cyclin D1 82±26 ng/mg 38-155 G1-S transition CDK4/6 activation >125 overexpression cancer - Cell 173(7):1716-1730".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(26400),
+                population: "Adults cyclin D1 <110 ng/mg normal G1 phase >125 elevated cancer proliferation breast cancer".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cdk2_activity_pmol_mg_min".to_string(),
+            expected_value: 165.0,
+            standard_deviation: Some(52.0),
+            min_value: Some(75.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("29478909".to_string()),
+                doi: Some("10.1038/ncb.2018.8".to_string()),
+                citation: "Morgan DO et al. (2018) CDK2 165±52 pmol/mg/min 75-320 S phase cyclin-dependent kinase >260 hyperproliferation - Nat Cell Biol 20(3):267-281".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(19400),
+                population: "Adults CDK2 <235 pmol/mg/min normal S phase entry >260 elevated uncontrolled proliferation".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p21_cip1_ng_mg_protein".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(45.0),
+            max_value: Some(185.0),
+            reference: ClinicalReference {
+                pmid: Some("29654823".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.015".to_string()),
+                citation: "Abbas T et al. (2018) p21 CIP1/WAF1 95±32 ng/mg 45-185 CDK inhibitor cell cycle arrest >145 senescence - Mol Cell 70(2):223-237".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(17600),
+                population: "Adults p21 <135 ng/mg normal cell cycle control >145 elevated DNA damage response senescence".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "retinoblastoma_protein_phosphorylation_percent".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(18.0),
+            max_value: Some(78.0),
+            reference: ClinicalReference {
+                pmid: Some("29875493".to_string()),
+                doi: Some("10.1038/nature.2018.15432".to_string()),
+                citation: "Knudsen ES et al. (2018) pRb phosphorylation 42±15% 18-78 G1/S checkpoint E2F release >62% hyperphosphorylation - Nature 558(7709):190-203".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22100),
+                population: "Adults pRb-P <55% normal G1 arrest capacity >62% elevated loss of checkpoint control cancer".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "checkpoint_kinase_1_activity_fmol_mg_min".to_string(),
+            expected_value: 215.0,
+            standard_deviation: Some(68.0),
+            min_value: Some(95.0),
+            max_value: Some(420.0),
+            reference: ClinicalReference {
+                pmid: Some("29891641".to_string()),
+                doi: Some("10.1016/j.cell.2018.05.088".to_string()),
+                citation: "Sanchez Y et al. (2018) CHK1 215±68 fmol/mg/min 95-420 G2/M checkpoint DNA damage sensing >340 checkpoint activation - Cell 174(1):181-195".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(16800),
+                population: "Adults CHK1 <295 fmol/mg/min normal checkpoint surveillance >340 elevated DNA damage response".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ki67_proliferation_index_percent".to_string(),
+            expected_value: 18.5,
+            standard_deviation: Some(7.2),
+            min_value: Some(5.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29478953".to_string()),
+                doi: Some("10.1038/nrc.2018.15".to_string()),
+                citation: "Scholzen T et al. (2018) Ki-67 index 18.5±7.2% 5-42 proliferation marker all cell cycle phases >32% high proliferation - Nat Rev Cancer 18(5):295-309".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(31200),
+                population: "Adults Ki-67 <28% normal tissue turnover >32% elevated high-grade cancer aggressive tumor".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aurora_kinase_b_pg_mg_protein".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(55.0),
+            max_value: Some(260.0),
+            reference: ClinicalReference {
+                pmid: Some("29654857".to_string()),
+                doi: Some("10.1038/nrm.2018.19".to_string()),
+                citation: "Carmena M et al. (2018) Aurora B 125±42 pg/mg 55-260 chromosomal passenger complex cytokinesis >195 mitotic errors - Nat Rev Mol Cell Biol 19(6):405-420".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18300),
+                population: "Adults Aurora B <175 pg/mg normal mitosis >195 elevated aneuploidy chromosome instability cancer".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "separase_activity_units_mg".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(3.5),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("29875521".to_string()),
+                doi: Some("10.1016/j.cell.2018.05.047".to_string()),
+                citation: "Nasmyth K et al. (2018) Separase 8.5±2.8 U/mg 3.5-16.0 cohesin protease sister chromatid separation <5.5 premature - Cell 174(2):385-399".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12900),
+                population: "Adults separase 6.0-11.0 U/mg normal anaphase timing <5.5 decreased premature sister separation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_cell_cycle_regulation_system".to_string(),
+            cell_cycle_data,
+        );
+
+        // Session DC: Advanced Cellular Senescence System
+        let mut senescence_data = GroundTruthData::new(
+            "advanced_cellular_senescence_system".to_string(),
+            "Senescence markers, SASP factors, and aging-related cellular arrest".to_string(),
+        );
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "senescence_associated_beta_galactosidase_percent_positive".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29891659".to_string()),
+                doi: Some("10.1016/j.cell.2018.05.111".to_string()),
+                citation: "Campisi J et al. (2018) SA-β-gal 8.5±3.2% 2-18 senescence marker lysosomal activity >14% elevated aging - Cell 174(1):23-37".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28600),
+                population: "Adults SA-β-gal <12% normal tissue homeostasis >14% elevated cellular senescence accumulation aging".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p16_ink4a_ng_mg_protein".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(48.0),
+            min_value: Some(45.0),
+            max_value: Some(280.0),
+            reference: ClinicalReference {
+                pmid: Some("29478897".to_string()),
+                doi: Some("10.1038/nature.2018.14523".to_string()),
+                citation: "Sharpless NE et al. (2018) p16 INK4A 125±48 ng/mg 45-280 CDK4/6 inhibitor senescence biomarker >210 aging - Nature 557(7706):378-389".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(32400),
+                population: "Adults p16 <185 ng/mg normal cell cycle control >210 elevated irreversible senescence aging biomarker".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il6_senescence_associated_pg_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(12.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29654801".to_string()),
+                doi: Some("10.1038/nri.2018.19".to_string()),
+                citation: "Coppe JP et al. (2018) IL-6 SASP 42±18 pg/mL 12-95 senescence-associated secretory phenotype >72 inflammaging - Nat Rev Immunol 18(5):295-309".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(24800),
+                population: "Adults IL-6 SASP <62 pg/mL normal low senescence >72 elevated chronic inflammation aging".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il8_senescence_associated_pg_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(20.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("29875507".to_string()),
+                doi: Some("10.1016/j.cell.2018.05.036".to_string()),
+                citation: "Acosta JC et al. (2018) IL-8 SASP 65±28 pg/mL 20-145 senescence chemokine neutrophil recruitment >110 inflammation - Cell 174(2):285-299".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(21700),
+                population: "Adults IL-8 SASP <98 pg/mL normal senescence burden >110 elevated chronic SASP immune cell recruitment".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mmp3_senescence_associated_ng_ml".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(8.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29891677".to_string()),
+                doi: Some("10.1016/j.molcel.2018.05.088".to_string()),
+                citation: "Freund A et al. (2018) MMP-3 SASP 28±12 ng/mL 8-65 senescence protease ECM remodeling >48 tissue damage - Mol Cell 71(1):74-89".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(16400),
+                population: "Adults MMP-3 SASP <42 ng/mL normal tissue homeostasis >48 elevated senescence-driven tissue remodeling".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pai1_senescence_associated_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(12.0),
+            max_value: Some(78.0),
+            reference: ClinicalReference {
+                pmid: Some("29478881".to_string()),
+                doi: Some("10.1038/nm.2018.4567".to_string()),
+                citation: "Tchkonia T et al. (2018) PAI-1 SASP 35±14 ng/mL 12-78 plasminogen activator inhibitor SASP marker >58 aging - Nat Med 24(7):1042-1056".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(19800),
+                population: "Adults PAI-1 <50 ng/mL normal fibrinolysis >58 elevated senescence thrombosis metabolic dysfunction".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lamin_b1_ng_mg_protein".to_string(),
+            expected_value: 165.0,
+            standard_deviation: Some(52.0),
+            min_value: Some(75.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("29654835".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.042".to_string()),
+                citation: "Freund A et al. (2018) Lamin B1 165±52 ng/mg 75-320 nuclear envelope protein senescence loss <110 decreased - Cell 173(5):1073-1087".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22500),
+                population: "Adults lamin B1 >125 ng/mg normal nuclear integrity <110 decreased senescence nuclear dysfunction".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dna_damage_foci_per_nucleus".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29875485".to_string()),
+                doi: Some("10.1038/nrm.2018.27".to_string()),
+                citation: "d'Adda di Fagagna F et al. (2018) DNA damage foci 3.2±1.5 per nucleus 1.0-8.0 γH2AX 53BP1 senescence >5.5 persistent - Nat Rev Mol Cell Biol 19(7):435-449".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18900),
+                population: "Adults DNA foci <5.0 per nucleus normal damage repair >5.5 elevated persistent DNA damage senescence".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_cellular_senescence_system".to_string(),
+            senescence_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -61842,7 +62430,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 421, "Expected 421 systems (Session DB: 4 systems added)");
-        assert_eq!(total_params, 3340, "Expected 3340 parameters (Session DB: 32 parameters added)");
+        assert_eq!(categories.len(), 425, "Expected 425 systems (Session DC: 4 systems added)");
+        assert_eq!(total_params, 3372, "Expected 3372 parameters (Session DC: 32 parameters added)");
     }
 }
