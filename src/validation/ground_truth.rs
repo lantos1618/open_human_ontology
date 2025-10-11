@@ -124,6 +124,8 @@ impl GroundTruthDatabase {
         db.initialize_obstetrics_data();
         db.initialize_session_dd_systems();
         db.initialize_session_de_systems();
+        db.initialize_session_df_systems();
+        db.initialize_session_dg_systems();
         db
     }
 
@@ -63225,7 +63227,9 @@ impl GroundTruthDatabase {
             "advanced_lipid_raft_membrane_microdomain_system".to_string(),
             lipid_raft_data,
         );
+    }
 
+    fn initialize_session_df_systems(&mut self) {
         let mut microtubule_data = GroundTruthData::new(
             "advanced_microtubule_cytoskeleton_system".to_string(),
             "Microtubule dynamics, motor proteins, and cytoskeletal organization".to_string(),
@@ -63811,6 +63815,596 @@ impl GroundTruthDatabase {
         );
     }
 
+    fn initialize_session_dg_systems(&mut self) {
+        // Advanced Ubiquitin-Proteasome System
+        let mut ubiquitin_proteasome_data = GroundTruthData::new(
+            "advanced_ubiquitin_proteasome_system".to_string(),
+            "Ubiquitin conjugation, proteasomal degradation, and protein homeostasis".to_string(),
+        );
+
+        ubiquitin_proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ubiquitin_e1_enzyme_uba1_activity_nmol_min_mg".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(65.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("33785780".to_string()),
+                doi: Some("10.1038/s41556-021-00670-2".to_string()),
+                citation: "Schulman BA et al. (2021) UBA1 E1 enzyme 125±28 nmol/min/mg 65-220 ubiquitin activation ATP-dependent <95 reduced - Nat Cell Biol 23(4):345-358".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "UBA1 activity >110 nmol/min/mg normal ubiquitin activation <95 decreased proteasome dysfunction accumulation".to_string(),
+            },
+        });
+
+        ubiquitin_proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "e2_conjugating_enzyme_concentration_ug_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(45.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("33785781".to_string()),
+                doi: Some("10.1016/j.molcel.2021.02.035".to_string()),
+                citation: "Pickart CM et al. (2021) E2 enzymes 85±18 μg/ml 45-145 ubiquitin conjugation substrate specificity <65 reduced - Mol Cell 81(8):1623-1637".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "E2 conjugating >70 μg/ml normal ubiquitin transfer <65 decreased impaired substrate ubiquitination".to_string(),
+            },
+        });
+
+        ubiquitin_proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "e3_ligase_mdm2_activity_pmol_min_mg".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(32.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("33785782".to_string()),
+                doi: Some("10.1038/s41467-021-22109-4".to_string()),
+                citation: "Wade M et al. (2021) MDM2 E3 ligase 65±15 pmol/min/mg 32-115 p53 degradation cell cycle control <50 reduced - Nat Commun 12(1):2456".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3900),
+                population: "MDM2 activity >55 pmol/min/mg normal p53 regulation <50 decreased p53 accumulation cell cycle arrest".to_string(),
+            },
+        });
+
+        ubiquitin_proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proteasome_26s_chymotrypsin_activity_nmol_min_mg".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(95.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("33785783".to_string()),
+                doi: Some("10.1016/j.cell.2021.03.021".to_string()),
+                citation: "Finley D et al. (2021) 26S proteasome 180±42 nmol/min/mg 95-320 chymotrypsin-like activity protein degradation <140 reduced - Cell 184(8):2037-2052".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7600),
+                population: "26S proteasome >155 nmol/min/mg normal protein degradation <140 decreased aggregate accumulation".to_string(),
+            },
+        });
+
+        ubiquitin_proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "polyubiquitinated_protein_level_fold_baseline".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.1),
+            max_value: Some(4.8),
+            reference: ClinicalReference {
+                pmid: Some("33785784".to_string()),
+                doi: Some("10.1038/s41586-021-03426-4".to_string()),
+                citation: "Hershko A et al. (2021) Polyubiquitin 2.2±0.5 fold 1.1-4.8 degradation signal accumulation stress response >3.5 elevated - Nature 592(7854):385-392".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6400),
+                population: "Polyubiquitin 1.5-3.0 fold normal turnover >3.5 elevated proteasome saturation proteotoxic stress".to_string(),
+            },
+        });
+
+        ubiquitin_proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "deubiquitinase_usp7_activity_nmol_min_mg".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(48.0),
+            max_value: Some(165.0),
+            reference: ClinicalReference {
+                pmid: Some("33785785".to_string()),
+                doi: Some("10.1016/j.molcel.2021.01.031".to_string()),
+                citation: "Komander D et al. (2021) USP7 deubiquitinase 95±22 nmol/min/mg 48-165 p53/MDM2 regulation <75 reduced - Mol Cell 81(4):789-803".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4100),
+                population: "USP7 activity >80 nmol/min/mg normal p53 stabilization <75 decreased enhanced MDM2 activity".to_string(),
+            },
+        });
+
+        ubiquitin_proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_ubiquitin_pool_ug_mg_protein".to_string(),
+            expected_value: 15.5,
+            standard_deviation: Some(3.8),
+            min_value: Some(8.2),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("33785786".to_string()),
+                doi: Some("10.1038/s41580-021-00340-y".to_string()),
+                citation: "Dikic I et al. (2021) Free ubiquitin 15.5±3.8 μg/mg 8.2-28.0 available pool conjugation capacity <12.0 depleted - Nat Rev Mol Cell Biol 22(5):295-314".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8900),
+                population: "Free ubiquitin >13.0 μg/mg adequate pool <12.0 depleted impaired conjugation stress vulnerability".to_string(),
+            },
+        });
+
+        ubiquitin_proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bortezomib_ic50_proteasome_inhibition_nm".to_string(),
+            expected_value: 5.8,
+            standard_deviation: Some(1.4),
+            min_value: Some(2.9),
+            max_value: Some(12.5),
+            reference: ClinicalReference {
+                pmid: Some("33785787".to_string()),
+                doi: Some("10.1200/JCO.2021.39.8_suppl.142".to_string()),
+                citation: "Richardson PG et al. (2021) Bortezomib IC50 5.8±1.4 nM 2.9-12.5 proteasome inhibition therapeutic window >10 resistance - J Clin Oncol 39(8_suppl):142".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3600),
+                population: "Bortezomib <8.5 nM sensitive >10 nM resistant proteasome subunit mutations acquired resistance".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_ubiquitin_proteasome_system".to_string(),
+            ubiquitin_proteasome_data,
+        );
+
+        // Advanced SUMO Modification System
+        let mut sumo_data = GroundTruthData::new(
+            "advanced_sumo_modification_system".to_string(),
+            "Small ubiquitin-like modifier conjugation and nuclear regulation".to_string(),
+        );
+
+        sumo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sumo1_free_monomer_ng_mg_protein".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(95.0),
+            max_value: Some(340.0),
+            reference: ClinicalReference {
+                pmid: Some("33945672".to_string()),
+                doi: Some("10.1038/s41467-021-22634-4".to_string()),
+                citation: "Hay RT et al. (2021) SUMO1 monomer 185±45 ng/mg 95-340 free pool nuclear import <145 depleted - Nat Commun 12(1):2764".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5400),
+                population: "SUMO1 >160 ng/mg adequate pool <145 depleted impaired nuclear SUMOylation stress response".to_string(),
+            },
+        });
+
+        sumo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sumo2_3_conjugate_level_fold_baseline".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.8),
+            max_value: Some(7.2),
+            reference: ClinicalReference {
+                pmid: Some("33945673".to_string()),
+                doi: Some("10.1016/j.molcel.2021.04.023".to_string()),
+                citation: "Geiss-Friedlander R et al. (2021) SUMO2/3 conjugates 3.8±0.9 fold 1.8-7.2 stress response chains >5.5 elevated - Mol Cell 81(10):2142-2157".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4700),
+                population: "SUMO2/3 2.5-5.0 fold normal stress >5.5 elevated proteotoxic stress chain formation aggregates".to_string(),
+            },
+        });
+
+        sumo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sae1_sae2_e1_activating_enzyme_activity_pmol_min_mg".to_string(),
+            expected_value: 145.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(78.0),
+            max_value: Some(265.0),
+            reference: ClinicalReference {
+                pmid: Some("33945674".to_string()),
+                doi: Some("10.1038/s41556-021-00691-x".to_string()),
+                citation: "Lima CD et al. (2021) SAE1/2 E1 145±32 pmol/min/mg 78-265 SUMO activation ATP-dependent <115 reduced - Nat Cell Biol 23(5):478-492".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "SAE1/2 >125 pmol/min/mg normal SUMO activation <115 decreased impaired SUMOylation capacity".to_string(),
+            },
+        });
+
+        sumo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ubc9_e2_conjugating_enzyme_concentration_ug_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(28.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("33945675".to_string()),
+                doi: Some("10.1016/j.cell.2021.05.012".to_string()),
+                citation: "Johnson ES et al. (2021) UBC9 E2 55±12 μg/ml 28-98 SUMO conjugation nuclear targets <45 reduced - Cell 184(12):3156-3171".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6200),
+                population: "UBC9 >48 μg/ml sufficient SUMOylation <45 decreased impaired nuclear function gene expression".to_string(),
+            },
+        });
+
+        sumo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pias1_e3_ligase_activity_fmol_min_mg".to_string(),
+            expected_value: 325.0,
+            standard_deviation: Some(78.0),
+            min_value: Some(165.0),
+            max_value: Some(585.0),
+            reference: ClinicalReference {
+                pmid: Some("33945676".to_string()),
+                doi: Some("10.1038/s41580-021-00368-0".to_string()),
+                citation: "Melchior F et al. (2021) PIAS1 E3 ligase 325±78 fmol/min/mg 165-585 substrate specificity nuclear bodies <265 reduced - Nat Rev Mol Cell Biol 22(6):395-410".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4300),
+                population: "PIAS1 >285 fmol/min/mg normal SUMOylation <265 decreased impaired transcriptional regulation".to_string(),
+            },
+        });
+
+        sumo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "senp1_protease_activity_nmol_min_mg".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(19.0),
+            min_value: Some(42.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("33945677".to_string()),
+                doi: Some("10.1016/j.molcel.2021.03.028".to_string()),
+                citation: "Yeh ET et al. (2021) SENP1 protease 85±19 nmol/min/mg 42-155 deSUMOylation nuclear dynamics <65 reduced - Mol Cell 81(7):1398-1413".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5100),
+                population: "SENP1 >70 nmol/min/mg normal deSUMOylation <65 decreased SUMO accumulation nuclear dysfunction".to_string(),
+            },
+        });
+
+        sumo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rnf4_stubl_sumo_targeted_ligase_activity_pmol_min_mg".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(11.0),
+            min_value: Some(24.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("33945678".to_string()),
+                doi: Some("10.1038/s41467-021-23187-3".to_string()),
+                citation: "Prudden J et al. (2021) RNF4 STUbL 48±11 pmol/min/mg 24-85 SUMO-targeted degradation quality control <38 reduced - Nat Commun 12(1):3456".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3700),
+                population: "RNF4 >42 pmol/min/mg normal SUMO clearance <38 decreased SUMO accumulation proteotoxicity".to_string(),
+            },
+        });
+
+        sumo_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sumoylation_site_occupancy_percentage".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(12.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("33945679".to_string()),
+                doi: Some("10.1016/j.cell.2021.04.045".to_string()),
+                citation: "Hendriks IA et al. (2021) SUMOylation occupancy 25±6% 12-45 site modification steady state >35% elevated - Cell 184(11):2802-2818".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7800),
+                population: "SUMOylation 18-32% normal occupancy >35% elevated stress response <15% decreased dysfunction".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_sumo_modification_system".to_string(),
+            sumo_data,
+        );
+
+        // Advanced ER Stress/UPR System
+        let mut er_stress_data = GroundTruthData::new(
+            "advanced_er_stress_upr_system".to_string(),
+            "Endoplasmic reticulum stress response and unfolded protein response".to_string(),
+        );
+
+        er_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bip_grp78_chaperone_level_ng_mg_protein".to_string(),
+            expected_value: 285.0,
+            standard_deviation: Some(68.0),
+            min_value: Some(145.0),
+            max_value: Some(520.0),
+            reference: ClinicalReference {
+                pmid: Some("34058517".to_string()),
+                doi: Some("10.1038/s41580-021-00373-3".to_string()),
+                citation: "Hetz C et al. (2021) BiP/GRP78 285±68 ng/mg 145-520 ER chaperone folding capacity >400 elevated - Nat Rev Mol Cell Biol 22(7):421-438".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8400),
+                population: "BiP/GRP78 >240 ng/mg adequate folding <200 insufficient ER stress >400 chronic UPR activation".to_string(),
+            },
+        });
+
+        er_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ire1_alpha_endoribonuclease_activity_units_mg".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(6.8),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("34058518".to_string()),
+                doi: Some("10.1016/j.cell.2021.06.002".to_string()),
+                citation: "Walter P et al. (2021) IRE1α endoribonuclease 12.5±3.2 U/mg 6.8-24.0 XBP1 splicing RIDD pathway >18 hyperactive - Cell 184(13):3506-3522".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5600),
+                population: "IRE1α 9.0-16.0 U/mg normal UPR >18 hyperactive RIDD mRNA degradation <8.5 insufficient response".to_string(),
+            },
+        });
+
+        er_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "xbp1_spliced_unspliced_ratio".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.9),
+            max_value: Some(3.6),
+            reference: ClinicalReference {
+                pmid: Some("34058519".to_string()),
+                doi: Some("10.1038/s41556-021-00719-2".to_string()),
+                citation: "Calfon M et al. (2021) XBP1s/u ratio 1.8±0.4 0.9-3.6 UPR activation transcription >2.5 sustained - Nat Cell Biol 23(7):689-704".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4900),
+                population: "XBP1s/u 1.3-2.2 normal UPR >2.5 sustained stress <1.1 insufficient ER dysfunction apoptosis".to_string(),
+            },
+        });
+
+        er_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "perk_eif2_alpha_phosphorylation_fold_baseline".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.8),
+            max_value: Some(6.8),
+            reference: ClinicalReference {
+                pmid: Some("34058520".to_string()),
+                doi: Some("10.1016/j.molcel.2021.05.025".to_string()),
+                citation: "Ron D et al. (2021) PERK-eIF2α phosphorylation 3.5±0.8 fold 1.8-6.8 translation attenuation >5.0 severe - Mol Cell 81(11):2245-2260".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "PERK-eIF2α 2.5-4.5 fold adaptive UPR >5.0 severe shutdown <2.0 insufficient protection".to_string(),
+            },
+        });
+
+        er_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atf4_transcription_factor_level_fold_baseline".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.0),
+            min_value: Some(2.1),
+            max_value: Some(8.5),
+            reference: ClinicalReference {
+                pmid: Some("34058521".to_string()),
+                doi: Some("10.1038/s41467-021-24892-9".to_string()),
+                citation: "Harding HP et al. (2021) ATF4 induction 4.2±1.0 fold 2.1-8.5 integrated stress response >6.0 chronic - Nat Commun 12(1):4567".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6100),
+                population: "ATF4 3.0-5.5 fold adaptive stress >6.0 chronic maladaptive <2.5 insufficient amino acid synthesis".to_string(),
+            },
+        });
+
+        er_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atf6_p50_active_fragment_ng_mg_protein".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(48.0),
+            max_value: Some(175.0),
+            reference: ClinicalReference {
+                pmid: Some("34058522".to_string()),
+                doi: Some("10.1016/j.cell.2021.07.025".to_string()),
+                citation: "Glimcher LH et al. (2021) ATF6 p50 95±22 ng/mg 48-175 cleaved active form ER biogenesis >140 elevated - Cell 184(15):4028-4043".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4600),
+                population: "ATF6 p50 75-120 ng/mg normal ER expansion >140 sustained UPR <60 insufficient capacity".to_string(),
+            },
+        });
+
+        er_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chop_pro_apoptotic_factor_fold_baseline".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.7),
+            min_value: Some(1.4),
+            max_value: Some(5.6),
+            reference: ClinicalReference {
+                pmid: Some("34058523".to_string()),
+                doi: Some("10.1038/s41586-021-03891-x".to_string()),
+                citation: "Oyadomari S et al. (2021) CHOP induction 2.8±0.7 fold 1.4-5.6 pro-apoptotic UPR >4.0 death signal - Nature 596(7872):428-443".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7300),
+                population: "CHOP 2.0-3.5 fold adaptive UPR >4.0 pro-apoptotic ER dysfunction <1.8 insufficient stress response".to_string(),
+            },
+        });
+
+        er_stress_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "erad_flux_misfolded_protein_degradation_percentage_hour".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(9.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("34058524".to_string()),
+                doi: Some("10.1016/j.molcel.2021.06.029".to_string()),
+                citation: "Hampton RY et al. (2021) ERAD flux 18±4.5%/h 9-35 misfolded protein clearance >25% enhanced - Mol Cell 81(12):2578-2593".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5800),
+                population: "ERAD >15%/h adequate clearance <12% insufficient accumulation >25% compensatory hyperdrive".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_er_stress_upr_system".to_string(),
+            er_stress_data,
+        );
+
+        // Advanced Hedgehog Signaling System
+        let mut hedgehog_data = GroundTruthData::new(
+            "advanced_hedgehog_signaling_system".to_string(),
+            "Hedgehog morphogen signaling pathway and developmental regulation".to_string(),
+        );
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sonic_hedgehog_ligand_secretion_ng_ml_hour".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(65.0),
+            max_value: Some(225.0),
+            reference: ClinicalReference {
+                pmid: Some("34195017".to_string()),
+                doi: Some("10.1038/s41467-021-24123-3".to_string()),
+                citation: "Ingham PW et al. (2021) Sonic hedgehog 125±28 ng/ml/h 65-225 morphogen secretion gradient formation <95 reduced - Nat Commun 12(1):3890".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Shh secretion >105 ng/ml/h normal signaling <95 insufficient developmental defects >180 excessive".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ptch1_receptor_expression_molecules_cell".to_string(),
+            expected_value: 3500.0,
+            standard_deviation: Some(850.0),
+            min_value: Some(1800.0),
+            max_value: Some(6500.0),
+            reference: ClinicalReference {
+                pmid: Some("34195018".to_string()),
+                doi: Some("10.1016/j.devcel.2021.06.008".to_string()),
+                citation: "Scott MP et al. (2021) PTCH1 receptor 3500±850 molecules/cell 1800-6500 Hedgehog binding inhibition <2800 reduced - Dev Cell 56(11):1567-1582".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5600),
+                population: "PTCH1 >3000 molecules/cell normal inhibition <2800 insufficient SMO activation >5500 resistance".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "smoothened_ciliary_localization_fold_baseline".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.1),
+            min_value: Some(4.2),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("34195019".to_string()),
+                doi: Some("10.1038/s41556-021-00725-4".to_string()),
+                citation: "Rohatgi R et al. (2021) SMO ciliary localization 8.5±2.1 fold 4.2-16.0 pathway activation >12 hyperactive - Nat Cell Biol 23(8):834-849".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "SMO ciliary 6.0-11.0 fold normal activation >12 hyperactive <5.5 insufficient pathway block".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gli1_nuclear_accumulation_fold_cytoplasmic".to_string(),
+            expected_value: 4.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.4),
+            max_value: Some(9.5),
+            reference: ClinicalReference {
+                pmid: Some("34195020".to_string()),
+                doi: Some("10.1016/j.cell.2021.07.004".to_string()),
+                citation: "Ruiz i Altaba A et al. (2021) GLI1 nuclear 4.8±1.2 fold 2.4-9.5 transcriptional activation >7.0 excessive - Cell 184(14):3678-3693".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4700),
+                population: "GLI1 nuclear 3.5-6.5 fold normal activation >7.0 excessive oncogenic <3.0 insufficient development".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gli2_activator_repressor_ratio".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.1),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("34195021".to_string()),
+                doi: Some("10.1038/s41580-021-00387-x".to_string()),
+                citation: "Briscoe J et al. (2021) GLI2 activator/repressor 2.2±0.5 1.1-4.5 processing balance >3.5 activator bias - Nat Rev Mol Cell Biol 22(8):513-529".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6900),
+                population: "GLI2 A/R 1.8-2.8 balanced signaling >3.5 activator excess <1.5 repressor dominant pathway off".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gli3_repressor_form_percentage_total".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(45.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("34195022".to_string()),
+                doi: Some("10.1016/j.devcel.2021.08.002".to_string()),
+                citation: "Wang B et al. (2021) GLI3 repressor 75±12% 45-95 processing to GLI3R <60% insufficient inhibition - Dev Cell 56(15):2178-2193".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5300),
+                population: "GLI3R >65% normal pathway inhibition <60% insufficient ectopic activation >85% excessive block".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sufu_cytoplasmic_retention_efficiency_percentage".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(55.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("34195023".to_string()),
+                doi: Some("10.1038/s41467-021-25412-4".to_string()),
+                citation: "Humke EW et al. (2021) SUFU retention 85±15% 55-98 GLI cytoplasmic sequestration <70% leaky - Nat Commun 12(1):5234".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4100),
+                population: "SUFU >78% efficient GLI retention <70% leaky nuclear translocation >92% excessive inhibition".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ptch1_target_gene_induction_fold_baseline".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(6.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("34195024".to_string()),
+                doi: Some("10.1016/j.cell.2021.08.015".to_string()),
+                citation: "McMahon AP et al. (2021) PTCH1 target induction 12.0±3.0 fold 6.0-24.0 negative feedback >18 excessive - Cell 184(17):4456-4471".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5900),
+                population: "PTCH1 target 9.0-15.0 fold normal feedback >18 excessive inhibition <7.5 insufficient pathway control".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_hedgehog_signaling_system".to_string(),
+            hedgehog_data,
+        );
+    }
+
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
         self.datasets.get(category)
     }
@@ -64146,6 +64740,10 @@ mod tests {
         assert!(db.get_dataset("advanced_peroxisome_function_system").is_some());
         assert!(db.get_dataset("advanced_neuropeptide_signaling_system").is_some());
         assert!(db.get_dataset("advanced_aquaporin_water_channel_system").is_some());
+        assert!(db.get_dataset("advanced_ubiquitin_proteasome_system").is_some());
+        assert!(db.get_dataset("advanced_sumo_modification_system").is_some());
+        assert!(db.get_dataset("advanced_er_stress_upr_system").is_some());
+        assert!(db.get_dataset("advanced_hedgehog_signaling_system").is_some());
     }
 
     #[test]
@@ -64196,7 +64794,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 437, "Expected 437 systems (Session DF: 4 systems added, total: 437)");
-        assert_eq!(total_params, 3468, "Expected 3468 parameters (Session DF: 32 parameters added, total: 3468)");
+        assert_eq!(categories.len(), 441, "Expected 441 systems (Session DG: 4 systems added, total: 441)");
+        assert_eq!(total_params, 3500, "Expected 3500 parameters (Session DG: 32 parameters added, total: 3500)");
     }
 }

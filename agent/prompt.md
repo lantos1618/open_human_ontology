@@ -12,6 +12,24 @@ push changes as you go to remote
 
 ---
 
+## Session DG (2025-10-11)
+
+**Status:** ✅ Complete
+
+**Systems Added:** 4 new advanced post-translational modification and signaling systems with 32 parameters
+
+**Database Stats:** 441 systems, 3500 parameters total
+
+**New Systems:**
+1. **Advanced Ubiquitin-Proteasome System** - Ubiquitin-proteasome system for targeted protein degradation and quality control (UBA1 E1 enzyme, E2 conjugating enzymes, MDM2 E3 ligase, 26S proteasome chymotrypsin activity, polyubiquitinated proteins, USP7 deubiquitinase, free ubiquitin pool, bortezomib IC50)
+2. **Advanced SUMO Modification System** - Small ubiquitin-like modifier post-translational modification system (SUMO1 free monomer, SUMO2/3 conjugates, SAE1/SAE2 E1 enzyme, UBC9 E2, PIAS1 E3 ligase, SENP1 protease, RNF4 STUbL, SUMOylation site occupancy)
+3. **Advanced ER Stress/UPR System** - ER stress response, unfolded protein response, and ER-associated degradation (BiP/GRP78, IRE1α endoribonuclease, XBP1 spliced/unspliced ratio, PERK-eIF2α phosphorylation, ATF4, ATF6 p50, CHOP, ERAD flux)
+4. **Advanced Hedgehog Signaling System** - Hedgehog morphogen signaling pathway regulating development and tissue homeostasis (Sonic hedgehog secretion, PTCH1 receptor, Smoothened ciliary localization, GLI1 nuclear accumulation, GLI2 activator/repressor ratio, GLI3 repressor, SUFU cytoplasmic retention, PTCH1 target gene induction)
+
+**Commit:** Pending push
+
+---
+
 ## Session DF (2025-10-11)
 
 **Status:** ✅ Complete
