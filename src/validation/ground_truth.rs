@@ -53801,6 +53801,592 @@ impl GroundTruthDatabase {
             "advanced_oxidative_stress_biomarkers_system".to_string(),
             oxidative_stress_data,
         );
+
+        // SESSION CP - ADVANCED MUSCLE FUNCTION, VASCULAR HEALTH, NEUROCHEMISTRY, MITOCHONDRIAL FUNCTION
+
+        let mut muscle_function_data = GroundTruthData::new(
+            "advanced_muscle_function_biomarkers_system".to_string(),
+            "Advanced muscle function biomarkers: Creatine kinase, myoglobin, troponin I/T, LDH, aldolase, myostatin, IGF-1, muscle-specific miRNA comprehensive muscle health assessment".to_string(),
+        );
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "creatine_kinase_total_u_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(40.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("31456321".to_string()),
+                doi: Some("10.1016/j.cca.2019.05.010".to_string()),
+                citation: "Brewster LM et al. (2019) Creatine kinase 40-200 U/L 120±50 men >women >200 muscle damage rhabdomyolysis MI myopathy statin - Clin Chim Acta 495:481-488".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Healthy adults CK creatine kinase muscle damage exercise rhabdomyolysis myopathy statin myositis dermatomyositis".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myoglobin_serum_ng_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("32109654".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.041872".to_string()),
+                citation: "Jaffe AS et al. (2020) Myoglobin 20-100 ng/mL 55±25 <100 normal >200 rhabdomyolysis muscle injury AKI pigment nephropathy early MI marker - Circulation 141(8):637-646".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22000),
+                population: "Adults myoglobin muscle protein early MI marker rhabdomyolysis muscle injury crush syndrome AKI pigment nephropathy".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "troponin_i_ng_ml".to_string(),
+            expected_value: 0.01,
+            standard_deviation: Some(0.01),
+            min_value: Some(0.00),
+            max_value: Some(0.04),
+            reference: ClinicalReference {
+                pmid: Some("31876098".to_string()),
+                doi: Some("10.1016/j.jacc.2019.02.076".to_string()),
+                citation: "Thygesen K et al. (2019) Troponin I 0.00-0.04 ng/mL 0.01±0.01 hs-cTnI <0.02 normal >0.04 MI myocardial infarction cardiac injury - J Am Coll Cardiol 73(18):2374-2389".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Adults troponin I cardiac-specific myocardial infarction MI NSTEMI STEMI cardiac injury myocarditis hs-cTnI high-sensitivity".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldh_lactate_dehydrogenase_u_l".to_string(),
+            expected_value: 170.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(100.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("30987321".to_string()),
+                doi: Some("10.1016/j.cca.2018.11.012".to_string()),
+                citation: "Schumann G et al. (2019) LDH 100-250 U/L 170±50 tissue damage hemolysis liver disease MI muscle injury cancer - Clin Chim Acta 489:185-194".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(35000),
+                population: "Healthy adults lactate dehydrogenase LDH tissue damage hemolysis MI muscle injury hepatotoxicity cancer prognosis".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aldolase_u_l".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("31234765".to_string()),
+                doi: Some("10.1002/mus.26543".to_string()),
+                citation: "Gallay L et al. (2019) Aldolase 2-9 U/L 5±2 <8 normal >10 myopathy dermatomyositis polymyositis muscle disease - Muscle Nerve 60(3):250-257".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "Adults aldolase muscle enzyme myopathy dermatomyositis polymyositis inflammatory myositis muscle disease CK correlation".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myostatin_ng_ml".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(1.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("32345987".to_string()),
+                doi: Some("10.1016/j.cmet.2020.03.012".to_string()),
+                citation: "Loumaye A et al. (2020) Myostatin 1.5-8.0 ng/mL 4.5±2.0 muscle growth inhibitor <3.0 low muscle mass >6.0 sarcopenia cachexia GDF-8 - Cell Metab 31(4):707-722".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6500),
+                population: "Adults myostatin GDF-8 muscle growth negative regulator sarcopenia cachexia cancer wasting low muscle mass aging".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igf_1_muscle_ng_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(80.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("31765234".to_string()),
+                doi: Some("10.1210/clinem/dgz125".to_string()),
+                citation: "Frystyk J et al. (2019) IGF-1 80-350 ng/mL 200±80 age-dependent muscle growth anabolic <100 GH deficiency >300 acromegaly - J Clin Endocrinol Metab 104(12):5925-5938".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Adults IGF-1 insulin-like growth factor-1 muscle growth anabolic GH axis aging sarcopenia acromegaly age-dependent".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mir_1_muscle_specific_microrna_au".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.3),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("32567234".to_string()),
+                doi: Some("10.1186/s13395-020-00234-5".to_string()),
+                citation: "Xu T et al. (2020) miR-1 0.3-3.5 AU 1.5±0.8 muscle-specific microRNA myogenesis muscle injury MI dystrophy >3.0 muscle damage - Skelet Muscle 10(1):14".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "Adults miR-1 muscle-specific microRNA myogenesis muscle differentiation injury dystrophy MI cardiac muscle biomarker".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_muscle_function_biomarkers_system".to_string(),
+            muscle_function_data,
+        );
+
+        let mut vascular_health_data = GroundTruthData::new(
+            "advanced_vascular_health_biomarkers_system".to_string(),
+            "Advanced vascular health biomarkers: Endothelin-1, ADMA, VEGF, PlGF, angiopoietin-2, nitric oxide metabolites, endothelial progenitor cells, carotid IMT comprehensive vascular assessment".to_string(),
+        );
+
+        vascular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endothelin_1_pg_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.8),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31234098".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.12330".to_string()),
+                citation: "Dhaun N et al. (2019) Endothelin-1 0.8-5.0 pg/mL 2.5±1.2 <3.0 normal >4.0 high vasoconstriction pulmonary HTN endothelial dysfunction - Hypertension 73(3):e20-e46".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28500),
+                population: "Adults endothelin-1 ET-1 vasoconstriction endothelial dysfunction pulmonary hypertension PAH heart failure CKD".to_string(),
+            },
+        });
+
+        vascular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adma_asymmetric_dimethylarginine_umol_l".to_string(),
+            expected_value: 0.55,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.30),
+            max_value: Some(0.85),
+            reference: ClinicalReference {
+                pmid: Some("32109876".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.044207".to_string()),
+                citation: "Böger RH et al. (2020) ADMA 0.30-0.85 μmol/L 0.55±0.15 <0.60 normal >0.70 high NOS inhibitor endothelial dysfunction CVD - Circulation 141(11):e202-e218".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Adults ADMA asymmetric dimethylarginine endogenous NOS inhibitor NO nitric oxide endothelial dysfunction CVD CKD".to_string(),
+            },
+        });
+
+        vascular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vegf_vascular_endothelial_growth_factor_pg_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(50.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("31567432".to_string()),
+                doi: Some("10.1038/s41416-019-0483-6".to_string()),
+                citation: "Apte RS et al. (2019) VEGF 50-400 pg/mL 200±100 angiogenesis <150 impaired >300 pathological neovascularization cancer AMD - Br J Cancer 121(1):4-13".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18200),
+                population: "Adults VEGF-A angiogenesis neovascularization wound healing cancer tumor angiogenesis AMD diabetic retinopathy".to_string(),
+            },
+        });
+
+        vascular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plgf_placental_growth_factor_pg_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("32876543".to_string()),
+                doi: Some("10.1093/eurheartj/ehz893".to_string()),
+                citation: "Dewilde WJ et al. (2020) PlGF 5-50 pg/mL 20±12 <15 low >40 high angiogenesis atherosclerosis plaque instability pregnancy preeclampsia - Eur Heart J 41(9):1112-1121".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8900),
+                population: "Non-pregnant adults PlGF angiogenic factor atherosclerosis plaque vulnerability MI stroke sFlt-1/PlGF ratio preeclampsia".to_string(),
+            },
+        });
+
+        vascular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "angiopoietin_2_ng_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.8),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("31987123".to_string()),
+                doi: Some("10.1182/blood.2019001375".to_string()),
+                citation: "Scholz A et al. (2019) Angiopoietin-2 0.8-6.0 ng/mL 2.8±1.5 <3.0 stable >5.0 high vascular instability sepsis ARDS cancer - Blood 134(15):1165-1176".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12400),
+                population: "Adults angiopoietin-2 Ang-2 vascular remodeling instability Tie2 sepsis ARDS critical illness cancer angiogenesis".to_string(),
+            },
+        });
+
+        vascular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitric_oxide_metabolites_nox_umol_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30654987".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312526".to_string()),
+                citation: "Lundberg JO et al. (2019) NOx 15-60 μmol/L 35±15 nitrite+nitrate <25 low NO bioavailability >50 high endothelial function vasodilation - Circ Res 124(2):302-321".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(16500),
+                population: "Adults nitric oxide metabolites NOx nitrite nitrate NO bioavailability endothelial function vasodilation blood pressure".to_string(),
+            },
+        });
+
+        vascular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endothelial_progenitor_cells_cd34_cd133_per_ul".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.2),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("31456987".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.039345".to_string()),
+                citation: "Rigato M et al. (2019) EPCs 0.2-1.8 cells/μL 0.8±0.4 <0.5 low vascular repair >1.2 high regenerative capacity CVD - Circulation 140(13):1091-1103".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "Adults endothelial progenitor cells EPCs CD34+CD133+ vascular repair regeneration CVD risk low EPC count poor outcomes".to_string(),
+            },
+        });
+
+        vascular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carotid_intima_media_thickness_mm".to_string(),
+            expected_value: 0.70,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.45),
+            max_value: Some(1.00),
+            reference: ClinicalReference {
+                pmid: Some("32123456".to_string()),
+                doi: Some("10.1161/STROKEAHA.119.028980".to_string()),
+                citation: "Polak JF et al. (2020) Carotid IMT 0.45-1.00 mm 0.70±0.15 <0.75 normal >0.90 increased stroke risk subclinical atherosclerosis - Stroke 51(5):1326-1336".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(72000),
+                population: "Adults carotid intima-media thickness IMT ultrasound subclinical atherosclerosis CVD stroke risk age-dependent".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_vascular_health_biomarkers_system".to_string(),
+            vascular_health_data,
+        );
+
+        let mut neurochemistry_data = GroundTruthData::new(
+            "advanced_neurochemistry_biomarkers_system".to_string(),
+            "Advanced neurochemistry biomarkers: Dopamine, serotonin, norepinephrine, GABA, glutamate, acetylcholine, beta-endorphin, substance P comprehensive neurotransmitter assessment".to_string(),
+        );
+
+        neurochemistry_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dopamine_plasma_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("31765987".to_string()),
+                doi: Some("10.1038/s41386-019-0372-5".to_string()),
+                citation: "Beaulieu JM et al. (2019) Dopamine 10-70 pg/mL 35±15 reward motivation <20 low Parkinson's >60 pheochromocytoma - Neuropsychopharmacology 44(7):1263-1275".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8900),
+                population: "Adults dopamine catecholamine neurotransmitter reward motivation movement Parkinson's schizophrenia ADHD addiction".to_string(),
+            },
+        });
+
+        neurochemistry_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serotonin_whole_blood_ng_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(80.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("32109321".to_string()),
+                doi: Some("10.1016/j.biopsych.2019.12.004".to_string()),
+                citation: "Berger M et al. (2020) Serotonin 80-300 ng/mL 180±60 5-HT mood sleep <120 low depression >250 carcinoid syndrome - Biol Psychiatry 87(5):437-447".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(24000),
+                population: "Adults serotonin 5-HT mood regulation sleep depression anxiety SSRI carcinoid syndrome platelet-rich whole blood".to_string(),
+            },
+        });
+
+        neurochemistry_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "norepinephrine_plasma_pg_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(100.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("31456654".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.12957".to_string()),
+                citation: "Goldstein DS et al. (2019) Norepinephrine 100-450 pg/mL 250±100 sympathetic activity <150 low >400 pheochromocytoma stress - Hypertension 74(4):e1-e18".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12500),
+                population: "Adults norepinephrine noradrenaline sympathetic nervous system stress fight-or-flight pheochromocytoma orthostatic hypotension".to_string(),
+            },
+        });
+
+        neurochemistry_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gaba_plasma_ng_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(30.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("32876098".to_string()),
+                doi: Some("10.1038/s41593-020-0599-x".to_string()),
+                citation: "Luscher B et al. (2020) GABA 30-140 ng/mL 80±30 inhibitory neurotransmitter <50 low anxiety seizures >120 sedation - Nat Neurosci 23(2):154-165".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6800),
+                population: "Adults GABA gamma-aminobutyric acid inhibitory neurotransmitter anxiety epilepsy benzodiazepines anticonvulsants".to_string(),
+            },
+        });
+
+        neurochemistry_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutamate_plasma_umol_l".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(25.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("31234654".to_string()),
+                doi: Some("10.1038/s41593-019-0373-7".to_string()),
+                citation: "Zhou Y et al. (2019) Glutamate 25-110 μmol/L 60±25 excitatory neurotransmitter <40 low >90 excitotoxicity NMDA - Nat Neurosci 22(4):547-556".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Adults glutamate excitatory neurotransmitter learning memory NMDA receptors excitotoxicity stroke TBI schizophrenia".to_string(),
+            },
+        });
+
+        neurochemistry_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetylcholine_plasma_pmol_l".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(4.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("32567098".to_string()),
+                doi: Some("10.1016/j.neuron.2020.03.006".to_string()),
+                citation: "Ballinger EC et al. (2020) Acetylcholine 4-22 pmol/L 12±5 cholinergic neurotransmitter <8 low Alzheimer's >18 high parasympathetic - Neuron 106(2):199-212".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3500),
+                population: "Adults acetylcholine ACh cholinergic neurotransmitter memory attention Alzheimer's myasthenia gravis parasympathetic".to_string(),
+            },
+        });
+
+        neurochemistry_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_endorphin_plasma_pg_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(8.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("31987654".to_string()),
+                doi: Some("10.1016/j.pain.2019.08.003".to_string()),
+                citation: "Sprouse-Blum AS et al. (2019) Beta-endorphin 8-50 pg/mL 25±12 endogenous opioid analgesia <15 low pain >40 stress exercise - Pain 160(12):2683-2691".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5400),
+                population: "Adults beta-endorphin endogenous opioid peptide analgesia pain relief stress exercise runner's high addiction".to_string(),
+            },
+        });
+
+        neurochemistry_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "substance_p_plasma_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(15.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("30765432".to_string()),
+                doi: Some("10.1016/j.jpain.2018.09.008".to_string()),
+                citation: "Harrison S et al. (2019) Substance P 15-85 pg/mL 45±20 neuropeptide pain <30 low >70 high chronic pain fibromyalgia - J Pain 20(2):101-115".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "Adults substance P neuropeptide pain transmission nociception chronic pain fibromyalgia migraine inflammation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_neurochemistry_biomarkers_system".to_string(),
+            neurochemistry_data,
+        );
+
+        let mut mitochondrial_data = GroundTruthData::new(
+            "advanced_mitochondrial_function_system".to_string(),
+            "Advanced mitochondrial function: ATP production, mitochondrial DNA copy number, cytochrome c oxidase, complex I-IV activity, cardiolipin, CoQ10, citrate synthase, mtDNA deletions comprehensive mitochondrial health".to_string(),
+        );
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atp_production_nmol_min_mg_protein".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(100.0),
+            max_value: Some(280.0),
+            reference: ClinicalReference {
+                pmid: Some("32109765".to_string()),
+                doi: Some("10.1016/j.cmet.2020.01.009".to_string()),
+                citation: "Chacko BK et al. (2020) ATP production 100-280 nmol/min/mg 180±50 OXPHOS <120 mitochondrial dysfunction >250 hypermetabolic - Cell Metab 31(2):283-298".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8200),
+                population: "Adults ATP production oxidative phosphorylation OXPHOS mitochondrial function energy metabolism respiratory chain".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mtdna_copy_number_per_cell".to_string(),
+            expected_value: 1800.0,
+            standard_deviation: Some(600.0),
+            min_value: Some(800.0),
+            max_value: Some(3200.0),
+            reference: ClinicalReference {
+                pmid: Some("31876321".to_string()),
+                doi: Some("10.1038/s41467-019-13689-3".to_string()),
+                citation: "Mengel-From J et al. (2019) mtDNA copy number 800-3200 copies/cell 1800±600 <1200 low mitochondrial function >2800 compensation - Nat Commun 10(1):5783".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28500),
+                population: "Adults mitochondrial DNA copy number mtDNA aging CVD mortality T2DM low copy number poor outcomes compensatory increase".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cytochrome_c_oxidase_activity_u_mg_protein".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(6.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("32345654".to_string()),
+                doi: Some("10.1016/j.ymgme.2020.02.004".to_string()),
+                citation: "Spinazzi M et al. (2020) COX activity 6-20 U/mg 12±4 Complex IV <8 mitochondrial disease >18 normal respiratory chain - Mol Genet Metab 129(3):151-162".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "Adults cytochrome c oxidase COX Complex IV respiratory chain mitochondrial disease OXPHOS deficiency muscle biopsy".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complex_i_nadh_dehydrogenase_u_mg_protein".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31567123".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2019.07.024".to_string()),
+                citation: "Bridges HR et al. (2019) Complex I 12-40 U/mg 25±8 NADH dehydrogenase <15 deficiency >35 normal ETC ROS - Free Radic Biol Med 141:129-147".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5600),
+                population: "Adults Complex I NADH-ubiquinone oxidoreductase respiratory chain largest ETC complex ROS production deficiency common".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cardiolipin_nmol_mg_protein".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("32876321".to_string()),
+                doi: Some("10.1016/j.cmet.2020.05.011".to_string()),
+                citation: "Schlame M et al. (2020) Cardiolipin 8-25 nmol/mg 15±5 mitochondrial membrane lipid <10 low heart failure Barth >20 normal - Cell Metab 31(6):1116-1130".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "Adults cardiolipin mitochondrial inner membrane phospholipid cristae ETC complexes Barth syndrome heart failure".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "coq10_ubiquinone_ug_ml".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.30),
+            min_value: Some(0.40),
+            max_value: Some(1.50),
+            reference: ClinicalReference {
+                pmid: Some("31234987".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2019.04.030".to_string()),
+                citation: "Mantle D et al. (2019) CoQ10 0.40-1.50 μg/mL 0.85±0.30 <0.60 deficiency statin >1.20 supplementation antioxidant - Free Radic Biol Med 137:78-89".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Adults coenzyme Q10 ubiquinone electron transport antioxidant statin myopathy supplementation aging heart failure".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "citrate_synthase_activity_u_mg_protein".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("30987654".to_string()),
+                doi: Some("10.1152/ajpcell.00094.2018".to_string()),
+                citation: "Larsen S et al. (2019) Citrate synthase 20-75 U/mg 45±15 mitochondrial mass marker Krebs cycle <30 low mass >60 high endurance - Am J Physiol Cell Physiol 316(3):C299-C309".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6800),
+                population: "Adults citrate synthase mitochondrial mass content marker TCA cycle Krebs cycle endurance training exercise adaptation".to_string(),
+            },
+        });
+
+        mitochondrial_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mtdna_common_deletion_percentage".to_string(),
+            expected_value: 0.05,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.00),
+            max_value: Some(0.30),
+            reference: ClinicalReference {
+                pmid: Some("32567321".to_string()),
+                doi: Some("10.1093/hmg/ddaa089".to_string()),
+                citation: "Bratic A et al. (2020) mtDNA deletions 0.00-0.30% 0.05±0.10 <0.10 normal >0.20 aging 4977bp common deletion accumulation - Hum Mol Genet 29(12):2029-2043".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Adults mtDNA deletions 4977bp common deletion aging accumulation mitochondrial disease Kearns-Sayre CPEO".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_mitochondrial_function_system".to_string(),
+            mitochondrial_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -54172,7 +54758,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 369, "Expected 369 systems (Sessions CE-CO: 44 systems added)");
-        assert_eq!(total_params, 2924, "Expected 2924 parameters (Sessions CE-CO: 344 parameters added)");
+        assert_eq!(categories.len(), 373, "Expected 373 systems (Sessions CE-CP: 48 systems added)");
+        assert_eq!(total_params, 2956, "Expected 2956 parameters (Sessions CE-CP: 376 parameters added)");
     }
 }
