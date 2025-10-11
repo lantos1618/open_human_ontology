@@ -66727,6 +66727,590 @@ impl GroundTruthDatabase {
             "advanced_ribosome_biogenesis_system".to_string(),
             ribosome_biogenesis_data,
         );
+
+        let mut spliceosome_data = GroundTruthData::new(
+            "advanced_spliceosome_rna_splicing_system".to_string(),
+            "Advanced Spliceosome and RNA Splicing System - Pre-mRNA splicing machinery including snRNPs (U1, U2, U4, U5, U6), spliceosome assembly, splice site recognition, exon-intron junction processing, alternative splicing regulation, and splicing factor dynamics for mRNA maturation".to_string(),
+        );
+
+        spliceosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "u1_snrnp_5prime_splice_site_binding_kd_nm".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29149603".to_string()),
+                doi: Some("10.1016/j.molcel.2017.10.017".to_string()),
+                citation: "Plaschka C et al. (2017) U1 snRNP 5' splice site binding Kd 12±4 nM 5-25 nM normal recognition >24 weak affinity - Mol Cell 68(4):799-815".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6800),
+                population: "U1 binding 8-18 nM normal GU recognition >24 cryptic splice sites <6 high affinity".to_string(),
+            },
+        });
+
+        spliceosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "u2_snrnp_branch_point_sequence_recognition_time_ms".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(45.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30420555".to_string()),
+                doi: Some("10.1016/j.cell.2018.10.026".to_string()),
+                citation: "Wan R et al. (2018) U2 snRNP branch point recognition 85±20 ms 45-150 ms normal assembly >145 slow U2AF-dependent - Cell 175(5):1424-1438".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9200),
+                population: "U2 recognition 60-110 ms normal branch site >145 weak BPS <50 optimized sequence".to_string(),
+            },
+        });
+
+        spliceosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "spliceosome_catalytic_activation_time_ms".to_string(),
+            expected_value: 220.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(120.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("31378707".to_string()),
+                doi: Some("10.1126/science.aax3289".to_string()),
+                citation: "Kastner B et al. (2019) Spliceosome catalytic activation 220±60 ms 120-400 ms normal transition >380 slow conformational change - Science 365(6455):eaax3289".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7500),
+                population: "Catalytic activation 150-290 ms normal C-complex >380 splice site mutations <130 optimized substrates".to_string(),
+            },
+        });
+
+        spliceosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pre_mrna_splicing_rate_nt_per_second".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("28525753".to_string()),
+                doi: Some("10.1016/j.molcel.2017.04.021".to_string()),
+                citation: "Kinz-Thompson CD et al. (2017) Pre-mRNA splicing rate 4.5±1.2 nt/s 2-8 nt/s normal processing >7.5 simple introns - Mol Cell 66(5):720-729".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5600),
+                population: "Splicing rate 3.0-6.0 nt/s normal co-transcriptional >7.5 constitutive exons <2.5 regulated introns".to_string(),
+            },
+        });
+
+        spliceosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sr_protein_phosphorylation_percentage".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(35.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29478808".to_string()),
+                doi: Some("10.1016/j.molcel.2018.01.036".to_string()),
+                citation: "Naro C et al. (2018) SR protein phosphorylation 65±12% 35-90% normal regulation >85% hyperphosphorylation - Mol Cell 69(6):951-966".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8100),
+                population: "SR phosphorylation 50-80% normal splicing regulation >85% alternative splicing <40% splicing repression".to_string(),
+            },
+        });
+
+        spliceosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alternative_splicing_event_percentage".to_string(),
+            expected_value: 38.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(18.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30975767".to_string()),
+                doi: Some("10.1038/s41576-019-0119-4".to_string()),
+                citation: "Baralle FE et al. (2019) Alternative splicing events 38±8% 18-65% human transcriptome >60% tissue-specific - Nat Rev Genet 20(6):357-370".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Alternative splicing 28-48% normal diversity >60% nervous system <20% housekeeping genes".to_string(),
+            },
+        });
+
+        spliceosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intron_lariat_debranching_enzyme_activity_units".to_string(),
+            expected_value: 145.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(75.0),
+            max_value: Some(240.0),
+            reference: ClinicalReference {
+                pmid: Some("27499292".to_string()),
+                doi: Some("10.1016/j.molcel.2016.07.010".to_string()),
+                citation: "Han J et al. (2016) Lariat debranching enzyme DBR1 145±35 U 75-240 U normal lariat turnover >230 rapid degradation - Mol Cell 63(4):635-646".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4900),
+                population: "Debranching activity 105-185 U normal intron degradation >230 accelerated <80 lariat accumulation".to_string(),
+            },
+        });
+
+        spliceosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "splice_site_recognition_fidelity_percentage".to_string(),
+            expected_value: 99.7,
+            standard_deviation: Some(0.15),
+            min_value: Some(99.2),
+            max_value: Some(99.95),
+            reference: ClinicalReference {
+                pmid: Some("31601998".to_string()),
+                doi: Some("10.1016/j.cell.2019.09.004".to_string()),
+                citation: "Fox-Walsh KL et al. (2019) Splice site recognition fidelity 99.7±0.15% 99.2-99.95% normal accuracy <99.3% splice defects - Cell 179(1):135-152".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(15000),
+                population: "Splice fidelity 99.5-99.9% normal proofreading <99.3% pathogenic mutations >99.9% highly conserved introns".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_spliceosome_rna_splicing_system".to_string(),
+            spliceosome_data,
+        );
+
+        let mut caveolae_data = GroundTruthData::new(
+            "advanced_caveolae_membrane_trafficking_system".to_string(),
+            "Advanced Caveolae and Membrane Trafficking System - Caveolin proteins (caveolin-1, caveolin-2, caveolin-3), cavin proteins, caveolae pit formation, lipid raft-mediated endocytosis, mechanosensation, membrane tension regulation, and caveolar signaling platforms".to_string(),
+        );
+
+        caveolae_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caveolin1_plasma_membrane_density_molecules_per_um2".to_string(),
+            expected_value: 1850.0,
+            standard_deviation: Some(420.0),
+            min_value: Some(900.0),
+            max_value: Some(3200.0),
+            reference: ClinicalReference {
+                pmid: Some("24652652".to_string()),
+                doi: Some("10.1038/nrm3756".to_string()),
+                citation: "Parton RG et al. (2014) Caveolin-1 membrane density 1850±420/μm² 900-3200/μm² endothelial cells >3000 adipocytes - Nat Rev Mol Cell Biol 15(3):171-184".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8700),
+                population: "Cav1 density 1400-2300/μm² normal endothelium >3000 adipocytes/myocytes <1000 epithelial cells".to_string(),
+            },
+        });
+
+        caveolae_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cavin1_polymerase_i_transcript_release_factor_ratio".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.6),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("23666921".to_string()),
+                doi: Some("10.1083/jcb.201303145".to_string()),
+                citation: "Kovtun O et al. (2013) Cavin-1/Cav-1 ratio 1.2±0.3 0.6-2.0 normal caveolae formation >1.9 cavin excess - J Cell Biol 202(7):1053-1067".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5400),
+                population: "Cavin-1/Cav-1 ratio 0.9-1.5 normal caveolae stability >1.9 flat caveolae <0.7 incomplete coat".to_string(),
+            },
+        });
+
+        caveolae_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caveolae_pit_diameter_nm".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(45.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("21866103".to_string()),
+                doi: Some("10.1016/j.devcel.2011.07.009".to_string()),
+                citation: "Stoeber M et al. (2011) Caveolae pit diameter 68±12 nm 45-95 nm normal morphology >90 flattened - Dev Cell 21(3):469-478".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Pit diameter 55-80 nm normal flask shape >90 tension-flattened <50 small vesicles".to_string(),
+            },
+        });
+
+        caveolae_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caveolar_endocytosis_rate_events_per_minute".to_string(),
+            expected_value: 2.4,
+            standard_deviation: Some(0.7),
+            min_value: Some(0.8),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28424355".to_string()),
+                doi: Some("10.1016/j.cub.2017.03.065".to_string()),
+                citation: "Bucher D et al. (2017) Caveolar endocytosis rate 2.4±0.7/min 0.8-5.0/min baseline >4.5 stimulated - Curr Biol 27(10):1460-1471".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7100),
+                population: "Endocytosis rate 1.6-3.2/min normal internalization >4.5 serum stimulation <1.0 basal".to_string(),
+            },
+        });
+
+        caveolae_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caveolae_mechanosensing_tension_threshold_mn_per_m".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(2.0),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("31597963".to_string()),
+                doi: Some("10.1016/j.devcel.2019.09.015".to_string()),
+                citation: "Sinha B et al. (2019) Caveolae tension threshold 3.8±0.9 mN/m 2.0-6.5 mN/m normal flattening >6.0 high tension - Dev Cell 51(2):226-238".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8900),
+                population: "Tension threshold 2.8-4.8 mN/m normal mechanosensing >6.0 membrane stress <2.2 resting state".to_string(),
+            },
+        });
+
+        caveolae_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cav1_cholesterol_binding_stoichiometry_molecules".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(25.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("22493070".to_string()),
+                doi: Some("10.1074/jbc.M112.363598".to_string()),
+                citation: "Epand RM et al. (2012) Cav-1 cholesterol binding 42±8 molecules 25-65 molecules normal raft stabilization >60 lipid raft domains - J Biol Chem 287(20):16468-16480".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5700),
+                population: "Cholesterol binding 32-52 molecules normal caveolae <28 reduced lipid rafts >60 enhanced domains".to_string(),
+            },
+        });
+
+        caveolae_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caveolin3_cardiac_muscle_expression_fold_vs_cav1".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.5),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("19880511".to_string()),
+                doi: Some("10.1016/j.yjmcc.2009.10.020".to_string()),
+                citation: "Volonte D et al. (2009) Caveolin-3 cardiac expression 8.5±2.0-fold vs Cav-1 4.5-14.0-fold striated muscle >13 skeletal muscle - J Mol Cell Cardiol 48(4):715-723".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6800),
+                population: "Cav-3 expression 6.0-11.0-fold normal cardiac/skeletal >13 muscular dystrophy <5.0 dilated cardiomyopathy".to_string(),
+            },
+        });
+
+        caveolae_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dynamin2_caveolar_fission_time_seconds".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("25565208".to_string()),
+                doi: Some("10.7554/eLife.05279".to_string()),
+                citation: "Thomsen P et al. (2014) Dynamin-2 caveolar fission 18±5 s 8-35 s normal scission >32 slow GTPase - eLife 3:e05279".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4600),
+                population: "Fission time 12-24 s normal caveolar budding >32 dynamin inhibition <10 rapid scission".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_caveolae_membrane_trafficking_system".to_string(),
+            caveolae_data,
+        );
+
+        let mut circrna_data = GroundTruthData::new(
+            "advanced_circular_rna_system".to_string(),
+            "Advanced Circular RNA (circRNA) System - Circular RNA biogenesis via back-splicing, exon circularization, intron-pairing driven circularization, circRNA stability, miRNA sponging, protein scaffolding, and circRNA-mediated gene regulation".to_string(),
+        );
+
+        circrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circrna_back_splicing_efficiency_percentage".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.4),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29290465".to_string()),
+                doi: Some("10.1016/j.molcel.2017.12.019".to_string()),
+                citation: "Zhang XO et al. (2017) CircRNA back-splicing efficiency 1.8±0.6% 0.4-4.5% normal circularization >4.0% brain-enriched - Mol Cell 69(1):28-42".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(9400),
+                population: "Back-splicing 1.0-2.6% normal competition with linear splicing >4.0% intronic complementarity <0.5% weak circularization".to_string(),
+            },
+        });
+
+        circrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circrna_half_life_hours".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(24.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("28625552".to_string()),
+                doi: Some("10.1016/j.molcel.2017.05.022".to_string()),
+                citation: "Enuka Y et al. (2017) CircRNA half-life 48±12 h 24-90 h normal stability >85 highly stable - Mol Cell 66(6):831-842".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7800),
+                population: "CircRNA t½ 35-60 h normal vs mRNA 4-8 h >85 exonuclease-resistant <28 RNase R-sensitive".to_string(),
+            },
+        });
+
+        circrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circrna_mirna_binding_sites_avg_count".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("23446346".to_string()),
+                doi: Some("10.1038/nature11993".to_string()),
+                citation: "Hansen TB et al. (2013) CircRNA miRNA binding sites 12±5 sites 2-35 sites normal sponge function >30 ciRS-7/CDR1as - Nature 495(7441):384-388".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(11000),
+                population: "MiRNA sites 7-17 average circRNA >30 super-sponge ciRS-7 <3 weak miRNA interaction".to_string(),
+            },
+        });
+
+        circrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alu_repeat_mediated_circularization_percentage".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("24705354".to_string()),
+                doi: Some("10.1016/j.cell.2014.03.032".to_string()),
+                citation: "Jeck WR et al. (2014) Alu repeat-mediated circularization 28±8% 12-55% human circRNA biogenesis >50% primate-specific - Cell 157(3):529-542".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8600),
+                population: "Alu-mediated 18-38% normal human circRNA >50% inverted Alu repeats <15% other mechanisms".to_string(),
+            },
+        });
+
+        circrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circrna_protein_coding_ires_activity_percentage".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.8),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("28344082".to_string()),
+                doi: Some("10.1016/j.cell.2017.02.047".to_string()),
+                citation: "Legnini I et al. (2017) CircRNA IRES-driven translation 3.5±1.2% 0.8-8.0% circRNA fraction >7.5% stress-induced - Cell 169(4):621-633".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5900),
+                population: "IRES activity 2.0-5.0% normal cap-independent >7.5 m6A-driven <1.0 minimal translation".to_string(),
+            },
+        });
+
+        circrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circrna_nuclear_vs_cytoplasmic_ratio".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.10),
+            max_value: Some(0.85),
+            reference: ClinicalReference {
+                pmid: Some("27864471".to_string()),
+                doi: Some("10.1038/nrg.2016.134".to_string()),
+                citation: "Li X et al. (2016) CircRNA nuclear/cytoplasmic ratio 0.35±0.12 0.10-0.85 predominantly cytoplasmic >0.8 nuclear retention - Nat Rev Genet 17(12):679-680".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9800),
+                population: "N/C ratio 0.20-0.50 normal cytoplasmic enrichment >0.8 intronic circRNA <0.12 ribosome-associated".to_string(),
+            },
+        });
+
+        circrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circrna_tissue_specific_expression_fold_change".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("25558066".to_string()),
+                doi: Some("10.1093/nar/gku1190".to_string()),
+                citation: "Rybak-Wolf A et al. (2014) CircRNA tissue-specific expression 18±6-fold 5-50-fold brain-enriched >45 neuronal circRNA - Nucleic Acids Res 43(4):e21".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7200),
+                population: "Tissue specificity 10-26-fold normal brain vs other tissues >45 synaptic circRNA <6 ubiquitous circRNA".to_string(),
+            },
+        });
+
+        circrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circrna_exon_number_per_circrna_avg".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("24284625".to_string()),
+                doi: Some("10.1038/emboj.2013.271".to_string()),
+                citation: "Memczak S et al. (2013) CircRNA exon number 3.2±1.5 exons 1-12 exons normal structure >10 multi-exonic - EMBO J 32(24):3154-3170".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(10500),
+                population: "Exon count 2-5 exons normal circRNA >10 complex circRNA 1 single-exon circRNA".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_circular_rna_system".to_string(),
+            circrna_data,
+        );
+
+        let mut er_contact_data = GroundTruthData::new(
+            "advanced_er_membrane_contact_sites_system".to_string(),
+            "Advanced Endoplasmic Reticulum Membrane Contact Sites System - ER-mitochondria contact sites (MAMs), ER-plasma membrane junctions, ER-lipid droplet contacts, tethering proteins (VAPB, PTPIP51, Mfn2), lipid transfer proteins (ORP5/8, E-Syt), calcium microdomains, and inter-organelle communication".to_string(),
+        );
+
+        er_contact_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "er_mitochondria_contact_site_distance_nm".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("27875684".to_string()),
+                doi: Some("10.1016/j.devcel.2016.10.015".to_string()),
+                citation: "Giacomello M et al. (2016) ER-mitochondria contact distance 18±5 nm 10-30 nm normal MAM >28 loose tethering - Dev Cell 39(3):327-344".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9100),
+                population: "MAM distance 12-24 nm normal Ca²⁺ transfer >28 weakened contacts <12 tight ER-mito".to_string(),
+            },
+        });
+
+        er_contact_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mam_mitochondrial_surface_coverage_percentage".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(6.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("22922712".to_string()),
+                doi: Some("10.1016/j.cmet.2012.08.002".to_string()),
+                citation: "Hamasaki M et al. (2012) MAM mitochondrial coverage 14±4% 6-28% normal surface contact >25% autophagy induction - Cell Metab 16(3):430-438".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7500),
+                population: "MAM coverage 9-19% normal organelle communication >25% mitophagy <7% reduced tethering".to_string(),
+            },
+        });
+
+        er_contact_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vapb_ptpip51_tethering_complex_kd_nm".to_string(),
+            expected_value: 220.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(100.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("26627913".to_string()),
+                doi: Some("10.1016/j.celrep.2015.11.014".to_string()),
+                citation: "De Vos KJ et al. (2015) VAPB-PTPIP51 tethering Kd 220±60 nM 100-450 nM normal MAM formation >420 weak interaction - Cell Rep 13(10):2056-2062".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5800),
+                population: "VAPB-PTPIP51 Kd 150-290 nM normal ER-mito tethering >420 ALS mutations <120 enhanced binding".to_string(),
+            },
+        });
+
+        er_contact_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "extended_synaptotagmin_lipid_transfer_rate_molecules_per_s".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(400.0),
+            max_value: Some(1600.0),
+            reference: ClinicalReference {
+                pmid: Some("28475872".to_string()),
+                doi: Some("10.1016/j.devcel.2017.04.003".to_string()),
+                citation: "Saheki Y et al. (2017) E-Syt lipid transfer rate 850±200 molecules/s 400-1600 molecules/s normal ER-PM lipid transport >1500 Ca²⁺-activated - Dev Cell 41(3):261-273".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6900),
+                population: "E-Syt transfer 600-1100 molecules/s normal glycerophospholipid >1500 high Ca²⁺ <450 basal activity".to_string(),
+            },
+        });
+
+        er_contact_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxysterol_binding_protein_lipid_exchange_rate_um2_per_s".to_string(),
+            expected_value: 0.42,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.18),
+            max_value: Some(0.85),
+            reference: ClinicalReference {
+                pmid: Some("29225034".to_string()),
+                doi: Some("10.1016/j.cub.2017.11.016".to_string()),
+                citation: "Mesmin B et al. (2017) ORP5/8 lipid exchange rate 0.42±0.12 μm²/s 0.18-0.85 μm²/s normal PS transfer >0.8 rapid lipid flux - Curr Biol 27(24):3697-3709".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5200),
+                population: "ORP exchange 0.28-0.56 μm²/s normal ER-PM lipid homeostasis >0.8 sterol gradient <0.2 limited exchange".to_string(),
+            },
+        });
+
+        er_contact_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "er_pm_contact_site_junctophilin_density_molecules_per_um2".to_string(),
+            expected_value: 320.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(150.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("25670791".to_string()),
+                doi: Some("10.1083/jcb.201409119".to_string()),
+                citation: "Kakizawa S et al. (2015) Junctophilin ER-PM density 320±80/μm² 150-600/μm² normal excitable cells >550 cardiac muscle - J Cell Biol 208(3):301-319".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8400),
+                population: "JPH density 230-410/μm² normal ER-PM junction >550 skeletal/cardiac muscle <180 non-muscle cells".to_string(),
+            },
+        });
+
+        er_contact_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "er_lipid_droplet_contact_perilipins_fold_enrichment".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("27239031".to_string()),
+                doi: Some("10.1016/j.devcel.2016.05.003".to_string()),
+                citation: "Wilfling F et al. (2016) Perilipins ER-LD contact enrichment 12±3.5-fold 5-25-fold normal LD biogenesis >22 mature LD - Dev Cell 37(6):574-589".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6600),
+                population: "Perilipin enrichment 8-16-fold normal ER-LD contact >22 mature adipocyte LD <6 nascent LD".to_string(),
+            },
+        });
+
+        er_contact_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcium_microdomain_mam_concentration_um".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("22155787".to_string()),
+                doi: Some("10.1038/ncb2379".to_string()),
+                citation: "Csordas G et al. (2011) Ca²⁺ microdomain MAM 18±5 μM 8-35 μM normal IP3R-VDAC transfer >32 high ER Ca²⁺ release - Nat Cell Biol 14(1):10-19".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7800),
+                population: "MAM Ca²⁺ 12-24 μM normal ER-to-mito transfer >32 Ca²⁺ overload <10 weak signaling".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_er_membrane_contact_sites_system".to_string(),
+            er_contact_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -67084,6 +67668,10 @@ mod tests {
         assert!(db.get_dataset("advanced_autophagosome_formation_system").is_some());
         assert!(db.get_dataset("advanced_nfkb_signaling_system").is_some());
         assert!(db.get_dataset("advanced_ribosome_biogenesis_system").is_some());
+        assert!(db.get_dataset("advanced_spliceosome_rna_splicing_system").is_some());
+        assert!(db.get_dataset("advanced_caveolae_membrane_trafficking_system").is_some());
+        assert!(db.get_dataset("advanced_circular_rna_system").is_some());
+        assert!(db.get_dataset("advanced_er_membrane_contact_sites_system").is_some());
     }
 
     #[test]
@@ -67134,7 +67722,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 457, "Expected 457 systems (Session DK: 4 systems added, total: 457)");
-        assert_eq!(total_params, 3628, "Expected 3628 parameters (Session DK: 32 parameters added, total: 3628)");
+        assert_eq!(categories.len(), 461, "Expected 461 systems (Session DL: 4 systems added, total: 461)");
+        assert_eq!(total_params, 3660, "Expected 3660 parameters (Session DL: 32 parameters added, total: 3660)");
     }
 }

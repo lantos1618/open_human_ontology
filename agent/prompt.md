@@ -12,6 +12,24 @@ push changes as you go to remote
 
 ---
 
+## Session DL (2025-10-11)
+
+**Status:** ✅ Complete
+
+**Systems Added:** 4 new advanced RNA processing and membrane systems with 32 parameters
+
+**Database Stats:** 461 systems, 3660 parameters total
+
+**New Systems:**
+1. **Advanced Spliceosome and RNA Splicing System** - Pre-mRNA splicing machinery including snRNPs (U1, U2, U4, U5, U6), spliceosome assembly, splice site recognition, exon-intron junction processing, alternative splicing regulation, and splicing factor dynamics for mRNA maturation (U1 snRNP 5' splice site binding Kd, U2 snRNP branch point sequence recognition time, spliceosome catalytic activation time, pre-mRNA splicing rate, SR protein phosphorylation, alternative splicing event percentage, intron lariat debranching enzyme activity, splice site recognition fidelity)
+2. **Advanced Caveolae and Membrane Trafficking System** - Caveolin proteins (caveolin-1, caveolin-2, caveolin-3), cavin proteins, caveolae pit formation, lipid raft-mediated endocytosis, mechanosensation, and membrane tension regulation (caveolin-1 plasma membrane density, cavin-1/Cav-1 ratio, caveolae pit diameter, caveolar endocytosis rate, caveolae mechanosensing tension threshold, Cav-1 cholesterol binding stoichiometry, caveolin-3 cardiac muscle expression, dynamin-2 caveolar fission time)
+3. **Advanced Circular RNA (circRNA) System** - Circular RNA biogenesis via back-splicing, exon circularization, intron-pairing driven circularization, circRNA stability, miRNA sponging, protein scaffolding, and circRNA-mediated gene regulation (circRNA back-splicing efficiency, circRNA half-life, circRNA miRNA binding sites, Alu repeat-mediated circularization, circRNA protein coding IRES activity, circRNA nuclear/cytoplasmic ratio, circRNA tissue-specific expression, circRNA exon number)
+4. **Advanced Endoplasmic Reticulum Membrane Contact Sites System** - ER-mitochondria contact sites (MAMs), ER-plasma membrane junctions, ER-lipid droplet contacts, tethering proteins (VAPB, PTPIP51, Mfn2), lipid transfer proteins (ORP5/8, E-Syt), calcium microdomains, and inter-organelle communication (ER-mitochondria contact site distance, MAM mitochondrial surface coverage, VAPB-PTPIP51 tethering complex Kd, extended synaptotagmin lipid transfer rate, oxysterol binding protein lipid exchange rate, ER-PM contact site junctophilin density, ER-lipid droplet contact perilipins enrichment, calcium microdomain MAM concentration)
+
+**Commit:** TBD - Will be pushed to remote
+
+---
+
 ## Session DK (2025-10-11)
 
 **Status:** ✅ Complete
