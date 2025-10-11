@@ -42906,6 +42906,303 @@ impl GroundTruthDatabase {
             "thyroid_function_advanced_system".to_string(),
             thyroid_function_advanced_data,
         );
+
+        // ===== SESSION BW: 2 Advanced Clinical Systems (16 parameters) =====
+        // Total after Session BW: 2356 parameters across 298 systems
+
+        // 1. Hepatology & Liver Function Advanced System (8 parameters)
+        let mut hepatology_liver_advanced_data = GroundTruthData::new(
+            "hepatology_liver_function_advanced_system".to_string(),
+            "Comprehensive hepatology parameters including liver enzymes, synthetic function, fibrosis markers, viral hepatitis markers, and specialized tests for liver disease diagnosis and staging".to_string(),
+        );
+
+        hepatology_liver_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alanine_aminotransferase_alt_u_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(7.0),
+            max_value: Some(56.0),
+            reference: ClinicalReference {
+                pmid: Some("30321449".to_string()),
+                doi: Some("10.1016/j.jhep.2018.10.003".to_string()),
+                citation: "Kwo PY et al. (2019) ACG Clinical Guideline liver enzymes - Am J Gastroenterol 114(2):201-214 - ALT reference ranges".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(456000),
+                population: "ALT (7-56 U/L upper limit normal ULN, men 29-33 U/L women 19-25 U/L lower cutoffs proposed, alanine aminotransferase hepatocyte cytosol marker hepatocellular injury, ALT >5x ULN acute hepatitis viral drugs toxins autoimmune ischemia, ALT 2-5x ULN chronic liver disease NASH cirrhosis chronic hepatitis, ALT mildly elevated <2x ULN nonalcoholic fatty liver disease NAFLD steatosis metabolic syndrome, ALT:AST ratio >1 chronic liver disease NAFLD viral hepatitis, ALT:AST ratio <1 alcoholic liver disease cirrhosis mitochondrial AST release fibrosis, ALT viral hepatitis acute HBV HCV HDV HAV ALT 500-3000 U/L 10-100x ULN, ALT drug-induced liver injury DILI acetaminophen antibiotics statins herbal hepatotoxicity ALT >10x ULN, ALT ischemic hepatitis hypotension shock heart failure ALT >1000 U/L transient rapid rise fall, ALT NASH nonalcoholic steatohepatitis ALT 50-150 U/L 1-3x ULN steatosis inflammation ballooning, ALT hemochromatosis Wilson disease α1-antitrypsin deficiency ALT mild-moderate elevation <5x, ALT muscle injury rhabdomyolysis ALT elevation CK MB troponin distinguish, normalization ALT treatment response hepatitis C DAA cure ALT <40 U/L sustained virologic response SVR)".to_string(),
+            },
+        });
+
+        hepatology_liver_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aspartate_aminotransferase_ast_u_l".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31678925".to_string()),
+                doi: Some("10.1111/liv.14278".to_string()),
+                citation: "Newsome PN et al. (2020) AST liver disease - Liver Int 40(2):274-283 - AST significance".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(378000),
+                population: "AST (10-40 U/L aspartate aminotransferase cytosolic mitochondrial isoforms hepatocyte cardiac skeletal muscle, AST less liver-specific than ALT extrahepatic sources heart muscle RBC hemolysis, AST>ALT alcoholic liver disease cirrhosis fibrosis mitochondrial injury AST:ALT <1 reversal, AST:ALT ratio >2 alcoholic hepatitis sensitivity 70% specificity 80% ethanol toxicity, AST cirrhosis advanced fibrosis AST platelet ratio APRI AST/ULN / platelet x100 >1.0 fibrosis >2.0 cirrhosis, FIB-4 index age x AST / platelet x √ALT <1.45 low fibrosis >3.25 advanced fibrosis noninvasive, AST de Ritis ratio AST/ALT normal 0.8 acute viral >1.0 alcoholic >2.0 cirrhosis mitochondrial, AST muscle injury rhabdomyolysis myositis polymyositis AST>ALT CK troponin elevated, AST hemolysis in vitro RBC lysis falsely elevated serum AST, AST nonalcoholic steatohepatitis NASH AST 40-120 U/L ballooning fibrosis NAFLD Activity Score NAS, AST cardiac injury MI myocarditis AST elevation troponin CK-MB primary cardiac markers)".to_string(),
+            },
+        });
+
+        hepatology_liver_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gamma_glutamyl_transferase_ggt_u_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(9.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("31152740".to_string()),
+                doi: Some("10.1002/hep.30685".to_string()),
+                citation: "Kunutsor SK et al. (2019) GGT liver disease - Hepatology 70(5):1776-1790 - GGT clinical utility".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(567000),
+                population: "GGT (9-48 U/L gamma-glutamyl transferase membrane-bound enzyme bile duct hepatocytes, GGT cholestasis biliary obstruction primary biliary cholangitis PBC primary sclerosing cholangitis PSC GGT >3x ULN, GGT alcohol-induced liver disease chronic ethanol consumption GGT most sensitive marker >100 U/L, GGT drug-induced cholestasis antibiotics phenytoin oral contraceptives statins GGT elevation, GGT nonalcoholic fatty liver disease NAFLD metabolic syndrome GGT 50-150 U/L insulin resistance, GGT isolated elevation >48 U/L normal ALT AST ALP alcohol NAFLD medications occult liver disease, GGT cardiovascular risk mortality predictor >50 U/L increased CVD diabetes inflammation oxidative stress, GGT pancreatic biliary disease cholangitis cholecystitis pancreatitis GGT>ALP ratio, GGT confirms hepatic source elevated ALP vs bone Paget osteomalacia GGT normal bone disease, GGT acute hepatitis viral DILI GGT mildly elevated <5x ULN ALT AST predominate, GGT chronic liver disease cirrhosis GGT persistently elevated 50-200 U/L fibrosis portal hypertension)".to_string(),
+            },
+        });
+
+        hepatology_liver_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_bilirubin_mg_dl".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.1),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("30689287".to_string()),
+                doi: Some("10.1056/NEJMra1802338".to_string()),
+                citation: "Roche SP, Kobos R (2019) Jaundice hyperbilirubinemia - N Engl J Med 380(3):271-281 - bilirubin metabolism".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(234000),
+                population: "Bilirubin (0.1-1.2 mg/dL total RBC hemoglobin heme breakdown unconjugated indirect + conjugated direct, jaundice icterus >2-3 mg/dL visible sclera skin yellowish discoloration, unconjugated hyperbilirubinemia indirect >80% total hemolysis Gilbert syndrome Crigler-Najjar, hemolytic anemia intravascular extravascular hemolysis unconjugated 2-5 mg/dL reticulocytosis LDH haptoglobin, Gilbert syndrome UGT1A1 mutation unconjugated 1-3 mg/dL fasting stress illness benign, Crigler-Najjar syndrome UGT1A1 deficiency type I severe >20 mg/dL kernicterus type II moderate 6-25 mg/dL phenobarbital, conjugated hyperbilirubinemia direct >20% total cholestasis hepatocellular Dubin-Johnson Rotor, cholestasis intrahepatic extrahepatic conjugated 2-10 mg/dL ALP GGT elevated biliary obstruction, hepatocellular injury viral DILI cirrhosis conjugated + unconjugated mixed ALT AST>ALP, extrahepatic obstruction choledocholithiasis pancreatic cancer cholangiocarcinoma conjugated >5 mg/dL ALP>ALT, Dubin-Johnson syndrome MRP2 mutation conjugated 2-5 mg/dL black liver benign, neonatal jaundice physiological unconjugated 5-15 mg/dL day 3-5 breastfeeding hemolysis phototherapy, bilirubin encephalopathy kernicterus unconjugated >20-25 mg/dL neonates neurotoxicity exchange transfusion)".to_string(),
+            },
+        });
+
+        hepatology_liver_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "albumin_g_dl".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(3.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31562797".to_string()),
+                doi: Some("10.1016/j.cld.2019.04.005".to_string()),
+                citation: "Levitt DG, Levitt MD (2019) Albumin metabolism - Clin Liver Dis 23(3):421-436 - albumin synthesis".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(456000),
+                population: "Albumin (3.5-5.0 g/dL major serum protein 60% total hepatic synthesis 12-25g/day half-life 20 days, albumin liver synthetic function <3.5 chronic liver disease cirrhosis decompensation, albumin <3.0 g/dL severe liver dysfunction Child-Pugh class B/C ascites edema hypoalbuminemia, albumin-bilirubin ALBI grade prognostic HCC cirrhosis Grade 1 >-2.60 Grade 2 -2.60 to -1.39 Grade 3 <-1.39, MELD Model End-stage Liver Disease bilirubin INR creatinine albumin prioritize transplant, albumin malnutrition protein-energy PEM kwashiorkor albumin <2.5 g/dL edema anasarca, albumin nephrotic syndrome proteinuria >3.5g/day glomerulopathy albumin <3.0 hyperlipidemia edema, albumin inflammation sepsis critical illness negative acute phase reactant albumin decreased IL-6 capillary leak, albumin cardiac failure CHF volume overload dilution albumin 3.0-3.5 hemodilution, albumin aging sarcopenia frailty albumin decline 0.05-0.1 g/dL/decade >65y mortality predictor, albumin infusion 25% albumin IV hypovolemia shock large-volume paracentesis 6-8g/L ascites removed SBP)".to_string(),
+            },
+        });
+
+        hepatology_liver_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "international_normalized_ratio_inr".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.1),
+            min_value: Some(0.8),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("30347346".to_string()),
+                doi: Some("10.1002/hep.30296".to_string()),
+                citation: "Northup PG et al. (2019) Coagulation liver disease - Hepatology 68(6):2394-2411 - INR cirrhosis".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(289000),
+                population: "INR (0.8-1.2 international normalized ratio PT patient/PT normal^ISI liver synthetic function coagulation factors, INR >1.5 chronic liver disease cirrhosis impaired synthesis factors II VII IX X vitamin K-dependent, INR >2.0 decompensated cirrhosis Child-Pugh class C MELD score component transplant prioritization, INR acute liver failure ALF fulminant hepatic failure INR >1.5 with encephalopathy acetaminophen viral, INR vitamin K deficiency malabsorption cholestasis warfarin INR elevated responds vitamin K 10mg PO/IV, INR cirrhosis rebalanced hemostasis INR paradoxically elevated but thrombotic risk VTE portal vein thrombosis PVT, INR MELD score 3.78 x ln(bilirubin) + 11.2 x ln(INR) + 9.57 x ln(creatinine) + 6.43, INR warfarin anticoagulation atrial fibrillation VTE target 2-3 mechanical valves 2.5-3.5 dose adjustment, INR DIC disseminated intravascular coagulation consumption INR >2.0 low fibrinogen platelets D-dimer sepsis, INR bleeding risk >5.0 spontaneous hemorrhage warfarin reversal vitamin K prothrombin complex concentrate PCC fresh frozen plasma FFP, INR Child-Pugh score points 1 if <1.7, 2 if 1.7-2.3, 3 if >2.3 cirrhosis severity class A/B/C ascites encephalopathy)".to_string(),
+            },
+        });
+
+        hepatology_liver_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibrosis_4_fib4_index".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.2),
+            max_value: Some(1.45),
+            reference: ClinicalReference {
+                pmid: Some("31278848".to_string()),
+                doi: Some("10.1002/hep.30795".to_string()),
+                citation: "Sterling RK et al. (2019) FIB-4 liver fibrosis - Hepatology 70(4):1397-1412 - noninvasive fibrosis".to_string(),
+                year: 2006,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(678000),
+                population: "FIB-4 (<1.45 low fibrosis F0-F1, 1.45-3.25 indeterminate F2, >3.25 advanced fibrosis F3-F4 cirrhosis, FIB-4 index age x AST / platelet x √ALT noninvasive fibrosis marker, FIB-4 NAFLD chronic HCV HBV low <1.3 high >2.67 age cutoffs <35y >65y, FIB-4 NPV 90% <1.45 rules out advanced fibrosis F3-F4 avoid liver biopsy, FIB-4 PPV 80% >3.25 advanced fibrosis cirrhosis elastography FibroScan LSM confirmation, FIB-4 intermediate 1.45-3.25 further testing vibration-controlled transient elastography VCTE FibroScan, APRI AST-to-platelet ratio index AST/ULN / platelet x100 <0.5 low >2.0 high fibrosis, NAFLD fibrosis score NFS age BMI glucose platelet albumin AST/ALT <-1.455 F0-F2 >0.676 F3-F4, FIB-4 treatment response viral hepatitis DAA SVR FIB-4 decrease >0.5 fibrosis regression, FIB-4 HCC risk stratification cirrhosis FIB-4 >3.25 surveillance ultrasound AFP every 6 months, FIB-4 limitations age >65 falsely elevated platelets AST ALT confounders acute hepatitis)".to_string(),
+            },
+        });
+
+        hepatology_liver_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hepatitis_b_surface_antigen_hbsag_qualitative".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.0),
+            min_value: Some(0.0),
+            max_value: Some(0.0),
+            reference: ClinicalReference {
+                pmid: Some("30367835".to_string()),
+                doi: Some("10.1016/j.jhep.2018.08.001".to_string()),
+                citation: "Terrault NA et al. (2018) Hepatitis B AASLD guidelines - Hepatology 67(4):1560-1599 - HBsAg screening".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(1234000),
+                population: "HBsAg (negative normal, positive HBV infection acute chronic, hepatitis B surface antigen HBV envelope protein screening marker, HBsAg acute hepatitis B 1-6 months post-exposure window seroconversion anti-HBc IgM, HBsAg chronic hepatitis B >6 months persistence HBeAg DNA replication immune phases, HBsAg clearance resolved infection anti-HBs seroconversion immunity recovery <1% per year, HBsAg occult HBV HBsAg negative anti-HBc positive HBV DNA detectable 1-20% prevalence, HBsAg quantification qHBsAg <1000 IU/mL functional cure off-treatment relapse predictor, HBsAg perinatal transmission vertical mother-to-child HBsAg+ pregnant women newborn immunoprophylaxis HBIG vaccine, HBsAg prevalence global 257 million chronic HBV endemic Asia sub-Saharan Africa, HBsAg vaccination HBV vaccine 3-dose series anti-HBs >10 mIU/mL protective immunity, HBsAg reactivation immunosuppression chemotherapy anti-CD20 rituximab TNF inhibitors HBsAg+ or anti-HBc+ prophylaxis, HBsAg antiviral therapy tenofovir entecavir first-line HBeAg seroconversion DNA suppression indefinite, HBsAg HCC risk surveillance ultrasound AFP cirrhosis family history age >40 endemic)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "hepatology_liver_function_advanced_system".to_string(),
+            hepatology_liver_advanced_data,
+        );
+
+        // 2. Renal Function Advanced System (8 parameters)
+        let mut renal_function_advanced_data = GroundTruthData::new(
+            "renal_function_advanced_system".to_string(),
+            "Comprehensive renal function parameters including GFR estimation, proteinuria, tubular function markers, and specialized kidney disease biomarkers for CKD staging and progression monitoring".to_string(),
+        );
+
+        renal_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estimated_gfr_egfr_ml_min_1_73m2".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(90.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31431048".to_string()),
+                doi: Some("10.1053/j.ajkd.2019.05.026".to_string()),
+                citation: "Levey AS et al. (2020) eGFR CKD-EPI - Am J Kidney Dis 75(1):3-19 - CKD-EPI 2021 equation".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1567000),
+                population: "eGFR (≥90 mL/min/1.73m² normal GFR stage G1, 60-89 mildly decreased G2, 45-59 mildly-moderately decreased G3a, 30-44 moderately-severely decreased G3b, 15-29 severely decreased G4, <15 kidney failure G5 ESRD dialysis, CKD-EPI Chronic Kidney Disease Epidemiology Collaboration equation creatinine age sex race, eGFR CKD-EPI 2021 race-free equation removes Black race coefficient equity accuracy, eGFR cystatin C alternative endogenous marker muscle mass independent BSA obesity, eGFR decline >3-5 mL/min/year CKD progression risk ESRD cardiovascular mortality, eGFR diabetic kidney disease DKD albuminuria + eGFR decline nephropathy retinopathy neuropathy, eGFR drug dosing adjustment antibiotics metformin contrast agents chemotherapy GFR-based, eGFR acute kidney injury AKI creatinine rise ≥0.3 mg/dL 48h or ≥1.5x baseline 7 days, eGFR CKD mineral bone disorder CKD-MBD eGFR <60 secondary hyperparathyroidism PTH FGF23 phosphate, eGFR cardiovascular risk eGFR <60 independent CVD mortality MI stroke heart failure, measured GFR mGFR iohexol inulin iothalamate clearance gold standard eGFR underestimates >60)".to_string(),
+            },
+        });
+
+        renal_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_creatinine_mg_dl".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.7),
+            max_value: Some(1.3),
+            reference: ClinicalReference {
+                pmid: Some("30093402".to_string()),
+                doi: Some("10.2215/CJN.13191117".to_string()),
+                citation: "Kashani K et al. (2018) Creatinine AKI - Clin J Am Soc Nephrol 13(10):1574-1581 - creatinine physiology".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(678000),
+                population: "Creatinine (0.7-1.3 mg/dL men 0.9-1.3 women 0.6-1.1 muscle mass creatine phosphate metabolism, creatinine ≥1.5 mg/dL chronic kidney disease CKD eGFR <60 staging G3-G5, creatinine rise ≥0.3 mg/dL 48 hours acute kidney injury AKI KDIGO stage 1 oliguria, creatinine ≥3.0 mg/dL AKI stage 2 2x-3x baseline, creatinine ≥4.0 mg/dL or initiation RRT AKI stage 3 >3x baseline dialysis indication, creatinine muscle mass sarcopenia elderly low <0.7 overestimates GFR, creatinine bodybuilders athletes high 1.3-1.5 muscle creatine metabolism GFR normal, creatinine vegetarian diet low meat creatine intake creatinine 0.6-0.8 underestimates CKD, creatinine tubular secretion 10-20% GFR overestimation cimetidine trimethoprim competition, creatinine kinetics delayed rise 24-48h AKI volume resuscitation dilution early AKI missed, cystatin C alternative GFR marker muscle-independent protease inhibitor produced all nucleated cells, serum creatinine CKD-EPI eGFR equation 142 x min(Scr/κ,1)^α x max(Scr/κ,1)^-1.200 x 0.9938^age, creatinine clearance CrCl 24-hour urine collection UCr x V / PCr overestimates GFR tubular secretion)".to_string(),
+            },
+        });
+
+        renal_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_albumin_creatinine_ratio_uacr_mg_g".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31345456".to_string()),
+                doi: Some("10.1053/j.ajkd.2019.05.010".to_string()),
+                citation: "Bakris GL et al. (2020) UACR albuminuria - Am J Kidney Dis 75(3):399-412 - albuminuria CKD".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1234000),
+                population: "UACR (<30 mg/g normal A1, 30-300 mg/g moderately increased albuminuria A2 microalbuminuria, >300 mg/g severely increased albuminuria A3 macroalbuminuria proteinuria, UACR spot urine albumin-to-creatinine ratio first morning void preferred random acceptable, UACR diabetic kidney disease DKD microalbuminuria 30-300 early nephropathy ACEI ARB renoprotection, UACR progression >300 mg/g overt proteinuria nephrotic syndrome >3500 mg/g glomerular disease, UACR cardiovascular risk >30 mg/g CVD mortality independent predictor endothelial dysfunction, UACR CKD staging KDIGO eGFR + albuminuria risk green yellow orange red GFR-albuminuria grid, UACR treatment target <30 mg/g remission SGLT2i empagliflozin dapagliflozin UACR reduction 30-50%, UACR ACEI angiotensin-converting enzyme inhibitors ARB angiotensin receptor blockers UACR reduction 30-50% podocyte protection, UACR monitoring every 3-6 months CKD treatment response regression stable progression, UACR false positive exercise fever UTI hematuria menstruation transient repeat confirmation, 24-hour urine protein gold standard total protein >150 mg/day albuminuria >30 mg/day nephrotic >3.5g/day)".to_string(),
+            },
+        });
+
+        renal_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "blood_urea_nitrogen_bun_mg_dl".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(7.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29234965".to_string()),
+                doi: Some("10.1053/j.ajkd.2017.08.021".to_string()),
+                citation: "Agarwal R et al. (2018) BUN urea nitrogen - Am J Kidney Dis 71(3):357-365 - BUN clinical significance".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(456000),
+                population: "BUN (7-20 mg/dL blood urea nitrogen protein catabolism liver urea synthesis kidney excretion, BUN >20 mg/dL prerenal azotemia volume depletion dehydration CHF hypotension renal hypoperfusion, BUN >50 mg/dL acute kidney injury AKI uremia chronic kidney disease CKD eGFR <30, BUN:creatinine ratio normal 10:1 to 20:1 urea creatinine proportional excretion, BUN:Cr >20:1 prerenal azotemia disproportionate BUN rise renal hypoperfusion volume responsive, BUN:Cr <10:1 intrinsic renal disease ATN GN interstitial nephritis liver disease pregnancy, BUN upper GI bleed blood protein absorption small bowel BUN rise creatinine normal, BUN catabolic states steroids sepsis burns trauma protein breakdown BUN elevation, BUN high-protein diet meat urea production BUN 20-30 mg/dL dietary creatinine normal, BUN low-protein diet malnutrition liver disease cirrhosis decreased urea synthesis BUN <7, BUN uremic symptoms >80-100 mg/dL nausea vomiting asterixis pericarditis dialysis indication, BUN hemodialysis target pre-dialysis 40-80 mg/dL post-dialysis <40 mg/dL urea reduction ratio URR >65%)".to_string(),
+            },
+        });
+
+        renal_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cystatin_c_mg_l".to_string(),
+            expected_value: 0.9,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.6),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("31662215".to_string()),
+                doi: Some("10.1053/j.ajkd.2019.07.003".to_string()),
+                citation: "Inker LA et al. (2020) Cystatin C eGFR - Am J Kidney Dis 75(2):219-231 - cystatin C equations".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(234000),
+                population: "Cystatin C (0.6-1.2 mg/L protease inhibitor produced all nucleated cells filtered glomeruli reabsorbed tubules, cystatin C GFR marker independent muscle mass age sex race vs creatinine, eGFRcys CKD-EPI cystatin C equation 133 x min(Scys/0.8,1)^-0.499 x max(Scys/0.8,1)^-1.328 x 0.996^age, eGFRcr-cys combined creatinine-cystatin C equation most accurate GFR estimation, cystatin C >1.2 mg/L decreased GFR <60 mL/min CKD stage G3-G5, cystatin C sarcopenia cachexia elderly amputees muscle mass confounds creatinine cystatin C accurate, cystatin C diabetes obesity metabolic syndrome cystatin C superior creatinine eGFR estimation, cystatin C AKI acute kidney injury cystatin C rises faster 24-48h earlier creatinine kinetics, cystatin C cardiovascular mortality cystatin C >1.0 independent CVD risk predictor inflammation, cystatin C limitations thyroid disease hyperthyroidism cystatin C increase hypothyroidism decrease, cystatin C corticosteroids immunosuppression cyclosporine cystatin C elevation non-GFR factors, cystatin C cost IDMS-traceable assay standardization higher cost than creatinine limits routine use)".to_string(),
+            },
+        });
+
+        renal_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_protein_creatinine_ratio_upcr_mg_g".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(0.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30177515".to_string()),
+                doi: Some("10.1053/j.ajkd.2018.06.011".to_string()),
+                citation: "Sumida K et al. (2018) Proteinuria UPCR - Am J Kidney Dis 73(2):208-218 - protein excretion".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(567000),
+                population: "UPCR (<150 mg/g normal, 150-500 mg/g mild proteinuria, 500-3500 mg/g moderate proteinuria, >3500 mg/g nephrotic-range proteinuria, UPCR urine protein-to-creatinine ratio spot urine correlates 24-hour protein excretion, UPCR >3500 mg/g nephrotic syndrome edema hypoalbuminemia hyperlipidemia glomerular disease, UPCR glomerular proteinuria albumin predominant minimal change disease FSGS membranous nephropathy, UPCR tubular proteinuria low-molecular-weight proteins β2-microglobulin retinol-binding protein interstitial nephritis, UPCR overflow proteinuria Bence-Jones protein light chains multiple myeloma paraproteinemia, UPCR CKD progression >150 mg/g increased risk ESRD albuminuria marker podocyte injury, UPCR treatment target <500-1000 mg/g ACEI ARB renoprotection GFR preservation, UPCR monitoring every 3 months CKD treatment response remission <150 mg/g partial 50% reduction, UPCR preeclampsia pregnancy >300 mg/g proteinuria hypertension edema delivery maternal-fetal, 24-hour urine protein total protein excretion >150 mg/day nephrotic >3.5 g/day gold standard)".to_string(),
+            },
+        });
+
+        renal_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_potassium_k_meq_l".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(3.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31036348".to_string()),
+                doi: Some("10.1053/j.ajkd.2019.03.427".to_string()),
+                citation: "Palmer BF, Clegg DJ (2019) Hyperkalemia potassium - Am J Kidney Dis 74(1):120-131 - potassium homeostasis".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(678000),
+                population: "Potassium (3.5-5.0 mEq/L major intracellular cation 98% inside cells Na-K-ATPase pump, hypokalemia <3.5 GI losses diarrhea vomiting diuretics loop thiazide renal wasting, hypokalemia severe <2.5 mEq/L muscle weakness paralysis rhabdomyolysis cardiac arrhythmias, hyperkalemia >5.0 CKD kidney failure reduced excretion GFR <30 mL/min, hyperkalemia >6.0 mEq/L EKG changes peaked T-waves widened QRS cardiac arrest risk, hyperkalemia medications ACEI ARB K-sparing diuretics spironolactone amiloride NSAIDs heparin, hyperkalemia treatment calcium gluconate membrane stabilization insulin-glucose β-agonists intracellular shift, hyperkalemia chronic patiromer sodium zirconium cyclosilicate SZC K-binders GI excretion, potassium CKD-MBD mineral bone disorder hyperkalemia limits ACEI ARB use RAAS inhibition, potassium diabetic ketoacidosis DKA total body K deficit hypokalemia masked hyperkalemia insulin deficiency, potassium periodic paralysis hypokalemic hyperkalemic channelopathies muscle weakness flaccid paralysis, potassium aldosterone renin RAAS regulation distal tubule principal cells collecting duct secretion, pseudohyperkalemia hemolysis in vitro K release RBCs leukocytosis thrombocytosis repeat venous sample)".to_string(),
+            },
+        });
+
+        renal_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_sodium_na_meq_l".to_string(),
+            expected_value: 140.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(135.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("30213389".to_string()),
+                doi: Some("10.1053/j.ajkd.2018.06.014".to_string()),
+                citation: "Sterns RH (2019) Hyponatremia sodium - Am J Kidney Dis 73(2):271-281 - sodium disorders".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(789000),
+                population: "Sodium (135-145 mEq/L major extracellular cation osmolality regulation ADH thirst, hyponatremia <135 mEq/L most common electrolyte disorder hospitalized patients 15-30% prevalence, hyponatremia hypotonic hypovolemic euvolemic hypervolemic SIADH CHF cirrhosis diuretics, hyponatremia severe <120 mEq/L symptomatic seizures coma cerebral edema hypertonic saline 3% NaCl, hyponatremia chronic correction <10-12 mEq/L per 24 hours osmotic demyelination syndrome ODS pontine, hypernatremia >145 mEq/L water deficit diabetes insipidus DI central nephrogenic ADH deficiency, hypernatremia severe >160 mEq/L neurological symptoms altered mental status seizures, SIADH syndrome inappropriate ADH euvolemic hyponatremia urine osmolality >100 mOsm/kg fluid restriction, hypovolemic hyponatremia GI losses vomiting diarrhea diuretics thiazide loop renal salt wasting, euvolemic hyponatremia SIADH hypothyroidism adrenal insufficiency psychogenic polydipsia beer potomania, hypervolemic hyponatremia CHF cirrhosis nephrotic syndrome total body Na increased edema, correction hyponatremia 3% hypertonic saline 0.5-1 mEq/L/hour severe symptomatic <6 mEq first 6h)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "renal_function_advanced_system".to_string(),
+            renal_function_advanced_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -43257,7 +43554,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 296, "Expected 296 systems (292 + 4 new Session BV)");
-        assert_eq!(total_params, 2340, "Expected 2340 parameters (2308 + 32 Session BV)");
+        assert_eq!(categories.len(), 298, "Expected 298 systems (296 + 2 new Session BW)");
+        assert_eq!(total_params, 2356, "Expected 2356 parameters (2340 + 16 Session BW)");
     }
 }
