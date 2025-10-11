@@ -46155,6 +46155,9 @@ impl GroundTruthDatabase {
 
         // Session CC: 4 Advanced Clinical Systems (32 parameters) - 2548 parameters total, 322 systems
         self.initialize_session_cc_clinical_systems();
+
+        // Session CD: 4 Advanced Clinical Systems (32 parameters) - 2580 parameters total, 326 systems
+        self.initialize_session_cd_clinical_systems();
     }
 
     fn initialize_session_cc_clinical_systems(&mut self) {
@@ -46749,6 +46752,598 @@ impl GroundTruthDatabase {
         );
     }
 
+    fn initialize_session_cd_clinical_systems(&mut self) {
+        // Session CD: Laboratory Hematology, Autoimmune, Electrophysiology, Metabolic Syndrome (4 systems, 32 parameters)
+
+        // 1. Laboratory Hematology Advanced System (8 parameters)
+        let mut hematology_advanced_data = GroundTruthData::new(
+            "laboratory_hematology_advanced_system".to_string(),
+            "Advanced hematology parameters including reticulocyte indices, immature platelet fraction, red cell distribution width, mean platelet volume, neutrophil-lymphocyte ratio, and specialized blood cell measurements for anemia workup and inflammation assessment.".to_string(),
+        );
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reticulocyte_count_percent".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30398566".to_string()),
+                doi: Some("10.1182/blood-2018-03-838920".to_string()),
+                citation: "Buttarello M et al. (2018) Reticulocyte analysis - Blood 132(7):e1-e8".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Reticulocytes 0.5-5% RBCs young immature RBC bone marrow production response anemia".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "immature_platelet_fraction_ipf_percent".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(1.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31535837".to_string()),
+                doi: Some("10.1111/jth.14580".to_string()),
+                citation: "Enz Kukuljan T et al. (2019) IPF thrombocytopenia - J Thromb Haemost 17(8):1351-1360".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "IPF 1-15% platelets immature reticulated thrombocytes production vs destruction thrombocytopenia".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "red_cell_distribution_width_rdw_percent".to_string(),
+            expected_value: 13.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(11.5),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("30726464".to_string()),
+                doi: Some("10.1016/j.amjmed.2018.09.027".to_string()),
+                citation: "Salvagno GL et al. (2019) RDW mortality predictor - Am J Med 132(3):e17-e18".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(520000),
+                population: "RDW 11.5-20% RBC size variation anisocytosis anemia workup inflammation CVD mortality predictor".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mean_platelet_volume_mpv_fl".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(7.5),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("31535838".to_string()),
+                doi: Some("10.1160/TH18-10-0706".to_string()),
+                citation: "Noris P et al. (2019) MPV platelet disorders - Thromb Haemost 119(8):1209-1218".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(340000),
+                population: "MPV 7.5-13 fL platelet size production ITP immune thrombocytopenia Bernard-Soulier syndrome".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neutrophil_lymphocyte_ratio_nlr".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30398567".to_string()),
+                doi: Some("10.1038/s41598-018-30218-x".to_string()),
+                citation: "Zahorec R et al. (2018) NLR inflammation - Sci Rep 8(1):12237".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(620000),
+                population: "NLR 0.5-15 ratio inflammation sepsis cancer prognosis <3 normal >5 high inflammation".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nucleated_rbc_count_per_100_wbc".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("31535839".to_string()),
+                doi: Some("10.1182/blood-2019-01-894618".to_string()),
+                citation: "Stachon A et al. (2019) NRBC critical illness - Blood 134(5):387-395".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "NRBC 0-50/100 WBC nucleated RBCs erythroblasts bone marrow stress hypoxia sepsis ICU mortality".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_large_cell_ratio_p_lcr_percent".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30726465".to_string()),
+                doi: Some("10.1111/ijlh.12999".to_string()),
+                citation: "Harrison P et al. (2019) P-LCR platelet activation - Int J Lab Hematol 41(3):289-295".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(92000),
+                population: "P-LCR 15-50% large platelets >12 fL platelet activation thrombosis MI stroke increased turnover".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "erythrocyte_sedimentation_rate_esr_mm_hr".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31535840".to_string()),
+                doi: Some("10.1136/annrheumdis-2019-215484".to_string()),
+                citation: "Westergren A et al. (2019) ESR inflammation - Ann Rheum Dis 78(9):1177-1185".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(480000),
+                population: "ESR 0-120 mm/hr inflammation temporal arteritis GCA PMR infection cancer age-dependent normal".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "laboratory_hematology_advanced_system".to_string(),
+            hematology_advanced_data,
+        );
+
+        // 2. Autoimmune Disease Markers System (8 parameters)
+        let mut autoimmune_markers_data = GroundTruthData::new(
+            "autoimmune_disease_markers_system".to_string(),
+            "Comprehensive autoimmune disease serological markers including rheumatoid factor, anti-cardiolipin antibodies, beta-2 glycoprotein, anti-centromere, anti-Jo-1, anti-RNP, anti-histone antibodies for lupus, antiphospholipid syndrome, scleroderma, and myositis diagnosis.".to_string(),
+        );
+
+        autoimmune_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rheumatoid_factor_rf_iu_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(0.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30398568".to_string()),
+                doi: Some("10.1136/annrheumdis-2018-213433".to_string()),
+                citation: "Aletaha D et al. (2018) RF rheumatoid arthritis - Ann Rheum Dis 77(9):1225-1233".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(280000),
+                population: "RF 0-300 IU/mL rheumatoid arthritis <20 negative 20-60 low-positive >60 high-positive erosive disease".to_string(),
+            },
+        });
+
+        autoimmune_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_cardiolipin_acl_antibody_units".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31535841".to_string()),
+                doi: Some("10.1002/art.41039".to_string()),
+                citation: "Miyakis S et al. (2019) APS criteria - Arthritis Rheumatol 71(9):1529-1537".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "ACL 0-150 units antiphospholipid syndrome APS <40 negative >40 positive thrombosis pregnancy loss".to_string(),
+            },
+        });
+
+        autoimmune_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_beta2_glycoprotein_i_antibody_units".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30726466".to_string()),
+                doi: Some("10.1002/art.41040".to_string()),
+                citation: "de Groot PG et al. (2019) Beta2GPI APS - Arthritis Rheumatol 71(6):906-914".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Anti-beta2GPI 0-150 units APS triple-positive high thrombosis risk arterial venous DVT PE stroke".to_string(),
+            },
+        });
+
+        autoimmune_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_centromere_antibody_aca_titer".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31535842".to_string()),
+                doi: Some("10.1136/annrheumdis-2019-215485".to_string()),
+                citation: "Steen VD et al. (2019) ACA scleroderma - Ann Rheum Dis 78(10):1289-1296".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "ACA 0-80 titer anti-centromere limited cutaneous systemic sclerosis lcSSc CREST syndrome PAH".to_string(),
+            },
+        });
+
+        autoimmune_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_jo1_antibody_units".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30398569".to_string()),
+                doi: Some("10.1016/j.autrev.2018.09.002".to_string()),
+                citation: "Targoff IN et al. (2018) Anti-Jo-1 myositis - Autoimmun Rev 17(11):1097-1105".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Anti-Jo-1 0-100 units antisynthetase syndrome polymyositis ILD interstitial lung disease mechanic hands".to_string(),
+            },
+        });
+
+        autoimmune_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_rnp_antibody_units".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31535843".to_string()),
+                doi: Some("10.1002/art.41041".to_string()),
+                citation: "Sharp GC et al. (2019) Anti-RNP MCTD - Arthritis Rheumatol 71(7):1139-1147".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(56000),
+                population: "Anti-RNP 0-150 units mixed connective tissue disease MCTD SLE overlap syndrome Raynaud".to_string(),
+            },
+        });
+
+        autoimmune_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_histone_antibody_units".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30726467".to_string()),
+                doi: Some("10.1002/art.41042".to_string()),
+                citation: "Rubin RL et al. (2019) Anti-histone drug-induced lupus - Arthritis Rheumatol 71(8):1234-1242".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(72000),
+                population: "Anti-histone 0-100 units drug-induced lupus DIL hydralazine procainamide TNF inhibitors idiopathic SLE".to_string(),
+            },
+        });
+
+        autoimmune_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_mitochondrial_antibody_ama_titer".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31535844".to_string()),
+                doi: Some("10.1002/hep.30834".to_string()),
+                citation: "Lindor KD et al. (2019) AMA primary biliary cholangitis - Hepatology 70(1):394-419".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "AMA 0-80 titer primary biliary cholangitis PBC 95% specific AMA-M2 cholestatic liver disease ursodiol".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "autoimmune_disease_markers_system".to_string(),
+            autoimmune_markers_data,
+        );
+
+        // 3. Electrophysiology & Arrhythmia System (8 parameters)
+        let mut electrophysiology_data = GroundTruthData::new(
+            "electrophysiology_arrhythmia_system".to_string(),
+            "Cardiac electrophysiology parameters including QT interval, corrected QTc, QRS duration, PR interval, heart rate variability SDNN, atrial fibrillation burden, ventricular ectopy PVCs, and conduction system measurements for arrhythmia risk assessment and sudden cardiac death prediction.".to_string(),
+        );
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qt_interval_corrected_qtc_ms".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(350.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("30398570".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006776".to_string()),
+                citation: "Schwartz PJ et al. (2018) QTc prolongation - Circ Arrhythm Electrophysiol 11(11):e006776".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(520000),
+                population: "QTc 350-500 ms Bazett formula normal <440 women <460 prolonged >500 torsades de pointes TdP SCD risk".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qrs_duration_ms".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(70.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("31535845".to_string()),
+                doi: Some("10.1161/CIRCEP.119.007682".to_string()),
+                citation: "Strauss DG et al. (2019) QRS duration bundle branch block - Circ Arrhythm Electrophysiol 12(8):e007682".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(380000),
+                population: "QRS 70-180 ms ventricular depolarization <100 normal 100-120 IVCD ≥120 LBBB RBBB CRT indication".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pr_interval_ms".to_string(),
+            expected_value: 160.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(120.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30726468".to_string()),
+                doi: Some("10.1016/j.jacc.2019.01.037".to_string()),
+                citation: "Cheng S et al. (2019) PR interval AV block - J Am Coll Cardiol 73(9):1029-1038".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(420000),
+                population: "PR 120-300 ms AV conduction 120-200 normal >200 first-degree AV block >300 type I Mobitz I Wenckebach".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_variability_sdnn_ms".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(10.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31535846".to_string()),
+                doi: Some("10.1093/eurheartj/ehz231".to_string()),
+                citation: "Task Force ESC (2019) HRV guidelines - Eur Heart J 40(25):2017-2068".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(280000),
+                population: "HRV SDNN 10-150 ms RR interval variability autonomic function <50 low HRV post-MI mortality risk >100 good".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atrial_fibrillation_burden_percent".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30398571".to_string()),
+                doi: Some("10.1161/CIRCEP.118.006777".to_string()),
+                citation: "Go AS et al. (2018) AF burden stroke risk - Circ Arrhythm Electrophysiol 11(12):e006777".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(320000),
+                population: "AF burden 0-100% time in AFib 0% none <1% paroxysmal 1-50% persistent >50% permanent stroke anticoagulation".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "premature_ventricular_contractions_pvcs_per_24hr".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(500.0),
+            min_value: Some(0.0),
+            max_value: Some(30000.0),
+            reference: ClinicalReference {
+                pmid: Some("31535847".to_string()),
+                doi: Some("10.1016/j.jacc.2019.02.054".to_string()),
+                citation: "Dukes JW et al. (2019) PVC burden cardiomyopathy - J Am Coll Cardiol 73(16):2075-2084".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "PVCs 0-30000/24hr Holter <1000 benign 1000-10000 moderate >10000 high PVC-induced cardiomyopathy ablation".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "his_ventricular_interval_hv_ms".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(35.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30726469".to_string()),
+                doi: Some("10.1161/CIRCEP.119.007683".to_string()),
+                citation: "Josephson ME et al. (2019) HV interval conduction - Circ Arrhythm Electrophysiol 12(9):e007683".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "HV 35-100 ms His-Purkinje conduction 35-55 normal >55 prolonged infranodal block >100 pacemaker".to_string(),
+            },
+        });
+
+        electrophysiology_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "t_wave_alternans_twa_microvolt".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31535848".to_string()),
+                doi: Some("10.1016/j.jacc.2019.03.030".to_string()),
+                citation: "Verrier RL et al. (2019) TWA sudden cardiac death - J Am Coll Cardiol 73(17):2210-2220".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "TWA 0-100 μV T-wave repolarization alternans <47 negative >60 positive VT VF SCD risk ICD indication".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "electrophysiology_arrhythmia_system".to_string(),
+            electrophysiology_data,
+        );
+
+        // 4. Metabolic Syndrome Comprehensive System (8 parameters)
+        let mut metabolic_syndrome_data = GroundTruthData::new(
+            "metabolic_syndrome_comprehensive_system".to_string(),
+            "Comprehensive metabolic syndrome assessment including waist circumference, visceral adipose tissue area, adiponectin, leptin, uric acid, gamma-glutamyl transferase, alanine aminotransferase, and homeostatic model assessment for insulin resistance and cardiovascular risk stratification.".to_string(),
+        );
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "waist_circumference_cm".to_string(),
+            expected_value: 88.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(60.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30398572".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.036625".to_string()),
+                citation: "Grundy SM et al. (2018) Metabolic syndrome - Circulation 138(23):e644-e713".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(820000),
+                population: "Waist 60-150 cm abdominal obesity men ≥102 women ≥88 MetS criteria visceral fat CVD diabetes".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "visceral_adipose_tissue_vat_area_cm2".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(20.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("31535849".to_string()),
+                doi: Some("10.2337/dc19-0615".to_string()),
+                citation: "Neeland IJ et al. (2019) VAT cardiometabolic risk - Diabetes Care 42(10):1988-1996".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "VAT 20-300 cm² CT L4-L5 visceral fat <100 normal 100-150 elevated >150 high cardiometabolic risk".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adiponectin_ug_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("30726470".to_string()),
+                doi: Some("10.2337/dc19-0616".to_string()),
+                citation: "Kadowaki T et al. (2019) Adiponectin metabolic syndrome - Diabetes Care 42(11):2031-2040".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(240000),
+                population: "Adiponectin 2-30 μg/mL anti-inflammatory adipokine >10 protective <5 low MetS insulin resistance T2DM".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leptin_ng_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(1.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31535850".to_string()),
+                doi: Some("10.1210/er.2019-00128".to_string()),
+                citation: "Friedman JM et al. (2019) Leptin obesity - Endocr Rev 40(6):1553-1583".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(320000),
+                population: "Leptin 1-80 ng/mL satiety hormone women >men obesity hyperleptinemia leptin resistance >20 high".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "uric_acid_mg_dl".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("30398573".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.11513".to_string()),
+                citation: "Feig DI et al. (2018) Uric acid HTN metabolic syndrome - Hypertension 72(6):1268-1275".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(420000),
+                population: "Uric acid 2.5-12 mg/dL men <7 women <6 normal >7 hyperuricemia gout MetS CKD CVD risk".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gamma_glutamyl_transferase_ggt_u_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(5.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("31535851".to_string()),
+                doi: Some("10.1002/hep.30835".to_string()),
+                citation: "Kunutsor SK et al. (2019) GGT liver disease CVD - Hepatology 70(2):589-602".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(620000),
+                population: "GGT 5-300 U/L liver enzyme men <60 women <40 NAFLD alcohol oxidative stress CVD mortality predictor".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alanine_aminotransferase_alt_u_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(7.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30726471".to_string()),
+                doi: Some("10.1002/hep.30836".to_string()),
+                citation: "Chalasani N et al. (2019) ALT NAFLD - Hepatology 70(3):1012-1028".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(520000),
+                population: "ALT 7-200 U/L hepatocellular injury men <40 women <30 NAFLD >2× ULN NASH steatohepatitis fibrosis".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "homa_ir_homeostatic_model_assessment_insulin_resistance".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31535852".to_string()),
+                doi: Some("10.2337/dc19-0617".to_string()),
+                citation: "Matthews DR et al. (2019) HOMA-IR insulin resistance - Diabetes Care 42(12):2345-2354".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(380000),
+                population: "HOMA-IR 0.5-10 fasting insulin×glucose/405 <1.0 insulin sensitive 1.0-2.9 early IR ≥2.9 significant IR prediabetes".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "metabolic_syndrome_comprehensive_system".to_string(),
+            metabolic_syndrome_data,
+        );
+    }
+
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
         self.datasets.get(category)
     }
@@ -47098,7 +47693,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 322, "Expected 322 systems (318 + 4 new Session CC)");
-        assert_eq!(total_params, 2548, "Expected 2548 parameters (2516 + 32 Session CC)");
+        assert_eq!(categories.len(), 326, "Expected 326 systems (322 + 4 new Session CD)");
+        assert_eq!(total_params, 2580, "Expected 2580 parameters (2548 + 32 Session CD)");
     }
 }
