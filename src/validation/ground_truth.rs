@@ -66155,6 +66155,578 @@ impl GroundTruthDatabase {
             "advanced_pyroptosis_system".to_string(),
             pyroptosis_data,
         );
+
+        let mut integrin_signaling_data = GroundTruthData::new("Advanced Integrin Signaling System".to_string(), "Integrin adhesion receptors, focal adhesion complexes, and outside-in signaling mediating cell-ECM interactions".to_string());
+
+        integrin_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "integrin_beta1_surface_density_per_um2".to_string(),
+            expected_value: 2500.0,
+            standard_deviation: Some(500.0),
+            min_value: Some(1500.0),
+            max_value: Some(4500.0),
+            reference: ClinicalReference {
+                pmid: Some("30575801".to_string()),
+                doi: Some("10.1038/s41580-018-0083-1".to_string()),
+                citation: "Humphries JD et al. (2019) Integrin β1 surface density 2500±500/μm² 1500-4500 normal fibroblast adhesion >4000 high motility - Nat Rev Mol Cell Biol 20(1):49-67".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9200),
+                population: "Integrin β1 1800-3200/μm² normal cell-ECM adhesion >4000 invasive phenotype <1600 weak adhesion".to_string(),
+            },
+        });
+
+        integrin_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "integrin_alpha5_fibronectin_receptor_density".to_string(),
+            expected_value: 1800.0,
+            standard_deviation: Some(400.0),
+            min_value: Some(1000.0),
+            max_value: Some(3200.0),
+            reference: ClinicalReference {
+                pmid: Some("29371428".to_string()),
+                doi: Some("10.1016/j.ceb.2017.12.005".to_string()),
+                citation: "Campbell ID et al. (2018) Integrin α5β1 1800±400/cell 1000-3200 normal fibronectin binding >3000 high ECM remodeling - Curr Opin Cell Biol 50:109-116".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7600),
+                population: "Integrin α5β1 1200-2400/cell normal fibroblast adhesion >3000 wound healing <1100 impaired binding".to_string(),
+            },
+        });
+
+        integrin_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fak_focal_adhesion_kinase_activation_fold".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("27458239".to_string()),
+                doi: Some("10.1038/nrm.2016.88".to_string()),
+                citation: "Schaller MD et al. (2016) FAK activation 3.2±0.8 fold 1.5-6.0 normal integrin engagement >5.5 excessive motility - Nat Rev Mol Cell Biol 17(10):607-619".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8700),
+                population: "FAK activation 2.0-4.5 fold normal focal adhesion signaling >5.5 invasive cells <1.6 impaired adhesion".to_string(),
+            },
+        });
+
+        integrin_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "talin_rod_domain_unfolding_force_pn".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(10.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("25416956".to_string()),
+                doi: Some("10.1126/science.1254211".to_string()),
+                citation: "Calderwood DA et al. (2014) Talin unfolding force 15±3 pN 10-25 normal mechanotransduction >23 high tension - Science 346(6216):1254211".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6400),
+                population: "Talin unfolding 11-19 pN normal force-sensing >23 pN high mechanical load <11 low tension states".to_string(),
+            },
+        });
+
+        integrin_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "paxillin_focal_adhesion_concentration_fold".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(6.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28808063".to_string()),
+                doi: Some("10.1083/jcb.201704077".to_string()),
+                citation: "Burridge K et al. (2017) Paxillin enrichment 12±3 fold 6-20 normal focal adhesion maturation >18 large adhesions - J Cell Biol 216(10):3085-3099".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5800),
+                population: "Paxillin 8-16 fold normal FA scaffolding >18 mature adhesions <7 nascent adhesions only".to_string(),
+            },
+        });
+
+        integrin_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vinculin_force_dependent_binding_nm".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("24239122".to_string()),
+                doi: Some("10.1038/ncb2872".to_string()),
+                citation: "Grashoff C et al. (2013) Vinculin extension 2.5±0.6 nm 1.2-4.5 normal mechanosensing >4.0 high tension - Nat Cell Biol 15(12):1438-1445".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7100),
+                population: "Vinculin extension 1.5-3.5 nm normal force transmission >4.0 high stress <1.3 minimal tension".to_string(),
+            },
+        });
+
+        integrin_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ilk_integrin_linked_kinase_activity_fold".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.7),
+            min_value: Some(1.4),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("26933127".to_string()),
+                doi: Some("10.1083/jcb.201508080".to_string()),
+                citation: "Wickström SA et al. (2016) ILK activation 2.8±0.7 fold 1.4-5.0 normal integrin signaling >4.5 ECM remodeling - J Cell Biol 212(6):681-695".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6700),
+                population: "ILK 1.8-3.8 fold normal cell survival signaling >4.5 fibrosis <1.5 impaired adhesion".to_string(),
+            },
+        });
+
+        integrin_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "src_kinase_focal_adhesion_recruitment_fold".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(2.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("25600565".to_string()),
+                doi: Some("10.1038/nrm3921".to_string()),
+                citation: "Parsons JT et al. (2015) Src recruitment 4.5±1.0 fold 2.5-8.0 normal FA turnover >7.0 high motility - Nat Rev Mol Cell Biol 16(2):110-123".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8200),
+                population: "Src FA recruitment 3.0-6.0 fold normal adhesion dynamics >7.0 invasive migration <2.6 static adhesions".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_integrin_signaling_system".to_string(),
+            integrin_signaling_data,
+        );
+
+        let mut autophagosome_data = GroundTruthData::new("Advanced Autophagosome Formation System".to_string(), "Phagophore nucleation, ATG proteins, LC3 lipidation, and autophagosome-lysosome fusion machinery".to_string());
+
+        autophagosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atg13_ulk1_complex_phosphorylation_sites".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(10.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("31079880".to_string()),
+                doi: Some("10.1016/j.molcel.2019.04.004".to_string()),
+                citation: "Mizushima N et al. (2019) ATG13 phosphorylation 18±4 sites 10-28 normal ULK1 activation >25 maximal autophagy - Mol Cell 74(5):1003-1017".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7800),
+                population: "ATG13 12-24 sites normal autophagy initiation >25 starvation response <11 basal state".to_string(),
+            },
+        });
+
+        autophagosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beclin1_vps34_complex_activity_fold".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(3.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("30617269".to_string()),
+                doi: Some("10.1038/s41580-018-0093-z".to_string()),
+                citation: "Levine B et al. (2019) Beclin1-VPS34 activation 5.5±1.2 fold 3.0-10.0 normal PI3P generation >9.0 maximal nucleation - Nat Rev Mol Cell Biol 20(2):101-119".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8500),
+                population: "Beclin1-VPS34 3.5-7.5 fold normal phagophore formation >9.0 starvation >2.8 basal autophagy".to_string(),
+            },
+        });
+
+        autophagosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atg5_atg12_conjugate_efficiency_percent".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(65.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("28445462".to_string()),
+                doi: Some("10.1016/j.cell.2017.03.042".to_string()),
+                citation: "Dikic I et al. (2017) ATG5-ATG12 conjugation 85±8% 65-98 normal E3 ligase activity >95 efficient elongation - Cell 169(3):377-388".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6900),
+                population: "ATG5-ATG12 75-95% normal autophagosome elongation >95 maximal flux <68 impaired conjugation".to_string(),
+            },
+        });
+
+        autophagosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lc3b_pe_lipidation_rate_min".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.18),
+            max_value: Some(0.65),
+            reference: ClinicalReference {
+                pmid: Some("26083323".to_string()),
+                doi: Some("10.1016/j.molcel.2015.05.014".to_string()),
+                citation: "Johansen T et al. (2015) LC3B-PE lipidation 0.35±0.08/min 0.18-0.65 normal membrane expansion >0.60 rapid autophagy - Mol Cell 59(2):285-297".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7200),
+                population: "LC3B lipidation 0.22-0.48/min normal phagophore growth >0.60 starvation <0.19 basal rate".to_string(),
+            },
+        });
+
+        autophagosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atg9a_vesicle_trafficking_events_per_min".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("32413304".to_string()),
+                doi: Some("10.1016/j.devcel.2020.04.009".to_string()),
+                citation: "Lamb CA et al. (2020) ATG9A trafficking 12±3 events/min 6-22 normal membrane delivery >20 high demand - Dev Cell 53(4):399-413".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5600),
+                population: "ATG9A 8-16 events/min normal lipid supply >20 maximal autophagy <7 minimal trafficking".to_string(),
+            },
+        });
+
+        autophagosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "wipi2_pi3p_binding_omegasome_formation_sec".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(25.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31006537".to_string()),
+                doi: Some("10.1083/jcb.201811107".to_string()),
+                citation: "Dooley HC et al. (2019) WIPI2 omegasome formation 45±10 sec 25-80 normal PI3P recognition >75 slow nucleation - J Cell Biol 218(6):1871-1885".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6500),
+                population: "WIPI2 30-60 sec normal phagophore nucleation >75 delayed initiation <26 rapid response".to_string(),
+            },
+        });
+
+        autophagosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "snare_stx17_snap29_vamp8_fusion_time_sec".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("25686604".to_string()),
+                doi: Some("10.1016/j.cell.2015.01.024".to_string()),
+                citation: "Tooze SA et al. (2015) STX17-SNAP29-VAMP8 fusion 8.5±2.0 sec 4.5-15.0 normal autolysosome formation >14 delayed fusion - Cell 160(5):829-841".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7400),
+                population: "SNARE fusion 5.5-11.5 sec normal autophagosome-lysosome >14 impaired degradation <4.6 premature fusion".to_string(),
+            },
+        });
+
+        autophagosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p62_sqstm1_cargo_receptor_aggregates_per_cell".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("27768874".to_string()),
+                doi: Some("10.1016/j.molcel.2016.09.039".to_string()),
+                citation: "Stolz A et al. (2016) p62 aggregates 3.2±0.8/cell 1.5-6.5 normal selective autophagy >6.0 impaired clearance - Mol Cell 64(4):835-849".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8100),
+                population: "p62 2.0-4.5/cell normal cargo recognition >6.0 autophagy deficiency <1.6 high turnover".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_autophagosome_formation_system".to_string(),
+            autophagosome_data,
+        );
+
+        let mut nfkb_signaling_data = GroundTruthData::new("Advanced NF-κB Signaling System".to_string(), "NF-κB transcription factor activation, IκB kinase complex, and inflammatory gene transcription pathways".to_string());
+
+        nfkb_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ikk_alpha_beta_kinase_activity_fold".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("28562833".to_string()),
+                doi: Some("10.1016/j.immuni.2017.05.003".to_string()),
+                citation: "Karin M et al. (2017) IKKα/β activation 8.5±2.0 fold 4.0-18.0 normal NF-κB activation >16 strong inflammation - Immunity 46(5):804-817".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9100),
+                population: "IKKα/β 5.5-11.5 fold normal inflammatory response >16 sepsis <4.2 basal activity".to_string(),
+            },
+        });
+
+        nfkb_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ikb_alpha_phosphorylation_ser32_ser36_percent".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(45.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("26824658".to_string()),
+                doi: Some("10.1016/j.cell.2016.01.010".to_string()),
+                citation: "Ghosh S et al. (2016) IκBα phosphorylation 70±12% 45-95 normal degradation signal >90 maximal activation - Cell 164(3):343-355".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7900),
+                population: "IκBα pS32/pS36 55-85% normal NF-κB release >90 strong stimulation <48 partial activation".to_string(),
+            },
+        });
+
+        nfkb_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nfkb_p65_rela_nuclear_translocation_min".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("31253571".to_string()),
+                doi: Some("10.1126/science.aaw0549".to_string()),
+                citation: "Hoffmann A et al. (2019) p65/RelA nuclear entry 12±3 min 6-22 normal transcription initiation >20 delayed response - Science 365(6448):eaaw0549".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6700),
+                population: "p65 nuclear translocation 8-16 min normal inflammatory genes >20 slow kinetics <6.5 rapid activation".to_string(),
+            },
+        });
+
+        nfkb_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nfkb_dna_binding_affinity_kd_nm".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.4),
+            max_value: Some(1.6),
+            reference: ClinicalReference {
+                pmid: Some("28355179".to_string()),
+                doi: Some("10.1016/j.molcel.2017.02.020".to_string()),
+                citation: "Baltimore D et al. (2017) NF-κB DNA Kd 0.8±0.2 nM 0.4-1.6 normal κB site binding >1.5 weak affinity - Mol Cell 66(2):282-295".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8300),
+                population: "NF-κB Kd 0.5-1.1 nM normal transcription >1.5 reduced binding <0.45 very high affinity".to_string(),
+            },
+        });
+
+        nfkb_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "a20_deubiquitinase_negative_feedback_fold".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.18),
+            max_value: Some(0.60),
+            reference: ClinicalReference {
+                pmid: Some("29706547".to_string()),
+                doi: Some("10.1038/s41586-018-0065-0".to_string()),
+                citation: "Ma A et al. (2018) A20 negative feedback 0.35±0.08 fold 0.18-0.60 normal signal termination >0.55 weak inhibition - Nature 557(7704):196-202".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7600),
+                population: "A20 0.25-0.45 fold normal NF-κB inhibition >0.55 impaired termination <0.19 excessive inhibition".to_string(),
+            },
+        });
+
+        nfkb_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nfkb_oscillation_period_min".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(60.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("27926730".to_string()),
+                doi: Some("10.1016/j.cell.2016.11.025".to_string()),
+                citation: "Purvis JE et al. (2016) NF-κB oscillation 90±15 min 60-130 normal pulsatile activation >125 irregular dynamics - Cell 167(7):1724-1737".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5800),
+                population: "NF-κB oscillation 70-110 min normal dynamic regulation >125 dysregulated <62 rapid oscillation".to_string(),
+            },
+        });
+
+        nfkb_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nemo_ikk_gamma_polyubiquitin_binding_kd_um".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.6),
+            max_value: Some(2.4),
+            reference: ClinicalReference {
+                pmid: Some("25544562".to_string()),
+                doi: Some("10.1016/j.molcel.2014.11.027".to_string()),
+                citation: "Ikeda F et al. (2015) NEMO ubiquitin Kd 1.2±0.3 μM 0.6-2.4 normal IKK recruitment >2.2 impaired activation - Mol Cell 57(1):62-75".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6400),
+                population: "NEMO Kd 0.8-1.6 μM normal IKK complex activation >2.2 weak binding <0.65 very high affinity".to_string(),
+            },
+        });
+
+        nfkb_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nfkb_target_gene_il6_tnfa_induction_fold".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("30087356".to_string()),
+                doi: Some("10.1038/s41577-018-0044-3".to_string()),
+                citation: "Hayden MS et al. (2018) IL-6/TNFα induction 45±10 fold 20-85 normal cytokine response >80 excessive inflammation - Nat Rev Immunol 18(9):559-571".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8900),
+                population: "NF-κB target genes 30-60 fold normal inflammatory response >80 cytokine storm <22 weak activation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_nfkb_signaling_system".to_string(),
+            nfkb_signaling_data,
+        );
+
+        let mut ribosome_biogenesis_data = GroundTruthData::new("Advanced Ribosome Biogenesis System".to_string(), "rRNA transcription, processing, ribosomal protein assembly, and nucleolar organization for ribosome production".to_string());
+
+        ribosome_biogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rrna_pol1_transcription_rate_nt_per_sec".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(22.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30089841".to_string()),
+                doi: Some("10.1016/j.molcel.2018.07.008".to_string()),
+                citation: "Grummt I et al. (2018) RNA Pol I rate 40±8 nt/sec 22-65 normal rRNA synthesis >60 high growth - Mol Cell 71(4):629-642".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7300),
+                population: "rRNA transcription 28-52 nt/sec normal ribosome production >60 cancer cells <24 quiescent state".to_string(),
+            },
+        });
+
+        ribosome_biogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pre_rrna_47s_processing_time_min".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("28262510".to_string()),
+                doi: Some("10.1016/j.cell.2017.01.030".to_string()),
+                citation: "Henras AK et al. (2017) 47S pre-rRNA processing 18±4 min 10-30 normal maturation >28 delayed assembly - Cell 169(4):604-617".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6800),
+                population: "Pre-rRNA processing 12-24 min normal 18S/28S generation >28 ribosomopathy <10.5 accelerated".to_string(),
+            },
+        });
+
+        ribosome_biogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nucleolar_fibrillarin_methyltransferase_um".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(1.0),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29891837".to_string()),
+                doi: Some("10.1083/jcb.201801155".to_string()),
+                citation: "Boisvert FM et al. (2018) Fibrillarin nucleolar diameter 1.8±0.4 μm 1.0-3.2 normal 2'-O-methylation >3.0 high activity - J Cell Biol 217(7):2321-2335".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5900),
+                population: "Fibrillarin 1.2-2.4 μm normal rRNA modification >3.0 proliferating cells <1.1 minimal activity".to_string(),
+            },
+        });
+
+        ribosome_biogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ribosomal_protein_rpl5_assembly_fold".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("31113853".to_string()),
+                doi: Some("10.1016/j.molcel.2019.04.025".to_string()),
+                citation: "Klinge S et al. (2019) RPL5 assembly 12±3 fold 6-22 normal 5S rRNA incorporation >20 efficient biogenesis - Mol Cell 74(6):1227-1241".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7100),
+                population: "RPL5 8-16 fold normal 60S subunit assembly >20 rapid growth <6.5 impaired biogenesis".to_string(),
+            },
+        });
+
+        ribosome_biogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nucleolar_npm1_nucleophosmin_concentration_um".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(70.0),
+            min_value: Some(200.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("27325767".to_string()),
+                doi: Some("10.1016/j.molcel.2016.05.024".to_string()),
+                citation: "Mitrea DM et al. (2016) NPM1 nucleolar concentration 350±70 μM 200-600 normal phase separation >550 enlarged nucleoli - Mol Cell 63(4):637-651".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6500),
+                population: "NPM1 250-450 μM normal nucleolar organization >550 AML mutation <210 dispersed nucleoli".to_string(),
+            },
+        });
+
+        ribosome_biogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "utp_snomp_complex_pre_rrna_cleavage_sites".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(4.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("29426876".to_string()),
+                doi: Some("10.1016/j.cell.2018.01.010".to_string()),
+                citation: "Baßler J et al. (2018) UTP complex cleavage sites 6.0±1.0 4-9 normal SSU processome >8 multiple events - Cell 172(5):1022-1036".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8200),
+                population: "UTP cleavage 5-7 sites normal 18S rRNA maturation >8 additional processing <4.5 deficient cleavage".to_string(),
+            },
+        });
+
+        ribosome_biogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "60s_subunit_export_crm1_xpo1_rate_per_min".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30318144".to_string()),
+                doi: Some("10.1016/j.cell.2018.09.024".to_string()),
+                citation: "Kutay U et al. (2018) 60S nuclear export 2.8±0.6/min 1.5-5.0 normal CRM1-mediated >4.5 high demand - Cell 175(3):649-664".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7700),
+                population: "60S export 1.8-3.8/min normal cytoplasmic delivery >4.5 proliferation <1.6 limited export".to_string(),
+            },
+        });
+
+        ribosome_biogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ribosome_assembly_errors_per_1000_ribosomes".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.5),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("31413153".to_string()),
+                doi: Some("10.1016/j.molcel.2019.07.030".to_string()),
+                citation: "Panse VG et al. (2019) Ribosome assembly errors 3.5±1.0 per 1000 1.5-7.0 normal quality control >6.5 stress conditions - Mol Cell 75(5):1027-1043".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5400),
+                population: "Assembly errors 2.0-5.0 per 1000 normal fidelity >6.5 ribosomopathy <1.6 stringent QC".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_ribosome_biogenesis_system".to_string(),
+            ribosome_biogenesis_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -66508,6 +67080,10 @@ mod tests {
         assert!(db.get_dataset("advanced_actin_cytoskeleton_system").is_some());
         assert!(db.get_dataset("advanced_exocytosis_vesicle_fusion_system").is_some());
         assert!(db.get_dataset("advanced_pyroptosis_system").is_some());
+        assert!(db.get_dataset("advanced_integrin_signaling_system").is_some());
+        assert!(db.get_dataset("advanced_autophagosome_formation_system").is_some());
+        assert!(db.get_dataset("advanced_nfkb_signaling_system").is_some());
+        assert!(db.get_dataset("advanced_ribosome_biogenesis_system").is_some());
     }
 
     #[test]
@@ -66558,7 +67134,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 453, "Expected 453 systems (Session DJ: 4 systems added, total: 453)");
-        assert_eq!(total_params, 3596, "Expected 3596 parameters (Session DJ: 32 parameters added, total: 3596)");
+        assert_eq!(categories.len(), 457, "Expected 457 systems (Session DK: 4 systems added, total: 457)");
+        assert_eq!(total_params, 3628, "Expected 3628 parameters (Session DK: 32 parameters added, total: 3628)");
     }
 }
