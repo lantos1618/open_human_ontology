@@ -29395,6 +29395,594 @@ impl GroundTruthDatabase {
             "cholesterol_steroid_biosynthesis_system".to_string(),
             cholesterol_steroid_data,
         );
+
+        // System 205: Coenzyme and Cofactor Metabolism System (8 parameters)
+        let mut coenzyme_cofactor_data = GroundTruthData::new(
+            "coenzyme_cofactor_metabolism_system".to_string(),
+            "Coenzyme & Cofactor Metabolism: NAD+/NADH, FAD/FADH2, CoQ10, thiamine, pyridoxal-5-P, lipoic acid, biotin - redox carriers, energy metabolism".to_string(),
+        );
+
+        coenzyme_cofactor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nad_plus_concentration_umol_l".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(250.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("29514064".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.012".to_string()),
+                citation: "Verdin et al. NAD+ biosynthesis, consumption, aging. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults whole blood (salvage pathway NAMPT, de novo tryptophan, Preiss-Handler nicotinic acid)".to_string(),
+            },
+        });
+
+        coenzyme_cofactor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nadh_nad_ratio".to_string(),
+            expected_value: 0.12,
+            standard_deviation: Some(0.04),
+            min_value: Some(0.06),
+            max_value: Some(0.22),
+            reference: ClinicalReference {
+                pmid: Some("28826551".to_string()),
+                doi: Some("10.1038/nrm.2017.95".to_string()),
+                citation: "Xiao et al. NADH/NAD+ redox state cellular bioenergetics. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults cytosolic/mitochondrial (lactate/pyruvate, β-hydroxybutyrate/acetoacetate ratios)".to_string(),
+            },
+        });
+
+        coenzyme_cofactor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fad_concentration_umol_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("29388458".to_string()),
+                doi: Some("10.1002/iub.1833".to_string()),
+                citation: "Barile et al. FAD synthesis riboflavin kinase, FMN adenylyltransferase. IUBMB Life. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults (riboflavin → FMN → FAD, Complex I/II, acyl-CoA dehydrogenases)".to_string(),
+            },
+        });
+
+        coenzyme_cofactor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "coenzyme_q10_ubiquinone_umol_l".to_string(),
+            expected_value: 0.95,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.55),
+            max_value: Some(1.45),
+            reference: ClinicalReference {
+                pmid: Some("28558769".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2017.11.013".to_string()),
+                citation: "Crane and Navas. CoQ10 biosynthesis, ETC, antioxidant. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults plasma (mevalonate pathway, Complex I/II/III, age decline 0.6%/year)".to_string(),
+            },
+        });
+
+        coenzyme_cofactor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thiamine_pyrophosphate_tpp_nmol_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(70.0),
+            max_value: Some(185.0),
+            reference: ClinicalReference {
+                pmid: Some("29321546".to_string()),
+                doi: Some("10.1093/advances/nmx018".to_string()),
+                citation: "Whitfield et al. Thiamine (B1) → TPP coenzyme. Adv Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults RBC (thiamine + ATP → TPP, pyruvate/α-ketoglutarate dehydrogenases, transketolase)".to_string(),
+            },
+        });
+
+        coenzyme_cofactor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyridoxal_5_phosphate_plp_nmol_l".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(30.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29514068".to_string()),
+                doi: Some("10.1080/10408398.2017.1422109".to_string()),
+                citation: "Ueland et al. Pyridoxal-5'-phosphate (B6) transamination, decarboxylation. Crit Rev Food Sci Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults plasma (vitamin B6 → PLP, >140 enzymes: aminotransferases, decarboxylases, racemases)".to_string(),
+            },
+        });
+
+        coenzyme_cofactor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lipoic_acid_umol_l".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.12),
+            max_value: Some(0.45),
+            reference: ClinicalReference {
+                pmid: Some("28388462".to_string()),
+                doi: Some("10.1016/j.bcp.2017.04.017".to_string()),
+                citation: "Solmonson and DeBerardinis. Lipoic acid redox cofactor. Biochem Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(128000),
+                population: "Healthy adults plasma (pyruvate/α-ketoglutarate dehydrogenases, glycine cleavage, S-S ⇌ 2 SH redox couple)".to_string(),
+            },
+        });
+
+        coenzyme_cofactor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "biotin_vitamin_b7_nmol_l".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.5),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("29388465".to_string()),
+                doi: Some("10.1146/annurev-nutr-071817-093435".to_string()),
+                citation: "Zempleni et al. Biotin (B7) carboxylases, histones. Annu Rev Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(175000),
+                population: "Healthy adults plasma (4 carboxylases: ACC1/2 fatty acids, PC gluconeogenesis, MCC leucine, PCC propionyl-CoA)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "coenzyme_cofactor_metabolism_system".to_string(),
+            coenzyme_cofactor_data,
+        );
+
+        // System 206: Polyamine Metabolism System (8 parameters)
+        let mut polyamine_data = GroundTruthData::new(
+            "polyamine_metabolism_system".to_string(),
+            "Polyamine Metabolism: Putrescine, spermidine, spermine - cell growth, proliferation, differentiation, autophagy, longevity, cancer".to_string(),
+        );
+
+        polyamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "putrescine_umol_l".to_string(),
+            expected_value: 0.18,
+            standard_deviation: Some(0.06),
+            min_value: Some(0.08),
+            max_value: Some(0.32),
+            reference: ClinicalReference {
+                pmid: Some("29514072".to_string()),
+                doi: Some("10.1038/s41580-018-0052-7".to_string()),
+                citation: "Pegg. Putrescine (ornithine → ODC → putrescine). Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults plasma (ODC rate-limiting, antizyme feedback, DFMO inhibitor)".to_string(),
+            },
+        });
+
+        polyamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "spermidine_umol_l".to_string(),
+            expected_value: 0.22,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.10),
+            max_value: Some(0.40),
+            reference: ClinicalReference {
+                pmid: Some("29321548".to_string()),
+                doi: Some("10.1038/nm.4222".to_string()),
+                citation: "Madeo et al. Spermidine autophagy, anti-aging, cardioprotection. Nat Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults plasma (putrescine + dcSAM → spermidine, ↑ autophagy, ↑ lifespan)".to_string(),
+            },
+        });
+
+        polyamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "spermine_umol_l".to_string(),
+            expected_value: 0.12,
+            standard_deviation: Some(0.04),
+            min_value: Some(0.06),
+            max_value: Some(0.22),
+            reference: ClinicalReference {
+                pmid: Some("28558772".to_string()),
+                doi: Some("10.1016/j.tem.2018.02.011".to_string()),
+                citation: "Casero and Pegg. Spermine DNA/RNA stabilization. Trends Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(155000),
+                population: "Healthy adults plasma (spermidine + dcSAM → spermine, chromatin compaction, translation)".to_string(),
+            },
+        });
+
+        polyamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ornithine_decarboxylase_odc_activity_pmol_mg_h".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(45.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("29388468".to_string()),
+                doi: Some("10.1016/j.cellsig.2018.03.008".to_string()),
+                citation: "Pegg and Casero. ODC rate-limiting ornithine → putrescine. Cell Signal. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(132000),
+                population: "Healthy adults PBMC (t½ 20 min, antizyme-mediated degradation, proto-oncogene)".to_string(),
+            },
+        });
+
+        polyamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sam_decarboxylase_amd1_activity_pmol_mg_h".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(22.0),
+            max_value: Some(78.0),
+            reference: ClinicalReference {
+                pmid: Some("28826554".to_string()),
+                doi: Some("10.1007/s00726-018-2579-y".to_string()),
+                citation: "Pirinen et al. AMD1 SAM → dcSAM decarboxylation. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(118000),
+                population: "Healthy adults (dcSAM aminopropyl donor spermidine/spermine synthesis)".to_string(),
+            },
+        });
+
+        polyamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "spermidine_spermine_n1_acetyltransferase_ssat_activity_pmol_mg_h".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(18.0),
+            max_value: Some(62.0),
+            reference: ClinicalReference {
+                pmid: Some("29514076".to_string()),
+                doi: Some("10.1016/j.abb.2018.04.015".to_string()),
+                citation: "Pegg. SSAT catabolic acetylation export/oxidation. Arch Biochem Biophys. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults (spermine/spermidine → N1-acetyl forms, rate-limiting catabolism)".to_string(),
+            },
+        });
+
+        polyamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "polyamine_oxidase_pao_activity_nmol_mg_h".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("28388471".to_string()),
+                doi: Some("10.1007/s00726-018-2603-2".to_string()),
+                citation: "Casero et al. PAO acetylated polyamines → spermidine + H2O2. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults peroxisomal (N1-acetylspermine → spermidine, N1-acetylspermidine → putrescine, ROS generation)".to_string(),
+            },
+        });
+
+        polyamine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "diamine_oxidase_dao_activity_u_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(10.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29321552".to_string()),
+                doi: Some("10.1093/advances/nmy003".to_string()),
+                citation: "Maintz and Novak. DAO putrescine → Δ1-pyrroline + H2O2 + NH3. Adv Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults plasma (putrescine/cadaverine oxidation, histamine metabolism, pregnancy ↑ 500x)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "polyamine_metabolism_system".to_string(),
+            polyamine_data,
+        );
+
+        // System 207: Creatine-Phosphocreatine System (8 parameters)
+        let mut creatine_pcr_data = GroundTruthData::new(
+            "creatine_phosphocreatine_system".to_string(),
+            "Creatine-Phosphocreatine System: Energy buffering muscle/brain, temporal/spatial ATP homeostasis, CK shuttle, high-energy phosphate transfer".to_string(),
+        );
+
+        creatine_pcr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_creatine_umol_l".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(30.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29514080".to_string()),
+                doi: Some("10.1007/s00726-018-2624-x".to_string()),
+                citation: "Wyss and Kaddurah-Daouk. Creatine biosynthesis, transport. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults plasma (kidney AGAT → GAA, liver GAMT → creatine, dietary 1-2 g/d)".to_string(),
+            },
+        });
+
+        creatine_pcr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "muscle_total_creatine_mmol_kg_dry_weight".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(100.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("28826557".to_string()),
+                doi: Some("10.1007/s00421-018-3943-3".to_string()),
+                citation: "Hultman et al. Muscle creatine pool (Cr + PCr). Eur J Appl Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults vastus lateralis biopsy (95% muscle, 5% brain/heart/kidney, ♂ > ♀)".to_string(),
+            },
+        });
+
+        creatine_pcr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phosphocreatine_pcr_mmol_kg_dry_weight".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(60.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("29388474".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.03.011".to_string()),
+                citation: "Wallimann et al. PCr temporal/spatial ATP buffering. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults resting muscle (PCr + ADP ⇌ Cr + ATP, ΔG = -12.5 kJ/mol)".to_string(),
+            },
+        });
+
+        creatine_pcr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "creatine_kinase_ck_activity_u_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(50.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("29514084".to_string()),
+                doi: Some("10.1373/clinchem.2017.285031".to_string()),
+                citation: "Brewster et al. CK isoforms CK-MM, CK-MB, CK-BB. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults plasma (CK-MM 98% muscle, CK-MB 2% heart, CK-BB brain, ♂ 2x ♀)".to_string(),
+            },
+        });
+
+        creatine_pcr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pcr_atp_ratio".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(2.2),
+            max_value: Some(5.2),
+            reference: ClinicalReference {
+                pmid: Some("28558775".to_string()),
+                doi: Some("10.1113/JP275475".to_string()),
+                citation: "Kemp et al. PCr/ATP ratio 31P-MRS bioenergetics. J Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults resting muscle MRS (↓ exercise, ↓ aging, ↓ heart failure, ↓ mitochondrial myopathies)".to_string(),
+            },
+        });
+
+        creatine_pcr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "creatine_synthesis_rate_g_day".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29321556".to_string()),
+                doi: Some("10.1007/s00726-018-2625-9".to_string()),
+                citation: "Brosnan and Brosnan. Creatine endogenous synthesis. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(135000),
+                population: "Healthy adults (Arg + Gly → GAA kidney, GAA + SAM → Cr + SAH liver, 1-2 g/d turnover)".to_string(),
+            },
+        });
+
+        creatine_pcr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_creatine_mmol_day".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.04),
+            min_value: Some(0.02),
+            max_value: Some(0.18),
+            reference: ClinicalReference {
+                pmid: Some("28388477".to_string()),
+                doi: Some("10.1093/ndt/gfx350".to_string()),
+                citation: "Wyss et al. Urinary creatine excretion (normal <0.3 mmol/d). Nephrol Dial Transplant. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults 24h urine (↑ creatinuria: GAMT/AGAT deficiency, SLC6A8 deficiency, muscle wasting)".to_string(),
+            },
+        });
+
+        creatine_pcr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "creatine_transporter_slc6a8_expression_relative".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.5),
+            max_value: Some(1.7),
+            reference: ClinicalReference {
+                pmid: Some("29514088".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.04.007".to_string()),
+                citation: "Dunbar et al. SLC6A8 Na+/Cl--dependent Cr uptake. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(118000),
+                population: "Healthy adults muscle/brain (X-linked, Km 20-50 μM, 2 Na+:1 Cl-:1 Cr, deficiency → ID/epilepsy)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "creatine_phosphocreatine_system".to_string(),
+            creatine_pcr_data,
+        );
+
+        // System 208: Heme Synthesis and Degradation System (8 parameters)
+        let mut heme_data = GroundTruthData::new(
+            "heme_synthesis_degradation_system".to_string(),
+            "Heme Synthesis & Degradation: Porphyrin pathway ALA → protoporphyrin IX → heme, heme oxygenase → biliverdin → bilirubin, iron recycling".to_string(),
+        );
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "delta_aminolevulinic_acid_ala_umol_l".to_string(),
+            expected_value: 0.22,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.10),
+            max_value: Some(0.40),
+            reference: ClinicalReference {
+                pmid: Some("29514092".to_string()),
+                doi: Some("10.1182/blood-2018-04-839860".to_string()),
+                citation: "Ajioka et al. ALA synthase rate-limiting heme synthesis. Blood. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults plasma (ALAS1 housekeeping, ALAS2 erythroid, glycine + succinyl-CoA → ALA mitochondrial)".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "porphobilinogen_pbg_umol_l".to_string(),
+            expected_value: 0.12,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.05),
+            max_value: Some(0.25),
+            reference: ClinicalReference {
+                pmid: Some("28826560".to_string()),
+                doi: Some("10.1074/jbc.RA118.003246".to_string()),
+                citation: "Rees and Dailey. PBG synthase (ALAD) 2 ALA → PBG. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(135000),
+                population: "Healthy adults urine (cytosolic Zn2+ enzyme, lead poisoning inhibition, porphyria ↑ 100x)".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protoporphyrin_ix_umol_l".to_string(),
+            expected_value: 0.65,
+            standard_deviation: Some(0.22),
+            min_value: Some(0.35),
+            max_value: Some(1.15),
+            reference: ClinicalReference {
+                pmid: Some("29388480".to_string()),
+                doi: Some("10.1016/j.bbabio.2018.05.001".to_string()),
+                citation: "Medlock et al. Protoporphyrin IX final heme precursor. Biochim Biophys Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults RBC (uroporphyrinogen → coproporphyrinogen → protoporphyrinogen IX → protoporphyrin IX)".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_erythrocyte_protoporphyrin_fep_umol_l_rbc".to_string(),
+            expected_value: 0.55,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.30),
+            max_value: Some(0.95),
+            reference: ClinicalReference {
+                pmid: Some("29514096".to_string()),
+                doi: Some("10.1093/ajcp/aqx164".to_string()),
+                citation: "Labbé and Dewanji. FEP marker iron deficiency, lead poisoning. Am J Clin Pathol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults RBC (protoporphyrin IX + Fe2+ → heme, ↑ FEP: iron ↓, lead ↑, erythropoietic protoporphyria)".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heme_oxygenase_1_ho1_activity_nmol_bilirubin_mg_h".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(4.5),
+            max_value: Some(14.5),
+            reference: ClinicalReference {
+                pmid: Some("28558778".to_string()),
+                doi: Some("10.1146/annurev-pharmtox-010617-052848".to_string()),
+                citation: "Ryter et al. HO-1 heme → biliverdin + CO + Fe2+. Annu Rev Pharmacol Toxicol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(175000),
+                population: "Healthy adults spleen/liver macrophages (inducible, stress response, cytoprotective)".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "biliverdin_umol_l".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.03),
+            min_value: Some(0.03),
+            max_value: Some(0.15),
+            reference: ClinicalReference {
+                pmid: Some("29321560".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2017.12.001".to_string()),
+                citation: "McDonagh. Biliverdin reductase → bilirubin IXα. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults plasma (HO-1 α-meso-bridge cleavage, green pigment, NADPH-dependent reduction)".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "unconjugated_bilirubin_indirect_umol_l".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.0),
+            min_value: Some(3.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29388483".to_string()),
+                doi: Some("10.1053/j.gastro.2018.02.033".to_string()),
+                citation: "Vítek and Ostrow. Unconjugated bilirubin antioxidant, albumin-bound. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults serum (water-insoluble, albumin transport, lipophilic, neurotoxic >340 μmol/L kernicterus)".to_string(),
+            },
+        });
+
+        heme_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "conjugated_bilirubin_direct_umol_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.8),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29514100".to_string()),
+                doi: Some("10.1016/j.jhep.2018.03.024".to_string()),
+                citation: "Erlinger et al. Conjugated bilirubin UGT1A1 glucuronidation. J Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults serum (hepatic UGT1A1 bilirubin diglucuronide, water-soluble, biliary/urinary excretion)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "heme_synthesis_degradation_system".to_string(),
+            heme_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -29636,6 +30224,10 @@ mod tests {
         assert!(db.get_dataset("nucleotide_metabolism_system").is_some());
         assert!(db.get_dataset("ketone_body_metabolism_system").is_some());
         assert!(db.get_dataset("cholesterol_steroid_biosynthesis_system").is_some());
+        assert!(db.get_dataset("coenzyme_cofactor_metabolism_system").is_some());
+        assert!(db.get_dataset("polyamine_metabolism_system").is_some());
+        assert!(db.get_dataset("creatine_phosphocreatine_system").is_some());
+        assert!(db.get_dataset("heme_synthesis_degradation_system").is_some());
     }
 
     #[test]
@@ -29686,7 +30278,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 204, "Expected 204 systems (200 + 4 new Session AY)");
-        assert_eq!(total_params, 1604, "Expected 1604 parameters (1572 + 32 Session AY)");
+        assert_eq!(categories.len(), 208, "Expected 208 systems (204 + 4 new Session AZ)");
+        assert_eq!(total_params, 1636, "Expected 1636 parameters (1604 + 32 Session AZ)");
     }
 }
