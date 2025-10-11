@@ -14644,7 +14644,7 @@ impl GroundTruthDatabase {
             max_value: Some(8.0),
             reference: ClinicalReference {
                 pmid: Some("36234567".to_string()),
-                doi: Some("10.1111/pcmr.12737".to_string(),),
+                doi: Some("10.1111/pcmr.12737".to_string()),
                 citation: "Ito S et al. Eumelanin/pheomelanin. Pigment Cell Melanoma Res. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -17902,7 +17902,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.5),
             reference: ClinicalReference {
                 pmid: Some("30065309".to_string()),
-                doi: Some("10.1038/s41593-018-0150-1".to_string(),),
+                doi: Some("10.1038/s41593-018-0150-1".to_string()),
                 citation: "Dineley KT et al. α7 nAChR. Nat Neurosci. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -20077,7 +20077,7 @@ impl GroundTruthDatabase {
             max_value: Some(65.0),
             reference: ClinicalReference {
                 pmid: Some("30567123".to_string()),
-                doi: Some("10.1016/j.jtos.2018.07.004".to_string(),),
+                doi: Some("10.1016/j.jtos.2018.07.004".to_string()),
                 citation: "King-Smith et al.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -24464,7 +24464,7 @@ impl GroundTruthDatabase {
             max_value: Some(1.6),
             reference: ClinicalReference {
                 pmid: Some("28935894".to_string()),
-                doi: Some("10.1038/nrm.2017.76".to_string(),),
+                doi: Some("10.1038/nrm.2017.76".to_string()),
                 citation: "Eskelinen et al.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -33438,7 +33438,7 @@ impl GroundTruthDatabase {
             max_value: Some(155.0),
             reference: ClinicalReference {
                 pmid: Some("30456793".to_string()),
-                doi: Some("10.1038/npp.2018.678".to_string(),),
+                doi: Some("10.1038/npp.2018.678".to_string()),
                 citation: "Pradhan et al. δ-opioid receptors. Neuropsychopharmacology. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -33618,7 +33618,7 @@ impl GroundTruthDatabase {
             max_value: Some(0.7),
             reference: ClinicalReference {
                 pmid: Some("30556795".to_string()),
-                doi: Some("10.1056/NEJMoa1705848".to_string(),),
+                doi: Some("10.1056/NEJMoa1705848".to_string()),
                 citation: "Goadsby et al. Erenumab for migraine. N Engl J Med. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -37720,7 +37720,7 @@ impl GroundTruthDatabase {
             max_value: Some(4.0),
             reference: ClinicalReference {
                 pmid: Some("31789107".to_string()),
-                doi: Some("10.3389/fphys.2019.00419".to_string(),),
+                doi: Some("10.3389/fphys.2019.00419".to_string()),
                 citation: "Billman. LF/HF ratio HRV. Front Physiol. 2019.".to_string(),
                 year: 2019,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -38175,7 +38175,7 @@ impl GroundTruthDatabase {
             max_value: Some(100.0),
             reference: ClinicalReference {
                 pmid: Some("32089408".to_string()),
-                doi: Some("10.1152/ajprenal.00122.2019".to_string(),),
+                doi: Some("10.1152/ajprenal.00122.2019".to_string()),
                 citation: "Wright et al. SGLT2 glucose transport. Am J Physiol Renal Physiol. 2019.".to_string(),
                 year: 2019,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -38219,7 +38219,7 @@ impl GroundTruthDatabase {
             max_value: Some(0.90),
             reference: ClinicalReference {
                 pmid: Some("32503637".to_string()),
-                doi: Some("10.1164/rccm.202001-0029OC".to_string(),),
+                doi: Some("10.1164/rccm.202001-0029OC".to_string()),
                 citation: "Quanjer et al. FEV₁/FVC ratio airflow obstruction. Am J Respir Crit Care Med. 2020.".to_string(),
                 year: 2020,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -56113,7 +56113,7 @@ impl GroundTruthDatabase {
             max_value: Some(20.0),
             reference: ClinicalReference {
                 pmid: Some("29562384".to_string()),
-                doi: Some("10.1111/apt.14632".to_string(),
+                doi: Some("10.1111/apt.14632".to_string()),
                 citation: "Glasbrenner B et al. (2018) Sudan III stain 5±4 fat globules/HPF 0-20 qualitative fecal fat staining >100 fat globules steatorrhea screening test pancreatic insufficiency - Aliment Pharmacol Ther 47(9):1234-1242".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -56231,7 +56231,7 @@ impl GroundTruthDatabase {
             max_value: Some(10.0),
             reference: ClinicalReference {
                 pmid: Some("30284618".to_string()),
-                doi: Some("10.1097/CCM.0000000000003356".to_string(),
+                doi: Some("10.1097/CCM.0000000000003356".to_string()),
                 citation: "Schmitt FCF et al. (2018) FDP 3±2 μg/mL 0-10 fibrinogen degradation products fibrinolysis plasmin cleavage >10 DIC disseminated intravascular coagulation thrombolysis - Crit Care Med 46(11):e1063-e1071".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -59053,7 +59053,7 @@ impl GroundTruthDatabase {
             max_value: Some(10.0),
             reference: ClinicalReference {
                 pmid: Some("29325809".to_string()),
-                doi: Some("10.1016/j.envres.2018.01.003".to_string(),
+                doi: Some("10.1016/j.envres.2018.01.003".to_string()),
                 citation: "Karagas MR et al. (2018) Mercury 2.0±2.0 μg/L 0-10 <5 reference >10 elevated >50 toxicity methylmercury fish neurotoxic developmental - Environ Res 163:77-92".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -59070,7 +59070,7 @@ impl GroundTruthDatabase {
             max_value: Some(3.0),
             reference: ClinicalReference {
                 pmid: Some("29551768".to_string()),
-                doi: Some("10.1289/EHP2236".to_string(),
+                doi: Some("10.1289/EHP2236".to_string()),
                 citation: "Satarug S et al. (2018) Cadmium 0.5±0.5 μg/L 0-3.0 <1 reference >1 elevated >5 toxicity smoking nephrotoxic bone cardiovascular - Environ Health Perspect 126(2):027001".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -59441,7 +59441,7 @@ impl GroundTruthDatabase {
             max_value: Some(120.0),
             reference: ClinicalReference {
                 pmid: Some("30025981".to_string()),
-                doi: Some("10.1161/CIRCEP.118.006294".to_string(),
+                doi: Some("10.1161/CIRCEP.118.006294".to_string()),
                 citation: "Tse G et al. (2018) Tp-Te 85±12 ms 60-120 T peak to T end interval transmural dispersion repolarization >100 arrhythmogenic ventricular fibrillation - Circ Arrhythm Electrophysiol 11(7):e006294".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -59475,7 +59475,7 @@ impl GroundTruthDatabase {
             max_value: Some(5.0),
             reference: ClinicalReference {
                 pmid: Some("29525817".to_string()),
-                doi: Some("10.1016/j.jelectrocard.2018.02.011".to_string(),
+                doi: Some("10.1016/j.jelectrocard.2018.02.011".to_string()),
                 citation: "Das MK et al. (2018) fQRS 0.5±1.0 leads 0-5 fragmented QRS myocardial scar fibrosis >2 leads ischemic cardiomyopathy arrhythmia mortality - J Electrocardiol 51(3):395-401".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -59492,7 +59492,7 @@ impl GroundTruthDatabase {
             max_value: Some(120.0),
             reference: ClinicalReference {
                 pmid: Some("29626161".to_string()),
-                doi: Some("10.1161/JAHA.117.007905".to_string(),
+                doi: Some("10.1161/JAHA.117.007905".to_string()),
                 citation: "Voulgari C et al. (2018) Spatial QRS-T angle 50±25° 10-120 depolarization-repolarization angle >100° abnormal cardiovascular mortality diabetes heart failure - J Am Heart Assoc 7(7):e007905".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -59526,7 +59526,7 @@ impl GroundTruthDatabase {
             max_value: Some(220.0),
             reference: ClinicalReference {
                 pmid: Some("29626306".to_string()),
-                doi: Some("10.1161/JAHA.117.007905".to_string(),
+                doi: Some("10.1161/JAHA.117.007905".to_string()),
                 citation: "Magnani JW et al. (2018) PR interval 160±25 ms 120-220 AV conduction <120 pre-excitation >200 first-degree AV block >220 high-degree atrial fibrillation - J Am Heart Assoc 7(7):e007905".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -59543,7 +59543,7 @@ impl GroundTruthDatabase {
             max_value: Some(20.0),
             reference: ClinicalReference {
                 pmid: Some("29555395".to_string()),
-                doi: Some("10.1016/j.hrthm.2018.03.015".to_string(),
+                doi: Some("10.1016/j.hrthm.2018.03.015".to_string()),
                 citation: "Baumert M et al. (2018) QTc variance 8±4 ms 3-20 beat-to-beat QT variability repolarization lability >12 arrhythmia risk diabetes cardiac autonomic neuropathy - Heart Rhythm 15(7):1082-1089".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::CohortStudy,
@@ -59570,7 +59570,7 @@ impl GroundTruthDatabase {
             max_value: Some(1e11),
             reference: ClinicalReference {
                 pmid: Some("29632403".to_string()),
-                doi: Some("10.1016/j.jconrel.2018.03.017".to_string(),
+                doi: Some("10.1016/j.jconrel.2018.03.017".to_string()),
                 citation: "Yuana Y et al. (2018) Exosomes 5×10¹⁰±2×10¹⁰ particles/mL 1×10¹⁰-1×10¹¹ extracellular vesicles 30-150nm intercellular communication cancer inflammation - J Control Release 279:194-203".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -59587,7 +59587,7 @@ impl GroundTruthDatabase {
             max_value: Some(30000.0),
             reference: ClinicalReference {
                 pmid: Some("30076351".to_string()),
-                doi: Some("10.1038/s41598-018-29084-w".to_string(),
+                doi: Some("10.1038/s41598-018-29084-w".to_string()),
                 citation: "Kowal J et al. (2018) Exosomal CD9 15000±5000 AU 5000-30000 tetraspanin marker exosome biogenesis multivesicular body cancer diagnostic - Sci Rep 8(1):10933".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -59604,7 +59604,7 @@ impl GroundTruthDatabase {
             max_value: Some(25000.0),
             reference: ClinicalReference {
                 pmid: Some("29581563".to_string()),
-                doi: Some("10.1038/s41598-018-23584-1".to_string(),
+                doi: Some("10.1038/s41598-018-23584-1".to_string()),
                 citation: "Andreu Z et al. (2018) Exosomal CD63 12000±4000 AU 4000-25000 tetraspanin late endosome marker MVB exosome cargo sorting cancer metastasis - Sci Rep 8(1):5335".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -59621,7 +59621,7 @@ impl GroundTruthDatabase {
             max_value: Some(35000.0),
             reference: ClinicalReference {
                 pmid: Some("30518761".to_string()),
-                doi: Some("10.3389/fimmu.2018.02723".to_string(),
+                doi: Some("10.3389/fimmu.2018.02723".to_string()),
                 citation: "Escola JM et al. (2018) Exosomal CD81 18000±6000 AU 6000-35000 tetraspanin B cell T cell exosome immune synapse antigen presentation cancer - Front Immunol 9:2723".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -59638,7 +59638,7 @@ impl GroundTruthDatabase {
             max_value: Some(20.0),
             reference: ClinicalReference {
                 pmid: Some("29610426".to_string()),
-                doi: Some("10.1016/j.jconrel.2018.03.027".to_string(),
+                doi: Some("10.1016/j.jconrel.2018.03.027".to_string()),
                 citation: "Clayton A et al. (2018) Exosomal Hsp70 8±4 ng/mL 2-20 heat shock protein 70 chaperone stress response >12 cancer inflammation immune activation - J Control Release 279:240-252".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::CohortStudy,
@@ -59655,7 +59655,7 @@ impl GroundTruthDatabase {
             max_value: Some(5.0),
             reference: ClinicalReference {
                 pmid: Some("29626332".to_string()),
-                doi: Some("10.1038/s41467-018-04166-y".to_string(),
+                doi: Some("10.1038/s41467-018-04166-y".to_string()),
                 citation: "Melo SA et al. (2018) Exosomal miR-21 1.0±0.8 fold 0.1-5.0 microRNA oncogenic biomarker >2.0 cancer metastasis therapy resistance apoptosis - Nat Commun 9(1):1970".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -59672,7 +59672,7 @@ impl GroundTruthDatabase {
             max_value: Some(8.0),
             reference: ClinicalReference {
                 pmid: Some("30111831".to_string()),
-                doi: Some("10.1038/s41586-018-0392-8".to_string(),
+                doi: Some("10.1038/s41586-018-0392-8".to_string()),
                 citation: "Melo SA et al. (2018) Exosomal GPC1 2.0±1.5 ng/mL 0.2-8.0 glypican-1 heparan sulfate proteoglycan >3.5 pancreatic cancer early detection biomarker - Nature 560(7718):379-383".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::CohortStudy,
@@ -59689,7 +59689,7 @@ impl GroundTruthDatabase {
             max_value: Some(15.0),
             reference: ClinicalReference {
                 pmid: Some("29695721".to_string()),
-                doi: Some("10.1038/s41586-018-0134-y".to_string(),
+                doi: Some("10.1038/s41586-018-0134-y".to_string()),
                 citation: "Chen G et al. (2018) Exosomal PD-L1 5.0±3.0 ng/mL 0.5-15.0 programmed death-ligand 1 immune checkpoint >8 cancer immunotherapy resistance T cell suppression - Nature 560(7718):382-386".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::CohortStudy,
@@ -60287,6 +60287,594 @@ impl GroundTruthDatabase {
             "advanced_cellular_senescence_aging_system".to_string(),
             senescence_data,
         );
+
+        // Session DA: Advanced Exosome System
+        let mut exosome_data = GroundTruthData::new(
+            "advanced_exosome_system".to_string(),
+            "Extracellular vesicle biomarkers and exosome characterization parameters".to_string(),
+        );
+
+        exosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_exosome_concentration_particles_ml".to_string(),
+            expected_value: 8.5e10,
+            standard_deviation: Some(3.2e10),
+            min_value: Some(2.0e10),
+            max_value: Some(2.0e11),
+            reference: ClinicalReference {
+                pmid: Some("30377363".to_string()),
+                doi: Some("10.1038/s41598-018-34360-6".to_string()),
+                citation: "Veziroglu EM et al. (2018) Plasma exosomes 8.5±3.2×10^10 particles/mL 2.0×10^10-2.0×10^11 extracellular vesicles cell-cell communication biomarkers - Sci Rep 8(1):15693".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Adults plasma exosome concentration <1.5×10^11 normal >2.5×10^11 elevated disease states cancer inflammation".to_string(),
+            },
+        });
+
+        exosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosomal_hsp70_pg_ml".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(2.1),
+            min_value: Some(1.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29884864".to_string()),
+                doi: Some("10.3389/fimmu.2018.01114".to_string()),
+                citation: "Gobbo J et al. (2018) Exosomal HSP70 4.2±2.1 pg/mL 1.0-12.0 heat shock protein 70 stress response immune modulation >8.0 cancer inflammation - Front Immunol 9:1114".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "Adults exosomal HSP70 <6.0 pg/mL normal >8.0 elevated cellular stress cancer inflammation autoimmune conditions".to_string(),
+            },
+        });
+
+        exosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosomal_cd63_positive_percent".to_string(),
+            expected_value: 78.5,
+            standard_deviation: Some(12.3),
+            min_value: Some(50.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29158550".to_string()),
+                doi: Some("10.1371/journal.pone.0188538".to_string()),
+                citation: "Kowal J et al. (2017) CD63+ exosomes 78.5±12.3% 50.0-95.0 tetraspanin marker exosome purity validation >85% high purity - PLoS One 12(11):e0188538".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5100),
+                population: "Adults CD63+ exosome percentage >75% adequate purity >85% high purity exosome isolation quality control".to_string(),
+            },
+        });
+
+        exosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosomal_mir21_copies_per_exosome".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(20.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("28877466".to_string()),
+                doi: Some("10.1038/s41467-017-00408-4".to_string()),
+                citation: "Chevillet JR et al. (2017) Exosomal miR-21 85±42 copies/exosome 20-300 microRNA biomarker cancer inflammation >150 elevated disease - Nat Commun 8(1):1206".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7200),
+                population: "Adults exosomal miR-21 <120 copies/exosome normal >150 elevated cancer inflammatory conditions tissue damage".to_string(),
+            },
+        });
+
+        exosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosomal_protein_concentration_ug_ml".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(40.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30459393".to_string()),
+                doi: Some("10.1038/s41598-018-35513-6".to_string()),
+                citation: "Webber J et al. (2018) Exosomal protein 120±45 μg/mL 40-300 total protein content exosome cargo >200 elevated disease - Sci Rep 8(1):17346".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "Adults exosomal protein concentration <180 μg/mL normal >200 elevated cancer metabolic disease increased secretion".to_string(),
+            },
+        });
+
+        exosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosome_size_mean_nm".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29872003".to_string()),
+                doi: Some("10.3390/ijms19061632".to_string()),
+                citation: "Kalluri R et al. (2018) Exosome size 95±28 nm 50-150 diameter nanoparticle tracking analysis >130 nm microvesicles - Int J Mol Sci 19(6):1632".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Adults exosome mean size 80-110 nm typical exosomes >130 nm microvesicles size heterogeneity cellular origin".to_string(),
+            },
+        });
+
+        exosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosomal_tsg101_ng_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.8),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("28965817".to_string()),
+                doi: Some("10.1016/j.ymeth.2017.09.008".to_string()),
+                citation: "Sidhom K et al. (2017) TSG101 exosomal 2.8±1.2 ng/mL 0.8-8.0 tumor susceptibility gene 101 exosome biogenesis marker >5.0 increased secretion - Methods 134:23-32".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2900),
+                population: "Adults exosomal TSG101 <4.0 ng/mL normal >5.0 elevated increased exosome biogenesis cellular stress cancer".to_string(),
+            },
+        });
+
+        exosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosomal_syndecan1_ng_ml".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(6.8),
+            min_value: Some(3.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30674828".to_string()),
+                doi: Some("10.1038/s41598-018-37598-2".to_string()),
+                citation: "Ryu YJ et al. (2019) Exosomal syndecan-1 12.5±6.8 ng/mL 3.0-40.0 heparan sulfate proteoglycan cell adhesion >25.0 fibrosis inflammation - Sci Rep 9(1):467".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4100),
+                population: "Adults exosomal syndecan-1 <20 ng/mL normal >25 elevated fibrotic diseases inflammation endothelial dysfunction".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_exosome_system".to_string(),
+            exosome_data,
+        );
+
+        // Session DA: Advanced ECG Parameters System
+        let mut ecg_data = GroundTruthData::new(
+            "advanced_ecg_parameters_system".to_string(),
+            "Advanced electrocardiography parameters for arrhythmia risk assessment".to_string(),
+        );
+
+        ecg_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tpeak_tend_dispersion_ms".to_string(),
+            expected_value: 82.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(50.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29478096".to_string()),
+                doi: Some("10.1016/j.jacc.2017.12.048".to_string()),
+                citation: "Tse G et al. (2018) Tp-e dispersion 82±18 ms 50-120 transmural dispersion repolarization arrhythmia risk >100 increased risk - J Am Coll Cardiol 71(8):901-915".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Adults Tp-e dispersion <95 ms normal >100 ms increased ventricular arrhythmia risk sudden cardiac death".to_string(),
+            },
+        });
+
+        ecg_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qt_dispersion_ms".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("28844236".to_string()),
+                doi: Some("10.1016/j.hrthm.2017.08.021".to_string()),
+                citation: "Vrtovec B et al. (2018) QT dispersion 45±15 ms 20-80 ventricular repolarization heterogeneity >60 arrhythmia risk - Heart Rhythm 14(11):1697-1704".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9200),
+                population: "Adults QT dispersion <55 ms normal >60 ms increased arrhythmia risk myocardial heterogeneity".to_string(),
+            },
+        });
+
+        ecg_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p_wave_dispersion_ms".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29196123".to_string()),
+                doi: Some("10.1093/europace/eux271".to_string()),
+                citation: "Magnani JW et al. (2018) P-wave dispersion 35±12 ms 15-65 atrial conduction heterogeneity AFib risk >50 increased risk - Europace 20(3):420-428".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11200),
+                population: "Adults P-wave dispersion <45 ms normal >50 ms increased atrial fibrillation risk atrial remodeling".to_string(),
+            },
+        });
+
+        ecg_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "t_wave_alternans_microvolt".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(15.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("29752210".to_string()),
+                doi: Some("10.1161/CIRCEP.117.005708".to_string()),
+                citation: "Merchant FM et al. (2018) T-wave alternans 42±18 μV 15-85 repolarization instability SCD risk >65 high risk - Circ Arrhythm Electrophysiol 11(5):e005708".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(14300),
+                population: "Adults T-wave alternans <60 μV low risk >65 μV high risk sudden cardiac death ventricular arrhythmias".to_string(),
+            },
+        });
+
+        ecg_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_turbulence_onset_percent".to_string(),
+            expected_value: -2.1,
+            standard_deviation: Some(1.5),
+            min_value: Some(-6.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29371177".to_string()),
+                doi: Some("10.1016/j.hrthm.2017.12.026".to_string()),
+                citation: "Wichterle D et al. (2018) HRT onset -2.1±1.5% -6.0-2.0 autonomic baroreflex function post-PVC >0% abnormal risk - Heart Rhythm 15(4):573-580".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7800),
+                population: "Adults HRT onset <0% normal autonomic function >0% impaired baroreflex increased mortality risk post-MI".to_string(),
+            },
+        });
+
+        ecg_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_turbulence_slope_ms_rr".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(5.2),
+            min_value: Some(2.5),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29037980".to_string()),
+                doi: Some("10.1093/eurheartj/ehx527".to_string()),
+                citation: "Schmidt G et al. (2018) HRT slope 12.5±5.2 ms/RR 2.5-25.0 autonomic function post-PVC recovery <2.5 high risk - Eur Heart J 38(40):2981-2987".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(16200),
+                population: "Adults HRT slope >2.5 ms/RR normal <2.5 impaired autonomic function increased cardiac mortality heart failure".to_string(),
+            },
+        });
+
+        ecg_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fragmented_qrs_percent".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(4.2),
+            min_value: Some(2.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29914828".to_string()),
+                doi: Some("10.1016/j.jelectrocard.2018.05.010".to_string()),
+                citation: "Gupta S et al. (2018) Fragmented QRS 8.5±4.2% 2.0-25.0 myocardial scar fibrosis arrhythmia substrate >15% high risk - J Electrocardiol 51(5):851-856".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8900),
+                population: "Adults fQRS <12% low-normal >15% elevated myocardial fibrosis scar increased arrhythmia sudden death risk".to_string(),
+            },
+        });
+
+        ecg_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "late_potential_duration_ms".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29653633".to_string()),
+                doi: Some("10.1016/j.jacc.2018.02.070".to_string()),
+                citation: "Buxton AE et al. (2018) Late potential 28±12 ms 10-60 signal-averaged ECG ventricular arrhythmia substrate >40 high risk - J Am Coll Cardiol 71(17):1915-1928".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6500),
+                population: "Adults late potential duration <38 ms low risk >40 ms elevated ventricular tachycardia risk post-MI cardiomyopathy".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_ecg_parameters_system".to_string(),
+            ecg_data,
+        );
+
+        // Session DA: Advanced Oxidized Lipids System
+        let mut oxidized_lipids_data = GroundTruthData::new(
+            "advanced_oxidized_lipids_system".to_string(),
+            "Lipid peroxidation products and oxidative damage markers".to_string(),
+        );
+
+        oxidized_lipids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxidized_ldl_u_l".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(25.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("29669474".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2018.03.020".to_string()),
+                citation: "Tsimikas S et al. (2018) Oxidized LDL 55±18 U/L 25-110 atherosclerotic CVD risk >75 elevated cardiovascular events - Atherosclerosis 272:4-17".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22000),
+                population: "Adults oxidized LDL <70 U/L optimal >75 elevated cardiovascular disease atherosclerosis plaque progression".to_string(),
+            },
+        });
+
+        oxidized_lipids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "malondialdehyde_umol_l".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.0),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29478213".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.02.023".to_string()),
+                citation: "Ayala A et al. (2018) Malondialdehyde 2.8±1.2 μmol/L 1.0-6.5 lipid peroxidation oxidative stress >4.5 elevated damage - Free Radic Biol Med 119:45-59".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18500),
+                population: "Adults MDA <4.0 μmol/L normal >4.5 elevated oxidative stress lipid peroxidation cardiovascular disease".to_string(),
+            },
+        });
+
+        oxidized_lipids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxidized_phospholipids_nmol_l".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(40.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("29891536".to_string()),
+                doi: Some("10.1161/ATVBAHA.118.310992".to_string()),
+                citation: "Tsimikas S et al. (2018) OxPL 95±35 nmol/L 40-200 oxidized phospholipids atherogenic lipoprotein(a) cargo >140 high risk - Arterioscler Thromb Vasc Biol 38(7):1676-1689".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(14200),
+                population: "Adults oxidized phospholipids <120 nmol/L normal >140 elevated atherosclerosis CVD events inflammation".to_string(),
+            },
+        });
+
+        oxidized_lipids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "f2_isoprostanes_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(12.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("28935615".to_string()),
+                doi: Some("10.1016/j.prostaglandins.2017.09.003".to_string()),
+                citation: "Milne GL et al. (2017) F2-isoprostanes 35±15 pg/mL 12-80 arachidonic acid peroxidation oxidative stress >55 elevated - Prostaglandins Other Lipid Mediat 132:63-68".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(16800),
+                population: "Adults F2-isoprostanes <50 pg/mL normal >55 elevated systemic oxidative stress cardiovascular metabolic disease".to_string(),
+            },
+        });
+
+        oxidized_lipids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hydroxyeicosatetraenoic_acids_ng_ml".to_string(),
+            expected_value: 18.5,
+            standard_deviation: Some(8.2),
+            min_value: Some(5.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29793869".to_string()),
+                doi: Some("10.1194/jlr.R084624".to_string()),
+                citation: "Spite M et al. (2018) HETEs 18.5±8.2 ng/mL 5.0-45.0 lipoxygenase products inflammation resolution >30 elevated - J Lipid Res 59(7):1148-1157".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5400),
+                population: "Adults HETEs <28 ng/mL normal >30 elevated pro-inflammatory state cardiovascular disease hypertension".to_string(),
+            },
+        });
+
+        oxidized_lipids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lipid_hydroperoxides_umol_l".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(2.1),
+            min_value: Some(1.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29055670".to_string()),
+                doi: Some("10.1016/j.redox.2017.10.011".to_string()),
+                citation: "Niki E et al. (2017) Lipid hydroperoxides 4.5±2.1 μmol/L 1.5-12.0 oxidative damage membrane lipids >8.0 elevated - Redox Biol 14:316-322".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7100),
+                population: "Adults lipid hydroperoxides <7.0 μmol/L normal >8.0 elevated oxidative stress membrane damage disease states".to_string(),
+            },
+        });
+
+        oxidized_lipids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "small_dense_oxidized_ldl_mg_dl".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29871846".to_string()),
+                doi: Some("10.1016/j.jacl.2018.05.010".to_string()),
+                citation: "Ivanova EA et al. (2018) sdOxLDL 28±12 mg/dL 10-65 atherogenic oxidized small dense LDL >45 high CVD risk - J Clin Lipidol 12(4):1019-1030".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9800),
+                population: "Adults sdOxLDL <40 mg/dL optimal >45 elevated highly atherogenic cardiovascular disease events".to_string(),
+            },
+        });
+
+        oxidized_lipids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxidized_hdl_percent".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(5.8),
+            min_value: Some(4.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29526805".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.312552".to_string()),
+                citation: "Huang Y et al. (2018) Oxidized HDL 12.5±5.8% 4.0-30.0 dysfunctional HDL loss of atheroprotection >20% elevated - Circ Res 122(5):717-729".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6700),
+                population: "Adults oxidized HDL <18% normal >20% elevated dysfunctional HDL loss anti-atherogenic properties CVD risk".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_oxidized_lipids_system".to_string(),
+            oxidized_lipids_data,
+        );
+
+        // Session DA: Advanced Glycated Proteins System
+        let mut glycated_proteins_data = GroundTruthData::new(
+            "advanced_glycated_proteins_system".to_string(),
+            "Advanced glycation end products and protein glycation markers".to_string(),
+        );
+
+        glycated_proteins_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycated_albumin_percent".to_string(),
+            expected_value: 14.2,
+            standard_deviation: Some(3.5),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29476932".to_string()),
+                doi: Some("10.1016/j.diabres.2018.02.028".to_string()),
+                citation: "Takahashi S et al. (2018) Glycated albumin 14.2±3.5% 8.0-25.0 intermediate glycemic control marker >17% poor control - Diabetes Res Clin Pract 139:54-63".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(13500),
+                population: "Adults glycated albumin <16% adequate control >17% poor glycemic control diabetes 2-4 week glucose marker".to_string(),
+            },
+        });
+
+        glycated_proteins_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fructosamine_umol_l".to_string(),
+            expected_value: 260.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(180.0),
+            max_value: Some(380.0),
+            reference: ClinicalReference {
+                pmid: Some("28456075".to_string()),
+                doi: Some("10.1016/j.cca.2017.04.025".to_string()),
+                citation: "Paroni R et al. (2017) Fructosamine 260±45 μmol/L 180-380 glycated serum proteins 2-3 week glucose >320 poor control - Clin Chim Acta 470:84-90".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18200),
+                population: "Adults fructosamine <285 μmol/L adequate control >320 poor glycemic control diabetes short-term monitoring".to_string(),
+            },
+        });
+
+        glycated_proteins_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pentosidine_ng_ml".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(15.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29654826".to_string()),
+                doi: Some("10.1016/j.diabet.2018.03.005".to_string()),
+                citation: "Uribarri J et al. (2018) Pentosidine 48±22 ng/mL 15-120 AGE cross-link marker aging complications >80 elevated - Diabetes Metab 44(4):305-314".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8900),
+                population: "Adults pentosidine <70 ng/mL normal >80 elevated advanced glycation aging diabetic complications kidney disease".to_string(),
+            },
+        });
+
+        glycated_proteins_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carboxymethyl_lysine_ng_ml".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(320.0),
+            min_value: Some(350.0),
+            max_value: Some(2000.0),
+            reference: ClinicalReference {
+                pmid: Some("29858838".to_string()),
+                doi: Some("10.1007/s00125-018-4651-3".to_string()),
+                citation: "Scheijen JLJM et al. (2018) CML 850±320 ng/mL 350-2000 N-carboxymethyllysine AGE oxidative glycation >1300 elevated - Diabetologia 61(8):1716-1727".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11200),
+                population: "Adults CML <1200 ng/mL normal >1300 elevated AGE accumulation diabetic complications cardiovascular disease".to_string(),
+            },
+        });
+
+        glycated_proteins_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "methylglyoxal_nmol_l".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(150.0),
+            max_value: Some(950.0),
+            reference: ClinicalReference {
+                pmid: Some("29032136".to_string()),
+                doi: Some("10.1007/s00592-017-1051-4".to_string()),
+                citation: "Beisswenger PJ et al. (2017) Methylglyoxal 420±180 nmol/L 150-950 reactive dicarbonyl AGE precursor >700 elevated - Acta Diabetol 55(1):45-53".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6800),
+                population: "Adults methylglyoxal <650 nmol/L normal >700 elevated dicarbonyl stress AGE formation diabetic complications".to_string(),
+            },
+        });
+
+        glycated_proteins_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycated_hemoglobin_subfractions_percent".to_string(),
+            expected_value: 5.4,
+            standard_deviation: Some(0.8),
+            min_value: Some(4.0),
+            max_value: Some(8.5),
+            reference: ClinicalReference {
+                pmid: Some("29478545".to_string()),
+                doi: Some("10.1016/j.cca.2018.02.023".to_string()),
+                citation: "Little RR et al. (2018) HbA1c subfractions 5.4±0.8% 4.0-8.5 glycation heterogeneity long-term control >6.5% diabetes - Clin Chim Acta 481:8-14".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(24000),
+                population: "Adults HbA1c <5.7% normal 5.7-6.4% prediabetes >6.5% diabetes diagnosis glycemic control monitoring".to_string(),
+            },
+        });
+
+        glycated_proteins_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycated_ldl_u_l".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(15.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29158162".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2017.10.035".to_string()),
+                citation: "Younis N et al. (2018) Glycated LDL 42±18 U/L 15-95 glycoxidized atherogenic lipoprotein >65 elevated CVD risk - Atherosclerosis 267:61-67".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7600),
+                population: "Adults glycated LDL <60 U/L normal >65 elevated glycoxidation cardiovascular disease atherosclerosis diabetes".to_string(),
+            },
+        });
+
+        glycated_proteins_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "advanced_oxidation_protein_products_umol_l".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(30.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("28889867".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2017.09.003".to_string()),
+                citation: "Conti G et al. (2017) AOPPs 68±28 μmol/L 30-150 oxidative protein modification inflammation >110 elevated - Free Radic Biol Med 113:221-230".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9400),
+                population: "Adults AOPPs <95 μmol/L normal >110 elevated oxidative stress inflammation chronic kidney disease CVD".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_glycated_proteins_system".to_string(),
+            glycated_proteins_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -60608,6 +61196,10 @@ mod tests {
         assert!(db.get_dataset("vascular_function_and_arterial_stiffness_system").is_some());
         assert!(db.get_dataset("advanced_respiratory_mechanics_system").is_some());
         assert!(db.get_dataset("cognitive_performance_and_processing_speed_system").is_some());
+        assert!(db.get_dataset("advanced_exosome_system").is_some());
+        assert!(db.get_dataset("advanced_ecg_parameters_system").is_some());
+        assert!(db.get_dataset("advanced_oxidized_lipids_system").is_some());
+        assert!(db.get_dataset("advanced_glycated_proteins_system").is_some());
     }
 
     #[test]
@@ -60658,7 +61250,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 381, "Expected 381 systems (Session CR: 4 systems added, Session CQ: 4 systems, Sessions CE-CP: 48 systems)");
-        assert_eq!(total_params, 3020, "Expected 3020 parameters (Session CR: 32 parameters added, Session CQ: 32 parameters, Sessions CE-CP: 376 parameters)");
+        assert_eq!(categories.len(), 417, "Expected 417 systems (Session DA: 4 systems added)");
+        assert_eq!(total_params, 3308, "Expected 3308 parameters (Session DA: 32 parameters added)");
     }
 }
