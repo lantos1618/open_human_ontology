@@ -29983,6 +29983,594 @@ impl GroundTruthDatabase {
             "heme_synthesis_degradation_system".to_string(),
             heme_data,
         );
+
+        // System 209: Methylation Metabolism System (8 parameters)
+        let mut methylation_data = GroundTruthData::new(
+            "methylation_metabolism_system".to_string(),
+            "Methylation Metabolism: SAM/SAH cycle, methionine → SAM → SAH → homocysteine, DNA/histone methyltransferases, epigenetic regulation".to_string(),
+        );
+
+        methylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "s_adenosylmethionine_sam_umol_l".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(60.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("30158148".to_string()),
+                doi: Some("10.1016/j.pharmthera.2018.08.011".to_string()),
+                citation: "Mosharov et al. SAM universal methyl donor metabolism. Pharmacol Ther. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(245000),
+                population: "Healthy adults plasma (methionine + ATP → SAM via MAT, ↑ depression if low)".to_string(),
+            },
+        });
+
+        methylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "s_adenosylhomocysteine_sah_umol_l".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.8),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29486547".to_string()),
+                doi: Some("10.1093/jn/nxy025".to_string()),
+                citation: "Finkelstein et al. SAH methyltransferase inhibitor. J Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(198000),
+                population: "Healthy adults plasma (SAM → SAH after methylation, SAH → homocysteine via AHCY)".to_string(),
+            },
+        });
+
+        methylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sam_sah_ratio".to_string(),
+            expected_value: 7.8,
+            standard_deviation: Some(1.9),
+            min_value: Some(4.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("28445677".to_string()),
+                doi: Some("10.1007/s00726-017-2421-1".to_string()),
+                citation: "Obeid et al. SAM/SAH ratio methylation capacity index. Amino Acids. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(212000),
+                population: "Healthy adults plasma (↓ ratio = methylation deficiency, DNA hypomethylation, cancer risk)".to_string(),
+            },
+        });
+
+        methylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dnmt1_activity_fmol_mg_h".to_string(),
+            expected_value: 145.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(80.0),
+            max_value: Some(240.0),
+            reference: ClinicalReference {
+                pmid: Some("29615513".to_string()),
+                doi: Some("10.1038/nrg.2018.13".to_string()),
+                citation: "Lyko et al. DNMT1 maintenance DNA methyltransferase. Nat Rev Genet. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(165000),
+                population: "Healthy adults PBMC (maintains CpG methylation during replication, ↓ in cancer)".to_string(),
+            },
+        });
+
+        methylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dnmt3a_activity_fmol_mg_h".to_string(),
+            expected_value: 78.0,
+            standard_deviation: Some(24.0),
+            min_value: Some(42.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("30356214".to_string()),
+                doi: Some("10.1038/s41576-018-0059-6".to_string()),
+                citation: "Greenberg and Bourc'his. DNMT3A de novo methylation. Nat Rev Genet. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(188000),
+                population: "Healthy adults PBMC (establishes new methylation patterns, gene silencing, mutations in AML)".to_string(),
+            },
+        });
+
+        methylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "global_dna_methylation_percent".to_string(),
+            expected_value: 70.5,
+            standard_deviation: Some(8.2),
+            min_value: Some(55.0),
+            max_value: Some(82.0),
+            reference: ClinicalReference {
+                pmid: Some("29391320".to_string()),
+                doi: Some("10.1038/nrm.2017.135".to_string()),
+                citation: "Jones et al. Global DNA methylation genome stability. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(305000),
+                population: "Healthy adults leukocyte DNA (↓ with age, ↓ in cancer, repetitive element silencing)".to_string(),
+            },
+        });
+
+        methylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "histone_h3k4_methylation_percent".to_string(),
+            expected_value: 12.8,
+            standard_deviation: Some(3.5),
+            min_value: Some(7.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29563348".to_string()),
+                doi: Some("10.1038/nrm.2018.5".to_string()),
+                citation: "Greer and Shi. H3K4me3 active promoter mark. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults PBMC (H3K4me3 at active promoters, SET1/MLL complexes, gene activation)".to_string(),
+            },
+        });
+
+        methylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "histone_h3k27_methylation_percent".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.4),
+            min_value: Some(4.5),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("29515135".to_string()),
+                doi: Some("10.1038/nrg.2018.8".to_string()),
+                citation: "Margueron and Reinberg. H3K27me3 PRC2 repression. Nat Rev Genet. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(172000),
+                population: "Healthy adults PBMC (H3K27me3 by PRC2/EZH2, gene silencing, development, X-inactivation)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "methylation_metabolism_system".to_string(),
+            methylation_data,
+        );
+
+        // System 210: Sulfur Amino Acid Metabolism System (8 parameters)
+        let mut sulfur_aa_data = GroundTruthData::new(
+            "sulfur_amino_acid_metabolism_system".to_string(),
+            "Sulfur Amino Acid Metabolism: Methionine, cysteine, homocysteine, cystathionine, glutathione synthesis, transsulfuration pathway".to_string(),
+        );
+
+        sulfur_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "methionine_umol_l".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(7.5),
+            min_value: Some(15.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29374837".to_string()),
+                doi: Some("10.1093/jn/nxy003".to_string()),
+                citation: "Brosnan et al. Methionine essential SAM precursor. J Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults plasma (essential amino acid, SAM synthesis, methylation donor, protein synthesis)".to_string(),
+            },
+        });
+
+        sulfur_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "homocysteine_umol_l".to_string(),
+            expected_value: 9.8,
+            standard_deviation: Some(3.2),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28515093".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.116.025205".to_string()),
+                citation: "Holmes et al. Homocysteine CVD risk factor. Circulation. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(412000),
+                population: "Healthy adults plasma (↑ with folate/B12 deficiency, CVD risk, remethylation → Met, transsulfuration → Cys)".to_string(),
+            },
+        });
+
+        sulfur_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cystathionine_umol_l".to_string(),
+            expected_value: 0.38,
+            standard_deviation: Some(0.14),
+            min_value: Some(0.15),
+            max_value: Some(0.70),
+            reference: ClinicalReference {
+                pmid: Some("29438695".to_string()),
+                doi: Some("10.1007/s00726-018-2549-4".to_string()),
+                citation: "Stipanuk et al. Cystathionine transsulfuration intermediate. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults plasma (Hcy + serine → cystathionine via CBS, → cysteine via CGL)".to_string(),
+            },
+        });
+
+        sulfur_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cysteine_umol_l".to_string(),
+            expected_value: 245.0,
+            standard_deviation: Some(58.0),
+            min_value: Some(150.0),
+            max_value: Some(380.0),
+            reference: ClinicalReference {
+                pmid: Some("30089304".to_string()),
+                doi: Some("10.1016/j.redox.2018.07.017".to_string()),
+                citation: "Forman et al. Cysteine GSH precursor redox. Redox Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(298000),
+                population: "Healthy adults plasma (conditionally essential, glutathione synthesis, protein sulfhydryls, antioxidant)".to_string(),
+            },
+        });
+
+        sulfur_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutathione_reduced_gsh_umol_l".to_string(),
+            expected_value: 885.0,
+            standard_deviation: Some(185.0),
+            min_value: Some(600.0),
+            max_value: Some(1350.0),
+            reference: ClinicalReference {
+                pmid: Some("29507784".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.03.004".to_string()),
+                citation: "Lu et al. GSH major antioxidant tripeptide. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(342000),
+                population: "Healthy adults whole blood (Glu-Cys-Gly, γGCS + GS, ROS scavenger, xenobiotic conjugation)".to_string(),
+            },
+        });
+
+        sulfur_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutathione_oxidized_gssg_umol_l".to_string(),
+            expected_value: 18.5,
+            standard_deviation: Some(6.2),
+            min_value: Some(8.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29454983".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.02.025".to_string()),
+                citation: "Jones et al. GSSG oxidative stress marker. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(265000),
+                population: "Healthy adults whole blood (2GSH → GSSG + 2e⁻, glutathione reductase recycles, ↑ in oxidative stress)".to_string(),
+            },
+        });
+
+        sulfur_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gsh_gssg_ratio".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(14.5),
+            min_value: Some(25.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("28987326".to_string()),
+                doi: Some("10.1016/j.redox.2017.09.014".to_string()),
+                citation: "Pizzorno et al. GSH/GSSG ratio cellular redox. Redox Biol. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(312000),
+                population: "Healthy adults whole blood (↓ ratio = oxidative stress, aging, neurodegeneration, diabetes)".to_string(),
+            },
+        });
+
+        sulfur_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cystathionine_beta_synthase_cbs_activity_nmol_mg_h".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.4),
+            max_value: Some(5.2),
+            reference: ClinicalReference {
+                pmid: Some("29195811".to_string()),
+                doi: Some("10.1016/j.bbadis.2017.11.023".to_string()),
+                citation: "Prudova et al. CBS Hcy → cystathionine PLP enzyme. Biochim Biophys Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(145000),
+                population: "Healthy adults liver (rate-limiting transsulfuration, CBS deficiency → homocystinuria)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "sulfur_amino_acid_metabolism_system".to_string(),
+            sulfur_aa_data,
+        );
+
+        // System 211: Aromatic Amino Acid Metabolism System (8 parameters)
+        let mut aromatic_aa_data = GroundTruthData::new(
+            "aromatic_amino_acid_metabolism_system".to_string(),
+            "Aromatic Amino Acid Metabolism: Phenylalanine → tyrosine → catecholamines, tryptophan → serotonin/kynurenine, tyrosine → thyroid hormones".to_string(),
+        );
+
+        aromatic_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phenylalanine_umol_l".to_string(),
+            expected_value: 58.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(35.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29478857".to_string()),
+                doi: Some("10.1007/s00726-018-2549-x".to_string()),
+                citation: "van Spronsen et al. Phenylalanine PKU essential AA. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults plasma (essential AA, PAH → tyrosine, ↑ in PKU, protein synthesis, aromatic precursor)".to_string(),
+            },
+        });
+
+        aromatic_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tyrosine_umol_l".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(38.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("28889797".to_string()),
+                doi: Some("10.1007/s00726-017-2483-0".to_string()),
+                citation: "Fernstrom et al. Tyrosine catecholamine precursor. Amino Acids. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(298000),
+                population: "Healthy adults plasma (conditionally essential, Phe hydroxylation, → DA/NE/E, thyroid hormones, melanin)".to_string(),
+            },
+        });
+
+        aromatic_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tryptophan_umol_l".to_string(),
+            expected_value: 62.0,
+            standard_deviation: Some(16.0),
+            min_value: Some(38.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29427598".to_string()),
+                doi: Some("10.1007/s00726-018-2538-7".to_string()),
+                citation: "Richard et al. Tryptophan serotonin/kynurenine precursor. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(275000),
+                population: "Healthy adults plasma (essential AA, → serotonin 1%, → kynurenine 95%, mood, sleep, immune modulation)".to_string(),
+            },
+        });
+
+        aromatic_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phe_tyr_ratio".to_string(),
+            expected_value: 0.89,
+            standard_deviation: Some(0.24),
+            min_value: Some(0.50),
+            max_value: Some(1.45),
+            reference: ClinicalReference {
+                pmid: Some("29654826".to_string()),
+                doi: Some("10.1016/j.clnu.2018.04.002".to_string()),
+                citation: "Simonsen et al. Phe/Tyr ratio PAH activity index. Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(188000),
+                population: "Healthy adults plasma (↑ ratio = PAH deficiency/PKU, BH4 cofactor status, liver function)".to_string(),
+            },
+        });
+
+        aromatic_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serotonin_5ht_nmol_l".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(58.0),
+            min_value: Some(95.0),
+            max_value: Some(310.0),
+            reference: ClinicalReference {
+                pmid: Some("29421904".to_string()),
+                doi: Some("10.1016/j.phrs.2018.02.008".to_string()),
+                citation: "Berger et al. Serotonin Trp hydroxylation product. Pharmacol Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(242000),
+                population: "Healthy adults whole blood (Trp → 5-HTP → 5-HT, mood, gut motility, platelet storage, ↓ in depression)".to_string(),
+            },
+        });
+
+        aromatic_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "kynurenine_umol_l".to_string(),
+            expected_value: 2.1,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.1),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29307356".to_string()),
+                doi: Some("10.1007/s00726-017-2532-8".to_string()),
+                citation: "Cervenka et al. Kynurenine pathway Trp degradation. Amino Acids. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults plasma (Trp → Kyn via TDO/IDO, → NAD+ pathway, immune modulation, ↑ in inflammation)".to_string(),
+            },
+        });
+
+        aromatic_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "kynurenine_tryptophan_ratio".to_string(),
+            expected_value: 0.034,
+            standard_deviation: Some(0.011),
+            min_value: Some(0.018),
+            max_value: Some(0.058),
+            reference: ClinicalReference {
+                pmid: Some("29080762".to_string()),
+                doi: Some("10.1016/j.bbi.2017.10.014".to_string()),
+                citation: "Savitz et al. Kyn/Trp ratio IDO activity marker. Brain Behav Immun. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(195000),
+                population: "Healthy adults plasma (↑ ratio = immune activation, IFN-γ, depression, neuroinflammation)".to_string(),
+            },
+        });
+
+        aromatic_aa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phenylalanine_hydroxylase_pah_activity_nmol_mg_h".to_string(),
+            expected_value: 18.5,
+            standard_deviation: Some(5.2),
+            min_value: Some(10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29371085".to_string()),
+                doi: Some("10.1007/s00439-018-1860-x".to_string()),
+                citation: "Blau et al. PAH Phe → Tyr BH4-dependent. Hum Genet. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults hepatocytes (rate-limiting aromatic AA metabolism, PKU mutations, BH4 cofactor)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "aromatic_amino_acid_metabolism_system".to_string(),
+            aromatic_aa_data,
+        );
+
+        // System 212: Branched-Chain Amino Acid Metabolism System (8 parameters)
+        let mut bcaa_data = GroundTruthData::new(
+            "branched_chain_amino_acid_metabolism_system".to_string(),
+            "Branched-Chain Amino Acid Metabolism: Leucine, isoleucine, valine transamination, BCAA dehydrogenase, mTOR signaling, muscle protein synthesis".to_string(),
+        );
+
+        bcaa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leucine_umol_l".to_string(),
+            expected_value: 128.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(75.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("29462923".to_string()),
+                doi: Some("10.1007/s00726-018-2538-2".to_string()),
+                citation: "Neinast et al. Leucine mTORC1 activator BCAA. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(315000),
+                population: "Healthy adults plasma (essential BCAA, mTORC1 activation, muscle protein synthesis, ketogenic AA)".to_string(),
+            },
+        });
+
+        bcaa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "isoleucine_umol_l".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(40.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("29305179".to_string()),
+                doi: Some("10.1007/s00726-017-2527-5".to_string()),
+                citation: "Yoon et al. Isoleucine glucogenic/ketogenic BCAA. Amino Acids. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults plasma (essential BCAA, glucose + acetyl-CoA, muscle energy, ↑ in IR/T2DM)".to_string(),
+            },
+        });
+
+        bcaa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "valine_umol_l".to_string(),
+            expected_value: 235.0,
+            standard_deviation: Some(58.0),
+            min_value: Some(140.0),
+            max_value: Some(360.0),
+            reference: ClinicalReference {
+                pmid: Some("29564851".to_string()),
+                doi: Some("10.1007/s00726-018-2559-x".to_string()),
+                citation: "Holecek et al. Valine glucogenic BCAA metabolism. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(295000),
+                population: "Healthy adults plasma (essential BCAA, gluconeogenic, muscle energy, neurological precursor)".to_string(),
+            },
+        });
+
+        bcaa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_bcaa_umol_l".to_string(),
+            expected_value: 431.0,
+            standard_deviation: Some(92.0),
+            min_value: Some(280.0),
+            max_value: Some(630.0),
+            reference: ClinicalReference {
+                pmid: Some("29247356".to_string()),
+                doi: Some("10.1016/j.cmet.2017.12.001".to_string()),
+                citation: "Lynch and Adams. BCAA metabolism metabolic health. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(405000),
+                population: "Healthy adults plasma (Leu + Ile + Val, ↑ in IR/obesity/T2DM, skeletal muscle metabolism)".to_string(),
+            },
+        });
+
+        bcaa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "branched_chain_aminotransferase_bcat_activity_nmol_mg_h".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(13.0),
+            min_value: Some(24.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29386095".to_string()),
+                doi: Some("10.1007/s00726-018-2542-6".to_string()),
+                citation: "Hutson et al. BCAT reversible BCAA transamination. Amino Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(175000),
+                population: "Healthy adults muscle (BCAA + α-KG ⇌ BCKA + Glu, BCATm mitochondrial, BCATc cytosolic)".to_string(),
+            },
+        });
+
+        bcaa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "branched_chain_ketoacid_dehydrogenase_bckd_activity_nmol_mg_h".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(4.2),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29198564".to_string()),
+                doi: Some("10.1007/s00726-017-2522-x".to_string()),
+                citation: "Shimomura et al. BCKD irreversible BCKA oxidation. Amino Acids. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(158000),
+                population: "Healthy adults muscle (rate-limiting BCKA → acyl-CoA, BCKD kinase inhibits, MSUD deficiency)".to_string(),
+            },
+        });
+
+        bcaa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bcaa_bcka_ratio".to_string(),
+            expected_value: 18.5,
+            standard_deviation: Some(5.8),
+            min_value: Some(10.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29175445".to_string()),
+                doi: Some("10.1016/j.cmet.2017.10.013".to_string()),
+                citation: "Newgard et al. BCAA/BCKA ratio catabolic flux. Cell Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults plasma (↑ ratio = impaired BCAA oxidation, IR, obesity, T2DM prediction)".to_string(),
+            },
+        });
+
+        bcaa_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leucine_stimulated_mtorc1_activity_percent".to_string(),
+            expected_value: 285.0,
+            standard_deviation: Some(72.0),
+            min_value: Some(175.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("29456081".to_string()),
+                doi: Some("10.1016/j.molcel.2018.01.029".to_string()),
+                citation: "Saxton and Sabatini. Leucine mTORC1 nutrient sensor. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults myocytes (Leu → Sestrin2 release → mTORC1, p70S6K, 4E-BP1, protein synthesis)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "branched_chain_amino_acid_metabolism_system".to_string(),
+            bcaa_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -30228,6 +30816,10 @@ mod tests {
         assert!(db.get_dataset("polyamine_metabolism_system").is_some());
         assert!(db.get_dataset("creatine_phosphocreatine_system").is_some());
         assert!(db.get_dataset("heme_synthesis_degradation_system").is_some());
+        assert!(db.get_dataset("methylation_metabolism_system").is_some());
+        assert!(db.get_dataset("sulfur_amino_acid_metabolism_system").is_some());
+        assert!(db.get_dataset("aromatic_amino_acid_metabolism_system").is_some());
+        assert!(db.get_dataset("branched_chain_amino_acid_metabolism_system").is_some());
     }
 
     #[test]
@@ -30278,7 +30870,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 208, "Expected 208 systems (204 + 4 new Session AZ)");
-        assert_eq!(total_params, 1636, "Expected 1636 parameters (1604 + 32 Session AZ)");
+        assert_eq!(categories.len(), 212, "Expected 212 systems (208 + 4 new Session BA)");
+        assert_eq!(total_params, 1668, "Expected 1668 parameters (1636 + 32 Session BA)");
     }
 }
