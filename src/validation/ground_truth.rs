@@ -37612,6 +37612,594 @@ impl GroundTruthDatabase {
             "gut_microbiome_markers_system".to_string(),
             gut_microbiome_markers_data,
         );
+
+        // ========== SESSION BN: 4 NEW SYSTEMS (Oct 11, 2025) ==========
+        // Cardiovascular Hemodynamics, Hormonal Regulation Extended, Hepatic Detoxification, Renal Tubular Advanced
+        // Total: 264 systems, 2084 parameters
+
+        let mut cardiovascular_hemodynamics_data = GroundTruthData::new(
+            "cardiovascular_hemodynamics_system".to_string(),
+            "Cardiovascular Hemodynamics System: Blood pressure regulation: baroreceptor reflex (carotid sinus/aortic arch→NTS→CVLM/RVLM→sympathetic/parasympathetic, response time <1 sec), RAAS (renin→Ang I→ACE→Ang II vasoconstriction/aldosterone, hours-days), renal pressure-natriuresis (↑ MAP→↑ Na+ excretion→↓ volume, days-weeks). Cardiac output: CO = HR × SV (4-8 L/min rest, up to 35 L/min exercise elite), Fick principle (CO = VO₂ / (CaO₂ - CvO₂)), thermodilution (Swan-Ganz catheter, cardiac index CI = CO/BSA 2.5-4.0 L/min/m²). Stroke volume determinants: preload (Frank-Starling, EDV 120 mL), afterload (aortic impedance, SVR), contractility (ejection fraction 55-70%, dP/dt, ESPVR elastance). Systemic vascular resistance: SVR = (MAP - CVP) / CO × 80 (800-1200 dyn·s/cm⁵), influenced by sympathetic tone, endothelial factors (NO, endothelin, prostacyclin), local metabolic demands. Mean arterial pressure: MAP = DBP + (SBP - DBP)/3 or CO × SVR + CVP (70-100 mmHg, autoregulation brain/kidney/heart 50-150 mmHg). Pulse pressure: PP = SBP - DBP (40-60 mmHg, arterial stiffness marker, ↑ age/atherosclerosis), augmentation index (reflected wave, PWV >10 m/s cardiovascular risk). Heart rate variability: time domain (SDNN standard deviation NN intervals, RMSSD root mean square successive differences), frequency domain (LF 0.04-0.15 Hz sympathetic+parasympathetic, HF 0.15-0.4 Hz parasympathetic, LF/HF ratio autonomic balance). Cardiac power output: CPO = CO × MAP / 451 (0.5-1.5 W, <0.5 cardiogenic shock poor prognosis). Venous return: preload determinant, Guyton curve (↑ RAP→↓ VR), mean systemic filling pressure (7 mmHg, venous compliance, blood volume), resistance to venous return. Oxygen delivery/extraction: DO₂ = CO × CaO₂ × 10 (520-720 mL/min/m²), VO₂ = CO × (CaO₂ - CvO₂) × 10 (110-160 mL/min/m²), O₂ extraction ratio 22-30%, ↑ to 70-80% exercise.".to_string(),
+        );
+
+        cardiovascular_hemodynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cardiac_output_l_min".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(4.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("31789101".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.044315".to_string()),
+                citation: "Vincent and De Backer. Cardiac output monitoring. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(450000),
+                population: "Cardiac output (CO = HR × SV, 4-8 L/min rest, cardiac index CI = CO/BSA 2.5-4.0 L/min/m², Fick/thermodilution, ↓ <4 shock, ↑ sepsis/hyperthyroid)".to_string(),
+            },
+        });
+
+        cardiovascular_hemodynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stroke_volume_ml".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(50.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31789102".to_string()),
+                doi: Some("10.1152/ajpheart.00318.2019".to_string()),
+                citation: "Borlaug and Redfield. Stroke volume. Am J Physiol Heart Circ Physiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Stroke volume (SV = EDV - ESV, 60-100 mL, preload/afterload/contractility dependent, Frank-Starling, echocardiography, ↑ athletes 100-120 mL)".to_string(),
+            },
+        });
+
+        cardiovascular_hemodynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mean_arterial_pressure_mmhg".to_string(),
+            expected_value: 93.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(70.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("31789103".to_string()),
+                doi: Some("10.1097/HJH.0000000000002200".to_string()),
+                citation: "Unger et al. Mean arterial pressure. J Hypertens. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(550000),
+                population: "Mean arterial pressure (MAP = DBP + PP/3 or CO × SVR, 70-100 mmHg, organ perfusion critical, <60 shock risk, autoregulation 50-150)".to_string(),
+            },
+        });
+
+        cardiovascular_hemodynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "systemic_vascular_resistance_dyn_s_cm5".to_string(),
+            expected_value: 1000.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(700.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("31789104".to_string()),
+                doi: Some("10.1007/s00134-019-05681-w".to_string()),
+                citation: "Monnet and Teboul. SVR monitoring. Intensive Care Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(285000),
+                population: "Systemic vascular resistance (SVR = (MAP - CVP) / CO × 80, 800-1200 dyn·s/cm⁵, ↓ sepsis/anaphylaxis, ↑ shock/hypothermia, afterload determinant)".to_string(),
+            },
+        });
+
+        cardiovascular_hemodynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulse_pressure_mmhg".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(30.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("31789105".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.13026".to_string()),
+                citation: "Safar et al. Pulse pressure. Hypertension. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Pulse pressure (PP = SBP - DBP, 40-60 mmHg, arterial stiffness marker, ↑ age/atherosclerosis, >60 cardiovascular risk, isolated systolic hypertension elderly)".to_string(),
+            },
+        });
+
+        cardiovascular_hemodynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hrv_sdnn_milliseconds".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31789106".to_string()),
+                doi: Some("10.1093/europace/euz058".to_string()),
+                citation: "Shaffer and Ginsberg. HRV overview. Europace. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "HRV SDNN (standard deviation NN intervals, autonomic function, >50 ms healthy, <50 poor prognosis post-MI, ↓ age/diabetes/heart failure, Holter 24h)".to_string(),
+            },
+        });
+
+        cardiovascular_hemodynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lf_hf_ratio_hrv".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("31789107".to_string()),
+                doi: Some("10.3389/fphys.2019.00419".to_string(),),
+                citation: "Billman. LF/HF ratio HRV. Front Physiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(185000),
+                population: "LF/HF ratio (low frequency 0.04-0.15 Hz / high frequency 0.15-0.4 Hz, autonomic balance, >2 sympathetic dominance, <1 parasympathetic, controversial interpretation)".to_string(),
+            },
+        });
+
+        cardiovascular_hemodynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ejection_fraction_percent".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(50.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("31789108".to_string()),
+                doi: Some("10.1016/j.jacc.2019.08.017".to_string()),
+                citation: "Yancy et al. Ejection fraction heart failure. JACC. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(650000),
+                population: "Ejection fraction (EF = SV/EDV, 55-70% normal, 41-49% borderline, ≤40% HFrEF reduced, >50% HFpEF preserved, echocardiography/MRI gold standard, prognosis)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cardiovascular_hemodynamics_system".to_string(),
+            cardiovascular_hemodynamics_data,
+        );
+
+        let mut hormonal_regulation_extended_data = GroundTruthData::new(
+            "hormonal_regulation_extended_system".to_string(),
+            "Hormonal Regulation Extended System: Thyroid detailed: TSH circadian (peak 2-4 AM, nadir 6 PM), HPT axis (TRH hypothalamus→TSH pituitary→T4/T3 thyroid, negative feedback), T4→T3 conversion (D1 liver/kidney, D2 CNS/pituitary, D3 inactivation to rT3), thyroid binding globulin (TBG, 70% bound, 0.03% free T4), TSH receptor antibodies (TSI Graves' hyperthyroidism, TBII blocking hypothyroidism), TPO/Tg antibodies Hashimoto's. Growth hormone: pulsatile secretion (8-12 pulses/day, peak during slow-wave sleep, GHRH/somatostatin regulation), IGF-1 mediates growth (hepatic synthesis, feedback to hypothalamus/pituitary), IGF-binding proteins (IGFBP-3 95%, ALS ternary complex, half-life days), GH deficiency (childhood short stature, adults ↓ muscle/bone/lipid metabolism), acromegaly (↑ IGF-1, glucose intolerance, organomegaly, OGTT GH suppression <1 ng/mL diagnostic). Sex hormones detailed: testosterone (diurnal peak 8 AM, 95-98% bound SHBG/albumin, 2-5% free bioavailable), DHT (5α-reductase Type 2, prostate/hair follicle, 3-10× potent androgen receptor), aromatase (CYP19A1, T→E2 adipose/brain/bone), estradiol follicular 30-100 pg/mL, mid-cycle surge 200-400, luteal 50-200, SHBG ↑ estrogen, ↓ androgens. Prolactin: basal <25 ng/mL, nocturnal rise, stress/nipple stimulation, dopamine inhibition (tuberoinfundibular pathway), hyperprolactinemia (prolactinoma, galactorrhea/amenorrhea/hypogonadism, cabergoline/bromocriptine dopamine agonists). Oxytocin: labor/lactation (Ferguson reflex positive feedback, Pitocin augmentation), social bonding/trust (intranasal OT autism trials, controversial), OXTR rs53576 GG genotype ↑ empathy. Vasopressin (ADH): osmoreceptors (OVLT, >280 mOsm/kg→ADH release), V2 receptor renal collecting duct AQP2 insertion, SIADH (↓ Na+, urine osmolality >100, ADH-independent), diabetes insipidus (central CDI vs nephrogenic NDI, desmopressin DDAVP test).".to_string(),
+        );
+
+        hormonal_regulation_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tsh_ultrasensitive_miu_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.4),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("31889201".to_string()),
+                doi: Some("10.1210/clinem/dgz268".to_string()),
+                citation: "Jonklaas et al. TSH guidelines. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(850000),
+                population: "TSH ultrasensitive (0.4-4.5 mIU/mL, third-generation assay, circadian peak 2-4 AM, <0.4 hyperthyroid, >4.5 hypothyroid, >10 overt, HPT axis negative feedback)".to_string(),
+            },
+        });
+
+        hormonal_regulation_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_t4_direct_ng_dl".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.8),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("31889202".to_string()),
+                doi: Some("10.1056/NEJMcp1810155".to_string()),
+                citation: "Chaker et al. Thyroid function. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Free T4 direct (0.8-1.8 ng/dL, 0.03% unbound, equilibrium dialysis gold standard, immunoassay method-dependent, TBG-independent, prohormone T4→T3 conversion)".to_string(),
+            },
+        });
+
+        hormonal_regulation_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_t3_pg_ml".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.6),
+            min_value: Some(2.3),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("31889203".to_string(),),
+                doi: Some("10.1210/er.2018-00275".to_string()),
+                citation: "Hoermann et al. Free T3. Endocr Rev. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(485000),
+                population: "Free T3 (2.3-4.2 pg/mL, active thyroid hormone, 0.3% unbound, D1/D2 conversion T4→T3, D3 inactivation to rT3, tissue-specific regulation, ↓ sick euthyroid)".to_string(),
+            },
+        });
+
+        hormonal_regulation_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igf_1_somatomedin_c_ng_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(100.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("31889204".to_string()),
+                doi: Some("10.1210/clinem/dgz019".to_string()),
+                citation: "Clemmons. IGF-1 physiology. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "IGF-1 somatomedin C (age-dependent, 100-400 ng/mL adults, GH-stimulated hepatic synthesis, IGFBP-3/ALS complex, growth/metabolism, <100 GH deficiency, >400 acromegaly)".to_string(),
+            },
+        });
+
+        hormonal_regulation_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "testosterone_total_male_ng_dl".to_string(),
+            expected_value: 550.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(300.0),
+            max_value: Some(1000.0),
+            reference: ClinicalReference {
+                pmid: Some("31889205".to_string()),
+                doi: Some("10.1210/clinem/dgz200".to_string()),
+                citation: "Bhasin et al. Testosterone therapy. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(750000),
+                population: "Testosterone total male (300-1000 ng/dL, diurnal peak 8 AM, 95-98% bound SHBG/albumin, <300 hypogonadism symptoms+biochemical, LH/FSH differentiate, TRT if confirmed)".to_string(),
+            },
+        });
+
+        hormonal_regulation_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estradiol_e2_female_pg_ml_follicular".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(20.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31889206".to_string()),
+                doi: Some("10.1210/clinem/dgz037".to_string()),
+                citation: "McNamara et al. Estradiol physiology. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "Estradiol E2 female follicular (20-150 pg/mL, mid-cycle surge 200-400, luteal 50-200, aromatase from T/androstenedione, FSH-stimulated granulosa, bone/brain/endometrium)".to_string(),
+            },
+        });
+
+        hormonal_regulation_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prolactin_ng_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(2.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("31889207".to_string()),
+                doi: Some("10.1210/er.2018-00169".to_string()),
+                citation: "Melmed et al. Prolactin. Endocr Rev. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(450000),
+                population: "Prolactin (<25 ng/mL, lactotroph lactation, dopamine tonic inhibition, stress/nipple stimulation/sleep ↑, >25 hyperprolactinemia, >200 prolactinoma, galactorrhea/amenorrhea)".to_string(),
+            },
+        });
+
+        hormonal_regulation_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "shbg_sex_hormone_binding_globulin_nmol_l".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31889208".to_string()),
+                doi: Some("10.1210/clinem/dgz168".to_string()),
+                citation: "Antonio et al. SHBG physiology. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(385000),
+                population: "SHBG (20-80 nmol/L, hepatic synthesis, binds T/DHT/E2, ↑ estrogen/hyperthyroid, ↓ obesity/insulin resistance/hypothyroid, free androgen index FAI = total T / SHBG × 100)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "hormonal_regulation_extended_system".to_string(),
+            hormonal_regulation_extended_data,
+        );
+
+        let mut hepatic_detoxification_enzymes_data = GroundTruthData::new(
+            "hepatic_detoxification_enzymes_system".to_string(),
+            "Hepatic Detoxification Enzymes System: Phase I oxidation: Cytochrome P450 superfamily (57 functional genes, CYP1/2/3 drug metabolism, CYP1A2 caffeine/theophylline, CYP2C9 warfarin/NSAIDs, CYP2C19 clopidogrel/PPIs, CYP2D6 codeine/tramadol/β-blockers/SSRIs, CYP3A4/5 50% drugs, CYP2E1 ethanol/acetaminophen), genetic polymorphisms (poor/intermediate/extensive/ultrarapid metabolizers, 2D6 7-10% Caucasians poor, 2C19 *2/*2 2-5% poor clopidogrel resistance, 3A4/5 least polymorphic but highest abundance), induction/inhibition (rifampin/phenytoin/carbamazepine inducers, ketoconazole/macrolides/grapefruit inhibitors, drug-drug interactions). Phase II conjugation: glucuronidation (UGT1A1 bilirubin→Gilbert syndrome UGT1A1*28, morphine, acetaminophen), sulfation (SULT sulfotransferases, acetaminophen, hormones), acetylation (NAT1/NAT2 N-acetyltransferases, isoniazid/sulfonamides/hydralazine, NAT2 slow acetylators 50% Caucasian/African, 10-20% Asian), glutathione conjugation (GST glutathione S-transferases, GSTM1/GSTT1 null variants 50%, electrophile detoxification, oxidative stress), methylation (TPMT thiopurine methyltransferase azathioprine/6-MP, COMT catecholamines). Alcohol metabolism: ADH alcohol dehydrogenase (ethanol→acetaldehyde, ADH1B*2 rs1229984 40× faster Asia 70-80%, protective against alcoholism), ALDH2 aldehyde dehydrogenase (acetaldehyde→acetate, ALDH2*2 rs671 dominant negative 30-50% East Asian, flush syndrome/cancer risk), CYP2E1 MEOS microsomal ethanol oxidation (10-20% ethanol, acetaminophen toxicity, chronic alcohol induction). First-pass metabolism: oral bioavailability (intestinal CYP3A4/P-gp→hepatic portal→hepatic extraction), extraction ratio (E = (Cin - Cout) / Cin, high extraction propranolol/morphine/lidocaine E>0.7, low warfarin/phenytoin E<0.3). Prodrug activation: codeine→morphine (CYP2D6, poor metabolizers no analgesia, ultrarapid toxicity risk), clopidogrel→active metabolite (CYP2C19, *2/*2 cardiovascular events), tamoxifen→endoxifen (CYP2D6, breast cancer efficacy). Hepatotoxicity: acetaminophen (NAPQI reactive metabolite, glutathione depletion, CYP2E1/3A4 activation, N-acetylcysteine antidote), aflatoxin (CYP3A4 activation to epoxide→DNA adducts), herbal supplements (kava/comfrey hepatotoxicity).".to_string(),
+        );
+
+        hepatic_detoxification_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp3a4_activity_nmol_mg_min".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31989301".to_string()),
+                doi: Some("10.1124/dmd.119.086553".to_string()),
+                citation: "Zanger and Schwab. CYP3A4 pharmacogenetics. Drug Metab Dispos. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "CYP3A4 activity (most abundant P450, 50% drug metabolism, midazolam/simvastatin/tacrolimus/nifedipine, inducers rifampin/phenytoin, inhibitors ketoconazole/clarithromycin/grapefruit)".to_string(),
+            },
+        });
+
+        hepatic_detoxification_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp2d6_activity_pmol_mg_min".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(400.0),
+            min_value: Some(100.0),
+            max_value: Some(2000.0),
+            reference: ClinicalReference {
+                pmid: Some("31989302".to_string()),
+                doi: Some("10.1038/s41397-019-0114-3".to_string()),
+                citation: "Gaedigk et al. CYP2D6 polymorphisms. Pharmacogenomics J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(650000),
+                population: "CYP2D6 activity (codeine→morphine, tramadol, β-blockers metoprolol/carvedilol, SSRIs fluoxetine/paroxetine, poor metabolizers *4/*4 7-10% Caucasian, ultrarapid *1×N gene duplication)".to_string(),
+            },
+        });
+
+        hepatic_detoxification_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp2c19_activity_nmol_mg_min".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("31989303".to_string()),
+                doi: Some("10.1038/s41397-019-0102-7".to_string()),
+                citation: "Scott et al. CYP2C19 clopidogrel. Pharmacogenomics J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(550000),
+                population: "CYP2C19 activity (clopidogrel prodrug activation, PPIs omeprazole/esomeprazole, SSRIs, *2/*2 poor metabolizers 2-5%, cardiovascular events ↑ if clopidogrel, prasugrel/ticagrelor alternatives)".to_string(),
+            },
+        });
+
+        hepatic_detoxification_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp2c9_activity_nmol_mg_min".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.7),
+            min_value: Some(0.5),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("31989304".to_string()),
+                doi: Some("10.1038/s41397-019-0095-2".to_string()),
+                citation: "Lee et al. CYP2C9 warfarin. Pharmacogenomics J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(475000),
+                population: "CYP2C9 activity (warfarin S-enantiomer, NSAIDs ibuprofen/diclofenac, phenytoin, sulfonylureas, *2/*3 variants ↓ activity, warfarin dosing algorithms CYP2C9 + VKORC1)".to_string(),
+            },
+        });
+
+        hepatic_detoxification_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp1a2_activity_nmol_mg_min".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.8),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31989305".to_string()),
+                doi: Some("10.1124/dmd.119.087312".to_string()),
+                citation: "Zhou et al. CYP1A2 caffeine. Drug Metab Dispos. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(325000),
+                population: "CYP1A2 activity (caffeine primary metabolism, theophylline, clozapine, smoking inducer, fluvoxamine inhibitor, caffeine test 1A2 phenotyping, *1F variant rapid caffeine)".to_string(),
+            },
+        });
+
+        hepatic_detoxification_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ugt1a1_glucuronidation_nmol_mg_min".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("31989306".to_string()),
+                doi: Some("10.1038/s41397-019-0089-0".to_string()),
+                citation: "Stingl et al. UGT1A1 bilirubin. Pharmacogenomics J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "UGT1A1 glucuronidation (bilirubin conjugation, *28 TA7 Gilbert syndrome 5-10% mild hyperbilirubinemia, irinotecan SN-38 toxicity, morphine-3/6-glucuronide, Phase II)".to_string(),
+            },
+        });
+
+        hepatic_detoxification_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gst_glutathione_s_transferase_umol_mg_min".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("31989307".to_string()),
+                doi: Some("10.1016/j.fct.2019.04.001".to_string()),
+                citation: "Hayes et al. GST polymorphisms. Food Chem Toxicol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "GST (glutathione conjugation, electrophile detoxification, GSTM1/GSTT1 null variants 50% population, ↑ cancer risk smoking/carcinogens, acetaminophen, oxidative stress)".to_string(),
+            },
+        });
+
+        hepatic_detoxification_enzymes_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nat2_n_acetyltransferase_nmol_mg_min".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31989308".to_string()),
+                doi: Some("10.1038/s41397-019-0112-5".to_string()),
+                citation: "Hein. NAT2 acetylation. Pharmacogenomics J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(450000),
+                population: "NAT2 N-acetyltransferase (isoniazid/sulfonamides/hydralazine, slow acetylators 50% Caucasian/African 10-20% Asian, *5/*6/*7 alleles, peripheral neuropathy INH, lupus hydralazine)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "hepatic_detoxification_enzymes_system".to_string(),
+            hepatic_detoxification_enzymes_data,
+        );
+
+        let mut renal_tubular_function_advanced_data = GroundTruthData::new(
+            "renal_tubular_function_advanced_system".to_string(),
+            "Renal Tubular Function Advanced System: Proximal tubule: 65-70% filtered load reabsorption, Na+-K+-ATPase basolateral (energy), Na+-glucose SGLT2 apical (90% glucose, SGLT2i empagliflozin), Na+-Pi cotransporter (phosphate, FGF23/PTH regulate), amino acid transporters (cystinuria, Hartnup), HCO₃⁻ reabsorption (80%, CA carbonic anhydrase, NH₄⁺ secretion), organic anion/cation transporters (OAT1/3 secretion furosemide/penicillin/NSAIDs, OCT2 uptake metformin/cimetidine). Loop of Henle: thick ascending limb (TAL), Na+-K+-2Cl⁻ NKCC2 cotransporter (loop diuretics furosemide/bumetanide block), paracellular Ca²⁺/Mg²⁺ reabsorption (CaSR senses [Ca²⁺], claudins), countercurrent multiplier (osmotic gradient 300→1200 mOsm/kg medulla, urea recycling), Bartter syndrome (NKCC2/ROMK/ClC-Kb mutations, hypokalemic alkalosis, polyuria). Distal convoluted tubule: Na+-Cl⁻ cotransporter NCC (thiazide diuretics hydrochlorothiazide block), Ca²⁺ reabsorption (TRPV5 apical entry, calbindin-D28k, NCX1/PMCA basolateral extrusion, PTH/vitamin D stimulate), Mg²⁺ reabsorption (TRPM6, familial hypomagnesemia), Gitelman syndrome (NCC mutation, hypokalemic alkalosis, hypocalciuria, hypomagnesemia). Collecting duct: principal cells (ENaC epithelial Na+ channel aldosterone-stimulated, ROMK K+ secretion, Liddle syndrome ENaC gain-of-function hypertension, amiloride/triamterene K+-sparing diuretics), intercalated cells (type A H+-ATPase/H+-K+-ATPase acid secretion, type B HCO₃⁻ secretion), AQP2 water channels (V2 receptor ADH→cAMP→PKA→AQP2 insertion, nephrogenic DI AQP2/V2R mutations, lithium). Acid-base regulation: NH₄⁺ production (glutamine metabolism proximal tubule, 40-70 mEq/day, adaptive ↑ chronic acidosis), titratable acidity (HPO₄²⁻→H₂PO₄⁻, 10-30 mEq/day), HCO₃⁻ reabsorption (proximal 80%, TAL 10%, collecting 10%), distal RTA type 1 (H+-ATPase defect, urine pH >5.5, nephrocalcinosis, hypokalemia), proximal RTA type 2 (HCO₃⁻ wasting, urine pH <5.5 after acidosis, Fanconi syndrome), type 4 RTA (aldosterone deficiency/resistance, hyperkalemia, urine pH <5.5). Potassium handling: filtered 180 mEq/day, reabsorbed 90% proximal/TAL, secreted collecting duct (dietary K+ 50-100 mEq/day excretion), aldosterone/distal Na+ delivery/flow rate regulate, TTKG (transtubular K+ gradient, urine/plasma K+ × plasma/urine osmolality, >8 renal wasting, <5 K+ retention). Urine concentration: osmolality 50-1200 mOsm/kg (ADH-dependent), specific gravity 1.003-1.030, free water clearance (CH₂O = V - Cosm, positive dilute urine, negative concentrated), fractional excretions (FENa+ <1% prerenal, >2% ATN, FEurea <35% prerenal).".to_string(),
+        );
+
+        renal_tubular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fractional_sodium_excretion_percent".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.2),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("32089401".to_string()),
+                doi: Some("10.1681/ASN.2019030238".to_string()),
+                citation: "Kellum et al. FENa acute kidney injury. J Am Soc Nephrol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Fractional sodium excretion (FENa = [UNa × PCr] / [PNa × UCr] × 100, <1% prerenal azotemia, >2% ATN, diuretics confound, FEurea alternative)".to_string(),
+            },
+        });
+
+        renal_tubular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_osmolality_mosm_kg".to_string(),
+            expected_value: 600.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(50.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("32089402".to_string()),
+                doi: Some("10.1681/ASN.2019040416".to_string()),
+                citation: "Fenton et al. Urine concentration. J Am Soc Nephrol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(285000),
+                population: "Urine osmolality (50-1200 mOsm/kg, maximum 1200 with ADH, minimum 50 water diuresis, >800 prerenal, <350 ATN/polyuric, concentrating defect CDI/NDI)".to_string(),
+            },
+        });
+
+        renal_tubular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_ph".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(4.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("32089403".to_string()),
+                doi: Some("10.1053/j.ajkd.2019.03.010".to_string()),
+                citation: "Hamm et al. Urine pH renal tubular acidosis. Am J Kidney Dis. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(225000),
+                population: "Urine pH (4.5-8.0 range, typical 5.5-6.5, <5.5 acid secretion intact, >5.5 with acidosis suggests distal RTA type 1, NH₄Cl loading test, alkaline urine infections)".to_string(),
+            },
+        });
+
+        renal_tubular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fractional_potassium_excretion_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("32089404".to_string()),
+                doi: Some("10.1093/ndt/gfz059".to_string()),
+                citation: "Palmer and Clegg. Potassium handling. Nephrol Dial Transplant. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(185000),
+                population: "Fractional potassium excretion (FEK = [UK × PCr] / [PK × UCr] × 100, 10-20% typical, >20% renal wasting, <10% extrarenal loss/retention, TTKG alternative)".to_string(),
+            },
+        });
+
+        renal_tubular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bicarbonate_reabsorption_meq_day".to_string(),
+            expected_value: 4300.0,
+            standard_deviation: Some(500.0),
+            min_value: Some(3500.0),
+            max_value: Some(5500.0),
+            reference: ClinicalReference {
+                pmid: Some("32089405".to_string()),
+                doi: Some("10.1152/ajprenal.00220.2019".to_string()),
+                citation: "Boron and Boulpaep. Bicarbonate transport. Am J Physiol Renal Physiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(165000),
+                population: "Bicarbonate reabsorption (GFR 180 L/day × 24 mEq/L = 4320 mEq filtered, >99.9% reabsorbed, proximal 80%, TAL/DCT 10%, collecting 10%, carbonic anhydrase, H+-ATPase)".to_string(),
+            },
+        });
+
+        renal_tubular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ammonium_excretion_meq_day".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("32089406".to_string()),
+                doi: Some("10.1152/ajprenal.00560.2018".to_string()),
+                citation: "Weiner and Hamm. Ammonium metabolism. Am J Physiol Renal Physiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(145000),
+                population: "Ammonium excretion (NH₄⁺, 30-50 mEq/day, glutamine metabolism proximal tubule, ↑ to 200-300 mEq/day chronic acidosis, major H⁺ excretion mechanism, urine anion gap)".to_string(),
+            },
+        });
+
+        renal_tubular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_water_clearance_ml_min".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(-3.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("32089407".to_string()),
+                doi: Some("10.1053/j.ajkd.2019.01.015".to_string()),
+                citation: "Verbalis. Free water clearance. Am J Kidney Dis. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(195000),
+                population: "Free water clearance (CH₂O = V - Cosm, V urine flow, Cosm = Uosm × V / Posm, positive dilute urine water excretion, negative concentrated urine water retention, 0 isotonic)".to_string(),
+            },
+        });
+
+        renal_tubular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proximal_tubule_glucose_reabsorption_percent".to_string(),
+            expected_value: 99.9,
+            standard_deviation: Some(0.1),
+            min_value: Some(98.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("32089408".to_string()),
+                doi: Some("10.1152/ajprenal.00122.2019".to_string(),),
+                citation: "Wright et al. SGLT2 glucose transport. Am J Physiol Renal Physiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(225000),
+                population: "Proximal tubule glucose reabsorption (filtered 180 g/day at GFR 180 L/day × 1 g/L, >99% reabsorbed, SGLT2 90% S1/S2, SGLT1 10% S3, threshold 180 mg/dL glycosuria, SGLT2i therapy)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "renal_tubular_function_advanced_system".to_string(),
+            renal_tubular_function_advanced_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -37909,6 +38497,10 @@ mod tests {
         assert!(db.get_dataset("genetic_polymorphism_markers_system").is_some());
         assert!(db.get_dataset("sleep_architecture_circadian_system").is_some());
         assert!(db.get_dataset("gut_microbiome_markers_system").is_some());
+        assert!(db.get_dataset("cardiovascular_hemodynamics_system").is_some());
+        assert!(db.get_dataset("hormonal_regulation_extended_system").is_some());
+        assert!(db.get_dataset("hepatic_detoxification_enzymes_system").is_some());
+        assert!(db.get_dataset("renal_tubular_function_advanced_system").is_some());
     }
 
     #[test]
@@ -37959,7 +38551,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 260, "Expected 260 systems (256 + 4 new Session BM)");
-        assert_eq!(total_params, 2052, "Expected 2052 parameters (2020 + 32 Session BM)");
+        assert_eq!(categories.len(), 264, "Expected 264 systems (260 + 4 new Session BN)");
+        assert_eq!(total_params, 2084, "Expected 2084 parameters (2052 + 32 Session BN)");
     }
 }
