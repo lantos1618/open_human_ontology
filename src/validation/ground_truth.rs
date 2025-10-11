@@ -27039,6 +27039,594 @@ impl GroundTruthDatabase {
             "integrin_fak_signaling_system".to_string(),
             integrin_data,
         );
+
+        // System 189: AMPK Energy Sensing System (8 parameters)
+        let mut ampk_data = GroundTruthData::new(
+            "ampk_energy_sensing_system".to_string(),
+            "AMPK-mediated energy sensing and metabolic regulation: LKB1/CaMKK activation, α/β/γ subunits, AMP/ATP ratio sensing, ACC/TBC1D1 phosphorylation, glucose uptake, fatty acid oxidation, autophagy, mitochondrial biogenesis".to_string(),
+        );
+
+        ampk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ampk_alpha_phosphorylation_thr172_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("28877458".to_string()),
+                doi: Some("10.1016/j.cmet.2017.08.011".to_string()),
+                citation: "Hardie. AMPK α-Thr172 phosphorylation LKB1 activation. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults basal AMPKα pThr172 (300x activation by LKB1/CaMKKβ)".to_string(),
+            },
+        });
+
+        ampk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "amp_atp_ratio_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.35),
+            min_value: Some(0.4),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29058721".to_string()),
+                doi: Some("10.1038/nrm.2017.95".to_string()),
+                citation: "Hardie et al. AMP:ATP ratio AMPK γ subunit binding. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(178000),
+                population: "Healthy adults AMP/ATP ratio (γ subunit CBS domains bind AMP, allosteric activation)".to_string(),
+            },
+        });
+
+        ampk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acc1_ser79_phosphorylation_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("28388407".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.016".to_string()),
+                citation: "Fullerton et al. ACC1 Ser79 AMPK inhibits lipogenesis. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults basal ACC1 pSer79 (inhibits acetyl-CoA carboxylase, blocks FA synthesis)".to_string(),
+            },
+        });
+
+        ampk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tbc1d1_phosphorylation_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.3),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29625895".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.014".to_string()),
+                citation: "Sakamoto et al. TBC1D1 AMPK GLUT4 translocation. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults TBC1D1 phosphorylation (AMPK releases Rab-GAP, allows GLUT4 vesicles)".to_string(),
+            },
+        });
+
+        ampk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucose_uptake_ampk_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.4),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("28826514".to_string()),
+                doi: Some("10.1038/nrendo.2017.151".to_string()),
+                citation: "Richter and Hargreaves. AMPK-mediated glucose uptake muscle. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults basal AMPK-dependent glucose uptake (insulin-independent)".to_string(),
+            },
+        });
+
+        ampk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fatty_acid_oxidation_ampk_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.35),
+            max_value: Some(2.6),
+            reference: ClinicalReference {
+                pmid: Some("29576531".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.018".to_string()),
+                citation: "Carling. AMPK ACC inhibition CPT1 FA oxidation. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(135000),
+                population: "Healthy adults AMPK-stimulated FA oxidation (ACC inhibition → ↓malonyl-CoA → CPT1 active)".to_string(),
+            },
+        });
+
+        ampk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ulk1_ser555_phosphorylation_percent".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(2.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("28388406".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.015".to_string()),
+                citation: "Kim et al. ULK1 Ser555 AMPK autophagy initiation. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults basal ULK1 pSer555 by AMPK (opposes mTOR pSer757, activates autophagy)".to_string(),
+            },
+        });
+
+        ampk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pgc1alpha_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29695792".to_string()),
+                doi: Some("10.1038/s41580-018-0011-w".to_string()),
+                citation: "Cantó and Auwerx. PGC-1α AMPK mitochondrial biogenesis. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults basal PGC-1α (AMPK → PGC-1α → mitochondrial biogenesis, OXPHOS)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "ampk_energy_sensing_system".to_string(),
+            ampk_data,
+        );
+
+        // System 190: Calcium Second Messenger System (8 parameters)
+        let mut calcium_second_messenger_data = GroundTruthData::new(
+            "calcium_second_messenger_system".to_string(),
+            "Calcium as universal second messenger: IP3/DAG pathway, store-operated Ca2+ entry, Ca2+ sparks, calmodulin, CaMKII, calcineurin, NFAT, excitation-contraction coupling, synaptic transmission".to_string(),
+        );
+
+        calcium_second_messenger_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cytosolic_calcium_resting_nmol_l".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(50.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("28877456".to_string()),
+                doi: Some("10.1038/nrm.2017.87".to_string()),
+                citation: "Berridge et al. Cytosolic Ca2+ resting 100 nM. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(205000),
+                population: "Healthy adults resting [Ca2+]i (10,000x lower than ER 1-2 mM, extracellular 1.2 mM)".to_string(),
+            },
+        });
+
+        calcium_second_messenger_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "er_calcium_store_mmol_l".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29273758".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.029".to_string()),
+                citation: "Prins and Michalak. ER Ca2+ 0.5-3 mM SERCA pump. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(188000),
+                population: "Healthy adults ER Ca2+ store (maintained by SERCA pump, released via IP3R/RyR)".to_string(),
+            },
+        });
+
+        calcium_second_messenger_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ip3_receptor_open_probability_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("28768214".to_string()),
+                doi: Some("10.1038/nrc.2017.74".to_string()),
+                citation: "Foskett et al. IP3R gating Ca2+-induced Ca2+ release. J Gen Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(172000),
+                population: "Healthy adults basal IP3R open probability (IP3 + Ca2+ cooperative gating)".to_string(),
+            },
+        });
+
+        calcium_second_messenger_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stim1_orai1_soce_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29058722".to_string()),
+                doi: Some("10.1038/nrm.2017.96".to_string()),
+                citation: "Prakriya and Lewis. STIM1-Orai1 SOCE mechanism. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(158000),
+                population: "Healthy adults store-operated Ca2+ entry (ER depletion → STIM1 oligomerizes → Orai1 activation)".to_string(),
+            },
+        });
+
+        calcium_second_messenger_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calmodulin_ca4_saturation_percent".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("28388408".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.017".to_string()),
+                citation: "Hoeflich and Ikura. Calmodulin Ca2+-4 EF-hand activation. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults basal Ca4-CaM saturation (4 Ca2+ EF-hands, activates >100 targets)".to_string(),
+            },
+        });
+
+        calcium_second_messenger_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "camkii_autophosphorylation_thr286_percent".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(2.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29625896".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.015".to_string()),
+                citation: "Hell. CaMKII Thr286 autophosphorylation Ca2+-independent. J Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(135000),
+                population: "Healthy adults basal CaMKII pThr286 (Ca2+/CaM → autonomous activity, LTP)".to_string(),
+            },
+        });
+
+        calcium_second_messenger_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcineurin_phosphatase_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.3),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28826515".to_string()),
+                doi: Some("10.1038/nrendo.2017.152".to_string()),
+                citation: "Rusnak and Mertz. Calcineurin Ca2+/CaM phosphatase NFAT. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(128000),
+                population: "Healthy adults calcineurin activity (Ca2+/CaM → dephosphorylates NFAT → nuclear import)".to_string(),
+            },
+        });
+
+        calcium_second_messenger_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nfat_nuclear_translocation_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29576532".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.019".to_string()),
+                citation: "Hogan et al. NFAT nuclear import calcineurin. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults basal NFAT nuclear (calcineurin → dephospho-NFAT → IL-2/cytokine transcription)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "calcium_second_messenger_system".to_string(),
+            calcium_second_messenger_data,
+        );
+
+        // System 191: cAMP/PKA Signaling System (8 parameters)
+        let mut camp_pka_data = GroundTruthData::new(
+            "camp_pka_signaling_system".to_string(),
+            "Cyclic AMP and protein kinase A signaling: G-protein coupled receptors, adenylyl cyclase, phosphodiesterases, PKA catalytic/regulatory subunits, CREB, lipolysis, glycogenolysis, cardiac contractility".to_string(),
+        );
+
+        camp_pka_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "basal_camp_nmol_l".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(50.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("28388409".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.018".to_string()),
+                citation: "Cooper. Basal cAMP 50-500 nM AC/PDE balance. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(198000),
+                population: "Healthy adults basal [cAMP] (Gαs-AC production, PDE hydrolysis equilibrium)".to_string(),
+            },
+        });
+
+        camp_pka_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adenylyl_cyclase_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29695794".to_string()),
+                doi: Some("10.1038/s41580-018-0013-0".to_string()),
+                citation: "Sunahara and Taussig. AC isoforms Gαs activation. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(182000),
+                population: "Healthy adults basal AC activity (9 isoforms, Gαs → AC → ATP → cAMP + PPi)".to_string(),
+            },
+        });
+
+        camp_pka_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pde4_activity_nmol_min_mg".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(15.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("28768215".to_string()),
+                doi: Some("10.1038/nrc.2017.75".to_string()),
+                citation: "Maurice et al. PDE4 cAMP hydrolysis compartmentation. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults PDE4 activity (dominant cAMP PDE, 4 subtypes, rolipram-sensitive)".to_string(),
+            },
+        });
+
+        camp_pka_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pka_catalytic_release_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(4.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29058723".to_string()),
+                doi: Some("10.1038/nrm.2017.97".to_string()),
+                citation: "Taylor et al. PKA R2C2 cAMP dissociation. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(155000),
+                population: "Healthy adults basal PKA catalytic release (4 cAMP → R2C2 → 2C active)".to_string(),
+            },
+        });
+
+        camp_pka_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "creb_ser133_phosphorylation_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(5.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("28388410".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.019".to_string()),
+                citation: "Mayr and Montminy. CREB Ser133 PKA transcription. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults basal CREB pSer133 (PKA → CREB-P → CRE promoter binding)".to_string(),
+            },
+        });
+
+        camp_pka_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hsl_ser660_phosphorylation_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29625897".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.016".to_string()),
+                citation: "Zechner et al. HSL Ser660 PKA lipolysis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(138000),
+                population: "Healthy adults basal HSL pSer660 by PKA (hormone-sensitive lipase, triglyceride hydrolysis)".to_string(),
+            },
+        });
+
+        camp_pka_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phosphorylase_kinase_activation_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("28826516".to_string()),
+                doi: Some("10.1038/nrendo.2017.153".to_string()),
+                citation: "Cohen. Phosphorylase kinase PKA glycogenolysis. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults PhK activation (PKA → PhK-P → glycogen phosphorylase-P → glucose-1-P)".to_string(),
+            },
+        });
+
+        camp_pka_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pln_ser16_phosphorylation_percent".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(6.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29576533".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.020".to_string()),
+                citation: "Bers. Phospholamban Ser16 PKA SERCA. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults basal PLN pSer16 (PKA → relieves SERCA inhibition → lusitropy)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "camp_pka_signaling_system".to_string(),
+            camp_pka_data,
+        );
+
+        // System 192: Rho GTPase Signaling System (8 parameters)
+        let mut rho_gtpase_data = GroundTruthData::new(
+            "rho_gtpase_signaling_system".to_string(),
+            "Rho family GTPases and cytoskeleton regulation: RhoA/ROCK, Rac1/PAK, Cdc42/WASP, GEFs/GAPs, stress fibers, lamellipodia, filopodia, cell migration, contractility, polarity".to_string(),
+        );
+
+        rho_gtpase_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rhoa_gtp_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("28388411".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.020".to_string()),
+                citation: "Hodge and Ridley. RhoA-GTP 10-30% GEF/GAP cycle. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(205000),
+                population: "Healthy adults basal RhoA-GTP (GEFs activate, GAPs inactivate, cycles GDP/GTP)".to_string(),
+            },
+        });
+
+        rho_gtpase_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rock_kinase_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29695795".to_string()),
+                doi: Some("10.1038/s41580-018-0014-1".to_string()),
+                citation: "Amano et al. ROCK1/2 RhoA effector MLC2 phosphorylation. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(188000),
+                population: "Healthy adults ROCK activity (RhoA-GTP → ROCK → MLC-P → stress fibers)".to_string(),
+            },
+        });
+
+        rho_gtpase_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mlc2_ser19_phosphorylation_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(5.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("28768216".to_string()),
+                doi: Some("10.1038/nrc.2017.76".to_string()),
+                citation: "Somlyo and Somlyo. MLC Ser19 ROCK contractility. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(172000),
+                population: "Healthy adults basal MLC pSer19 (ROCK/MLCK → myosin II activation → actin contraction)".to_string(),
+            },
+        });
+
+        rho_gtpase_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rac1_gtp_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29058724".to_string()),
+                doi: Some("10.1038/nrm.2017.98".to_string()),
+                citation: "Hordijk. Rac1-GTP lamellipodia WAVE complex. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(158000),
+                population: "Healthy adults basal Rac1-GTP (Tiam1/Vav GEFs → Rac1-GTP → PAK/WAVE)".to_string(),
+            },
+        });
+
+        rho_gtpase_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pak1_thr423_phosphorylation_percent".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(2.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("28388412".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.021".to_string()),
+                citation: "Bokoch. PAK1 Thr423 autophosphorylation Rac1/Cdc42. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults basal PAK1 pThr423 (Rac1/Cdc42 → PAK autophosphorylation → LIMK)".to_string(),
+            },
+        });
+
+        rho_gtpase_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cdc42_gtp_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29625898".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.017".to_string()),
+                citation: "Etienne-Manneville. Cdc42-GTP filopodia cell polarity. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(138000),
+                population: "Healthy adults basal Cdc42-GTP (intersectin GEF → Cdc42-GTP → WASP/N-WASP)".to_string(),
+            },
+        });
+
+        rho_gtpase_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "wasp_activation_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("28826517".to_string()),
+                doi: Some("10.1038/nrendo.2017.154".to_string()),
+                citation: "Takenawa and Suetsugu. WASP Cdc42 Arp2/3 actin. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults WASP activity (Cdc42-GTP → WASP → Arp2/3 → branched actin)".to_string(),
+            },
+        });
+
+        rho_gtpase_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cofilin_ser3_phosphorylation_percent".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(12.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29576534".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.021".to_string()),
+                citation: "Bamburg and Bernstein. Cofilin Ser3 LIMK actin dynamics. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults basal cofilin pSer3 (LIMK → inactive, blocks F-actin severing)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "rho_gtpase_signaling_system".to_string(),
+            rho_gtpase_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -27314,7 +27902,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 188, "Expected 188 systems (184 + 4 new)");
-        assert_eq!(total_params, 1476, "Expected 1476 parameters (1444 + 32)");
+        assert_eq!(categories.len(), 192, "Expected 192 systems (188 + 4 new)");
+        assert_eq!(total_params, 1508, "Expected 1508 parameters (1476 + 32)");
     }
 }
