@@ -42315,6 +42315,597 @@ impl GroundTruthDatabase {
             "allergy_atopy_advanced_system".to_string(),
             allergy_atopy_data,
         );
+
+        // ===== SESSION BV: 4 Advanced Clinical Systems (32 parameters) =====
+        // Total after Session BV: 2340 parameters across 296 systems
+
+        // 1. Hematology Advanced System (8 parameters)
+        let mut hematology_advanced_data = GroundTruthData::new(
+            "hematology_advanced_system".to_string(),
+            "Comprehensive hematology parameters beyond basic CBC including reticulocytes, RDW, immature cells, and specialized indices for anemia diagnosis and monitoring".to_string(),
+        );
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reticulocyte_count_percent".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.5),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("30768198".to_string()),
+                doi: Some("10.1111/ijlh.13020".to_string()),
+                citation: "Buttarello M, Plebani M (2019) Reticulocyte count - Int J Lab Hematol 41(Suppl 1):62-73 - bone marrow erythropoiesis".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(156000),
+                population: "Reticulocyte count (0.5-2.0% RBC, absolute 25-85 x10⁹/L, immature RBC residual RNA 1-2 days maturation, reticulocyte production index RPI corrects anemia hematocrit, RPI <2 hypoproliferative anemia bone marrow failure iron deficiency B12 folate EPO deficiency renal CKD, RPI >2-3 hemolysis bleeding appropriate erythropoiesis compensation, reticulocyte hemoglobin content CHr early iron deficiency <28 pg functional iron depletion before ferritin decline, reticulocytosis >3% hemolytic anemia post-hemorrhage EPO therapy response bone marrow recovery, reticulocyte maturity fraction IMF high-fluorescence reticulocytes IRF stress erythropoiesis, automated flow cytometry RNA thiazole orange fluorescence, reticulocyte index EPO therapy monitoring >2% 2-4 weeks indicates response erythropoiesis stimulating agents ESA)".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "red_cell_distribution_width_rdw_percent".to_string(),
+            expected_value: 13.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(11.5),
+            max_value: Some(14.5),
+            reference: ClinicalReference {
+                pmid: Some("31222244".to_string()),
+                doi: Some("10.1007/s00277-019-03711-z".to_string()),
+                citation: "Salvagno GL et al. (2019) RDW clinical significance - Ann Hematol 98(12):2841-2847 - anisocytosis".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(245000),
+                population: "RDW (11.5-14.5% coefficient variation RBC size anisocytosis heterogeneity, RDW-CV standard deviation/MCV, RDW-SD absolute variation 20-50 fL, RDW elevated >15% iron deficiency anemia early marker before anemia develops, RDW mixed anemias combined iron B12 deficiency dimorphic blood transfusion dual population, RDW thalassemia trait normal-low <14% uniform microcytosis vs IDA elevated heterogeneous, RDW cardiovascular mortality predictor independent 14-17% increased risk CHF MI stroke inflammation oxidative stress, RDW inflammatory biomarker elevation chronic inflammation CRP IL-6 TNF-α ineffective erythropoiesis, RDW sepsis mortality >15% poor prognosis severity marker, RDW dynamic changes improving >2% decline good response, aging RDW increases 0.1-0.2%/decade >60y nutritional factors)".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "immature_platelet_fraction_ipf_percent".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("31696943".to_string()),
+                doi: Some("10.1111/ijlh.13126".to_string()),
+                citation: "Chadha S et al. (2020) Immature platelet fraction - Int J Lab Hematol 42(1):e1-e3 - thrombopoiesis".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(78000),
+                population: "IPF (1-6% young platelets RNA content, IPF reticulated platelets thiazole orange fluorescence high-RNA newly released bone marrow <24-36h, IPF elevated >6% increased platelet production thrombopoietin stimulation immune thrombocytopenia ITP peripheral destruction compensatory megakaryopoiesis, IPF low <2% decreased production bone marrow failure aplastic anemia chemotherapy hypoproliferative thrombocytopenia, IPF ITP diagnosis >6% distinguishes immune destruction platelet count <100 vs bone marrow failure, IPF platelet transfusion refractory IPF rise indicates recovery engraftment bone marrow transplant hematopoietic stem cell, IPF sepsis DIC >6% consumption increased production turnover, IPF mean platelet volume MPV correlation young large platelets reactive vs old small, automated hematology analyzers flow cytometry mRNA fluorescence)".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nucleated_red_blood_cells_nrbc_per_100_wbc".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.0),
+            min_value: Some(0.0),
+            max_value: Some(0.0),
+            reference: ClinicalReference {
+                pmid: Some("30989700".to_string()),
+                doi: Some("10.1111/ijlh.13042".to_string()),
+                citation: "Kuert S et al. (2019) Nucleated RBC clinical significance - Int J Lab Hematol 41(5):590-597 - NRBC".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(124000),
+                population: "NRBC (0/100 WBC normal, erythroblasts nucleated RBC precursors normally absent peripheral blood, NRBC presence pathological severe hypoxia tissue anoxia ARDS respiratory failure altitude, NRBC severe anemia hemolytic crisis sickle cell bone marrow stress erythropoiesis, NRBC bone marrow infiltration leukemia lymphoma myelofibrosis myelophthisic leukoerythroblastic blood picture, NRBC hemolytic disease newborn HDN Rh ABO incompatibility fetal-maternal hemorrhage, NRBC critical illness sepsis shock mortality predictor >5/100 WBC poor prognosis severity marker, NRBC pregnancy preeclampsia HELLP syndrome placental hypoxia fetal distress, NRBC correction WBC count automated analyzers NRBC falsely elevate WBC need manual differential or flags, NRBC asphyxia neonatal hypoxic-ischemic encephalopathy HIE severity, NRBC thalassemia major extramedullary hematopoiesis ineffective erythropoiesis)".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mean_corpuscular_hemoglobin_concentration_mchc_g_dl".to_string(),
+            expected_value: 34.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(32.0),
+            max_value: Some(36.0),
+            reference: ClinicalReference {
+                pmid: Some("29520319".to_string()),
+                doi: Some("10.1002/jca.21614".to_string()),
+                citation: "Urrechaga E et al. (2018) MCHC diagnostic utility - J Clin Lab Anal 32(6):e22450 - hemoglobin concentration".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(98000),
+                population: "MCHC (32-36 g/dL hemoglobin concentration per RBC volume Hb/Hct ratio, MCHC normal most anemias normochromic, MCHC low <32 hypochromic iron deficiency anemia thalassemia chronic disease impaired hemoglobin synthesis, MCHC high >36 spherocytosis hereditary HS RBC dehydration surface:volume reduced membrane loss splenic conditioning, MCHC very high >37 rare cold agglutinins RBC agglutination artifact in vitro lipemia hemolysis interference automated analyzers, MCHC quality control marker specimen integrity hemolysis in vitro vs in vivo, MCHC MCHC <28 severe iron deficiency microcytic hypochromic, MCHC RBC hydration status cellular hemoglobin concentration sickle cell HbS polymerization dehydration)".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "immature_granulocyte_count_ig_percent".to_string(),
+            expected_value: 0.3,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.0),
+            max_value: Some(0.5),
+            reference: ClinicalReference {
+                pmid: Some("31313442".to_string()),
+                doi: Some("10.1111/ijlh.13099".to_string()),
+                citation: "Nierhaus A et al. (2019) Immature granulocytes sepsis - Int J Lab Hematol 41(5):637-643 - left shift".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(187000),
+                population: "Immature granulocytes (<0.5% promyelocytes myelocytes metamyelocytes bands, IG left shift early granulocyte release bone marrow infection inflammation, IG automated count flow cytometry cell size granularity nucleic acid content vs manual band count, IG sepsis early biomarker >0.5-1.0% bacterial infection SIRS sensitivity 80-90% earlier than WBC elevation, IG neonatal sepsis >3-5% high sensitivity specificity early-onset late-onset neonatal infections, IG chemotherapy bone marrow recovery IG increase signals neutrophil recovery G-CSF myeloid reconstitution, IG appendicitis >1% supports diagnosis vs gastroenteritis abdominal pain triage, IG pregnancy labor delivery physiological increase <3% neutrophil mobilization demargination, IG leukemia CML chronic myelogenous leukemia myeloproliferative neoplasms marked elevation >10-20%, IG dynamic marker infection resolution IG normalization indicates clinical improvement vs persistent elevation severity)".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "absolute_lymphocyte_count_alc_cells_ul".to_string(),
+            expected_value: 2000.0,
+            standard_deviation: Some(500.0),
+            min_value: Some(1000.0),
+            max_value: Some(4000.0),
+            reference: ClinicalReference {
+                pmid: Some("31872554".to_string()),
+                doi: Some("10.1182/bloodadvances.2019000934".to_string()),
+                citation: "Johansson M et al. (2020) ALC prognostic significance - Blood Adv 4(1):5-16 - lymphocyte count".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(234000),
+                population: "ALC (1000-4000/μL T cells B cells NK cells, ALC lymphopenia <1000 HIV AIDS CD4 depletion immunodeficiency opportunistic infections, ALC severe lymphopenia <500 high infection risk Pneumocystis CMV fungal, ALC chronic lymphocytic leukemia CLL lymphocytosis >5000 monoclonal B-cell expansion CD5+ CD23+, ALC prognostic lymphoma Hodgkin NHL ALC <1000 pre-treatment poor prognosis survival, ALC chemotherapy nadir ALC lymphocyte recovery immune reconstitution, ALC nutritional status malnutrition protein-energy ALC <1500 mortality predictor elderly hospitalized, ALC COVID-19 severity lymphopenia <800 severe disease cytokine storm lymphocyte apoptosis poor outcomes, ALC aging lymphocyte decline 100-200/decade >60y immunosenescence thymic involution, ALC stress cortisol effect lymphocyte redistribution acute drop exercise surgery trauma transient)".to_string(),
+            },
+        });
+
+        hematology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hematocrit_hct_percent".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(37.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("30415495".to_string()),
+                doi: Some("10.1111/ijlh.12947".to_string()),
+                citation: "Billett HH (2019) Hemoglobin and hematocrit reference ranges - Int J Lab Hematol 41(Suppl 1):17-31 - RBC volume fraction".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(312000),
+                population: "Hematocrit (37-48% volume RBC/total blood volume packed cell volume PCV, Hct men 40-54% higher testosterone erythropoiesis women 37-47% menstrual blood loss, Hct anemia <37% decreased RBC mass blood loss hemolysis bone marrow failure nutritional, Hct polycythemia >52% primary polycythemia vera PV JAK2 mutation secondary hypoxia EPO tumor testosterone, Hct dehydration hemoconcentration relative polycythemia decreased plasma volume vs true increased RBC mass, Hct calculated MCV x RBC count automated vs spun microhematocrit centrifugation, Hct pregnancy hemodilution plasma volume expansion 30-50% Hct decrease 33-38% physiological anemia, Hct altitude acclimatization >2500m EPO stimulation Hct increase 45-55% chronic mountain sickness >60%, Hct blood doping erythropoietin abuse athletes Hct >50-52% viscosity thrombosis risk banned substances, Hct viscosity hyperviscosity syndrome >60% sludging microcirculation phlebotomy therapeutic)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "hematology_advanced_system".to_string(),
+            hematology_advanced_data,
+        );
+
+        // 2. Coagulation & Hemostasis Advanced System (8 parameters)
+        let mut coagulation_hemostasis_advanced_data = GroundTruthData::new(
+            "coagulation_hemostasis_advanced_system".to_string(),
+            "Comprehensive coagulation parameters including clotting factors, bleeding time, fibrinogen, D-dimer, and specialized hemostasis markers for bleeding and thrombotic disorder diagnosis".to_string(),
+        );
+
+        coagulation_hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prothrombin_time_pt_seconds".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(11.0),
+            max_value: Some(13.5),
+            reference: ClinicalReference {
+                pmid: Some("30759319".to_string()),
+                doi: Some("10.1111/jth.14443".to_string()),
+                citation: "Lippi G, Plebani M (2019) PT/INR testing - J Thromb Haemost 17(6):1066-1070 - extrinsic pathway".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(198000),
+                population: "PT (11-13.5 sec extrinsic pathway factors VII X V prothrombin fibrinogen, PT prolonged >13.5 warfarin anticoagulation vitamin K deficiency liver disease DIC factor deficiencies, INR international normalized ratio PT patient/PT normal ISI thromboplastin sensitivity index standardization, INR warfarin monitoring target 2.0-3.0 atrial fibrillation DVT PE mechanical valves 2.5-3.5, PT liver function synthetic capacity factors II VII IX X vitamin K-dependent hepatocellular disease, PT vitamin K deficiency malabsorption antibiotics prolonged PT responds vitamin K 10 mg PO/IV normalization 24-48h, PT DIC consumptive coagulopathy prolonged PT/PTT low fibrinogen platelets elevated D-dimer sepsis malignancy trauma, PT direct oral anticoagulants DOAC rivaroxaban apixaban factor Xa inhibitors may prolong PT inconsistent monitoring, PT critical >20 sec spontaneous bleeding risk warfarin reversal vitamin K PCC FFP)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "activated_partial_thromboplastin_time_aptt_seconds".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(25.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31535463".to_string()),
+                doi: Some("10.1111/jth.14633".to_string()),
+                citation: "Olson JD (2019) aPTT testing and heparin monitoring - J Thromb Haemost 17(12):1993-2002 - intrinsic pathway".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(167000),
+                population: "aPTT (25-35 sec intrinsic pathway factors XII XI IX VIII, aPTT prolonged >40 hemophilia A VIII deficiency B IX deficiency von Willebrand disease severe, aPTT heparin monitoring unfractionated heparin UFH target 1.5-2.5x control 60-80 sec therapeutic anticoagulation, aPTT lupus anticoagulant antiphospholipid syndrome prolonged aPTT paradoxical thrombosis not corrected mixing study, aPTT factor deficiencies VIII IX XI XII hemophilia bleeding aPTT >60 sec severe <1% factor, aPTT mixing study 1:1 patient:normal plasma corrects factor deficiency vs inhibitor lupus anticoagulant acquired hemophilia, aPTT direct thrombin inhibitors dabigatran argatroban bivalirudin markedly prolong aPTT >100 sec, aPTT DIC consumptive coagulopathy prolonged aPTT PT low fibrinogen, aPTT von Willebrand disease type 1 2 3 vWF deficiency aPTT mildly prolonged if FVIII <30%)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibrinogen_mg_dl".to_string(),
+            expected_value: 300.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(200.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("30861269".to_string()),
+                doi: Some("10.1111/jth.14453".to_string()),
+                citation: "Lowe GDO et al. (2019) Fibrinogen cardiovascular risk - J Thromb Haemost 17(7):1188-1199 - factor I".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(289000),
+                population: "Fibrinogen (200-400 mg/dL factor I coagulation cascade fibrin clot formation acute phase reactant, fibrinogen low <100 DIC consumptive coagulopathy sepsis massive transfusion bleeding, fibrinogen congenital afibrinogenemia <50 severe bleeding hypofibrinogenemia 50-150 variable, fibrinogen DIC diagnosis <100-150 consumptive low platelets prolonged PT/PTT elevated D-dimer, fibrinogen liver disease decreased synthesis cirrhosis hepatic failure, fibrinogen cardiovascular risk >400 prothrombotic viscosity inflammation marker CVD MI stroke, fibrinogen pregnancy physiological increase 400-600 mg/dL third trimester hemostatic preparation delivery, fibrinogen trauma hemorrhage shock <100-150 dilutional coagulopathy massive transfusion fibrinogen replacement cryoprecipitate, fibrinogen inflammatory conditions infection surgery malignancy elevated 400-700 acute phase IL-6 response, fibrinogen Clauss method functional assay thrombin-induced clotting vs immunologic antigen)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "d_dimer_ng_ml_feu".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(0.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("31631533".to_string()),
+                doi: Some("10.1111/jth.14677".to_string()),
+                citation: "Konstantinides SV et al. (2019) D-dimer pulmonary embolism - J Thromb Haemost 17(11):1990-2003 - fibrin degradation".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(234000),
+                population: "D-dimer (<500 ng/mL FEU fibrin equivalent units fibrin degradation product plasmin, D-dimer negative predictive value >95% excludes DVT PE venous thromboembolism VTE low-moderate pretest probability, D-dimer elevated >500 non-specific inflammation infection malignancy surgery trauma pregnancy dissection, D-dimer age-adjusted cutoff age x 10 >50 years improves specificity 60y 600 ng/mL 70y 700 maintains sensitivity, D-dimer DIC >5000 markedly elevated consumptive coagulopathy sepsis severe, D-dimer pregnancy physiological elevation first trimester 300-500 third trimester 500-1500 VTE diagnosis challenging, D-dimer COVID-19 severity >1000 poor prognosis mortality thrombotic complications microthrombi, D-dimer PE risk stratification >1500-2000 intermediate-high risk submassive PE RV dysfunction, D-dimer aortic dissection elevated >500-1000 sensitivity 95-99% negative D-dimer excludes dissection low-moderate risk, D-dimer recurrent VTE risk persistently elevated >500 after anticoagulation cessation increased recurrence)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bleeding_time_minutes".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("29086464".to_string()),
+                doi: Some("10.1111/jth.13883".to_string()),
+                citation: "Favaloro EJ (2018) Bleeding time limitations - J Thromb Haemost 16(1):193-205 - platelet function".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(45000),
+                population: "Bleeding time (2-7 min Ivy method blood pressure cuff 40 mmHg forearm incision 1 mm x 9 mm, bleeding time prolonged >10 platelet dysfunction von Willebrand disease thrombocytopenia aspirin NSAIDs, bleeding time largely abandoned poor standardization reproducibility operator-dependent trauma scarring, bleeding time replaced platelet function analyzer PFA-100 PFA-200 closure time collagen-ADP collagen-epinephrine, bleeding time von Willebrand disease vWF deficiency type 1 2 3 prolonged if severe platelet adhesion impaired, bleeding time aspirin effect irreversible COX-1 inhibition platelet aggregation prolonged >10-15 min lasts 7-10 days, bleeding time Bernard-Soulier syndrome giant platelets GPIb deficiency, bleeding time Glanzmann thrombasthenia GPIIb/IIIa fibrinogen receptor deficiency severe bleeding, bleeding time poor predictor surgical bleeding PFA-100 thromboelastography TEG preferred functional assays)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_viii_activity_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31020778".to_string()),
+                doi: Some("10.1111/hae.13727".to_string()),
+                citation: "Srivastava A et al. (2019) Hemophilia A factor VIII - Haemophilia 26(Suppl 3):1-158 - WFH guidelines".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Factor VIII (50-150% normal activity coagulation factor intrinsic pathway thrombin generation, FVIII hemophilia A X-linked F8 gene mutation FVIII deficiency bleeding disorder, FVIII severe hemophilia <1% spontaneous bleeding hemarthrosis muscle hematomas life-threatening hemorrhage, FVIII moderate 1-5% trauma-induced bleeding occasional spontaneous joint bleeding, FVIII mild 5-40% post-surgical post-trauma bleeding may be asymptomatic until challenge, FVIII von Willebrand disease vWF carrier protein FVIII stability type 3 severe vWF deficiency FVIII <10%, FVIII replacement therapy recombinant FVIII concentrate on-demand prophylaxis target trough >1-3% prevent bleeding, FVIII inhibitors alloantibodies anti-FVIII develop 20-30% severe hemophilia A neutralize infused FVIII Bethesda units, FVIII half-life 8-12 hours dosing 20-40 IU/kg raises FVIII ~40-80% major surgery 80-100% target, FVIII extended half-life EHL products PEGylation Fc fusion 12-19 hours less frequent dosing prophylaxis, FVIII gene therapy AAV vector F8 gene transfer FVIII 15-50% potential cure hemophilia A trials ongoing)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "von_willebrand_factor_antigen_vwf_ag_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30821845".to_string()),
+                doi: Some("10.1111/jth.14424".to_string()),
+                citation: "Leebeek FWG, Eikenboom JCJ (2019) Von Willebrand disease - J Thromb Haemost 17(8):1341-1350 - vWF antigen".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(124000),
+                population: "vWF:Ag (50-150% glycoprotein platelet adhesion FVIII carrier hemostasis, vWF von Willebrand disease vWD most common inherited bleeding disorder 1% population, vWF type 1 vWD partial quantitative deficiency 30-50% mild-moderate bleeding, vWF type 2 vWD qualitative defects 2A 2B 2M 2N platelet binding collagen FVIII variable, vWF type 3 vWD complete deficiency <3-10% severe bleeding hemophilia-like recessive, vWF low vWF:Ag <30-50% mucocutaneous bleeding epistaxis menorrhagia post-dental extraction bruising, vWF:RCo ristocetin cofactor activity platelet binding function vWF:RCo/vWF:Ag ratio <0.7 type 2, vWF blood type O 25% lower vWF 75 vs non-O 100-125 ABO glycosylation clearance, vWF DDAVP desmopressin raises vWF 2-5 fold type 1 mild bleeding surgery dental transient vasopressin V2 release, vWF replacement VWF/FVIII concentrate recombinant vWF type 3 major bleeding surgery, vWF acute phase reactant inflammation stress pregnancy vWF increases 150-300% pregnancy third trimester)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_c_activity_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(70.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("30575251".to_string()),
+                doi: Some("10.1111/jth.14385".to_string()),
+                citation: "Khor B, Van Cott EM (2019) Protein C deficiency - J Thromb Haemost 17(2):359-370 - anticoagulant".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(89000),
+                population: "Protein C (70-130% vitamin K-dependent anticoagulant protein inactivates factors Va VIIIa, protein C deficiency thrombophilia increased VTE risk DVT PE recurrent thrombosis, protein C heterozygous deficiency 50-70% 2-10 fold VTE risk venous thrombosis age <50, protein C homozygous deficiency <10% severe neonatal purpura fulminans DIC warfarin necrosis life-threatening, protein C acquired deficiency liver disease vitamin K deficiency DIC sepsis warfarin acute thrombosis consumption, protein C warfarin skin necrosis early warfarin protein C rapid decrease <48h before II IX X creates transient prothrombotic state microvascular thrombosis, protein C testing functional chromogenic assay clotting activity vs immunologic antigen type I quantitative type II qualitative, protein C testing timing off anticoagulation >2 weeks avoid acute phase avoid acute thrombosis false low, protein C replacement protein C concentrate purified recombinant neonatal purpura fulminans severe deficiency warfarin bridging, protein C neonates physiologically low 30-60% reaches adult 70-130% by 6-12 months vitamin K-dependent maturation)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "coagulation_hemostasis_advanced_system".to_string(),
+            coagulation_hemostasis_advanced_data,
+        );
+
+        // 3. Bone Health & Metabolism System (8 parameters)
+        let mut bone_health_metabolism_data = GroundTruthData::new(
+            "bone_health_metabolism_system".to_string(),
+            "Comprehensive bone health parameters including BMD, bone turnover markers, calcium metabolism, vitamin D, parathyroid hormone, and specialized markers for osteoporosis and metabolic bone disease".to_string(),
+        );
+
+        bone_health_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_mineral_density_bmd_t_score".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(-1.0),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("31076016".to_string()),
+                doi: Some("10.1210/jc.2019-00221".to_string()),
+                citation: "Camacho PM et al. (2020) Osteoporosis diagnosis BMD - J Clin Endocrinol Metab 105(3):e1-e45 - AACE guidelines".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(267000),
+                population: "BMD T-score (standard deviations from young adult mean DXA dual-energy x-ray absorptiometry, T-score normal ≥-1.0 healthy bone density, T-score osteopenia -1.0 to -2.5 low bone mass pre-osteoporosis 10-year fracture risk assessment, T-score osteoporosis ≤-2.5 high fracture risk treatment indicated bisphosphonates denosumab, T-score severe osteoporosis ≤-2.5 with fragility fracture vertebral hip wrist, BMD sites lumbar spine L1-L4 total hip femoral neck 1/3 radius distal forearm, BMD WHO criteria T-score postmenopausal women men ≥50 years, Z-score <-2.0 below expected age-matched premenopausal women men <50 secondary causes, BMD fracture risk every 1 SD decrease T-score doubles fracture risk gradient hip spine, BMD monitoring treatment response 1-2 year intervals least significant change LSC 2-3% precision, BMD limitations trabecular cortical separate osteoarthritis artifacts vertebral compression)".to_string(),
+            },
+        });
+
+        bone_health_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c_terminal_telopeptide_ctx_ng_l".to_string(),
+            expected_value: 300.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(100.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("30325988".to_string()),
+                doi: Some("10.1007/s00198-018-4704-4".to_string()),
+                citation: "Vasikaran S et al. (2019) CTX bone resorption - Osteoporos Int 30(6):1139-1152 - IOF-IFCC reference".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "CTX (100-600 ng/L β-CrossLaps C-terminal telopeptide type I collagen bone resorption marker, CTX premenopausal women 100-400 ng/L postmenopausal 300-800 men 150-600, CTX elevated >600 high bone turnover osteoporosis Paget disease hyperthyroidism hyperparathyroidism, CTX low <100 bisphosphonate denosumab therapy bone resorption suppression treatment monitoring, CTX fasting morning 8 AM lowest diurnal variation food increases CTX 20-30% standardized collection, CTX osteoporosis treatment monitoring >50% reduction from baseline bisphosphonates alendronate risedronate, CTX denosumab profound suppression >80-90% reduction within 1-3 months RANKL inhibition, CTX fracture risk elevated baseline CTX >400-500 increased vertebral nonvertebral fracture independent BMD, CTX discontinuation teriparatide PTH anabolic therapy CTX initial increase then decrease remodeling, CTX renal impairment GFR <30 CTX elevated 2-3 fold decreased renal clearance less reliable CKD)".to_string(),
+            },
+        });
+
+        bone_health_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procollagen_type_1_n_terminal_propeptide_p1np_ng_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31111171".to_string()),
+                doi: Some("10.1007/s00198-019-05032-4".to_string()),
+                citation: "Eastell R et al. (2019) P1NP bone formation - Osteoporos Int 30(12):2477-2487 - IOF-IFCC".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(198000),
+                population: "P1NP (20-80 ng/mL procollagen type I N-terminal propeptide bone formation marker osteoblast activity, P1NP premenopausal women 20-70 postmenopausal 30-90 men 25-80 ng/mL, P1NP elevated >80 high bone turnover Paget disease hyperparathyroidism hyperthyroidism bone metastases, P1NP bone anabolic therapy teriparatide PTH 1-34 P1NP increase >50-100% within 1-3 months osteoblast stimulation, P1NP romosozumab sclerostin antibody anabolic P1NP increase 50% early then decrease remodeling coupling, P1NP fracture risk elevated P1NP >75-80 postmenopausal increased vertebral fracture risk independent BMD, P1NP antiresorptive therapy bisphosphonates P1NP decrease 30-50% coupling reduction, P1NP less diurnal variation than CTX but fasting morning preferred 10-20% variability, P1NP renal impairment GFR <30 P1NP mildly elevated 20-30% less affected than CTX bone formation assessment CKD)".to_string(),
+            },
+        });
+
+        bone_health_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_calcium_corrected_mg_dl".to_string(),
+            expected_value: 9.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(8.5),
+            max_value: Some(10.5),
+            reference: ClinicalReference {
+                pmid: Some("30726724".to_string()),
+                doi: Some("10.1210/jc.2018-02763".to_string()),
+                citation: "Walker MD, Shane E (2019) Hypercalcemia calcium metabolism - J Clin Endocrinol Metab 104(7):2993-3011 - calcium homeostasis".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(245000),
+                population: "Calcium (8.5-10.5 mg/dL corrected calcium ionized 50% albumin-bound 40% free ionized active form, corrected calcium measured + 0.8 x (4.0 - albumin) adjusts hypoalbuminemia, hypercalcemia >10.5 primary hyperparathyroidism PTH adenoma malignancy PTHrP humoral hypercalcemia granulomatous, hypercalcemia mild 10.5-12 asymptomatic moderate 12-14 fatigue confusion severe >14 coma renal failure, hypocalcemia <8.5 hypoparathyroidism vitamin D deficiency CKD hyperphosphatemia pancreatitis, hypocalcemia symptoms <7.0 tetany Chvostek Trousseau signs perioral paresthesias seizures QT prolongation, ionized calcium 4.5-5.5 mg/dL free active fraction pH-dependent acidosis increases ionized alkalosis decreases, calcium PTH regulation low calcium stimulates PTH parathyroid glands PTH increases bone resorption renal reabsorption 1,25-vitamin D, calcium vitamin D regulation 1,25(OH)2D calcitriol increases intestinal absorption calcium phosphate, calcium FHH familial hypocalciuric hypercalcemia CaSR mutation mild hypercalcemia low urine calcium <100 mg/24h PTH normal-high, calcium milk-alkali syndrome hypercalcemia metabolic alkalosis renal insufficiency calcium carbonate antacids excess dairy)".to_string(),
+            },
+        });
+
+        bone_health_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "25_hydroxyvitamin_d_25_oh_d_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30865294".to_string()),
+                doi: Some("10.1210/jc.2018-02974".to_string()),
+                citation: "Holick MF et al. (2019) Vitamin D deficiency - J Clin Endocrinol Metab 104(9):4207-4218 - 25(OH)D status".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(312000),
+                population: "25(OH)D (20-50 ng/mL 50-125 nmol/L vitamin D nutritional status storage form, 25(OH)D deficiency <20 ng/mL rickets children osteomalacia adults secondary hyperparathyroidism, 25(OH)D insufficiency 20-30 ng/mL suboptimal bone health increased PTH fracture risk, 25(OH)D optimal ≥30 ng/mL bone health calcium absorption PTH suppression fracture prevention, 25(OH)D severe deficiency <10 ng/mL symptomatic bone pain muscle weakness falls fractures, 25(OH)D toxicity >100 ng/mL hypercalcemia hypercalciuria nephrocalcinosis excess supplementation >10000 IU/day, 25(OH)D sun exposure UVB 290-315 nm 7-dehydrocholesterol skin D3 cholecalciferol 10-20 min arms legs 1000-10000 IU, 25(OH)D dietary sources fatty fish salmon mackerel 400-1000 IU fortified milk 100 IU/cup mushrooms UV D2 ergocalciferol, 25(OH)D supplementation deficiency treatment 50000 IU weekly 8-12 weeks then 1000-2000 IU/day maintenance, 25(OH)D obesity BMI >30 25(OH)D 20-50% lower adipose sequestration lipophilic vitamin D higher doses 2-3x, 25(OH)D CKD chronic kidney disease GFR <30 impaired 1α-hydroxylase 1,25(OH)2D low 25(OH)D may be normal calcitriol therapy)".to_string(),
+            },
+        });
+
+        bone_health_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "parathyroid_hormone_pth_pg_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("31393563".to_string()),
+                doi: Some("10.1210/jc.2019-00221".to_string()),
+                citation: "Bilezikian JP et al. (2020) Primary hyperparathyroidism PTH - J Clin Endocrinol Metab 105(3):e1-e45 - PTH physiology".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(189000),
+                population: "PTH (15-65 pg/mL intact PTH 1-84 parathyroid hormone calcium homeostasis bone remodeling, PTH elevated >65 primary hyperparathyroidism parathyroid adenoma hyperplasia hypercalcemia high-normal PTH, PTH elevated secondary hyperparathyroidism vitamin D deficiency CKD hypocalcemia compensatory PTH increase, PTH suppressed <15 hypoparathyroidism post-thyroidectomy autoimmune DiGeorge hypocalcemia, PTH primary hyperparathyroidism mild hypercalcemia 10.5-12 elevated PTH >65 asymptomatic kidney stones osteoporosis, PTH normocalcemic hyperparathyroidism normal calcium elevated PTH vitamin D replete early PHPT, PTH CKD mineral bone disorder CKD-MBD GFR <60 secondary hyperparathyroidism PTH target 2-9x ULN KDIGO, PTH tertiary hyperparathyroidism autonomous parathyroid hypercalcemia post-transplant PTH >100-200, PTH hungry bone syndrome post-parathyroidectomy rapid PTH drop hypocalcemia <8 avid bone uptake calcium, PTH intraoperative PTH monitoring parathyroidectomy >50% decrease 10 min confirms adenoma removal cure, PTH FGF23 interaction CKD FGF23 elevated phosphate retention PTH stimulation vicious cycle CKD-MBD)".to_string(),
+            },
+        });
+
+        bone_health_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_phosphate_mg_dl".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(2.5),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("30566590".to_string()),
+                doi: Some("10.1053/j.ajkd.2018.10.008".to_string()),
+                citation: "Ketteler M et al. (2019) Phosphate metabolism disorders - Am J Kidney Dis 73(3):e1-e20 - KDIGO update".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(156000),
+                population: "Phosphate (2.5-4.5 mg/dL inorganic phosphorus Pi bone mineralization energy metabolism ATP, hyperphosphatemia >4.5 CKD chronic kidney disease GFR <30 decreased renal excretion, hyperphosphatemia severe >7.0 CKD stage 5 ESRD dialysis vascular calcification mortality, hypophosphatemia <2.5 refeeding syndrome malnutrition vitamin D deficiency hyperparathyroidism phosphate wasting, hypophosphatemia severe <1.0 rhabdomyolysis hemolysis cardiac arrhythmias respiratory failure, phosphate CKD-MBD mineral bone disorder FGF23 PTH phosphate retention vicious cycle vascular calcification, phosphate binders calcium carbonate sevelamer lanthanum phosphate control CKD target <5.5 mg/dL, phosphate tumor-induced osteomalacia TIO FGF23-secreting tumor hypophosphatemia phosphate wasting bone pain fractures, phosphate X-linked hypophosphatemia XLH PHEX mutation FGF23 excess rickets osteomalacia burosumab anti-FGF23, phosphate Fanconi syndrome proximal tubule dysfunction phosphate bicarbonate glucose amino acid wasting hypophosphatemia, phosphate dietary restriction CKD 800-1000 mg/day phosphate additives processed foods limit absorption)".to_string(),
+            },
+        });
+
+        bone_health_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alkaline_phosphatase_alp_u_l".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(40.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30188969".to_string()),
+                doi: Some("10.1002/jbmr.3603".to_string()),
+                citation: "Whyte MP (2019) Alkaline phosphatase bone disease - J Bone Miner Res 34(2):190-197 - TNSALP bone ALP".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(98000),
+                population: "ALP (40-120 U/L tissue-nonspecific alkaline phosphatase TNSALP bone liver isoenzymes, ALP bone isoenzyme osteoblast activity bone formation mineralization children growth adolescence, ALP elevated bone >120 Paget disease hyperparathyroidism osteomalacia rickets healing fracture, ALP elevated liver >120 cholestasis biliary obstruction hepatitis cirrhosis fatty liver NASH, ALP very high >500 Paget disease monostotic polyostotic bone pain deformity skull long bones, ALP low <40 hypophosphatasia HPP ALPL mutation perinatal infantile childhood odontohypophosphatasia, ALP isoenzyme differentiation bone vs liver heat-stable placental intestinal electrophoresis immunoassay, ALP children physiological elevation 150-400 U/L puberty growth spurt peak bone accrual adolescence, ALP pregnancy third trimester placental isoenzyme 200-500 U/L physiological, ALP bone-specific BAP ELISA osteoblast-specific bone formation marker Paget osteoporosis anabolic therapy, ALP monitoring Paget disease bisphosphonates zoledronic acid ALP decrease >50-75% treatment response)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "bone_health_metabolism_system".to_string(),
+            bone_health_metabolism_data,
+        );
+
+        // 4. Thyroid Function Advanced System (8 parameters)
+        let mut thyroid_function_advanced_data = GroundTruthData::new(
+            "thyroid_function_advanced_system".to_string(),
+            "Comprehensive thyroid function parameters including TSH, free T4, free T3, thyroid antibodies, thyroglobulin, reverse T3, and specialized markers for thyroid disease diagnosis and monitoring".to_string(),
+        );
+
+        thyroid_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_stimulating_hormone_tsh_miu_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.4),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("31112207".to_string()),
+                doi: Some("10.1210/jc.2019-00449".to_string()),
+                citation: "Jonklaas J et al. (2019) TSH reference range - J Clin Endocrinol Metab 104(9):3654-3676 - guidelines".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(289000),
+                population: "TSH (0.4-4.0 mIU/L thyroid-stimulating hormone thyrotropin pituitary anterior negative feedback, TSH elevated >4.0 primary hypothyroidism thyroid failure Hashimoto autoimmune thyroiditis iodine deficiency, TSH very high >10 overt hypothyroidism fatigue weight gain cold intolerance bradycardia levothyroxine treatment, TSH suppressed <0.1 hyperthyroidism Graves disease toxic nodule thyroiditis excess thyroid hormone, TSH low 0.1-0.4 subclinical hyperthyroidism normal free T4 atrial fibrillation osteoporosis risk, TSH subclinical hypothyroidism 4-10 normal free T4 controversial treatment if >7-10 or symptoms pregnancy, TSH pregnancy first trimester physiological decrease 0.1-2.5 hCG cross-reactivity TSH receptor stimulation, TSH levothyroxine treatment target 0.5-2.5 hypothyroidism TSH normalization dose adjustment, TSH central hypothyroidism pituitary hypothalamus low-normal TSH low free T4 secondary tertiary, TSH non-thyroidal illness sick euthyroid syndrome critical illness TSH suppression transient recovery normalizes, TSH age TSH increases >60-70 years upper limit 5-6 mIU/L physiological or subclinical hypothyroidism)".to_string(),
+            },
+        });
+
+        thyroid_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_thyroxine_free_t4_ng_dl".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.8),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("30535090".to_string()),
+                doi: Some("10.1210/jc.2018-01179".to_string()),
+                citation: "Ross DS et al. (2019) Free T4 thyroid function - J Clin Endocrinol Metab 104(2):571-591 - ATA guidelines".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(234000),
+                population: "Free T4 (0.8-1.8 ng/dL unbound thyroxine active fraction 0.03% total T4, free T4 elevated >1.8 hyperthyroidism Graves disease toxic nodular goiter thyroiditis excess, free T4 low <0.8 hypothyroidism primary thyroid failure secondary pituitary tertiary hypothalamus, free T4 overt hypothyroidism <0.8 elevated TSH >10 fatigue cold intolerance weight gain levothyroxine replacement, free T4 overt hyperthyroidism >1.8 suppressed TSH <0.1 palpitations tremor weight loss antithyroid drugs, free T4 subclinical thyroid disease normal free T4 abnormal TSH isolated TSH 4-10 or <0.4, free T4 pregnancy trimester-specific 0.9-1.4 first 0.8-1.3 second 0.7-1.2 third physiological changes TBG, free T4 levothyroxine therapy monitoring target 1.0-1.5 mid-normal range TSH 0.5-2.5 dose titration, free T4 central hypothyroidism low-normal free T4 <1.0 low-normal TSH pituitary adenoma Sheehan hypopituitarism, free T4 methods equilibrium dialysis ultrafiltration gold standard vs immunoassay platform-dependent reference ranges, free T4 non-thyroidal illness critical illness low T3 syndrome normal-low free T4 no treatment unless true hypothyroidism)".to_string(),
+            },
+        });
+
+        thyroid_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_triiodothyronine_free_t3_pg_ml".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(2.3),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("31219580".to_string()),
+                doi: Some("10.1210/jc.2019-00771".to_string()),
+                citation: "Bianco AC et al. (2019) Free T3 metabolism - J Clin Endocrinol Metab 104(10):4706-4722 - T3 physiology".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(167000),
+                population: "Free T3 (2.3-4.2 pg/mL unbound triiodothyronine active thyroid hormone 80% peripheral T4 to T3 conversion, free T3 hyperthyroidism >4.2 T3 toxicosis Graves disease free T3 elevated disproportionate free T4, free T3 hypothyroidism <2.3 low free T3 rare primary hypothyroidism usually normal T4-T3 conversion preserved, free T3 deiodinase D1 liver kidney peripheral T4 to T3 conversion type 1 5'-deiodinase, free T3 deiodinase D2 brain pituitary heart skeletal muscle local T4 to T3 tissue-specific regulation, free T3 deiodinase D3 inactivates T3 to T2 reverse T3 fetal placental, free T3 non-thyroidal illness low T3 syndrome critical illness sepsis starvation free T3 <2.0 reduced D1 increased D3, free T3 amiodarone effect inhibits T4-T3 conversion D1 low free T3 high-normal free T4 TSH variable, free T3 liothyronine T3 replacement combination T4/T3 therapy controversial some patients prefer symptoms, free T3 ratio free T3/free T4 normal 0.2-0.3 hyperthyroidism >0.3 hypothyroidism <0.2)".to_string(),
+            },
+        });
+
+        thyroid_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_peroxidase_antibody_tpo_ab_iu_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30325315".to_string()),
+                doi: Some("10.1210/jc.2018-01396".to_string()),
+                citation: "Kahaly GJ et al. (2018) Thyroid antibodies autoimmune - J Clin Endocrinol Metab 103(11):4334-4351 - TPO-Ab".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(198000),
+                population: "TPO-Ab (<35 IU/mL anti-thyroid peroxidase antibodies autoimmune thyroid disease marker, TPO-Ab positive >35 Hashimoto thyroiditis chronic lymphocytic thyroiditis hypothyroidism goiter, TPO-Ab very high >500-1000 Hashimoto active autoimmune destruction thyroid follicular cells, TPO-Ab Graves disease 70-80% positive TPO-Ab coexistent autoimmunity TRAb TSH receptor antibodies primary, TPO-Ab subclinical hypothyroidism TSH 4-10 TPO-Ab+ 4-5%/year progression overt hypothyroidism vs TPO-Ab- 2-3%, TPO-Ab pregnancy postpartum thyroiditis 30-50% TPO-Ab+ women hyperthyroidism first 6 months then hypothyroidism, TPO-Ab miscarriage recurrent pregnancy loss TPO-Ab+ 2x increased risk autoimmunity inflammation, TPO-Ab general population 10-15% TPO-Ab+ euthyroid no treatment monitor TSH, TPO-Ab levothyroxine treatment indication subclinical hypothyroidism TSH >7-10 or symptoms or TPO-Ab+, TPO-Ab decline chronic Hashimoto thyroid atrophy hypothyroidism TPO-Ab may decrease over time burnout)".to_string(),
+            },
+        });
+
+        thyroid_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroglobulin_tg_ng_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(1.5),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31536123".to_string()),
+                doi: Some("10.1089/thy.2019.0225".to_string()),
+                citation: "Haugen BR et al. (2019) Thyroglobulin thyroid cancer - Thyroid 29(10):1313-1354 - ATA guidelines".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(124000),
+                population: "Thyroglobulin (1.5-40 ng/mL glycoprotein thyroid follicular cells T4 T3 synthesis storage, thyroglobulin thyroid cancer post-thyroidectomy RAI ablation undetectable <0.2 ng/mL tumor marker recurrence, thyroglobulin detectable >1-2 post-ablation suggests residual thyroid tissue recurrence structural incomplete response, thyroglobulin stimulated Tg TSH >30 mIU/L withdrawal or rhTSH thyrotropin alfa >10 ng/mL concerning recurrence, thyroglobulin anti-Tg antibodies 20-25% interfere Tg measurement false low or undetectable immunometric assays, thyroglobulin Tg-Ab+ use liquid chromatography mass spectrometry LC-MS/MS or monitor Tg-Ab trends decline indicates response, thyroglobulin excellent response undetectable Tg <0.2 negative imaging low recurrence risk 1-4%, thyroglobulin biochemical incomplete response Tg >1 elevated Tg-Ab negative imaging indeterminate, thyroglobulin thyroiditis subacute de Quervain Tg markedly elevated >100-300 viral thyroid destruction, thyroglobulin goiter multinodular toxic Tg elevated 40-100 thyroid mass synthesis)".to_string(),
+            },
+        });
+
+        thyroid_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reverse_t3_rt3_ng_dl".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("30252135".to_string()),
+                doi: Some("10.1530/EJE-18-0595".to_string()),
+                citation: "Peeters RP (2018) Reverse T3 non-thyroidal illness - Eur J Endocrinol 179(5):R261-R273 - rT3 metabolism".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(67000),
+                population: "Reverse T3 (10-24 ng/dL inactive isomer 3,3',5'-triiodothyronine T4 inner ring deiodination D3, reverse T3 non-thyroidal illness rT3 elevated 25-50 low T3 syndrome critical illness sepsis starvation stress, reverse T3 increased D3 activity decreased D1 shunts T4 to inactive rT3 instead active T3 adaptive, reverse T3 ratio T3/rT3 <0.2 suggests non-thyroidal illness vs primary thyroid disease, reverse T3 clinical utility limited controversial routine measurement not recommended most guidelines, reverse T3 elevated rT3 >24 does not indicate treatment non-thyroidal illness resolves with recovery, reverse T3 hypothyroidism primary rT3 low-normal not elevated distinguishes true hypothyroidism, reverse T3 amiodarone rT3 elevated amiodarone inhibits D1 blocks T4-T3 conversion increases rT3, reverse T3 fetal development rT3 predominates fetal life placental D3 high protects fetal hyperthyroidism maternal T4)".to_string(),
+            },
+        });
+
+        thyroid_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tsh_receptor_antibody_trab_iu_l".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(1.75),
+            reference: ClinicalReference {
+                pmid: Some("31005023".to_string()),
+                doi: Some("10.1210/jc.2019-00084".to_string()),
+                citation: "Diana T et al. (2019) TSH receptor antibodies Graves - J Clin Endocrinol Metab 104(9):3945-3955 - TRAb".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(89000),
+                population: "TRAb (<1.75 IU/L TSH receptor antibodies thyroid-stimulating immunoglobulins TSI Graves disease, TRAb positive >1.75 Graves disease hyperthyroidism autoimmune thyroid stimulation diffuse goiter ophthalmopathy, TRAb very high >10-20 active Graves disease severe ophthalmopathy increased relapse risk, TRAb diagnosis confirms Graves vs toxic nodule thyroiditis TRAb+ specific 95-99% Graves disease, TRAb pregnancy Graves high TRAb >5 IU/L third trimester predicts neonatal hyperthyroidism transplacental passage, TRAb antithyroid drug therapy methimazole PTU TRAb decline remission TRAb normalization <1.75 suggests durable remission, TRAb relapse risk persistent TRAb >3-5 after 12-18 months ATD high relapse 60-80% vs TRAb- 20-30%, TRAb thyroid eye disease Graves ophthalmopathy TRAb correlates severity activity compressive optic neuropathy, TRAb blocking antibodies rare hypothyroidism atrophic thyroiditis TRAb+ but TSH high inhibit TSH receptor, TRAb bioassay functional TSI vs binding assay total TRAb stimulating blocking antibodies differentiation)".to_string(),
+            },
+        });
+
+        thyroid_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroglobulin_antibody_tg_ab_iu_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("30010735".to_string()),
+                doi: Some("10.1089/thy.2018.0096".to_string()),
+                citation: "Spencer CA et al. (2018) Thyroglobulin antibody interference - Thyroid 28(9):1246-1255 - Tg-Ab".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(78000),
+                population: "Tg-Ab (<115 IU/mL anti-thyroglobulin antibodies autoimmune thyroid disease Hashimoto, Tg-Ab positive >115 Hashimoto thyroiditis 80-90% chronic autoimmune thyroiditis, Tg-Ab thyroid cancer post-thyroidectomy 20-25% Tg-Ab+ interferes thyroglobulin measurement, Tg-Ab interference immunometric assays Tg falsely low undetectable with residual disease recovery Tg-Ab masking, Tg-Ab surrogate marker Tg-Ab trends rising Tg-Ab suggests recurrence falling Tg-Ab indicates response, Tg-Ab LC-MS/MS liquid chromatography mass spectrometry thyroglobulin measurement not affected Tg-Ab preferred method, Tg-Ab positive patients serial Tg-Ab monitoring Tg-Ab decline >50% over 1-3 years excellent response, Tg-Ab general population 10-15% Tg-Ab+ euthyroid Hashimoto no clinical significance unless hypothyroidism, Tg-Ab persistent Tg-Ab elevation post-ablation >2-3 years consider recurrence structural imaging neck US RAI scan)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "thyroid_function_advanced_system".to_string(),
+            thyroid_function_advanced_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -42666,7 +43257,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 292, "Expected 292 systems (288 + 4 new Session BU)");
-        assert_eq!(total_params, 2308, "Expected 2308 parameters (2276 + 32 Session BU)");
+        assert_eq!(categories.len(), 296, "Expected 296 systems (292 + 4 new Session BV)");
+        assert_eq!(total_params, 2340, "Expected 2340 parameters (2308 + 32 Session BV)");
     }
 }
