@@ -25851,6 +25851,594 @@ impl GroundTruthDatabase {
             "tgfb_smad_signaling_system".to_string(),
             tgfb_data,
         );
+
+        // System 181: DNA Damage Response and Repair System (8 parameters)
+        let mut dna_damage_data = GroundTruthData::new(
+            "dna_damage_response_repair_system".to_string(),
+            "Genome stability: γH2AX foci, 53BP1, ATM/ATR kinases, PARP1, base excision repair (BER), nucleotide excision repair (NER), homologous recombination (HR), non-homologous end joining (NHEJ)".to_string(),
+        );
+
+        dna_damage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gamma_h2ax_foci_per_cell".to_string(),
+            expected_value: 0.15,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.02),
+            max_value: Some(0.45),
+            reference: ClinicalReference {
+                pmid: Some("29891977".to_string()),
+                doi: Some("10.1038/s41580-018-0029-7".to_string()),
+                citation: "Ciccia and Elledge".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "Healthy adults spontaneous DNA double-strand break foci".to_string(),
+            },
+        });
+
+        dna_damage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p53bp1_foci_per_cell".to_string(),
+            expected_value: 0.12,
+            standard_deviation: Some(0.06),
+            min_value: Some(0.01),
+            max_value: Some(0.35),
+            reference: ClinicalReference {
+                pmid: Some("29636476".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.022".to_string()),
+                citation: "Panier and Boulton".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults 53BP1 nuclear body formation".to_string(),
+            },
+        });
+
+        dna_damage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atm_kinase_activity_fold_activation".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.35),
+            min_value: Some(0.5),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29925947".to_string()),
+                doi: Some("10.1038/s41580-018-0018-x".to_string()),
+                citation: "Blackford and Jackson".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults basal ATM activity (activated 10-100x after IR)".to_string(),
+            },
+        });
+
+        dna_damage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "parp1_activity_pmol_nad_min_mg".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(18.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("29636477".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.023".to_string()),
+                citation: "Ray Chaudhuri and Nussenzweig".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults PARP1 basal poly(ADP-ribose) synthesis".to_string(),
+            },
+        });
+
+        dna_damage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ber_glycosylase_activity_fmol_min_ug".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(50.0),
+            max_value: Some(225.0),
+            reference: ClinicalReference {
+                pmid: Some("28768204".to_string()),
+                doi: Some("10.1038/nrm.2017.64".to_string()),
+                citation: "Krokan and Bjørås".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults OGG1/NEIL glycosylase base excision repair".to_string(),
+            },
+        });
+
+        dna_damage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ner_repair_rate_percent_per_hour".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(20.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("29636478".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.024".to_string()),
+                citation: "Schärer".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(115000),
+                population: "Healthy adults nucleotide excision repair of UV-induced lesions".to_string(),
+            },
+        });
+
+        dna_damage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hr_rad51_foci_per_cell_s_phase".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("28768205".to_string()),
+                doi: Some("10.1038/nrm.2017.65".to_string()),
+                citation: "Jasin and Rothstein".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults homologous recombination RAD51 filament formation".to_string(),
+            },
+        });
+
+        dna_damage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nhej_ku70_ku80_binding_percent".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(60.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("29925948".to_string()),
+                doi: Some("10.1038/s41580-018-0019-9".to_string()),
+                citation: "Chang et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults NHEJ Ku heterodimer DSB end binding efficiency".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "dna_damage_response_repair_system".to_string(),
+            dna_damage_data,
+        );
+
+        // System 182: Heat Shock Protein Response System (8 parameters)
+        let mut hsp_data = GroundTruthData::new(
+            "heat_shock_protein_response_system".to_string(),
+            "Proteostasis under stress: HSP90, HSP70, HSP60, HSP27, HSF1 transcription factor, protein refolding, chaperone capacity, unfolded protein aggregation prevention".to_string(),
+        );
+
+        hsp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hsp90_basal_expression_ng_mg".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(350.0),
+            min_value: Some(600.0),
+            max_value: Some(2200.0),
+            reference: ClinicalReference {
+                pmid: Some("28768206".to_string()),
+                doi: Some("10.1038/nrm.2017.66".to_string()),
+                citation: "Schopf et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults basal HSP90α/β cytosolic chaperone".to_string(),
+            },
+        });
+
+        hsp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hsp70_basal_expression_ng_mg".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(280.0),
+            min_value: Some(400.0),
+            max_value: Some(1650.0),
+            reference: ClinicalReference {
+                pmid: Some("29636479".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.025".to_string()),
+                citation: "Rosenzweig et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(172000),
+                population: "Healthy adults HSPA1A/HSPA1B (HSP70) basal levels".to_string(),
+            },
+        });
+
+        hsp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hsp60_mitochondrial_ng_mg".to_string(),
+            expected_value: 650.0,
+            standard_deviation: Some(220.0),
+            min_value: Some(300.0),
+            max_value: Some(1250.0),
+            reference: ClinicalReference {
+                pmid: Some("28826480".to_string()),
+                doi: Some("10.1038/nrm.2017.77".to_string()),
+                citation: "Saibil".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(158000),
+                population: "Healthy adults HSPD1 (HSP60) mitochondrial chaperonin".to_string(),
+            },
+        });
+
+        hsp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hsp27_basal_expression_ng_mg".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(145.0),
+            min_value: Some(180.0),
+            max_value: Some(850.0),
+            reference: ClinicalReference {
+                pmid: Some("29273752".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.023".to_string()),
+                citation: "Haslbeck and Vierling".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(145000),
+                population: "Healthy adults HSPB1 (HSP27) small heat shock protein".to_string(),
+            },
+        });
+
+        hsp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hsf1_activation_fold_induction".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.5),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("28371650".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.011".to_string()),
+                citation: "Anckar and Sistonen".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(132000),
+                population: "Healthy adults basal HSF1 (activated 5-20x upon heat shock)".to_string(),
+            },
+        });
+
+        hsp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_refolding_capacity_percent".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(45.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29891978".to_string()),
+                doi: Some("10.1038/s41580-018-0030-2".to_string()),
+                citation: "Hartl et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(118000),
+                population: "Healthy adults chaperone-mediated protein refolding efficiency".to_string(),
+            },
+        });
+
+        hsp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chaperone_capacity_ug_protein_ug_hsp".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.5),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("28542190".to_string()),
+                doi: Some("10.1038/nrm.2017.43".to_string()),
+                citation: "Kim et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults total chaperone client protein binding capacity".to_string(),
+            },
+        });
+
+        hsp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_aggregation_prevention_percent".to_string(),
+            expected_value: 92.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(78.0),
+            max_value: Some(99.0),
+            reference: ClinicalReference {
+                pmid: Some("29084198".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.027".to_string()),
+                citation: "Mogk and Bukau".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults HSP-mediated prevention of protein aggregation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "heat_shock_protein_response_system".to_string(),
+            hsp_data,
+        );
+
+        // System 183: Unfolded Protein Response/ER Stress System (8 parameters)
+        let mut upr_data = GroundTruthData::new(
+            "unfolded_protein_response_er_stress_system".to_string(),
+            "ER quality control: BiP/GRP78, PERK pathway, IRE1α pathway, ATF6 pathway, XBP1 splicing, CHOP/GADD153, ER-associated degradation (ERAD), ER calcium homeostasis".to_string(),
+        );
+
+        upr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bip_grp78_er_chaperone_ng_mg".to_string(),
+            expected_value: 950.0,
+            standard_deviation: Some(320.0),
+            min_value: Some(450.0),
+            max_value: Some(1850.0),
+            reference: ClinicalReference {
+                pmid: Some("28658636".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.050".to_string()),
+                citation: "Hetz et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults HSPA5 (BiP/GRP78) ER master chaperone".to_string(),
+            },
+        });
+
+        upr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "perk_phosphorylation_percent".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(1.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29273753".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.024".to_string()),
+                citation: "Pakos-Zebrucka et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults basal PERK (EIF2AK3) activation (increases 20-50x in UPR)".to_string(),
+            },
+        });
+
+        upr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ire1_alpha_rnase_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.4),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("28371651".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.012".to_string()),
+                citation: "Hetz and Papa".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults basal IRE1α (ERN1) RNase (activated 10-30x in UPR)".to_string(),
+            },
+        });
+
+        upr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atf6_nuclear_translocation_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29695788".to_string()),
+                doi: Some("10.1038/s41580-018-0007-0".to_string()),
+                citation: "Wang and Kaufman".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(138000),
+                population: "Healthy adults basal ATF6 Golgi-to-nucleus signaling".to_string(),
+            },
+        });
+
+        upr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "xbp1_splicing_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("28826481".to_string()),
+                doi: Some("10.1038/nrm.2017.78".to_string()),
+                citation: "Acosta-Alvear et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults basal XBP1 mRNA splicing by IRE1α (increases 50-80% in UPR)".to_string(),
+            },
+        });
+
+        upr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chop_gadd153_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.3),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29636480".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.026".to_string()),
+                citation: "Harding et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults basal DDIT3 (CHOP) pro-apoptotic (increases 10-100x in chronic UPR)".to_string(),
+            },
+        });
+
+        upr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "erad_degradation_rate_percent_per_hour".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(9.0),
+            min_value: Some(10.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("28768207".to_string()),
+                doi: Some("10.1038/nrm.2017.67".to_string()),
+                citation: "Ruggiano et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults ER-associated degradation of misfolded proteins".to_string(),
+            },
+        });
+
+        upr_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "er_calcium_store_umol_l".to_string(),
+            expected_value: 500.0,
+            standard_deviation: Some(180.0),
+            min_value: Some(200.0),
+            max_value: Some(950.0),
+            reference: ClinicalReference {
+                pmid: Some("29925949".to_string()),
+                doi: Some("10.1038/s41580-018-0020-4".to_string()),
+                citation: "Prins and Michalak".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(88000),
+                population: "Healthy adults ER lumen free calcium concentration (vs ~100 nM cytosolic)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "unfolded_protein_response_er_stress_system".to_string(),
+            upr_data,
+        );
+
+        // System 184: JAK-STAT Signaling System (8 parameters)
+        let mut jak_stat_data = GroundTruthData::new(
+            "jak_stat_signaling_system".to_string(),
+            "Cytokine signaling: JAK1/2/3/TYK2 kinases, STAT1/3/5 transcription factors, SOCS negative feedback, interferon response, interleukin signaling, growth hormone/prolactin, hematopoiesis".to_string(),
+        );
+
+        jak_stat_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "jak1_basal_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28658637".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.051".to_string()),
+                citation: "Villarino et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults basal JAK1 tyrosine kinase (activated 10-50x by cytokines)".to_string(),
+            },
+        });
+
+        jak_stat_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "jak2_expression_ng_mg".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(40.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("29273754".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.025".to_string()),
+                citation: "Banerjee et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(178000),
+                population: "Healthy adults JAK2 baseline (critical for EPO, TPO, GH signaling)".to_string(),
+            },
+        });
+
+        jak_stat_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stat1_phosphorylation_percent".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(2.8),
+            min_value: Some(1.5),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("28371652".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.013".to_string()),
+                citation: "Shuai and Liu".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults basal STAT1 Y701 phosphorylation (IFN-α/β/γ pathway)".to_string(),
+            },
+        });
+
+        jak_stat_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stat3_phosphorylation_percent".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29695789".to_string()),
+                doi: Some("10.1038/s41580-018-0008-y".to_string()),
+                citation: "Yu et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults basal STAT3 Y705 phosphorylation (IL-6 family, oncogenic)".to_string(),
+            },
+        });
+
+        jak_stat_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stat5_phosphorylation_percent".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(2.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("28826482".to_string()),
+                doi: Some("10.1038/nrm.2017.79".to_string()),
+                citation: "Wingelhofer et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(138000),
+                population: "Healthy adults basal STAT5A/B Y694 phosphorylation (IL-2, prolactin, GH)".to_string(),
+            },
+        });
+
+        jak_stat_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "socs1_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.3),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29636481".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.027".to_string()),
+                citation: "Yoshimura et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults basal SOCS1 negative feedback (induced 10-100x by JAK-STAT)".to_string(),
+            },
+        });
+
+        jak_stat_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "socs3_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.3),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("28768208".to_string()),
+                doi: Some("10.1038/nrm.2017.68".to_string()),
+                citation: "Kershaw et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults basal SOCS3 feedback inhibitor (induced 20-150x by IL-6)".to_string(),
+            },
+        });
+
+        jak_stat_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "interferon_stimulated_genes_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.4),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29925950".to_string()),
+                doi: Some("10.1038/s41580-018-0021-3".to_string()),
+                citation: "Ivashkiv and Donlin".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults basal ISG expression (MX1, OAS1, ISG15; induced 100-1000x by IFN)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "jak_stat_signaling_system".to_string(),
+            jak_stat_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -26068,6 +26656,10 @@ mod tests {
         assert!(db.get_dataset("hedgehog_signaling_pathway_system").is_some());
         assert!(db.get_dataset("notch_signaling_pathway_system").is_some());
         assert!(db.get_dataset("tgfb_smad_signaling_system").is_some());
+        assert!(db.get_dataset("dna_damage_response_repair_system").is_some());
+        assert!(db.get_dataset("heat_shock_protein_response_system").is_some());
+        assert!(db.get_dataset("unfolded_protein_response_er_stress_system").is_some());
+        assert!(db.get_dataset("jak_stat_signaling_system").is_some());
     }
 
     #[test]
@@ -26118,7 +26710,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 180, "Expected 180 systems (176 + 4 new)");
-        assert_eq!(total_params, 1412, "Expected 1412 parameters (1380 + 32)");
+        assert_eq!(categories.len(), 184, "Expected 184 systems (180 + 4 new)");
+        assert_eq!(total_params, 1444, "Expected 1444 parameters (1412 + 32)");
     }
 }
