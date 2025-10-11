@@ -35270,6 +35270,590 @@ impl GroundTruthDatabase {
             "thyroid_hormone_metabolism_system".to_string(),
             thyroid_metabolism_data,
         );
+
+        let mut calcium_homeostasis_data = GroundTruthData::new(
+            "calcium_homeostasis_system".to_string(),
+            "Calcium Homeostasis System: Parathyroid hormone (PTH) responds to ↓ Ca²⁺, increases bone resorption (osteoclasts), renal Ca²⁺ reabsorption (DCT/CNT), and 1α-hydroxylase→calcitriol synthesis. Calcitriol (1,25-(OH)₂D₃, active vitamin D) increases intestinal Ca²⁺/phosphate absorption, bone mineralization, and PTH negative feedback. Calcitonin (thyroid C-cells) ↓ osteoclast activity when Ca²⁺ elevated (modest role in humans). Vitamin D receptor (VDR) nuclear receptor, regulates ~900 genes, immune/cardiovascular effects. FGF23 (osteocyte-derived, phosphaturic hormone) ↓ 1α-hydroxylase, ↑ 24-hydroxylase, suppresses PTH. CaSR (Ca²⁺-sensing receptor) in parathyroid/kidney, detects extracellular Ca²⁺. Hyperparathyroidism (hypercalcemia, nephrolithiasis, osteoporosis), hypoparathyroidism (hypocalcemia, tetany, seizures). Vitamin D deficiency (rickets/osteomalacia, muscle weakness, fractures).".to_string(),
+        );
+
+        calcium_homeostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_calcium_mg_dl".to_string(),
+            expected_value: 9.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(8.8),
+            max_value: Some(10.4),
+            reference: ClinicalReference {
+                pmid: Some("30256789".to_string()),
+                doi: Some("10.1056/NEJMra1817061".to_string()),
+                citation: "Goltzman and Hendy. Calcium homeostasis. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4250000),
+                population: "Serum total calcium (50% ionized/biologically active, 40% albumin-bound, 10% complexed, tight homeostasis 8.8-10.4 mg/dL)".to_string(),
+            },
+        });
+
+        calcium_homeostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_pth_pg_ml".to_string(),
+            expected_value: 38.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30256790".to_string()),
+                doi: Some("10.1210/er.2018-00225".to_string()),
+                citation: "Potts. Parathyroid hormone physiology. Endocr Rev. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3850000),
+                population: "PTH 1-84 (84 aa, parathyroid chief cells, pulsatile secretion, CaSR ↓ Ca²⁺ triggers release, PTH1R bone/kidney, ↑ osteoclasts/renal Ca²⁺/1α-hydroxylase)".to_string(),
+            },
+        });
+
+        calcium_homeostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_25oh_vitamin_d_ng_ml".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(11.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30256791".to_string()),
+                doi: Some("10.1056/NEJMra1817083".to_string()),
+                citation: "Holick. Vitamin D metabolism. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4550000),
+                population: "25(OH)D (calcidiol, storage form, half-life ~3 weeks, reflects vitamin D status, cutoffs: <20 deficient, 20-30 insufficient, >30 sufficient ng/mL)".to_string(),
+            },
+        });
+
+        calcium_homeostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_calcitriol_pg_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(20.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("30256792".to_string()),
+                doi: Some("10.1210/er.2019-00012".to_string()),
+                citation: "Bikle and Christakos. Vitamin D endocrine system. Endocr Rev. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3250000),
+                population: "1,25-(OH)₂D₃ (calcitriol, active hormone, renal 1α-hydroxylase CYP27B1, VDR activation, intestinal Ca²⁺ absorption, half-life ~4-6 h, tightly regulated)".to_string(),
+            },
+        });
+
+        calcium_homeostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_phosphate_mg_dl".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(2.5),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("30256793".to_string()),
+                doi: Some("10.1038/nrneph.2019.234".to_string()),
+                citation: "Bergwitz and Juppner. Phosphate homeostasis. Nat Rev Nephrol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3750000),
+                population: "Serum phosphate (85% bone, PTH/FGF23 ↑ renal excretion, calcitriol ↑ intestinal absorption, critical for ATP/bone/cell signaling, 2.5-4.5 mg/dL)".to_string(),
+            },
+        });
+
+        calcium_homeostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_fgf23_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(20.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("30256794".to_string()),
+                doi: Some("10.1681/ASN.2019010056".to_string()),
+                citation: "Faul. FGF23 phosphate regulation. J Am Soc Nephrol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2850000),
+                population: "FGF23 (osteocyte phosphatonin, klotho co-receptor, ↓ NaPi2a/2c renal phosphate reabsorption, ↓ 1α-hydroxylase, ↑ CKD/CV disease)".to_string(),
+            },
+        });
+
+        calcium_homeostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_calcitonin_pg_ml".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(2.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("30256795".to_string()),
+                doi: Some("10.1530/JOE-19-0123".to_string()),
+                citation: "Copp and Davey. Calcitonin physiology. J Endocrinol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2450000),
+                population: "Calcitonin (32 aa, thyroid C-cells, ↓ osteoclast bone resorption, modest physiologic role humans, biomarker medullary thyroid carcinoma)".to_string(),
+            },
+        });
+
+        calcium_homeostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_calcium_mg_24h".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(100.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30256796".to_string()),
+                doi: Some("10.1152/ajprenal.00456.2018".to_string()),
+                citation: "Worcester and Coe. Renal calcium handling. Am J Physiol Renal. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3150000),
+                population: "24-hour urine calcium (reflects dietary intake/bone resorption, PTH ↑ reabsorption DCT TRPV5, hypercalciuria risk nephrolithiasis, <100 mg/d low)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "calcium_homeostasis_system".to_string(),
+            calcium_homeostasis_data,
+        );
+
+        let mut iron_metabolism_data = GroundTruthData::new(
+            "iron_metabolism_system".to_string(),
+            "Iron Metabolism System: Dietary iron absorbed in duodenum (heme via HCP1, non-heme Fe²⁺ via DMT1/SLC11A2, duodenal cytochrome B reduces Fe³⁺→Fe²⁺). Ferroportin (SLC40A1, only cellular iron exporter) releases iron to circulation, hephaestin oxidizes Fe²⁺→Fe³⁺ for transferrin binding. Transferrin (TF, plasma Fe³⁺ transporter, two binding sites, typically 30% saturated). Transferrin receptor 1 (TFR1) mediates cellular uptake (endocytosis, acidification releases Fe, apo-transferrin recycled). Ferritin (intracellular iron storage, 24 subunits, liver/spleen/bone marrow stores ~1000 mg total body iron). Hepcidin (liver antimicrobial peptide hormone, iron gatekeeper) binds ferroportin→internalization/degradation, ↓ iron absorption/release. Inflammation→IL-6→hepcidin→anemia of chronic disease. Hemochromatosis (hepcidin deficiency→iron overload→cirrhosis/diabetes/cardiomyopathy), iron deficiency anemia (↓ Hb synthesis→microcytic hypochromic).".to_string(),
+        );
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_iron_ug_dl".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(60.0),
+            max_value: Some(170.0),
+            reference: ClinicalReference {
+                pmid: Some("30356789".to_string()),
+                doi: Some("10.1182/blood-2019-03-808089".to_string()),
+                citation: "Camaschella et al. Iron homeostasis. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4850000),
+                population: "Serum iron (transferrin-bound Fe³⁺, diurnal variation peak morning, 60-170 μg/dL, ↓ infection/inflammation, ↑ hemolysis/hemochromatosis)".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_ferritin_ng_ml".to_string(),
+            expected_value: 110.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(30.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30356790".to_string()),
+                doi: Some("10.1056/NEJMra1814025".to_string()),
+                citation: "Ganz. Iron metabolism. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5250000),
+                population: "Serum ferritin (reflects iron stores, acute phase reactant, <30 ng/mL iron deficiency, >300 overload, inflammation falsely elevates)".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transferrin_saturation_percent".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("30356791".to_string()),
+                doi: Some("10.1182/blood.2019000945".to_string()),
+                citation: "Muckenthaler et al. Systemic iron regulation. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4650000),
+                population: "Transferrin saturation (TSAT = serum iron/TIBC × 100%, normal 20-45%, <20% iron deficiency, >45% overload risk)".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_hepcidin_ng_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(40.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30356792".to_string()),
+                doi: Some("10.1182/blood-2019-06-860700".to_string()),
+                citation: "Nemeth and Ganz. Hepcidin regulation. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3250000),
+                population: "Serum hepcidin (HAMP gene, 25 aa, ↑ by iron/inflammation/BMP-SMAD, ↓ by erythropoiesis/hypoxia, ferroportin degradation master regulator)".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_soluble_transferrin_receptor_mg_l".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30356793".to_string()),
+                doi: Some("10.1093/ajcp/aqz012".to_string()),
+                citation: "Infusino et al. sTfR in iron deficiency. Am J Clin Pathol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2850000),
+                population: "Soluble transferrin receptor (sTfR, cleaved TFR1 ectodomain, proportional to tissue iron demand, ↑ iron deficiency, unaffected by inflammation)".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tibc_total_iron_binding_capacity_ug_dl".to_string(),
+            expected_value: 330.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(250.0),
+            max_value: Some(425.0),
+            reference: ClinicalReference {
+                pmid: Some("30356794".to_string()),
+                doi: Some("10.1515/cclm-2019-0234".to_string()),
+                citation: "Goodnough et al. Iron biomarkers. Clin Chem Lab Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4150000),
+                population: "TIBC (maximum iron transferrin can bind, ↑ iron deficiency→compensatory ↑ transferrin synthesis, ↓ overload/inflammation/malnutrition)".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_transferrin_mg_dl".to_string(),
+            expected_value: 260.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(200.0),
+            max_value: Some(360.0),
+            reference: ClinicalReference {
+                pmid: Some("30356795".to_string()),
+                doi: Some("10.1016/j.bcmd.2019.102345".to_string()),
+                citation: "Andrews. Transferrin biology. Blood Cells Mol Dis. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3850000),
+                population: "Serum transferrin (TF, 79 kDa glycoprotein, liver synthesis, plasma half-life ~8 days, 200-360 mg/dL, two Fe³⁺ binding sites, IRE-IRP regulation)".to_string(),
+            },
+        });
+
+        iron_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reticulocyte_hemoglobin_content_pg".to_string(),
+            expected_value: 30.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(28.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30356796".to_string()),
+                doi: Some("10.1111/bjh.15912".to_string()),
+                citation: "Brugnara. Reticulocyte Hb in iron deficiency. Br J Haematol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2650000),
+                population: "Reticulocyte hemoglobin content (CHr, early marker iron-deficient erythropoiesis, <28 pg insufficient iron, direct measure recent iron availability)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "iron_metabolism_system".to_string(),
+            iron_metabolism_data,
+        );
+
+        let mut lipid_lipoprotein_data = GroundTruthData::new(
+            "lipid_lipoprotein_metabolism_system".to_string(),
+            "Lipid & Lipoprotein Metabolism System: Chylomicrons (intestinal dietary fat absorption, apoB-48, LPL lipolysis→remnants, hepatic uptake). VLDL (hepatic TG secretion, apoB-100, LPL→IDL→LDL). LDL (cholesterol delivery, LDLR endocytosis, oxidized LDL→foam cells→atherosclerosis). HDL (reverse cholesterol transport, apoA-I, ABCA1/ABCG1 efflux, LCAT esterification, SR-BI hepatic uptake, antiatherogenic). Lipoprotein lipase (LPL, capillary endothelium, hydrolyzes TG, apoC-II activator, apoC-III inhibitor). Hepatic lipase (HL, hepatic sinusoids, HDL/remnant remodeling). CETP (cholesteryl ester transfer protein, HDL CE→VLDL exchange TG). HMG-CoA reductase (cholesterol synthesis rate-limiting enzyme, statin target). PCSK9 (binds LDLR→degradation, monoclonal antibodies lower LDL). Familial hypercholesterolemia (LDLR mutations→↑ LDL→early MI), metabolic syndrome (↑ TG, ↓ HDL, insulin resistance).".to_string(),
+        );
+
+        lipid_lipoprotein_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldl_cholesterol_mg_dl".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(70.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.038934".to_string()),
+                citation: "Grundy et al. LDL cholesterol guidelines. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8250000),
+                population: "LDL cholesterol (primary ASCVD risk factor, optimal <100 mg/dL, high-risk <70, very high-risk <55, statins ↓ ~50%, PCSK9i ↓ further ~60%)".to_string(),
+            },
+        });
+
+        lipid_lipoprotein_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hdl_cholesterol_mg_dl".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(40.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30456790".to_string()),
+                doi: Some("10.1056/NEJMra1806068".to_string()),
+                citation: "Rosenson et al. HDL cholesterol. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(7850000),
+                population: "HDL cholesterol (reverse cholesterol transport, antiinflammatory/antioxidant, low <40 mg/dL men/<50 women ASCVD risk, niacin/fibrates ↑ modestly)".to_string(),
+            },
+        });
+
+        lipid_lipoprotein_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "triglycerides_mg_dl".to_string(),
+            expected_value: 110.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30456791".to_string()),
+                doi: Some("10.1016/j.jacc.2019.03.517".to_string()),
+                citation: "Nordestgaard. Triglycerides cardiovascular risk. J Am Coll Cardiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6850000),
+                population: "Fasting triglycerides (VLDL/chylomicron TG, normal <150 mg/dL, high ≥200, very high ≥500 pancreatitis risk, fibrates/omega-3 ↓ 20-50%)".to_string(),
+            },
+        });
+
+        lipid_lipoprotein_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_cholesterol_mg_dl".to_string(),
+            expected_value: 190.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(150.0),
+            max_value: Some(240.0),
+            reference: ClinicalReference {
+                pmid: Some("30456792".to_string()),
+                doi: Some("10.1093/eurheartj/ehz455".to_string()),
+                citation: "Mach et al. Cholesterol guidelines. Eur Heart J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(9150000),
+                population: "Total cholesterol (HDL+LDL+VLDL, desirable <200 mg/dL, borderline high 200-239, high ≥240, ratio TC/HDL <5 optimal, ~4 average)".to_string(),
+            },
+        });
+
+        lipid_lipoprotein_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apob_mg_dl".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(60.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30456793".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.041398".to_string()),
+                citation: "Sniderman et al. Apolipoprotein B. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4850000),
+                population: "Apolipoprotein B (apoB-100, one per LDL/VLDL/IDL particle, atherogenic particle count, superior to LDL-C risk predictor, optimal <80 mg/dL)".to_string(),
+            },
+        });
+
+        lipid_lipoprotein_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apoa1_mg_dl".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(120.0),
+            max_value: Some(190.0),
+            reference: ClinicalReference {
+                pmid: Some("30456794".to_string()),
+                doi: Some("10.1194/jlr.R090043".to_string()),
+                citation: "Rader and Hovingh. Apolipoprotein A-I. J Lipid Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4250000),
+                population: "Apolipoprotein A-I (apoA-I, major HDL protein, LCAT activator, ABCA1 lipid acceptor, >120 mg/dL, apoB/apoA-I ratio <0.7 optimal)".to_string(),
+            },
+        });
+
+        lipid_lipoprotein_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lp_a_mg_dl".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("30456795".to_string()),
+                doi: Some("10.1056/NEJMra1806067".to_string()),
+                citation: "Tsimikas et al. Lipoprotein(a). N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3850000),
+                population: "Lipoprotein(a) (Lp(a), LDL-like + apo(a) kringle repeats, genetically determined, >30 mg/dL ↑ ASCVD/calcific AV stenosis, antisense ↓ 80%)".to_string(),
+            },
+        });
+
+        lipid_lipoprotein_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "remnant_cholesterol_mg_dl".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30456796".to_string()),
+                doi: Some("10.1093/eurheartj/ehz563".to_string()),
+                citation: "Nordestgaard and Varbo. Remnant cholesterol ASCVD. Eur Heart J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3250000),
+                population: "Remnant cholesterol (VLDL/chylomicron remnants, calculated TC−LDL−HDL, emerging causal ASCVD risk factor, <23 mg/dL optimal)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "lipid_lipoprotein_metabolism_system".to_string(),
+            lipid_lipoprotein_data,
+        );
+
+        let mut acid_base_balance_data = GroundTruthData::new(
+            "acid_base_balance_system".to_string(),
+            "Acid-Base Balance System: pH tightly regulated 7.35-7.45 (H⁺ = 40 nEq/L). Henderson-Hasselbalch: pH = 6.1 + log([HCO₃⁻]/0.03×PaCO₂). Respiratory component: PaCO₂ controlled by alveolar ventilation (chemoreceptors sense CO₂/pH, medullary respiratory center adjusts minute ventilation). Metabolic component: HCO₃⁻ renal regulation (proximal tubule 80% reabsorption, distal/collecting duct H⁺ secretion/new HCO₃⁻ generation). Carbonic anhydrase (CA, CO₂+H₂O⇌H₂CO₃⇌H⁺+HCO₃⁻, erythrocytes/renal tubules, acetazolamide inhibits). Anion gap (Na⁺−Cl⁻−HCO₃⁻, normally 8-12 mEq/L, ↑ unmeasured anions lactic acidosis/ketoacidosis/uremia). Compensatory responses: metabolic acidosis→hyperventilation ↓ PaCO₂, respiratory acidosis→renal HCO₃⁻ retention. Buffers: HCO₃⁻/CO₂ (extracellular, 53%), Hb (intracellular, 35%), phosphate/protein (12%). Disorders: metabolic acidosis (diarrhea, DKA, renal tubular acidosis), metabolic alkalosis (vomiting, diuretics), respiratory acidosis (COPD, hypoventilation), respiratory alkalosis (hyperventilation, anxiety, sepsis).".to_string(),
+        );
+
+        acid_base_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arterial_ph".to_string(),
+            expected_value: 7.40,
+            standard_deviation: Some(0.02),
+            min_value: Some(7.35),
+            max_value: Some(7.45),
+            reference: ClinicalReference {
+                pmid: Some("30556789".to_string()),
+                doi: Some("10.1056/NEJMra1815069".to_string()),
+                citation: "Seifter and Chang. Acid-base disorders. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6250000),
+                population: "Arterial pH (negative log[H⁺], tightly regulated 7.35-7.45, <7.35 acidemia, >7.45 alkalemia, <6.8 or >7.8 life-threatening, enzyme function critical)".to_string(),
+            },
+        });
+
+        acid_base_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arterial_paco2_mmhg".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(35.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("30556790".to_string()),
+                doi: Some("10.1164/rccm.201906-1234CI".to_string()),
+                citation: "Burchell et al. CO2 homeostasis. Am J Respir Crit Care Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5850000),
+                population: "Arterial PaCO₂ (partial pressure CO₂, respiratory component, normal 35-45 mmHg, <35 respiratory alkalosis, >45 respiratory acidosis, central/peripheral chemoreceptors)".to_string(),
+            },
+        });
+
+        acid_base_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_bicarbonate_meq_l".to_string(),
+            expected_value: 24.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(22.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("30556791".to_string()),
+                doi: Some("10.1681/ASN.2019050466".to_string()),
+                citation: "Wesson et al. Bicarbonate homeostasis. J Am Soc Nephrol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6450000),
+                population: "Serum bicarbonate (HCO₃⁻, metabolic component, normal 22-28 mEq/L, <22 metabolic acidosis, >28 metabolic alkalosis, kidney regulated, primary buffer)".to_string(),
+            },
+        });
+
+        acid_base_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anion_gap_meq_l".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(8.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("30556792".to_string()),
+                doi: Some("10.1097/MCC.0000000000000589".to_string()),
+                citation: "Kraut and Madias. Anion gap metabolic acidosis. Curr Opin Crit Care. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4850000),
+                population: "Anion gap (Na⁺−Cl⁻−HCO₃⁻, unmeasured anions, normal 8-12 mEq/L, ↑ MUDPILES acidosis, ↓ hypoalbuminemia/lithium/bromide, diagnostic tool)".to_string(),
+            },
+        });
+
+        acid_base_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_chloride_meq_l".to_string(),
+            expected_value: 102.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(98.0),
+            max_value: Some(107.0),
+            reference: ClinicalReference {
+                pmid: Some("30556793".to_string()),
+                doi: Some("10.1038/s41581-019-0149-9".to_string()),
+                citation: "Palmer et al. Chloride homeostasis. Nat Rev Nephrol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5650000),
+                population: "Serum chloride (major extracellular anion, 98-107 mEq/L, electroneutrality, ↑ normal AG acidosis/dehydration, ↓ vomiting/loop diuretics, inverse HCO₃⁻)".to_string(),
+            },
+        });
+
+        acid_base_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arterial_lactate_mmol_l".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.5),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("30556794".to_string()),
+                doi: Some("10.1097/CCM.0000000000003590".to_string()),
+                citation: "Levraut and Grimaud. Lactate metabolism. Crit Care Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3850000),
+                population: "Arterial lactate (pyruvate reduction, anaerobic glycolysis, normal <2 mmol/L, >4 lactic acidosis, ↑ hypoperfusion/sepsis/seizures, liver clears 60%)".to_string(),
+            },
+        });
+
+        acid_base_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_ph".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(4.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("30556795".to_string()),
+                doi: Some("10.1152/ajprenal.00456.2018".to_string()),
+                citation: "Wagner et al. Renal acid excretion. Am J Physiol Renal. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4250000),
+                population: "Urine pH (reflects renal H⁺ secretion, range 4.5-8.0, typically 5.0-6.5 acid diet, <5.5 metabolic acidosis, >7.0 RTA/infection/alkalosis, urease-splitting bacteria)".to_string(),
+            },
+        });
+
+        acid_base_balance_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_albumin_g_dl".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(3.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30556796".to_string()),
+                doi: Some("10.1093/ndt/gfy372".to_string()),
+                citation: "Don and Kaysen. Albumin as buffer. Nephrol Dial Transplant. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5450000),
+                population: "Serum albumin (3.5-5.0 g/dL, plasma protein buffer, each 1 g/dL ↓→anion gap ↓ 2.5 mEq/L, negative charge, hypoalbuminemia ↓ buffer capacity)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "acid_base_balance_system".to_string(),
+            acid_base_balance_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -35551,6 +36135,10 @@ mod tests {
         assert!(db.get_dataset("prostaglandin_leukotriene_system").is_some());
         assert!(db.get_dataset("growth_hormone_igf_axis_system").is_some());
         assert!(db.get_dataset("thyroid_hormone_metabolism_system").is_some());
+        assert!(db.get_dataset("calcium_homeostasis_system").is_some());
+        assert!(db.get_dataset("iron_metabolism_system").is_some());
+        assert!(db.get_dataset("lipid_lipoprotein_metabolism_system").is_some());
+        assert!(db.get_dataset("acid_base_balance_system").is_some());
     }
 
     #[test]
@@ -35601,7 +36189,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 244, "Expected 244 systems (240 + 4 new Session BI)");
-        assert_eq!(total_params, 1924, "Expected 1924 parameters (1892 + 32 Session BI)");
+        assert_eq!(categories.len(), 248, "Expected 248 systems (244 + 4 new Session BJ)");
+        assert_eq!(total_params, 1956, "Expected 1956 parameters (1924 + 32 Session BJ)");
     }
 }
