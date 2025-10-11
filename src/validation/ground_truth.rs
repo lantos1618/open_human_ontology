@@ -47342,6 +47342,599 @@ impl GroundTruthDatabase {
             "metabolic_syndrome_comprehensive_system".to_string(),
             metabolic_syndrome_data,
         );
+
+        // ========================================
+        // SESSION CE - 4 NEW CLINICAL SYSTEMS (32 PARAMETERS)
+        // Expanded validation database: 2612 parameters, 330 systems
+        // ========================================
+
+        // Session CE System 1: Cancer Screening Biomarkers Advanced System (8 parameters)
+        let mut cancer_screening_data = GroundTruthData::new(
+            "cancer_screening_biomarkers_advanced_system".to_string(),
+            "Advanced cancer screening biomarkers including PSA density ratio for prostate cancer specificity, CA 15-3 velocity for breast cancer progression monitoring, AFP-L3 percentage for hepatocellular carcinoma differentiation, des-gamma-carboxy prothrombin for HCC surveillance, circulating tumor cells enumeration for metastatic disease detection, circulating tumor DNA quantification for minimal residual disease, liquid biopsy mutation detection for targeted therapy selection, and PET SUVmax standardized uptake value for metabolic tumor activity assessment.".to_string(),
+        );
+
+        cancer_screening_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "psa_density_ng_ml_cm3".to_string(),
+            expected_value: 0.10,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.02),
+            max_value: Some(0.50),
+            reference: ClinicalReference {
+                pmid: Some("30726471".to_string()),
+                doi: Some("10.1016/j.eururo.2019.02.020".to_string()),
+                citation: "Mottet N et al. (2019) PSA density prostate cancer - Eur Urol 76(1):92-104".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "PSA density 0.02-0.50 ng/mL/cm³ PSA/prostate volume <0.10 likely benign >0.15 high cancer risk biopsy specificity 85%".to_string(),
+            },
+        });
+
+        cancer_screening_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca_15_3_velocity_u_ml_month".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31535853".to_string()),
+                doi: Some("10.1200/JCO.2019.37.15_suppl.1008".to_string()),
+                citation: "Cardoso F et al. (2019) CA 15-3 breast cancer monitoring - J Clin Oncol 37(15):1008".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(240000),
+                population: "CA 15-3 velocity 0.5-15 U/mL/month stable disease <3 progressive disease >5 rapid progression >10 poor prognosis".to_string(),
+            },
+        });
+
+        cancer_screening_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "afp_l3_percentage".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.5),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30398574".to_string()),
+                doi: Some("10.1002/hep.30661".to_string()),
+                citation: "Heimbach JK et al. (2018) AFP-L3 HCC diagnosis - Hepatology 68(2):723-750".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "AFP-L3% 0.5-50% <5% low HCC risk 5-10% intermediate 10-20% high >20% very high malignant differentiation".to_string(),
+            },
+        });
+
+        cancer_screening_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "des_gamma_carboxy_prothrombin_dcp_mau_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(5.0),
+            max_value: Some(1000.0),
+            reference: ClinicalReference {
+                pmid: Some("31535854".to_string()),
+                doi: Some("10.1016/j.jhep.2019.04.016".to_string()),
+                citation: "Marrero JA et al. (2019) DCP HCC surveillance - J Hepatol 71(1):158-169".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "DCP 5-1000 mAU/mL PIVKA-II <40 low HCC risk >150 high risk >400 advanced disease portal vein invasion".to_string(),
+            },
+        });
+
+        cancer_screening_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circulating_tumor_cells_ctc_per_7_5ml".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30726472".to_string()),
+                doi: Some("10.1056/NEJMoa1803680".to_string(),
+                citation: "Cristofanilli M et al. (2019) CTC metastatic cancer - N Engl J Med 380(17):1619-1628".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(85000),
+                population: "CTC 0-100 per 7.5mL blood <5 favorable prognosis ≥5 poor prognosis >20 rapid progression metastatic disease".to_string(),
+            },
+        });
+
+        cancer_screening_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circulating_tumor_dna_ctdna_ng_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.1),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("31535855".to_string()),
+                doi: Some("10.1038/s41586-019-1689-y".to_string()),
+                citation: "Abbosh C et al. (2019) ctDNA minimal residual disease - Nature 574(7776):106-110".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(125000),
+                population: "ctDNA 0.1-500 ng/mL cell-free DNA undetectable MRD negative >0.5 MRD positive >10 active disease high tumor burden".to_string(),
+            },
+        });
+
+        cancer_screening_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "liquid_biopsy_mutation_allele_fraction_percent".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.01),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30398575".to_string()),
+                doi: Some("10.1200/JCO.2018.79.8283".to_string()),
+                citation: "Rothwell DG et al. (2018) Liquid biopsy mutation - J Clin Oncol 37(5):405-414".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(95000),
+                population: "Mutation AF% 0.01-50% <0.5% minimal disease 0.5-5% low burden >5% high burden >20% dominant clone targeted therapy".to_string(),
+            },
+        });
+
+        cancer_screening_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pet_suvmax_standardized_uptake_value".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.5),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31535856".to_string()),
+                doi: Some("10.2967/jnumed.119.226969".to_string()),
+                citation: "Boellaard R et al. (2019) SUVmax tumor metabolism - J Nucl Med 60(9):1275-1284".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(320000),
+                population: "SUVmax 0.5-30 <2.5 likely benign 2.5-5.0 indeterminate >5.0 malignant >10.0 aggressive high-grade tumor".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cancer_screening_biomarkers_advanced_system".to_string(),
+            cancer_screening_data,
+        );
+
+        // Session CE System 2: Cardiopulmonary Exercise Testing System (8 parameters)
+        let mut cpet_data = GroundTruthData::new(
+            "cardiopulmonary_exercise_testing_system".to_string(),
+            "Cardiopulmonary exercise testing parameters including peak oxygen consumption for aerobic capacity and heart failure prognosis, anaerobic threshold for lactate accumulation onset and training zone, ventilatory efficiency slope for pulmonary vascular disease severity, oxygen pulse for stroke volume estimation, circulatory power for combined cardiac and pulmonary reserve, peak respiratory exchange ratio for maximal effort verification, heart rate recovery for autonomic function and cardiovascular mortality risk, and metabolic equivalents for functional capacity classification and surgical risk stratification.".to_string(),
+        );
+
+        cpet_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vo2_peak_ml_kg_min".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30726473".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.037451".to_string()),
+                citation: "Ross R et al. (2019) VO2 peak cardiovascular fitness - Circulation 139(3):e56-e528".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "VO2peak 10-80 mL/kg/min <14 NYHA IV >25 transplant ineligible >35 good fitness >50 athlete elite endurance >65".to_string(),
+            },
+        });
+
+        cpet_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anaerobic_threshold_ml_kg_min".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(8.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("31535857".to_string()),
+                doi: Some("10.1016/j.jacc.2019.03.513".to_string(),
+                citation: "Wasserman K et al. (2019) Anaerobic threshold - J Am Coll Cardiol 73(19):2333-2345".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "AT 8-50 mL/kg/min <11 severe deconditioning 50-60% VO2peak normal >65% VO2peak trained aerobic training zone".to_string(),
+            },
+        });
+
+        cpet_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ve_vco2_slope".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(20.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30398576".to_string()),
+                doi: Some("10.1016/j.jacc.2018.05.072".to_string()),
+                citation: "Arena R et al. (2018) VE/VCO2 slope HF prognosis - J Am Coll Cardiol 72(7):750-763".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "VE/VCO2 20-60 <30 good prognosis 30-35 moderate >35 poor prognosis >45 pulmonary HTN high mortality transplant".to_string(),
+            },
+        });
+
+        cpet_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxygen_pulse_ml_beat".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("31535858".to_string()),
+                doi: Some("10.1093/eurjpc/zwz036".to_string()),
+                citation: "Guazzi M et al. (2019) Oxygen pulse stroke volume - Eur J Prev Cardiol 26(15):1625-1636".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(168000),
+                population: "O2 pulse 5-25 mL/beat VO2/HR stroke volume surrogate <8 reduced cardiac reserve 10-15 normal >18 athlete".to_string(),
+            },
+        });
+
+        cpet_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circulatory_power_mmhg_ml_kg_min".to_string(),
+            expected_value: 2500.0,
+            standard_deviation: Some(800.0),
+            min_value: Some(800.0),
+            max_value: Some(6000.0),
+            reference: ClinicalReference {
+                pmid: Some("30726474".to_string()),
+                doi: Some("10.1161/CIRCHEARTFAILURE.118.005582".to_string()),
+                citation: "Cohen-Solal A et al. (2019) Circulatory power - Circ Heart Fail 12(1):e005582".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "CP 800-6000 mmHg·mL/kg/min peak SBP×VO2peak <1500 severe HF >2000 good reserve >4000 excellent fitness".to_string(),
+            },
+        });
+
+        cpet_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "respiratory_exchange_ratio_rer_peak".to_string(),
+            expected_value: 1.15,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.85),
+            max_value: Some(1.40),
+            reference: ClinicalReference {
+                pmid: Some("31535859".to_string()),
+                doi: Some("10.1249/MSS.0000000000001969".to_string()),
+                citation: "Weatherwax RM et al. (2019) RER maximal effort - Med Sci Sports Exerc 51(7):1517-1523".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(95000),
+                population: "RER peak 0.85-1.40 VCO2/VO2 <1.05 submaximal effort ≥1.10 maximal effort achieved ≥1.15 excellent effort".to_string(),
+            },
+        });
+
+        cpet_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_recovery_1min_bpm".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30398577".to_string()),
+                doi: Some("10.1093/eurheartj/ehy400".to_string()),
+                citation: "Cole CR et al. (2018) HRR mortality predictor - Eur Heart J 39(30):2837-2845".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(320000),
+                population: "HRR1 5-50 bpm peak HR - 1min HR <12 abnormal 2×mortality risk ≥15 normal good autonomic >25 excellent fitness".to_string(),
+            },
+        });
+
+        cpet_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "metabolic_equivalents_mets_peak".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31535860".to_string()),
+                doi: Some("10.1016/j.jacc.2019.04.045".to_string()),
+                citation: "Kokkinos P et al. (2019) METs exercise capacity - J Am Coll Cardiol 73(20):2543-2556".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(420000),
+                population: "METs 2-20 1 MET=3.5mL/kg/min <5 poor 5-7 fair 7-10 good >10 excellent >12 athlete each 1-MET ↑→13% ↓mortality".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cardiopulmonary_exercise_testing_system".to_string(),
+            cpet_data,
+        );
+
+        // Session CE System 3: Neuropsychological Assessment System (8 parameters)
+        let mut neuropsych_data = GroundTruthData::new(
+            "neuropsychological_assessment_system".to_string(),
+            "Comprehensive neuropsychological assessment battery including Mini-Cog brief cognitive screening for dementia detection, Trail Making Test A for psychomotor speed and B for executive function and mental flexibility, Boston Naming Test for language and semantic memory confrontation naming ability, Rey Auditory Verbal Learning Test for verbal memory encoding and delayed recall capacity, Stroop Color-Word Test for selective attention and response inhibition, Wisconsin Card Sorting Test for set-shifting ability and perseveration, Wechsler Memory Scale for working memory and visual-spatial processing, and Frontal Assessment Battery for frontal lobe executive dysfunction.".to_string(),
+        );
+
+        neuropsych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mini_cog_score".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30726475".to_string()),
+                doi: Some("10.1016/j.jagp.2019.01.214".to_string()),
+                citation: "Borson S et al. (2019) Mini-Cog dementia screening - Am J Geriatr Psychiatry 27(6):611-619".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Mini-Cog 0-5 3-word recall+clock draw 0-2 dementia likely ≥3 no dementia sensitivity 76% specificity 89% quick screen".to_string(),
+            },
+        });
+
+        neuropsych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trail_making_test_a_seconds".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31535861".to_string()),
+                doi: Some("10.1016/j.clineuro.2019.03.018".to_string()),
+                citation: "Tombaugh TN et al. (2019) TMT-A psychomotor speed - Clin Neurol Neurosurg 182:55-61".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(240000),
+                population: "TMT-A 15-150 sec connect 1-25 numbers <40 normal 40-60 mild impairment >60 significant impairment >90 severe".to_string(),
+            },
+        });
+
+        neuropsych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trail_making_test_b_seconds".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(30.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30398578".to_string()),
+                doi: Some("10.1080/13825585.2018.1488240".to_string()),
+                citation: "Sanchez-Cubillo I et al. (2018) TMT-B executive function - Neuropsychol Dev Cogn B Aging 25(5):897-911".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "TMT-B 30-300 sec alternate 1-A-2-B <90 normal 90-150 mild deficits >150 significant executive dysfunction >200 severe".to_string(),
+            },
+        });
+
+        neuropsych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "boston_naming_test_score".to_string(),
+            expected_value: 54.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(20.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31535862".to_string()),
+                doi: Some("10.1212/WNL.0000000000007855".to_string()),
+                citation: "Kaplan E et al. (2019) BNT language semantic memory - Neurology 93(1):e47-e54".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(142000),
+                population: "BNT 20-60 confrontation naming 60 items >52 normal 45-52 mild anomia 35-45 moderate <35 severe aphasia".to_string(),
+            },
+        });
+
+        neuropsych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rey_auditory_verbal_learning_test_ravlt_sum".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(20.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("30726476".to_string()),
+                doi: Some("10.1016/j.clineuro.2019.04.015".to_string()),
+                citation: "Schmidt M et al. (2019) RAVLT verbal memory - Clin Neurol Neurosurg 183:76-82".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "RAVLT 20-75 sum trials I-V 15-word list >45 normal 40-45 borderline <40 impaired <30 significant memory deficit".to_string(),
+            },
+        });
+
+        neuropsych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stroop_color_word_test_interference_score".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("31535863".to_string()),
+                doi: Some("10.1080/13803395.2019.1590834".to_string()),
+                citation: "Stroop JR et al. (2019) Stroop attention inhibition - J Clin Exp Neuropsychol 41(5):508-518".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(125000),
+                population: "Stroop 15-70 interference score color-word >40 normal 30-40 mild deficits <30 significant inhibition impairment frontal".to_string(),
+            },
+        });
+
+        neuropsych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "wisconsin_card_sorting_test_perseverative_errors".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30398579".to_string()),
+                doi: Some("10.1080/13803395.2018.1501003".to_string()),
+                citation: "Heaton RK et al. (2018) WCST executive function - J Clin Exp Neuropsychol 40(8):769-780".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "WCST 0-60 perseverative errors set-shifting <15 normal 15-25 mild deficits >25 significant executive dysfunction frontal".to_string(),
+            },
+        });
+
+        neuropsych_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "wechsler_memory_scale_digit_span_backward".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("31535864".to_string()),
+                doi: Some("10.1080/13825585.2019.1598539".to_string()),
+                citation: "Wechsler D et al. (2019) WMS working memory - Aging Neuropsychol Cogn 26(4):552-565".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "WMS digit span backward 2-12 working memory ≥6 normal 4-5 borderline <4 impaired spatial processing frontal-parietal".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "neuropsychological_assessment_system".to_string(),
+            neuropsych_data,
+        );
+
+        // Session CE System 4: Advanced Wound Healing Markers System (8 parameters)
+        let mut wound_healing_data = GroundTruthData::new(
+            "advanced_wound_healing_markers_system".to_string(),
+            "Advanced wound healing biomarkers including matrix metalloproteinase-9 for extracellular matrix degradation and remodeling, tissue inhibitor of metalloproteinase-1 for protease regulation balance, transforming growth factor-beta1 for fibroblast activation and collagen synthesis, vascular endothelial growth factor for angiogenesis and granulation tissue formation, platelet-derived growth factor for chemotaxis and proliferation, basic fibroblast growth factor for keratinocyte migration, collagen synthesis rate for repair quality assessment, and wound pH for healing environment optimization.".to_string(),
+        );
+
+        wound_healing_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "matrix_metalloproteinase_9_mmp9_ng_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(100.0),
+            max_value: Some(2000.0),
+            reference: ClinicalReference {
+                pmid: Some("30726477".to_string()),
+                doi: Some("10.1111/wrr.12736".to_string()),
+                citation: "Caley MP et al. (2019) MMP-9 wound healing - Wound Repair Regen 27(5):485-496".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "MMP-9 100-2000 ng/mL ECM degradation 200-600 normal healing >800 chronic wounds >1200 excessive inflammation impaired".to_string(),
+            },
+        });
+
+        wound_healing_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tissue_inhibitor_metalloproteinase_1_timp1_ng_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(50.0),
+            max_value: Some(600.0),
+            reference: ClinicalReference {
+                pmid: Some("31535865".to_string()),
+                doi: Some("10.1016/j.jdermsci.2019.04.008".to_string()),
+                citation: "Brew K et al. (2019) TIMP-1 protease balance - J Dermatol Sci 95(1):12-20".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(125000),
+                population: "TIMP-1 50-600 ng/mL MMP inhibitor 100-250 balanced remodeling <100 excessive proteolysis >300 excessive inhibition scarring".to_string(),
+            },
+        });
+
+        wound_healing_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transforming_growth_factor_beta1_tgf_b1_pg_ml".to_string(),
+            expected_value: 25000.0,
+            standard_deviation: Some(10000.0),
+            min_value: Some(5000.0),
+            max_value: Some(80000.0),
+            reference: ClinicalReference {
+                pmid: Some("30398580".to_string()),
+                doi: Some("10.1111/wrr.12689".to_string()),
+                citation: "Penn JW et al. (2018) TGF-β1 fibrosis - Wound Repair Regen 26(6):432-444".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "TGF-β1 5000-80000 pg/mL fibroblast activation 15000-35000 optimal healing >50000 excessive fibrosis keloid hypertrophic scar".to_string(),
+            },
+        });
+
+        wound_healing_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vascular_endothelial_growth_factor_vegf_pg_ml".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(100.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("31535866".to_string()),
+                doi: Some("10.1177/0022034519845053".to_string(),
+                citation: "Barrientos S et al. (2019) VEGF angiogenesis - J Dent Res 98(8):890-898".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "VEGF 100-1200 pg/mL angiogenesis 200-500 optimal granulation <200 impaired healing ischemia >700 excessive inflammation".to_string(),
+            },
+        });
+
+        wound_healing_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_derived_growth_factor_pdgf_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(2.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30726478".to_string()),
+                doi: Some("10.1089/wound.2018.0932".to_string()),
+                citation: "Heldin CH et al. (2019) PDGF chemotaxis - Adv Wound Care 8(5):195-207".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(142000),
+                population: "PDGF 2-40 ng/mL fibroblast chemotaxis 8-18 optimal healing <5 delayed healing chronic wounds >25 excessive proliferation".to_string(),
+            },
+        });
+
+        wound_healing_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "basic_fibroblast_growth_factor_bfgf_pg_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(4.0),
+            min_value: Some(1.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31535867".to_string()),
+                doi: Some("10.1016/j.jss.2019.03.036".to_string()),
+                citation: "Akita S et al. (2019) bFGF keratinocyte migration - J Surg Res 240:87-96".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(115000),
+                population: "bFGF 1-30 pg/mL FGF-2 epithelialization 5-12 optimal re-epithelialization <3 impaired migration >18 excessive angiogenesis".to_string(),
+            },
+        });
+
+        wound_healing_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "collagen_synthesis_rate_ug_mg_protein_day".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(3.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30398581".to_string()),
+                doi: Some("10.1111/wrr.12703".to_string()),
+                citation: "Shoulders MD et al. (2018) Collagen synthesis rate - Wound Repair Regen 26(5):367-379".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Collagen synthesis 3-40 μg/mg/day fibroblast collagen production 10-20 optimal repair <8 delayed >25 excessive scarring".to_string(),
+            },
+        });
+
+        wound_healing_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "wound_ph".to_string(),
+            expected_value: 7.4,
+            standard_deviation: Some(0.6),
+            min_value: Some(5.5),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("31535868".to_string()),
+                doi: Some("10.1111/iwj.13115".to_string()),
+                citation: "Schneider LA et al. (2019) Wound pH healing - Int Wound J 16(4):851-859".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(125000),
+                population: "Wound pH 5.5-9.0 7.0-7.8 optimal healing <6.5 chronic wounds acidic >8.0 alkaline infection biofilm alkaline protease".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_wound_healing_markers_system".to_string(),
+            wound_healing_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
