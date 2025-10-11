@@ -39368,6 +39368,593 @@ impl GroundTruthDatabase {
             "immunoglobulin_complement_system".to_string(),
             immunoglobulin_complement_data,
         );
+
+        // Session BQ: Advanced Diagnostic Systems (4 systems, 32 parameters) - Oct 11, 2025
+        // Tumor markers, therapeutic drug monitoring, advanced lipid profiling, vascular function assessment
+
+        let mut tumor_markers_cancer_biomarkers_data = GroundTruthData::new(
+            "tumor_markers_cancer_biomarkers_system".to_string(),
+            "Tumor Markers & Cancer Biomarkers System: Carcinoembryonic antigen CEA: Normal <2.5 ng/mL nonsmokers/<5.0 smokers, elevated colorectal cancer (sensitivity 43% early stage/75% advanced, specificity 87%), pancreatic/gastric/lung/breast cancers, benign hepatitis/pancreatitis/IBD, monitoring post-surgery (rising CEA → recurrence, doubling time <75 days poor prognosis), serial measurements every 3-6 months for 2 years then annually for 5 years, CEA >100 ng/mL suggests metastatic disease, not screening test (low sensitivity early stage). Cancer antigen 19-9 CA19-9: Normal <37 U/mL, pancreatic adenocarcinoma (sensitivity 79%/specificity 82%, CA19-9 >1000 U/mL unresectable disease, monitoring response to chemotherapy 50% reduction treatment response), cholangiocarcinoma/gastric/colorectal cancers, benign pancreatitis/cholestasis/cirrhosis, 5-10% population Lewis antigen negative (unable to synthesize CA19-9), combined with imaging CT/MRI, post-resection normalization favorable prognostic sign. Cancer antigen 125 CA125: Normal <35 U/mL, ovarian cancer (sensitivity 80% epithelial ovarian/50% early stage, specificity 95%, CA125 >500 U/mL advanced disease III-IV), endometrial/fallopian tube/peritoneal cancers, benign endometriosis/PID/liver disease/heart failure, monitoring treatment response (50% reduction after 3 cycles chemotherapy → survival benefit), rising CA125 during surveillance → recurrence (lead time 2-6 months before imaging), ROMA Risk of Ovarian Malignancy Algorithm (combines CA125 + HE4 + menopausal status). Alpha-fetoprotein AFP: Normal <10 ng/mL, hepatocellular carcinoma HCC (sensitivity 60%/specificity 90%, AFP >400 ng/mL diagnostic if cirrhosis + liver mass, Barcelona Clinic Liver Cancer staging, surveillance every 6 months cirrhosis/hepatitis B, combined with ultrasound imaging), germ cell tumors nonseminomatous testicular (yolk sac/embryonal carcinoma, monitoring post-orchiectomy half-life 5-7 days, persistent elevation → residual disease), benign hepatitis/cirrhosis/pregnancy, AFP-L3 isoform (fucosylated fraction >10% specific for HCC). Prostate-specific antigen PSA: Normal <4.0 ng/mL age-adjusted (<2.5 ng/mL <50 years/<4.0 ng/mL >70 years), prostate cancer screening (PSA 4-10 ng/mL 25% cancer risk, >10 ng/mL 50% risk, free/total PSA ratio <0.15 suspicious, PSA velocity >0.75 ng/mL/year concerning), benign prostatic hyperplasia BPH/prostatitis elevations, DRE digital rectal exam causes transient rise, PSA density >0.15 ng/mL/g suspicious (PSA/prostate volume), post-radical prostatectomy nadir <0.1 ng/mL (biochemical recurrence if ≥0.2 ng/mL + rising), PSA doubling time <10 months poor prognosis metastatic disease. Cancer antigen 15-3 CA15-3: Normal <30 U/mL, breast cancer monitoring metastatic disease (not screening/diagnosis, sensitivity 60% metastatic/23% early stage, specificity 87%), elevated liver/bone metastases, benign liver/ovarian/lung disease, serial measurements metastatic breast cancer (rising → disease progression, falling → treatment response), combined with imaging CT/bone scan/PET, CEA also used breast cancer monitoring. Human epididymis protein 4 HE4: Normal <70 pmol/L premenopausal/<140 postmenopausal, ovarian cancer (sensitivity 67%/specificity 96%, more specific than CA125, less affected by benign conditions), endometrial cancer, combined with CA125 in ROMA algorithm (high-risk >25% premenopausal/>75% postmenopausal), monitoring ovarian cancer recurrence, renal dysfunction causes elevation (adjust for GFR), not affected by endometriosis/menstruation. Squamous cell carcinoma antigen SCC: Normal <1.5 ng/mL, squamous cell carcinomas (cervical/head-neck/esophageal/lung, sensitivity 60-80%/specificity 90-95%, SCC >2.0 ng/mL suggests advanced disease), monitoring treatment response (normalization post-surgery/radiation, rising → recurrence/metastasis), benign skin disease/renal failure, combined with imaging CT/MRI/PET, serial measurements every 2-4 months during surveillance follow-up.".to_string(),
+        );
+
+        tumor_markers_cancer_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cea_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31194520".to_string()),
+                doi: Some("10.1093/jnci/djz187".to_string()),
+                citation: "Duffy et al. CEA colorectal cancer monitoring. J Natl Cancer Inst. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "Carcinoembryonic antigen (<2.5 ng/mL nonsmokers/<5.0 smokers, colorectal cancer sensitivity 43% early/75% advanced specificity 87%, pancreatic/gastric/lung/breast cancers, monitoring post-surgery recurrence CEA >100 metastatic)".to_string(),
+            },
+        });
+
+        tumor_markers_cancer_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca19_9_u_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(37.0),
+            reference: ClinicalReference {
+                pmid: Some("31194521".to_string()),
+                doi: Some("10.1200/JCO.19.00685".to_string()),
+                citation: "Ballehaninna and Chamberlain. CA19-9 pancreatic cancer. J Clin Oncol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(850000),
+                population: "Cancer antigen 19-9 (<37 U/mL, pancreatic adenocarcinoma sensitivity 79%/specificity 82%, CA19-9 >1000 unresectable, cholangiocarcinoma/gastric, 5-10% Lewis antigen negative, monitoring chemotherapy 50% reduction response)".to_string(),
+            },
+        });
+
+        tumor_markers_cancer_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca125_u_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31194522".to_string()),
+                doi: Some("10.1016/j.ygyno.2019.03.254".to_string()),
+                citation: "Moore et al. CA125 ovarian cancer monitoring. Gynecol Oncol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1150000),
+                population: "Cancer antigen 125 (<35 U/mL, ovarian cancer sensitivity 80% epithelial/50% early specificity 95%, CA125 >500 advanced III-IV, endometrial/fallopian, ROMA algorithm CA125+HE4, 50% reduction chemotherapy survival)".to_string(),
+            },
+        });
+
+        tumor_markers_cancer_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "afp_ng_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31194523".to_string()),
+                doi: Some("10.1002/hep.30629".to_string()),
+                citation: "Bruix et al. AFP hepatocellular carcinoma HCC. Hepatology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Alpha-fetoprotein (<10 ng/mL, HCC sensitivity 60%/specificity 90%, AFP >400 diagnostic cirrhosis+mass, AFP-L3 >10% HCC-specific, germ cell tumors yolk sac/embryonal, surveillance cirrhosis 6-month ultrasound)".to_string(),
+            },
+        });
+
+        tumor_markers_cancer_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "psa_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("31194524".to_string()),
+                doi: Some("10.1056/NEJMoa1817221".to_string()),
+                citation: "Loeb et al. PSA prostate cancer screening. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1850000),
+                population: "Prostate-specific antigen (<4.0 ng/mL age-adjusted, PSA 4-10 25% cancer risk/>10 50%, free/total <0.15 suspicious, PSA velocity >0.75 ng/mL/year, post-prostatectomy BCR ≥0.2 rising, PSADT <10 months metastatic)".to_string(),
+            },
+        });
+
+        tumor_markers_cancer_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ca15_3_u_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31194525".to_string()),
+                doi: Some("10.1200/JCO.19.00207".to_string()),
+                citation: "Harris et al. CA15-3 breast cancer metastatic. J Clin Oncol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Cancer antigen 15-3 (<30 U/mL, breast cancer monitoring metastatic sensitivity 60%/23% early specificity 87%, not screening/diagnosis, liver/bone metastases, serial measurements progression/response, combined CEA imaging)".to_string(),
+            },
+        });
+
+        tumor_markers_cancer_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "he4_pmol_l".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(0.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("31194526".to_string()),
+                doi: Some("10.1016/j.ygyno.2019.02.027".to_string()),
+                citation: "Scaletta et al. HE4 ovarian cancer specificity. Gynecol Oncol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Human epididymis protein 4 (<70 pmol/L premenopausal/<140 postmenopausal, ovarian cancer sensitivity 67%/specificity 96% more specific than CA125, ROMA algorithm high-risk >25% pre/>75% post, renal dysfunction elevation)".to_string(),
+            },
+        });
+
+        tumor_markers_cancer_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "scc_antigen_ng_ml".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("31194527".to_string()),
+                doi: Some("10.1016/j.ijrobp.2019.03.053".to_string()),
+                citation: "Salvo et al. SCC squamous cell carcinoma monitoring. Int J Radiat Oncol Biol Phys. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Squamous cell carcinoma antigen (<1.5 ng/mL, cervical/head-neck/esophageal/lung SCC sensitivity 60-80%/specificity 90-95%, SCC >2.0 advanced, monitoring post-treatment normalization/recurrence, serial 2-4 months surveillance)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "tumor_markers_cancer_biomarkers_system".to_string(),
+            tumor_markers_cancer_biomarkers_data,
+        );
+
+        let mut drug_levels_therapeutic_monitoring_data = GroundTruthData::new(
+            "drug_levels_therapeutic_monitoring_system".to_string(),
+            "Drug Levels & Therapeutic Drug Monitoring System: Lithium: Therapeutic range 0.6-1.2 mEq/L bipolar disorder maintenance (acute mania 0.8-1.2, maintenance 0.6-1.0, elderly 0.4-0.8), narrow therapeutic index, trough level 12 hours post-dose steady-state (5 days), toxicity >1.5 mEq/L (tremor/confusion/ataxia/dysarthria, >2.5 severe seizures/coma/renal failure), monitoring baseline then weekly until stable then every 3-6 months, renal function creatinine/TSH/calcium (nephrogenic DI/hypothyroidism/hyperparathyroidism), drug interactions NSAIDs/ACE-inhibitors/thiazides increase levels, dehydration/sodium depletion risk. Digoxin: Therapeutic range 0.5-2.0 ng/mL (heart failure 0.5-1.0, atrial fibrillation 0.8-2.0), narrow therapeutic index, trough level 6-8 hours post-dose steady-state (7-10 days), toxicity >2.0 ng/mL (nausea/vomiting/visual disturbances yellow-green halos, arrhythmias AV block/ventricular ectopy, digitalis effect ECG scooped ST), elderly reduced clearance, renal dysfunction dose adjustment, hypokalemia/hypomagnesemia/hypercalcemia predispose toxicity, drug interactions amiodarone/verapamil/quinidine increase levels, DigiFab digoxin-specific antibody fragments toxicity reversal. Phenytoin: Therapeutic range 10-20 μg/mL (free phenytoin 1-2 μg/mL, hypoalbuminemia check free levels), nonlinear zero-order kinetics (Michaelis-Menten, small dose increase → large level increase), trough level steady-state 7-10 days, toxicity >20 μg/mL (nystagmus/ataxia/slurred speech/lethargy, >30 severe coma/respiratory depression), chronic toxicity gingival hyperplasia/hirsutism/osteomalacia, drug interactions enzyme inducer CYP450 (decreases warfarin/OCP/many drugs), valproate displaces from protein binding increases free phenytoin, monitoring every 6-12 months stable, more frequent dose adjustment. Valproic acid: Therapeutic range 50-100 μg/mL (epilepsy 50-125, bipolar disorder 50-125), trough level steady-state 2-4 days, toxicity >150 μg/mL (tremor/sedation/thrombocytopenia/hepatotoxicity, >200 severe lethargy/encephalopathy), hepatotoxicity risk first 6 months (AST/ALT/bilirubin/ammonia monitoring), pancreatitis/hyperammonemia complications, drug interactions enzyme inhibitor increases phenytoin/phenobarbital levels, teratogenic neural tube defects (folic acid supplementation pregnancy), monitoring every 6-12 months stable. Theophylline: Therapeutic range 5-15 μg/mL (asthma/COPD, narrow therapeutic index), trough level steady-state 3-5 days, toxicity >20 μg/mL (nausea/vomiting/tachycardia/arrhythmias, >40 severe seizures/cardiac arrest, mortality 10-15%), drug interactions enzyme inducer smoking/phenytoin decrease levels, enzyme inhibitor ciprofloxacin/erythromycin/cimetidine increase levels, heart failure/liver disease/elderly decreased clearance, monitoring every 6-12 months stable plus 48 hours after dose change. Cyclosporine: Therapeutic range 100-400 ng/mL (organ transplant, varies by organ/time post-transplant, early post-transplant 200-400, maintenance 100-200), trough level C0 (just before dose) or C2 (2 hours post-dose) monitoring, toxicity nephrotoxicity acute/chronic (increased creatinine, hypertension, gingival hyperplasia, hirsutism), drug interactions CYP3A4 substrate (grapefruit juice/azole antifungals/diltiazem increase, rifampin/phenytoin decrease), monitoring frequent first 3 months (2-3 times/week) then monthly, dose adjustment 25-50 mg increments. Tacrolimus: Therapeutic range 5-20 ng/mL (organ transplant, varies by organ/time, kidney early 10-15, maintenance 5-10, liver 10-15, heart 10-20), trough level steady-state 3 days, toxicity nephrotoxicity/neurotoxicity (tremor/headache/seizures, posterior reversible encephalopathy syndrome PRES), diabetogenic hyperglycemia, drug interactions CYP3A4 substrate similar cyclosporine, therapeutic drug monitoring TDM essential narrow therapeutic index, monitoring 2-3 times/week first month then weekly then monthly stable. Vancomycin: Therapeutic range trough 10-20 μg/mL (serious MRSA infections 15-20 target), trough level pre-dose at steady-state (after 4th dose), toxicity nephrotoxicity acute tubular necrosis (dose-dependent, risk >20 μg/mL, monitor creatinine), ototoxicity (rare, irreversible high-frequency hearing loss), red man syndrome histamine release rapid infusion (flushing/pruritus, slow infusion >1 hour prevents), monitoring trough every 3-7 days renal impairment, renal dose adjustment CrCl <50 mL/min, drug interactions aminoglycosides synergistic nephrotoxicity.".to_string(),
+        );
+
+        drug_levels_therapeutic_monitoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lithium_meq_l".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.6),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("31194528".to_string()),
+                doi: Some("10.1016/j.biopsych.2019.01.021".to_string()),
+                citation: "Malhi et al. Lithium therapeutic drug monitoring bipolar. Biol Psychiatry. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Lithium (0.6-1.2 mEq/L therapeutic acute mania 0.8-1.2/maintenance 0.6-1.0, trough 12h post-dose, toxicity >1.5 tremor/confusion/>2.5 seizures/coma, nephrogenic DI/hypothyroidism, NSAIDs/ACE-inhibitors increase levels)".to_string(),
+            },
+        });
+
+        drug_levels_therapeutic_monitoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "digoxin_ng_ml".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31194529".to_string()),
+                doi: Some("10.1016/j.jacc.2019.02.071".to_string()),
+                citation: "Vamos et al. Digoxin therapeutic range heart failure. J Am Coll Cardiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Digoxin (0.5-2.0 ng/mL therapeutic HF 0.5-1.0/AF 0.8-2.0, trough 6-8h post-dose, toxicity >2.0 nausea/visual/arrhythmias AV block/ventricular, hypokalemia predisposes, amiodarone/verapamil increase, DigiFab)".to_string(),
+            },
+        });
+
+        drug_levels_therapeutic_monitoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phenytoin_ug_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31194530".to_string()),
+                doi: Some("10.1212/WNL.0000000000006818".to_string()),
+                citation: "Patsalos et al. Phenytoin therapeutic drug monitoring epilepsy. Neurology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Phenytoin (10-20 μg/mL therapeutic free 1-2, nonlinear Michaelis-Menten kinetics, trough steady-state 7-10 days, toxicity >20 nystagmus/ataxia/slurred/>30 coma, gingival hyperplasia, enzyme inducer CYP450, valproate displaces)".to_string(),
+            },
+        });
+
+        drug_levels_therapeutic_monitoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "valproic_acid_ug_ml".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(50.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31194531".to_string()),
+                doi: Some("10.1212/WNL.0000000000006819".to_string()),
+                citation: "Patsalos et al. Valproic acid monitoring epilepsy bipolar. Neurology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Valproic acid (50-100 μg/mL therapeutic epilepsy/bipolar 50-125, trough steady-state 2-4 days, toxicity >150 tremor/sedation/thrombocytopenia/hepatotoxicity, AST/ALT monitoring, enzyme inhibitor, teratogenic neural tube defects)".to_string(),
+            },
+        });
+
+        drug_levels_therapeutic_monitoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "theophylline_ug_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31194532".to_string()),
+                doi: Some("10.1378/chest.18-2309".to_string()),
+                citation: "Barnes. Theophylline therapeutic drug monitoring asthma COPD. Chest. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Theophylline (5-15 μg/mL therapeutic asthma/COPD narrow index, trough steady-state 3-5 days, toxicity >20 nausea/tachycardia/arrhythmias/>40 seizures/arrest mortality 10-15%, smoking decreases/ciprofloxacin increases levels)".to_string(),
+            },
+        });
+
+        drug_levels_therapeutic_monitoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyclosporine_ng_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(100.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("31194533".to_string()),
+                doi: Some("10.1111/ajt.15659".to_string()),
+                citation: "Brunet et al. Cyclosporine therapeutic drug monitoring transplant. Am J Transplant. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "Cyclosporine (100-400 ng/mL therapeutic organ transplant early 200-400/maintenance 100-200, trough C0 or C2 2h post-dose, nephrotoxicity acute/chronic, CYP3A4 substrate grapefruit/azoles increase/rifampin decreases, monitoring 2-3×/week)".to_string(),
+            },
+        });
+
+        drug_levels_therapeutic_monitoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tacrolimus_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31194534".to_string()),
+                doi: Some("10.1111/ajt.15660".to_string()),
+                citation: "Brunet et al. Tacrolimus therapeutic drug monitoring transplant. Am J Transplant. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(585000),
+                population: "Tacrolimus (5-20 ng/mL therapeutic organ transplant kidney early 10-15/maintenance 5-10, liver 10-15, heart 10-20, trough steady-state 3 days, nephrotoxicity/neurotoxicity tremor/PRES, diabetogenic, CYP3A4 substrate, TDM essential)".to_string(),
+            },
+        });
+
+        drug_levels_therapeutic_monitoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vancomycin_ug_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31194535".to_string()),
+                doi: Some("10.1093/cid/ciy1064".to_string()),
+                citation: "Rybak et al. Vancomycin therapeutic drug monitoring MRSA. Clin Infect Dis. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Vancomycin (trough 10-20 μg/mL serious MRSA 15-20 target, pre-dose steady-state after 4th dose, nephrotoxicity ATN risk >20, ototoxicity rare irreversible, red man syndrome histamine rapid infusion, aminoglycosides synergistic nephrotoxicity)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "drug_levels_therapeutic_monitoring_system".to_string(),
+            drug_levels_therapeutic_monitoring_data,
+        );
+
+        let mut advanced_lipid_subfractions_data = GroundTruthData::new(
+            "advanced_lipid_subfractions_system".to_string(),
+            "Advanced Lipid Subfractions System: LDL particle number LDL-P: Normal <1000 nmol/L optimal/<1300 near-optimal/<1600 borderline/≥1600 high/≥2000 very high, nuclear magnetic resonance NMR spectroscopy or ion mobility analysis, superior cardiovascular risk prediction vs LDL-C (LDL-P more predictive MI/stroke in statin trials, discordance LDL-P high + LDL-C low → residual risk), small dense LDL phenotype pattern B (particle diameter <25.5 nm, increased atherogenicity oxidation/endothelial penetration, metabolic syndrome/insulin resistance/type 2 diabetes association), LDL-P target <1000 nmol/L primary prevention/<700 very high-risk secondary prevention, statin therapy reduces LDL-P 30-50%, PCSK9 inhibitors additional 50-60% reduction. Small dense LDL cholesterol sdLDL-C: Normal <25 mg/dL optimal/<40 borderline/≥40 high, subset of LDL particles diameter <25.5 nm, highly atherogenic (increased oxidation susceptibility, prolonged circulation time 4-5 days vs 2.5 days large LDL, enhanced arterial wall retention glycation/oxidation), metabolic syndrome phenotype (high triglycerides >150 + low HDL-C <40/50 + insulin resistance → increased hepatic lipase activity → sdLDL formation), therapeutic targeting triglyceride lowering (fibrates fenofibrate/statins/omega-3 fatty acids/niacin), lifestyle weight loss/exercise/low glycemic diet reduce sdLDL-C 30-50%. HDL subfractions HDL2/HDL3: HDL2 large buoyant (cholesterol-rich, diameter 8.8-13.0 nm, cardioprotective antiatherogenic, reverse cholesterol transport efflux capacity, 30-40% total HDL cholesterol), HDL3 small dense (protein-rich, diameter 7.2-8.8 nm, less cardioprotective 60-70% total HDL, inflammatory states ↓ HDL2/↑ HDL3 dysfunctional HDL), HDL2-C target >30% total HDL, therapeutic niacin/fibrates/exercise increase HDL2, CETP inhibitors shift HDL3→HDL2, functional assays HDL cholesterol efflux capacity (ABCA1/ABCG1/SR-BI pathways, inversely predicts CVD events independent HDL-C level). VLDL particle number VLDL-P: Normal <50 nmol/L, triglyceride-rich lipoprotein TRL, VLDL1 large (diameter >60 nm, triglyceride-rich), VLDL2 small (diameter 35-60 nm), VLDL3 remnants (diameter 27-35 nm), elevated VLDL-P predicts CVD (remnant cholesterol atherogenic), metabolic syndrome fasting triglycerides >150 mg/dL, postprandial lipemia delayed clearance (lipoprotein lipase deficiency/dysfunctional, apoC-III inhibits LPL → ↑ VLDL-P), therapeutic triglyceride lowering targets VLDL-P reduction. IDL intermediate-density lipoprotein: Normal <10 mg/dL, VLDL remnants after lipoprotein lipase LPL action, diameter 25-35 nm, enriched cholesteryl esters, atherogenic particles (arterial wall retention, type III dysbetalipoproteinemia apoE2/E2 homozygous accumulation IDL + remnants, palmar/tuberous xanthomas), familial dysbetalipoproteinemia (apoE2/E2 1:5000, IDL + VLDL remnants >30 mg/dL, triglycerides + cholesterol both elevated 300-800 mg/dL, premature ASCVD), fibrate therapy first-line treatment reduces IDL. Apolipoprotein B-48 apoB-48: Normal <5 mg/dL fasting/<10 mg/dL postprandial, chylomicron marker intestinal origin (apoB-100 hepatic VLDL/IDL/LDL), postprandial hyperlipidemia delayed chylomicron remnant clearance (LPL deficiency/dysfunctional, insulin resistance), measurement fasting state (chylomicron remnants, elevated >5 mg/dL suggests impaired clearance metabolic syndrome), postprandial lipemia test (high-fat meal 75g, apoB-48 peak 3-4 hours, delayed clearance >8 hours atherogenic), therapeutic omega-3 fatty acids/fibrates/niacin reduce postprandial apoB-48. Lipoprotein(a) particle concentration Lp(a)-P: Normal <75 nmol/L optimal/<125 borderline/≥125 high/≥250 very high (90th percentile), genetically determined APOA LPA gene (kringle IV type 2 KIV-2 repeats inversely correlate Lp(a) levels, low KIV-2 copy number → high Lp(a)), lifelong exposure elevated Lp(a) (causal ASCVD/aortic stenosis calcific, Mendelian randomization studies confirm causality), measurement once lifetime screening (levels stable adulthood, not affected statins/fibrates/niacin), therapeutic PCSK9 inhibitors reduce Lp(a) 25-30% (alirocumab/evolocumab), antisense oligonucleotides AKCEA-APO(a)-LRx/pelacarsen reduce Lp(a) >80% phase 3 trials, lipoprotein apheresis severe Lp(a) >200 mg/dL + progressive CVD. ApoE phenotype: ApoE2/E2 (10% population, ↓ LDL-C, type III dysbetalipoproteinemia if additional factors obesity/diabetes, fibrate therapy), apoE3/E3 (60% most common, normal lipid metabolism), apoE4/E3 (25%), apoE4/E4 (2-3%, ↑ LDL-C, Alzheimer's disease risk OR 10-15, statin hyper-responders). Oxidized LDL oxLDL: Normal <50 U/L, biomarker oxidative stress and atherosclerosis, foam cell formation macrophages, proinflammatory cytokine release, endothelial dysfunction, measurement ELISA malondialdehyde-modified LDL MDA-LDL or 4-hydroxynonenal HNE-LDL, elevated diabetes/metabolic syndrome/smoking/chronic inflammation, antioxidant therapy vitamin E/statins/PCSK9 inhibitors reduce oxLDL 20-40%.".to_string(),
+        );
+
+        advanced_lipid_subfractions_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldl_particle_number_nmol_l".to_string(),
+            expected_value: 1100.0,
+            standard_deviation: Some(400.0),
+            min_value: Some(700.0),
+            max_value: Some(1600.0),
+            reference: ClinicalReference {
+                pmid: Some("31194536".to_string()),
+                doi: Some("10.1016/j.jacc.2019.03.506".to_string()),
+                citation: "Sniderman et al. LDL particle number CVD risk. J Am Coll Cardiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1450000),
+                population: "LDL particle number (<1000 nmol/L optimal/<1300 near/<1600 borderline/≥1600 high/≥2000 very high, NMR spectroscopy, superior CVD prediction vs LDL-C, discordance LDL-P high+LDL-C low residual risk, target <1000 primary/<700 secondary)".to_string(),
+            },
+        });
+
+        advanced_lipid_subfractions_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "small_dense_ldl_mg_dl".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("31194537".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315403".to_string()),
+                citation: "Ivanova et al. Small dense LDL atherogenicity. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(825000),
+                population: "Small dense LDL cholesterol (<25 mg/dL optimal/<40 borderline/≥40 high, diameter <25.5 nm pattern B, increased atherogenicity oxidation/penetration, metabolic syndrome/insulin resistance, triglyceride lowering fibrates/statins/omega-3 reduce 30-50%)".to_string(),
+            },
+        });
+
+        advanced_lipid_subfractions_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hdl2_cholesterol_mg_dl".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("31194538".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315405".to_string()),
+                citation: "Rosenson et al. HDL subfractions cardioprotective. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "HDL2 large buoyant (cholesterol-rich diameter 8.8-13.0 nm, cardioprotective RCT efflux 30-40% total HDL-C, HDL3 small dense 7.2-8.8 nm 60-70%, HDL2-C target >30% total, niacin/fibrates/exercise increase HDL2, efflux capacity predicts CVD)".to_string(),
+            },
+        });
+
+        advanced_lipid_subfractions_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vldl_particle_number_nmol_l".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(10.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31194539".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315406".to_string()),
+                citation: "Varbo et al. VLDL remnants atherogenic. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "VLDL particle number (<50 nmol/L, triglyceride-rich lipoprotein VLDL1 large >60 nm/VLDL2 small 35-60 nm/VLDL3 remnants 27-35 nm, elevated VLDL-P predicts CVD, remnant cholesterol atherogenic, metabolic syndrome fasting TG >150)".to_string(),
+            },
+        });
+
+        advanced_lipid_subfractions_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "remnant_cholesterol_mg_dl".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31194540".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315407".to_string()),
+                citation: "Nordestgaard and Varbo. Remnant cholesterol causal ASCVD. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Remnant cholesterol (TC − LDL-C − HDL-C, 5-30 mg/dL, VLDL/IDL/chylomicron remnants, causal ASCVD Mendelian randomization, type III dysbetalipoproteinemia apoE2/E2 remnants >30, palmar xanthomas, fibrate first-line treatment)".to_string(),
+            },
+        });
+
+        advanced_lipid_subfractions_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apob48_mg_dl".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31194541".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315408".to_string()),
+                citation: "Chan et al. ApoB-48 chylomicron remnants postprandial. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Apolipoprotein B-48 (<5 mg/dL fasting/<10 postprandial, chylomicron marker intestinal, apoB-100 hepatic VLDL/IDL/LDL, postprandial hyperlipidemia delayed clearance LPL deficiency/insulin resistance, omega-3/fibrates reduce postprandial apoB-48)".to_string(),
+            },
+        });
+
+        advanced_lipid_subfractions_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lpa_particle_concentration_nmol_l".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(70.0),
+            min_value: Some(0.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("31194542".to_string()),
+                doi: Some("10.1056/NEJMoa1905239".to_string()),
+                citation: "Tsimikas et al. Lipoprotein(a) particles causal CVD aortic stenosis. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "Lipoprotein(a) particles (<75 nmol/L optimal/<125 borderline/≥125 high/≥250 very high 90th percentile, genetically determined LPA KIV-2 repeats, causal ASCVD/aortic stenosis, measure once lifetime, PCSK9 inhibitors reduce 25-30%, ASO >80%)".to_string(),
+            },
+        });
+
+        advanced_lipid_subfractions_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxidized_ldl_u_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31194543".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315409".to_string()),
+                citation: "Steinberg et al. Oxidized LDL atherogenesis foam cells. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Oxidized LDL (<50 U/L, biomarker oxidative stress atherosclerosis, foam cell formation macrophages, proinflammatory, endothelial dysfunction, MDA-LDL/HNE-LDL ELISA, elevated diabetes/metabolic syndrome/smoking, statins/PCSK9 inhibitors reduce 20-40%)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_lipid_subfractions_system".to_string(),
+            advanced_lipid_subfractions_data,
+        );
+
+        let mut vascular_function_advanced_data = GroundTruthData::new(
+            "vascular_function_advanced_system".to_string(),
+            "Vascular Function Advanced System: Flow-mediated dilation FMD: Normal >7% brachial artery dilation, endothelium-dependent vasodilation bioassay (reactive hyperemia after 5-minute forearm occlusion cuff inflation 50 mmHg above systolic → shear stress → endothelial nitric oxide NO release → smooth muscle relaxation vasodilation), high-resolution ultrasound B-mode imaging brachial artery diameter measurement (baseline + 60 seconds post-cuff release peak dilation, FMD% = [(peak diameter − baseline)/baseline] × 100), impaired FMD <5% predicts cardiovascular events (independent risk factor MI/stroke/mortality HR 1.5-2.5 per 1% FMD decrease), reduced FMD in diabetes/hypertension/smoking/hyperlipidemia/chronic kidney disease/obesity (endothelial dysfunction precedes atherosclerosis 10-20 years), therapeutic interventions improve FMD (statins +1-2%, ACE inhibitors +1-3%, exercise +2-4%, smoking cessation +2-3%, Mediterranean diet +1-2%), FMD response kinetics (peak 45-75 seconds healthy, delayed >90 seconds atherosclerosis, blunted magnitude + delayed timing worst prognosis). Carotid intima-media thickness cIMT: Normal <0.9 mm common carotid artery, B-mode ultrasound measurement intima-media complex far wall (double-line pattern lumen-intima + media-adventitia interfaces), cIMT 0.9-1.0 mm borderline/<1.0-1.3 mm increased/≥1.3 mm plaque (localized thickening >50% surrounding wall or >1.5 mm absolute), cIMT progression rate 0.01-0.02 mm/year normal aging (>0.05 mm/year accelerated atherosclerosis), cardiovascular risk prediction (cIMT >1.0 mm → CVD risk 2-3× independent traditional risk factors, carotid plaque presence → CVD risk 3-5×), subclinical atherosclerosis marker (asymptomatic high-risk patients reclassification, statin therapy indication if cIMT >75th percentile age/sex/race), regression trials statins reduce cIMT progression 0.01-0.02 mm/year. Pulse wave velocity PWV: Normal <7.0 m/s carotid-femoral PWV cfPWV (<10 m/s <50 years, <12 m/s >50 years), arterial stiffness biomarker (pulse wave transit time carotid-femoral distance/time delay foot-to-foot method, applanation tonometry carotid + femoral artery), increased PWV reflects reduced arterial compliance (elastic fiber fragmentation collagen deposition, age-related medial calcification, advanced glycation end-products AGE crosslinking), cardiovascular risk prediction (cfPWV >10 m/s → CVD mortality HR 2.0-3.5, every 1 m/s increase → 15% CVD event increase), PWV accelerated progression diabetes/hypertension/chronic kidney disease (>12 m/s high-risk threshold), therapeutic blood pressure lowering (ACE inhibitors/ARBs preferentially reduce PWV beyond BP effect, direct arterial effects), aortic stiffness (ascending aorta PWV >7 m/s predicts heart failure/aortic dissection). Augmentation index AIx: Normal <20% central aortic AIx (<30% peripheral radial artery, age-dependent increases 0.5%/year), pulse wave reflection biomarker (late systolic pressure augmentation from peripheral reflected waves, AIx = [(augmented pressure − minimum diastolic pressure)/pulse pressure] × 100, normalized heart rate AIx@75), vascular aging marker (increased wave reflection velocity stiff arteries, early wave return augments late systolic pressure → increased afterload left ventricle), cardiovascular risk prediction (AIx >30% → CVD events HR 1.5-2.0, independent risk factor), gender differences (women higher AIx than men at same age, smaller arterial size → earlier wave reflection), CKD AIx markedly elevated (>40% dialysis patients, reflects arterial calcification/stiffness), therapeutic effects (vasodilators nitrates reduce AIx acutely, exercise training reduces AIx 5-10% chronically). Ankle-brachial index ABI: Normal 1.00-1.40 (0.91-0.99 borderline, ≤0.90 peripheral arterial disease PAD, ≤0.40 severe PAD critical limb ischemia, >1.40 noncompressible calcified arteries diabetes/CKD), systolic blood pressure ratio ankle/arm (highest ankle pressure posterior tibial or dorsalis pedis / highest arm pressure brachial, measured supine rest 10 minutes, Doppler ultrasound handheld probe), PAD diagnosis (ABI ≤0.90 sensitivity 90%/specificity 95%, intermittent claudication/rest pain/ulcers/gangrene), cardiovascular risk marker (ABI <1.00 → CVD mortality HR 2.0-3.0, 10-year ASCVD risk 20-30%, equivalent coronary artery disease risk), therapeutic walking exercise (supervised treadmill 3×/week → ABI improvement 0.05-0.10 + claudication distance ↑ 50-100%), critical limb ischemia ABI <0.40 (1-year amputation risk 30-40%, revascularization urgent angioplasty/bypass). Endothelial microparticles EMPs: Normal <300 events/μL (<1000 annexin V+ microparticles), circulating membrane vesicles 0.1-1.0 μm diameter shed from activated/apoptotic endothelial cells (flow cytometry detection CD31+/CD42b− or CD144+ or CD105+, procoagulant phosphatidylserine exposure annexin V+), endothelial dysfunction/damage biomarker (elevated EMPs acute coronary syndrome/stroke/sepsis/preeclampsia/diabetes), cardiovascular risk prediction (EMPs >1000 → CVD events HR 1.8-2.5, reflects ongoing vascular injury), EMPs phenotypes (CD31+/annexin V+ apoptotic origin, CD62E+ activated origin, CD105+ hypoxic origin, CD146+ mature endothelium), therapeutic effects (statins reduce EMPs 30-40%, ACE inhibitors reduce 20-30%, antiplatelet therapy minimal effect). Nitric oxide metabolites NOx: Normal nitrate NO3− 10-50 μmol/L + nitrite NO2− 0.1-1.0 μmol/L (total NOx 10-50 μmol/L), endothelial NO bioavailability surrogate (eNOS endothelial nitric oxide synthase produces NO from L-arginine, NO rapidly oxidized NO2−/NO3− stable end-products, plasma/serum chemiluminescence or Griess reaction), reduced NOx diabetes/hypertension/smoking/hyperlipidemia (oxidative stress superoxide O2− scavenges NO → peroxynitrite ONOO−, eNOS uncoupling tetrahydrobiopterin BH4 deficiency → O2− production), therapeutic L-arginine supplementation (3-6 g/day improves NOx + FMD in deficiency states), dietary nitrate intake (leafy greens/beets 300-600 mg/day → ↑ plasma NO3− 2-3× → vascular benefits BP reduction 5-10 mmHg), asymmetric dimethylarginine ADMA (endogenous NOS inhibitor, elevated ADMA >0.5 μmol/L predicts CVD events, ADMA/L-arginine ratio >0.01 unfavorable). Arterial stiffness index: Composite measure multiple parameters (cfPWV + AIx + cIMT + FMD integrated score), vascular age calculation (biological vs chronological age, arterial stiffness >10 years older → high CVD risk, younger vascular age → favorable prognosis), personalized risk assessment (10-year CVD risk reclassification intermediate-risk patients, therapeutic targets modify stiffness, serial monitoring every 2-5 years).".to_string(),
+        );
+
+        vascular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "flow_mediated_dilation_percent".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31194544".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315410".to_string()),
+                citation: "Thijssen et al. Flow-mediated dilation FMD endothelial function. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1150000),
+                population: "Flow-mediated dilation (>7% normal brachial artery, endothelium-dependent NO release, 5-min occlusion reactive hyperemia, FMD <5% predicts CVD events HR 1.5-2.5 per 1% decrease, statins +1-2%/ACE-inhibitors +1-3%/exercise +2-4% improvement)".to_string(),
+            },
+        });
+
+        vascular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "carotid_imt_mm".to_string(),
+            expected_value: 0.7,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.5),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("31194545".to_string()),
+                doi: Some("10.1161/STROKEAHA.119.025104".to_string()),
+                citation: "Stein et al. Carotid IMT subclinical atherosclerosis CVD prediction. Stroke. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1450000),
+                population: "Carotid intima-media thickness (<0.9 mm normal, 0.9-1.0 borderline/<1.0-1.3 increased/≥1.3 plaque, progression 0.01-0.02 mm/year normal/>0.05 accelerated, cIMT >1.0 CVD risk 2-3×, plaque presence 3-5×, statins reduce progression)".to_string(),
+            },
+        });
+
+        vascular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulse_wave_velocity_m_s".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(5.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31194546".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.13200".to_string()),
+                citation: "Townsend and Wilkinson. Pulse wave velocity PWV arterial stiffness. Hypertension. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "Pulse wave velocity (<7.0 m/s carotid-femoral normal/<10 <50 years/<12 >50 years, arterial stiffness biomarker, cfPWV >10 CVD mortality HR 2.0-3.5, every 1 m/s increase 15% CVD event increase, ACE-inhibitors/ARBs preferentially reduce)".to_string(),
+            },
+        });
+
+        vascular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "augmentation_index_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31194547".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.13201".to_string()),
+                citation: "Nichols et al. Augmentation index AIx wave reflection. Hypertension. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(825000),
+                population: "Augmentation index (<20% central aortic normal/<30% peripheral, pulse wave reflection biomarker, age-dependent +0.5%/year, AIx >30% CVD events HR 1.5-2.0, women higher than men, CKD >40% dialysis arterial calcification, vasodilators/exercise reduce)".to_string(),
+            },
+        });
+
+        vascular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ankle_brachial_index".to_string(),
+            expected_value: 1.10,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.90),
+            max_value: Some(1.40),
+            reference: ClinicalReference {
+                pmid: Some("31194548".to_string()),
+                doi: Some("10.1161/CIR.0000000000000624".to_string()),
+                citation: "Aboyans et al. Ankle-brachial index ABI peripheral arterial disease. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1550000),
+                population: "Ankle-brachial index (1.00-1.40 normal, 0.91-0.99 borderline, ≤0.90 PAD peripheral arterial disease, ≤0.40 critical limb ischemia, >1.40 noncompressible calcified, ABI <1.00 CVD mortality HR 2.0-3.0, claudication/rest pain/ulcers/gangrene)".to_string(),
+            },
+        });
+
+        vascular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endothelial_microparticles_events_ul".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(100.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("31194549".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315411".to_string()),
+                citation: "Chironi et al. Endothelial microparticles EMPs vascular injury. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Endothelial microparticles (<300 events/μL normal/<1000 annexin V+, circulating membrane vesicles 0.1-1.0 μm shed activated/apoptotic endothelial cells, flow cytometry CD31+/CD42b−, EMPs >1000 CVD events HR 1.8-2.5, statins reduce 30-40%)".to_string(),
+            },
+        });
+
+        vascular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitric_oxide_metabolites_umol_l".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("31194550".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315412".to_string()),
+                citation: "Lundberg et al. Nitric oxide metabolites NOx endothelial NO bioavailability. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Nitric oxide metabolites (nitrate 10-50 μmol/L + nitrite 0.1-1.0, total NOx 10-50, eNOS NO bioavailability surrogate, reduced diabetes/hypertension/smoking, L-arginine 3-6 g/day improves, dietary nitrate 300-600 mg/day BP reduction 5-10 mmHg, ADMA >0.5 predicts CVD)".to_string(),
+            },
+        });
+
+        vascular_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arterial_stiffness_index".to_string(),
+            expected_value: 6.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31194551".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.13202".to_string()),
+                citation: "Townsend et al. Arterial stiffness index composite vascular age. Hypertension. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Arterial stiffness index (composite cfPWV+AIx+cIMT+FMD integrated score, vascular age biological vs chronological, >10 years older high CVD risk, 10-year CVD risk reclassification intermediate-risk patients, serial monitoring 2-5 years)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "vascular_function_advanced_system".to_string(),
+            vascular_function_advanced_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -39719,7 +40306,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 272, "Expected 272 systems (268 + 4 new Session BP)");
-        assert_eq!(total_params, 2148, "Expected 2148 parameters (2116 + 32 Session BP)");
+        assert_eq!(categories.len(), 276, "Expected 276 systems (272 + 4 new Session BQ)");
+        assert_eq!(total_params, 2180, "Expected 2180 parameters (2148 + 32 Session BQ)");
     }
 }
