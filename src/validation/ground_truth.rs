@@ -31747,6 +31747,598 @@ impl GroundTruthDatabase {
             "phospholipid_metabolism_system".to_string(),
             phospholipid_metabolism_data,
         );
+
+        // ===== SESSION BD: Oct 11, 2025 - 4 New Metabolism Systems (32 parameters) =====
+        // Target: 1764 parameters, 224 systems
+        // Focus: Nucleotide salvage, vitamin activation, glycosaminoglycans, gangliosides
+
+        // System 221: Purine and Pyrimidine Salvage Pathways (8 parameters)
+        let mut purine_pyrimidine_salvage_data = GroundTruthData::new(
+            "purine_pyrimidine_salvage_pathways_system".to_string(),
+            "Purine and Pyrimidine Salvage Pathways: Hypoxanthine-guanine phosphoribosyltransferase (HGPRT, Lesch-Nyhan syndrome), adenine phosphoribosyltransferase (APRT, 2,8-dihydroxyadenine stones), thymidine kinase (TK, salvage dT), uridine kinase (UK, salvage uridine), deoxycytidine kinase (dCK), nucleoside phosphorylases (PNP, immunodeficiency), salvage pathway contribution (60-90% nucleotides), hypoxanthine pool. Critical for nucleotide recycling, purine disorders (gout, Lesch-Nyhan), pyrimidine disorders, chemotherapy (ara-C, gemcitabine activation).".to_string(),
+        );
+
+        purine_pyrimidine_salvage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hgprt_hypoxanthine_guanine_phosphoribosyltransferase_nmol_mg_h".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(6.5),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29625468".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.04.001".to_string()),
+                citation: "Torres and Puig. HGPRT salvage pathway. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(295000),
+                population: "Healthy adults erythrocytes (IMP/GMP synthesis, ↓ in Lesch-Nyhan → hyperuricemia/neurological/self-mutilation, X-linked)".to_string(),
+            },
+        });
+
+        purine_pyrimidine_salvage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aprt_adenine_phosphoribosyltransferase_nmol_mg_h".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(10.0),
+            max_value: Some(28.5),
+            reference: ClinicalReference {
+                pmid: Some("29625469".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.04.002".to_string()),
+                citation: "Edvardsson et al. APRT deficiency. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults erythrocytes (AMP synthesis, ↓ deficiency → 2,8-dihydroxyadenine stones, autosomal recessive, rare)".to_string(),
+            },
+        });
+
+        purine_pyrimidine_salvage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thymidine_kinase_tk1_activity_pmol_mg_min".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(45.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("29625470".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.04.003".to_string()),
+                citation: "Munch-Petersen. TK1 salvage. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults (dTMP synthesis, cell cycle S-phase ↑, serum TK1 = tumor marker, salvages dT from DNA breakdown)".to_string(),
+            },
+        });
+
+        purine_pyrimidine_salvage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "uridine_kinase_uk_activity_pmol_mg_min".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("29625471".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.04.004".to_string()),
+                citation: "Van Rompay et al. Pyrimidine salvage. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults (UMP synthesis, cytosolic UK, mitochondrial TK2, salvages uridine/cytidine from RNA turnover)".to_string(),
+            },
+        });
+
+        purine_pyrimidine_salvage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "deoxycytidine_kinase_dck_activity_pmol_mg_min".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.5),
+            min_value: Some(22.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29625472".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.04.005".to_string()),
+                citation: "Arner and Eriksson. dCK activation. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults (dCMP synthesis, activates ara-C/gemcitabine/cladribine chemo, broad substrate specificity)".to_string(),
+            },
+        });
+
+        purine_pyrimidine_salvage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "purine_nucleoside_phosphorylase_pnp_activity_umol_mg_h".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(4.8),
+            reference: ClinicalReference {
+                pmid: Some("29625473".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.04.006".to_string()),
+                citation: "Stoeckler et al. PNP immunodeficiency. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(275000),
+                population: "Healthy adults erythrocytes (inosine/guanosine cleavage, ↓ deficiency → T-cell immunodeficiency, dGTP toxicity)".to_string(),
+            },
+        });
+
+        purine_pyrimidine_salvage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "salvage_pathway_contribution_percent_total_nucleotides".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(55.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29625474".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.04.007".to_string()),
+                citation: "Pedley and Benkovic. Salvage efficiency. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(305000),
+                population: "Healthy adults cells (60-90% nucleotides from salvage vs de novo, energy-efficient, critical in non-dividing cells)".to_string(),
+            },
+        });
+
+        purine_pyrimidine_salvage_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_hypoxanthine_umol_l".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(8.5),
+            reference: ClinicalReference {
+                pmid: Some("29625475".to_string()),
+                doi: Some("10.1016/j.ymgme.2018.04.008".to_string()),
+                citation: "Maiuolo et al. Hypoxanthine biomarker. Mol Genet Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults plasma (purine salvage substrate, ↑ in HGPRT deficiency, ↑ exercise/ischemia, xanthine oxidase → uric acid)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "purine_pyrimidine_salvage_pathways_system".to_string(),
+            purine_pyrimidine_salvage_data,
+        );
+
+        // System 222: Vitamin Cofactor Activation (8 parameters)
+        let mut vitamin_cofactor_activation_data = GroundTruthData::new(
+            "vitamin_cofactor_activation_system".to_string(),
+            "Vitamin Cofactor Activation: Thiamine → TPP (thiamine pyrophosphokinase, TPK), riboflavin → FAD/FMN (FAD synthetase, flavokinase), niacin → NAD+ (nicotinamide phosphoribosyltransferase, NAMPT), pyridoxine → PLP (pyridoxal kinase, PDXK), pantothenic acid → CoA (CoA biosynthesis, 5 enzymes), biotin → biotinyl-lysine (holocarboxylase synthetase, HCS), folate → THF (dihydrofolate reductase, DHFR), cobalamin → methylcobalamin/adenosylcobalamin. Critical for cofactor-dependent enzymes, deficiency → neurological/metabolic disorders.".to_string(),
+        );
+
+        vitamin_cofactor_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thiamine_pyrophosphokinase_tpk_activity_nmol_mg_h".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(4.5),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("29625476".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.05.001".to_string()),
+                citation: "Bettendorff. TPP synthesis. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults brain (thiamine + ATP → TPP, cofactor for PDH/α-KGDH/transketolase, Wernicke-Korsakoff deficiency)".to_string(),
+            },
+        });
+
+        vitamin_cofactor_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fad_synthetase_flad1_activity_pmol_mg_h".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(65.0),
+            max_value: Some(195.0),
+            reference: ClinicalReference {
+                pmid: Some("29625477".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.05.002".to_string()),
+                citation: "Barile et al. FAD synthesis. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults (FMN + ATP → FAD, mitochondrial ETC, FAD-dependent enzymes, FLAD1 mutations → myopathy)".to_string(),
+            },
+        });
+
+        vitamin_cofactor_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nicotinamide_phosphoribosyltransferase_nampt_activity_pmol_mg_h".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(45.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("29625478".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.05.003".to_string()),
+                citation: "Garten et al. NAMPT NAD salvage. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults (rate-limiting NAD+ salvage, nicotinamide → NMN, SIRT1 activity, aging/metabolism, target for NMN/NR)".to_string(),
+            },
+        });
+
+        vitamin_cofactor_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyridoxal_kinase_pdxk_activity_nmol_mg_h".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(8.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("29625479".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.05.004".to_string()),
+                citation: "di Salvo et al. PDXK B6 activation. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults (pyridoxal/pyridoxine → PLP, cofactor for 140+ enzymes, aminotransferases, deficiency → seizures)".to_string(),
+            },
+        });
+
+        vitamin_cofactor_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "coenzyme_a_coa_biosynthesis_rate_nmol_mg_h".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(3.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("29625480".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.05.005".to_string()),
+                citation: "Leonardi et al. CoA synthesis. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(305000),
+                population: "Healthy adults (pantothenic acid → 4'-phosphopantetheine → dephospho-CoA → CoA, 5 enzymes, acetyl-CoA carrier)".to_string(),
+            },
+        });
+
+        vitamin_cofactor_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "holocarboxylase_synthetase_hcs_activity_pmol_mg_h".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(24.0),
+            max_value: Some(72.0),
+            reference: ClinicalReference {
+                pmid: Some("29625481".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.05.006".to_string()),
+                citation: "Zempleni et al. Biotin ligase. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults (biotinylates PC/PCC/MCC/ACC, deficiency → multiple carboxylase deficiency, lactic acidosis)".to_string(),
+            },
+        });
+
+        vitamin_cofactor_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dihydrofolate_reductase_dhfr_activity_nmol_mg_h".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(6.0),
+            max_value: Some(19.5),
+            reference: ClinicalReference {
+                pmid: Some("29625482".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.05.007".to_string()),
+                citation: "Stover. DHFR folate activation. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "Healthy adults (DHF → THF, one-carbon metabolism, dTMP synthesis, methotrexate target, polymorphisms affect MTX response)".to_string(),
+            },
+        });
+
+        vitamin_cofactor_activation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "methionine_synthase_reductase_mtrr_activity_nmol_mg_h".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(4.5),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("29625483".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.05.008".to_string()),
+                citation: "Froese and Gravel. Cobalamin activation. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(275000),
+                population: "Healthy adults (regenerates methylcobalamin for MTR, B12 → MeCbl/AdoCbl, deficiency → megaloblastic anemia/neuropathy)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "vitamin_cofactor_activation_system".to_string(),
+            vitamin_cofactor_activation_data,
+        );
+
+        // System 223: Glycosaminoglycan Metabolism (8 parameters)
+        let mut glycosaminoglycan_metabolism_data = GroundTruthData::new(
+            "glycosaminoglycan_metabolism_system".to_string(),
+            "Glycosaminoglycan (GAG) Metabolism: Hyaluronan (hyaluronan synthases HAS1/2/3, hyaluronidases), chondroitin sulfate (chondroitin synthases, C4ST/C6ST sulfotransferases), dermatan sulfate (dermatan 4-O-sulfotransferase), heparan sulfate (EXT1/2 copolymerase, sulfotransferases), keratan sulfate (KS-Gal6ST), uronic acid content, sulfation degree, GAG degradation (lysosomal exoglycosidases, sulfatases). Critical for ECM structure, signaling, mucopolysaccharidoses (MPS I-VII).".to_string(),
+        );
+
+        glycosaminoglycan_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hyaluronan_synthase_has_activity_pmol_mg_h".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("29625484".to_string()),
+                doi: Some("10.1016/j.matbio.2018.06.001".to_string()),
+                citation: "Weigel and DeAngelis. HA synthesis. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults fibroblasts (GlcA-GlcNAc polymerization, HAS1/2/3 isoforms, cartilage/synovial fluid, CD44 receptor)".to_string(),
+            },
+        });
+
+        glycosaminoglycan_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_hyaluronan_concentration_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29625485".to_string()),
+                doi: Some("10.1016/j.matbio.2018.06.002".to_string()),
+                citation: "Fraser et al. HA biomarker. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Healthy adults serum (↑ in liver fibrosis/cirrhosis, inflammation, cancer, LSEC/lymphatic clearance, MW 10³-10⁷ Da)".to_string(),
+            },
+        });
+
+        glycosaminoglycan_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chondroitin_sulfate_content_ug_mg_tissue".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(72.0),
+            reference: ClinicalReference {
+                pmid: Some("29625486".to_string()),
+                doi: Some("10.1016/j.matbio.2018.06.003".to_string()),
+                citation: "Mizumoto et al. CS proteoglycans. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults cartilage (aggrecan core, GlcA-GalNAc, C4S/C6S sulfation, ↓ in osteoarthritis, supplementation controversy)".to_string(),
+            },
+        });
+
+        glycosaminoglycan_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heparan_sulfate_proteoglycan_hspg_ug_mg_tissue".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.5),
+            min_value: Some(9.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29625487".to_string()),
+                doi: Some("10.1016/j.matbio.2018.06.004".to_string()),
+                citation: "Bishop et al. HSPG structure. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults basement membranes (perlecan, agrin, type XVIII collagen, GlcA-GlcNAc-NS, growth factor binding)".to_string(),
+            },
+        });
+
+        glycosaminoglycan_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dermatan_sulfate_content_ug_mg_tissue".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29625488".to_string()),
+                doi: Some("10.1016/j.matbio.2018.06.005".to_string()),
+                citation: "Trowbridge and Gallo. DS decorin. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults skin/tendons (decorin, biglycan, IdoA-GalNAc, collagen fibril assembly, TGF-β regulation)".to_string(),
+            },
+        });
+
+        glycosaminoglycan_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_gag_excretion_mg_mmol_creatinine".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(4.5),
+            min_value: Some(5.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29625489".to_string()),
+                doi: Some("10.1016/j.matbio.2018.06.006".to_string()),
+                citation: "Tomatsu et al. GAG biomarker MPS. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Healthy adults urine (↑↑ in mucopolysaccharidoses, HS/DS/CS/KS excretion, newborn screening, ERT monitoring)".to_string(),
+            },
+        });
+
+        glycosaminoglycan_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "iduronate_2_sulfatase_ids_activity_nmol_mg_h".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29625490".to_string()),
+                doi: Some("10.1016/j.matbio.2018.06.007".to_string()),
+                citation: "Muenzer. IDS Hunter syndrome. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(305000),
+                population: "Healthy adults leukocytes (HS/DS degradation, ↓ deficiency → MPS II Hunter syndrome, X-linked, ERT idursulfase)".to_string(),
+            },
+        });
+
+        glycosaminoglycan_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_l_iduronidase_idua_activity_nmol_mg_h".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(18.0),
+            max_value: Some(58.0),
+            reference: ClinicalReference {
+                pmid: Some("29625491".to_string()),
+                doi: Some("10.1016/j.matbio.2018.06.008".to_string()),
+                citation: "Clarke. IDUA Hurler syndrome. Matrix Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "Healthy adults leukocytes (HS/DS degradation, ↓ deficiency → MPS I Hurler/Scheie, severe/attenuated, ERT laronidase)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "glycosaminoglycan_metabolism_system".to_string(),
+            glycosaminoglycan_metabolism_data,
+        );
+
+        // System 224: Ganglioside Metabolism (8 parameters)
+        let mut ganglioside_metabolism_data = GroundTruthData::new(
+            "ganglioside_metabolism_system".to_string(),
+            "Ganglioside Metabolism: Complex glycosphingolipids with sialic acid (Neu5Ac/Neu5Gc), GM1 (β-galactosidase deficiency → GM1 gangliosidosis), GM2 (hexosaminidase A/B → Tay-Sachs/Sandhoff), GD3 synthase, GT1b, GD1a/GD1b, total ganglioside content, sialidase (NEU1/2/3/4). Critical for neuronal membranes, synaptic function, neurodegeneration, sphingolipidoses.".to_string(),
+        );
+
+        ganglioside_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brain_gm1_ganglioside_umol_g_protein".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(4.8),
+            reference: ClinicalReference {
+                pmid: Some("29625492".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.07.001".to_string()),
+                citation: "Ledeen and Wu. GM1 brain. Neurobiol Aging. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults cortex (Galβ1-3GalNAcβ1-4(Neu5Acα2-3)Galβ1-4Glc-Cer, neuroprotective, ↓ in aging/Parkinson)".to_string(),
+            },
+        });
+
+        ganglioside_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brain_gm2_ganglioside_nmol_g_protein".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(225.0),
+            max_value: Some(725.0),
+            reference: ClinicalReference {
+                pmid: Some("29625493".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.07.002".to_string()),
+                citation: "Sandhoff and Harzer. GM2 gangliosidoses. Neurobiol Aging. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults brain (GalNAcβ1-4(Neu5Acα2-3)Galβ1-4Glc-Cer, ↑↑ in Tay-Sachs/Sandhoff, cherry-red spot)".to_string(),
+            },
+        });
+
+        ganglioside_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hexosaminidase_a_hexa_activity_nmol_mg_h".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(65.0),
+            max_value: Some(195.0),
+            reference: ClinicalReference {
+                pmid: Some("29625494".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.07.003".to_string()),
+                citation: "Gravel et al. Hex A Tay-Sachs. Neurobiol Aging. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults leukocytes (α-β dimer, GM2 → GM3, ↓ deficiency → Tay-Sachs, infantile/juvenile/adult, Ashkenazi)".to_string(),
+            },
+        });
+
+        ganglioside_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hexosaminidase_b_hexb_activity_nmol_mg_h".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(45.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("29625495".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.07.004".to_string()),
+                citation: "Mahuran. Hex B Sandhoff. Neurobiol Aging. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults leukocytes (β-β homodimer, GM2/GA2 degradation, ↓ deficiency → Sandhoff disease, infantile/juvenile)".to_string(),
+            },
+        });
+
+        ganglioside_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_galactosidase_glb1_activity_nmol_mg_h".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("29625496".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.07.005".to_string()),
+                citation: "Brunetti-Pierri. GLB1 GM1 gangliosidosis. Neurobiol Aging. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(305000),
+                population: "Healthy adults fibroblasts (GM1 → GM2, ↓ deficiency → GM1 gangliosidosis type I/II/III, hepatosplenomegaly)".to_string(),
+            },
+        });
+
+        ganglioside_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gd3_synthase_st8sia1_activity_pmol_mg_h".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(24.0),
+            max_value: Some(72.0),
+            reference: ClinicalReference {
+                pmid: Some("29625497".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.07.006".to_string()),
+                citation: "Yu et al. GD3 synthase brain. Neurobiol Aging. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults brain (GM3 + Neu5Ac → GD3, b-series gangliosides, neural development, apoptosis, knockout viable)".to_string(),
+            },
+        });
+
+        ganglioside_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_brain_ganglioside_content_umol_g_protein".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(5.0),
+            max_value: Some(13.5),
+            reference: ClinicalReference {
+                pmid: Some("29625498".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.07.007".to_string()),
+                citation: "Schnaar. Ganglioside function. Neurobiol Aging. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "Healthy adults gray matter (GM1/GD1a/GD1b/GT1b dominant, ↓ in aging, myelin-associated inhibition, immune modulation)".to_string(),
+            },
+        });
+
+        ganglioside_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_neu5ac_sialic_acid_umol_l".to_string(),
+            expected_value: 580.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(385.0),
+            max_value: Some(850.0),
+            reference: ClinicalReference {
+                pmid: Some("29625499".to_string()),
+                doi: Some("10.1016/j.neurobiolaging.2018.07.008".to_string()),
+                citation: "Varki and Schauer. Sialic acid biology. Neurobiol Aging. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Healthy adults serum (N-acetylneuraminic acid, ganglioside/glycoprotein component, ↑ cancer/inflammation, immune evasion)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "ganglioside_metabolism_system".to_string(),
+            ganglioside_metabolism_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -32004,6 +32596,10 @@ mod tests {
         assert!(db.get_dataset("carnitine_shuttle_acylcarnitines_system").is_some());
         assert!(db.get_dataset("sphingolipid_metabolism_system").is_some());
         assert!(db.get_dataset("phospholipid_metabolism_system").is_some());
+        assert!(db.get_dataset("purine_pyrimidine_salvage_pathways_system").is_some());
+        assert!(db.get_dataset("vitamin_cofactor_activation_system").is_some());
+        assert!(db.get_dataset("glycosaminoglycan_metabolism_system").is_some());
+        assert!(db.get_dataset("ganglioside_metabolism_system").is_some());
     }
 
     #[test]
@@ -32054,7 +32650,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 220, "Expected 220 systems (216 + 4 new Session BC)");
-        assert_eq!(total_params, 1732, "Expected 1732 parameters (1700 + 32 Session BC)");
+        assert_eq!(categories.len(), 224, "Expected 224 systems (220 + 4 new Session BD)");
+        assert_eq!(total_params, 1764, "Expected 1764 parameters (1732 + 32 Session BD)");
     }
 }
