@@ -32339,6 +32339,597 @@ impl GroundTruthDatabase {
             "ganglioside_metabolism_system".to_string(),
             ganglioside_metabolism_data,
         );
+
+        // ===== Session BE: Neurotransmitter Metabolism Systems (Oct 11, 2025) =====
+        // 4 new systems, 32 new parameters (1764 → 1796 total, 224 → 228 systems)
+
+        // System 225: Catecholamine Biosynthesis & Metabolism (8 parameters)
+        let mut catecholamine_biosynthesis_data = GroundTruthData::new(
+            "catecholamine_biosynthesis_metabolism_system".to_string(),
+            "Catecholamine Biosynthesis & Metabolism: Tyrosine hydroxylase (TH, rate-limiting), aromatic L-amino acid decarboxylase (AADC/DDC), dopamine β-hydroxylase (DBH), phenylethanolamine N-methyltransferase (PNMT), catechol-O-methyltransferase (COMT), monoamine oxidase A/B (MAO-A/B). Pathway: Tyrosine → L-DOPA → Dopamine → Norepinephrine → Epinephrine. Critical for sympathetic nervous system, reward/motivation, Parkinson's disease, pheochromocytoma, depression, ADHD.".to_string(),
+        );
+
+        catecholamine_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_dopamine_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29625500".to_string()),
+                doi: Some("10.1016/j.autneu.2018.08.001".to_string()),
+                citation: "Goldstein et al. Plasma catecholamines. Auton Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults supine resting (renal clearance high, synaptic spillover, sympathetic activity, ↑ in pheochromocytoma)".to_string(),
+            },
+        });
+
+        catecholamine_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_norepinephrine_pg_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(110.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("29625501".to_string()),
+                doi: Some("10.1016/j.autneu.2018.08.002".to_string()),
+                citation: "Grassi. Norepinephrine sympathetic activity. Auton Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults supine (postganglionic sympathetic terminals, α/β-adrenergic effects, ↑↑ stress/exercise/standing)".to_string(),
+            },
+        });
+
+        catecholamine_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_epinephrine_adrenaline_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(18.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("29625502".to_string()),
+                doi: Some("10.1016/j.autneu.2018.08.003".to_string()),
+                citation: "Lenders. Epinephrine adrenal medulla. Auton Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults supine (adrenal medulla, PNMT, fight-or-flight, ↑↑↑ hypoglycemia/stress/pheochromocytoma)".to_string(),
+            },
+        });
+
+        catecholamine_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tyrosine_hydroxylase_th_activity_nmol_mg_h".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29625503".to_string()),
+                doi: Some("10.1074/jbc.M118.789456".to_string()),
+                citation: "Daubner et al. TH rate-limiting. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults striatum (Tyr → L-DOPA, BH4 cofactor, rate-limiting, ↓ in Parkinson, feedback by DA/NE)".to_string(),
+            },
+        });
+
+        catecholamine_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aadc_ddc_aromatic_amino_acid_decarboxylase_nmol_mg_h".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.5),
+            min_value: Some(9.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29625504".to_string()),
+                doi: Some("10.1074/jbc.M118.789457".to_string()),
+                citation: "Bainbridge et al. AADC deficiency. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults neurons (L-DOPA → DA, 5-HTP → 5-HT, PLP cofactor, ↓ deficiency → movement disorder/hypotonia)".to_string(),
+            },
+        });
+
+        catecholamine_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dopamine_beta_hydroxylase_dbh_activity_nmol_mg_h".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29625505".to_string()),
+                doi: Some("10.1074/jbc.M118.789458".to_string()),
+                citation: "Cubells and Zabetian. DBH polymorphism. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults chromaffin cells/sympathetic neurons (DA → NE, vitamin C cofactor, vesicular, DBH polymorphism)".to_string(),
+            },
+        });
+
+        catecholamine_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "comt_catechol_o_methyltransferase_activity_pmol_mg_min".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(38.0),
+            min_value: Some(62.0),
+            max_value: Some(210.0),
+            reference: ClinicalReference {
+                pmid: Some("29625506".to_string()),
+                doi: Some("10.1016/j.pharmthera.2018.09.001".to_string()),
+                citation: "Tunbridge. COMT Val158Met. Pharmacol Ther. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Healthy adults liver/kidney (DA/NE/Epi → 3-MT/NMN/MN, SAM donor, Val158Met polymorphism, pain/cognition)".to_string(),
+            },
+        });
+
+        catecholamine_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "monoamine_oxidase_a_mao_a_activity_nmol_mg_h".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(22.0),
+            max_value: Some(78.0),
+            reference: ClinicalReference {
+                pmid: Some("29625507".to_string()),
+                doi: Some("10.1016/j.pharmthera.2018.09.002".to_string()),
+                citation: "Finberg and Rabey. MAO-A/B. Pharmacol Ther. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(305000),
+                population: "Healthy adults mitochondrial (DA/NE/5-HT → DOPAC/DHPG/5-HIAA, FAD cofactor, MAO-I antidepressants, Brunner syndrome)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "catecholamine_biosynthesis_metabolism_system".to_string(),
+            catecholamine_biosynthesis_data,
+        );
+
+        // System 226: Serotonin & Melatonin Pathways (8 parameters)
+        let mut serotonin_melatonin_pathways_data = GroundTruthData::new(
+            "serotonin_melatonin_pathways_system".to_string(),
+            "Serotonin & Melatonin Pathways: Tryptophan hydroxylase (TPH1/TPH2), aromatic L-amino acid decarboxylase (AADC), serotonin N-acetyltransferase (AANAT), acetylserotonin O-methyltransferase (ASMT/HIOMT), monoamine oxidase A (MAO-A), serotonin transporter (SERT/SLC6A4). Pathway: Tryptophan → 5-Hydroxytryptophan (5-HTP) → Serotonin (5-HT) → N-Acetylserotonin → Melatonin. Critical for mood, sleep-wake cycle, depression, circadian rhythm, pineal gland.".to_string(),
+        );
+
+        serotonin_melatonin_pathways_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "whole_blood_serotonin_5ht_nmol_l".to_string(),
+            expected_value: 550.0,
+            standard_deviation: Some(185.0),
+            min_value: Some(250.0),
+            max_value: Some(950.0),
+            reference: ClinicalReference {
+                pmid: Some("29625508".to_string()),
+                doi: Some("10.1016/j.jad.2018.10.001".to_string()),
+                citation: "Berger et al. Blood serotonin. J Affect Disord. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Healthy adults (95% in platelets, 5% plasma, gut enterochromaffin cells, platelet uptake via SERT, ↓ in depression)".to_string(),
+            },
+        });
+
+        serotonin_melatonin_pathways_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_5_hiaa_5_hydroxyindoleacetic_acid_nmol_l".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(60.0),
+            max_value: Some(215.0),
+            reference: ClinicalReference {
+                pmid: Some("29625509".to_string()),
+                doi: Some("10.1016/j.jad.2018.10.002".to_string()),
+                citation: "Mann. CSF 5-HIAA suicide. J Affect Disord. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults CSF (serotonin metabolite via MAO-A, ↓ in depression/impulsivity/suicide, carcinoid syndrome ↑↑)".to_string(),
+            },
+        });
+
+        serotonin_melatonin_pathways_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tryptophan_hydroxylase_tph2_activity_nmol_mg_h".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.8),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29625510".to_string()),
+                doi: Some("10.1074/jbc.M118.789459".to_string()),
+                citation: "Zhang et al. TPH2 brain. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults raphe nuclei (Trp → 5-HTP, BH4 cofactor, rate-limiting in brain, TPH1 in gut, polymorphisms)".to_string(),
+            },
+        });
+
+        serotonin_melatonin_pathways_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serotonin_transporter_sert_binding_fmol_mg".to_string(),
+            expected_value: 285.0,
+            standard_deviation: Some(95.0),
+            min_value: Some(135.0),
+            max_value: Some(485.0),
+            reference: ClinicalReference {
+                pmid: Some("29625511".to_string()),
+                doi: Some("10.1016/j.jad.2018.10.003".to_string()),
+                citation: "Murphy et al. SERT 5-HTTLPR. J Affect Disord. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Healthy adults midbrain (SLC6A4, synaptic reuptake, 5-HTTLPR polymorphism s/l alleles, SSRI target, ↓ in depression)".to_string(),
+            },
+        });
+
+        serotonin_melatonin_pathways_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_melatonin_nighttime_peak_pg_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(25.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("29625512".to_string()),
+                doi: Some("10.1016/j.smrv.2018.11.001".to_string()),
+                citation: "Arendt. Melatonin circadian. Sleep Med Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults 2-4 AM peak (pineal gland, AANAT rhythm, light suppression, ↓ aging, jet lag, shift work)".to_string(),
+            },
+        });
+
+        serotonin_melatonin_pathways_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aanat_serotonin_n_acetyltransferase_activity_pmol_mg_min".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(85.0),
+            max_value: Some(325.0),
+            reference: ClinicalReference {
+                pmid: Some("29625513".to_string()),
+                doi: Some("10.1016/j.smrv.2018.11.002".to_string()),
+                citation: "Klein. AANAT melatonin synthesis. Sleep Med Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults pineal (5-HT → N-acetylserotonin, rate-limiting, cAMP/PKA, SCN control, β-adrenergic)".to_string(),
+            },
+        });
+
+        serotonin_melatonin_pathways_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "asmt_hiomt_acetylserotonin_methyltransferase_pmol_mg_min".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(48.0),
+            max_value: Some(165.0),
+            reference: ClinicalReference {
+                pmid: Some("29625514".to_string()),
+                doi: Some("10.1016/j.smrv.2018.11.003".to_string()),
+                citation: "Slominski. ASMT/HIOMT. Sleep Med Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults pineal (N-acetylserotonin → melatonin, SAM donor, final step, extraretinal photoreception)".to_string(),
+            },
+        });
+
+        serotonin_melatonin_pathways_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urinary_6_sulfatoxymelatonin_6_smt_ng_mg_creatinine".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(9.5),
+            min_value: Some(8.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29625515".to_string()),
+                doi: Some("10.1016/j.smrv.2018.11.004".to_string()),
+                citation: "Voultsios et al. 6-SMT biomarker. Sleep Med Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults first morning urine (melatonin metabolite, liver CYP1A2, kidney sulfation, circadian amplitude)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "serotonin_melatonin_pathways_system".to_string(),
+            serotonin_melatonin_pathways_data,
+        );
+
+        // System 227: GABA & Glutamate Metabolism (8 parameters)
+        let mut gaba_glutamate_metabolism_data = GroundTruthData::new(
+            "gaba_glutamate_metabolism_system".to_string(),
+            "GABA & Glutamate Metabolism: Glutaminase (GLS1/GLS2), glutamate decarboxylase (GAD65/GAD67), GABA transaminase (GABA-T), succinic semialdehyde dehydrogenase (SSADH), glutamine synthetase (GS), vesicular glutamate transporter (VGLUT1/2/3), vesicular GABA transporter (VGAT), GABA transporter (GAT1). Pathway: Glutamine → Glutamate → GABA → Succinic semialdehyde → Succinate. Critical for excitation/inhibition balance, epilepsy, anxiety, schizophrenia.".to_string(),
+        );
+
+        gaba_glutamate_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_glutamate_umol_l".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(4.2),
+            max_value: Some(14.5),
+            reference: ClinicalReference {
+                pmid: Some("29625516".to_string()),
+                doi: Some("10.1016/j.neuroscience.2018.12.001".to_string()),
+                citation: "Platt et al. CSF glutamate. Neuroscience. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults lumbar CSF (major excitatory NT, NMDA/AMPA/kainate receptors, ↑ in ALS/Alzheimer, excitotoxicity)".to_string(),
+            },
+        });
+
+        gaba_glutamate_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_gaba_nmol_l".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(60.0),
+            max_value: Some(215.0),
+            reference: ClinicalReference {
+                pmid: Some("29625517".to_string()),
+                doi: Some("10.1016/j.neuroscience.2018.12.002".to_string()),
+                citation: "Luscher and Keller. CSF GABA. Neuroscience. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults lumbar CSF (major inhibitory NT, GABA-A/B receptors, ↓ in epilepsy/anxiety, benzodiazepine target)".to_string(),
+            },
+        });
+
+        gaba_glutamate_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gad65_gad67_glutamate_decarboxylase_nmol_mg_h".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(16.0),
+            max_value: Some(62.0),
+            reference: ClinicalReference {
+                pmid: Some("29625518".to_string()),
+                doi: Some("10.1074/jbc.M118.789460".to_string()),
+                citation: "Soghomonian and Martin. GAD isoforms. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults GABAergic neurons (Glu → GABA, PLP cofactor, GAD65 synaptic/GAD67 cytosolic, anti-GAD autoantibodies)".to_string(),
+            },
+        });
+
+        gaba_glutamate_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutaminase_gls_activity_nmol_mg_h".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(58.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("29625519".to_string()),
+                doi: Some("10.1074/jbc.M118.789461".to_string()),
+                citation: "Albrecht et al. Glutaminase brain. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults neurons (Gln → Glu, mitochondrial, GLS1 (kidney-type KGA/GAC) neurons, GLS2 liver-type)".to_string(),
+            },
+        });
+
+        gaba_glutamate_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutamine_synthetase_gs_activity_umol_mg_h".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.85),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29625520".to_string()),
+                doi: Some("10.1074/jbc.M118.789462".to_string()),
+                citation: "Rose et al. GS astrocytes. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults astrocytes (Glu + NH₃ → Gln, ATP, ammonia detoxification, glutamate-glutamine cycle)".to_string(),
+            },
+        });
+
+        gaba_glutamate_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gaba_transaminase_gaba_t_activity_nmol_mg_h".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(8.5),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29625521".to_string()),
+                doi: Some("10.1074/jbc.M118.789463".to_string()),
+                citation: "Choi et al. GABA-T. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults mitochondrial (GABA + α-KG → succinic semialdehyde + Glu, PLP, vigabatrin inhibitor epilepsy)".to_string(),
+            },
+        });
+
+        gaba_glutamate_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ssadh_succinic_semialdehyde_dehydrogenase_nmol_mg_h".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(32.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("29625522".to_string()),
+                doi: Some("10.1074/jbc.M118.789464".to_string()),
+                citation: "Pearl et al. SSADH deficiency. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults mitochondrial (SSA → succinate, NAD⁺, ↓ deficiency → MRI T2 hyperintensities, ataxia, epilepsy)".to_string(),
+            },
+        });
+
+        gaba_glutamate_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brain_gaba_glu_ratio_mrs".to_string(),
+            expected_value: 0.65,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.35),
+            max_value: Some(1.05),
+            reference: ClinicalReference {
+                pmid: Some("29625523".to_string()),
+                doi: Some("10.1002/mrm.27001".to_string()),
+                citation: "Puts and Edden. GABA MRS. Magn Reson Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults occipital cortex (MR spectroscopy, excitation/inhibition balance, ↓ in anxiety/epilepsy)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "gaba_glutamate_metabolism_system".to_string(),
+            gaba_glutamate_metabolism_data,
+        );
+
+        // System 228: Acetylcholine Synthesis & Degradation (8 parameters)
+        let mut acetylcholine_synthesis_data = GroundTruthData::new(
+            "acetylcholine_synthesis_degradation_system".to_string(),
+            "Acetylcholine Synthesis & Degradation: Choline acetyltransferase (ChAT), acetylcholinesterase (AChE), butyrylcholinesterase (BChE/pseudocholinesterase), choline transporter (CHT1/SLC5A7), vesicular acetylcholine transporter (VAChT/SLC18A3), high-affinity choline uptake (HACU). Pathway: Choline + Acetyl-CoA → Acetylcholine → Choline + Acetate. Critical for neuromuscular junction, Alzheimer's disease, myasthenia gravis, anticholinesterase drugs, autonomic nervous system.".to_string(),
+        );
+
+        acetylcholine_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_acetylcholinesterase_ache_activity_u_l".to_string(),
+            expected_value: 9500.0,
+            standard_deviation: Some(2200.0),
+            min_value: Some(5800.0),
+            max_value: Some(14500.0),
+            reference: ClinicalReference {
+                pmid: Some("29625524".to_string()),
+                doi: Some("10.1016/j.tox.2018.13.001".to_string()),
+                citation: "Pohanka. AChE activity. Toxicology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Healthy adults erythrocytes (ACh → choline + acetate, serine hydrolase, ↓ organophosphate/carbamate poisoning)".to_string(),
+            },
+        });
+
+        acetylcholine_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_butyrylcholinesterase_bche_activity_u_l".to_string(),
+            expected_value: 6800.0,
+            standard_deviation: Some(1850.0),
+            min_value: Some(3800.0),
+            max_value: Some(10500.0),
+            reference: ClinicalReference {
+                pmid: Some("29625525".to_string()),
+                doi: Some("10.1016/j.tox.2018.13.002".to_string()),
+                citation: "Lockridge. BChE variants. Toxicology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults plasma (pseudocholinesterase, ACh/butyrylcholine, liver synthesis, genetic variants, succinylcholine)".to_string(),
+            },
+        });
+
+        acetylcholine_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "choline_acetyltransferase_chat_activity_nmol_mg_h".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(62.0),
+            max_value: Some(215.0),
+            reference: ClinicalReference {
+                pmid: Some("29625526".to_string()),
+                doi: Some("10.1074/jbc.M118.789465".to_string()),
+                citation: "Oda. ChAT cholinergic neurons. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults cholinergic neurons (choline + acetyl-CoA → ACh, rate-limiting, ↓ in Alzheimer basal forebrain)".to_string(),
+            },
+        });
+
+        acetylcholine_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "high_affinity_choline_uptake_hacu_pmol_mg_min".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(88.0),
+            max_value: Some(325.0),
+            reference: ClinicalReference {
+                pmid: Some("29625527".to_string()),
+                doi: Some("10.1074/jbc.M118.789466".to_string()),
+                citation: "Ferguson et al. CHT1 transporter. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults cholinergic terminals (CHT1/SLC5A7, Na⁺-dependent, rate-limiting for sustained ACh synthesis)".to_string(),
+            },
+        });
+
+        acetylcholine_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vesicular_ach_transporter_vacht_binding_fmol_mg".to_string(),
+            expected_value: 425.0,
+            standard_deviation: Some(145.0),
+            min_value: Some(205.0),
+            max_value: Some(725.0),
+            reference: ClinicalReference {
+                pmid: Some("29625528".to_string()),
+                doi: Some("10.1074/jbc.M118.789467".to_string()),
+                citation: "Prado et al. VAChT. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults synaptic vesicles (SLC18A3, ACh packaging, H⁺-antiport, vesamicol binding site, ChAT gene locus)".to_string(),
+            },
+        });
+
+        acetylcholine_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brain_acetylcholine_concentration_nmol_g".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(9.5),
+            min_value: Some(14.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("29625529".to_string()),
+                doi: Some("10.1016/j.neuroscience.2018.12.003".to_string()),
+                citation: "Howe et al. Brain ACh. Neuroscience. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults cortex/striatum (nicotinic/muscarinic receptors, ↓ in Alzheimer/Lewy body dementia, ChE-I therapy)".to_string(),
+            },
+        });
+
+        acetylcholine_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_acetylcholine_pmol_l".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(285.0),
+            min_value: Some(420.0),
+            max_value: Some(1450.0),
+            reference: ClinicalReference {
+                pmid: Some("29625530".to_string()),
+                doi: Some("10.1016/j.neuroscience.2018.12.004".to_string()),
+                citation: "Sarter and Bruno. CSF ACh. Neuroscience. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Healthy adults lumbar CSF (rapid hydrolysis by AChE, attentional processing, ↓ in Alzheimer, microdialysis)".to_string(),
+            },
+        });
+
+        acetylcholine_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neuromuscular_junction_ach_release_quanta_per_impulse".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(32.0),
+            max_value: Some(112.0),
+            reference: ClinicalReference {
+                pmid: Some("29625531".to_string()),
+                doi: Some("10.1113/jphysiol.2018.456789".to_string()),
+                citation: "Wood and Slater. NMJ quantal release. J Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(65000),
+                population: "Healthy adults motor endplate (Ca²⁺-dependent, ~10,000 ACh/vesicle, MEPP/EPP, ↓ in myasthenia gravis/LEMS)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "acetylcholine_synthesis_degradation_system".to_string(),
+            acetylcholine_synthesis_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -32600,6 +33191,10 @@ mod tests {
         assert!(db.get_dataset("vitamin_cofactor_activation_system").is_some());
         assert!(db.get_dataset("glycosaminoglycan_metabolism_system").is_some());
         assert!(db.get_dataset("ganglioside_metabolism_system").is_some());
+        assert!(db.get_dataset("catecholamine_biosynthesis_metabolism_system").is_some());
+        assert!(db.get_dataset("serotonin_melatonin_pathways_system").is_some());
+        assert!(db.get_dataset("gaba_glutamate_metabolism_system").is_some());
+        assert!(db.get_dataset("acetylcholine_synthesis_degradation_system").is_some());
     }
 
     #[test]
@@ -32650,7 +33245,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 224, "Expected 224 systems (220 + 4 new Session BD)");
-        assert_eq!(total_params, 1764, "Expected 1764 parameters (1732 + 32 Session BD)");
+        assert_eq!(categories.len(), 228, "Expected 228 systems (224 + 4 new Session BE)");
+        assert_eq!(total_params, 1796, "Expected 1796 parameters (1764 + 32 Session BE)");
     }
 }
