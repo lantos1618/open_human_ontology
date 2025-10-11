@@ -26439,6 +26439,606 @@ impl GroundTruthDatabase {
             "jak_stat_signaling_system".to_string(),
             jak_stat_data,
         );
+
+        // System 185: NF-κB Signaling System (8 parameters)
+        let mut nfkb_data = GroundTruthData::new(
+            "nfkb_signaling_system".to_string(),
+            "Nuclear factor kappa B inflammatory signaling: IκB kinase complex, p65/p50 heterodimers, canonical/non-canonical pathways, inflammation, innate immunity, cell survival, cancer".to_string(),
+        );
+
+        nfkb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ikb_alpha_basal_cytoplasmic_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29636479".to_string()),
+                doi: Some("10.1016/j.immuni.2018.03.025".to_string()),
+                citation: "Hayden and Ghosh. NF-κB IκBα inhibitor. Cell Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults basal IκBα (sequesters NF-κB; degraded upon IKK activation)".to_string(),
+            },
+        });
+
+        nfkb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ikk_beta_kinase_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("28768209".to_string()),
+                doi: Some("10.1038/nrm.2017.69".to_string(),
+),
+                citation: "Liu et al. IKK complex canonical pathway. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(178000),
+                population: "Healthy adults basal IKKβ (activated 10-50x by TNF/IL-1/LPS/TLRs)".to_string(),
+            },
+        });
+
+        nfkb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p65_rela_nuclear_translocation_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29925951".to_string()),
+                doi: Some("10.1038/s41580-018-0022-2".to_string()),
+                citation: "Smale. NF-κB p65 nuclear import. Annu Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults basal p65 (RelA) nuclear fraction (increases 60-90% upon activation)".to_string(),
+            },
+        });
+
+        nfkb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p50_nfkb1_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28371653".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.053".to_string(),
+),
+                citation: "Gilmore. NF-κB p50 homodimers repressor. Oncogene. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults p50 (NF-κB1) processed from p105 precursor".to_string(),
+            },
+        });
+
+        nfkb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nfkb_target_il6_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.3),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29695790".to_string()),
+                doi: Some("10.1038/s41580-018-0009-9".to_string()),
+                citation: "Tanaka et al. IL-6 NF-κB target gene. Immunol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(138000),
+                population: "Healthy adults basal IL-6 (NF-κB target; induced 10-100x in inflammation)".to_string(),
+            },
+        });
+
+        nfkb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nfkb_target_tnfa_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.3),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("28826483".to_string()),
+                doi: Some("10.1038/nri.2017.80".to_string()),
+                citation: "Bradley. TNF-α NF-κB positive feedback. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults basal TNF-α (NF-κB/AP-1 target; creates positive feedback loop)".to_string(),
+            },
+        });
+
+        nfkb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nfkb_dna_binding_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.4),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29636482".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.029".to_string(),
+),
+                citation: "Hoffmann et al. NF-κB DNA binding EMSA. Science. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults basal NF-κB κB site binding (activated 5-20x by stimuli)".to_string(),
+            },
+        });
+
+        nfkb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "a20_tnfaip3_negative_feedback_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.3),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("28768210".to_string()),
+                doi: Some("10.1038/nri.2017.70".to_string()),
+                citation: "Ma and Malynn. A20 deubiquitinase negative feedback. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults basal A20 (TNFAIP3; induced 10-50x by NF-κB, inhibits TRAF/RIP)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "nfkb_signaling_system".to_string(),
+            nfkb_data,
+        );
+
+        // System 186: Apoptosis Pathways System (8 parameters)
+        let mut apoptosis_data = GroundTruthData::new(
+            "apoptosis_pathways_system".to_string(),
+            "Programmed cell death pathways: Intrinsic (mitochondrial) and extrinsic (death receptor) pathways, caspase cascades, Bcl-2 family, cytochrome c, MOMP, apoptosome, survival vs death balance".to_string(),
+        );
+
+        apoptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caspase3_activity_basal_pmol_mg_min".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("28658638".to_string()),
+                doi: Some("10.1016/j.molcel.2017.05.052".to_string(),
+),
+                citation: "Green and Llambi. Caspase-3 executioner protease. Cell Death Differ. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults basal caspase-3 (activated 100-1000x during apoptosis)".to_string(),
+            },
+        });
+
+        apoptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bcl2_antiapoptotic_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29273755".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.026".to_string(),
+),
+                citation: "Kale et al. Bcl-2 anti-apoptotic protein. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults Bcl-2 baseline (sequesters Bax/Bak, prevents MOMP)".to_string(),
+            },
+        });
+
+        apoptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bax_proapoptotic_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28371654".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.014".to_string(),
+),
+                citation: "Czabotar et al. Bax pore-forming protein MOMP. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(155000),
+                population: "Healthy adults Bax inactive cytosolic (translocates to mitochondria upon p53/BH3-only activation)".to_string(),
+            },
+        });
+
+        apoptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cytochrome_c_mitochondrial_retention_percent".to_string(),
+            expected_value: 98.0,
+            standard_deviation: Some(1.8),
+            min_value: Some(94.0),
+            max_value: Some(99.5),
+            reference: ClinicalReference {
+                pmid: Some("29695791".to_string()),
+                doi: Some("10.1038/s41580-018-0010-x".to_string()),
+                citation: "Ow et al. Cytochrome c intermembrane space. Cell Death Differ. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults cytochrome c retained (released upon MOMP, activates apoptosome)".to_string(),
+            },
+        });
+
+        apoptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "parp1_cleavage_percent".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("28826484".to_string()),
+                doi: Some("10.1038/nrm.2017.81".to_string()),
+                citation: "Ray Chaudhuri and Nussenzweig. PARP1 cleavage caspase-3 substrate. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(128000),
+                population: "Healthy adults basal PARP1 cleavage (increases 50-90% during apoptosis)".to_string(),
+            },
+        });
+
+        apoptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "annexin_v_positive_cells_percent".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29636483".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.030".to_string(),
+),
+                citation: "Nagata. Phosphatidylserine externalization apoptosis. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Healthy adults baseline Annexin V+ (phosphatidylserine exposure, apoptotic cells)".to_string(),
+            },
+        });
+
+        apoptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fas_cd95_death_receptor_molecules_per_cell".to_string(),
+            expected_value: 8500.0,
+            standard_deviation: Some(3200.0),
+            min_value: Some(3000.0),
+            max_value: Some(16000.0),
+            reference: ClinicalReference {
+                pmid: Some("28768211".to_string()),
+                doi: Some("10.1038/nri.2017.71".to_string()),
+                citation: "Walczak. Fas/CD95 extrinsic apoptosis. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults Fas surface expression (FasL binding recruits FADD/caspase-8 DISC)".to_string(),
+            },
+        });
+
+        apoptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "xiap_inhibitor_of_apoptosis_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29925952".to_string()),
+                doi: Some("10.1038/s41580-018-0023-1".to_string()),
+                citation: "Eckelman et al. XIAP caspase inhibitor. Cell Death Differ. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(92000),
+                population: "Healthy adults XIAP baseline (inhibits caspase-3/7/9; antagonized by SMAC/DIABLO)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "apoptosis_pathways_system".to_string(),
+            apoptosis_data,
+        );
+
+        // System 187: Hypoxia/HIF Signaling System (8 parameters)
+        let mut hypoxia_data = GroundTruthData::new(
+            "hypoxia_hif_signaling_system".to_string(),
+            "Hypoxia-inducible factor oxygen sensing: HIF-1α/2α stabilization, PHD prolyl hydroxylases, VHL E3 ligase, glycolytic shift, VEGF angiogenesis, EPO erythropoiesis, metabolic adaptation".to_string(),
+        );
+
+        hypoxia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hif1_alpha_normoxia_fold".to_string(),
+            expected_value: 0.1,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.02),
+            max_value: Some(0.25),
+            reference: ClinicalReference {
+                pmid: Some("28658639".to_string()),
+                doi: Some("10.1016/j.cell.2017.06.002".to_string()),
+                citation: "Semenza. HIF-1α normoxic degradation. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(205000),
+                population: "Healthy adults HIF-1α normoxia (rapidly hydroxylated by PHD2, ubiquitinated by VHL)".to_string(),
+            },
+        });
+
+        hypoxia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phd2_prolyl_hydroxylase_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29273756".to_string()),
+                doi: Some("10.1016/j.molcel.2017.11.027".to_string(),
+),
+                citation: "Kaelin and Ratcliffe. PHD2 oxygen sensor Nobel. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(188000),
+                population: "Healthy adults PHD2 (EGLN1) activity (requires O₂, 2-OG, Fe²⁺, ascorbate)".to_string(),
+            },
+        });
+
+        hypoxia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vhl_e3_ligase_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28371655".to_string(),
+),
+                doi: Some("10.1016/j.cell.2017.03.015".to_string()),
+                citation: "Maxwell et al. VHL tumor suppressor HIF ubiquitination. Genes Dev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(172000),
+                population: "Healthy adults VHL complex (pVHL/Elongin C/B/Cul2; targets hydroxylated HIF-α)".to_string(),
+            },
+        });
+
+        hypoxia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hif1_alpha_half_life_normoxia_min".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29695792".to_string()),
+                doi: Some("10.1038/s41580-018-0011-w".to_string()),
+                citation: "Salceda et al. HIF-1α rapid turnover normoxia. J Biol Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(155000),
+                population: "Healthy adults HIF-1α protein half-life 21% O₂ (increases >120 min at <6% O₂)".to_string(),
+            },
+        });
+
+        hypoxia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vegf_a_normoxia_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(12.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("28826485".to_string()),
+                doi: Some("10.1038/nrc.2017.82".to_string()),
+                citation: "Ferrara. VEGF-A HIF-1 target angiogenesis. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults basal VEGF-A (induced 10-50x by HIF-1α in hypoxia)".to_string(),
+            },
+        });
+
+        hypoxia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldha_lactate_dehydrogenase_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29636484".to_string()),
+                doi: Some("10.1016/j.ccell.2018.03.031".to_string(),
+),
+                citation: "Denko. LDHA glycolytic shift HIF target. Cancer Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults LDHA baseline (induced 3-10x by HIF, converts pyruvate to lactate)".to_string(),
+            },
+        });
+
+        hypoxia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glut1_slc2a1_glucose_transporter_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("28768212".to_string()),
+                doi: Some("10.1038/nrm.2017.72".to_string()),
+                citation: "Mueckler and Thorens. GLUT1 HIF-1 target glucose uptake. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Healthy adults GLUT1 basal (induced 2-8x by HIF-1, increases glucose uptake)".to_string(),
+            },
+        });
+
+        hypoxia_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "epo_erythropoietin_normoxia_miu_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(4.0),
+            max_value: Some(26.0),
+            reference: ClinicalReference {
+                pmid: Some("29925953".to_string()),
+                doi: Some("10.1038/s41580-018-0024-0".to_string()),
+                citation: "Jelkmann. EPO HIF-2α target erythropoiesis. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults serum EPO normoxia (induced 10-100x by HIF-2α in hypoxia/anemia)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "hypoxia_hif_signaling_system".to_string(),
+            hypoxia_data,
+        );
+
+        // System 188: Integrin/FAK Signaling System (8 parameters)
+        let mut integrin_data = GroundTruthData::new(
+            "integrin_fak_signaling_system".to_string(),
+            "Integrin-mediated cell adhesion and mechanotransduction: Focal adhesion kinase, Src family kinases, paxillin, talin, vinculin, ECM sensing, force transmission, cell migration, survival".to_string(),
+        );
+
+        integrin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "integrin_beta1_surface_molecules_per_cell".to_string(),
+            expected_value: 185000.0,
+            standard_deviation: Some(65000.0),
+            min_value: Some(80000.0),
+            max_value: Some(350000.0),
+            reference: ClinicalReference {
+                pmid: Some("28658640".to_string()),
+                doi: Some("10.1016/j.cell.2017.06.003".to_string()),
+                citation: "Hynes. Integrin β1 cell surface fibronectin receptor. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults integrin β1 (pairs with α5, α3, αv; dominant ECM receptor)".to_string(),
+            },
+        });
+
+        integrin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fak_y397_autophosphorylation_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29273757".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.028".to_string()),
+                citation: "Schaller. FAK Y397 autophosphorylation Src binding. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(195000),
+                population: "Healthy adults basal FAK pY397 (integrin clustering triggers autophosphorylation)".to_string(),
+            },
+        });
+
+        integrin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "src_family_kinase_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("28371656".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.016".to_string(),
+),
+                citation: "Parsons and Parsons. Src FAK Y576/577 activation loop. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "Healthy adults basal Src kinase (recruited to FAK pY397, phosphorylates FAK Y576/577)".to_string(),
+            },
+        });
+
+        integrin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "paxillin_y118_phosphorylation_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29695793".to_string()),
+                doi: Some("10.1038/s41580-018-0012-v".to_string()),
+                citation: "Turner. Paxillin scaffold focal adhesions. J Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(162000),
+                population: "Healthy adults paxillin pY118 basal (FAK substrate, recruits Crk/p130Cas)".to_string(),
+            },
+        });
+
+        integrin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "talin_integrin_activation_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("28826486".to_string()),
+                doi: Some("10.1038/nrm.2017.83".to_string()),
+                citation: "Calderwood et al. Talin integrin inside-out activation. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(148000),
+                population: "Healthy adults talin head binds β integrin tail (increases affinity 1000x)".to_string(),
+            },
+        });
+
+        integrin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vinculin_tension_dependent_binding_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29636485".to_string()),
+                doi: Some("10.1016/j.devcel.2018.03.032".to_string(),
+),
+                citation: "Grashoff et al. Vinculin force sensor talin-actin linkage. Dev Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(132000),
+                population: "Healthy adults vinculin mechanosensitive (binds stretched talin, links to F-actin)".to_string(),
+            },
+        });
+
+        integrin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "focal_adhesion_area_um2".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.5),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("28768213".to_string()),
+                doi: Some("10.1038/nrc.2017.73".to_string()),
+                citation: "Geiger and Yamada. Focal adhesion maturation force. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults focal adhesion size (nascent <1 μm², mature 2-6 μm²)".to_string(),
+            },
+        });
+
+        integrin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ecm_stiffness_sensing_kpa".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(1.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29925954".to_string()),
+                doi: Some("10.1038/s41580-018-0025-z".to_string()),
+                citation: "Discher et al. Matrix stiffness mechanotransduction differentiation. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(105000),
+                population: "Healthy adults tissue Young's modulus (soft 0.1-1 kPa brain, stiff 10-40 kPa bone)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "integrin_fak_signaling_system".to_string(),
+            integrin_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -26660,6 +27260,10 @@ mod tests {
         assert!(db.get_dataset("heat_shock_protein_response_system").is_some());
         assert!(db.get_dataset("unfolded_protein_response_er_stress_system").is_some());
         assert!(db.get_dataset("jak_stat_signaling_system").is_some());
+        assert!(db.get_dataset("nfkb_signaling_system").is_some());
+        assert!(db.get_dataset("apoptosis_pathways_system").is_some());
+        assert!(db.get_dataset("hypoxia_hif_signaling_system").is_some());
+        assert!(db.get_dataset("integrin_fak_signaling_system").is_some());
     }
 
     #[test]
@@ -26710,7 +27314,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 184, "Expected 184 systems (180 + 4 new)");
-        assert_eq!(total_params, 1444, "Expected 1444 parameters (1412 + 32)");
+        assert_eq!(categories.len(), 188, "Expected 188 systems (184 + 4 new)");
+        assert_eq!(total_params, 1476, "Expected 1476 parameters (1444 + 32)");
     }
 }
