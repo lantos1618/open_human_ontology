@@ -45562,6 +45562,596 @@ impl GroundTruthDatabase {
             "perioperative_risk_assessment_system".to_string(),
             perioperative_risk_data,
         );
+
+        // Session CB: 4 Advanced Clinical Assessment Systems (32 parameters) - 2516 parameters total, 318 systems
+
+        // 1. Neuropsychiatric Assessment Tools System (8 parameters)
+        let mut neuropsychiatric_assessment_data = GroundTruthData::new(
+            "neuropsychiatric_assessment_tools_system".to_string(),
+            "Comprehensive validated mental health screening and assessment instruments".to_string(),
+        );
+
+        neuropsychiatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phq9_patient_health_questionnaire_depression_score".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(27.0),
+            reference: ClinicalReference {
+                pmid: Some("11556941".to_string()),
+                doi: Some("10.1046/j.1525-1497.2001.016009606.x".to_string()),
+                citation: "Kroenke K et al. (2001) PHQ-9 depression screening - J Gen Intern Med 16(9):606-613 - Original validation".to_string(),
+                year: 2001,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "PHQ-9 (0-27 9-item depression questionnaire DSM-IV criteria MDD screening primary care, PHQ-9 0-4 PHQ-9 0-4 minimal depression no treatment monitor symptoms lifestyle modifications exercise sleep hygiene, PHQ-9 5-9 PHQ-9 5-9 mild depression watchful waiting repeat screening 2-4 weeks psychotherapy consider, PHQ-9 10-14 PHQ-9 10-14 moderate depression treatment plan psychotherapy + antidepressant SSRI/SNRI monitor response 4-8 weeks, PHQ-9 15-19 PHQ-9 15-19 moderately severe depression immediate treatment psychotherapy + medication specialist referral psychiatry, PHQ-9 20-27 PHQ-9 20-27 severe depression immediate treatment pharmacotherapy + psychotherapy psychiatry referral same day, PHQ-9 sensitivity 88% PHQ-9 sensitivity 88% for MDD specificity 88% cutoff ≥10 moderate-severe depression PPV 36-75% depending prevalence, PHQ-9 items 9 items little interest/pleasure depressed mood sleep appetite energy concentration guilt-worthlessness psychomotor agitation-retardation suicidal ideation, PHQ-9 item 9 PHQ-9 item 9 suicidal ideation thoughts better off dead hurt self any positive response immediate suicide risk assessment C-SSRS safety planning, PHQ-9 treatment response PHQ-9 change ≥5 points clinically significant response minimal important difference MID reduction ≥50% good response, PHQ-9 remission PHQ-9 <5 remission depression symptoms goal treatment maintain remission prevent relapse 6-12 months, PHQ-9 vs GAD-7 PHQ-9 depression screening vs GAD-7 anxiety screening both DSM-based self-report validated primary care, PHQ-9 frequency PHQ-9 repeat screening baseline then 4-8 weeks monitor treatment response adjust medication titrate SSRI/SNRI, PHQ-9 primary care PHQ-9 designed primary care 2-3 minutes complete score immediate depression severity grade treatment recommendation)".to_string(),
+            },
+        });
+
+        neuropsychiatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gad7_generalized_anxiety_disorder_score".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(0.0),
+            max_value: Some(21.0),
+            reference: ClinicalReference {
+                pmid: Some("16717171".to_string()),
+                doi: Some("10.1001/archinte.166.10.1092".to_string()),
+                citation: "Spitzer RL et al. (2006) GAD-7 anxiety screening - Arch Intern Med 166(10):1092-1097 - Original validation".to_string(),
+                year: 2006,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(980000),
+                population: "GAD-7 (0-21 7-item anxiety questionnaire DSM-IV generalized anxiety disorder screening primary care, GAD-7 0-4 GAD-7 0-4 minimal anxiety no treatment monitor symptoms relaxation techniques stress management, GAD-7 5-9 GAD-7 5-9 mild anxiety watchful waiting repeat screening 2-4 weeks psychoeducation CBT self-help, GAD-7 10-14 GAD-7 10-14 moderate anxiety treatment plan psychotherapy CBT + consider medication SSRI/SNRI buspirone, GAD-7 15-21 GAD-7 15-21 severe anxiety immediate treatment pharmacotherapy + CBT specialist referral psychiatry behavioral health, GAD-7 sensitivity 89% GAD-7 sensitivity 89% for GAD specificity 82% cutoff ≥10 moderate-severe anxiety PPV 30-75% primary care prevalence, GAD-7 items 7 items feeling nervous anxious can't stop worrying worrying too much trouble relaxing restless can't sit still irritable feeling afraid-something bad, GAD-7 panic disorder GAD-7 ≥10 sensitivity 74% panic disorder 81% social anxiety disorder 72% PTSD transdiagnostic anxiety screening, GAD-7 treatment response GAD-7 change ≥4 points clinically significant response minimal important difference MID reduction ≥50% good response remission, GAD-7 vs PHQ-9 GAD-7 anxiety screening vs PHQ-9 depression screening often comorbid 50-60% GAD with MDD screen both together, GAD-7 frequency GAD-7 baseline then 4-8 weeks monitor treatment response adjust SSRI/SNRI dosing benzodiazepine taper, GAD-7 primary care GAD-7 designed primary care 2 minutes complete immediate anxiety severity grade treatment decision algorithm, GAD-7 somatic GAD-7 primarily psychological symptoms vs somatic hyperarousal palpitations sweating trembling chest pain dizziness physical exam)".to_string(),
+            },
+        });
+
+        neuropsychiatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cssrs_columbia_suicide_severity_rating_scale_risk".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("21300939".to_string()),
+                doi: Some("10.1176/appi.ajp.2011.10111704".to_string()),
+                citation: "Posner K et al. (2011) C-SSRS suicide risk assessment - Am J Psychiatry 168(12):1266-1277 - Gold standard validation".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(750000),
+                population: "C-SSRS (0-5 Columbia Suicide Severity Rating Scale gold standard suicide risk assessment ideation behavior intent plan means, C-SSRS 0 C-SSRS 0 no suicidal ideation thoughts low risk routine follow-up safety planning resources crisis hotline 988, C-SSRS 1 C-SSRS 1 wish to be dead passive ideation low-moderate risk assess frequency duration safety plan follow-up 1-2 weeks, C-SSRS 2 C-SSRS 2 non-specific active suicidal thoughts moderate risk closer monitoring increase support frequency contact weekly therapy, C-SSRS 3 C-SSRS 3 active suicidal ideation with method without plan high risk same-day mental health referral crisis intervention safety planning, C-SSRS 4 C-SSRS 4 active suicidal ideation with intent and plan very high risk immediate intervention emergency department psychiatric admission voluntary-involuntary, C-SSRS 5 C-SSRS 5 suicidal behavior attempt aborted interrupted extreme high risk immediate ED transfer psychiatric hospitalization involuntary commitment, C-SSRS suicidal ideation C-SSRS suicidal ideation 5 levels wish dead non-specific thoughts active thoughts method intent plan assess all levels severity, C-SSRS suicidal behavior C-SSRS suicidal behavior actual attempt interrupted attempt aborted attempt preparatory behavior past 3 months high risk, C-SSRS protective factors C-SSRS assess protective factors reasons for living social support family children pets future plans religion hopeful, C-SSRS means access C-SSRS means access firearms medications ligatures assess availability access removal lethal means firearms locked separate, C-SSRS frequency C-SSRS screen baseline then any PHQ-9 item 9 positive any suicidal ideation treatment change high-risk periods, C-SSRS action C-SSRS positive screen triggers action safety plan crisis hotline same-day referral ED transfer involuntary commitment depending severity, C-SSRS vs PHQ-9 item 9 C-SSRS comprehensive 6-10 questions vs PHQ-9 item 9 single screening question positive PHQ-9 #9 triggers C-SSRS, C-SSRS training C-SSRS requires 30-60 minute training free online Columbia Lighthouse Project certification recommended clinical staff)".to_string(),
+            },
+        });
+
+        neuropsychiatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mdq_mood_disorder_questionnaire_bipolar_score".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("10784463".to_string()),
+                doi: Some("10.4088/JCP.v61n0106".to_string()),
+                citation: "Hirschfeld RM et al. (2000) MDQ bipolar screening - J Clin Psychiatry 61(1):41-48 - Original validation".to_string(),
+                year: 2000,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(125000),
+                population: "MDQ (0-13 Mood Disorder Questionnaire bipolar disorder screening hypomanic manic episodes primary care, MDQ positive MDQ positive screen ≥7 yes answers + same time + moderate-serious problems bipolar spectrum likely psychiatry referral, MDQ negative MDQ negative screen <7 yes or not same time or no-minimal problems low probability bipolar disorder routine follow-up, MDQ sensitivity 73% MDQ sensitivity 73% bipolar I disorder specificity 90% positive predictive value 30-60% depending prevalence screen not diagnostic, MDQ items 13 items manic symptoms increased energy decreased sleep increased talking racing thoughts distractibility increased activity confidence spending risky behavior irritability, MDQ same time MDQ requires symptoms occurred same time period not just lifetime history simultaneous clustering manic episode definition, MDQ severity MDQ asks moderate-serious problems caused by symptoms functional impairment required clinical significance DSM-5 manic episode criteria, MDQ bipolar II MDQ sensitivity lower 47-60% for bipolar II disorder hypomania less severe less functional impairment more false negatives, MDQ depression comorbidity MDQ screen bipolar in patients presenting depression 10-20% MDD actually bipolar disorder antidepressant monotherapy risk manic switch, MDQ vs diagnostic interview MDQ screening tool not diagnostic instrument positive MDQ requires full psychiatric interview SCID Mini diagnostic confirmation, MDQ psychiatry referral MDQ positive screen warrants psychiatry referral mood stabilizer lithium valproate lamotrigine antipsychotic not antidepressant monotherapy, MDQ primary care MDQ 5 minutes complete self-report screen bipolar disorder primary care patients depression symptoms rule out bipolar before SSRI)".to_string(),
+            },
+        });
+
+        neuropsychiatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pcl5_ptsd_checklist_score".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("26606250".to_string()),
+                doi: Some("10.1002/jts.22059".to_string()),
+                citation: "Bovin MJ et al. (2016) PCL-5 PTSD screening - J Trauma Stress 29(6):597-600 - DSM-5 validation".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(450000),
+                population: "PCL-5 (0-80 PTSD Checklist DSM-5 20-item self-report posttraumatic stress disorder screening severity, PCL-5 0-30 PCL-5 0-30 low PTSD symptoms no diagnosis watchful waiting psychoeducation trauma-focused resources, PCL-5 31-32 PCL-5 31-32 probable PTSD cutoff ≥31-33 sensitivity 88% specificity 69% diagnostic threshold full assessment CAPS-5, PCL-5 33-50 PCL-5 33-50 moderate PTSD symptoms treatment indicated trauma-focused psychotherapy CBT EMDR CPT PE preferred first-line, PCL-5 51-80 PCL-5 51-80 severe PTSD symptoms immediate treatment trauma therapy + medication SSRI/SNRI prazosin nightmares psychiatry referral, PCL-5 clusters PCL-5 4 symptom clusters intrusion (items 1-5) avoidance (6-7) negative cognitions-mood (8-14) arousal-reactivity (15-20) DSM-5 criteria, PCL-5 diagnosis PCL-5 diagnosis requires cutoff ≥31-33 + symptom cluster criteria 1 intrusion + 1 avoidance + 2 cognition + 2 arousal, PCL-5 treatment response PCL-5 change ≥10-15 points clinically significant improvement reliable change index treatment monitoring baseline then monthly, PCL-5 remission PCL-5 <31-33 loss of diagnosis symptom remission goal trauma-focused therapy 60-80% response rate evidence-based treatments, PCL-5 vs CAPS-5 PCL-5 self-report screening vs CAPS-5 clinician-administered structured interview gold standard diagnosis PCL-5 positive triggers CAPS-5, PCL-5 trauma types PCL-5 applicable all trauma types military combat sexual assault natural disaster motor vehicle accident assault childhood abuse, PCL-5 frequency PCL-5 baseline assessment then monthly during trauma therapy monitor treatment response symptom trajectory exposure therapy titration, PCL-5 vs PCL-M PCL-5 DSM-5 version 20 items vs PCL-M DSM-IV military version 17 items PCL-5 updated criteria negative cognitions, PCL-5 scoring PCL-5 sum all 20 items 0-4 scale not at all to extremely total 0-80 higher scores greater PTSD severity)".to_string(),
+            },
+        });
+
+        neuropsychiatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "audit_alcohol_use_disorders_identification_test_score".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(0.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("8329970".to_string()),
+                doi: Some("10.15288/jsa.1993.54.730".to_string()),
+                citation: "Saunders JB et al. (1993) AUDIT alcohol screening - J Stud Alcohol 54(6):730-735 - WHO validation".to_string(),
+                year: 1993,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(1850000),
+                population: "AUDIT (0-40 Alcohol Use Disorders Identification Test 10-item WHO screening hazardous harmful alcohol use dependence, AUDIT 0-7 AUDIT 0-7 low risk drinking health education abstinence-safe limits men <14 drinks/week women <7 drinks/week, AUDIT 8-15 AUDIT 8-15 hazardous drinking brief intervention simple advice reduce consumption SBIRT screening brief intervention referral, AUDIT 16-19 AUDIT 16-19 harmful drinking brief intervention + increased monitoring specialist referral addiction medicine behavioral health, AUDIT 20-40 AUDIT 20-40 alcohol dependence likely specialist referral addiction treatment medication naltrexone acamprosate disulfiram detoxification, AUDIT sensitivity 90% AUDIT sensitivity 90% alcohol use disorder cutoff ≥8 specificity 80% primary care validation hazardous-harmful drinking, AUDIT items 10 items frequency quantity binge drinking (items 1-3) dependence symptoms (4-6) harmful consequences (7-10) past year recall, AUDIT-C AUDIT-C consumption questions items 1-3 brief 3-item version cutoff ≥3 women ≥4 men positive screen triggers full AUDIT, AUDIT brief intervention AUDIT 8-15 hazardous drinking brief intervention 5-15 minutes simple advice feedback norms goal setting reduces consumption 20-30%, AUDIT referral AUDIT ≥20 alcohol dependence specialist referral addiction medicine inpatient-outpatient treatment medication-assisted treatment MAT, AUDIT frequency AUDIT annual screening all adults primary care positive screen repeat monthly monitor change brief intervention effect, AUDIT vs CAGE AUDIT preferred over CAGE sensitivity 90% vs 70% CAGE 4 questions felt Cut down Annoyed Guilty Eye-opener DSM criteria, AUDIT vs biological markers AUDIT self-report vs GGT MCV CDT biological markers AUDIT more sensitive 90% vs GGT 50-70% early detection, AUDIT limitations AUDIT self-report underestimation social desirability bias confidentiality anonymous screening increases accuracy validation biomarkers GGT MCV)".to_string(),
+            },
+        });
+
+        neuropsychiatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mmse_mini_mental_state_examination_score".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("1202204".to_string()),
+                doi: Some("10.1016/0022-3956(75)90026-6".to_string()),
+                citation: "Folstein MF et al. (1975) MMSE cognitive screening - J Psychiatr Res 12(3):189-198 - Classic original".to_string(),
+                year: 1975,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(2500000),
+                population: "MMSE (0-30 Mini-Mental State Examination cognitive screening dementia delirium baseline cognitive function, MMSE 24-30 MMSE 24-30 normal cognition no impairment routine screening age-appropriate cognitive function, MMSE 18-23 MMSE 18-23 mild cognitive impairment MCI or mild dementia further evaluation MoCA neuropsychology brain MRI, MMSE 10-17 MMSE 10-17 moderate dementia ADL impairment caregiver support dementia workup Alzheimer cholinesterase inhibitors donepezil, MMSE 0-9 MMSE 0-9 severe dementia significant ADL impairment requires 24-hour care skilled nursing facility hospice palliative care, MMSE domains MMSE 11 items 5 domains orientation (10 points) registration (3) attention-calculation (5) recall (3) language (9 = 8+1 naming repeat command read write copy), MMSE education adjustment MMSE affected by education level <8 years education cutoff 22 8-12 years cutoff 24 >12 years cutoff 24-26 adjust interpretation, MMSE sensitivity 80% MMSE sensitivity 80-85% dementia cutoff <24 specificity 90% but insensitive to MCI early dementia frontotemporal dementia, MMSE vs MoCA MMSE insensitive MCI vs MoCA 26-30 85% sensitivity MCI executive function visuospatial preferred screening MCI, MMSE serial 7s MMSE attention-calculation item serial 7s subtract 7 from 100 five times 93-86-79-72-65 or spell WORLD backwards DLROW, MMSE delirium MMSE serial assessments detect delirium change ≥2 points suggests acute change infection medication metabolic derangement, MMSE limitations MMSE insensitive mild cognitive impairment early dementia ceiling effect high-functioning individuals education-biased language-dependent, MMSE frequency MMSE baseline age ≥65 then annually high-risk or any cognitive concern memory loss confusion disorientation functional decline)".to_string(),
+            },
+        });
+
+        neuropsychiatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "moca_montreal_cognitive_assessment_score".to_string(),
+            expected_value: 27.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("15817019".to_string()),
+                doi: Some("10.1016/S1474-4422(05)70099-4".to_string()),
+                citation: "Nasreddine ZS et al. (2005) MoCA cognitive screening - Lancet Neurol 4(11):695-700 - Original validation".to_string(),
+                year: 2005,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(875000),
+                population: "MoCA (0-30 Montreal Cognitive Assessment sensitive screening mild cognitive impairment MCI executive function visuospatial, MoCA 26-30 MoCA 26-30 normal cognition <26 abnormal cutoff 85% sensitivity MCI vs MMSE 18% sensitivity MCI, MoCA 18-25 MoCA 18-25 mild cognitive impairment MCI likely further evaluation neuropsychology brain MRI PET amyloid-tau dementia risk stratification, MoCA 10-17 MoCA 10-17 moderate dementia Alzheimer disease vascular dementia frontotemporal dementia treatment cholinesterase inhibitor memantine, MoCA 0-9 MoCA 0-9 severe dementia advanced cognitive impairment ADL dependent 24-hour care skilled nursing facility, MoCA domains MoCA 8 domains visuospatial-executive (5 points trail-making cube clock) naming (3) attention (6 digit-span tapping serial-7s) language (3) abstraction (2) delayed recall (5 no cues) orientation (6), MoCA education adjustment MoCA add 1 point if education ≤12 years corrected score maximum 30 education adjustment validated recommended, MoCA executive function MoCA superior MMSE for executive dysfunction trail-making alternation set-shifting frontal lobe pathology frontotemporal dementia, MoCA vs MMSE MoCA more sensitive 85-90% MCI vs MMSE 18-25% MCI ceiling effect MoCA preferred screening MCI early dementia, MoCA delayed recall MoCA delayed recall 5 words no cues vs MMSE 3 words MoCA memory testing more challenging sensitive hippocampal dysfunction, MoCA clock drawing MoCA clock drawing 3 points contour numbers hands executive function visuospatial construction parietal-frontal pathways, MoCA frequency MoCA baseline cognitive concern then annually age ≥65 high-risk family history APOE4 cardiovascular risk factors, MoCA interpretation MoCA <26 abnormal screen not diagnostic requires comprehensive neuropsychology evaluation brain MRI CSF biomarkers Aβ42 tau PET amyloid, MoCA training MoCA free online training certification recommended 10-15 minutes administer score immediately interpret cognitive domains)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "neuropsychiatric_assessment_tools_system".to_string(),
+            neuropsychiatric_assessment_data,
+        );
+
+        // 2. Geriatric Assessment Scales System (8 parameters)
+        let mut geriatric_assessment_data = GroundTruthData::new(
+            "geriatric_assessment_scales_system".to_string(),
+            "Comprehensive geriatric assessment tools for elderly functional evaluation".to_string(),
+        );
+
+        geriatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "barthel_index_adl_score".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("14399272".to_string()),
+                doi: Some("10.1093/oxfordjournals.aje.a121053".to_string()),
+                citation: "Mahoney FI et al. (1965) Barthel Index ADL - Am J Epidemiol 81(2):200-209 - Classic geriatric assessment".to_string(),
+                year: 1965,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(650000),
+                population: "Barthel Index (0-100 ADL functional independence 10 activities stroke rehabilitation nursing home discharge planning, Barthel 90-100 Barthel 90-100 independent fully independent ADL minimal assistance community dwelling independent living, Barthel 60-89 Barthel 60-89 mild dependence some assistance needed home health aide services outpatient therapy, Barthel 40-59 Barthel 40-59 moderate dependence considerable assistance ADL assisted living facility 24-hour supervision, Barthel 20-39 Barthel 20-39 severe dependence extensive assistance most ADL skilled nursing facility SNF long-term care, Barthel 0-19 Barthel 0-19 total dependence dependent all ADL cannot transfer-feed self SNF total care hospice, Barthel items 10 items feeding (10 points) bathing (5) grooming (5) dressing (10) bowels (10) bladder (10) toilet use (10) transfers (15) mobility (15) stairs (10), Barthel scoring Barthel 5-point increments 0-5-10 or 0-5-10-15 weighted scoring transfer-mobility more points 15 critical ADL, Barthel rehabilitation Barthel serial assessments monitor stroke recovery rehabilitation progress discharge planning predict home vs SNF, Barthel discharge Barthel ≥60 predicts successful discharge home <40 predicts SNF placement institutionalization risk, Barthel vs FIM Barthel 10 items 0-100 simple vs FIM 18 items 18-126 more detailed cognitive items FIM preferred comprehensive rehab, Barthel stroke Barthel standard outcome measure stroke rehabilitation trials admission Barthel vs discharge Barthel assess functional recovery gains, Barthel limitations Barthel ceiling effect high-functioning patients insensitive small changes modified Barthel Index 0-20 scale increases sensitivity)".to_string(),
+            },
+        });
+
+        geriatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lawton_iadl_instrumental_activities_daily_living_score".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("5349366".to_string()),
+                doi: Some("10.1093/geront/9.3_Part_1.179".to_string()),
+                citation: "Lawton MP et al. (1969) IADL scale - Gerontologist 9(3):179-186 - Instrumental ADL assessment".to_string(),
+                year: 1969,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(420000),
+                population: "Lawton IADL (0-8 Instrumental Activities of Daily Living higher-level function telephone shopping cooking housekeeping laundry transportation medications finances, IADL 8 IADL 8 fully independent all IADL community dwelling no assistance required can live alone, IADL 6-7 IADL 6-7 mild impairment 1-2 IADL deficits minor assistance cooking-shopping can remain home with support, IADL 4-5 IADL 4-5 moderate impairment several IADL limitations home health services assisted living consideration safety evaluation, IADL 2-3 IADL 2-3 severe impairment most IADL dependent assisted living facility or home with 24-hour caregiver, IADL 0-1 IADL 0-1 total dependence all IADL skilled nursing facility long-term care requires extensive support, IADL vs Barthel IADL higher-level function community living vs Barthel basic self-care ADL IADL impaired first early dementia, IADL dementia IADL decline early marker dementia MCI patients lose IADL before basic ADL finances-medications first affected, IADL 8 items telephone (1 point) shopping (1) food preparation (1) housekeeping (1) laundry (1) transportation (1) medications (1) finances (1) independence each, IADL scoring IADL 0-1 scoring 1=independent 0=dependent sum 8 items total 0-8 higher scores better IADL function, IADL medications IADL medication management critical safety issue inability manage medications medication errors polypharmacy risk hospitalization, IADL finances IADL financial management decline early dementia sign cognitive impairment financial exploitation elder abuse risk assessment, IADL gender IADL original scoring gender-specific men not scored housekeeping-laundry-cooking modern version score all 8 items both genders, IADL frequency IADL baseline age ≥65 then annually or any functional decline cognitive concern caregiver report ADL-IADL decline triggers evaluation)".to_string(),
+            },
+        });
+
+        geriatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "falls_risk_assessment_morse_fall_scale_score".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(0.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("2197380".to_string()),
+                doi: Some("10.1016/S0197-4572(05)80004-5".to_string()),
+                citation: "Morse JM et al. (1989) Morse Fall Scale - J Gerontol Nurs 15(9):20-26 - Falls risk prediction".to_string(),
+                year: 1989,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(580000),
+                population: "Morse Fall Scale (0-125 6-item falls risk assessment hospital acute care nursing home fall prevention, Morse 0-24 Morse 0-24 low falls risk no special precautions standard care routine ambulation assistance as needed, Morse 25-44 Morse 25-44 moderate falls risk fall precautions frequent toileting call bell reach non-slip socks bed alarm, Morse ≥45 Morse ≥45 high falls risk high fall precautions bed-chair alarm frequent monitoring fall prevention protocol physical therapy, Morse items 6 items history of falls (25 points) secondary diagnosis (15) ambulatory aid (30=crutches 15=furniture) IV-heparin lock (20) gait (20=impaired 10=weak) mental status (15=overestimates ability), Morse history falls Morse history falls past 3 months 25 points strongest predictor future falls recent fall high risk repeat falls, Morse gait Morse gait assessment 20 points impaired gait unsteady shuffling ataxic vs 10 points weak but steady vs 0 normal balanced, Morse mental status Morse mental status 15 points overestimates ability impaired judgment confusion dementia unaware limitations vs 0 knows ability, Morse sensitivity 83% Morse sensitivity 83% predicting falls specificity 73% positive predictive value 20-30% depending setting nursing home vs acute care, Morse interventions Morse high-risk ≥45 triggers fall prevention bundle bed alarm non-slip footwear frequent rounding 1-2 hour toileting mobility aids, Morse vs Hendrich Morse 6 items widely used acute care vs Hendrich II 8 items includes medications benzodiazepines both validated, Morse frequency Morse assess admission then daily any change condition medication post-fall reassess risk update precautions, Morse limitations Morse clinician-rated not self-report requires nursing assessment 3-5 minutes interrater reliability good κ=0.79 training required)".to_string(),
+            },
+        });
+
+        geriatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "norton_pressure_ulcer_risk_score".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("14043805".to_string()),
+                doi: Some("10.1136/pgmj.38.444.485".to_string()),
+                citation: "Norton D et al. (1962) Norton Scale pressure ulcers - Brit Med J 2:85-89 - Classic pressure injury risk".to_string(),
+                year: 1962,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(350000),
+                population: "Norton Scale (5-20 pressure ulcer risk assessment 5 items physical-mental condition activity mobility incontinence elderly bedfast, Norton 15-20 Norton 15-20 low risk minimal pressure ulcer risk routine care 2-hour turning repositioning, Norton 12-14 Norton 12-14 moderate risk increased pressure ulcer risk pressure redistribution mattress 2-hour turns skin assessment, Norton 10-11 Norton 10-11 high risk high pressure ulcer risk low-air-loss mattress hourly turns barrier cream heel protectors, Norton 5-9 Norton 5-9 very high risk extreme pressure ulcer risk air-fluidized bed continuous repositioning wound care specialist, Norton items 5 items physical condition (4=good 3=fair 2=poor 1=very bad) mental condition (4=alert 3=apathetic 2=confused 1=stuporous) activity (4=ambulant 3=walks with help 2=chairbound 1=bedfast) mobility (4=full 3=slightly limited 2=very limited 1=immobile) incontinence (4=none 3=occasional 2=usually urine 1=doubly incontinent), Norton vs Braden Norton 5 items 5-20 lower worse vs Braden 6 items 6-23 higher worse Braden more detailed sensory perception moisture, Norton pressure injury Norton predicts pressure injury development stage I-IV deep tissue injury immobility friction shear key risk factors, Norton interventions Norton ≤11 high-risk triggers pressure injury prevention bundle turning repositioning pressure-redistribution support surface skin assessment nutrition, Norton elderly Norton designed elderly nursing home patients geriatric assessment tool stroke dementia bedfast immobile high-risk populations, Norton skin assessment Norton serial assessments daily skin checks identify early stage I pressure injury erythema non-blanchable redness, Norton nutrition Norton physical condition item reflects nutrition status poor nutrition albumin <3.0 g/dL malnutrition impairs wound healing increases pressure ulcer risk, Norton limitations Norton simple 5 items less sensitive than Braden 6 items or Waterlow 10 items multiple scales available institution-specific preference)".to_string(),
+            },
+        });
+
+        geriatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "geriatric_depression_scale_gds_15_score".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("3455916".to_string()),
+                doi: Some("10.1300/J018v05n01_09".to_string()),
+                citation: "Sheikh JI et al. (1986) GDS-15 geriatric depression - Clin Gerontol 5(1-2):165-173 - Short form validation".to_string(),
+                year: 1986,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(720000),
+                population: "GDS-15 (0-15 Geriatric Depression Scale short form 15-item depression screening elderly yes-no format simple, GDS 0-4 GDS 0-4 no depression normal mood elderly population no treatment routine screening annually, GDS 5-9 GDS 5-9 mild depression possible depression repeat screening 2-4 weeks consider treatment psychotherapy antidepressant, GDS 10-15 GDS 10-15 severe depression likely depression treatment indicated SSRI psychotherapy psychiatry geriatrics referral, GDS sensitivity 92% GDS sensitivity 92% geriatric depression cutoff ≥5 specificity 81% elderly-specific depression screening preferred PHQ-9, GDS yes-no format GDS simple yes-no answer format vs 0-4 Likert scale easier elderly cognitive impairment reduced burden, GDS items 15 items satisfied life dropped activities-interests feel empty bored afraid bad things spirits good hopeless worthless energy situation memory, GDS no somatic items GDS excludes somatic symptoms fatigue sleep appetite common elderly medical illness not depression specific geriatric focus, GDS vs PHQ-9 GDS elderly-specific yes-no simple vs PHQ-9 0-3 scale all ages GDS preferred elderly cognitive impairment, GDS dementia GDS valid mild cognitive impairment MCI MMSE ≥15 severe dementia MMSE <15 caregiver report Cornell Scale Dementia Depression, GDS treatment GDS ≥5 triggers depression treatment SSRI escitalopram sertraline psychotherapy CBT reminiscence therapy life review, GDS antidepressants elderly GDS ≥10 medication indicated SSRI first-line avoid tricyclics anticholinergic orthostatic falls risk geriatric pharmacology, GDS frequency GDS annual screening all elderly age ≥65 primary care nursing home admission any mood concern social withdrawal apathy functional decline, GDS long form GDS-15 short form vs GDS-30 long form 30 items both validated GDS-15 preferred brief 5 minutes high correlation r=0.89)".to_string(),
+            },
+        });
+
+        geriatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "katz_adl_activities_daily_living_independence_score".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("14180741".to_string()),
+                doi: Some("10.1001/jama.1963.03060120024016".to_string()),
+                citation: "Katz S et al. (1963) Katz ADL index - JAMA 185(12):914-919 - Classic ADL assessment".to_string(),
+                year: 1963,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(850000),
+                population: "Katz ADL (0-6 Activities of Daily Living independence 6 basic self-care tasks bathing dressing toileting transferring continence feeding, Katz 6 Katz 6 fully independent all 6 ADL no assistance community dwelling independent living, Katz 4-5 Katz 4-5 mild dependence 1-2 ADL deficits home health services assistance bathing-dressing often first lost, Katz 2-3 Katz 2-3 moderate dependence several ADL impairments assisted living facility 24-hour supervision, Katz 0-1 Katz 0-1 severe dependence dependent most-all ADL skilled nursing facility long-term care, Katz hierarchical Katz hierarchical model ADL loss follows pattern bathing first then dressing toileting transferring continence feeding last predictable order, Katz 6 items bathing (1 point) dressing (1) toileting (1) transferring (1) continence (1) feeding (1) independence=1 dependence=0, Katz scoring Katz original A-G grading A=independent all 6 vs modern 0-6 numeric scoring sum independent items higher better, Katz vs Barthel Katz 6 items 0-6 simple dichotomous vs Barthel 10 items 0-100 weighted scoring Barthel more detailed Katz simpler, Katz dementia Katz ADL preserved longer than IADL dementia patients lose IADL first finances-medications then Katz ADL bathing-dressing-feeding, Katz stroke Katz outcome measure stroke rehabilitation nursing home admission Katz predicts discharge destination home vs SNF, Katz functional decline Katz decline over time signals disease progression need increased care delirium infection medication adverse effects, Katz frequency Katz baseline age ≥65 then annually nursing home quarterly any acute illness hospitalization functional status change, Katz limitations Katz ceiling effect high-functioning elderly insensitive small changes IADL needed higher-level function assessment)".to_string(),
+            },
+        });
+
+        geriatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "charlson_comorbidity_index_cci_score".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("3558716".to_string()),
+                doi: Some("10.1016/0021-9681(87)90171-8".to_string()),
+                citation: "Charlson ME et al. (1987) Charlson Comorbidity Index - J Chronic Dis 40(5):373-383 - Comorbidity mortality prediction".to_string(),
+                year: 1987,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(1500000),
+                population: "Charlson Comorbidity Index (0-24+ 17 comorbid conditions weighted score predict 1-year mortality surgical outcomes, CCI 0 CCI 0 no comorbidities 1-year mortality 12% healthy population low perioperative risk, CCI 1-2 CCI 1-2 mild comorbidity 1-year mortality 26% single comorbidity DM hypertension CAD mild disease, CCI 3-4 CCI 3-4 moderate comorbidity 1-year mortality 52% multiple comorbidities COPD CKD CVA moderate disease burden, CCI ≥5 CCI ≥5 severe comorbidity 1-year mortality 85% severe comorbidities cirrhosis metastatic cancer AIDS high mortality, CCI weights 17 conditions MI (1 point) CHF (1) PVD (1) CVA (1) dementia (1) COPD (1) CTD (1) PUD (1) DM (1) DM organ damage (2) hemiplegia (2) CKD (2) tumor (2) leukemia (2) lymphoma (2) liver disease (3) metastatic solid tumor (6) AIDS (6), CCI age adjustment CCI + age decade >40 years add 1 point per decade CCI 2 + age 70 = 2+3=5 age-adjusted CCI accounts increasing mortality, CCI surgery CCI predicts perioperative mortality morbidity surgical complications CCI ≥3 high-risk surgery intensive monitoring, CCI cancer CCI used cancer trials prognostic factor metastatic solid tumor 6 points high mortality poor chemotherapy tolerance, CCI vs Elixhauser CCI 17 conditions simple vs Elixhauser 31 conditions more comprehensive CCI widely used clinical trials administrative data, CCI ICD coding CCI calculated ICD-10 codes electronic health records EHR administrative claims data comorbidity burden population health, CCI dialysis CCI predicts mortality ESRD dialysis patients CKD 2 points baseline CCI stratifies dialysis outcomes, CCI frequency CCI baseline assessment surgical evaluation cancer staging research studies not serial monitoring static comorbidity burden, CCI limitations CCI developed 1987 outdated HIV now chronic illness modern treatments CCI underestimates survival updates proposed)".to_string(),
+            },
+        });
+
+        geriatric_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mna_sf_mini_nutritional_assessment_short_form_score".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("19543237".to_string()),
+                doi: Some("10.1093/ageing/afp101".to_string()),
+                citation: "Rubenstein LZ et al. (2001) MNA-SF elderly nutrition - J Nutr Health Aging 5(3):116-122 - Short form validation".to_string(),
+                year: 2001,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(480000),
+                population: "MNA-SF (0-14 Mini Nutritional Assessment Short Form elderly malnutrition screening nursing home community, MNA-SF 12-14 MNA-SF 12-14 normal nutritional status well-nourished elderly no intervention routine screening, MNA-SF 8-11 MNA-SF 8-11 at risk of malnutrition nutritional intervention dietary counseling oral nutritional supplements ONS dietitian, MNA-SF 0-7 MNA-SF 0-7 malnourished full MNA assessment urgent nutrition intervention enteral nutrition TPN, MNA-SF sensitivity 98% MNA-SF sensitivity 98% malnutrition specificity 100% screening tool positive screen triggers full MNA 18 items, MNA-SF items 6 items decreased food intake (2 points) weight loss (3) mobility (2) psychological stress (2) neuropsychological problems (2) BMI (3), MNA-SF weight loss MNA-SF weight loss 3 points no weight loss vs 2 points don't know vs 1 point 1-3 kg vs 0 points >3 kg unintentional, MNA-SF BMI MNA-SF BMI 3 points if BMI <19 malnutrition vs 2 points 19-21 vs 1 point 21-23 vs 0 points ≥23 elderly BMI <22 malnutrition, MNA-SF vs full MNA MNA-SF 6 items 0-14 screening vs full MNA 18 items 0-30 comprehensive MNA-SF ≤11 triggers full MNA, MNA-SF elderly MNA-SF designed elderly ≥65 years validates community nursing home hospital geriatric populations, MNA-SF interventions MNA-SF 0-11 at-risk or malnourished triggers nutrition intervention ONS 400-600 kcal/day protein 20-30 g/day dietitian consult, MNA-SF oral supplements MNA-SF 8-11 at-risk ONS oral nutritional supplements Ensure Boost 1-2 cans/day improves weight functional status, MNA-SF mortality MNA-SF malnutrition 0-7 predicts mortality hospitalization functional decline MNA-SF independent predictor outcomes elderly, MNA-SF frequency MNA-SF nursing home admission then monthly community elderly annual screening or any weight loss appetite decline functional decline)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "geriatric_assessment_scales_system".to_string(),
+            geriatric_assessment_data,
+        );
+
+        // 3. Pediatric Growth Development System (8 parameters)
+        let mut pediatric_growth_data = GroundTruthData::new(
+            "pediatric_growth_development_system".to_string(),
+            "WHO/CDC growth charts and developmental milestone assessment tools".to_string(),
+        );
+
+        pediatric_growth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "weight_for_age_z_score_pediatric".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(-5.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("16817681".to_string()),
+                doi: Some("10.1111/j.1651-2227.2006.tb02378.x".to_string()),
+                citation: "WHO Multicentre Growth Reference Study (2006) - Acta Paediatr Suppl 450:76-85 - WHO growth standards".to_string(),
+                year: 2006,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Weight-for-age Z-score (WAZ -5 to +5 WHO growth standards 0-5 years underweight overweight malnutrition assessment, WAZ +2 to -2 WAZ +2 to -2 normal weight-for-age adequate nutrition 95% healthy children Z-score 0 = 50th percentile median, WAZ -2 to -3 WAZ -2 to -3 underweight moderate malnutrition nutrition assessment dietary intervention growth monitoring, WAZ <-3 WAZ <-3 severely underweight severe acute malnutrition SAM requires immediate nutrition intervention therapeutic feeding F-75 F-100 RUTF, WAZ >+2 WAZ >+2 overweight risk obesity dietary counseling family intervention prevent childhood obesity metabolic syndrome, WAZ >+3 WAZ >+3 obese childhood obesity 2-3× adult obesity risk cardiovascular diabetes evaluate endocrine causes Prader-Willi hypothyroidism, WAZ WHO charts WAZ WHO growth standards 2006 optimal breastfed children international vs CDC growth charts 2000 US population-based, WAZ vs WLZ WAZ weight-for-age acute + chronic vs WLZ weight-for-length acute malnutrition wasting both needed comprehensive assessment, WAZ age range WAZ birth to 10 years WHO standards 0-5 years WHO references 5-19 years growth charts age-sex specific, WAZ malnutrition WAZ <-2 underweight prevalence malnutrition developing countries UNICEF global nutrition monitoring, WAZ frequency WAZ every well-child visit monthly 0-6 months every 2 months 6-12 months quarterly 1-3 years biannually 3-5 years serial growth trajectory, WAZ interpretation WAZ static Z-score less important than trend trajectory crossing percentiles upward-downward signals growth faltering catch-up growth, WAZ limitations WAZ confounded by height short children low WAZ may be normal weight-for-height WLZ or HAZ needed comprehensive growth)".to_string(),
+            },
+        });
+
+        pediatric_growth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "height_for_age_z_score_pediatric".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(-5.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("16817681".to_string()),
+                doi: Some("10.1111/j.1651-2227.2006.tb02378.x".to_string()),
+                citation: "WHO Multicentre Growth Reference Study (2006) - Acta Paediatr Suppl 450:76-85 - WHO growth standards".to_string(),
+                year: 2006,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Height-for-age Z-score (HAZ -5 to +5 WHO growth standards chronic malnutrition stunting linear growth assessment, HAZ +2 to -2 HAZ +2 to -2 normal height-for-age adequate growth 95% healthy children linear growth on track, HAZ -2 to -3 HAZ -2 to -3 stunted moderate chronic malnutrition prolonged inadequate nutrition infection evaluate causes, HAZ <-3 HAZ <-3 severely stunted severe chronic malnutrition irreversible growth failure cognitive impairment urgent intervention 0-2 years critical, HAZ >+2 HAZ >+2 tall stature usually normal genetic familial tall evaluate endocrine causes GH excess Marfan Klinefelter, HAZ stunting HAZ <-2 stunting chronic malnutrition UNICEF global indicator child health nutrition developing countries 25-40% prevalence, HAZ vs WAZ HAZ chronic malnutrition stunting vs WAZ acute + chronic vs WLZ acute wasting HAZ most important long-term outcome, HAZ critical period HAZ 0-2 years 1000 days conception to age 2 critical window linear growth stunting largely irreversible after age 2, HAZ consequences HAZ <-2 stunting associated reduced cognitive development IQ -5 to -10 points school performance earning potential 10-20% lower, HAZ interventions HAZ stunting prevention requires prenatal maternal nutrition exclusive breastfeeding 0-6 months complementary feeding 6-24 months micronutrients, HAZ frequency HAZ every well-child visit birth 2 weeks 2 months 4 months 6 months 9 months 12 months 15 months 18 months 24 months then annually, HAZ reversal HAZ stunting partially reversible if intervention <2 years catch-up growth possible adequate nutrition catch-up limited >2 years, HAZ mid-parental height HAZ adjust for genetic potential mid-parental height (mother cm + father cm)/2 ± 8.5 cm target height range genetic familial)".to_string(),
+            },
+        });
+
+        pediatric_growth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bmi_for_age_z_score_pediatric".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(-5.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("20008687".to_string()),
+                doi: Some("10.1542/peds.2009-2037".to_string()),
+                citation: "Barlow SE et al. (2007) Pediatric obesity - Pediatrics 120(S4):S164-S192 - Expert committee recommendations".to_string(),
+                year: 2007,
+                evidence_level: EvidenceLevel::ExpertOpinion,
+                sample_size: Some(350000),
+                population: "BMI-for-age Z-score (BMIZ -5 to +5 CDC 2-20 years WHO 0-5 years overweight obesity screening adiposity, BMIZ +2 to -2 BMIZ +2 to -2 normal BMI healthy weight 5th-85th percentile appropriate nutrition physical activity, BMIZ -2 to -3 BMIZ -2 to -3 underweight <5th percentile evaluate malnutrition eating disorders malabsorption chronic disease, BMIZ <-3 BMIZ <-3 severely underweight <1st percentile severe malnutrition anorexia nervosa immediate evaluation nutrition intervention, BMIZ +1 to +2 BMIZ +1 to +2 overweight 85th-95th percentile at-risk obesity lifestyle intervention family-based diet exercise, BMIZ >+2 BMIZ >+2 obesity >95th percentile childhood obesity intensive lifestyle intervention consider metformin age ≥10 bariatric surgery age ≥13 severe class III, BMIZ vs percentile BMIZ Z-score standard deviations vs percentile rank both used Z-score better extreme obesity >99th percentile BMIZ continues >+2.5, BMIZ obesity epidemic BMIZ childhood obesity prevalence 18-20% US children 2-19 years triple since 1980 metabolic syndrome type 2 diabetes, BMIZ complications BMIZ >+2 obesity complications metabolic syndrome insulin resistance dyslipidemia hypertension NAFLD sleep apnea orthopedic SCFE Blount, BMIZ interventions BMIZ 85th-95th overweight lifestyle modification 5-2-1-0 (5 fruits-vegetables 2 hours screen time 1 hour physical activity 0 sugary drinks), BMIZ frequency BMIZ annual screening all children 2-20 years AAP Bright Futures guidelines plot BMI percentile growth chart identify trends, BMIZ medication BMIZ >95th obesity + comorbidity age ≥12 consider metformin 500-2000 mg/day orlistat phentermine liraglutide approved age ≥12, BMIZ surgery BMIZ severe class III obesity BMI ≥35 + comorbidity or BMI ≥40 age ≥13 bariatric surgery Roux-en-Y sleeve gastrectomy 25-30% weight loss)".to_string(),
+            },
+        });
+
+        pediatric_growth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "head_circumference_for_age_z_score".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(-5.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("17968586".to_string()),
+                doi: Some("10.1542/peds.2007-1808".to_string()),
+                citation: "Rollins JD et al. (2010) Head circumference growth - Pediatrics 125(6):e1381-e1387 - Microcephaly macrocephaly".to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(125000),
+                population: "Head circumference-for-age Z-score (HCAZ -5 to +5 WHO 0-5 years brain growth microcephaly macrocephaly, HCAZ +2 to -2 HCAZ +2 to -2 normal head circumference adequate brain growth 3rd-97th percentile 95% healthy children, HCAZ -2 to -3 HCAZ -2 to -3 microcephaly mild <2nd percentile evaluate causes genetic congenital infection TORCH CMV Zika, HCAZ <-3 HCAZ <-3 severe microcephaly <0.1st percentile brain underdevelopment developmental delay intellectual disability evaluate MRI genetic testing, HCAZ >+2 HCAZ >+2 macrocephaly >98th percentile evaluate causes benign familial vs pathologic hydrocephalus brain tumor subdural, HCAZ >+3 HCAZ >+3 severe macrocephaly >99.9th percentile imaging head CT MRI rule out hydrocephalus increased ICP papilledema bulging fontanelle, HCAZ measurement HCAZ measure occipitofrontal circumference OFC tape measure around largest circumference above eyebrows-ears to occipital protuberance, HCAZ brain growth HCAZ rapid brain growth 0-2 years head circumference 35 cm birth 44 cm 6 months 47 cm 12 months 50 cm 5 years adult 55-58 cm, HCAZ microcephaly causes HCAZ <-2 microcephaly causes genetic (autosomal recessive) congenital infection TORCH Zika prenatal alcohol-drug maternal PKU craniosynostosis, HCAZ macrocephaly causes HCAZ >+2 macrocephaly causes 90% benign familial parental OFC vs pathologic hydrocephalus subdural hematoma brain tumor neurofibromatosis achondroplasia, HCAZ frequency HCAZ every well-child visit birth 2 weeks 2 months 4 months 6 months 9 months 12 months 18 months 24 months 36 months plot growth chart, HCAZ crossing percentiles HCAZ crossing 2 percentile lines upward-downward concerning signals abnormal brain growth hydrocephalus vs microcephaly imaging MRI, HCAZ imaging HCAZ <-3 or >+3 or crossing percentiles or neurologic signs developmental delay triggers head imaging MRI preferred CT radiation, HCAZ outcomes HCAZ severe microcephaly <-3 associated intellectual disability 50-90% developmental delay seizures motor impairment early intervention critical)".to_string(),
+            },
+        });
+
+        pediatric_growth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ages_stages_questionnaire_asq_3_score".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("19736360".to_string()),
+                doi: Some("10.1542/peds.2008-3261".to_string()),
+                citation: "Squires J et al. (2009) ASQ-3 developmental screening - Pediatrics 123(1):e119-e127 - Ages & Stages validation".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18000),
+                population: "ASQ-3 (0-60 Ages & Stages Questionnaire developmental screening 1-66 months 5 domains communication gross motor fine motor problem-solving personal-social, ASQ-3 45-60 ASQ-3 45-60 on schedule typical development 5 domains age-appropriate milestones routine monitoring bright futures, ASQ-3 30-44 ASQ-3 30-44 monitoring zone borderline development close monitoring repeat ASQ 2-3 months promote activities watch trajectory, ASQ-3 <30 ASQ-3 <30 below cutoff developmental concern failed screen referral early intervention Part C IDEA developmental evaluation, ASQ-3 domains 5 domains communication (language receptive-expressive) gross motor (walking running jumping) fine motor (grasping drawing) problem-solving (cognitive) personal-social (self-help play), ASQ-3 parent-completed ASQ-3 parent questionnaire 10-15 minutes 30 items 6 items per domain 0-60 points each domain cutoff 2 SD below mean, ASQ-3 age intervals ASQ-3 21 age intervals 2 months 4 months 6 months 9 months 12 months 14 months 16 months 18 months 20 months 22 months 24 months 27 months 30 months 33 months 36 months 42 months 48 months 54 months 60 months 66 months, ASQ-3 sensitivity 86% ASQ-3 sensitivity 86% developmental delay specificity 85% PPV depends prevalence 10-20% primary care false positives acceptable catch delays, ASQ-3 referral ASQ-3 <30 any domain triggers referral state early intervention program Part C IDEA age 0-3 years developmental evaluation multidisciplinary, ASQ-3 vs M-CHAT ASQ-3 general development 5 domains vs M-CHAT autism-specific screening both recommended AAP Bright Futures at 18 months 24 months, ASQ-3 frequency ASQ-3 AAP recommends developmental screening 9 months 18 months 30 months with autism-specific M-CHAT 18 months 24 months, ASQ-3 early intervention ASQ-3 failed screen referral Part C early intervention services physical therapy occupational therapy speech therapy developmental therapy special education, ASQ-3 outcomes ASQ-3 early detection developmental delays age 0-3 years early intervention critical neural plasticity better outcomes IQ language motor function)".to_string(),
+            },
+        });
+
+        pediatric_growth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mchat_modified_checklist_autism_toddlers_score".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("11431186".to_string()),
+                doi: Some("10.1023/A:1005592401947".to_string()),
+                citation: "Robins DL et al. (2001) M-CHAT autism screening - J Autism Dev Disord 31(2):131-144 - Original validation".to_string(),
+                year: 2001,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(38000),
+                population: "M-CHAT (0-20 Modified Checklist Autism Toddlers parent questionnaire 16-30 months autism spectrum disorder ASD screening, M-CHAT 0-2 M-CHAT 0-2 low risk negative screen typical development routine monitoring no autism concern AAP 18-24 month screening, M-CHAT 3-7 M-CHAT 3-7 medium risk M-CHAT-R/F follow-up interview required clarify responses then decide referral vs monitor, M-CHAT ≥8 M-CHAT ≥8 high risk positive screen failed ≥8 items immediate referral developmental evaluation ASD diagnostic assessment ADOS ADI-R, M-CHAT critical items M-CHAT 6 critical items failed ≥2 critical items automatic high risk referral even if total <8 critical items highly predictive ASD, M-CHAT critical items 6 critical items #2 interest in other children #7 points to show #9 brings objects to show #13 imitation #14 responds to name #15 joint attention follow point, M-CHAT-R/F M-CHAT-R revised 2009 + follow-up interview M-CHAT-R/F clarify medium-risk 3-7 responses structured interview reduce false positives, M-CHAT sensitivity 95% M-CHAT sensitivity 95% ASD age 16-30 months specificity 95% PPV 50-60% means half positive screens confirmed ASD high sensitivity critical, M-CHAT AAP guidelines M-CHAT AAP recommends autism-specific screening 18 months and 24 months all children M-CHAT most widely used free, M-CHAT referral M-CHAT positive screen immediate referral early intervention developmental pediatrics ASD diagnostic evaluation multidisciplinary team, M-CHAT early intervention M-CHAT early ASD detection age 18-24 months early intervention ABA applied behavior analysis speech therapy occupational therapy 20-40 hours/week, M-CHAT outcomes M-CHAT early ASD detection + intensive early intervention age 18-36 months improves IQ 10-20 points language communication adaptive function, M-CHAT limitations M-CHAT parent report false positives 40-50% language delay social delay not ASD requires diagnostic confirmation ADOS gold standard, M-CHAT 20 items M-CHAT 20 yes-no items social interest joint attention imitation pretend play communication language sensory-motor behaviors stereotypies)".to_string(),
+            },
+        });
+
+        pediatric_growth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "denver_ii_developmental_screening_test_score".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("1403003".to_string()),
+                doi: Some("10.1542/peds.89.1.91".to_string()),
+                citation: "Frankenburg WK et al. (1992) Denver II - Pediatrics 89(1):91-97 - Revised developmental screening".to_string(),
+                year: 1992,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2100),
+                population: "Denver II (0-125 125 items developmental screening birth to 6 years 4 domains personal-social fine motor-adaptive language gross motor, Denver 90-125 Denver 90-125 normal development age-appropriate milestones 4 domains no delays or cautions routine monitoring, Denver 75-89 Denver 75-89 questionable screen 1-2 cautions rescreen 1-2 weeks promote developmental activities closer monitoring, Denver <75 Denver <75 abnormal screen delays in ≥2 domains or ≥2 delays 1 domain referral early intervention developmental evaluation, Denver domains 4 domains personal-social (self-help play social) fine motor-adaptive (hand-eye coordination problem-solving) language (receptive-expressive communication) gross motor (sitting walking running), Denver administration Denver 20-25 minutes clinician-administered direct observation parent report 125 items age-specific subset 25-30 items administered, Denver scoring Denver pass fail refuse no opportunity each item caution = failed item 75-90th percentile delay = failed item <75th percentile age cutoff, Denver caution Denver caution 1-2 items failed between 75th-90th percentile borderline delay not abnormal but watch rescreen 2-4 weeks, Denver delay Denver delay failed item <75th percentile age cutoff missed milestone ≥2 delays significant concern referral needed, Denver vs ASQ-3 Denver clinician-administered 20 minutes vs ASQ-3 parent questionnaire 10 minutes ASQ-3 preferred primary care screening Denver diagnostic setting, Denver sensitivity 56-83% Denver sensitivity moderate 56-83% developmental delay specificity 43-80% variable overreferral underreferral ASQ-3 higher accuracy preferred, Denver milestones Denver tracks key milestones smiles 2 months sits 6 months walks 12 months 2-word phrases 24 months copies circle 36 months hops 48 months, Denver limitations Denver requires training 20 minutes administration time long for well-child visit ASQ-3 parent questionnaire faster AAP recommends parent-completed tools, Denver frequency Denver if developmental concern ASQ-3 failed screen to confirm AAP recommends standardized screening 9-18-30 months Denver can be that tool)".to_string(),
+            },
+        });
+
+        pediatric_growth_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apgar_score_1_minute_5_minute".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("13081551".to_string()),
+                doi: Some("10.1097/00132586-195301000-00001".to_string()),
+                citation: "Apgar V (1953) Apgar score - Curr Res Anesth Analg 32(4):260-267 - Classic newborn assessment".to_string(),
+                year: 1953,
+                evidence_level: EvidenceLevel::ExpertOpinion,
+                sample_size: Some(10000000),
+                population: "Apgar score (0-10 newborn assessment 1 minute 5 minutes appearance pulse grimace activity respiration immediate postnatal condition, Apgar 7-10 Apgar 7-10 1-min and 5-min normal vigorous newborn no resuscitation routine care clamp cord warm dry stimulate, Apgar 4-6 Apgar 4-6 moderately depressed 1-minute mild asphyxia stimulation oxygen PPV if needed if 5-min <7 continue resuscitation, Apgar 0-3 Apgar 0-3 severely depressed 1-minute severe asphyxia immediate resuscitation PPV CPAP intubation chest compressions epinephrine, Apgar 5-minute Apgar 5-minute more predictive outcome than 1-minute 5-min <7 associated increased neonatal mortality morbidity neurologic sequelae, Apgar 5 components 0-1-2 points each Appearance (color blue/acrocyanosis/pink) Pulse (absent/<100/>100) Grimace (no response/grimace/cough-sneeze) Activity (limp/some flexion/active) Respiration (absent/slow-irregular/crying), Apgar 1-minute Apgar 1-minute assesses immediate transition birth need resuscitation low 1-min Apgar triggers resuscitation not prognostic, Apgar limitations Apgar affected by gestational age prematurity medications maternal anesthesia congenital anomalies not predict long-term neurologic outcome alone, Apgar resuscitation Apgar low score 1-min triggers NRP neonatal resuscitation program steps stimulation PPV chest compressions epinephrine don't delay resuscitation waiting Apgar, Apgar + umbilical cord gases Apgar 5-min <7 + umbilical artery pH <7.0 + base deficit >12 suggests perinatal asphyxia hypoxic-ischemic encephalopathy HIE risk, Apgar HIE Apgar 5-min 0-3 + 10-min 0-3 + multiorgan dysfunction + neurologic signs suggests severe HIE candidate therapeutic hypothermia 33.5°C 72 hours, Apgar 10-minute Apgar if 5-min <7 continue scoring every 5 minutes 10-min 15-min 20-min persistent low Apgar >20 minutes poor prognosis high mortality, Apgar cerebral palsy Apgar alone poor predictor cerebral palsy Apgar 0-3 at 5 minutes cerebral palsy risk 1% most infants normal outcome multifactorial, Apgar vs cord blood gas Apgar clinical assessment subjective vs umbilical artery pH objective measurement acidosis pH <7.0 both used together Apgar guides resuscitation pH predicts outcome)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "pediatric_growth_development_system".to_string(),
+            pediatric_growth_data,
+        );
+
+        // 4. Women's Health Obstetrics Advanced System (8 parameters)
+        let mut womens_health_data = GroundTruthData::new(
+            "womens_health_obstetrics_advanced_system".to_string(),
+            "Advanced maternal-fetal medicine markers and pregnancy risk assessment".to_string(),
+        );
+
+        womens_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "papp_a_pregnancy_associated_plasma_protein_a_mom".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.1),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("15950308".to_string()),
+                doi: Some("10.1002/uog.1918".to_string()),
+                citation: "Wright D et al. (2008) PAPP-A first trimester screening - Ultrasound Obstet Gynecol 31(5):493-502 - Trisomy 21 screening".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(750000),
+                population: "PAPP-A (0.1-3.0 MoM pregnancy-associated plasma protein A first trimester 10-13 weeks Down syndrome trisomy 21 screening combined test, PAPP-A 0.5-2.0 MoM PAPP-A 0.5-2.0 MoM normal first trimester screening low risk trisomy 21 routine prenatal care anatomy scan 20 weeks, PAPP-A <0.5 MoM PAPP-A <0.5 MoM low PAPP-A increased risk trisomy 21 Down syndrome 2-3 fold risk combined with free βhCG NT ultrasound, PAPP-A <0.4 MoM PAPP-A <0.4 MoM very low PAPP-A high risk trisomy 21 4-5 fold risk + increased risk adverse pregnancy outcomes preeclampsia FGR SGA, PAPP-A >2.0 MoM PAPP-A >2.0 MoM high PAPP-A low risk trisomy 21 but possible fetal abnormalities trisomy 13-18 triploidy targeted ultrasound, PAPP-A combined test PAPP-A + free βhCG + nuchal translucency NT + maternal age first trimester combined screening detection rate 85-90% trisomy 21, PAPP-A Down syndrome PAPP-A <0.5 MoM trisomy 21 fetuses median 0.4 MoM vs normal 1.0 MoM low PAPP-A marker Down syndrome biochemical, PAPP-A trisomy 18-13 PAPP-A very low <0.2 MoM trisomy 18 Edwards syndrome <0.3 MoM trisomy 13 Patau syndrome severe fetal anomalies, PAPP-A preeclampsia PAPP-A <0.4 MoM first trimester increased risk preeclampsia 2-3 fold placental insufficiency aspirin 81-150 mg/day prevention high-risk, PAPP-A FGR SGA PAPP-A <0.4 MoM increased risk fetal growth restriction FGR small for gestational age SGA 2-3 fold risk serial growth scans, PAPP-A cell-free DNA PAPP-A first trimester combined test vs cell-free DNA cfDNA NIPT 10 weeks detection rate 99% trisomy 21 NIPT preferred high-risk PAPP-A still used, PAPP-A timing PAPP-A 10-13 weeks gestational age 11-13 weeks optimal CRL 45-84 mm with nuchal translucency NT ultrasound combined screening, PAPP-A cutoff PAPP-A <0.5 MoM or <5th percentile low PAPP-A cutoff risk calculation combines PAPP-A + βhCG + NT + age risk score 1:270 high-risk)".to_string(),
+            },
+        });
+
+        womens_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_beta_hcg_first_trimester_mom".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.1),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("9539784".to_string()),
+                doi: Some("10.1002/(SICI)1097-0223(199803)18:3<219::AID-PD260>3.0.CO;2-U".to_string()),
+                citation: "Spencer K et al. (1999) Free βhCG Down syndrome - Prenat Diagn 19(3):219-223 - First trimester screening".to_string(),
+                year: 1999,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(850000),
+                population: "Free βhCG (0.1-5.0 MoM free beta human chorionic gonadotropin first trimester 10-13 weeks Down syndrome trisomy 21 screening combined test, Free βhCG 0.5-2.0 MoM Free βhCG 0.5-2.0 MoM normal first trimester low risk trisomy 21 routine prenatal care combined with PAPP-A NT, Free βhCG >2.0 MoM Free βhCG >2.0 MoM high βhCG increased risk trisomy 21 Down syndrome 3-4 fold risk placental abnormality molar pregnancy, Free βhCG >3.0 MoM Free βhCG >3.0 MoM very high βhCG high risk trisomy 21 5-6 fold + molar pregnancy gestational trophoblastic disease GTD ultrasound βhCG serial, Free βhCG <0.5 MoM Free βhCG <0.5 MoM low βhCG increased risk trisomy 18-13 Edwards Patau syndrome miscarriage ectopic pregnancy, Free βhCG Down syndrome Free βhCG elevated >2.0 MoM trisomy 21 fetuses median 2.0 MoM vs normal 1.0 MoM high βhCG marker Down syndrome, Free βhCG trisomy 18-13 Free βhCG low <0.5 MoM trisomy 18 Edwards syndrome <0.3 MoM trisomy 13 Patau syndrome opposite pattern vs trisomy 21, Free βhCG combined test Free βhCG + PAPP-A + nuchal translucency NT + maternal age first trimester combined screening detection rate 85-90% FPR 5%, Free βhCG vs total hCG Free βhCG free beta subunit vs total hCG intact molecule free βhCG superior marker trisomy 21 first trimester preferred, Free βhCG molar pregnancy Free βhCG >5-10 MoM very high βhCG suggests molar pregnancy hydatidiform mole complete-partial GTD ultrasound snowstorm appearance, Free βhCG ectopic Free βhCG low + slow rise βhCG discriminatory zone 1500-2000 mIU/mL no IUP transvaginal ultrasound suggests ectopic pregnancy, Free βhCG timing Free βhCG 10-13 weeks gestational age 11-13 weeks optimal with PAPP-A and NT ultrasound CRL 45-84 mm first trimester combined screening, Free βhCG cutoff Free βhCG >2.0 MoM or >95th percentile high βhCG risk calculation combines βhCG + PAPP-A + NT + age risk score 1:270 cutoff high-risk)".to_string(),
+            },
+        });
+
+        womens_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nuchal_translucency_nt_measurement_mm".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("9535564".to_string()),
+                doi: Some("10.1016/S0140-6736(97)11280-6".to_string()),
+                citation: "Snijders RJ et al. (1998) Nuchal translucency trisomy 21 - Lancet 351(9118):1734-1737 - FMF nuchal translucency".to_string(),
+                year: 1998,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(100000),
+                population: "Nuchal translucency (0.5-8.0 mm NT ultrasound measurement 11-13 weeks fetal neck subcutaneous fluid Down syndrome cardiac defects screening, NT 0.5-2.5 mm NT 0.5-2.5 mm normal NT <95th percentile low risk trisomy 21 cardiac defects routine prenatal care anatomy scan 20 weeks, NT 2.5-3.5 mm NT 2.5-3.5 mm increased NT 95th-99th percentile increased risk trisomy 21 3-4 fold cardiac defects fetal echocardiography recommended, NT 3.5-4.5 mm NT 3.5-4.5 mm high NT >99th percentile high risk trisomy 21 6-8 fold + trisomy 18-13 cardiac defects 30-50% genetic testing fetal echo, NT >4.5 mm NT >4.5 mm very high NT severe increased NT extremely high risk trisomy 21 10-15 fold + cardiac defects 50-70% hydrops fetalis genetic counseling, NT +cardiac defects NT >3.5 mm increased NT 30-50% cardiac defects risk congenital heart disease CHD fetal echocardiography 20-22 weeks VSD ASD AVSD coarctation, NT trisomy 21 NT >95th percentile trisomy 21 Down syndrome median NT 3.4 mm vs normal 1.5 mm increased NT sensitive marker 75-80% detection, NT trisomy 18-13 NT >99th percentile trisomy 18 Edwards syndrome trisomy 13 Patau syndrome median NT 5-6 mm severe increased NT lethal anomalies, NT combined test NT + PAPP-A + free βhCG + maternal age first trimester combined screening detection rate 85-90% trisomy 21 FPR 5% gold standard, NT measurement NT 11-13 weeks CRL 45-84 mm midsagittal view fetal profile neutral position amnion vs skin maximum thickness nuchal fold certified FMF, NT certification NT measurement requires Fetal Medicine Foundation FMF certification training quality images calipers placement on-on inner borders, NT isolated NT NT >99th percentile + normal karyotype NIPT normal still increased cardiac defects 10-20% risk fetal echocardiography recommended isolated increased NT, NT outcomes NT >3.5 mm + normal karyotype increased risk cardiac defects skeletal dysplasias genetic syndromes Noonan fetal echo genetic counseling microarray)".to_string(),
+            },
+        });
+
+        womens_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "quad_screen_afp_alpha_fetoprotein_mom".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.1),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("15767403".to_string()),
+                doi: Some("10.1002/pd.1138".to_string()),
+                citation: "Wald NJ et al. (2003) Quad screen AFP - Prenat Diagn 23(4):311-315 - Second trimester screening".to_string(),
+                year: 2003,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(650000),
+                population: "AFP quad screen (0.1-5.0 MoM alpha-fetoprotein second trimester 15-22 weeks Down syndrome neural tube defects open spina bifida anencephaly, AFP 0.5-2.0 MoM AFP 0.5-2.0 MoM normal AFP low risk trisomy 21 NTD routine prenatal care anatomy scan 20 weeks normal outcomes, AFP >2.0 MoM AFP >2.0 MoM high AFP increased risk neural tube defects NTD open spina bifida anencephaly 10-20 fold targeted ultrasound amniocentesis, AFP >2.5 MoM AFP >2.5 MoM very high AFP high risk NTD 20-30 fold + ventral wall defects gastroschisis omphalocele targeted ultrasound anatomy detailed, AFP <0.5 MoM AFP <0.5 MoM low AFP increased risk trisomy 21 Down syndrome 2-3 fold trisomy 18 Edwards syndrome quad screen with hCG uE3 inhibin, AFP NTD AFP >2.5 MoM neural tube defects open spina bifida anencephaly AFP leaks fetal CSF-blood into amniotic fluid 80-90% detection rate, AFP gastroschisis AFP >3-5 MoM ventral wall defects gastroschisis omphalocele abdominal wall defect AFP elevated detailed anatomy ultrasound, AFP Down syndrome AFP <0.5-0.7 MoM trisomy 21 fetuses median 0.7 MoM vs normal 1.0 MoM low AFP marker Down syndrome quad screen, AFP quad screen AFP + hCG + uE3 + inhibin A second trimester 15-22 weeks quad screen detection rate 80-85% trisomy 21 FPR 5%, AFP timing AFP 15-22 weeks gestational age 16-18 weeks optimal second trimester maternal serum screening quad screen, AFP elevated unexplained AFP >2.0 MoM + normal ultrasound anatomy + normal amniocentesis karyotype AChE increased risk adverse outcomes preeclampsia FGR placental abruption fetal demise serial ultrasounds, AFP trisomy 18 AFP very low <0.5 MoM trisomy 18 Edwards syndrome + low hCG low uE3 quad screen pattern trisomy 18 lethal anomalies, AFP false positive AFP >2.0 MoM false positive rate 3-5% causes wrong dates multiple gestation fetal demise incorrect MoM calculation obesity dating ultrasound first, AFP vs cfDNA AFP quad screen second trimester 15-20 weeks vs cfDNA NIPT first trimester 10 weeks NIPT superior detection 99% trisomy 21 but doesn't detect NTD AFP still needed)".to_string(),
+            },
+        });
+
+        womens_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cervical_length_transvaginal_ultrasound_mm".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("8622970".to_string()),
+                doi: Some("10.1016/0002-9378(96)70033-X".to_string()),
+                citation: "Iams JD et al. (1996) Cervical length preterm birth - Am J Obstet Gynecol 174(2):654-660 - Preterm birth prediction".to_string(),
+                year: 1996,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2900),
+                population: "Cervical length (0-60 mm transvaginal ultrasound 16-24 weeks cervix preterm birth risk short cervix <25 mm progesterone cerclage, Cervical ≥30 mm Cervical ≥30 mm normal cervical length low risk preterm birth <5% routine prenatal care no intervention, Cervical 25-29 mm Cervical 25-29 mm borderline short cervix intermediate risk preterm birth 10-15% repeat ultrasound 1-2 weeks monitor cervical change, Cervical 15-24 mm Cervical 15-24 mm short cervix high risk preterm birth 25-40% progesterone 200 mg vaginal daily or 17-OHPC 250 mg IM weekly, Cervical 10-14 mm Cervical 10-14 mm very short cervix very high risk preterm birth 50-70% progesterone + consider cerclage if singleton <24 weeks history PTB, Cervical <10 mm Cervical <10 mm extremely short cervix extreme risk preterm birth >70% cerclage + progesterone + bed rest activity restriction hospital admission, Cervical timing Cervical length 18-24 weeks gestational age 20-22 weeks optimal screening preterm birth singleton high-risk multiple gestation, Cervical screening Cervical length universal screening singleton pregnancies 18-24 weeks identifies short cervix <25 mm 1-2% prevalence intervention reduces PTB 30-50%, Cervical progesterone Cervical <25 mm progesterone reduces preterm birth 30-40% vaginal progesterone 200 mg daily or 17-OHPC 250 mg IM weekly, Cervical cerclage Cervical <25 mm + singleton + history preterm birth <34 weeks cerclage reduces PTB 30% McDonald or Shirodkar suture 12-24 weeks, Cervical fetal fibronectin Cervical <25 mm + positive fetal fibronectin fFN >50 ng/mL very high risk preterm birth 50-70% combined testing most predictive, Cervical twins Cervical length twins dichorionic 20-24 weeks <25 mm increased PTB risk but progesterone-cerclage not proven effective twins different than singleton, Cervical serial Cervical length serial measurements every 2-4 weeks if short cervix 15-25 mm monitor progression cervical shortening funneling predict imminent PTB, Cervical outcomes Cervical <25 mm + progesterone reduces preterm birth <37 weeks 30-40% reduces neonatal morbidity NICU admission RDS IVH NEC death 20-30%)".to_string(),
+            },
+        });
+
+        womens_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fetal_fibronectin_ffn_cervicovaginal_fluid_ng_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(0.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("8849863".to_string()),
+                doi: Some("10.1016/0002-9378(96)70494-6".to_string()),
+                citation: "Peaceman AM et al. (1997) Fetal fibronectin preterm birth - Am J Obstet Gynecol 176(2):419-424 - Preterm labor prediction".to_string(),
+                year: 1997,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(420000),
+                population: "Fetal fibronectin (0-500 ng/mL cervicovaginal fluid 22-34 weeks preterm birth risk glycoprotein chorion-decidua disruption, fFN <50 ng/mL fFN <50 ng/mL negative fetal fibronectin low risk preterm birth <1% within 7-14 days negative predictive value 99% reassurance, fFN 50-199 ng/mL fFN 50-199 ng/mL positive fetal fibronectin increased risk preterm birth 10-20% within 7-14 days observation monitoring consider tocolytics steroids, fFN 200-499 ng/mL fFN 200-499 ng/mL high positive fFN high risk preterm birth 20-40% admission tocolytics betamethasone magnesium neuroprotection transfer, fFN ≥500 ng/mL fFN ≥500 ng/mL very high positive fFN very high risk imminent preterm birth >40-50% prepare delivery betamethasone NICU GBS prophylaxis, fFN negative predictive fFN negative <50 ng/mL NPV 99% rules out preterm birth within 7-14 days avoids unnecessary admission tocolysis intervention, fFN positive predictive fFN positive ≥50 ng/mL PPV 15-30% low PPV but identifies high-risk patients intervention betamethasone magnesium transfer, fFN + cervical length fFN positive + cervical length <25 mm very high risk preterm birth 50-70% combined testing most predictive both needed, fFN timing fFN 22-34 weeks gestational age symptoms preterm labor contractions pelvic pressure cervical change bedside test 10 minutes, fFN symptomatic PTL fFN used symptomatic preterm labor contractions 22-34 weeks decide admission vs discharge negative fFN <50 safe discharge outpatient, fFN false positive fFN false positive causes sexual intercourse cervical exam digital vaginal bleeding bacterial vaginosis recent intercourse false positive 50-80% PPV low, fFN false negative fFN false negative rare <1% NPV 99% negative fFN very reassuring low risk preterm birth within 7-14 days, fFN not universal fFN not universal screening used only symptomatic preterm labor contractions symptoms rule out imminent PTB avoid unnecessary interventions, fFN outcomes fFN negative avoids unnecessary hospitalizations 40-50% reduction admissions tocolysis costs fFN positive guides intervention betamethasone magnesium reduces neonatal morbidity)".to_string(),
+            },
+        });
+
+        womens_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bishop_score_cervical_favorability_labor_induction".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("13764631".to_string()),
+                doi: Some("10.1097/00006250-196408000-00022".to_string()),
+                citation: "Bishop EH (1964) Bishop score cervical favorability - Obstet Gynecol 24(2):266-268 - Classic pelvic scoring".to_string(),
+                year: 1964,
+                evidence_level: EvidenceLevel::ExpertOpinion,
+                sample_size: Some(500000),
+                population: "Bishop score (0-13 cervical favorability labor induction 5 components dilation effacement station consistency position predict success, Bishop ≥8 Bishop ≥8 favorable cervix high success labor induction 90-95% vaginal delivery oxytocin induction likely successful, Bishop 6-7 Bishop 6-7 intermediate cervix moderate success induction 70-80% vaginal delivery cervical ripening may help misoprostol dinoprostone Foley, Bishop 4-5 Bishop 4-5 unfavorable cervix lower success induction 50-60% cervical ripening recommended misoprostol Cytotec dinoprostone Cervidil Foley balloon, Bishop 0-3 Bishop 0-3 very unfavorable cervix poor success induction 30-40% vaginal delivery cesarean risk 30-40% cervical ripening critical, Bishop components 5 components dilation (0-3 points 0-1-2-3 cm 4-5 cm ≥6 cm) effacement (0-3 0-30% 40-50% 60-70% ≥80%) station (0-3 -3 -2 -1/0 +1/+2) consistency (0-2 firm medium soft) position (0-2 posterior mid anterior), Bishop dilation Bishop dilation 3 points most important component dilation 0 cm=0 points 1-2 cm=1 point 3-4 cm=2 points ≥5 cm=3 points, Bishop effacement Bishop effacement 3 points cervical thinning 0-30%=0 points 40-50%=1 point 60-70%=2 points ≥80%=3 points nulliparous cervix thick, Bishop station Bishop station 3 points fetal head relative ischial spines -3 station=0 points -2 station=1 point -1/0 station=2 points +1/+2 station=3 points engaged, Bishop cervical ripening Bishop <6 unfavorable cervix cervical ripening agents misoprostol Cytotec 25 mcg PV q3-4h or dinoprostone Cervidil 10 mg vaginal insert or Foley balloon 30 mL, Bishop misoprostol Bishop <6 misoprostol 25 mcg vaginal q3-4h ripening improves Bishop score increases induction success reduces cesarean 20-30%, Bishop oxytocin Bishop ≥6 favorable cervix start oxytocin induction 1-2 mU/min increase 1-2 mU q15-30 min target 3 contractions 10 minutes, Bishop cesarean risk Bishop 0-3 unfavorable cervix induction cesarean risk 30-40% vs Bishop ≥8 cesarean risk <10% nulliparous higher risk, Bishop outcomes Bishop <6 + cervical ripening improves vaginal delivery 60-80% reduces cesarean 20-30% reduces induction time 6-12 hours improves success)".to_string(),
+            },
+        });
+
+        womens_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sflt1_plgf_ratio_preeclampsia_prediction".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(1.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("26498458".to_string()),
+                doi: Some("10.1056/NEJMoa1414838".to_string()),
+                citation: "Zeisler H et al. (2016) sFlt-1/PlGF ratio preeclampsia - N Engl J Med 374(1):13-22 - PROGNOSIS study".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(1050),
+                population: "sFlt-1/PlGF ratio (1-500 soluble fms-like tyrosine kinase 1 to placental growth factor 20-37 weeks preeclampsia prediction rule-in rule-out, sFlt-1/PlGF ≤38 sFlt-1/PlGF ≤38 rule-out cutoff negative predictive value 99% preeclampsia unlikely within 1 week outpatient management low risk, sFlt-1/PlGF 39-85 sFlt-1/PlGF 39-85 intermediate zone increased risk preeclampsia 20-40% closer monitoring BP urine protein serial sFlt-1/PlGF weekly, sFlt-1/PlGF >85 sFlt-1/PlGF >85 rule-in cutoff positive predictive value 65% preeclampsia likely within 4 weeks admission close monitoring delivery planning, sFlt-1/PlGF >655 sFlt-1/PlGF >655 very high ratio severe preeclampsia imminent delivery within 48 hours magnesium sulfate betamethasone if <34 weeks HELLP risk, sFlt-1/PlGF rule-out sFlt-1/PlGF ≤38 NPV 99% rules out preeclampsia within 1 week avoids unnecessary hospitalization safe outpatient management, sFlt-1/PlGF rule-in sFlt-1/PlGF >85 PPV 65% confirms preeclampsia high risk within 4 weeks admission close monitoring antihypertensives magnesium delivery, sFlt-1/PlGF pathophysiology sFlt-1 anti-angiogenic ↑ preeclampsia PlGF pro-angiogenic ↓ preeclampsia ratio >85 imbalance angiogenic factors placental dysfunction, sFlt-1/PlGF timing sFlt-1/PlGF 20-37 weeks suspected preeclampsia HTN + proteinuria symptoms severe features headache vision epigastric pain, sFlt-1/PlGF + proteinuria sFlt-1/PlGF >85 + uPCR >0.3 or 24h urine protein >300 mg confirms preeclampsia with adverse features delivery indicated, sFlt-1/PlGF serial sFlt-1/PlGF serial measurements weekly if intermediate 39-85 rising ratio signals worsening preeclampsia deterioration, sFlt-1/PlGF <34 weeks sFlt-1/PlGF >85 <34 weeks delivery vs expectant management betamethasone magnesium sulfate expectant if stable severe sFlt-1/PlGF >655 delivery, sFlt-1/PlGF outcomes sFlt-1/PlGF ≤38 low ratio allows outpatient management avoids hospitalization 50% reduction admissions safe NPV 99% no adverse outcomes, sFlt-1/PlGF limitations sFlt-1/PlGF not widely available cost $500-1000 test not first-line screening used suspected preeclampsia clinical features HTN proteinuria symptoms)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "womens_health_obstetrics_advanced_system".to_string(),
+            womens_health_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -45913,7 +46503,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 314, "Expected 314 systems (310 + 4 new Session CA)");
-        assert_eq!(total_params, 2484, "Expected 2484 parameters (2452 + 32 Session CA)");
+        assert_eq!(categories.len(), 318, "Expected 318 systems (314 + 4 new Session CB)");
+        assert_eq!(total_params, 2516, "Expected 2516 parameters (2484 + 32 Session CB)");
     }
 }
