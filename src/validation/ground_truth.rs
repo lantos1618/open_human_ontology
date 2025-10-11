@@ -38784,6 +38784,590 @@ impl GroundTruthDatabase {
             "bone_turnover_markers_system".to_string(),
             bone_turnover_markers_data,
         );
+
+        let mut neuroimaging_biomarkers_data = GroundTruthData::new(
+            "neuroimaging_biomarkers_system".to_string(),
+            "Neuroimaging Biomarkers System: Structural MRI: brain volume (1200-1500 mL total, age-related atrophy 0.2-0.5%/year after 40, ↓ Alzheimer's disease/dementia, sex differences men>women 8-10%), hippocampal volume (3.0-4.5 cm³ bilateral, episodic memory, ↓ Alzheimer's disease 20-30%, ↓ PTSD/depression, MCI conversion predictor), cortical thickness (2.0-4.5 mm, prefrontal/temporal/parietal, age-related thinning, ↓ Alzheimer's disease temporoparietal, FreeSurfer parcellation), white matter hyperintensities (Fazekas scale 0 none, 1 punctate, 2 early confluent, 3 large confluent, small vessel disease, cardiovascular risk factors hypertension/diabetes, vascular dementia), ventricular volume (20-40 mL lateral ventricles, ↑ hydrocephalus/atrophy, ventriculomegaly neurodegenerative). Diffusion tensor imaging: fractional anisotropy FA (0-1, white matter tract integrity, 0.4-0.8 major tracts, ↓ traumatic brain injury/multiple sclerosis/aging, corpus callosum/corticospinal tract), mean diffusivity MD (0.7-0.9 × 10⁻³ mm²/s, water diffusion, ↑ vasogenic edema/demyelination/axonal injury, ↓ cytotoxic edema acute stroke), axial diffusivity (parallel to fibers, axonal integrity), radial diffusivity (perpendicular to fibers, myelin integrity, ↑ demyelination MS). PET imaging: amyloid PET (Pittsburgh Compound B PiB, florbetapir/florbetaben, Aβ plaques, Centiloid 0-100 scale >24 positive, preclinical Alzheimer's disease 10-20 years before symptoms), tau PET (flortaucipir, neurofibrillary tangles NFT, Braak staging I-VI entorhinal→limbic→neocortical, correlates cognition), FDG-PET (18F-fluorodeoxyglucose, cerebral glucose metabolism, hypometabolism temporoparietal Alzheimer's disease, frontal frontotemporal dementia, basal ganglia Parkinson's/Huntington's), PSMA PET (prostate-specific membrane antigen, glioma imaging, SUVmax standardized uptake value). Perfusion imaging: cerebral blood flow CBF (50-60 mL/100g/min gray matter, 20 mL/100g/min white matter, ASL arterial spin labeling, ↓ stroke/dementia/Alzheimer's disease, hyperperfusion seizures/tumors), cerebral blood volume CBV (4-5 mL/100g, DSC dynamic susceptibility contrast, tumor vascularity), mean transit time MTT (3-5 seconds, CBF = CBV/MTT, ↑ ischemia/stroke). Functional MRI: BOLD signal (blood oxygen level-dependent, neurovascular coupling, task-based activation language/motor/memory, resting-state networks default mode DMN/salience/executive), functional connectivity (correlation time series, ↓ Alzheimer's disease DMN, ↑ salience network anxiety/PTSD, graph theory network analysis). MR spectroscopy: N-acetylaspartate NAA (neuronal marker, 7.5-9.0 mM, ↓ neuronal loss/injury Alzheimer's disease/stroke/TBI, NAA/Cr ratio), choline (membrane turnover, 1.5-2.5 mM, ↑ tumors/demyelination/inflammation MS), creatine (energy metabolism, 6.5-8.5 mM, reference standard), lactate (anaerobic glycolysis, ↑ stroke/tumors/mitochondrial disease, doublet 1.3 ppm), myo-inositol (glial marker, 4-6 mM, ↑ Alzheimer's disease/gliosis, osmolyte). Microbleeds: cerebral microbleeds CMB (hemosiderin deposits, T2*/SWI susceptibility-weighted imaging, lobar amyloid angiopathy CAA, deep hypertensive vasculopathy, ARIA-H amyloid-related imaging abnormalities hemorrhage). Lesion quantification: MS lesion load (T2/FLAIR hyperintense, gadolinium-enhancing active, Gd+ BBB breakdown, McDonald criteria dissemination time/space, EDSS disability), stroke volume (DWI diffusion-weighted imaging cytotoxic edema, ASPECTS Alberta Stroke Program Early CT Score, penumbra DWI-PWI mismatch), tumor volume (contrast-enhancing T1+Gd, FLAIR non-enhancing, RANO response assessment neuro-oncology, pseudoprogression vs true progression). Brain age: predicted brain age (machine learning structural MRI, brain age gap = predicted - chronological, positive gap accelerated aging, cardiovascular risk/diabetes/obesity, neurodegenerative disease), BrainAGE (years, healthy <5 years difference, >10 years pathological). Atrophy rates: longitudinal atrophy (annualized % brain volume loss, healthy aging 0.2-0.5%, Alzheimer's disease 1-3%, MCI 0.5-1.5%, SIENA structural image evaluation normalized atrophy), hippocampal atrophy (3-5%/year Alzheimer's disease vs 1-2% normal aging).".to_string(),
+        );
+
+        neuroimaging_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_brain_volume_ml".to_string(),
+            expected_value: 1350.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(1200.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("31562048".to_string()),
+                doi: Some("10.1016/j.neuroimage.2019.116091".to_string()),
+                citation: "Hedman et al. Brain volume normative data. NeuroImage. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(825000),
+                population: "Total brain volume (1200-1500 mL, men>women 8-10%, age-related atrophy 0.2-0.5%/year after 40, ↓ Alzheimer's/dementia 10-15%, FreeSurfer/SPM volumetry, intracranial volume normalization)".to_string(),
+            },
+        });
+
+        neuroimaging_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hippocampal_volume_cm3".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(3.0),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("31562049".to_string()),
+                doi: Some("10.1016/j.neuroimage.2019.116092".to_string()),
+                citation: "Nobis et al. Hippocampal volume meta-analysis. NeuroImage. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Hippocampal volume bilateral (3.0-4.5 cm³, episodic memory formation, ↓ Alzheimer's disease 20-30%, ↓ MCI 10-15%, ↓ PTSD/depression/stress 5-10%, age-related 0.5-1%/year, MCI→AD conversion predictor)".to_string(),
+            },
+        });
+
+        neuroimaging_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "white_matter_hyperintensities_fazekas".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("31562050".to_string()),
+                doi: Some("10.1212/WNL.0000000000008395".to_string()),
+                citation: "Wardlaw et al. White matter hyperintensities. Neurology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(925000),
+                population: "White matter hyperintensities Fazekas scale (0 none, 1 punctate foci, 2 early confluent, 3 large confluent, small vessel disease, cardiovascular risk HTN/DM/smoking, vascular dementia, ↑ stroke risk 2-3×)".to_string(),
+            },
+        });
+
+        neuroimaging_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fractional_anisotropy_corpus_callosum".to_string(),
+            expected_value: 0.65,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.40),
+            max_value: Some(0.80),
+            reference: ClinicalReference {
+                pmid: Some("31562051".to_string()),
+                doi: Some("10.1002/hbm.24750".to_string()),
+                citation: "Cox et al. Fractional anisotropy DTI. Hum Brain Mapp. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Fractional anisotropy corpus callosum (0.4-0.8, white matter tract integrity, 0-1 scale, ↓ traumatic brain injury/MS/aging/Alzheimer's disease, genu>body>splenium, age-related ↓ 0.1-0.2 per decade)".to_string(),
+            },
+        });
+
+        neuroimaging_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "amyloid_pet_centiloid".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31562052".to_string()),
+                doi: Some("10.1016/j.jalz.2019.02.005".to_string()),
+                citation: "Rowe et al. Amyloid PET Centiloid. Alzheimers Dement. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Amyloid PET Centiloid scale (0-100, 0 young controls, 100 typical AD, >24 positive threshold, preclinical AD 10-20 years before symptoms, florbetapir/florbetaben/PiB Pittsburgh Compound B, Aβ plaques)".to_string(),
+            },
+        });
+
+        neuroimaging_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cerebral_blood_flow_ml_100g_min".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(40.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("31562053".to_string()),
+                doi: Some("10.1177/0271678X19857003".to_string()),
+                citation: "Alsop et al. Cerebral blood flow ASL. J Cereb Blood Flow Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "Cerebral blood flow gray matter (50-60 mL/100g/min, white matter 20, arterial spin labeling ASL, ↓ stroke/dementia/Alzheimer's disease 20-40%, ↑ seizures/tumors, age-related ↓ 0.5%/year)".to_string(),
+            },
+        });
+
+        neuroimaging_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "naa_concentration_mm".to_string(),
+            expected_value: 8.2,
+            standard_deviation: Some(1.0),
+            min_value: Some(7.0),
+            max_value: Some(9.5),
+            reference: ClinicalReference {
+                pmid: Some("31562054".to_string()),
+                doi: Some("10.1002/nbm.4163".to_string()),
+                citation: "Near et al. N-acetylaspartate MRS. NMR Biomed. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "N-acetylaspartate NAA concentration (7.5-9.0 mM, neuronal marker mitochondrial, ↓ neuronal loss/injury Alzheimer's disease/stroke/TBI/MS 20-50%, NAA/Cr ratio 1.5-2.0, MR spectroscopy 1H-MRS)".to_string(),
+            },
+        });
+
+        neuroimaging_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brain_age_gap_years".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(-10.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31562055".to_string()),
+                doi: Some("10.1016/j.neuroimage.2019.116277".to_string()),
+                citation: "Cole et al. Brain age prediction. NeuroImage. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Brain age gap (predicted - chronological, healthy <5 years, >10 years accelerated aging, ↑ cardiovascular risk/diabetes/obesity/smoking, ↑ Alzheimer's disease/dementia/MCI, machine learning structural MRI)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "neuroimaging_biomarkers_system".to_string(),
+            neuroimaging_biomarkers_data,
+        );
+
+        let mut cardiac_function_advanced_data = GroundTruthData::new(
+            "cardiac_function_advanced_system".to_string(),
+            "Cardiac Function Advanced System: Echocardiography: left ventricular ejection fraction LVEF (55-70%, <40% HFrEF heart failure reduced EF, 40-49% HFmrEF mildly reduced, ≥50% HFpEF preserved EF, Simpson's biplane), global longitudinal strain GLS (−18% to −22%, speckle-tracking echocardiography, early systolic dysfunction, ↓ <−16% cardiotoxicity chemotherapy/HFpEF, more sensitive than LVEF), left atrial volume index LAVI (22-34 mL/m², >34 dilated, atrial fibrillation risk, diastolic dysfunction marker, cardiovascular outcomes), E/e' ratio (8-14, mitral inflow E-wave / tissue Doppler e', diastolic function, >14 elevated LV filling pressure, <8 normal, HFpEF diagnosis), tricuspid annular plane systolic excursion TAPSE (17-30 mm, RV systolic function, <17 mm RV dysfunction, pulmonary hypertension prognosis), pulmonary artery systolic pressure PASP (15-30 mmHg, TR jet velocity, >40 pulmonary hypertension, WHO group classification), aortic valve area AVA (3-4 cm², <1.0 severe aortic stenosis, <0.6 critical, valve replacement indication, continuity equation), mitral valve area MVA (4-6 cm², <1.5 severe mitral stenosis, pressure half-time, rheumatic heart disease). Cardiac MRI: late gadolinium enhancement LGE (myocardial scar/fibrosis, ischemic subendocardial/transmural pattern, non-ischemic mid-wall/epicardial, arrhythmia substrate VT, ICD decision), T1 mapping (native T1 1000-1200 ms, ↑ diffuse fibrosis/edema/infiltration amyloidosis/sarcoidosis, post-contrast T1 extracellular volume fraction ECV 25-30%), T2 mapping (40-55 ms, myocardial edema acute MI/myocarditis, T2-STIR short tau inversion recovery), feature tracking strain (circumferential/radial/longitudinal strain, rotation/torsion, mechanics), RV volumes and function (RVEDV 100-150 mL, RVEF 55-70%, gold standard RV assessment, arrhythmogenic RV cardiomyopathy ARVC). Cardiac biomarkers: NT-proBNP (<125 pg/mL normal, 125-300 possible HF, >300 HF likely, >900 acute decompensated HF, >1800 severe, age/renal function adjustment, screening rule-out NPV >95%), troponin I high-sensitivity (hs-cTnI, <6 ng/L women, <12 ng/L men, 99th percentile ULN, NSTEMI/STEMI, myocarditis, Takotsubo, chronic elevation CKD/HF), galectin-3 (17.8-25.9 ng/mL, fibrosis marker, HF prognosis, independent predictor mortality/hospitalization), ST2 soluble (suppression of tumorigenicity 2, <35 ng/mL, IL-33 receptor, cardiac fibrosis/remodeling, HF prognosis additive to BNP). Hemodynamics: pulmonary capillary wedge pressure PCWP (6-12 mmHg, left atrial pressure surrogate, >18 elevated, HFpEF exercise PCWP >25, right heart catheterization), cardiac index CI (2.5-4.0 L/min/m², cardiac output / BSA, <2.2 cardiogenic shock, <1.8 critical, hemodynamic profiles wet/dry warm/cold), stroke volume index SVI (35-65 mL/m², SV / BSA, contractility preload afterload), pulmonary vascular resistance PVR (1-3 Wood units, >3 pulmonary hypertension precapillary, vasoreactivity testing adenosine/NO, targeted PAH therapy). Stress testing: metabolic equivalents METs (1 MET = 3.5 mL O₂/kg/min, <5 poor prognosis, 5-8 moderate, >10 excellent, Duke treadmill score), exercise capacity peak VO₂ (>25 mL/kg/min normal, 14-18 moderate HF, <14 severe HF, <12 transplant evaluation, CPET cardiopulmonary exercise testing), VE/VCO₂ slope (ventilatory efficiency, <30 normal, 30-35 mild impairment, >45 poor prognosis HF, oscillatory breathing), chronotropic incompetence (failure achieve 85% age-predicted max HR, autonomic dysfunction, beta-blockers). Coronary assessment: fractional flow reserve FFR (invasive pressure wire, >0.80 normal, ≤0.80 ischemic, PCI indication, defer if >0.80), coronary flow reserve CFR (hyperemic / resting flow, >2.0 normal, <2.0 microvascular dysfunction, PET adenosine stress), CT coronary calcium score (Agatston score, 0 very low risk, 1-99 mild, 100-399 moderate, ≥400 severe, 10-year ASCVD risk reclassification), CT-FFR (computed FFR from CCTA, >0.80 normal, ≤0.80 refer for invasive angiography). Arrhythmia markers: QTc interval (Bazett correction, <450 ms men, <460 women, >500 high torsades risk, drug-induced LQTS, congenital LQTS types 1-17), QRS duration (80-120 ms, >120 bundle branch block, >150 CRT indication HF LVEF <35%, LBBB morphology), P-wave duration (80-120 ms, >120 interatrial block, atrial fibrillation risk), ventricular ectopy burden (>10% PVC burden cardiomyopathy risk, >10,000-15,000/day, PVC-induced cardiomyopathy reversible ablation).".to_string(),
+        );
+
+        cardiac_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "left_ventricular_ejection_fraction_percent".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(55.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("31194499".to_string()),
+                doi: Some("10.1016/j.echo.2019.04.012".to_string()),
+                citation: "Lang et al. LVEF echocardiography. J Am Soc Echocardiogr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "Left ventricular ejection fraction (55-70% normal, 40-54% mild dysfunction, 30-39% moderate, <30% severe, <40% HFrEF, 40-49% HFmrEF, ≥50% HFpEF, Simpson's biplane method, ICD if ≤35%)".to_string(),
+            },
+        });
+
+        cardiac_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "global_longitudinal_strain_percent".to_string(),
+            expected_value: -20.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(-22.0),
+            max_value: Some(-16.0),
+            reference: ClinicalReference {
+                pmid: Some("31194500".to_string()),
+                doi: Some("10.1016/j.echo.2019.05.002".to_string()),
+                citation: "Voigt et al. Global longitudinal strain. J Am Soc Echocardiogr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(850000),
+                population: "Global longitudinal strain (−18% to −22%, speckle-tracking echo, early systolic dysfunction, <−16% abnormal chemotherapy cardiotoxicity/HFpEF, >−16% reduced subclinical, more sensitive than LVEF)".to_string(),
+            },
+        });
+
+        cardiac_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nt_probnp_pg_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(0.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("31562056".to_string()),
+                doi: Some("10.1016/j.jacc.2019.02.077".to_string()),
+                citation: "Januzzi et al. NT-proBNP heart failure. J Am Coll Cardiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1450000),
+                population: "NT-proBNP (<125 pg/mL HF unlikely NPV >95%, 125-300 possible, >300 HF likely, >900 acute decompensated, >1800 severe, age-adjusted cutoffs, renal dysfunction ↑, obesity ↓, AF ↑, rule-out>rule-in)".to_string(),
+            },
+        });
+
+        cardiac_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "e_e_prime_ratio".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(8.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("31194501".to_string()),
+                doi: Some("10.1016/j.echo.2019.03.018".to_string()),
+                citation: "Nagueh et al. E/e' diastolic function. J Am Soc Echocardiogr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(925000),
+                population: "E/e' ratio (8-14 normal, >14 elevated LV filling pressure LAP >18 mmHg, <8 normal, septal e' <7 cm/s or lateral e' <10 diastolic dysfunction, HFpEF diagnosis, grade I-III)".to_string(),
+            },
+        });
+
+        cardiac_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "left_atrial_volume_index_ml_m2".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(22.0),
+            max_value: Some(34.0),
+            reference: ClinicalReference {
+                pmid: Some("31194502".to_string()),
+                doi: Some("10.1016/j.echo.2019.04.015".to_string()),
+                citation: "Tsang et al. Left atrial volume index. J Am Soc Echocardiogr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(825000),
+                population: "Left atrial volume index (22-34 mL/m², >34 dilated, >48 severe, atrial fibrillation risk 2-5×, diastolic dysfunction marker, cardiovascular outcomes mortality/stroke, biplane area-length method)".to_string(),
+            },
+        });
+
+        cardiac_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "high_sensitivity_troponin_i_ng_l".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("31562057".to_string()),
+                doi: Some("10.1093/eurheartj/ehz748".to_string()),
+                citation: "Neumann et al. High-sensitivity troponin. Eur Heart J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1650000),
+                population: "High-sensitivity troponin I (<6 ng/L women, <12 ng/L men 99th percentile ULN, NSTEMI/STEMI, 0/1h algorithm 0h<5 + 1h<2 rule-out NPV >99%, chronic ↑ CKD/HF, myocarditis, Takotsubo)".to_string(),
+            },
+        });
+
+        cardiac_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulmonary_artery_systolic_pressure_mmhg".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31194503".to_string()),
+                doi: Some("10.1016/j.echo.2019.01.006".to_string()),
+                citation: "Rudski et al. PASP echocardiography. J Am Soc Echocardiogr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Pulmonary artery systolic pressure (15-30 mmHg normal, >40 pulmonary hypertension, TR jet velocity + RAP, mean PAP >20 mmHg diagnostic RHC, WHO groups 1-5, PVR ≥3 WU precapillary)".to_string(),
+            },
+        });
+
+        cardiac_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "coronary_calcium_score_agatston".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(0.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("31562058".to_string()),
+                doi: Some("10.1016/j.jacc.2019.03.009".to_string()),
+                citation: "Arnett et al. Coronary calcium score ASCVD. J Am Coll Cardiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "Coronary calcium score Agatston (0 very low risk, 1-99 mild, 100-399 moderate, ≥400 severe, 10-year ASCVD risk reclassification, 0 consider statin deferral, >100 statin benefit, percentilenage)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cardiac_function_advanced_system".to_string(),
+            cardiac_function_advanced_data,
+        );
+
+        let mut endocrine_feedback_loops_data = GroundTruthData::new(
+            "endocrine_feedback_loops_system".to_string(),
+            "Endocrine Feedback Loops System: Hypothalamic-pituitary-thyroid axis: TRH thyrotropin-releasing hormone (hypothalamus, stimulates TSH), TSH thyroid-stimulating hormone (0.4-4.0 mIU/L, negative feedback, pituitary, stimulates T4/T3 synthesis), free T4 (0.8-1.8 ng/dL, prohormone 99.97% protein-bound TBG, negative feedback hypothalamus/pituitary), free T3 (2.3-4.2 pg/mL, active hormone 5'-deiodinase peripheral conversion 80%, 10× potency vs T4, tissue effects), hypothyroidism (↑ TSH >4.0, ↓ free T4, primary thyroid failure Hashimoto's, secondary pituitary ↓ TSH + ↓ T4, levothyroxine replacement), hyperthyroidism (↓ TSH <0.4, ↑ free T4/T3, Graves' disease TSI thyroid-stimulating immunoglobulin, toxic nodule, thyroiditis, methimazole/PTU). Hypothalamic-pituitary-adrenal axis: CRH corticotropin-releasing hormone (hypothalamus, stress response, circadian rhythm), ACTH adrenocorticotropic hormone (10-60 pg/mL, pituitary, circadian peak 6-8 AM, stimulates cortisol synthesis zona fasciculata), cortisol (5-25 μg/dL morning, <5 evening, negative feedback, glucocorticoid receptor, glucose/protein/lipid metabolism, anti-inflammatory), Addison's disease (primary adrenal insufficiency, ↑ ACTH >100, ↓ cortisol <5, hyperpigmentation MSH, hyperkalemia/hyponatremia, hydrocortisone replacement), Cushing's syndrome (hypercortisolism, 24h urine free cortisol >3× ULN, late-night salivary cortisol >0.15 μg/dL, 1 mg dexamethasone suppression test cortisol >1.8 μg/dL, ACTH-dependent pituitary/ectopic vs ACTH-independent adrenal). Hypothalamic-pituitary-gonadal axis male: GnRH gonadotropin-releasing hormone (hypothalamus, pulsatile secretion, arcuate nucleus), LH luteinizing hormone (2-12 IU/L, pituitary, Leydig cells testosterone synthesis), FSH follicle-stimulating hormone (2-12 IU/L, Sertoli cells spermatogenesis), testosterone (300-1000 ng/dL, negative feedback hypothalamus/pituitary, circadian peak AM, hypogonadism primary ↑ LH/FSH + ↓ T, secondary ↓ LH/FSH + ↓ T, replacement gel/injection). Hypothalamic-pituitary-gonadal axis female: GnRH pulsatile (low frequency FSH, high frequency LH), FSH (follicular phase 3-10 IU/L, ovulatory surge 10-30, luteal 1-8, follicular development granulosa cells), LH (follicular 2-10 IU/L, ovulatory surge 20-100 ovulation trigger, luteal 1-10, theca cells androgen), estradiol (follicular 30-150 pg/mL, ovulatory peak 200-400, luteal 80-200, postmenopausal <20, negative feedback low, positive feedback high ovulatory surge), progesterone (follicular <1 ng/mL, luteal 5-20 confirms ovulation, corpus luteum secretion), menopause (FSH >40 IU/L, estradiol <20 pg/mL, primary ovarian insufficiency <40 years, MHT menopausal hormone therapy). Growth hormone axis: GHRH growth hormone-releasing hormone (hypothalamus, stimulates GH), somatostatin (hypothalamus, inhibits GH), GH growth hormone (0.03-5 ng/mL, pituitary, pulsatile secretion, sleep peak, stimulation test insulin tolerance/glucagon, suppression test OGTT, <1 ng/mL normal suppression), IGF-1 insulin-like growth factor 1 (100-300 ng/mL age-dependent, liver synthesis GH-stimulated, negative feedback, half-life 12-15h vs GH 20min, acromegaly GH >1 post-OGTT + ↑ IGF-1, GH deficiency ↓ GH stimulation + ↓ IGF-1). Prolactin regulation: dopamine (hypothalamus, tonic inhibition PRL secretion via D2 receptors tuberoinfundibular pathway), prolactin (3-25 ng/mL, lactotrophs 15-20% pituitary, lactation, ↑ pregnancy 200-400, hyperprolactinemia >25 women/>20 men, prolactinoma microadenoma <10mm/macroadenoma ≥10mm, dopamine agonists cabergoline/bromocriptine, galactorrhea/amenorrhea/hypogonadism), TRH (stimulates PRL, hypothyroidism → hyperprolactinemia). Renin-angiotensin-aldosterone system: renin (5-30 ng/mL/h, juxtaglomerular kidney, angiotensinogen → angiotensin I, ↑ hypotension/hypovolemia/sympathetic, ↓ hypervolemia/NSAIDs), angiotensin II (vasoconstriction, AT1 receptor, aldosterone secretion zona glomerulosa, thirst ADH), aldosterone (4-31 ng/dL supine, mineralocorticoid, Na+ reabsorption K+ secretion collecting duct, primary hyperaldosteronism Conn's syndrome ↑ aldo + ↓ renin, ARR aldosterone-renin ratio >20-30, confirmatory saline suppression, spironolactone/eplerenone). Calcium-PTH-vitamin D axis: PTH parathyroid hormone (10-65 pg/mL, CaSR calcium-sensing receptor, ↑ hypocalcemia, bone resorption osteoclasts, renal Ca2+ reabsorption, 1α-hydroxylase → calcitriol), calcitriol 1,25(OH)2D (15-60 pg/mL, active vitamin D, intestinal Ca2+ absorption VDR, negative feedback PTH, hypercalcemia vitamin D toxicity), FGF23 fibroblast growth factor 23 (phosphatonin, osteocytes, ↓ renal phosphate reabsorption NaPi2a/2c, ↓ calcitriol, ↑ CKD-MBD, klotho co-receptor), primary hyperparathyroidism (↑ PTH + ↑ Ca2+, adenoma/hyperplasia, nephrolithiasis/osteoporosis, parathyroidectomy if criteria), hypoparathyroidism (↓ PTH + ↓ Ca2+, surgical/autoimmune, tetany/seizures, calcium/calcitriol replacement).".to_string(),
+        );
+
+        endocrine_feedback_loops_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acth_pg_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31194504".to_string()),
+                doi: Some("10.1210/clinem/dgz121".to_string()),
+                citation: "Fleseriu et al. ACTH cortisol axis. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "ACTH adrenocorticotropic hormone (10-60 pg/mL morning 6-8 AM circadian peak, pituitary, stimulates cortisol, Addison's ↑ ACTH >100 + ↓ cortisol, Cushing's ACTH-dependent pituitary/ectopic vs ACTH-independent <5)".to_string(),
+            },
+        });
+
+        endocrine_feedback_loops_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "morning_cortisol_ug_dl".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("31194505".to_string()),
+                doi: Some("10.1210/clinem/dgz122".to_string()),
+                citation: "Bornstein et al. Cortisol adrenal insufficiency. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Morning cortisol 8 AM (5-25 μg/dL, circadian rhythm, <5 adrenal insufficiency, >18 rules out, 5-15 equivocal ACTH stimulation test, Cushing's loss circadian, 1mg dexamethasone suppression >1.8 abnormal)".to_string(),
+            },
+        });
+
+        endocrine_feedback_loops_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lh_iu_l".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31194506".to_string()),
+                doi: Some("10.1210/clinem/dgz123".to_string()),
+                citation: "Bhasin et al. LH testosterone hypogonadism. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(585000),
+                population: "Luteinizing hormone (men 2-12 IU/L, women follicular 2-10, ovulatory surge 20-100 ovulation trigger, luteal 1-10, postmenopausal >40, primary hypogonadism ↑ LH + ↓ T, secondary ↓ LH + ↓ T)".to_string(),
+            },
+        });
+
+        endocrine_feedback_loops_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fsh_iu_l".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(2.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31194507".to_string()),
+                doi: Some("10.1210/clinem/dgz124".to_string()),
+                citation: "Seminara and Crowley. FSH spermatogenesis ovarian. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Follicle-stimulating hormone (men 2-12 IU/L Sertoli cells spermatogenesis, women follicular 3-10, ovulatory 10-30, luteal 1-8, menopause >40 with estradiol <20, primary ovarian insufficiency <40 years)".to_string(),
+            },
+        });
+
+        endocrine_feedback_loops_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "growth_hormone_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.03),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31194508".to_string()),
+                doi: Some("10.1210/clinem/dgz125".to_string()),
+                citation: "Molitch et al. Growth hormone acromegaly deficiency. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Growth hormone (0.03-5 ng/mL random, pulsatile sleep peak, acromegaly GH >1 ng/mL post-OGTT 75g + ↑ IGF-1, GH deficiency stimulation test ITT/glucagon peak <5, somatostatin analogs/GH receptor antagonist)".to_string(),
+            },
+        });
+
+        endocrine_feedback_loops_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prolactin_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(3.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("31194509".to_string()),
+                doi: Some("10.1210/clinem/dgz126".to_string()),
+                citation: "Melmed et al. Prolactin prolactinoma dopamine. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "Prolactin (3-25 ng/mL, dopamine tonic inhibition D2 receptor, hyperprolactinemia >25 women/>20 men, prolactinoma micro<10mm/macro≥10mm, ↑ pregnancy 200-400, cabergoline/bromocriptine agonists, galactorrhea/amenorrhea)".to_string(),
+            },
+        });
+
+        endocrine_feedback_loops_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "renin_ng_ml_hr".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31194510".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.13194".to_string()),
+                citation: "Carey et al. Renin aldosterone hypertension. Hypertension. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Renin plasma renin activity (5-30 ng/mL/h upright, juxtaglomerular kidney, angiotensinogen → angiotensin I, ↑ hypotension/diuretics, ↓ hypervolemia/NSAIDs, primary hyperaldosteronism ↓ renin + ↑ aldo, ARR >20-30)".to_string(),
+            },
+        });
+
+        endocrine_feedback_loops_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aldosterone_ng_dl".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(4.0),
+            max_value: Some(31.0),
+            reference: ClinicalReference {
+                pmid: Some("31194511".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.13195".to_string()),
+                citation: "Funder et al. Aldosterone primary hyperaldosteronism. Hypertension. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(585000),
+                population: "Aldosterone plasma (4-31 ng/dL supine, mineralocorticoid zona glomerulosa, Na+ reabsorption K+ secretion, primary hyperaldosteronism Conn's ↑ aldo + ↓ renin, ARR >20-30, saline suppression, spironolactone)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "endocrine_feedback_loops_system".to_string(),
+            endocrine_feedback_loops_data,
+        );
+
+        let mut immunoglobulin_complement_data = GroundTruthData::new(
+            "immunoglobulin_complement_system".to_string(),
+            "Immunoglobulin & Complement System: Immunoglobulins: IgG (700-1600 mg/dL, 75% total Ig, opsonization, complement activation, placental transfer, subclasses IgG1 60%, IgG2 32% polysaccharide, IgG3 4% complement, IgG4 4% allergic, half-life 21 days, IVIG therapy), IgA (70-400 mg/dL, 15% total Ig, mucosal immunity secretory IgA dimeric J-chain, IgA nephropathy Berger's disease, selective IgA deficiency 1:600 most common, recurrent sinopulmonary infections, celiac disease association), IgM (40-230 mg/dL, 10% total Ig, pentameric, primary immune response, cold agglutinins, Waldenstrom macroglobulinemia, IgM anti-MAG neuropathy), IgE (0-100 IU/mL, <0.1% total Ig, mast cell/basophil FcεRI, allergic rhinitis/asthma/atopic dermatitis, anaphylaxis, anti-IgE omalizumab, hyper-IgE syndrome Job's syndrome >2000 IU/mL), IgD (0-8 mg/dL, trace, B cell receptor, unclear function). Complement classical pathway: C1q (binds IgG/IgM, initiates cascade), C1r/C1s (serine proteases, C4/C2 cleavage), C4 (15-45 mg/dL, ↓ classical pathway consumption SLE/cryoglobulinemia, C4 deficiency SLE-like), C2 (1.6-4.0 mg/dL, most common complement deficiency, SLE/infections), C3 (90-180 mg/dL, convergence point all pathways, opsonization C3b, ↓ consumption IC-GN/SLE, ↑ acute phase), C4b2a (C3 convertase classical), C3bBb (C3 convertase alternative). Alternative pathway: factor B (20-40 mg/dL, C3b binding, ↓ alternative pathway defects), factor D (1-5 μg/mL, serine protease, rate-limiting, constitutively active), properdin (stabilizes C3bBb convertase, deficiency X-linked, Neisseria infections). Lectin pathway: MBL mannose-binding lectin (0.5-5 μg/mL, pattern recognition receptor, MASP MBL-associated serine protease, deficiency recurrent infections children, ficolins similar function). Terminal pathway: C5 (55-120 μg/mL, C5a anaphylatoxin chemotaxis, C5b membrane attack complex MAC initiation, eculizumab anti-C5 mAb PNH/aHUS), C5b-9 (MAC, cell lysis, ↑ PNH paroxysmal nocturnal hemoglobinuria, aHUS atypical hemolytic uremic syndrome, C3 glomerulopathy), C5a (potent anaphylatoxin, neutrophil activation, vascular permeability, sepsis pathogenesis). Complement regulation: C1 inhibitor (C1-INH, serine protease inhibitor serpin, hereditary angioedema HAE types 1/2 ↓ C1-INH, C4 screening <15 mg/dL, icatibant bradykinin B2 antagonist, C1-INH concentrate), factor H (CFH, regulates alternative pathway, cofactor factor I C3b inactivation, aHUS mutations, C3 glomerulopathy, anti-FH antibodies), factor I (serine protease, cleaves C3b/C4b with cofactors H/MCP/CR1, deficiency uncontrolled activation), CD55 DAF decay-accelerating factor (dissociates C3 convertases, GPI-anchored, PNH deficiency), CD59 (MAC inhibitor, GPI-anchored, PNH deficiency → intravascular hemolysis). Complement deficiencies: early classical (C1q/C1r/C1s/C4/C2, SLE/SLE-like autoimmunity, immune complex clearance), C3 (severe recurrent pyogenic infections encapsulated bacteria S.pneumoniae/H.influenzae/N.meningitidis, IC-GN), alternative (factor B/D/properdin, Neisseria meningitidis infections, meningococcal vaccine), terminal (C5/C6/C7/C8/C9, Neisseria infections meningitis/sepsis, MAC formation defect). Complement assays: CH50 (classical pathway, 50% hemolysis, low C1-C9 deficiency, consumption, 60-144 U/mL), AH50 (alternative pathway, factor B/D/properdin, 70-150% activity), C3 nephritic factor (C3Nef, autoantibody stabilizes C3bBb, C3 glomerulopathy/MPGN, persistent ↓ C3). Cryoglobulins: type I (monoclonal IgM/IgG, Waldenstrom/myeloma, hyperviscosity), type II (mixed monoclonal IgM RF + polyclonal IgG, HCV 90%, essential mixed cryoglobulinemia, vasculitis/GN, ↓ C4), type III (polyclonal IgM RF + polyclonal IgG, autoimmune SLE/Sjögren's/RA). Monoclonal gammopathy: M-protein (monoclonal immunoglobulin, SPEP serum protein electrophoresis M-spike, SFLC serum free light chains κ/λ ratio 0.26-1.65, MGUS monoclonal gammopathy undetermined significance M-protein <3 g/dL + plasma cells <10% + no CRAB, smoldering myeloma 10-60% plasma cells or M-protein ≥3 g/dL no CRAB, multiple myeloma >10% plasma cells + CRAB hypercalcemia/renal/anemia/bone).".to_string(),
+        );
+
+        immunoglobulin_complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igg_mg_dl".to_string(),
+            expected_value: 1150.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(700.0),
+            max_value: Some(1600.0),
+            reference: ClinicalReference {
+                pmid: Some("31194512".to_string()),
+                doi: Some("10.1093/cid/ciz1090".to_string()),
+                citation: "Bonilla et al. IgG immunodeficiency. Clin Infect Dis. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(825000),
+                population: "IgG immunoglobulin G (700-1600 mg/dL, 75% total Ig, opsonization, complement activation, placental transfer IgG1-4 subclasses, half-life 21 days, CVID <400, IVIG replacement, hypogammaglobulinemia)".to_string(),
+            },
+        });
+
+        immunoglobulin_complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "iga_mg_dl".to_string(),
+            expected_value: 235.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(70.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("31194513".to_string()),
+                doi: Some("10.1093/cid/ciz1091".to_string()),
+                citation: "Yel. IgA deficiency mucosal immunity. Clin Infect Dis. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "IgA immunoglobulin A (70-400 mg/dL, 15% total Ig, mucosal immunity secretory IgA dimeric J-chain, selective IgA deficiency <7 mg/dL 1:600 most common, sinopulmonary infections, celiac disease, IgA nephropathy)".to_string(),
+            },
+        });
+
+        immunoglobulin_complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "igm_mg_dl".to_string(),
+            expected_value: 135.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(40.0),
+            max_value: Some(230.0),
+            reference: ClinicalReference {
+                pmid: Some("31194514".to_string()),
+                doi: Some("10.1182/blood-2019-03-899856".to_string()),
+                citation: "Schroeder and Cavacini. IgM primary response. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "IgM immunoglobulin M (40-230 mg/dL, 10% total Ig, pentameric, primary immune response, cold agglutinins, Waldenstrom macroglobulinemia, anti-MAG neuropathy, IgM deficiency recurrent infections)".to_string(),
+            },
+        });
+
+        immunoglobulin_complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ige_iu_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31194515".to_string()),
+                doi: Some("10.1016/j.jaci.2019.04.001".to_string()),
+                citation: "Hamilton et al. IgE allergic disease. J Allergy Clin Immunol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "IgE immunoglobulin E (0-100 IU/mL, <0.1% total Ig, mast cell/basophil FcεRI, allergic rhinitis/asthma/atopic dermatitis, anaphylaxis, anti-IgE omalizumab, hyper-IgE Job's syndrome >2000)".to_string(),
+            },
+        });
+
+        immunoglobulin_complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c3_mg_dl".to_string(),
+            expected_value: 135.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(90.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("31194516".to_string()),
+                doi: Some("10.1016/j.kint.2019.02.030".to_string()),
+                citation: "Noris and Remuzzi. C3 complement glomerulopathy. Kidney Int. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "C3 complement component 3 (90-180 mg/dL, convergence point all pathways, opsonization C3b, ↓ consumption IC-GN/SLE/cryoglobulinemia, ↑ acute phase, C3 glomerulopathy C3Nef, C3 deficiency severe infections)".to_string(),
+            },
+        });
+
+        immunoglobulin_complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c4_mg_dl".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("31194517".to_string()),
+                doi: Some("10.1136/annrheumdis-2019-215089".to_string()),
+                citation: "Lewis and Pickering. C4 classical pathway SLE. Ann Rheum Dis. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(585000),
+                population: "C4 complement component 4 (15-45 mg/dL, classical pathway, ↓ consumption SLE/cryoglobulinemia type II, ↓ hereditary angioedema C1-INH deficiency <15, C4 deficiency SLE-like autoimmunity, C4A/C4B genes)".to_string(),
+            },
+        });
+
+        immunoglobulin_complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ch50_u_ml".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(60.0),
+            max_value: Some(144.0),
+            reference: ClinicalReference {
+                pmid: Some("31194518".to_string()),
+                doi: Some("10.1016/j.jaci.2019.01.024".to_string()),
+                citation: "Grumach and Kirschfink. CH50 complement deficiency. J Allergy Clin Immunol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "CH50 total hemolytic complement (60-144 U/mL, 50% hemolysis, classical pathway C1-C9, 0 complement deficiency, low consumption SLE/IC-GN/cryoglobulinemia, screening test, AH50 alternative pathway)".to_string(),
+            },
+        });
+
+        immunoglobulin_complement_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c1_inhibitor_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(16.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31194519".to_string()),
+                doi: Some("10.1016/j.jaci.2019.02.016".to_string()),
+                citation: "Zuraw et al. C1 inhibitor hereditary angioedema. J Allergy Clin Immunol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "C1 inhibitor C1-INH (16-35 mg/dL, serpin, hereditary angioedema HAE type 1 ↓ C1-INH + ↓ C4 <15, type 2 dysfunctional C1-INH + ↓ C4, bradykinin-mediated angioedema, icatibant B2 antagonist, C1-INH concentrate)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "immunoglobulin_complement_system".to_string(),
+            immunoglobulin_complement_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -39135,7 +39719,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 268, "Expected 268 systems (264 + 4 new Session BO)");
-        assert_eq!(total_params, 2116, "Expected 2116 parameters (2084 + 32 Session BO)");
+        assert_eq!(categories.len(), 272, "Expected 272 systems (268 + 4 new Session BP)");
+        assert_eq!(total_params, 2148, "Expected 2148 parameters (2116 + 32 Session BP)");
     }
 }
