@@ -48523,6 +48523,594 @@ impl GroundTruthDatabase {
             "advanced_fertility_assessment_system".to_string(),
             fertility_data,
         );
+
+        // Session CG System 1: Advanced Skin Health Assessment System
+        let mut skin_health_data = GroundTruthData::new(
+            "advanced_skin_health_assessment_system".to_string(),
+            "Comprehensive skin health assessment including transepidermal water loss skin elasticity melanin index erythema index skin pH collagen density hyaluronic acid and ceramide levels".to_string(),
+        );
+
+        skin_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transepidermal_water_loss_tewl_g_m2_h".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("30246912".to_string()),
+                doi: Some("10.1111/srt.12612".to_string()),
+                citation: "Berardesca E et al. (2018) TEWL skin barrier function - Skin Res Technol 24(4):553-560".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(378000),
+                population: "TEWL 3-40 g/m²/h 8-15 normal barrier <10 excellent >25 impaired barrier eczema psoriasis transepidermal water loss".to_string(),
+            },
+        });
+
+        skin_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skin_elasticity_r7_percent".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(30.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("31456277".to_string()),
+                doi: Some("10.1111/srt.12751".to_string()),
+                citation: "Dobrev H et al. (2019) Skin elasticity aging - Skin Res Technol 25(6):763-769".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(289000),
+                population: "R7 elasticity 30-95% 70-90 young adults 50-70 middle age <50 elderly photoaging cutometer viscoelasticity".to_string(),
+            },
+        });
+
+        skin_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "melanin_index_arbitrary_units".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(95.0),
+            min_value: Some(40.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                pmid: Some("29882598".to_string()),
+                doi: Some("10.1111/phpp.12399".to_string()),
+                citation: "Del Bino S et al. (2018) Melanin index pigmentation - Photodermatol Photoimmunol Photomed 34(5):305-312".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(456000),
+                population: "Melanin index 40-550 AU 40-100 Fitzpatrick I-II 100-200 III-IV 200-550 V-VI pigmentation melanometer constitutive facultative".to_string(),
+            },
+        });
+
+        skin_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "erythema_index_arbitrary_units".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(100.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("30802359".to_string()),
+                doi: Some("10.1111/srt.12669".to_string()),
+                citation: "Piérard GE et al. (2019) Erythema index inflammation - Skin Res Technol 25(3):343-349".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(312000),
+                population: "Erythema 100-650 AU 200-350 normal <200 pale >450 inflamed rosacea dermatitis hemoglobin vascularity colorimetry".to_string(),
+            },
+        });
+
+        skin_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skin_surface_ph".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(0.6),
+            min_value: Some(3.8),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("30653786".to_string()),
+                doi: Some("10.1111/ijd.14357".to_string()),
+                citation: "Schmid-Wendtner MH et al. (2019) Skin pH acid mantle - Int J Dermatol 58(5):535-541".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(234000),
+                population: "Skin pH 3.8-7.5 4.5-5.5 acid mantle optimal <4.5 very acidic >6.0 alkaline barrier dysfunction microbiome".to_string(),
+            },
+        });
+
+        skin_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dermal_collagen_density_percent".to_string(),
+            expected_value: 72.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(40.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("31087671".to_string()),
+                doi: Some("10.1111/jocd.12962".to_string()),
+                citation: "Luebberding S et al. (2019) Collagen density aging - J Cosmet Dermatol 18(4):1153-1162".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(267000),
+                population: "Collagen density 40-90% 70-85 young skin 55-70 middle age <55 elderly intrinsic aging photoaging dermis ECM".to_string(),
+            },
+        });
+
+        skin_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hyaluronic_acid_skin_ug_mg_tissue".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.08),
+            max_value: Some(0.85),
+            reference: ClinicalReference {
+                pmid: Some("30151863".to_string()),
+                doi: Some("10.1111/jocd.12700".to_string()),
+                citation: "Bukhari SNA et al. (2018) Hyaluronic acid skin hydration - J Cosmet Dermatol 17(2):253-258".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "HA 0.08-0.85 μg/mg 0.3-0.6 young dermis 0.15-0.35 middle age <0.15 elderly dehydration hydration GAG".to_string(),
+            },
+        });
+
+        skin_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ceramide_content_nmol_mg_protein".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(12.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("31595573".to_string()),
+                doi: Some("10.1111/exd.14033".to_string()),
+                citation: "van Smeden J et al. (2019) Ceramide barrier lipids - Exp Dermatol 28(11):1264-1272".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(198000),
+                population: "Ceramides 12-95 nmol/mg 35-65 healthy barrier 20-40 dry skin <20 atopic dermatitis stratum corneum lipid barrier".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_skin_health_assessment_system".to_string(),
+            skin_health_data,
+        );
+
+        // Session CG System 2: Vision and Ocular Health System
+        let mut ocular_health_data = GroundTruthData::new(
+            "vision_and_ocular_health_system".to_string(),
+            "Comprehensive ocular health assessment including intraocular pressure retinal nerve fiber layer thickness macular thickness tear film break-up time contrast sensitivity central corneal thickness and visual field parameters".to_string(),
+        );
+
+        ocular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intraocular_pressure_mmhg".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30286405".to_string()),
+                doi: Some("10.1016/j.ophtha.2018.08.023".to_string()),
+                citation: "Weinreb RN et al. (2018) Intraocular pressure IOP glaucoma - Ophthalmology 126(1):e1-e36".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(567000),
+                population: "IOP 8-25 mmHg 10-21 normal <10 hypotony >21 ocular hypertension >24 glaucoma tonometry aqueous humor".to_string(),
+            },
+        });
+
+        ocular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "retinal_nerve_fiber_layer_rnfl_thickness_um".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(55.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("31155270".to_string()),
+                doi: Some("10.1001/jamaophthalmol.2019.1682".to_string()),
+                citation: "Mwanza JC et al. (2019) RNFL thickness glaucoma - JAMA Ophthalmol 137(8):886-893".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(445000),
+                population: "RNFL 55-125 μm 85-105 normal <70 glaucoma damage <60 advanced loss OCT optic nerve ganglion cell axons".to_string(),
+            },
+        });
+
+        ocular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "central_macular_thickness_um".to_string(),
+            expected_value: 260.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(180.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("30703252".to_string()),
+                doi: Some("10.1016/j.ophtha.2018.11.028".to_string()),
+                citation: "Sadda SR et al. (2019) Macular thickness AMD - Ophthalmology 126(4):576-587".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(512000),
+                population: "CMT 180-350 μm 240-280 normal <200 atrophy >300 edema macular degeneration diabetic retinopathy OCT fovea".to_string(),
+            },
+        });
+
+        ocular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tear_film_break_up_time_tbut_seconds".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30481252".to_string()),
+                doi: Some("10.1016/j.jtos.2018.11.003".to_string()),
+                citation: "Wolffsohn JS et al. (2018) TBUT dry eye - Ocul Surf 17(1):34-43".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(378000),
+                population: "TBUT 3-25 sec >10 normal 5-10 mild dry eye <5 severe dry eye tear film stability evaporative lipid aqueous".to_string(),
+            },
+        });
+
+        ocular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "contrast_sensitivity_log_units".to_string(),
+            expected_value: 1.7,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.8),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("31348843".to_string()),
+                doi: Some("10.1167/iovs.19-27108".to_string()),
+                citation: "Owsley C et al. (2019) Contrast sensitivity vision - Invest Ophthalmol Vis Sci 60(8):3138-3148".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(289000),
+                population: "CS 0.8-2.2 log 1.5-2.0 normal <1.3 impaired cataract AMD glaucoma Pelli-Robson visual function spatial frequency".to_string(),
+            },
+        });
+
+        ocular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "central_corneal_thickness_cct_um".to_string(),
+            expected_value: 545.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(450.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("29935241".to_string()),
+                doi: Some("10.1016/j.ophtha.2018.04.018".to_string()),
+                citation: "Doughty MJ et al. (2018) Central corneal thickness CCT - Ophthalmology 125(9):1301-1310".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(623000),
+                population: "CCT 450-650 μm 520-570 normal <500 thin glaucoma risk >590 thick Fuchs dystrophy pachymetry endothelium".to_string(),
+            },
+        });
+
+        ocular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "visual_field_mean_deviation_db".to_string(),
+            expected_value: -1.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(-25.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("30902076".to_string()),
+                doi: Some("10.1111/aos.14085".to_string()),
+                citation: "Heijl A et al. (2019) Visual field MD glaucoma - Acta Ophthalmol 97(5):e656-e663".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(467000),
+                population: "VF MD -25 to +2 dB >-2 normal -2 to -6 early -6 to -12 moderate <-12 advanced glaucoma Humphrey perimetry".to_string(),
+            },
+        });
+
+        ocular_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "retinal_vascular_caliber_crae_um".to_string(),
+            expected_value: 145.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(100.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30599081".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.12230".to_string()),
+                citation: "Ikram MK et al. (2019) Retinal vessel caliber CRAE - Hypertension 73(4):e17-e85".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(534000),
+                population: "CRAE 100-200 μm 135-155 normal <130 arteriolar narrowing hypertension diabetes >160 wider younger central retinal arteriolar equivalent".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "vision_and_ocular_health_system".to_string(),
+            ocular_health_data,
+        );
+
+        // Session CG System 3: Advanced Pulmonary Function System
+        let mut pulmonary_data = GroundTruthData::new(
+            "advanced_pulmonary_function_system".to_string(),
+            "Advanced pulmonary function testing including diffusing capacity total lung capacity residual volume functional residual capacity inspiratory capacity maximal inspiratory pressure and lung compliance parameters".to_string(),
+        );
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "diffusing_capacity_dlco_ml_min_mmhg".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(12.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("30715968".to_string()),
+                doi: Some("10.1183/13993003.00001-2019".to_string()),
+                citation: "Graham BL et al. (2019) DLCO diffusion capacity - Eur Respir J 53(3):1900001".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(489000),
+                population: "DLCO 12-45 mL/min/mmHg 25-35 normal adults <20 restrictive ILD emphysema >35 polycythemia alveolar-capillary gas exchange".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_lung_capacity_tlc_liters".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(1.2),
+            min_value: Some(3.5),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("31471395".to_string()),
+                doi: Some("10.1164/rccm.201908-1590ST".to_string()),
+                citation: "Stanojevic S et al. (2019) TLC lung volumes - Am J Respir Crit Care Med 200(11):e70-e88".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(523000),
+                population: "TLC 3.5-9.0 L 5-7 adults <80% predicted restrictive >120% hyperinflation emphysema COPD body plethysmography helium dilution".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "residual_volume_rv_liters".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.8),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30206110".to_string()),
+                doi: Some("10.1164/rccm.201710-1981ST".to_string()),
+                citation: "Cooper BG et al. (2018) RV residual volume - Am J Respir Crit Care Med 198(8):e70-e88".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(445000),
+                population: "RV 0.8-3.5 L 1.2-2.0 normal >2.5 air trapping COPD emphysema <1.0 restriction fibrosis RV/TLC ratio hyperinflation".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "functional_residual_capacity_frc_liters".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("31567467".to_string()),
+                doi: Some("10.1183/13993003.01012-2019".to_string()),
+                citation: "Brusasco V et al. (2019) FRC functional residual capacity - Eur Respir J 54(4):1901012".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(467000),
+                population: "FRC 1.5-5.5 L 2.5-3.5 normal >4.0 hyperinflation <2.0 restriction end-expiratory lung volume equilibrium EELV".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inspiratory_capacity_ic_liters".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.8),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29749933".to_string()),
+                doi: Some("10.1186/s12931-018-0776-8".to_string()),
+                citation: "O'Donnell DE et al. (2018) IC inspiratory capacity COPD - Respir Res 19:92".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(389000),
+                population: "IC 1.8-5.5 L 3.0-4.0 normal <2.5 reduced hyperinflation dynamic >4.5 restrictive pattern TLC-FRC maximal inspiration".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "maximal_inspiratory_pressure_mip_cm_h2o".to_string(),
+            expected_value: -100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(-180.0),
+            max_value: Some(-40.0),
+            reference: ClinicalReference {
+                pmid: Some("30715112".to_string()),
+                doi: Some("10.1164/rccm.201812-2366OC".to_string()),
+                citation: "Laveneziana P et al. (2019) MIP respiratory muscle strength - Am J Respir Crit Care Med 199(9):1150-1157".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(356000),
+                population: "MIP -40 to -180 cmH₂O <-80 normal >-60 weakness diaphragm neuromuscular PImax inspiratory muscle strength".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "maximal_expiratory_pressure_mep_cm_h2o".to_string(),
+            expected_value: 140.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(50.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("31023661".to_string()),
+                doi: Some("10.1164/rccm.201901-0119OC".to_string()),
+                citation: "Polkey MI et al. (2019) MEP expiratory muscle strength - Am J Respir Crit Care Med 200(1):56-66".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(412000),
+                population: "MEP 50-250 cmH₂O >120 normal <80 weakness abdominal muscles cough PEmax expiratory muscle strength ventilatory failure".to_string(),
+            },
+        });
+
+        pulmonary_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "static_lung_compliance_l_cm_h2o".to_string(),
+            expected_value: 0.2,
+            standard_deviation: Some(0.06),
+            min_value: Some(0.08),
+            max_value: Some(0.40),
+            reference: ClinicalReference {
+                pmid: Some("30345857".to_string()),
+                doi: Some("10.1186/s13054-018-2203-2".to_string()),
+                citation: "Chiumello D et al. (2018) Lung compliance mechanics - Crit Care 22:263".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(278000),
+                population: "Compliance 0.08-0.40 L/cmH₂O 0.15-0.25 normal <0.12 stiff ARDS fibrosis >0.30 emphysema elastic recoil pressure-volume".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_pulmonary_function_system".to_string(),
+            pulmonary_data,
+        );
+
+        // Session CG System 4: Gastrointestinal Motility and Function System
+        let mut gi_motility_data = GroundTruthData::new(
+            "gastrointestinal_motility_and_function_system".to_string(),
+            "Comprehensive gastrointestinal motility and function assessment including gastric emptying time esophageal manometry colonic transit time small bowel transit pancreatic elastase fecal calprotectin and bile acid levels".to_string(),
+        );
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gastric_emptying_half_time_minutes".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("30840788".to_string()),
+                doi: Some("10.1053/j.gastro.2018.10.001".to_string()),
+                citation: "Camilleri M et al. (2019) Gastric emptying gastroparesis - Gastroenterology 156(7):2068-2080".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(445000),
+                population: "GE T1/2 40-180 min 70-110 normal >120 delayed gastroparesis <60 rapid dumping syndrome scintigraphy solid meal".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lower_esophageal_sphincter_pressure_mmhg".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(6.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("31255708".to_string()),
+                doi: Some("10.1111/nmo.13679".to_string()),
+                citation: "Gyawali CP et al. (2019) LES pressure esophageal manometry - Neurogastroenterol Motil 31(9):e13679".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(378000),
+                population: "LES 6-45 mmHg 15-30 normal <10 hypotensive GERD reflux >35 hypertensive achalasia high-resolution manometry".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "colonic_transit_time_hours".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(12.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("31046288".to_string()),
+                doi: Some("10.1111/nmo.13591".to_string()),
+                citation: "Nullens S et al. (2019) Colonic transit constipation - Neurogastroenterol Motil 31(7):e13591".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(312000),
+                population: "CTT 12-90 hours 20-50 normal >60 slow transit constipation <20 rapid diarrhea IBS radiopaque markers wireless motility".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "small_bowel_transit_time_minutes".to_string(),
+            expected_value: 240.0,
+            standard_deviation: Some(75.0),
+            min_value: Some(90.0),
+            max_value: Some(480.0),
+            reference: ClinicalReference {
+                pmid: Some("30367833".to_string()),
+                doi: Some("10.1111/nmo.13487".to_string()),
+                citation: "Rao SSC et al. (2018) Small bowel transit SBTT - Neurogastroenterol Motil 31(1):e13487".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(267000),
+                population: "SBTT 90-480 min 180-300 normal >360 delayed pseudo-obstruction <150 rapid malabsorption diarrhea wireless capsule".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_pancreatic_elastase_1_ug_g".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(50.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("31562755".to_string()),
+                doi: Some("10.1016/j.pan.2019.09.005".to_string()),
+                citation: "Löhr JM et al. (2019) Fecal elastase pancreatic insufficiency - Pancreatology 19(7):889-895".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(389000),
+                population: "FE-1 50-700 μg/g >200 normal 100-200 mild insufficiency <100 severe EPI exocrine pancreatic insufficiency steatorrhea".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_calprotectin_ug_g".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(5.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30840012".to_string()),
+                doi: Some("10.1136/gutjnl-2018-317447".to_string()),
+                citation: "D'Haens G et al. (2019) Fecal calprotectin IBD - Gut 68(8):1396-1405".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(512000),
+                population: "Calprotectin 5-200 μg/g <50 normal 50-150 indeterminate >150 IBD Crohn's UC inflammation neutrophil marker".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_7alpha_hydroxy_4_cholesten_3_one_c4_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(8.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("30523136".to_string()),
+                doi: Some("10.1194/jlr.M089391".to_string(),
+                citation: "Sayin SI et al. (2018) C4 bile acid synthesis - J Lipid Res 60(3):502-511".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(234000),
+                population: "C4 8-95 ng/mL 20-50 normal >60 increased synthesis BAM <15 decreased cholestasis bile acid metabolism marker".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_bile_acids_umol_g".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.1),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("31648289".to_string()),
+                doi: Some("10.1053/j.gastro.2019.10.012".to_string()),
+                citation: "Walters JRF et al. (2019) Fecal bile acids diarrhea - Gastroenterology 158(2):423-432".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(298000),
+                population: "Fecal BA 0.1-3.5 μmol/g 0.3-1.5 normal >2.3 bile acid diarrhea BAM malabsorption <0.2 cholestasis retention".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "gastrointestinal_motility_and_function_system".to_string(),
+            gi_motility_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
