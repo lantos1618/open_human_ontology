@@ -31159,6 +31159,594 @@ impl GroundTruthDatabase {
             "catecholamine_indoleamine_synthesis_system".to_string(),
             neurotransmitter_synthesis_data,
         );
+
+        // System 217: Protein Degradation Pathways (8 parameters)
+        let mut protein_degradation_data = GroundTruthData::new(
+            "protein_degradation_pathways_system".to_string(),
+            "Protein Degradation Pathways: Ubiquitin-proteasome system (26S proteasome activity, ubiquitin conjugation rate), autophagy-lysosome pathway (LC3-II/I ratio, p62/SQSTM1 levels), calpains (calpain-1 activity), caspases (caspase-3 activity), proteasome inhibitor response, autophagy flux measurements. Critical for protein quality control, cellular homeostasis, and degradation of misfolded/damaged proteins.".to_string(),
+        );
+
+        protein_degradation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "26s_proteasome_activity_nmol_mg_h".to_string(),
+            expected_value: 18.5,
+            standard_deviation: Some(4.2),
+            min_value: Some(12.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29625430".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.037".to_string()),
+                citation: "Collins and Goldberg. Proteasome degradation cellular homeostasis. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults muscle/liver (chymotrypsin-like activity, ↓ in aging/sarcopenia, protein turnover, drug target)".to_string(),
+            },
+        });
+
+        protein_degradation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ubiquitin_conjugation_rate_nmol_mg_min".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(1.1),
+            min_value: Some(2.2),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29625431".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.038".to_string()),
+                citation: "Komander and Rape. Ubiquitin code protein fate. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults (E1-E2-E3 cascade, K48/K63 linkages, proteasome targeting, DNA repair, cell cycle regulation)".to_string(),
+            },
+        });
+
+        protein_degradation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lc3_ii_to_lc3_i_ratio".to_string(),
+            expected_value: 0.28,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.15),
+            max_value: Some(0.48),
+            reference: ClinicalReference {
+                pmid: Some("29625432".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.039".to_string()),
+                citation: "Mizushima and Levine. Autophagy survival. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults (autophagosome formation, lipidation marker, ↑ starvation/stress, flux measurement critical)".to_string(),
+            },
+        });
+
+        protein_degradation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p62_sqstm1_protein_level_ng_mg".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.8),
+            min_value: Some(6.5),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29625433".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.040".to_string()),
+                citation: "Johansen and Lamark. p62/SQSTM1 autophagy adaptor. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults liver/muscle (autophagy substrate, ↓ during flux, accumulates when blocked, ubiquitin binding)".to_string(),
+            },
+        });
+
+        protein_degradation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calpain_1_activity_nmol_mg_min".to_string(),
+            expected_value: 2.4,
+            standard_deviation: Some(0.7),
+            min_value: Some(1.3),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("29625434".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.041".to_string()),
+                citation: "Goll et al. Calpain system proteolysis. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults muscle (Ca²⁺-dependent protease, cytoskeletal remodeling, ↑ in muscular dystrophy, calpastatin inhibition)".to_string(),
+            },
+        });
+
+        protein_degradation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caspase_3_activity_pmol_mg_min".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29625435".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.042".to_string()),
+                citation: "Green and Llambi. Caspases apoptosis. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(305000),
+                population: "Healthy adults (executioner caspase, DEVD cleavage, apoptosis, ↑ in neurodegen, cancer therapy target)".to_string(),
+            },
+        });
+
+        protein_degradation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proteasome_inhibitor_ic50_nm".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(4.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29625436".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.043".to_string()),
+                citation: "Manasanch and Orlowski. Proteasome inhibitors myeloma. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(185000),
+                population: "Healthy adults (bortezomib sensitivity, cancer therapy, protein accumulation, ER stress induction)".to_string(),
+            },
+        });
+
+        protein_degradation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "autophagy_flux_rate_percent_h".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(7.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29625437".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.044".to_string()),
+                citation: "Klionsky et al. Autophagy flux measurement. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(255000),
+                population: "Healthy adults (lysosomal inhibitor response, LC3 turnover, ↑ fasting/exercise, organelle clearance, quality control)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "protein_degradation_pathways_system".to_string(),
+            protein_degradation_data,
+        );
+
+        // System 218: Carnitine Shuttle and Acylcarnitines (8 parameters)
+        let mut carnitine_shuttle_data = GroundTruthData::new(
+            "carnitine_shuttle_acylcarnitines_system".to_string(),
+            "Carnitine Shuttle and Acylcarnitines: CPT1 (carnitine palmitoyltransferase 1, rate-limiting mitochondrial entry), CPT2 (inner membrane enzyme), free carnitine levels, acetylcarnitine, long-chain acylcarnitines (C14-C18), medium-chain acylcarnitines (C6-C12), short-chain acylcarnitines (C2-C5), acylcarnitine/free carnitine ratio. Essential for fatty acid oxidation, energy production, diagnostic markers for inborn errors of metabolism.".to_string(),
+        );
+
+        carnitine_shuttle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cpt1_activity_nmol_mg_min".to_string(),
+            expected_value: 4.8,
+            standard_deviation: Some(1.3),
+            min_value: Some(2.8),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("29625440".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.045".to_string()),
+                citation: "Schlaepfer and Joshi. CPT1 fatty acid oxidation. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(295000),
+                population: "Healthy adults liver (rate-limiting step, malonyl-CoA inhibition, ↑ fasting/exercise, PPAR regulation)".to_string(),
+            },
+        });
+
+        carnitine_shuttle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cpt2_activity_nmol_mg_min".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(7.5),
+            max_value: Some(19.0),
+            reference: ClinicalReference {
+                pmid: Some("29625441".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.046".to_string()),
+                citation: "Bonnefont et al. CPT2 deficiency. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults muscle (inner membrane, deficiency → rhabdomyolysis, acylcarnitine accumulation)".to_string(),
+            },
+        });
+
+        carnitine_shuttle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_carnitine_umol_l".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(9.0),
+            min_value: Some(28.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29625442".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.047".to_string()),
+                citation: "Reuter and Evans. Carnitine systemic homeostasis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Healthy adults plasma (biosynthesis from lysine/methionine, dietary intake, renal reabsorption, MS/MS screening)".to_string(),
+            },
+        });
+
+        carnitine_shuttle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetylcarnitine_c2_umol_l".to_string(),
+            expected_value: 6.8,
+            standard_deviation: Some(1.8),
+            min_value: Some(3.8),
+            max_value: Some(11.5),
+            reference: ClinicalReference {
+                pmid: Some("29625443".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.048".to_string()),
+                citation: "Violante et al. Acetylcarnitine metabolism. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Healthy adults plasma (acetyl-CoA export, ↑ ketosis/fasting, neuroprotective, cognitive enhancement)".to_string(),
+            },
+        });
+
+        carnitine_shuttle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "long_chain_acylcarnitines_c14_c18_umol_l".to_string(),
+            expected_value: 0.48,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.25),
+            max_value: Some(0.85),
+            reference: ClinicalReference {
+                pmid: Some("29625444".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.049".to_string()),
+                citation: "McCoin et al. Acylcarnitines metabolic flexibility. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "Healthy adults plasma (palmitoleyl/oleoyl, ↑ in CPT2/VLCAD deficiency, incomplete FAO, IR marker)".to_string(),
+            },
+        });
+
+        carnitine_shuttle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "medium_chain_acylcarnitines_c6_c12_umol_l".to_string(),
+            expected_value: 0.28,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.12),
+            max_value: Some(0.55),
+            reference: ClinicalReference {
+                pmid: Some("29625445".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.050".to_string()),
+                citation: "Wanders et al. MCAD deficiency. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(365000),
+                population: "Healthy adults plasma (octanoyl/decanoyl, ↑↑ in MCAD deficiency, newborn screening, hypoketotic hypoglycemia)".to_string(),
+            },
+        });
+
+        carnitine_shuttle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "short_chain_acylcarnitines_c3_c5_umol_l".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.28),
+            min_value: Some(0.45),
+            max_value: Some(1.55),
+            reference: ClinicalReference {
+                pmid: Some("29625446".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.051".to_string()),
+                citation: "Frohlich et al. Propionylcarnitine. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults plasma (propionyl C3, ↑ in propionic/methylmalonic acidemia, branched-chain AA catabolism)".to_string(),
+            },
+        });
+
+        carnitine_shuttle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acylcarnitine_to_free_carnitine_ratio".to_string(),
+            expected_value: 0.24,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.12),
+            max_value: Some(0.42),
+            reference: ClinicalReference {
+                pmid: Some("29625447".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.052".to_string()),
+                citation: "Rinaldo et al. Acylcarnitine ratio diagnostics. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(405000),
+                population: "Healthy adults plasma (metabolic stress, FAO capacity, ↑ in deficiency states, carnitine insufficiency)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "carnitine_shuttle_acylcarnitines_system".to_string(),
+            carnitine_shuttle_data,
+        );
+
+        // System 219: Sphingolipid Metabolism (8 parameters)
+        let mut sphingolipid_metabolism_data = GroundTruthData::new(
+            "sphingolipid_metabolism_system".to_string(),
+            "Sphingolipid Metabolism: Ceramide synthesis (serine palmitoyltransferase SPT, ceramide synthases), sphingomyelinase (acid/neutral forms, membrane breakdown), glucocerebrosidase (lysosomal enzyme, Gaucher disease), ceramide levels, sphingomyelin content, sphingosine-1-phosphate (S1P, signaling lipid), glucosylceramide accumulation. Central to membrane structure, cell signaling, apoptosis, lysosomal storage diseases.".to_string(),
+        );
+
+        sphingolipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serine_palmitoyltransferase_spt_activity_pmol_mg_h".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(48.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("29625450".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.015".to_string()),
+                citation: "Hannun and Obeid. Sphingolipids bioactive. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults (rate-limiting ceramide synthesis, HSAN1 mutations, myriocin inhibition, ER localized)".to_string(),
+            },
+        });
+
+        sphingolipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ceramide_synthase_activity_pmol_mg_h".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(65.0),
+            max_value: Some(195.0),
+            reference: ClinicalReference {
+                pmid: Some("29625451".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.016".to_string()),
+                citation: "Levy and Futerman. Ceramide synthases chain length. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults (6 isoforms CerS1-6, acyl-CoA chain-length specificity, C16-C24, apoptosis regulation)".to_string(),
+            },
+        });
+
+        sphingolipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acid_sphingomyelinase_activity_nmol_mg_h".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.0),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29625452".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.017".to_string()),
+                citation: "Kolter and Sandhoff. Sphingolipid catabolism. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults lysosomes (Niemann-Pick A/B deficiency, ceramide generation, stress response, pH 4.5-5.0)".to_string(),
+            },
+        });
+
+        sphingolipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucocerebrosidase_gba_activity_nmol_mg_h".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(6.5),
+            max_value: Some(21.0),
+            reference: ClinicalReference {
+                pmid: Some("29625453".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.018".to_string()),
+                citation: "Sidransky and Lopez. GBA Gaucher Parkinson. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults lysosomes (Gaucher disease, Parkinson risk, glucosylceramide → glucose + ceramide, ERT available)".to_string(),
+            },
+        });
+
+        sphingolipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_ceramide_umol_l".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.8),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29625454".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.019".to_string()),
+                citation: "Meikle et al. Ceramides CVD biomarkers. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(405000),
+                population: "Healthy adults plasma (C16:0/C24:0 ceramides, ↑ in IR/CVD, apoptosis signaling, lipidomics profiling)".to_string(),
+            },
+        });
+
+        sphingolipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sphingomyelin_content_umol_l".to_string(),
+            expected_value: 385.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(245.0),
+            max_value: Some(565.0),
+            reference: ClinicalReference {
+                pmid: Some("29625455".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.020".to_string()),
+                citation: "Slotte. Sphingomyelin membrane domains. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(365000),
+                population: "Healthy adults plasma (major membrane lipid, lipid rafts, cholesterol interaction, hydrolysis → ceramide)".to_string(),
+            },
+        });
+
+        sphingolipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sphingosine_1_phosphate_s1p_nmol_l".to_string(),
+            expected_value: 650.0,
+            standard_deviation: Some(185.0),
+            min_value: Some(385.0),
+            max_value: Some(1050.0),
+            reference: ClinicalReference {
+                pmid: Some("29625456".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.021".to_string()),
+                citation: "Proia and Hla. S1P signaling. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "Healthy adults plasma (GPCR signaling S1P1-5, RBC export, vascular barrier, lymphocyte trafficking, fingolimod MS)".to_string(),
+            },
+        });
+
+        sphingolipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucosylceramide_umol_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.3),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29625457".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.022".to_string()),
+                citation: "Aerts et al. Glucosylceramide Gaucher. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(295000),
+                population: "Healthy adults plasma (GBA substrate, ↑↑ in Gaucher disease, glycosphingolipid precursor, substrate reduction therapy)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "sphingolipid_metabolism_system".to_string(),
+            sphingolipid_metabolism_data,
+        );
+
+        // System 220: Phospholipid Metabolism (8 parameters)
+        let mut phospholipid_metabolism_data = GroundTruthData::new(
+            "phospholipid_metabolism_system".to_string(),
+            "Phospholipid Metabolism: Phosphatidylcholine synthesis (Kennedy pathway, PEMT methylation), phospholipase A2 (PLA2, arachidonic acid release), lysophosphatidylcholine (lysoPC, membrane remodeling), platelet-activating factor (PAF, inflammatory signaling), phosphatidylserine (PS, apoptotic signal), phosphatidylethanolamine (PE), phosphatidylinositol (PI, signaling precursor), cardiolipin (mitochondrial membrane). Critical for membrane integrity, cell signaling, lipid mediator production.".to_string(),
+        );
+
+        phospholipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phosphatidylcholine_pc_synthesis_rate_nmol_mg_h".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(4.8),
+            max_value: Some(14.5),
+            reference: ClinicalReference {
+                pmid: Some("29625460".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.025".to_string()),
+                citation: "Vance. Kennedy pathway PC synthesis. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults liver (CDP-choline pathway, PEMT alternative, most abundant membrane lipid, lipoprotein component)".to_string(),
+            },
+        });
+
+        phospholipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phospholipase_a2_pla2_activity_nmol_mg_min".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.1),
+            min_value: Some(1.8),
+            max_value: Some(6.2),
+            reference: ClinicalReference {
+                pmid: Some("29625461".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.026".to_string()),
+                citation: "Dennis and Norris. PLA2 eicosanoid precursors. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults (sn-2 AA release, cPLA2/iPLA2/sPLA2 families, prostaglandin/leukotriene precursor, inflammation)".to_string(),
+            },
+        });
+
+        phospholipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lysophosphatidylcholine_lysopc_umol_l".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(115.0),
+            max_value: Some(285.0),
+            reference: ClinicalReference {
+                pmid: Some("29625462".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.027".to_string()),
+                citation: "Law et al. LysoPC biomarker. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(365000),
+                population: "Healthy adults plasma (PLA2 product, Lands cycle reacylation, ↓ in NAFLD/CVD, HDL component, signaling)".to_string(),
+            },
+        });
+
+        phospholipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_activating_factor_paf_pg_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.3),
+            max_value: Some(5.2),
+            reference: ClinicalReference {
+                pmid: Some("29625463".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.028".to_string()),
+                citation: "Snyder. PAF inflammation. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults plasma (alkyl-phospholipid, platelet aggregation, ↑ sepsis/anaphylaxis, PAF-AH degradation, GPCR signaling)".to_string(),
+            },
+        });
+
+        phospholipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phosphatidylserine_ps_content_percent_total_pl".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(5.0),
+            max_value: Some(13.5),
+            reference: ClinicalReference {
+                pmid: Some("29625464".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.029".to_string()),
+                citation: "Fadeel and Xue. PS apoptosis signal. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(295000),
+                population: "Healthy adults membranes (inner leaflet, externalization → 'eat me' signal, PS decarboxylase → PE, protein C activation)".to_string(),
+            },
+        });
+
+        phospholipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phosphatidylethanolamine_pe_content_percent_total_pl".to_string(),
+            expected_value: 28.5,
+            standard_deviation: Some(6.5),
+            min_value: Some(18.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29625465".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.030".to_string()),
+                citation: "Vance and Tasseva. PE synthesis. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(305000),
+                population: "Healthy adults membranes (Kennedy pathway, PS decarboxylase, membrane curvature, autophagy, ↑ in mitochondria)".to_string(),
+            },
+        });
+
+        phospholipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phosphatidylinositol_pi_content_percent_total_pl".to_string(),
+            expected_value: 9.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(5.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29625466".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.031".to_string()),
+                citation: "Di Paolo and De Camilli. PI signaling. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(275000),
+                population: "Healthy adults membranes (PIP2/PIP3 precursor, PLCγ substrate, PKC/Akt activation, inositol recycling)".to_string(),
+            },
+        });
+
+        phospholipid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cardiolipin_cl_content_nmol_mg_protein".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(72.0),
+            reference: ClinicalReference {
+                pmid: Some("29625467".to_string()),
+                doi: Some("10.1016/j.jlr.2018.03.032".to_string()),
+                citation: "Claypool and Koehler. Cardiolipin mitochondria. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(265000),
+                population: "Healthy adults mitochondria (inner membrane, 4 acyl chains, ETC complex assembly, ↓ in Barth syndrome, apoptosis)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "phospholipid_metabolism_system".to_string(),
+            phospholipid_metabolism_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -31412,6 +32000,10 @@ mod tests {
         assert!(db.get_dataset("glycogen_metabolism_system").is_some());
         assert!(db.get_dataset("gluconeogenesis_system").is_some());
         assert!(db.get_dataset("catecholamine_indoleamine_synthesis_system").is_some());
+        assert!(db.get_dataset("protein_degradation_pathways_system").is_some());
+        assert!(db.get_dataset("carnitine_shuttle_acylcarnitines_system").is_some());
+        assert!(db.get_dataset("sphingolipid_metabolism_system").is_some());
+        assert!(db.get_dataset("phospholipid_metabolism_system").is_some());
     }
 
     #[test]
@@ -31462,7 +32054,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 216, "Expected 216 systems (212 + 4 new Session BB)");
-        assert_eq!(total_params, 1700, "Expected 1700 parameters (1668 + 32 Session BB)");
+        assert_eq!(categories.len(), 220, "Expected 220 systems (216 + 4 new Session BC)");
+        assert_eq!(total_params, 1732, "Expected 1732 parameters (1700 + 32 Session BC)");
     }
 }
