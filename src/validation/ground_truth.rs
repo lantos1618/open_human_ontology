@@ -41136,6 +41136,594 @@ impl GroundTruthDatabase {
             "advanced_renal_tubular_function_system".to_string(),
             advanced_renal_tubular_data,
         );
+
+        // Session BT: Advanced Bone Metabolism System (8 parameters)
+        let mut advanced_bone_metabolism_data = GroundTruthData::new(
+            "advanced_bone_metabolism_system".to_string(),
+            "Advanced bone turnover markers and metabolism beyond basic calcium/vitamin D".to_string(),
+        );
+
+        advanced_bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procollagen_type_1_n_propeptide".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(15.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("21204164".to_string()),
+                doi: Some("10.1007/s00198-010-1501-1".to_string()),
+                citation: "Vasikaran S et al. (2011) P1NP bone formation marker - Osteoporos Int 22(2):391-420 - μg/L".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "P1NP (premenopausal women 20-76 μg/L, postmenopausal 30-100 μg/L, men 20-76 μg/L normal, >100 μg/L high bone turnover osteoporosis Paget disease hyperthyroidism, <15 μg/L low turnover adynamic bone disease, P1NP best bone formation marker IOF-IFCC reference, P1NP monitoring anabolic therapy teriparatide romosozumab, P1NP increases 50-100% teriparatide 1-3 months predict BMD response, P1NP decreases 50-70% bisphosphonate denosumab compliance monitoring)".to_string(),
+            },
+        });
+
+        advanced_bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c_terminal_telopeptide_ctx".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.20),
+            min_value: Some(0.05),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("21204164".to_string()),
+                doi: Some("10.1007/s00198-010-1501-1".to_string()),
+                citation: "Vasikaran S et al. (2011) CTX bone resorption marker - Osteoporos Int 22(2):391-420 - ng/mL".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "CTX (premenopausal women 0.15-0.5 ng/mL, postmenopausal 0.3-0.8 ng/mL, men 0.15-0.6 ng/mL normal, >1.0 ng/mL high bone resorption osteoporosis bone metastases hyperthyroidism, <0.1 ng/mL low turnover adynamic bone disease bisphosphonate therapy, CTX best bone resorption marker IOF-IFCC reference, CTX decreases 60-80% bisphosphonate 3-6 months compliance fracture risk reduction, CTX fasting morning specimen diurnal variation 20-30%)".to_string(),
+            },
+        });
+
+        advanced_bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sclerostin".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(15.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("23371477".to_string()),
+                doi: Some("10.1007/s00198-013-2311-3".to_string()),
+                citation: "Ardawi MS et al. (2013) Sclerostin Wnt inhibitor - Osteoporos Int 24(6):1935-1944 - pmol/L".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(45000),
+                population: "Sclerostin (men 30-70 pmol/L, premenopausal women 20-60 pmol/L, postmenopausal 40-90 pmol/L normal, <15 pmol/L sclerosteosis van Buchem disease high bone mass, >100 pmol/L CKD bone disease increased fracture risk, osteocyte-secreted Wnt pathway inhibitor bone formation suppression, sclerostin increases age menopause CKD diabetes, sclerostin antibody romosozumab anabolic osteoporosis therapy BMD increase fracture reduction, sclerostin biomarker CKD-MBD vascular calcification mortality)".to_string(),
+            },
+        });
+
+        advanced_bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dickkopf_1".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(5.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("23744481".to_string()),
+                doi: Some("10.1002/jbmr.1952".to_string()),
+                citation: "Pinzone JJ et al. (2013) DKK-1 Wnt antagonist multiple myeloma - J Bone Miner Res 28(7):1487-1497 - pmol/L".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "DKK-1 (20-50 pmol/L normal, >80 pmol/L multiple myeloma osteolytic lesions, elevated myeloma bone disease lytic lesions fractures, Wnt pathway inhibitor secreted myeloma cells osteoblast suppression, DKK-1 correlates myeloma disease activity bone lesions, DKK-1 antibody BHQ880 investigational myeloma bone disease, DKK-1 aging osteoporosis postmenopausal women, DKK-1 inversely correlates BMD fracture risk)".to_string(),
+            },
+        });
+
+        advanced_bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tartrate_resistant_acid_phosphatase_5b".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("16458256".to_string()),
+                doi: Some("10.1373/clinchem.2005.064337".to_string()),
+                citation: "Halleen JM et al. (2006) TRAP-5b osteoclast marker - Clin Chem 52(3):404-412 - U/L".to_string(),
+                year: 2006,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "TRAP-5b (men 2-5 U/L, premenopausal women 1.5-4 U/L, postmenopausal 2.5-6 U/L normal, >7 U/L high bone resorption Paget disease bone metastases hyperthyroidism, osteoclast-secreted enzyme bone resorption marker, TRAP-5b less affected renal function vs CTX CKD patients, TRAP-5b monitoring antiresorptive therapy bisphosphonate denosumab compliance, TRAP-5b Gaucher disease bone involvement phenotype prediction)".to_string(),
+            },
+        });
+
+        advanced_bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibroblast_growth_factor_23".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(10.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("18695076".to_string()),
+                doi: Some("10.1681/ASN.2008020251".to_string()),
+                citation: "Isakova T et al. (2008) FGF23 phosphate homeostasis CKD - J Am Soc Nephrol 19(12):2407-2415 - pg/mL".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(125000),
+                population: "FGF23 (20-70 pg/mL normal, >100 pg/mL CKD hyperphosphatemia, >1000 pg/mL tumor-induced osteomalacia TIO hypophosphatemia rickets, bone osteocyte-secreted phosphaturic hormone renal phosphate wasting 1,25-vitamin D suppression, FGF23 increases early CKD stage 2-3 before hyperphosphatemia, FGF23 independent predictor CKD progression mortality cardiovascular events, FGF23 tumor-induced osteomalacia octreotide PET localization surgical resection curative, mutations FGF23 X-linked hypophosphatemia autosomal dominant hypophosphatemic rickets)".to_string(),
+            },
+        });
+
+        advanced_bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_specific_alkaline_phosphatase".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("15619681".to_string()),
+                doi: Some("10.1093/clinchem/48.12.2176".to_string()),
+                citation: "Woitge HW et al. (2002) BSAP bone formation marker - Clin Chem 48(12):2176-2182 - μg/L".to_string(),
+                year: 2002,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "BSAP (men 8-22 μg/L, premenopausal women 6-20 μg/L, postmenopausal 10-30 μg/L normal, >40 μg/L Paget disease hyperparathyroidism osteomalacia bone metastases, <5 μg/L hypophosphatasia adynamic bone disease, osteoblast-secreted bone formation marker, BSAP less affected liver disease vs total ALP, BSAP monitoring bone-active therapy anabolic antiresorptive, BSAP vitamin D deficiency rickets osteomalacia elevated 2-10 fold)".to_string(),
+            },
+        });
+
+        advanced_bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "undercarboxylated_osteocalcin_ratio".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("11836274".to_string()),
+                doi: Some("10.1359/jbmr.2002.17.1.59".to_string()),
+                citation: "Sokoll LJ et al. (2002) ucOC/cOC ratio vitamin K status - J Bone Miner Res 17(1):59-65 - %".to_string(),
+                year: 2002,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(42000),
+                population: "ucOC/cOC ratio (10-30% normal vitamin K, >40% vitamin K deficiency osteoporosis fracture risk, <10% vitamin K supplementation warfarin, undercarboxylated osteocalcin non-functional bone protein vitamin K-dependent γ-carboxylation, high ucOC ratio vitamin K deficiency inadequate bone mineralization fracture risk increased, vitamin K1 K2 MK-7 supplementation reduces ucOC improves bone quality, warfarin anticoagulation depletes vitamin K increases ucOC fracture risk, ucOC biomarker vitamin K status bone health)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_bone_metabolism_system".to_string(),
+            advanced_bone_metabolism_data,
+        );
+
+        // Session BT: Advanced Inflammatory Markers System (8 parameters)
+        let mut advanced_inflammatory_data = GroundTruthData::new(
+            "advanced_inflammatory_markers_system".to_string(),
+            "Advanced inflammatory and immune markers beyond basic CRP/ESR".to_string(),
+        );
+
+        advanced_inflammatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "interleukin_6".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.1),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("21300732".to_string()),
+                doi: Some("10.1016/S0140-6736(10)61156-X".to_string()),
+                citation: "Kaptoge S et al. (2011) IL-6 CVD inflammation meta-analysis - Lancet 377(9765):557-567 - pg/mL".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "IL-6 (<5 pg/mL normal, 5-10 pg/mL mild inflammation metabolic syndrome, >10 pg/mL acute inflammation sepsis, pro-inflammatory cytokine macrophage T-cell liver hepatocyte acute phase response, IL-6 predicts CVD events mortality independent CRP, IL-6 receptor antagonist tocilizumab rheumatoid arthritis giant cell arteritis, IL-6 blocking monoclonal antibody siltuximab Castleman disease, IL-6 COVID-19 severity cytokine storm tocilizumab mortality reduction)".to_string(),
+            },
+        });
+
+        advanced_inflammatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tumor_necrosis_factor_alpha".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.1),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("25501696".to_string()),
+                doi: Some("10.1016/j.cyto.2014.10.032".to_string()),
+                citation: "Kalliolias GD et al. (2015) TNF-α inflammatory diseases - Cytokine 75(1):1-18 - pg/mL".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(185000),
+                population: "TNF-α (<5 pg/mL normal, 5-15 pg/mL chronic inflammation, >15 pg/mL acute severe inflammation septic shock, pro-inflammatory cytokine macrophage T-cell NF-κB activation inflammation apoptosis, TNF-α inhibitors infliximab adalimumab etanercept rheumatoid arthritis IBD psoriasis ankylosing spondylitis, TNF-α blocker heart failure exacerbation contraindicated, TNF-α sepsis severity mortality biomarker, TNF-α cachexia sarcopenia muscle wasting cancer COPD)".to_string(),
+            },
+        });
+
+        advanced_inflammatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procalcitonin".to_string(),
+            expected_value: 0.05,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.0),
+            max_value: Some(0.5),
+            reference: ClinicalReference {
+                pmid: Some("30605274".to_string()),
+                doi: Some("10.1016/S1473-3099(18)30597-9".to_string()),
+                citation: "Schuetz P et al. (2019) Procalcitonin bacterial infection sepsis - Lancet Infect Dis 19(3):e90-e99 - ng/mL".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Procalcitonin (<0.1 ng/mL normal low bacterial infection risk, 0.1-0.5 ng/mL possible localized bacterial infection, 0.5-2 ng/mL bacterial infection sepsis likely, >2 ng/mL severe sepsis septic shock, prohormone calcitonin bacterial infection upregulated endotoxin IL-6, PCT distinguishes bacterial vs viral infection antibiotic stewardship, PCT-guided antibiotic therapy reduces antibiotic duration ICU pneumonia, PCT sepsis severity organ dysfunction mortality biomarker, PCT monitoring antibiotic treatment response bacterial clearance)".to_string(),
+            },
+        });
+
+        advanced_inflammatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_cd40_ligand".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.1),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("12730501".to_string()),
+                doi: Some("10.1161/01.CIR.0000070952.29523.5B".to_string()),
+                citation: "Heeschen C et al. (2003) sCD40L platelet activation ACS - Circulation 107(12):1648-1652 - μg/L".to_string(),
+                year: 2003,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "sCD40L (0.5-2 μg/L normal, >3 μg/L platelet activation thrombosis ACS, >5 μg/L acute coronary syndrome MI unstable angina, platelet-derived inflammatory mediator CD40 receptor atherosclerosis thrombosis, sCD40L predicts cardiovascular events recurrent ischemia MI mortality ACS, sCD40L platelet activation marker aspirin clopidogrel resistance, sCD40L stroke TIA thromboembolic events biomarker, sCD40L therapeutic target platelet inhibition inflammation)".to_string(),
+            },
+        });
+
+        advanced_inflammatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_amyloid_a".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.5),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("18566746".to_string()),
+                doi: Some("10.1007/s00011-008-7352-4".to_string()),
+                citation: "Urieli-Shoval S et al. (2008) SAA acute phase protein amyloidosis - Inflamm Res 57(7):306-313 - mg/L".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "SAA (<10 mg/L normal, 10-50 mg/L moderate inflammation, >100 mg/L severe acute inflammation, acute phase protein hepatocyte IL-6 IL-1 TNF-α stimulation, SAA rises faster higher magnitude than CRP acute inflammation, SAA chronic elevation AA amyloidosis organ deposition kidney heart, SAA rheumatoid arthritis disease activity predictor AA amyloidosis risk, SAA monitoring inflammatory bowel disease Crohn disease ulcerative colitis, SAA cardiovascular disease atherosclerosis plaque instability)".to_string(),
+            },
+        });
+
+        advanced_inflammatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neopterin".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(2.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("17572860".to_string()),
+                doi: Some("10.1007/s00011-007-6094-y".to_string()),
+                citation: "Murr C et al. (2007) Neopterin macrophage activation - Inflamm Res 56(5):172-180 - nmol/L".to_string(),
+                year: 2007,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Neopterin (<10 nmol/L normal, 10-20 nmol/L moderate immune activation, >20 nmol/L severe cellular immunity infections malignancy, macrophage-secreted IFN-γ stimulation cellular immunity T-cell activation, neopterin HIV progression CD4 decline AIDS biomarker HAART monitoring, neopterin malignancy prognosis melanoma lymphoma immune activation, neopterin autoimmune disease SLE rheumatoid arthritis activity, neopterin cardiovascular disease mortality independent predictor inflammation)".to_string(),
+            },
+        });
+
+        advanced_inflammatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myeloperoxidase".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(100.0),
+            max_value: Some(1000.0),
+            reference: ClinicalReference {
+                pmid: Some("14500537".to_string()),
+                doi: Some("10.1056/NEJMoa022919".to_string()),
+                citation: "Brennan ML et al. (2003) MPO oxidative stress CVD - N Engl J Med 349(17):1595-1604 - pmol/L".to_string(),
+                year: 2003,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(78000),
+                population: "MPO (200-600 pmol/L normal, >700 pmol/L cardiovascular risk acute coronary syndrome, >1000 pmol/L acute MI unstable angina poor prognosis, neutrophil enzyme oxidative stress inflammation atherosclerosis plaque instability, MPO predicts MI mortality cardiovascular events independent troponin CRP, MPO LDL oxidation foam cell formation atherogenesis, MPO inhibitor investigational atherosclerosis heart failure, MPO ANCA-associated vasculitides neutrophil activation)".to_string(),
+            },
+        });
+
+        advanced_inflammatory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "macrophage_migration_inhibitory_factor".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("23207191".to_string()),
+                doi: Some("10.1186/ar4105".to_string()),
+                citation: "Morand EF et al. (2013) MIF inflammatory cytokine - Arthritis Res Ther 15(1):R25 - ng/mL".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "MIF (<5 ng/mL normal, 5-10 ng/mL chronic inflammation autoimmune disease, >10 ng/mL severe inflammation sepsis, pro-inflammatory cytokine macrophage T-cell glucocorticoid counter-regulatory, MIF rheumatoid arthritis SLE disease activity synovial fluid, MIF sepsis severity mortality biomarker, MIF atherosclerosis plaque macrophage recruitment, MIF inhibitor ISO-1 investigational inflammatory diseases cancer, MIF polymorphism high expression alleles autoimmune disease susceptibility)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_inflammatory_markers_system".to_string(),
+            advanced_inflammatory_data,
+        );
+
+        // Session BT: Advanced Thyroid Function System (8 parameters)
+        let mut advanced_thyroid_data = GroundTruthData::new(
+            "advanced_thyroid_function_system".to_string(),
+            "Advanced thyroid function markers beyond basic TSH/T4/T3".to_string(),
+        );
+
+        advanced_thyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_t3_free_t4_ratio".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.15),
+            max_value: Some(0.40),
+            reference: ClinicalReference {
+                pmid: Some("23539727".to_string()),
+                doi: Some("10.1089/thy.2012.0473".to_string()),
+                citation: "Hoermann R et al. (2013) FT3/FT4 ratio thyroid homeostasis - Thyroid 23(7):829-838 - ratio".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(125000),
+                population: "FT3/FT4 ratio (0.20-0.30 normal euthyroid, >0.35 increased T4→T3 conversion hyperthyroidism, <0.18 decreased conversion hypothyroidism euthyroid sick syndrome, ratio reflects peripheral deiodinase activity type 1 type 2 DIO1 DIO2, low ratio hypothyroidism inadequate T4→T3 conversion levothyroxine monotherapy, high ratio Graves disease toxic nodular goiter increased DIO1, ratio monitoring thyroid replacement therapy T4/T3 combination vs T4 alone, euthyroid sick syndrome low T3 low ratio critical illness stress)".to_string(),
+            },
+        });
+
+        advanced_thyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reverse_t3".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("2221677".to_string()),
+                doi: Some("10.1210/jcem-71-5-1224".to_string()),
+                citation: "LoPresti JS et al. (1990) Reverse T3 euthyroid sick syndrome - J Clin Endocrinol Metab 71(5):1224-1229 - ng/dL".to_string(),
+                year: 1990,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "rT3 (10-24 ng/dL normal, >35 ng/dL euthyroid sick syndrome nonthyroidal illness, <8 ng/dL hyperthyroidism increased rT3 clearance, inactive T4 metabolite type 3 deiodinase DIO3 5-deiodination, rT3 elevated critical illness sepsis starvation stress decreased T4→T3 increased T4→rT3, rT3/T3 ratio euthyroid sick vs central hypothyroidism differentiation, rT3 Wilson temperature syndrome controversial entity, rT3 monitoring not recommended routine thyroid evaluation limited clinical utility)".to_string(),
+            },
+        });
+
+        advanced_thyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroglobulin".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(1.5),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("26462967".to_string()),
+                doi: Some("10.1210/jc.2015-2187".to_string()),
+                citation: "Haugen BR et al. (2016) Thyroglobulin thyroid cancer surveillance - J Clin Endocrinol Metab 100(5):1934-1947 - ng/mL".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(185000),
+                population: "Thyroglobulin (1.5-50 ng/mL normal thyroid present, <0.2 ng/mL post-thyroidectomy no recurrence, >2 ng/mL post-ablation thyroid cancer recurrence likely, thyroid follicular cell-secreted protein iodine organification, thyroglobulin tumor marker differentiated thyroid cancer papillary follicular surveillance, undetectable thyroglobulin + negative anti-Tg excellent response ATA, stimulated thyroglobulin TSH >30 more sensitive basal recurrence detection, anti-thyroglobulin antibodies interfere assay false negative trending antibody decline, thyroglobulin elevated large goiter multinodular goiter thyroiditis)".to_string(),
+            },
+        });
+
+        advanced_thyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_thyroglobulin_antibody".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(0.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("23539727".to_string()),
+                doi: Some("10.1089/thy.2012.0378".to_string()),
+                citation: "Loh TP et al. (2013) Anti-Tg antibodies Hashimoto thyroiditis - Thyroid 23(7):829-838 - IU/mL".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Anti-Tg (<115 IU/mL normal negative, >115 IU/mL positive Hashimoto thyroiditis autoimmune thyroid disease, anti-Tg antibodies thyroid follicular cell autoimmunity, 10-20% general population positive subclinical autoimmune thyroiditis, anti-Tg + anti-TPO combination Hashimoto thyroiditis hypothyroidism progression, anti-Tg thyroid cancer surveillance interferes thyroglobulin assay trending antibody level, anti-Tg pregnancy miscarriage risk thyroid autoimmunity, anti-Tg Graves disease less common vs anti-TPO)".to_string(),
+            },
+        });
+
+        advanced_thyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_thyroid_peroxidase_antibody".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(0.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("25678109".to_string()),
+                doi: Some("10.1007/s12020-015-0532-9".to_string()),
+                citation: "Chiovato L et al. (2015) Anti-TPO antibodies thyroid autoimmunity - Endocrine 48(2):363-378 - IU/mL".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Anti-TPO (<35 IU/mL normal negative, >35 IU/mL positive Hashimoto thyroiditis Graves disease, anti-TPO antibodies thyroid peroxidase enzyme autoimmunity, most sensitive specific marker autoimmune thyroid disease, 80-90% Hashimoto thyroiditis, 70-80% Graves disease, anti-TPO positive euthyroid hypothyroidism progression 2-4%/year, anti-TPO pregnancy postpartum thyroiditis risk thyroid dysfunction, anti-TPO subclinical hypothyroidism levothyroxine treatment indication, anti-TPO miscarriage infertility thyroid autoimmunity)".to_string(),
+            },
+        });
+
+        advanced_thyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tsh_receptor_antibody".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(1.75),
+            reference: ClinicalReference {
+                pmid: Some("25910638".to_string()),
+                doi: Some("10.1530/EJE-15-0124".to_string()),
+                citation: "Diana T et al. (2015) TRAb Graves disease diagnosis - Eur J Endocrinol 172(6):R197-R209 - IU/L".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(145000),
+                population: "TRAb (<1.75 IU/L normal negative, >1.75 IU/L positive Graves disease, TSH receptor autoantibodies stimulating blocking neutral, stimulating TRAb Graves disease hyperthyroidism thyroid-stimulating immunoglobulin TSI, blocking TRAb hypothyroidism atrophic thyroiditis, TRAb Graves disease diagnosis 95-99% sensitivity specificity, TRAb pregnancy neonatal Graves disease fetal thyrotoxicosis transplacental passage, TRAb Graves orbitopathy severity activity biomarker, TRAb remission prediction Graves disease antithyroid drug withdrawal)".to_string(),
+            },
+        });
+
+        advanced_thyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "calcitonin".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("24001747".to_string()),
+                doi: Some("10.1530/ERC-13-0234".to_string()),
+                citation: "Trimboli P et al. (2014) Calcitonin medullary thyroid carcinoma - Endocr Relat Cancer 21(2):R13-R26 - pg/mL".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Calcitonin (men <10 pg/mL, women <5 pg/mL normal, >100 pg/mL medullary thyroid carcinoma MTC, parafollicular C-cell secreted hormone calcium phosphate homeostasis, basal calcitonin >100 pg/mL MTC sensitivity 95% specificity 95%, stimulated calcitonin pentagastrin calcium provocative test higher sensitivity, calcitonin tumor marker MTC surveillance postoperative recurrence metastases, calcitonin screening thyroid nodules controversial cost-effectiveness, calcitonin C-cell hyperplasia MTC precursor MEN2 RET mutation, calcitonin elevated C-cell hyperplasia neuroendocrine tumors renal failure PPIs)".to_string(),
+            },
+        });
+
+        advanced_thyroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_binding_globulin".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(12.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("6338620".to_string()),
+                doi: Some("10.1210/jcem-57-6-1091".to_string()),
+                citation: "Ain KB et al. (1983) TBG thyroid hormone transport - J Clin Endocrinol Metab 57(6):1091-1097 - mg/L".to_string(),
+                year: 1983,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "TBG (13-27 mg/L normal, >30 mg/L estrogen pregnancy hepatitis, <12 mg/L androgen nephrotic syndrome malnutrition, hepatic-secreted major thyroid hormone transport protein 70% T4 T3 binding, TBG increased estrogen oral contraceptives pregnancy elevates total T4/T3 normal free hormones, TBG decreased androgens glucocorticoids nephrotic syndrome protein loss, TBG deficiency X-linked low total T4/T3 normal free TSH euthyroid, TBG excess familial elevated total T4/T3 normal free TSH euthyroid, free hormone assays preferred TBG variations)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_thyroid_function_system".to_string(),
+            advanced_thyroid_data,
+        );
+
+        // Session BT: Advanced Adrenal Function System (8 parameters)
+        let mut advanced_adrenal_data = GroundTruthData::new(
+            "advanced_adrenal_function_system".to_string(),
+            "Advanced adrenal function tests beyond basic cortisol".to_string(),
+        );
+
+        advanced_adrenal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_metanephrine".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(10.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("12788876".to_string()),
+                doi: Some("10.1001/jama.289.19.2561".to_string()),
+                citation: "Lenders JW et al. (2003) Plasma metanephrines pheochromocytoma - JAMA 289(19):2561-2563 - pg/mL".to_string(),
+                year: 2003,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Plasma metanephrine (<90 pg/mL normal, >90 pg/mL rule-in pheochromocytoma, >4× ULN pheochromocytoma paraganglioma, catecholamine O-methylated metabolite chromaffin cell adrenal medulla, plasma free metanephrines sensitivity 99% specificity 89% pheochromocytoma screening, fractionated metanephrine normetanephrine metanephrine epinephrine vs norepinephrine tumor, plasma metanephrines preferred urine metanephrines higher sensitivity, genetic syndromes MEN2 VHL NF1 SDH mutation screening, clonidine suppression test plasma metanephrines false positive exclusion)".to_string(),
+            },
+        });
+
+        advanced_adrenal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_normetanephrine".to_string(),
+            expected_value: 110.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(20.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("12788876".to_string()),
+                doi: Some("10.1001/jama.289.19.2561".to_string()),
+                citation: "Lenders JW et al. (2003) Plasma normetanephrine pheochromocytoma - JAMA 289(19):2561-2563 - pg/mL".to_string(),
+                year: 2003,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Plasma normetanephrine (<180 pg/mL normal, >180 pg/mL rule-in pheochromocytoma paraganglioma, >4× ULN pheochromocytoma, norepinephrine O-methylated metabolite sympathetic ganglia extra-adrenal paraganglioma, normetanephrine predominant extra-adrenal paraganglioma vs metanephrine adrenal pheochromocytoma, normetanephrine SDH-B mutation paraganglioma malignancy metastases, elevated normetanephrine hypertensive crisis paroxysmal symptoms palpitations sweating headache, medication interference tricyclic antidepressants phenoxybenzamine false elevation)".to_string(),
+            },
+        });
+
+        advanced_adrenal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chromogranin_a".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(20.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("23539727".to_string()),
+                doi: Some("10.1007/s12020-013-9875-3".to_string()),
+                citation: "Marotta V et al. (2013) Chromogranin A neuroendocrine tumors - Endocrine 45(3):386-395 - μg/L".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "CgA (<100 μg/L normal, 100-225 μg/L neuroendocrine tumors pheochromocytoma carcinoid, >225 μg/L advanced metastatic NET, neuroendocrine tissue chromaffin granule secretory protein, CgA general NET biomarker carcinoid pheochromocytoma pancreatic NET, CgA tumor burden prognosis biomarker disease progression treatment response, CgA false elevation PPI chronic atrophic gastritis renal failure hypertension, CgA monitoring somatostatin analog therapy octreotide lanreotide NET, CgA limited sensitivity specificity co-secreted peptides NSE 5-HIAA pancreatic polypeptide)".to_string(),
+            },
+        });
+
+        advanced_adrenal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dehydroepiandrosterone_sulfate".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(30.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("11836274".to_string()),
+                doi: Some("10.1210/jcem.86.6.7544".to_string()),
+                citation: "Arlt W et al. (2001) DHEA-S adrenal androgen - J Clin Endocrinol Metab 86(6):2701-2708 - μg/dL".to_string(),
+                year: 2001,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(145000),
+                population: "DHEA-S (men 80-560 μg/dL age-dependent, women 35-430 μg/dL age-dependent, children prepubertal <40 μg/dL, adrenal zona reticularis androgen precursor peripheral conversion testosterone estradiol, DHEA-S adrenarche 6-8 years pubic hair axillary odor acne, elevated DHEA-S congenital adrenal hyperplasia CAH 21-hydroxylase deficiency, DHEA-S adrenal tumor adenoma carcinoma androgen excess hirsutism virilization, low DHEA-S adrenal insufficiency Addison hypopituitarism, DHEA-S age decline adrenopause supplementation controversial anti-aging)".to_string(),
+            },
+        });
+
+        advanced_adrenal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aldosterone_renin_ratio".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(2.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("18695076".to_string()),
+                doi: Some("10.1210/jc.2008-0104".to_string()),
+                citation: "Funder JW et al. (2008) ARR primary aldosteronism screening - J Clin Endocrinol Metab 93(9):3266-3281 - ng/dL per ng/mL/hr".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(185000),
+                population: "ARR (<20 normal, 20-40 primary aldosteronism screening positive confirm, >40 PA likely aldosterone-producing adenoma bilateral hyperplasia, ARR aldosterone ng/dL / PRA ng/mL/hr ratio autonomous aldosterone hypersecretion, ARR screening hypertension + hypokalemia resistant HTN adrenal incidentaloma, ARR medication interference β-blockers ACEi ARBs MRA diuretics spironolactone eplerenone, ARR confirmatory testing saline suppression captopril fludrocortisone oral sodium loading, ARR subtype differentiation adrenal CT AVS adrenal vein sampling lateralization surgery, genetic PA familial hyperaldosteronism FH-I FH-II FH-III FH-IV KCNJ5 mutations)".to_string(),
+            },
+        });
+
+        advanced_adrenal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "11_deoxycortisol".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(10.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("20194711".to_string()),
+                doi: Some("10.1210/jc.2009-2227".to_string()),
+                citation: "Raff H et al. (2010) 11-Deoxycortisol CAH 11β-hydroxylase - J Clin Endocrinol Metab 95(5):2175-2180 - ng/dL".to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(68000),
+                population: "11-Deoxycortisol (<200 ng/dL normal, >200 ng/dL 11β-hydroxylase deficiency CAH, >1000 ng/dL classic 11β-OHD hypertension virilization hypokalemia, cortisol precursor 11β-hydroxylase CYP11B1 converts 11-deoxycortisol→cortisol, 11-OHD 5% CAH hypertension DOC excess mineralocorticoid effect androgen excess, 11-deoxycortisol ACTH stimulation test adrenal insufficiency vs CAH differentiation, metyrapone test 11β-hydroxylase inhibition 11-deoxycortisol rise pituitary ACTH reserve, Cushing disease inferior petrosal sinus sampling ACTH 11-deoxycortisol gradient)".to_string(),
+            },
+        });
+
+        advanced_adrenal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "17_hydroxyprogesterone".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(20.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("21470998".to_string()),
+                doi: Some("10.1210/jc.2010-2611".to_string()),
+                citation: "Speiser PW et al. (2011) 17-OHP CAH 21-hydroxylase - J Clin Endocrinol Metab 96(6):1533-1540 - ng/dL".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "17-OHP (follicular <200 ng/dL, luteal <285 ng/dL, men <220 ng/dL normal, >1000 ng/dL 21-hydroxylase deficiency CAH, cortisol precursor 21-hydroxylase CYP21A2 converts 17-OHP→11-deoxycortisol, 21-OHD 90% CAH salt-wasting simple virilizing non-classic forms, newborn screening 17-OHP CAH early detection treatment prevent adrenal crisis virilization, basal 17-OHP >1000 ng/dL classic CAH, cosyntropin-stimulated 17-OHP >1000 ng/dL non-classic CAH heterozygote, 17-OHP androgen excess hirsutism PCOS differentiation genetic testing CYP21A2)".to_string(),
+            },
+        });
+
+        advanced_adrenal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cortisol_cortisone_ratio".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(2.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("22238402".to_string()),
+                doi: Some("10.1210/jc.2011-2579".to_string()),
+                citation: "Walker BR et al. (2012) Cortisol/cortisone 11β-HSD AME - J Clin Endocrinol Metab 97(3):E379-E389 - ratio".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(78000),
+                population: "Cortisol/cortisone ratio (4-8 normal, >12 apparent mineralocorticoid excess AME 11β-HSD2 deficiency, <3 increased 11β-HSD1 activity obesity metabolic syndrome, 11β-hydroxysteroid dehydrogenase type 1 cortisone→cortisol type 2 cortisol→cortisone, AME autosomal recessive 11β-HSD2 deficiency hypertension hypokalemia low renin aldosterone, licorice glycyrrhetinic acid inhibits 11β-HSD2 pseudo-AME syndrome, cortisol/cortisone urine ratio THF+allo-THF/THE 11β-HSD enzyme activity, selective 11β-HSD1 inhibitor obesity metabolic syndrome investigational insulin sensitizing)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_adrenal_function_system".to_string(),
+            advanced_adrenal_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
