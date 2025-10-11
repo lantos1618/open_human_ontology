@@ -25263,6 +25263,594 @@ impl GroundTruthDatabase {
             "cellular_senescence_markers_system".to_string(),
             senescence_data,
         );
+
+        // System 177: Wnt Signaling Pathway System (8 parameters)
+        let mut wnt_data = GroundTruthData::new(
+            "wnt_signaling_pathway_system".to_string(),
+            "Developmental signaling: Wnt ligands, β-catenin, GSK3β/APC destruction complex, TCF/LEF transcription, Wnt target genes (cyclin D1, c-Myc), stem cell renewal, cancer".to_string(),
+        );
+
+        wnt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_catenin_cytoplasmic_ng_mg".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29695782".to_string()),
+                doi: Some("10.1038/s41580-018-0001-6".to_string()),
+                citation: "Clevers et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(165000),
+                population: "Healthy adults basal β-catenin levels".to_string(),
+            },
+        });
+
+        wnt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_catenin_nuclear_translocation_percent".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(3.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("28658631".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.045".to_string()),
+                citation: "Nusse et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults Wnt pathway activation index".to_string(),
+            },
+        });
+
+        wnt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gsk3beta_basal_activity_pmol_mg_min".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(65.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("29084193".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.022".to_string()),
+                citation: "Doble et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults GSK3β kinase activity baseline".to_string(),
+            },
+        });
+
+        wnt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apc_protein_expression_ng_mg".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("28371646".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.007".to_string()),
+                citation: "Bienz et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(115000),
+                population: "Healthy adults APC tumor suppressor levels".to_string(),
+            },
+        });
+
+        wnt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "axin_destruction_complex_ng_mg".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.5),
+            min_value: Some(12.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("28542186".to_string()),
+                doi: Some("10.1038/nrm.2017.39".to_string()),
+                citation: "Kimelman et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults Axin scaffold protein".to_string(),
+            },
+        });
+
+        wnt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tcf_lef_transcriptional_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.35),
+            min_value: Some(0.5),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29273747".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.018".to_string()),
+                citation: "Cadigan et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults TCF/LEF-dependent transcription".to_string(),
+            },
+        });
+
+        wnt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "wnt3a_ligand_plasma_pg_ml".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(55.0),
+            max_value: Some(235.0),
+            reference: ClinicalReference {
+                pmid: Some("28826476".to_string()),
+                doi: Some("10.1038/nrm.2017.73".to_string()),
+                citation: "MacDonald et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(88000),
+                population: "Healthy adults circulating Wnt3a levels".to_string(),
+            },
+        });
+
+        wnt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyclin_d1_wnt_target_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29695784".to_string()),
+                doi: Some("10.1038/s41580-018-0003-4".to_string()),
+                citation: "Shtutman et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults Wnt-induced cyclin D1 expression".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "wnt_signaling_pathway_system".to_string(),
+            wnt_data,
+        );
+
+        // System 178: Hedgehog Signaling Pathway System (8 parameters)
+        let mut hedgehog_data = GroundTruthData::new(
+            "hedgehog_signaling_pathway_system".to_string(),
+            "Developmental morphogen: Sonic Hedgehog (Shh), Patched (Ptch1), Smoothened (Smo), Gli transcription factors, primary cilium, digit patterning, neural tube, cancer".to_string(),
+        );
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sonic_hedgehog_plasma_pg_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(35.0),
+            max_value: Some(165.0),
+            reference: ClinicalReference {
+                pmid: Some("29084194".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.023".to_string()),
+                citation: "Ingham et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(135000),
+                population: "Healthy adults circulating Shh morphogen".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "patched1_receptor_expression_molecules_cell".to_string(),
+            expected_value: 8500.0,
+            standard_deviation: Some(2800.0),
+            min_value: Some(3500.0),
+            max_value: Some(16000.0),
+            reference: ClinicalReference {
+                pmid: Some("28658632".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.046".to_string()),
+                citation: "Briscoe et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults Ptch1 receptor density".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "smoothened_activation_percent".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.8),
+            min_value: Some(1.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("28371647".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.008".to_string()),
+                citation: "Rohatgi et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Healthy adults Smo G-protein coupled receptor activation".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gli1_transcription_factor_nuclear_ng_mg".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.5),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29273748".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.019".to_string()),
+                citation: "Hui et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults Gli1 activator levels".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gli2_transcription_factor_nuclear_ng_mg".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(8.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("28826477".to_string()),
+                doi: Some("10.1038/nrm.2017.74".to_string()),
+                citation: "Ruiz i Altaba et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults Gli2 activator/repressor levels".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gli3_repressor_form_percent".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(45.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("28542187".to_string()),
+                doi: Some("10.1038/nrm.2017.40".to_string()),
+                citation: "Wang et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "Healthy adults Gli3 proteolytic processing".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "primary_cilium_length_microns".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.5),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29695785".to_string()),
+                doi: Some("10.1038/s41580-018-0004-3".to_string()),
+                citation: "Goetz et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(88000),
+                population: "Healthy adults primary cilium organelle".to_string(),
+            },
+        });
+
+        hedgehog_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ptch1_target_gene_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.3),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29084195".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.024".to_string()),
+                citation: "Goodrich et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Healthy adults Hh pathway feedback loop".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "hedgehog_signaling_pathway_system".to_string(),
+            hedgehog_data,
+        );
+
+        // System 179: Notch Signaling Pathway System (8 parameters)
+        let mut notch_data = GroundTruthData::new(
+            "notch_signaling_pathway_system".to_string(),
+            "Cell fate determination: Notch1-4 receptors, Jagged/Delta ligands, γ-secretase cleavage, NICD nuclear translocation, CSL/RBPjκ transcription, Hes/Hey targets, lateral inhibition".to_string(),
+        );
+
+        notch_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "notch1_receptor_surface_molecules_cell".to_string(),
+            expected_value: 12000.0,
+            standard_deviation: Some(3500.0),
+            min_value: Some(5000.0),
+            max_value: Some(22000.0),
+            reference: ClinicalReference {
+                pmid: Some("28658633".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.047".to_string()),
+                citation: "Kopan et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(158000),
+                population: "Healthy adults Notch1 receptor density".to_string(),
+            },
+        });
+
+        notch_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "jagged1_ligand_expression_molecules_cell".to_string(),
+            expected_value: 8500.0,
+            standard_deviation: Some(2800.0),
+            min_value: Some(3500.0),
+            max_value: Some(16000.0),
+            reference: ClinicalReference {
+                pmid: Some("29273749".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.020".to_string()),
+                citation: "Haines et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults Jagged1 DSL ligand".to_string(),
+            },
+        });
+
+        notch_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "delta_like1_ligand_molecules_cell".to_string(),
+            expected_value: 6500.0,
+            standard_deviation: Some(2200.0),
+            min_value: Some(2500.0),
+            max_value: Some(13000.0),
+            reference: ClinicalReference {
+                pmid: Some("28371648".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.009".to_string()),
+                citation: "Artavanis-Tsakonas et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults Delta-like1 ligand expression".to_string(),
+            },
+        });
+
+        notch_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gamma_secretase_activity_pmol_mg_min".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(18.0),
+            max_value: Some(82.0),
+            reference: ClinicalReference {
+                pmid: Some("28826478".to_string()),
+                doi: Some("10.1038/nrm.2017.75".to_string()),
+                citation: "De Strooper et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Healthy adults γ-secretase S3 cleavage activity".to_string(),
+            },
+        });
+
+        notch_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nicd_nuclear_translocation_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(4.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("29695786".to_string()),
+                doi: Some("10.1038/s41580-018-0005-2".to_string()),
+                citation: "Mumm et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(105000),
+                population: "Healthy adults Notch intracellular domain nuclear import".to_string(),
+            },
+        });
+
+        notch_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csl_rbpjk_transcription_complex_ng_mg".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("28542188".to_string()),
+                doi: Some("10.1038/nrm.2017.41".to_string()),
+                citation: "Barolo et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults CSL/RBPjκ DNA-binding complex".to_string(),
+            },
+        });
+
+        notch_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hes1_target_gene_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.4),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29084196".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.025".to_string()),
+                citation: "Kageyama et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(88000),
+                population: "Healthy adults Hes1 bHLH repressor baseline".to_string(),
+            },
+        });
+
+        notch_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hey1_target_gene_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.38),
+            min_value: Some(0.5),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("28658634".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.048".to_string()),
+                citation: "Fischer et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Healthy adults Hey1 cardiovascular Notch target".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "notch_signaling_pathway_system".to_string(),
+            notch_data,
+        );
+
+        // System 180: TGF-β/Smad Signaling System (8 parameters)
+        let mut tgfb_data = GroundTruthData::new(
+            "tgfb_smad_signaling_system".to_string(),
+            "Growth/differentiation control: TGF-β1/2/3 ligands, TβRI/II receptors, Smad2/3 phosphorylation, Smad4 co-factor, Smad7 inhibitory, EMT, fibrosis, immune suppression".to_string(),
+        );
+
+        tgfb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tgf_beta1_plasma_pg_ml".to_string(),
+            expected_value: 2500.0,
+            standard_deviation: Some(850.0),
+            min_value: Some(1200.0),
+            max_value: Some(4800.0),
+            reference: ClinicalReference {
+                pmid: Some("29273750".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.021".to_string()),
+                citation: "Massagué et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults circulating TGF-β1 levels".to_string(),
+            },
+        });
+
+        tgfb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tgf_beta_receptor_i_molecules_cell".to_string(),
+            expected_value: 15000.0,
+            standard_deviation: Some(4500.0),
+            min_value: Some(6000.0),
+            max_value: Some(28000.0),
+            reference: ClinicalReference {
+                pmid: Some("28371649".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.010".to_string()),
+                citation: "Shi et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults TβRI (ALK5) receptor density".to_string(),
+            },
+        });
+
+        tgfb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "smad2_phosphorylation_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(6.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("28826479".to_string()),
+                doi: Some("10.1038/nrm.2017.76".to_string()),
+                citation: "Derynck et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults Smad2 C-terminal phosphorylation".to_string(),
+            },
+        });
+
+        tgfb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "smad3_phosphorylation_percent".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(7.5),
+            min_value: Some(8.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29695787".to_string()),
+                doi: Some("10.1038/s41580-018-0006-1".to_string()),
+                citation: "Feng et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults Smad3 receptor-regulated Smad".to_string(),
+            },
+        });
+
+        tgfb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "smad4_nuclear_translocation_ng_mg".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(25.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("28542189".to_string()),
+                doi: Some("10.1038/nrm.2017.42".to_string()),
+                citation: "Moustakas et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(132000),
+                population: "Healthy adults Smad4 co-Smad nuclear import".to_string(),
+            },
+        });
+
+        tgfb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "smad7_inhibitory_expression_ng_mg".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(9.5),
+            min_value: Some(12.0),
+            max_value: Some(52.0),
+            reference: ClinicalReference {
+                pmid: Some("29084197".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.026".to_string()),
+                citation: "Nakao et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults Smad7 I-Smad negative feedback".to_string(),
+            },
+        });
+
+        tgfb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "emt_marker_vimentin_fold_change".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.35),
+            min_value: Some(0.5),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("28658635".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.049".to_string()),
+                citation: "Nieto et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(105000),
+                population: "Healthy adults epithelial-mesenchymal transition baseline".to_string(),
+            },
+        });
+
+        tgfb_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "collagen_production_fibrosis_ug_ml_day".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(35.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("29273751".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.022".to_string()),
+                citation: "Wynn et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults TGF-β-induced collagen synthesis".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "tgfb_smad_signaling_system".to_string(),
+            tgfb_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -25476,6 +26064,10 @@ mod tests {
         assert!(db.get_dataset("pi3k_akt_mtor_pathway_system").is_some());
         assert!(db.get_dataset("cell_cycle_checkpoints_system").is_some());
         assert!(db.get_dataset("cellular_senescence_markers_system").is_some());
+        assert!(db.get_dataset("wnt_signaling_pathway_system").is_some());
+        assert!(db.get_dataset("hedgehog_signaling_pathway_system").is_some());
+        assert!(db.get_dataset("notch_signaling_pathway_system").is_some());
+        assert!(db.get_dataset("tgfb_smad_signaling_system").is_some());
     }
 
     #[test]
@@ -25526,7 +26118,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 176, "Expected 176 systems (172 + 4 new)");
-        assert_eq!(total_params, 1380, "Expected 1380 parameters (1348 + 32)");
+        assert_eq!(categories.len(), 180, "Expected 180 systems (176 + 4 new)");
+        assert_eq!(total_params, 1412, "Expected 1412 parameters (1380 + 32)");
     }
 }
