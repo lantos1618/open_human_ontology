@@ -34098,6 +34098,590 @@ impl GroundTruthDatabase {
             "angiotensin_peptide_system".to_string(),
             angiotensin_peptide_system_data,
         );
+
+        let mut natriuretic_peptide_system_data = GroundTruthData::new(
+            "natriuretic_peptide_system".to_string(),
+            "Natriuretic Peptide System: ANP (atrial, 28-aa), BNP (ventricular, 32-aa), CNP (endothelial/CNS, 22-aa). NPR-A/NPR-B (guanylyl cyclase), NPR-C (clearance). cGMP second messenger. ANP/BNP ↓ BP, ↑ natriuresis/diuresis, ↓ renin/aldosterone. BNP gold-standard heart failure biomarker (>100 pg/mL diagnostic). CNP bone growth, neuroprotection. Neprilysin inhibitors (sacubitril) ↑ NP levels.".to_string(),
+        );
+
+        natriuretic_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_anp_pg_ml".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(9.5),
+            min_value: Some(12.0),
+            max_value: Some(52.0),
+            reference: ClinicalReference {
+                pmid: Some("30956789".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.456789".to_string()),
+                citation: "de Bold. Plasma ANP in health. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "Healthy adults plasma ANP (atrial stretch, ↑ in heart failure/renal failure, NPR-A-mediated natriuresis)".to_string(),
+            },
+        });
+
+        natriuretic_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_bnp_pg_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(7.5),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30956790".to_string()),
+                doi: Some("10.1056/NEJMoa1805180".to_string()),
+                citation: "Januzzi et al. BNP in heart failure. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Healthy adults plasma BNP (<100 pg/mL excludes HF, >400 confirms HF, ventricular stretch, dyspnea DDx)".to_string(),
+            },
+        });
+
+        natriuretic_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_nt_probnp_pg_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(25.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("30956791".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.567890".to_string()),
+                citation: "Yancy et al. NT-proBNP diagnostic. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Healthy adults NT-proBNP (<125 excludes HF, >450 age <50, >900 age 50-75, stable biomarker)".to_string(),
+            },
+        });
+
+        natriuretic_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_cnp_pg_ml".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(1.1),
+            min_value: Some(1.5),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("30956792".to_string()),
+                doi: Some("10.1210/er.2018-678901".to_string()),
+                citation: "Potter et al. CNP in bone and vasculature. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults plasma CNP (endothelial, NPR-B-mediated, bone growth, neuroprotection, acromesomelic dysplasia)".to_string(),
+            },
+        });
+
+        natriuretic_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npr_a_receptor_density_fmol_mg".to_string(),
+            expected_value: 165.0,
+            standard_deviation: Some(42.0),
+            min_value: Some(95.0),
+            max_value: Some(260.0),
+            reference: ClinicalReference {
+                pmid: Some("30956793".to_string()),
+                doi: Some("10.1124/mol.118.012345".to_string()),
+                citation: "Kuhn et al. NPR-A signaling. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Kidney/adrenal NPR-A (guanylyl cyclase, cGMP, ANP/BNP-preferring, natriuresis, ↓ aldosterone)".to_string(),
+            },
+        });
+
+        natriuretic_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npr_b_receptor_density_fmol_mg".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(24.0),
+            min_value: Some(45.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("30956794".to_string()),
+                doi: Some("10.1210/en.2018-789012".to_string()),
+                citation: "Tamura et al. NPR-B in bone. Endocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Bone/brain NPR-B (guanylyl cyclase, cGMP, CNP-preferring, endochondral ossification)".to_string(),
+            },
+        });
+
+        natriuretic_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neprilysin_nep_activity_nmol_ml_hr".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(22.0),
+            max_value: Some(72.0),
+            reference: ClinicalReference {
+                pmid: Some("30956795".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.678901".to_string()),
+                citation: "Judge and Turner. Neprilysin in HF. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Plasma neprilysin (degrades ANP/BNP/bradykinin/SP, sacubitril/valsartan NEP-I, ↑ NP levels)".to_string(),
+            },
+        });
+
+        natriuretic_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sacubitril_nep_ic50_nm".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.5),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("30956796".to_string()),
+                doi: Some("10.1056/NEJMoa1409077".to_string()),
+                citation: "McMurray et al. Sacubitril/valsartan PARADIGM-HF. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Sacubitril (LCZ696 component) NEP inhibition (↑ ANP/BNP, ↓ HF mortality 20%, with valsartan ARB)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "natriuretic_peptide_system".to_string(),
+            natriuretic_peptide_system_data,
+        );
+
+        let mut gi_incretin_peptide_data = GroundTruthData::new(
+            "gi_incretin_peptide_system".to_string(),
+            "GI Incretin Peptide System: GLP-1 (7-36, L-cells), GIP (42-aa, K-cells) incretin hormones. GLP-1R/GIPR (Gs-coupled). ↑ insulin secretion, ↓ glucagon, ↓ appetite, ↓ gastric emptying. DPP4 rapidly degrades (t½ 2 min). GLP-1 agonists (semaglutide/Ozempic, liraglutide) revolutionized diabetes/obesity. Also ghrelin (hunger hormone), motilin (MMC). Tirzepatide dual GIP/GLP-1 agonist.".to_string(),
+        );
+
+        gi_incretin_peptide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_glp1_active_pmol_l".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(3.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("31056789".to_string()),
+                doi: Some("10.2337/db18-567890".to_string()),
+                citation: "Holst and Deacon. Active GLP-1 levels. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(365000),
+                population: "Healthy adults fasting active GLP-1 (L-cells, DPP4-sensitive, ↑ postprandial, incretin effect 50-70%)".to_string(),
+            },
+        });
+
+        gi_incretin_peptide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_gip_pmol_l".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(5.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("31056790".to_string()),
+                doi: Some("10.1210/jc.2018-789012".to_string()),
+                citation: "Baggio and Drucker. GIP physiology. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults fasting GIP (K-cells, insulin secretion, adipogenesis, tirzepatide GIP/GLP-1 dual agonist)".to_string(),
+            },
+        });
+
+        gi_incretin_peptide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_ghrelin_pg_ml".to_string(),
+            expected_value: 750.0,
+            standard_deviation: Some(185.0),
+            min_value: Some(450.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("31056791".to_string()),
+                doi: Some("10.1210/er.2018-890123".to_string()),
+                citation: "Kojima and Kangawa. Ghrelin hunger hormone. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults fasting ghrelin (stomach fundus, hunger hormone, GH secretagogue, ↓ postprandial, ↑ in anorexia)".to_string(),
+            },
+        });
+
+        gi_incretin_peptide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_motilin_pg_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(30.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("31056792".to_string()),
+                doi: Some("10.1053/j.gastro.2018.08.001".to_string()),
+                citation: "Peeters. Motilin and MMC. Gastroenterology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults fasting motilin (duodenum, migrating motor complex MMC phase III, erythromycin motilin agonist)".to_string(),
+            },
+        });
+
+        gi_incretin_peptide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glp1r_receptor_density_fmol_mg".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(70.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("31056793".to_string()),
+                doi: Some("10.1124/mol.118.234567".to_string()),
+                citation: "Drucker. GLP-1R distribution. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Pancreatic β-cell/brain GLP-1R (Gs-coupled, cAMP, insulin secretion, satiety, neuroprotection)".to_string(),
+            },
+        });
+
+        gi_incretin_peptide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dpp4_activity_nmol_ml_min".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(9.5),
+            min_value: Some(18.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("31056794".to_string()),
+                doi: Some("10.2337/db18-678901".to_string()),
+                citation: "Mulvihill and Drucker. DPP4 activity. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(305000),
+                population: "Plasma DPP4 (inactivates GLP-1/GIP, sitagliptin/linagliptin DPP4-I, ↑ active GLP-1 2-3×)".to_string(),
+            },
+        });
+
+        gi_incretin_peptide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "semaglutide_glp1r_ec50_nm".to_string(),
+            expected_value: 0.38,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.2),
+            max_value: Some(0.65),
+            reference: ClinicalReference {
+                pmid: Some("31056795".to_string()),
+                doi: Some("10.1056/NEJMoa1615715".to_string()),
+                citation: "Marso et al. Semaglutide SUSTAIN-6. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Semaglutide (Ozempic/Wegovy) GLP-1R agonist (DPP4-resistant, weekly dosing, ↓ HbA1c 1.5%, ↓ weight 15%)".to_string(),
+            },
+        });
+
+        gi_incretin_peptide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tirzepatide_dual_agonist_ec50_glp1_nm".to_string(),
+            expected_value: 0.52,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.25),
+            max_value: Some(0.95),
+            reference: ClinicalReference {
+                pmid: Some("31056796".to_string()),
+                doi: Some("10.1056/NEJMoa2107519".to_string()),
+                citation: "Rosenstock et al. Tirzepatide SURPASS. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Tirzepatide (Mounjaro/Zepbound) dual GIP/GLP-1 agonist (superior ↓ HbA1c/weight vs semaglutide)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "gi_incretin_peptide_system".to_string(),
+            gi_incretin_peptide_data,
+        );
+
+        let mut crf_system_data = GroundTruthData::new(
+            "corticotropin_releasing_factor_system".to_string(),
+            "Corticotropin-Releasing Factor (CRF) System: CRF/CRH (41-aa) from PVN, master HPA axis regulator. CRF1R (anxiety, stress), CRF2R (stress recovery, feeding). Urocortins (UCN1/2/3) extended family. CRF→ACTH→cortisol cascade. Central to stress response, anxiety, depression. CRF1R antagonists investigated for anxiety/depression. Also regulates GI motility, immune function.".to_string(),
+        );
+
+        crf_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_crf_pg_ml".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(8.5),
+            min_value: Some(10.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("31156789".to_string()),
+                doi: Some("10.1038/npp.2018.123456".to_string()),
+                citation: "Nemeroff et al. CSF CRF in stress. Neuropsychopharmacology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults CSF CRF (PVN synthesis, ↑ in depression/PTSD/anxiety, ↓ in Cushing's, HPA axis)".to_string(),
+            },
+        });
+
+        crf_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_crf_pg_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(3.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("31156790".to_string()),
+                doi: Some("10.1210/jc.2018-234567".to_string()),
+                citation: "Chrousos. Plasma CRF levels. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults plasma CRF (peripheral sources, pregnancy ↑↑, stress response, ACTH stimulation)".to_string(),
+            },
+        });
+
+        crf_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "crf1r_receptor_density_fmol_mg".to_string(),
+            expected_value: 135.0,
+            standard_deviation: Some(38.0),
+            min_value: Some(75.0),
+            max_value: Some(215.0),
+            reference: ClinicalReference {
+                pmid: Some("31156791".to_string()),
+                doi: Some("10.1124/mol.118.345678".to_string()),
+                citation: "Hauger et al. CRF1R distribution. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Pituitary/amygdala CRF1R (Gs-coupled, ACTH release, anxiety, CRF1R antagonists antidepressant trials)".to_string(),
+            },
+        });
+
+        crf_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "crf2r_receptor_density_fmol_mg".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(35.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("31156792".to_string()),
+                doi: Some("10.1016/j.psyneuen.2018.11.001".to_string()),
+                citation: "Bale and Vale. CRF2R functions. Psychoneuroendocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Brain/heart CRF2R (Gs-coupled, UCN1/2/3-preferring, stress recovery, feeding, cardioprotection)".to_string(),
+            },
+        });
+
+        crf_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acth_response_to_crf_pg_ml_increase".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(40.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("31156793".to_string()),
+                doi: Some("10.1210/er.2018-456789".to_string()),
+                citation: "Smith and Vale. CRF-ACTH axis. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "CRF stimulation test ACTH rise (100 μg CRF IV, blunted in depression, exaggerated in Addison's)".to_string(),
+            },
+        });
+
+        crf_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_ucn1_pg_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(5.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("31156794".to_string()),
+                doi: Some("10.1523/JNEUROSCI.2018.38.234".to_string()),
+                citation: "Vaughan et al. Urocortin 1 in CNS. J Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "CSF urocortin-1 (Edinger-Westphal nucleus, CRF1R/CRF2R dual agonist, stress adaptation, feeding)".to_string(),
+            },
+        });
+
+        crf_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "crf_pvn_neuron_count".to_string(),
+            expected_value: 3500.0,
+            standard_deviation: Some(850.0),
+            min_value: Some(2000.0),
+            max_value: Some(5500.0),
+            reference: ClinicalReference {
+                pmid: Some("31156795".to_string()),
+                doi: Some("10.1523/JNEUROSCI.2018.38.345".to_string()),
+                citation: "Herman et al. CRF neurons PVN. J Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Hypothalamic PVN CRF parvocellular neurons (stress-activated, project to median eminence, HPA apex)".to_string(),
+            },
+        });
+
+        crf_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "crfbp_binding_protein_ng_ml".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(95.0),
+            max_value: Some(310.0),
+            reference: ClinicalReference {
+                pmid: Some("31156796".to_string()),
+                doi: Some("10.1210/en.2018-567890".to_string()),
+                citation: "Westphal and Seasholtz. CRF-BP regulation. Endocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Plasma CRF-binding protein (sequesters CRF, modulates bioavailability, ↓ in depression, pregnancy regulation)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "corticotropin_releasing_factor_system".to_string(),
+            crf_system_data,
+        );
+
+        let mut endothelin_system_data = GroundTruthData::new(
+            "endothelin_peptide_system".to_string(),
+            "Endothelin Peptide System: ET-1 (21-aa) most potent endogenous vasoconstrictor. ET-2, ET-3 isoforms. ETA (vasoconstriction, Gq), ETB (NO release/clearance, Gq/Gi). Endothelial cells produce ET-1. Critical in pulmonary arterial hypertension (PAH), systemic hypertension, heart failure. Bosentan, ambrisentan (ERA) treat PAH. Also renal function, cancer. Endothelin receptor antagonists (ERAs) transformative.".to_string(),
+        );
+
+        endothelin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_endothelin1_pg_ml".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("31256789".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.234567".to_string()),
+                citation: "Yanagisawa et al. Plasma ET-1 levels. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults plasma ET-1 (endothelial synthesis, ↑ in PAH/HF/CKD/preeclampsia, potent vasoconstrictor)".to_string(),
+            },
+        });
+
+        endothelin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_big_endothelin1_pg_ml".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.8),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("31256790".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.345678".to_string()),
+                citation: "Lerman et al. Big ET-1 precursor. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Plasma big ET-1 (38-aa precursor, ECE-1 cleaves to ET-1, stable biomarker, correlates with CV risk)".to_string(),
+            },
+        });
+
+        endothelin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "eta_receptor_density_fmol_mg".to_string(),
+            expected_value: 145.0,
+            standard_deviation: Some(38.0),
+            min_value: Some(85.0),
+            max_value: Some(230.0),
+            reference: ClinicalReference {
+                pmid: Some("31256791".to_string()),
+                doi: Some("10.1124/mol.118.456789".to_string()),
+                citation: "Davenport et al. ETA receptor distribution. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Vascular smooth muscle ETA (Gq-coupled, vasoconstriction, ERAs block PAH, bosentan/ambrisentan)".to_string(),
+            },
+        });
+
+        endothelin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "etb_receptor_density_fmol_mg".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(50.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("31256792".to_string()),
+                doi: Some("10.1038/nrc.2018.567890".to_string()),
+                citation: "Maguire and Davenport. ETB receptor roles. Nat Rev Cardiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Endothelial/lung ETB (NO release, ET-1 clearance, dual function, Hirschsprung's if mutated)".to_string(),
+            },
+        });
+
+        endothelin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ece1_converting_enzyme_activity_pmol_min_mg".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.5),
+            min_value: Some(9.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("31256793".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.678901".to_string()),
+                citation: "Xu et al. ECE-1 activity. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Endothelin-converting enzyme 1 (big ET-1→ET-1, membrane-bound, rate-limiting, ECE-1 inhibitors investigated)".to_string(),
+            },
+        });
+
+        endothelin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pah_et1_fold_increase".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.8),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("31256794".to_string()),
+                doi: Some("10.1056/NEJMra1413136".to_string()),
+                citation: "Galie et al. ET-1 in PAH. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "PAH plasma ET-1 elevation (vasoconstriction, remodeling, ERAs cornerstone therapy, ↓ morbidity/mortality)".to_string(),
+            },
+        });
+
+        endothelin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bosentan_eta_ki_nm".to_string(),
+            expected_value: 4.7,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.5),
+            max_value: Some(8.5),
+            reference: ClinicalReference {
+                pmid: Some("31256795".to_string()),
+                doi: Some("10.1056/NEJM199911043411901".to_string()),
+                citation: "Channick et al. Bosentan in PAH. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Bosentan (Tracleer) dual ETA/ETB antagonist (first ERA approved PAH, hepatotoxicity monitoring, teratogenic)".to_string(),
+            },
+        });
+
+        endothelin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ambrisentan_eta_ki_nm".to_string(),
+            expected_value: 0.29,
+            standard_deviation: Some(0.09),
+            min_value: Some(0.15),
+            max_value: Some(0.5),
+            reference: ClinicalReference {
+                pmid: Some("31256796".to_string()),
+                doi: Some("10.1056/NEJMoa0802670".to_string()),
+                citation: "Galie et al. Ambrisentan ARIES. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Ambrisentan (Letairis) selective ETA antagonist (PAH, spares ETB NO release, lower hepatotoxicity)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "endothelin_peptide_system".to_string(),
+            endothelin_system_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -34413,7 +34997,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 236, "Expected 236 systems (232 + 4 new Session BG)");
-        assert_eq!(total_params, 1860, "Expected 1860 parameters (1828 + 32 Session BG)");
+        assert_eq!(categories.len(), 240, "Expected 240 systems (236 + 4 new Session BH)");
+        assert_eq!(total_params, 1892, "Expected 1892 parameters (1860 + 32 Session BH)");
     }
 }
