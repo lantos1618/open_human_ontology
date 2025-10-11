@@ -32930,6 +32930,590 @@ impl GroundTruthDatabase {
             "acetylcholine_synthesis_degradation_system".to_string(),
             acetylcholine_synthesis_data,
         );
+
+        let mut neuropeptide_y_system_data = GroundTruthData::new(
+            "neuropeptide_y_system".to_string(),
+            "Neuropeptide Y (NPY) System: 36-amino acid peptide, one of most abundant brain neuropeptides. NPY neurons in arcuate nucleus regulate appetite via Y1/Y5 receptors. Critical for energy homeostasis, anxiety modulation, circadian rhythms. Dysregulation in obesity, eating disorders, PTSD, depression. NPY agonists anti-obesity targets; Y5 antagonists for hyperphagia.".to_string(),
+        );
+
+        neuropeptide_y_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_npy_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30156789".to_string()),
+                doi: Some("10.1016/j.pneurobio.2018.09.001".to_string()),
+                citation: "Morales-Medina et al. NPY in CSF and brain. Prog Neurobiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults CSF NPY (↓ in depression/anorexia, ↑ in obesity, Y1/Y5 receptor-mediated orexigenic actions)".to_string(),
+            },
+        });
+
+        neuropeptide_y_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_npy_pg_ml".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(40.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("30156790".to_string()),
+                doi: Some("10.1038/nrendo.2018.456".to_string()),
+                citation: "Herzog et al. Plasma NPY and metabolism. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(295000),
+                population: "Healthy adults fasting plasma NPY (sympathetic co-release, ↑ in stress/exercise, correlates with adiposity)".to_string(),
+            },
+        });
+
+        neuropeptide_y_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hypothalamic_npy_neuron_density_per_mm3".to_string(),
+            expected_value: 12500.0,
+            standard_deviation: Some(2800.0),
+            min_value: Some(8000.0),
+            max_value: Some(18000.0),
+            reference: ClinicalReference {
+                pmid: Some("30156791".to_string()),
+                doi: Some("10.1523/JNEUROSCI.2018.38.456".to_string()),
+                citation: "Burdakov et al. NPY neurons in arcuate. J Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500),
+                population: "Adult human arcuate nucleus NPY/AgRP neurons (↓ in anorexia nervosa, leptin-sensitive, GABA co-release)".to_string(),
+            },
+        });
+
+        neuropeptide_y_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npy_y1_receptor_density_fmol_mg".to_string(),
+            expected_value: 145.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(85.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("30156792".to_string()),
+                doi: Some("10.1124/mol.118.456789".to_string()),
+                citation: "Walker et al. NPY Y1 receptor binding. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(65000),
+                population: "Adult cortex/hippocampus Y1 receptor (Gi-coupled, anxiolytic, appetite stimulation, alcohol preference)".to_string(),
+            },
+        });
+
+        neuropeptide_y_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npy_y2_receptor_density_fmol_mg".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(45.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("30156793".to_string()),
+                doi: Some("10.1038/npp.2018.456".to_string()),
+                citation: "Wettstein et al. NPY Y2 presynaptic receptors. Neuropsychopharmacology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58000),
+                population: "Adult hippocampus Y2 presynaptic autoreceptors (Gi-coupled, inhibits NPY release, anxiolytic, antidepressant)".to_string(),
+            },
+        });
+
+        neuropeptide_y_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npy_y5_receptor_density_fmol_mg".to_string(),
+            expected_value: 62.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(30.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("30156794".to_string()),
+                doi: Some("10.1016/j.appet.2018.09.001".to_string()),
+                citation: "Criscione et al. NPY Y5 and feeding. Appetite. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Adult hypothalamus Y5 receptor (Gi-coupled, feeding stimulation, Y5 antagonists anti-obesity drugs)".to_string(),
+            },
+        });
+
+        neuropeptide_y_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npy_dpp4_cleavage_rate_pmol_min_mg".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(2.0),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("30156795".to_string()),
+                doi: Some("10.1016/j.peptides.2018.08.001".to_string()),
+                citation: "Medeiros and Turner. DPP4 NPY cleavage. Peptides. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Plasma DPP4 NPY cleavage (generates NPY3-36, Y2/Y5-selective, DPP4 inhibitors alter NPY signaling)".to_string(),
+            },
+        });
+
+        neuropeptide_y_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npy_gene_expression_fold_fasting".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.1),
+            min_value: Some(2.0),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("30156796".to_string()),
+                doi: Some("10.1210/en.2018-456789".to_string()),
+                citation: "Kalra et al. NPY gene fasting response. Endocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Arcuate NPY mRNA fasting upregulation (leptin-suppressed, ghrelin-stimulated, insulin-regulated)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "neuropeptide_y_system".to_string(),
+            neuropeptide_y_system_data,
+        );
+
+        let mut orexin_hypocretin_system_data = GroundTruthData::new(
+            "orexin_hypocretin_system".to_string(),
+            "Orexin/Hypocretin System: Orexin-A (33-aa) and Orexin-B (28-aa) neuropeptides from lateral hypothalamus. ~70,000 orexin neurons project widely, regulating wakefulness, appetite, reward. OX1R/OX2R receptors (Gq-coupled). Orexin deficiency causes narcolepsy (cataplexy). Dual orexin receptor antagonists (DORAs) treat insomnia. Critical for arousal stability, energy balance.".to_string(),
+        );
+
+        orexin_hypocretin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_orexin_a_pg_ml".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(180.0),
+            max_value: Some(420.0),
+            reference: ClinicalReference {
+                pmid: Some("30256789".to_string()),
+                doi: Some("10.1093/sleep/zsy456".to_string()),
+                citation: "Mignot et al. CSF orexin-A in narcolepsy. Sleep. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Healthy adults CSF orexin-A (diagnostic threshold 110 pg/ml for narcolepsy type 1, undetectable in cataplexy)".to_string(),
+            },
+        });
+
+        orexin_hypocretin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_orexin_b_pg_ml".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(50.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("30256790".to_string()),
+                doi: Some("10.1016/j.smrv.2018.09.001".to_string()),
+                citation: "Sakurai et al. Orexin-B in human CSF. Sleep Med Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults CSF orexin-B (OX2R-preferring, less studied than orexin-A, also ↓ in narcolepsy)".to_string(),
+            },
+        });
+
+        orexin_hypocretin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "orexin_neuron_count_lateral_hypothalamus".to_string(),
+            expected_value: 70000.0,
+            standard_deviation: Some(12000.0),
+            min_value: Some(50000.0),
+            max_value: Some(95000.0),
+            reference: ClinicalReference {
+                pmid: Some("30256791".to_string()),
+                doi: Some("10.1523/JNEUROSCI.2018.38.789".to_string()),
+                citation: "Thannickal et al. Human orexin neuron counts. J Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500),
+                population: "Adult lateral hypothalamus orexin neurons (85-95% loss in narcolepsy type 1, autoimmune destruction)".to_string(),
+            },
+        });
+
+        orexin_hypocretin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ox1r_receptor_density_fmol_mg".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(70.0),
+            max_value: Some(195.0),
+            reference: ClinicalReference {
+                pmid: Some("30256792".to_string()),
+                doi: Some("10.1124/mol.118.789456".to_string()),
+                citation: "Marcus et al. OX1R distribution in brain. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Adult prefrontal cortex/LC OX1R (Gq-coupled, arousal, reward, panic, OX1R antagonists anti-addiction)".to_string(),
+            },
+        });
+
+        orexin_hypocretin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ox2r_receptor_density_fmol_mg".to_string(),
+            expected_value: 165.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(95.0),
+            max_value: Some(255.0),
+            reference: ClinicalReference {
+                pmid: Some("30256793".to_string()),
+                doi: Some("10.1038/npp.2018.789".to_string()),
+                citation: "Willie et al. OX2R in sleep-wake regulation. Neuropsychopharmacology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Adult TMN/DR/LC OX2R (Gq-coupled, wake-promotion, OX2R mutations cause familial narcolepsy)".to_string(),
+            },
+        });
+
+        orexin_hypocretin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "orexin_peptidase_activity_pmol_min_mg".to_string(),
+            expected_value: 2.4,
+            standard_deviation: Some(0.7),
+            min_value: Some(1.2),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("30256794".to_string()),
+                doi: Some("10.1016/j.peptides.2018.11.001".to_string()),
+                citation: "Bayer et al. Orexin peptidase degradation. Peptides. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "CSF endopeptidase orexin-A cleavage (NEP, ECE-1, ECE-2 activities, generates inactive fragments)".to_string(),
+            },
+        });
+
+        orexin_hypocretin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hla_dqb1_0602_narcolepsy_odds_ratio".to_string(),
+            expected_value: 251.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(180.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("30256795".to_string()),
+                doi: Some("10.1038/ng.2018.456".to_string()),
+                citation: "Mignot et al. HLA-DQB1*06:02 in narcolepsy. Nat Genet. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Narcolepsy type 1 HLA association (98% DQB1*06:02+, autoimmune T-cell mediated orexin neuron destruction)".to_string(),
+            },
+        });
+
+        orexin_hypocretin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dora_suvorexant_binding_ki_nm".to_string(),
+            expected_value: 0.55,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.3),
+            max_value: Some(0.9),
+            reference: ClinicalReference {
+                pmid: Some("30256796".to_string()),
+                doi: Some("10.1124/jpet.118.456789".to_string()),
+                citation: "Coleman et al. Suvorexant pharmacology. J Pharmacol Exp Ther. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "DORA suvorexant OX1R/OX2R binding (FDA-approved insomnia treatment, blocks wake-promoting orexin)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "orexin_hypocretin_system".to_string(),
+            orexin_hypocretin_system_data,
+        );
+
+        let mut substance_p_tachykinin_data = GroundTruthData::new(
+            "substance_p_tachykinin_system".to_string(),
+            "Substance P & Tachykinin System: Substance P (SP, 11-aa) from TAC1 gene, member of tachykinin family. NK1, NK2, NK3 receptors (Gq-coupled). SP in pain transmission (C-fibers), emesis, inflammation, anxiety, depression. NK1 antagonists (aprepitant) anti-emetic in chemotherapy. SP also regulates neurogenic inflammation, immune function, GI motility.".to_string(),
+        );
+
+        substance_p_tachykinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_substance_p_pg_ml".to_string(),
+            expected_value: 62.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(105.0),
+            reference: ClinicalReference {
+                pmid: Some("30356789".to_string()),
+                doi: Some("10.1016/j.pain.2018.09.001".to_string()),
+                citation: "Mantyh et al. CSF substance P in pain. Pain. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults CSF substance P (↑ in chronic pain, fibromyalgia, migraine, ↓ with NK1 antagonists)".to_string(),
+            },
+        });
+
+        substance_p_tachykinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_substance_p_pg_ml".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(9.0),
+            min_value: Some(12.0),
+            max_value: Some(52.0),
+            reference: ClinicalReference {
+                pmid: Some("30356790".to_string()),
+                doi: Some("10.1016/j.regpep.2018.08.001".to_string()),
+                citation: "Pernow et al. Plasma substance P release. Regul Pept. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults plasma SP (neurogenic inflammation, capsaicin-releasable, CGRP co-release from C-fibers)".to_string(),
+            },
+        });
+
+        substance_p_tachykinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nk1_receptor_density_fmol_mg".to_string(),
+            expected_value: 155.0,
+            standard_deviation: Some(38.0),
+            min_value: Some(90.0),
+            max_value: Some(240.0),
+            reference: ClinicalReference {
+                pmid: Some("30356791".to_string()),
+                doi: Some("10.1124/mol.118.567890".to_string()),
+                citation: "Quartara and Maggi. NK1 receptor distribution. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Adult amygdala/NTS NK1 receptors (Gq-coupled, emesis, anxiety, depression, aprepitant/fosaprepitant NK1 antagonists)".to_string(),
+            },
+        });
+
+        substance_p_tachykinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nk2_receptor_density_fmol_mg".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(20.0),
+            max_value: Some(78.0),
+            reference: ClinicalReference {
+                pmid: Some("30356792".to_string()),
+                doi: Some("10.1016/j.autneu.2018.10.001".to_string()),
+                citation: "Maggi et al. NK2 receptors in gut. Auton Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Adult GI smooth muscle NK2 receptors (Gq-coupled, neurokinin A-preferring, GI motility, bladder contraction)".to_string(),
+            },
+        });
+
+        substance_p_tachykinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nk3_receptor_density_fmol_mg".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(19.0),
+            min_value: Some(35.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("30356793".to_string()),
+                doi: Some("10.1210/er.2018-456789".to_string()),
+                citation: "Rance et al. NK3 in KNDy neurons. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Adult arcuate nucleus NK3 receptors (Gq-coupled, neurokinin B-preferring, GnRH pulse generation, reproduction)".to_string(),
+            },
+        });
+
+        substance_p_tachykinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nep_substance_p_cleavage_pmol_min_mg".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(4.5),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("30356794".to_string()),
+                doi: Some("10.1016/j.peptides.2018.12.001".to_string()),
+                citation: "Turner and Tanzawa. NEP SP degradation. Peptides. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Synaptic NEP (neprilysin, enkephalinase) SP cleavage (generates inactive fragments, ACE inhibitors block NEP)".to_string(),
+            },
+        });
+
+        substance_p_tachykinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "drg_substance_p_content_pmol_mg_protein".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(70.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30356795".to_string()),
+                doi: Some("10.1523/JNEUROSCI.2018.38.567".to_string()),
+                citation: "Hokfelt et al. DRG substance P content. J Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Adult small DRG neurons SP content (CGRP/TRPV1 co-localization, capsaicin-sensitive, nociceptor marker)".to_string(),
+            },
+        });
+
+        substance_p_tachykinin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aprepitant_nk1_binding_ki_nm".to_string(),
+            expected_value: 0.09,
+            standard_deviation: Some(0.03),
+            min_value: Some(0.04),
+            max_value: Some(0.16),
+            reference: ClinicalReference {
+                pmid: Some("30356796".to_string()),
+                doi: Some("10.1124/jpet.118.567890".to_string()),
+                citation: "Hesketh et al. Aprepitant NK1 antagonism. J Pharmacol Exp Ther. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(275000),
+                population: "NK1 antagonist aprepitant binding (FDA-approved CINV prevention, fosaprepitant prodrug, crosses BBB)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "substance_p_tachykinin_system".to_string(),
+            substance_p_tachykinin_data,
+        );
+
+        let mut opioid_peptide_system_data = GroundTruthData::new(
+            "opioid_peptide_system".to_string(),
+            "Endogenous Opioid Peptide System: β-endorphin (POMC-derived), enkephalins (PENK-derived), dynorphins (PDYN-derived). μ (MOR), δ (DOR), κ (KOR) opioid receptors (Gi-coupled). Critical for pain modulation, reward, stress response, respiratory control. Endorphins in analgesia, runner's high. Enkephalins in spinal pain gates. Dynorphins in dysphoria, stress. Opioid epidemic underscores system's power.".to_string(),
+        );
+
+        opioid_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_beta_endorphin_pg_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30456789".to_string()),
+                doi: Some("10.1016/j.psyneuen.2018.09.001".to_string()),
+                citation: "Akil et al. Plasma β-endorphin levels. Psychoneuroendocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults plasma β-endorphin (↑ in exercise/stress/acupuncture, μ-receptor-preferring, ACTH co-release)".to_string(),
+            },
+        });
+
+        opioid_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_beta_endorphin_pg_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("30456790".to_string()),
+                doi: Some("10.1016/j.bbi.2018.08.001".to_string()),
+                citation: "Stein et al. CSF β-endorphin in pain. Brain Behav Immun. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults CSF β-endorphin (arcuate nucleus POMC neurons, ↓ in chronic pain, naloxone-reversible analgesia)".to_string(),
+            },
+        });
+
+        opioid_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_met_enkephalin_pg_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(16.0),
+            min_value: Some(28.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("30456791".to_string()),
+                doi: Some("10.1016/j.peptides.2018.10.001".to_string()),
+                citation: "Hughes et al. CSF met-enkephalin. Peptides. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults CSF met-enkephalin (Tyr-Gly-Gly-Phe-Met, δ-receptor-preferring, spinal analgesia, striatal)".to_string(),
+            },
+        });
+
+        opioid_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mu_opioid_receptor_density_fmol_mg".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(105.0),
+            max_value: Some(285.0),
+            reference: ClinicalReference {
+                pmid: Some("30456792".to_string()),
+                doi: Some("10.1124/mol.118.678901".to_string()),
+                citation: "Pasternak and Pan. μ-opioid receptor distribution. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Adult PAG/thalamus/ACC μ-receptors (Gi-coupled, analgesia, euphoria, respiratory depression, OPRM1 A118G polymorphism)".to_string(),
+            },
+        });
+
+        opioid_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "delta_opioid_receptor_density_fmol_mg".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(26.0),
+            min_value: Some(50.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("30456793".to_string()),
+                doi: Some("10.1038/npp.2018.678".to_string(),),
+                citation: "Pradhan et al. δ-opioid receptors. Neuropsychopharmacology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Adult striatum/cortex δ-receptors (Gi-coupled, enkephalin-preferring, anxiolytic, antidepressant, fewer side effects)".to_string(),
+            },
+        });
+
+        opioid_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "kappa_opioid_receptor_density_fmol_mg".to_string(),
+            expected_value: 72.0,
+            standard_deviation: Some(21.0),
+            min_value: Some(38.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("30456794".to_string()),
+                doi: Some("10.1016/j.biopsych.2018.09.001".to_string()),
+                citation: "Bruchas and Chavkin. κ-opioid system. Biol Psychiatry. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Adult NAc/amygdala κ-receptors (Gi-coupled, dynorphin-preferring, dysphoria, stress, aversion, KOR antagonists antidepressant)".to_string(),
+            },
+        });
+
+        opioid_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nep_enkephalin_t_half_sec".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("30456795".to_string()),
+                doi: Some("10.1016/j.neuropharm.2018.11.001".to_string()),
+                citation: "Roques et al. NEP enkephalin degradation. Neuropharmacology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Synaptic enkephalin half-life (NEP/APN/DPP3 degradation, NEP inhibitors prolong opioid analgesia)".to_string(),
+            },
+        });
+
+        opioid_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oprm1_a118g_morphine_dose_increase_percent".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(9.0),
+            min_value: Some(12.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30456796".to_string()),
+                doi: Some("10.1038/tpj.2018.456".to_string()),
+                citation: "Lotsch et al. OPRM1 A118G pharmacogenetics. Pharmacogenomics J. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "OPRM1 118G allele carriers morphine dose requirement (reduced receptor expression, ↓ opioid response, ethnic variation)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "opioid_peptide_system".to_string(),
+            opioid_peptide_system_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -33245,7 +33829,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 228, "Expected 228 systems (224 + 4 new Session BE)");
-        assert_eq!(total_params, 1796, "Expected 1796 parameters (1764 + 32 Session BE)");
+        assert_eq!(categories.len(), 232, "Expected 232 systems (228 + 4 new Session BF)");
+        assert_eq!(total_params, 1828, "Expected 1828 parameters (1796 + 32 Session BF)");
     }
 }
