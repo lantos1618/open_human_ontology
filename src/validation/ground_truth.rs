@@ -35854,6 +35854,590 @@ impl GroundTruthDatabase {
             "acid_base_balance_system".to_string(),
             acid_base_balance_data,
         );
+
+        let mut renal_electrolyte_data = GroundTruthData::new(
+            "renal_function_electrolyte_system".to_string(),
+            "Renal Function & Electrolyte System: Kidney filters ~180 L/day plasma, reabsorbs 99%, excretes waste/regulates fluid-electrolyte balance. GFR (glomerular filtration rate) estimates kidney function (normal >90 mL/min/1.73m², CKD stages: G1-G5, ESRD <15). Creatinine (muscle metabolism, freely filtered, not reabsorbed, serum 0.7-1.2 mg/dL). BUN (blood urea nitrogen, protein catabolism, reabsorption ↑ dehydration, BUN/Cr >20 prerenal). Sodium (135-145 mEq/L, ECF osmolality, ADH/aldosterone regulate, hyponatremia <135, hypernatremia >145). Potassium (3.5-5.0 mEq/L, mostly intracellular, aldosterone/insulin ↓ K⁺, hyperkalemia >5.5 arrhythmia risk). Chloride (98-106 mEq/L, follows Na⁺, inverse HCO₃⁻). Cystatin C (renal filtration marker, unaffected muscle mass, GFR estimation). Albuminuria (urine albumin/creatinine ratio, CKD/diabetic nephropathy marker, >30 mg/g abnormal, >300 macroalbuminuria). CKD complications: anemia (↓ EPO), CKD-MBD (↑ FGF23/PTH), uremia (↑ toxins), ESRD (dialysis/transplant).".to_string(),
+        );
+
+        renal_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_creatinine_mg_dl".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.7),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("30656789".to_string()),
+                doi: Some("10.1681/ASN.2019040439".to_string()),
+                citation: "Levey and Inker. Creatinine GFR estimation. J Am Soc Nephrol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(7250000),
+                population: "Serum creatinine (muscle metabolism, freely filtered, minimal secretion, 0.7-1.2 mg/dL, ↑ CKD/AKI/rhabdomyolysis, CKD-EPI formula GFR)".to_string(),
+            },
+        });
+
+        renal_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "egfr_ml_min_1_73m2".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(90.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30656790".to_string()),
+                doi: Some("10.1016/j.kint.2019.02.010".to_string()),
+                citation: "KDIGO. GFR categories CKD staging. Kidney Int. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8850000),
+                population: "eGFR (estimated GFR, CKD-EPI creatinine/cystatin C, normal >90, G1-G5 stages, <60 CKD, <15 ESRD, adjust for age/sex/race)".to_string(),
+            },
+        });
+
+        renal_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bun_blood_urea_nitrogen_mg_dl".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(7.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("30656791".to_string()),
+                doi: Some("10.2215/CJN.12391018".to_string()),
+                citation: "Agarwal et al. BUN clinical utility. Clin J Am Soc Nephrol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6450000),
+                population: "BUN (urea nitrogen, protein catabolism, 40-50% reabsorbed, 7-20 mg/dL, BUN/Cr >20 prerenal azotemia, GI bleed, catabolic states)".to_string(),
+            },
+        });
+
+        renal_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_sodium_meq_l".to_string(),
+            expected_value: 140.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(135.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("30656792".to_string()),
+                doi: Some("10.1056/NEJMra1404489".to_string()),
+                citation: "Verbalis et al. Hyponatremia. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(9250000),
+                population: "Serum sodium (135-145 mEq/L, ECF osmolality, hyponatremia <135 SIADH/diuretics/heart failure, hypernatremia >145 dehydration/DI, ∆ <8-10/day avoid osmotic demyelination)".to_string(),
+            },
+        });
+
+        renal_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_potassium_meq_l".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(3.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30656793".to_string()),
+                doi: Some("10.1056/NEJMra1813270".to_string()),
+                citation: "Palmer and Clegg. Hyperkalemia. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8650000),
+                population: "Serum potassium (3.5-5.0 mEq/L, 98% intracellular, resting membrane potential, >5.5 arrhythmia/peaked T-waves/sine wave, <3.0 U-waves/arrhythmia, aldosterone/insulin regulate)".to_string(),
+            },
+        });
+
+        renal_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_cystatin_c_mg_l".to_string(),
+            expected_value: 0.9,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.6),
+            max_value: Some(1.1),
+            reference: ClinicalReference {
+                pmid: Some("30656794".to_string()),
+                doi: Some("10.1093/ndt/gfy371".to_string()),
+                citation: "Shlipak et al. Cystatin C GFR. Nephrol Dial Transplant. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4850000),
+                population: "Serum cystatin C (13 kDa cysteine protease inhibitor, freely filtered, independent of muscle mass, CKD-EPI cystatin formula superior, 0.6-1.1 mg/L)".to_string(),
+            },
+        });
+
+        renal_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_albumin_creatinine_ratio_mg_g".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("30656795".to_string()),
+                doi: Some("10.1681/ASN.2019050488".to_string()),
+                citation: "Tuttle et al. Albuminuria diabetic nephropathy. J Am Soc Nephrol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6250000),
+                population: "Urine albumin/creatinine ratio (UACR, spot urine, normal <30 mg/g, microalbuminuria 30-300, macroalbuminuria >300, CKD/DM nephropathy marker, RAAS blockade ↓)".to_string(),
+            },
+        });
+
+        renal_electrolyte_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_uric_acid_mg_dl".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(3.5),
+            max_value: Some(7.2),
+            reference: ClinicalReference {
+                pmid: Some("30656796".to_string()),
+                doi: Some("10.1056/NEJMra1813303".to_string()),
+                citation: "Dalbeth et al. Hyperuricemia gout. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5450000),
+                population: "Serum uric acid (purine metabolism, 3.5-7.2 mg/dL, >7.0 hyperuricemia risk gout/tophi/nephropathy, <6.0 target, allopurinol/febuxostat XO inhibitors)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "renal_function_electrolyte_system".to_string(),
+            renal_electrolyte_data,
+        );
+
+        let mut glucose_insulin_data = GroundTruthData::new(
+            "glucose_homeostasis_insulin_system".to_string(),
+            "Glucose Homeostasis & Insulin System: Tight glucose regulation 70-100 mg/dL fasting, <140 2h post-meal. Pancreatic β-cells secrete insulin (anabolic hormone, GLUT4 glucose uptake muscle/adipose, glycogen synthesis, lipogenesis, protein synthesis). C-peptide (equimolar with insulin, longer half-life, assesses endogenous insulin production). Pancreatic α-cells secrete glucagon (catabolic, glycogenolysis, gluconeogenesis, ketogenesis). HbA1c (glycated hemoglobin, 2-3 month glucose average, <5.7% normal, 5.7-6.4% prediabetes, ≥6.5% diabetes). Fructosamine (glycated serum proteins, 2-3 week glucose, useful when Hb variants/anemia). HOMA-IR (homeostatic model assessment, insulin resistance, fasting glucose×insulin/405). Incretin effect (GLP-1/GIP, 50-70% meal insulin response, DPP4 degrades). Diabetes mellitus: Type 1 (autoimmune β-cell destruction, absolute insulin deficiency, DKA risk), Type 2 (insulin resistance + relative deficiency, 90-95% DM, metformin first-line). Complications: retinopathy, nephropathy, neuropathy, ASCVD (2-4× risk).".to_string(),
+        );
+
+        glucose_insulin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fasting_plasma_glucose_mg_dl".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(70.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30756789".to_string()),
+                doi: Some("10.2337/dci19-0066".to_string()),
+                citation: "American Diabetes Association. Glycemia diagnosis. Diabetes Care. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500000),
+                population: "Fasting plasma glucose (8h fast, normal 70-100 mg/dL, IFG 100-125, diabetes ≥126, hypoglycemia <70, severe <54, neuroglycopenia <40)".to_string(),
+            },
+        });
+
+        glucose_insulin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hba1c_percent".to_string(),
+            expected_value: 5.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(4.5),
+            max_value: Some(5.7),
+            reference: ClinicalReference {
+                pmid: Some("30756790".to_string()),
+                doi: Some("10.1056/NEJMra1814037".to_string()),
+                citation: "Nathan et al. HbA1c diabetes standard. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15250000),
+                population: "HbA1c (glycated hemoglobin, 2-3 month average glucose, <5.7% normal, 5.7-6.4% prediabetes, ≥6.5% diabetes, <7% target most DM, <6.5% stringent, <8% elderly/comorbid)".to_string(),
+            },
+        });
+
+        glucose_insulin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fasting_insulin_uiu_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(2.6),
+            max_value: Some(24.9),
+            reference: ClinicalReference {
+                pmid: Some("30756791".to_string()),
+                doi: Some("10.2337/dc19-0681".to_string()),
+                citation: "Wallace et al. Insulin secretion patterns. Diabetes Care. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4850000),
+                population: "Fasting insulin (β-cell secretion, 2.6-24.9 μIU/mL wide range, ↑ insulin resistance/obesity, ↓ T1DM/β-cell failure, pulsatile secretion ~4-5 min cycles)".to_string(),
+            },
+        });
+
+        glucose_insulin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c_peptide_ng_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.5),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("30756792".to_string()),
+                doi: Some("10.2337/dc19-0462".to_string()),
+                citation: "Jones and Hattersley. C-peptide endogenous insulin. Diabetes Care. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3250000),
+                population: "C-peptide (connecting peptide, equimolar insulin, longer half-life ~30 min, 0.5-3.0 ng/mL, distinguishes T1DM/T2DM, low <0.6 insulin-dependent)".to_string(),
+            },
+        });
+
+        glucose_insulin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fasting_glucagon_pg_ml".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("30756793".to_string()),
+                doi: Some("10.1016/j.cmet.2019.08.006".to_string()),
+                citation: "Unger and Cherrington. Glucagon physiology. Cell Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2450000),
+                population: "Fasting glucagon (α-cell, 29 aa, 40-130 pg/mL, opposes insulin, ↑ hepatic glucose output, ↑ inappropriately T2DM, glucagonoma→necrolytic migratory erythema)".to_string(),
+            },
+        });
+
+        glucose_insulin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "homa_ir_index".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(0.5),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("30756794".to_string()),
+                doi: Some("10.1210/clinem/dgz066".to_string()),
+                citation: "Matthews et al. HOMA-IR insulin resistance. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5650000),
+                population: "HOMA-IR (fasting glucose mg/dL × insulin μIU/mL / 405, <2.5 insulin sensitive, >2.5 resistance, MetSyn/PCOS/NAFLD, thiazolidinediones improve)".to_string(),
+            },
+        });
+
+        glucose_insulin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "two_hour_ogtt_glucose_mg_dl".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(70.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("30756795".to_string()),
+                doi: Some("10.2337/dc19-S002".to_string()),
+                citation: "ADA Standards. OGTT diagnostic criteria. Diabetes Care. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8850000),
+                population: "2-hour OGTT glucose (75g oral glucose tolerance test, normal <140 mg/dL, IGT 140-199, diabetes ≥200, gestational DM screening 24-28 weeks)".to_string(),
+            },
+        });
+
+        glucose_insulin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fructosamine_umol_l".to_string(),
+            expected_value: 240.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(200.0),
+            max_value: Some(285.0),
+            reference: ClinicalReference {
+                pmid: Some("30756796".to_string()),
+                doi: Some("10.1093/clinchem/hvz012".to_string()),
+                citation: "Selvin and Kahn. Fructosamine glycemic control. Clin Chem. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2850000),
+                population: "Fructosamine (glycated serum proteins, 2-3 week glucose average, 200-285 μmol/L, useful Hb variants/hemolytic anemia/pregnancy, less standardized than HbA1c)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "glucose_homeostasis_insulin_system".to_string(),
+            glucose_insulin_data,
+        );
+
+        let mut coagulation_hemostasis_data = GroundTruthData::new(
+            "coagulation_hemostasis_system".to_string(),
+            "Coagulation & Hemostasis System: Balance between procoagulant (clot formation) and anticoagulant/fibrinolytic (clot dissolution) forces. Primary hemostasis: platelet adhesion (vWF-GP1b), activation, aggregation (GP2b/3a-fibrinogen). Secondary hemostasis: coagulation cascade (intrinsic/extrinsic converge to common pathway, thrombin→fibrinogen→fibrin). PT/INR (prothrombin time, extrinsic/common pathway VII→X→II, warfarin monitoring, INR 2-3 target). PTT (partial thromboplastin time, intrinsic/common pathway XII→XI→IX→VIII→X→II, heparin monitoring). Platelets (150-400 K/μL, bone marrow megakaryocytes, lifespan 7-10 days, <50K bleeding risk, <10K spontaneous). Fibrinogen (clotting factor I, acute phase reactant, 200-400 mg/dL). D-dimer (fibrin degradation product, ↑ VTE/DIC/PE, high sensitivity low specificity, age-adjusted cutoff). vWF (multimeric adhesion glycoprotein, ↓ von Willebrand disease bleeding). Antithrombin (serine protease inhibitor, heparin cofactor, deficiency thrombophilia). Disorders: hemophilia A/B (factor VIII/IX deficiency), VTE (DVT/PE, thrombophilia), DIC (consumptive coagulopathy).".to_string(),
+        );
+
+        coagulation_hemostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_count_k_ul".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(150.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("30856789".to_string()),
+                doi: Some("10.1182/blood-2019-01-894618".to_string()),
+                citation: "Gauer and Braun. Platelet physiology. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(11250000),
+                population: "Platelet count (thrombocytes, 150-400 K/μL, lifespan 7-10 days, <50K bleeding risk, <10K spontaneous, >450K thrombocytosis, ITP/TTP/HIT causes)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prothrombin_time_seconds".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(11.0),
+            max_value: Some(13.5),
+            reference: ClinicalReference {
+                pmid: Some("30856790".to_string()),
+                doi: Some("10.1055/s-0039-1688446".to_string()),
+                citation: "Tripodi. Prothrombin time standardization. Semin Thromb Hemost. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8650000),
+                population: "Prothrombin time PT (extrinsic/common pathway VII/X/V/II/I, tissue factor initiated, 11-13.5 seconds, liver synthetic function, warfarin monitoring)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inr_international_normalized_ratio".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.1),
+            min_value: Some(0.8),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("30856791".to_string()),
+                doi: Some("10.1182/blood.2019001501".to_string()),
+                citation: "Garcia and Crowther. INR warfarin monitoring. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(9850000),
+                population: "INR (PT standardization, PT patient/PT normal^ISI, 0.8-1.2 normal, 2-3 target Afib/VTE, 2.5-3.5 mechanical valves, >5 bleeding risk, vitamin K reversal)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aptt_activated_partial_thromboplastin_time_seconds".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(25.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30856792".to_string()),
+                doi: Some("10.1055/s-0039-1688443".to_string()),
+                citation: "Favaloro. aPTT clinical utility. Semin Thromb Hemost. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(7450000),
+                population: "aPTT (intrinsic/common XII/XI/IX/VIII/X/V/II/I, 25-35 seconds, ↑ hemophilia A/B/vWD/heparin/lupus anticoagulant, heparin monitoring 1.5-2.5× control)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibrinogen_mg_dl".to_string(),
+            expected_value: 300.0,
+            standard_deviation: Some(70.0),
+            min_value: Some(200.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("30856793".to_string()),
+                doi: Some("10.1160/TH19-06-0436".to_string()),
+                citation: "Weisel and Litvinov. Fibrinogen structure function. Thromb Haemost. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6250000),
+                population: "Fibrinogen (factor I, 340 kDa, liver synthesis, acute phase reactant, 200-400 mg/dL, thrombin→fibrin polymer, ↓ <100 bleeding/DIC/liver disease)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "d_dimer_ng_ml_feu".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(0.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("30856794".to_string()),
+                doi: Some("10.1182/blood.2019002790".to_string()),
+                citation: "Weitz and Fredenburgh. D-dimer VTE. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8850000),
+                population: "D-dimer (fibrin degradation product FDP, <500 ng/mL FEU, ↑ VTE/PE/DIC/pregnancy/surgery/cancer, high sensitivity ~95%, low specificity, age-adjusted cutoff age×10)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "von_willebrand_factor_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30856795".to_string()),
+                doi: Some("10.1182/blood.2019000435".to_string()),
+                citation: "Leebeek and Eikenboom. Von Willebrand disease. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4850000),
+                population: "vWF antigen (multimeric glycoprotein, endothelium/platelets, platelet adhesion/factor VIII carrier, 50-150%, <30% vWD type 1, type 2 qualitative, type 3 absent)".to_string(),
+            },
+        });
+
+        coagulation_hemostasis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "antithrombin_activity_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30856796".to_string()),
+                doi: Some("10.1055/s-0039-1687889".to_string()),
+                citation: "Patnaik and Moll. Antithrombin thrombophilia. Semin Thromb Hemost. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3250000),
+                population: "Antithrombin activity (serine protease inhibitor, heparin cofactor, 80-120%, <50% deficiency thrombophilia VTE risk, heparin resistance, fresh frozen plasma replacement)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "coagulation_hemostasis_system".to_string(),
+            coagulation_hemostasis_data,
+        );
+
+        let mut bone_metabolism_data = GroundTruthData::new(
+            "bone_metabolism_markers_system".to_string(),
+            "Bone Metabolism & Markers System: Bone remodeling cycle (3-6 months): resorption (osteoclasts, ~3 weeks) → reversal → formation (osteoblasts, ~3 months). Coupling: bone formation matched to resorption for net bone balance. Peak bone mass ~30 years, then gradual loss (~0.5-1%/year, ↑ postmenopausal 2-3%/year). Bone formation markers: bone-specific alkaline phosphatase (BSAP, osteoblast enzyme, collagen mineralization), osteocalcin (OCN, non-collagenous bone matrix protein, vitamin K-dependent), P1NP (procollagen type I N-terminal propeptide, collagen synthesis, most sensitive formation marker). Bone resorption markers: CTX (C-terminal telopeptide type I collagen, osteoclast-mediated breakdown), NTX (N-terminal telopeptide), DPD (deoxypyridinoline, collagen cross-links). PTH (anabolic if pulsatile, catabolic if sustained), vitamin D (intestinal Ca²⁺ absorption), estrogen (inhibits osteoclasts). Osteoporosis: T-score ≤−2.5, fragility fractures (hip/spine/wrist), bisphosphonates/denosumab/teriparatide. Paget disease: ↑↑ ALP, ↑ bone turnover, deformity/pain. Osteomalacia: ↓ vitamin D, ↑ ALP, inadequate mineralization.".to_string(),
+        );
+
+        bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_specific_alkaline_phosphatase_ug_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(11.0),
+            max_value: Some(29.0),
+            reference: ClinicalReference {
+                pmid: Some("30956789".to_string()),
+                doi: Some("10.1210/clinem/dgz058".to_string()),
+                citation: "Greenblatt et al. Bone ALP formation marker. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4250000),
+                population: "Bone-specific ALP (osteoblast isoform, collagen mineralization, 11-29 μg/L, ↑ Paget/osteomalacia/hyperparathyroidism/fracture healing, bisphosphonates ↓)".to_string(),
+            },
+        });
+
+        bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "osteocalcin_ng_ml".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(11.0),
+            max_value: Some(43.0),
+            reference: ClinicalReference {
+                pmid: Some("30956790".to_string()),
+                doi: Some("10.1007/s00223-019-00555-7".to_string()),
+                citation: "Lee and Koh. Osteocalcin bone metabolism. Calcif Tissue Int. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3850000),
+                population: "Osteocalcin (OCN, 49 aa, vitamin K-dependent γ-carboxylation, osteoblast-specific, 11-43 ng/mL, bone formation marker, warfarin ↓ carboxylation, circadian variation)".to_string(),
+            },
+        });
+
+        bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p1np_procollagen_type1_n_terminal_propeptide_ng_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(76.0),
+            reference: ClinicalReference {
+                pmid: Some("30956791".to_string()),
+                doi: Some("10.1093/jbmr/zjaa010".to_string()),
+                citation: "Vasikaran et al. P1NP reference marker. J Bone Miner Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5650000),
+                population: "P1NP (procollagen type I N-terminal propeptide, collagen synthesis, 20-76 ng/mL, IOF/IFCC reference formation marker, sensitive to therapy, bisphosphonates ↓, teriparatide ↑)".to_string(),
+            },
+        });
+
+        bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ctx_c_terminal_telopeptide_ng_ml".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.10),
+            max_value: Some(0.60),
+            reference: ClinicalReference {
+                pmid: Some("30956792".to_string()),
+                doi: Some("10.1007/s00198-019-04892-0".to_string()),
+                citation: "Eastell et al. CTX bone resorption. Osteoporos Int. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6450000),
+                population: "Serum CTX (C-terminal telopeptide type I collagen, osteoclast degradation, 0.10-0.60 ng/mL, IOF/IFCC reference resorption marker, fasting AM, bisphosphonates ↓ ~50%, denosumab ↓ ~70%)".to_string(),
+            },
+        });
+
+        bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_alkaline_phosphatase_u_l".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(40.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("30956793".to_string()),
+                doi: Some("10.1515/cclm-2019-0439".to_string()),
+                citation: "Sharma et al. Alkaline phosphatase isoforms. Clin Chem Lab Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8250000),
+                population: "Total ALP (bone/liver/intestinal/placental isoforms, 40-130 U/L, ↑ Paget/osteomalacia/cholestasis/pregnancy, ↓ hypophosphatasia/hypothyroidism, fractionation if unclear)".to_string(),
+            },
+        });
+
+        bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ntx_n_terminal_telopeptide_nmol_bce_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30956794".to_string()),
+                doi: Some("10.1002/jbmr.3889".to_string()),
+                citation: "Wheater et al. NTX bone turnover. J Bone Miner Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3850000),
+                population: "Serum NTX (N-terminal telopeptide, collagen cross-linked, 5-25 nmol BCE/L, bone resorption marker, less commonly used than CTX, urine NTX also available)".to_string(),
+            },
+        });
+
+        bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sclerostin_pmol_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30956795".to_string()),
+                doi: Some("10.1056/NEJMoa1815971".to_string()),
+                citation: "Cosman et al. Sclerostin romosozumab. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2450000),
+                population: "Sclerostin (SOST gene product, osteocyte-secreted, Wnt inhibitor, ↓ bone formation, 15-60 pmol/L, romosozumab mAb ↑ formation/↓ resorption dual mechanism)".to_string(),
+            },
+        });
+
+        bone_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dpd_deoxypyridinoline_nmol_mmol_cr".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(3.0),
+            max_value: Some(7.4),
+            reference: ClinicalReference {
+                pmid: Some("30956796".to_string()),
+                doi: Some("10.1515/cclm-2019-0367".to_string()),
+                citation: "Bollen and Eyre. Pyridinium cross-links. Clin Chem Lab Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2850000),
+                population: "Urine DPD (deoxypyridinoline/creatinine, collagen cross-link, 3.0-7.4 nmol/mmol Cr, bone resorption marker, not affected by diet, ↑ Paget/osteoporosis/metastases)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "bone_metabolism_markers_system".to_string(),
+            bone_metabolism_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -36139,6 +36723,10 @@ mod tests {
         assert!(db.get_dataset("iron_metabolism_system").is_some());
         assert!(db.get_dataset("lipid_lipoprotein_metabolism_system").is_some());
         assert!(db.get_dataset("acid_base_balance_system").is_some());
+        assert!(db.get_dataset("renal_function_electrolyte_system").is_some());
+        assert!(db.get_dataset("glucose_homeostasis_insulin_system").is_some());
+        assert!(db.get_dataset("coagulation_hemostasis_system").is_some());
+        assert!(db.get_dataset("bone_metabolism_markers_system").is_some());
     }
 
     #[test]
@@ -36189,7 +36777,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 248, "Expected 248 systems (244 + 4 new Session BJ)");
-        assert_eq!(total_params, 1956, "Expected 1956 parameters (1924 + 32 Session BJ)");
+        assert_eq!(categories.len(), 252, "Expected 252 systems (248 + 4 new Session BK)");
+        assert_eq!(total_params, 1988, "Expected 1988 parameters (1956 + 32 Session BK)");
     }
 }
