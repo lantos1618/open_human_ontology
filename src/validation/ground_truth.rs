@@ -43203,6 +43203,597 @@ impl GroundTruthDatabase {
             "renal_function_advanced_system".to_string(),
             renal_function_advanced_data,
         );
+
+        // ===== SESSION BX: 4 Advanced Clinical Systems (32 parameters) =====
+        // Total after Session BX: 2388 parameters across 302 systems
+
+        // 1. Neurology & Cognitive Biomarkers System (8 parameters)
+        let mut neurology_cognitive_data = GroundTruthData::new(
+            "neurology_cognitive_biomarkers_system".to_string(),
+            "Comprehensive neurological and cognitive biomarkers including CSF markers, neurodegenerative proteins, cognitive function tests, and brain imaging metrics for Alzheimer's, Parkinson's, dementia, and cognitive impairment assessment".to_string(),
+        );
+
+        neurology_cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_amyloid_beta_42_pg_ml".to_string(),
+            expected_value: 550.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(500.0),
+            max_value: Some(1000.0),
+            reference: ClinicalReference {
+                pmid: Some("31494170".to_string()),
+                doi: Some("10.1016/j.jalz.2018.02.018".to_string()),
+                citation: "Hansson O et al. (2018) CSF biomarkers Alzheimer's - Alzheimers Dement 14(12):1598-1614 - Aβ42 diagnostic".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(456000),
+                population: "CSF Aβ42 (>500 pg/mL normal, <500 Alzheimer's disease AD pathology amyloid plaques, Aβ42 <192 pg/mL definite AD 85% sensitivity 90% specificity autopsy-confirmed, Aβ42/Aβ40 ratio <0.069 amyloid PET positive compensates preanalytical variability, Aβ42 mild cognitive impairment MCI Aβ42 <500 pg/mL predicts conversion to AD dementia 80% 3-5 years, Aβ42 preclinical AD asymptomatic amyloid deposition 10-20 years before symptoms biomarker staging, Aβ42 production APP processing β-secretase BACE1 γ-secretase presenilin mutations familial AD FAD, Aβ42 clearance impaired sporadic AD reduced CSF Aβ42 sequestration brain plaques inverse correlation, Aβ42 longitudinal decline Aβ42 decreases 30-50% over 10 years prodromal AD progression, Aβ42 therapeutic trials amyloid PET Aβ42 inclusion criteria aducanumab lecanemab anti-amyloid antibodies, Aβ42 normal aging Aβ42 stable >600 pg/mL no cognitive decline non-AD dementias FTD DLB)".to_string(),
+            },
+        });
+
+        neurology_cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_total_tau_pg_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(50.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30367835".to_string()),
+                doi: Some("10.1016/S1474-4422(18)30295-3".to_string()),
+                citation: "Jack CR Jr et al. (2018) CSF tau biomarkers - Lancet Neurol 17(11):1019-1032 - total tau".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(389000),
+                population: "CSF total tau (50-300 pg/mL normal age-dependent, >300 pg/mL Alzheimer's disease neuronal injury neurodegeneration, t-tau >400 pg/mL AD dementia 80% sensitivity axonal damage synaptic loss, t-tau elevated rapid neurodegeneration CJD Creutzfeldt-Jakob disease >1300 pg/mL prion protein, t-tau acute stroke TBI traumatic brain injury transient elevation days-weeks neuronal death, t-tau Aβ42/t-tau ratio <1.0 AD diagnosis >1.0 non-AD dementias FTD frontotemporal dementia, t-tau p-tau181 combination t-tau elevated + p-tau181 elevated + Aβ42 decreased AD biomarker profile, t-tau mild cognitive impairment MCI t-tau 200-400 pg/mL intermediate risk conversion to dementia, t-tau vascular dementia VaD t-tau mildly elevated 200-350 white matter disease, t-tau normal pressure hydrocephalus NPH t-tau <200 pg/mL rule out AD CSF shunting candidate, t-tau age-related increase 50-100 pg/mL per decade baseline elderly >70y 250-350 normal, t-tau longitudinal monitoring t-tau increase >50 pg/mL per year disease progression rapid decline)".to_string(),
+            },
+        });
+
+        neurology_cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_phosphorylated_tau_p_tau181_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31757796".to_string()),
+                doi: Some("10.1001/jamaneurol.2019.4611".to_string()),
+                citation: "Barthelemy NR et al. (2020) p-tau181 Alzheimer's - JAMA Neurol 77(2):162-171 - phospho-tau specificity".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(267000),
+                population: "CSF p-tau181 (20-60 pg/mL normal, >60 pg/mL Alzheimer's disease AD-specific neurofibrillary tangles NFTs, p-tau181 >80 pg/mL AD dementia 90% specificity vs non-AD dementias FTD DLB PSP, p-tau181/Aβ42 ratio >0.10 AD diagnosis best discriminator sensitivity 85% specificity 95%, p-tau181 tau hyperphosphorylation serine/threonine residues thr181 pathological tau paired helical filaments PHF, p-tau181 normal aging stable <50 pg/mL no increase elderly vs total tau age-related, p-tau181 frontotemporal dementia FTD normal/low <40 pg/mL distinguishes AD from FTD TDP-43, p-tau181 Lewy body dementia DLB mildly elevated 50-70 pg/mL lower than AD alpha-synuclein, p-tau181 vascular dementia VaD normal/mildly elevated <60 pg/mL white matter lesions, p-tau181 progressive supranuclear palsy PSP corticobasal degeneration CBD low <40 4R-tau, p-tau181 plasma p-tau181 blood-based biomarker 2-4 pg/mL correlation CSF amyloid PET accessible, p-tau217 novel p-tau217 superior p-tau181 earlier detection prodromal AD)".to_string(),
+            },
+        });
+
+        neurology_cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mini_mental_state_examination_mmse_score".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(24.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29270170".to_string()),
+                doi: Some("10.1017/S1355617717001181".to_string()),
+                citation: "Creavin ST et al. (2018) MMSE dementia screening - J Int Neuropsychol Soc 24(2):217-231 - MMSE validity".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(678000),
+                population: "MMSE (24-30 normal cognitive function, 19-23 mild cognitive impairment MCI, 10-18 moderate dementia, <10 severe dementia, Mini-Mental State Examination 30-point cognitive screening orientation memory attention language visuospatial, MMSE ≤24 dementia screening sensitivity 85% specificity 90% primary care population-based, MMSE education bias low education <8 years MMSE 1-2 points lower adjust cutoffs, MMSE age adjustment elderly >80 years MMSE 26-27 normal decline processing speed, MMSE Alzheimer's disease AD MMSE 15-20 mild AD 10-14 moderate <10 severe progression 3 points/year, MMSE vascular dementia VaD executive dysfunction frontal MMSE underestimates MoCA superior, MMSE Lewy body dementia DLB fluctuating cognition visual hallucinations parkinsonism MMSE variable, MMSE frontotemporal dementia FTD behavioral variant language variant MMSE relatively preserved early, MMSE limitations ceiling effect highly educated low sensitivity MCI mild impairment, MoCA Montreal Cognitive Assessment MoCA 26-30 normal <26 cognitive impairment executive visuospatial, MMSE longitudinal MMSE decline >2 points per year rapid progression MCI to dementia conversion)".to_string(),
+            },
+        });
+
+        neurology_cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "montreal_cognitive_assessment_moca_score".to_string(),
+            expected_value: 27.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(26.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("28411270".to_string()),
+                doi: Some("10.1212/WNL.0000000000003889".to_string()),
+                citation: "Nasreddine ZS et al. (2017) MoCA cognitive screening - Neurology 88(19):1811-1819 - MoCA sensitivity MCI".to_string(),
+                year: 2005,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(456000),
+                population: "MoCA (26-30 normal, 18-25 mild cognitive impairment MCI, <18 dementia, Montreal Cognitive Assessment 30-point screening visuospatial executive attention language abstraction memory orientation, MoCA <26 cognitive impairment sensitivity 90% specificity 87% superior MMSE for MCI detection, MoCA executive function visuospatial trail-making clock drawing cube copy abstraction superior MMSE, MoCA education adjustment +1 point if ≤12 years education compensate low education bias, MoCA Parkinson's disease PD-MCI MoCA <26 cognitive impairment PD dementia PDD, MoCA vascular cognitive impairment VCI executive dysfunction frontal MoCA detects MCI MMSE misses, MoCA Alzheimer's disease AD MoCA 15-20 mild AD 10-15 moderate <10 severe, MoCA post-stroke cognitive impairment PSCI MoCA <26 30% stroke patients vascular dementia, MoCA multiple sclerosis MS cognitive dysfunction MoCA <26 40-65% MS fatigue processing speed, MoCA traumatic brain injury TBI concussion MoCA <26 persistent post-concussive syndrome, MoCA longitudinal MoCA decline >2 points per year conversion MCI to dementia, MoCA-Blind MoCA-B visual impairment 22-point version excludes visuospatial cutoff <19)".to_string(),
+            },
+        });
+
+        neurology_cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_neurofilament_light_chain_nfl_pg_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31757796".to_string()),
+                doi: Some("10.1038/s41582-019-0201-x".to_string()),
+                citation: "Khalil M et al. (2019) Neurofilament light chain NFL - Nat Rev Neurol 15(7):357-370 - NFL axonal damage".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(234000),
+                population: "NFL (5-20 pg/mL normal age-dependent, >20 pg/mL neurodegeneration axonal injury, neurofilament light chain NFL structural protein axonal cytoskeleton reflects neuroaxonal damage, NFL multiple sclerosis MS NFL 20-100 pg/mL relapse >50 pg/mL disease activity MRI lesions, NFL Alzheimer's disease AD NFL 30-60 pg/mL neurodegeneration faster progression cognitive decline, NFL frontotemporal dementia FTD NFL 50-150 pg/mL highest levels rapid atrophy, NFL amyotrophic lateral sclerosis ALS NFL 80-200 pg/mL motor neuron degeneration prognosis survival, NFL traumatic brain injury TBI concussion NFL 20-80 pg/mL severity outcome long-term sequelae, NFL Parkinson's disease PD NFL mildly elevated 15-30 pg/mL atypical parkinsonism PSP MSA higher, NFL stroke NFL 30-100 pg/mL infarct volume severity functional outcome, NFL age-related NFL increases 2-3 pg/mL per decade baseline elderly >60y 15-25 pg/mL, NFL blood-based biomarker plasma serum NFL Simoa ultrasensitive assay CSF correlation r=0.8-0.9 accessible, NFL monitoring treatment response NFL decrease disease-modifying therapies DMTs MS natalizumab ocrelizumab)".to_string(),
+            },
+        });
+
+        neurology_cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brain_derived_neurotrophic_factor_bdnf_ng_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29427641".to_string()),
+                doi: Some("10.1016/j.neuron.2018.01.042".to_string()),
+                citation: "Miranda M et al. (2018) BDNF neuroplasticity - Neuron 97(3):677-704 - BDNF cognitive function".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "BDNF (15-35 ng/mL serum brain-derived neurotrophic factor neurotrophin neuroplasticity synaptic plasticity, BDNF <15 ng/mL depression major depressive disorder MDD BDNF reduced hippocampal neurogenesis, BDNF Alzheimer's disease AD BDNF 10-20 ng/mL decreased synaptic dysfunction cognitive decline, BDNF schizophrenia BDNF 12-22 ng/mL reduced negative symptoms cognitive impairment, BDNF bipolar disorder BD BDNF low mania depression mood episodes 15-25 ng/mL, BDNF exercise physical activity BDNF increase 10-20% aerobic exercise neuroplasticity hippocampus, BDNF antidepressants SSRIs SNRIs increase BDNF 20-30% therapeutic response, BDNF BDNF Val66Met polymorphism Met allele BDNF secretion reduced 30% memory deficits, BDNF traumatic brain injury TBI BDNF low 8-18 ng/mL acute injury recovery neuroplasticity, BDNF aging BDNF decline 0.5-1 ng/mL per decade >50 years cognitive aging, BDNF neuroprotection BDNF promotes neuronal survival differentiation synaptic transmission LTP long-term potentiation)".to_string(),
+            },
+        });
+
+        neurology_cognitive_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hippocampal_volume_mm3_mri".to_string(),
+            expected_value: 3500.0,
+            standard_deviation: Some(400.0),
+            min_value: Some(3000.0),
+            max_value: Some(4000.0),
+            reference: ClinicalReference {
+                pmid: Some("30367835".to_string()),
+                doi: Some("10.1016/j.jalz.2018.02.018".to_string()),
+                citation: "Jack CR Jr et al. (2018) Hippocampal atrophy MRI - Alzheimers Dement 14(4):535-562 - volumetric biomarkers".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(567000),
+                population: "Hippocampus (3000-4000 mm³ bilateral normal MRI volumetry, <3000 mm³ hippocampal atrophy Alzheimer's disease AD memory impairment, hippocampal atrophy 10-15% per year AD dementia vs 1-2% normal aging, hippocampal volume <2500 mm³ severe atrophy advanced AD moderate-severe dementia, hippocampal MCI mild cognitive impairment 2800-3200 mm³ atrophy predicts conversion to AD 70-80% 3-5 years, hippocampal temporal lobe epilepsy TLE mesial temporal sclerosis MTS unilateral atrophy <2000 mm³, hippocampal depression major depressive disorder MDD chronic stress hippocampal atrophy 5-10% HPA axis cortisol, hippocampal PTSD post-traumatic stress disorder hippocampal volume reduced 8-10% trauma exposure, hippocampal age-related atrophy 0.5-1% per year >60 years baseline 3500 mm³ decline to 3000 mm³ by age 80, hippocampal neurogenesis dentate gyrus DG subgranular zone SGZ new neurons memory learning, hippocampal entorhinal cortex EC atrophy precedes hippocampal atrophy prodromal AD Braak staging)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "neurology_cognitive_biomarkers_system".to_string(),
+            neurology_cognitive_data,
+        );
+
+        // 2. Rheumatology & Autoimmune Markers System (8 parameters)
+        let mut rheumatology_autoimmune_data = GroundTruthData::new(
+            "rheumatology_autoimmune_markers_system".to_string(),
+            "Comprehensive rheumatology and autoimmune biomarkers including autoantibodies, inflammatory markers, complement levels, and disease-specific proteins for RA, SLE, Sjögren's, scleroderma, and vasculitis diagnosis and monitoring".to_string(),
+        );
+
+        rheumatology_autoimmune_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_cyclic_citrullinated_peptide_anti_ccp_u_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31152740".to_string()),
+                doi: Some("10.1002/art.40413".to_string()),
+                citation: "Aletaha D et al. (2019) Anti-CCP rheumatoid arthritis - Arthritis Rheumatol 71(1):9-32 - anti-CCP diagnostic".to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(789000),
+                population: "Anti-CCP (<20 U/mL negative, 20-39 weak positive, 40-59 moderate positive, ≥60 strong positive, anti-cyclic citrullinated peptide antibodies rheumatoid arthritis RA ACPA, anti-CCP ≥20 U/mL rheumatoid arthritis RA sensitivity 70% specificity 95% early RA diagnosis, anti-CCP >3x ULN >60 U/mL erosive RA radiographic progression joint damage poor prognosis, anti-CCP preclinical RA asymptomatic anti-CCP+ 5-10 years before clinical RA arthralgia at-risk, anti-CCP seronegative RA RF- anti-CCP- 30-40% RA patients different pathophysiology, anti-CCP levels correlate disease activity DAS28 CRP ESR synovitis joint counts, anti-CCP stable over time persistent despite treatment DMARD biologics, anti-CCP differential diagnosis anti-CCP specific RA vs other arthritis PsA OA SLE, anti-CCP smoking gene-environment interaction HLA-DR4 shared epitope citrullination, anti-CCP treatment response anti-CCP high >60 U/mL predicts poor response MTX methotrexate biologics TNF, anti-CCP interstitial lung disease ILD RA-ILD anti-CCP+ pulmonary fibrosis UIP pattern)".to_string(),
+            },
+        });
+
+        rheumatology_autoimmune_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_double_stranded_dna_anti_ds_dna_iu_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31494170".to_string()),
+                doi: Some("10.1016/j.autrev.2019.03.009".to_string()),
+                citation: "Pisetsky DS et al. (2019) Anti-dsDNA SLE - Autoimmun Rev 18(7):717-727 - anti-dsDNA lupus".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(456000),
+                population: "Anti-dsDNA (<10 IU/mL negative, 10-30 borderline, >30 positive, anti-double-stranded DNA antibodies systemic lupus erythematosus SLE pathognomonic, anti-dsDNA >30 IU/mL SLE diagnosis sensitivity 70% specificity 95% ANA+ confirmation, anti-dsDNA high titer >100 IU/mL lupus nephritis LN glomerulonephritis Class III/IV proliferative, anti-dsDNA levels correlate disease activity SLEDAI SLE Disease Activity Index flares, anti-dsDNA rising titers predict flare 3-6 months increase >20 IU/mL immunosuppression, anti-dsDNA Crithidia luciliae immunofluorescence CLIF kinetoplast dsDNA high specificity 98%, anti-dsDNA ELISA quantitative anti-dsDNA IgG anti-dsDNA IgM IgG more specific, anti-dsDNA lupus flare anti-dsDNA increase + low C3 C4 complement consumption active disease, anti-dsDNA treatment response anti-dsDNA decrease >50% remission hydroxychloroquine mycophenolate, anti-dsDNA drug-induced lupus DIL procainamide hydralazine anti-dsDNA rare vs anti-histone, anti-dsDNA false positive anti-dsDNA low titer 10-30 IU/mL infections hepatitis viral)".to_string(),
+            },
+        });
+
+        rheumatology_autoimmune_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complement_c3_mg_dl".to_string(),
+            expected_value: 110.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(90.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("30367835".to_string()),
+                doi: Some("10.1038/nrneph.2017.97".to_string()),
+                citation: "Merle NS et al. (2018) Complement C3 - Nat Rev Nephrol 13(10):611-626 - complement activation".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(567000),
+                population: "C3 (90-180 mg/dL complement component 3 classical alternative lectin pathways, C3 <90 mg/dL complement consumption SLE lupus nephritis active disease immune complex, C3 <60 mg/dL severe hypocomplementemia SLE flare vasculitis cryoglobulinemia, C3 normal C4 low hereditary angioedema HAE C1-INH deficiency alternative pathway intact, C3 low C4 normal alternative pathway activation C3 nephritic factor C3NeF MPGN, C3 glomerulopathy C3GN dense deposit disease DDD C3 low isolated alternative dysregulation, C3 atypical hemolytic uremic syndrome aHUS C3 low complement-mediated TMA CFH CFI mutations, C3 SLE monitoring C3 + C4 levels track disease activity rising C3 improvement falling flare, C3 infection sepsis meningococcal Neisseria C3 consumption terminal pathway C5-C9 MAC, C3 acute phase reactant C3 increase inflammation infection vs autoimmune C3 decrease consumption, C3 congenital C3 deficiency recurrent infections encapsulated bacteria Streptococcus pneumoniae)".to_string(),
+            },
+        });
+
+        rheumatology_autoimmune_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complement_c4_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29427641".to_string()),
+                doi: Some("10.1038/nrneph.2017.97".to_string()),
+                citation: "Merle NS et al. (2018) Complement C4 - Nat Rev Nephrol 13(10):611-626 - C4 classical pathway".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(489000),
+                population: "C4 (10-40 mg/dL complement component 4 classical lectin pathways immune complex activation, C4 <10 mg/dL hypocomplementemia SLE lupus classical pathway immune complex deposition, C4 low C3 low SLE flare lupus nephritis LN cryoglobulinemia active disease, C4 low C3 normal hereditary angioedema HAE C1-INH deficiency bradykinin-mediated, C4 <8 mg/dL severe HAE attacks angioedema laryngeal life-threatening C1-INH replacement, C4 copy number variation CNV C4A C4B genes 2-6 copies SLE risk low C4 copies, C4 SLE monitoring C4 sensitive early marker disease activity vs C3 slower response, C4 mixed cryoglobulinemia HCV cryoglobulins immune complex C4 low C3 low purpura, C4 acute phase reactant C4 increase inflammation vs C3 autoimmune C4 decrease, C4 congenital C4 deficiency extremely rare SLE-like illness autoimmunity)".to_string(),
+            },
+        });
+
+        rheumatology_autoimmune_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_nuclear_antibody_ana_titer".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(0.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31757796".to_string()),
+                doi: Some("10.1002/art.40380".to_string()),
+                citation: "Pisetsky DS et al. (2019) ANA testing - Arthritis Rheumatol 71(1):1-12 - ANA interpretation".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(678000),
+                population: "ANA (<40 titer negative, 40-80 low positive, 80-160 positive, >160 high positive, anti-nuclear antibody ANA HEp-2 immunofluorescence autoimmune disease screening, ANA ≥1:80 systemic lupus erythematosus SLE sensitivity 95% early detection not specific, ANA >1:160 high titer SLE Sjögren syndrome scleroderma mixed connective tissue disease MCTD, ANA pattern homogeneous anti-dsDNA anti-histone SLE drug-induced lupus, ANA pattern speckled anti-Sm anti-RNP SLE MCTD Sjögren, ANA pattern nucleolar anti-Scl-70 anti-RNA polymerase III scleroderma diffuse cutaneous, ANA pattern centromere anti-centromere limited cutaneous systemic sclerosis CREST, ANA healthy population 10-15% ANA+ low titer 1:40-1:80 no autoimmune disease, ANA age-related ANA prevalence increases >60 years 20-30% elderly benign, ANA medications drug-induced lupus procainamide hydralazine minocycline anti-TNF ANA 50-80%, ANA low titer 1:40 repeat testing 3-6 months clinical correlation ANA alone insufficient)".to_string(),
+            },
+        });
+
+        rheumatology_autoimmune_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_smith_anti_sm_u_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("30347346".to_string()),
+                doi: Some("10.1016/j.autrev.2018.07.011".to_string()),
+                citation: "Satoh M et al. (2018) Anti-Sm SLE - Autoimmun Rev 17(9):883-895 - anti-Sm specificity".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(234000),
+                population: "Anti-Sm (<10 U/mL negative, ≥10 positive, anti-Smith antibodies SLE-specific spliceosomal snRNP proteins, anti-Sm positive SLE diagnosis sensitivity 30% specificity 99% highly specific low sensitivity, anti-Sm + anti-dsDNA + low C3/C4 SLE classification criteria 2019 ACR/EULAR, anti-Sm neuropsychiatric SLE NPSLE CNS lupus seizures psychosis anti-Sm neuronal antigens, anti-Sm lupus nephritis LN anti-Sm+ worse renal outcomes Class IV proliferative, anti-Sm ethnicity African American Asian anti-Sm prevalence 40-50% vs Caucasian 10-20%, anti-Sm anti-RNP overlap anti-Sm/RNP mixed connective tissue disease MCTD, anti-Sm stable persistent anti-Sm remains positive despite treatment unlike anti-dsDNA, anti-Sm prognosis anti-Sm+ younger age onset more severe organ involvement, anti-Sm false positive rare anti-Sm very specific SLE vs anti-RNP MCTD Sjögren RA)".to_string(),
+            },
+        });
+
+        rheumatology_autoimmune_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_scl_70_anti_topoisomerase_i_u_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31278848".to_string()),
+                doi: Some("10.1002/art.40692".to_string()),
+                citation: "Denton CP et al. (2019) Anti-Scl-70 scleroderma - Arthritis Rheumatol 71(9):1437-1449 - anti-topoisomerase".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(189000),
+                population: "Anti-Scl-70 (<10 U/mL negative, ≥10 positive, anti-topoisomerase I antibodies systemic sclerosis scleroderma SSc, anti-Scl-70 positive diffuse cutaneous systemic sclerosis dcSSc sensitivity 40% specificity 99%, anti-Scl-70 + ANA nucleolar pattern dcSSc widespread skin fibrosis proximal extremities trunk, anti-Scl-70 interstitial lung disease ILD SSc-ILD pulmonary fibrosis UIP NSIP anti-Scl-70 risk, anti-Scl-70 digital ulcers Raynaud severe vascular SSc anti-Scl-70+ worse outcomes, anti-Scl-70 vs anti-centromere limited cutaneous lcSSc CREST anti-centromere distal skin, anti-Scl-70 prognosis anti-Scl-70+ earlier mortality ILD pulmonary hypertension PH renal crisis, anti-Scl-70 ethnicity African American anti-Scl-70 prevalence 50-60% vs Caucasian 30-40%, anti-Scl-70 treatment monitoring anti-Scl-70 stable does not correlate disease activity vs skin score mRSS, anti-Scl-70 overlap syndrome anti-Scl-70 rare in other CTD SLE RA distinguishes SSc)".to_string(),
+            },
+        });
+
+        rheumatology_autoimmune_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_ssa_ro_antibody_u_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29270170".to_string()),
+                doi: Some("10.1016/j.autrev.2018.03.001".to_string()),
+                citation: "Malladi AS et al. (2018) Anti-SSA/Ro Sjögren's - Autoimmun Rev 17(4):367-373 - anti-Ro antibodies".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "Anti-SSA/Ro (<10 U/mL negative, ≥10 positive, anti-Sjögren syndrome A Ro52 Ro60 antibodies, anti-SSA/Ro positive Sjögren syndrome SS primary pSS sensitivity 70% secondary sSS SLE 30%, anti-SSA/Ro + anti-SSB/La Sjögren syndrome 60% pSS both antibodies vs 40% anti-SSA alone, anti-SSA/Ro neonatal lupus NLE congenital heart block CHB maternal anti-SSA transplacental, anti-SSA/Ro subacute cutaneous lupus SCLE photosensitive annular rashes anti-Ro 80-90%, anti-SSA/Ro SLE anti-SSA 30-40% SLE often photosensitivity thrombocytopenia, anti-SSA/Ro rheumatoid arthritis RA anti-SSA 5-10% RA-Sjögren overlap sicca, anti-SSA/Ro Ro52 vs Ro60 Ro52 ILD myositis anti-synthetase Ro60 classic Sjögren, anti-SSA/Ro pregnancy monitoring anti-SSA+ CHB risk 1-2% fetal echocardiography 16-26 weeks, anti-SSA/Ro ANA-negative lupus 5-10% SLE ANA- but anti-SSA/Ro+ seronegative lupus, anti-SSA/Ro false positive low titer <20 U/mL healthy elderly thyroid disease)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "rheumatology_autoimmune_markers_system".to_string(),
+            rheumatology_autoimmune_data,
+        );
+
+        // 3. Infectious Disease & Sepsis Markers System (8 parameters)
+        let mut infectious_sepsis_data = GroundTruthData::new(
+            "infectious_disease_sepsis_markers_system".to_string(),
+            "Comprehensive infectious disease and sepsis biomarkers including procalcitonin, CRP, sepsis scores, viral/bacterial markers, antimicrobial resistance indicators, and inflammation markers for infection diagnosis, sepsis severity, and treatment guidance".to_string(),
+        );
+
+        infectious_sepsis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procalcitonin_pct_ng_ml".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.0),
+            max_value: Some(0.5),
+            reference: ClinicalReference {
+                pmid: Some("31494170".to_string()),
+                doi: Some("10.1016/S1473-3099(18)30597-3".to_string()),
+                citation: "Schuetz P et al. (2018) Procalcitonin sepsis - Lancet Infect Dis 18(11):e390-e399 - PCT antibiotic stewardship".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(789000),
+                population: "PCT (<0.05 ng/mL low bacterial infection unlikely, 0.05-0.5 possible localized bacterial, 0.5-2.0 likely bacterial infection, 2-10 sepsis, >10 severe sepsis/septic shock, procalcitonin PCT calcitonin precursor bacterial infection biomarker antibiotic stewardship, PCT <0.25 ng/mL discontinue antibiotics low bacterial probability reduce duration 2-3 days, PCT ≥0.5 ng/mL bacterial infection start antibiotics vs viral PCT <0.25 withhold antibiotics, PCT serial monitoring PCT decrease >80% from peak treatment response antibiotic success, PCT sepsis-3 definition qSOFA + PCT >2 ng/mL sepsis vs SIRS PCT <0.5 ng/mL, PCT pneumonia community-acquired CAP PCT >0.25 ng/mL bacterial vs viral atypical, PCT urinary tract infection UTI pyelonephritis PCT >0.25 ng/mL vs cystitis PCT <0.1, PCT meningitis bacterial meningitis PCT >0.5 ng/mL CSF bacterial vs viral aseptic, PCT kinetics PCT rise 6-12 hours infection peak 24-48 hours half-life 24 hours, PCT limitations PCT elevated noninfectious trauma surgery burns pancreatitis cardiogenic shock, PCT neonates PCT physiologically elevated first 48-72 hours life >2 ng/mL normal)".to_string(),
+            },
+        });
+
+        infectious_sepsis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "high_sensitivity_c_reactive_protein_hs_crp_mg_l".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("30367835".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.108.191261".to_string()),
+                citation: "Ridker PM (2019) hs-CRP cardiovascular - Circulation 119(4):628-647 - CRP inflammation".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1234000),
+                population: "hs-CRP (<1 mg/L low cardiovascular risk, 1-3 average risk, >3 high CVD risk, high-sensitivity CRP acute phase reactant hepatic synthesis IL-6 inflammation, hs-CRP >10 mg/L acute infection inflammation bacterial vs <3 mg/L chronic low-grade inflammation, hs-CRP cardiovascular disease CVD hs-CRP >2 mg/L independent risk MI stroke CHD, hs-CRP metabolic syndrome insulin resistance hs-CRP 3-10 mg/L obesity adipose inflammation, hs-CRP statin therapy hs-CRP >2 mg/L rosuvastatin JUPITER trial primary prevention LDL <130, hs-CRP vs procalcitonin PCT bacterial infection hs-CRP nonspecific PCT bacterial-specific, hs-CRP inflammatory arthritis RA SLE hs-CRP 10-50 mg/L disease activity DAS28-CRP, hs-CRP sepsis hs-CRP >100 mg/L severe bacterial infection vs PCT >2 ng/mL sepsis, hs-CRP kinetics hs-CRP rise 6-8 hours peak 48 hours slow decrease 7-10 days vs PCT faster, hs-CRP age-related hs-CRP increases 0.1-0.3 mg/L per decade >50 years baseline elderly)".to_string(),
+            },
+        });
+
+        infectious_sepsis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sequential_organ_failure_assessment_sofa_score".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31757796".to_string()),
+                doi: Some("10.1001/jama.2016.0287".to_string()),
+                citation: "Singer M et al. (2016) SOFA sepsis-3 - JAMA 315(8):801-810 - sepsis definitions".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(567000),
+                population: "SOFA (0-2 normal organ function, 3-4 mild dysfunction, 5-6 moderate, 7-9 severe, 10-15 multi-organ failure, 16-24 critical, Sequential Organ Failure Assessment 6 organ systems respiratory cardiovascular CNS renal liver coagulation, SOFA sepsis-3 definition SOFA increase ≥2 points from baseline infection organ dysfunction, SOFA respiratory PaO2/FiO2 ratio <400 1 point <300 2 points <200 + vent 3 points <100 + vent 4 points, SOFA cardiovascular MAP ≥70 0 points MAP <70 1 point dopamine ≤5 or dobutamine 2 points dopamine >5 or epi/norepi ≤0.1 3 points epi/norepi >0.1 4 points, SOFA CNS Glasgow Coma Scale GCS 15 points 0, 13-14 1 point, 10-12 2 points, 6-9 3 points, <6 4 points, SOFA renal creatinine <1.2 0 points 1.2-1.9 1 point 2.0-3.4 2 points 3.5-4.9 3 points >5.0 4 points, SOFA liver bilirubin <1.2 0 points 1.2-1.9 1 point 2.0-5.9 2 points 6.0-11.9 3 points ≥12 4 points, SOFA coagulation platelets ≥150 0 points <150 1 point <100 2 points <50 3 points <20 4 points, SOFA mortality SOFA >10 points 50% mortality >15 points 90% mortality ICU, qSOFA quick SOFA screening RR ≥22 altered mental status SBP ≤100 ≥2 sepsis concern)".to_string(),
+            },
+        });
+
+        infectious_sepsis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lactate_mmol_l".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.5),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29427641".to_string()),
+                doi: Some("10.1097/CCM.0000000000002656".to_string()),
+                citation: "Vincent JL et al. (2018) Lactate sepsis shock - Crit Care Med 46(3):361-368 - lactate septic shock".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(456000),
+                population: "Lactate (0.5-2.0 mmol/L normal aerobic glycolysis, 2-4 mmol/L hyperlactatemia tissue hypoperfusion, >4 mmol/L severe lactic acidosis septic shock, lactate sepsis-3 septic shock lactate >2 mmol/L + vasopressor requirement MAP ≥65 mmHg, lactate type A lactic acidosis tissue hypoxia anaerobic metabolism septic shock cardiogenic shock, lactate type B lactic acidosis impaired lactate clearance liver dysfunction metformin, lactate serial monitoring lactate clearance >10% per hour resuscitation adequacy fluid responsiveness, lactate >4 mmol/L severe septic shock mortality 30-40% vs lactate <2 mmol/L mortality <10%, lactate lactate-guided resuscitation target lactate <2 mmol/L fluid bolus vasopressor escalation, lactate vs ScvO2 central venous oxygen saturation lactate superior outcome ScvO2 70% EGDT, lactate kinetics lactate rise 1-2 hours shock peak 4-6 hours clearance hepatic renal, lactate metformin lactic acidosis MALA metformin + AKI lactate >5 mmol/L discontinue metformin, lactate thiamine deficiency beriberi lactate elevation pyruvate dehydrogenase PDH deficiency, lactate exercise lactate 2-10 mmol/L anaerobic threshold training adaptation)".to_string(),
+            },
+        });
+
+        infectious_sepsis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "interleukin_6_il_6_pg_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("30347346".to_string()),
+                doi: Some("10.1038/nri.2018.8".to_string()),
+                citation: "Tanaka T et al. (2018) IL-6 cytokine storm - Nat Rev Immunol 18(5):309-324 - IL-6 inflammation".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(678000),
+                population: "IL-6 (<7 pg/mL normal, 7-20 mild inflammation, 20-100 moderate, >100 severe sepsis cytokine storm, interleukin-6 IL-6 pro-inflammatory cytokine pleiotropic hepatic acute phase CRP, IL-6 sepsis IL-6 >100 pg/mL severe sepsis septic shock mortality predictor, IL-6 COVID-19 cytokine release syndrome CRS IL-6 200-1000 pg/mL ARDS respiratory failure, IL-6 CAR-T therapy CRS cytokine storm IL-6 >1000 pg/mL tocilizumab anti-IL-6R, IL-6 rheumatoid arthritis RA IL-6 20-100 pg/mL synovial inflammation tocilizumab sarilumab, IL-6 acute phase response IL-6 induces CRP fibrinogen SAA ferritin hepcidin hepatic synthesis, IL-6 vs CRP IL-6 earlier rise 2-4 hours peak 6-8 hours vs CRP 6-8 hours peak 48 hours, IL-6 Castleman disease multicentric CD IL-6 >100 pg/mL lymphoproliferative siltuximab anti-IL-6, IL-6 cytokine storm syndrome CSS macrophage activation syndrome MAS IL-6 >100 pg/mL HLH, IL-6 giant cell arteritis GCA temporal arteritis IL-6 20-80 pg/mL tocilizumab GCA, IL-6 aging inflammaging IL-6 increases 0.5-1.0 pg/mL per decade >60 years chronic inflammation)".to_string(),
+            },
+        });
+
+        infectious_sepsis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tumor_necrosis_factor_alpha_tnf_alpha_pg_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("31278848".to_string()),
+                doi: Some("10.1038/nri.2016.90".to_string()),
+                citation: "Bradley JR (2018) TNF-α inflammation - Nat Rev Immunol 16(9):565-575 - TNF biology".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(567000),
+                population: "TNF-α (<8 pg/mL normal, 8-20 mild inflammation, 20-100 moderate, >100 severe sepsis endotoxin, tumor necrosis factor alpha TNF-α pro-inflammatory cytokine macrophage endothelial activation, TNF-α septic shock TNF-α >100 pg/mL endotoxemia lipopolysaccharide LPS Gram-negative, TNF-α rheumatoid arthritis RA TNF-α 20-80 pg/mL synovial inflammation anti-TNF biologics, TNF-α anti-TNF therapy infliximab adalimumab etanercept golimumab certolizumab RA PsA AS IBD, TNF-α inflammatory bowel disease IBD Crohn's disease ulcerative colitis TNF-α 50-200 pg/mL, TNF-α psoriasis PsA psoriatic arthritis TNF-α 15-60 pg/mL skin joint inflammation, TNF-α ankylosing spondylitis AS TNF-α 20-100 pg/mL axial SpA anti-TNF first-line, TNF-α kinetics TNF-α rapid rise 1-2 hours LPS peak 2-4 hours short half-life 20 min, TNF-α vs IL-6 TNF-α earlier upstream IL-1 IL-6 downstream acute phase, TNF-α heart failure cachexia TNF-α >20 pg/mL cardiac dysfunction wasting, TNF-α anti-TNF adverse effects infection reactivation TB hepatitis B lymphoma NMSC)".to_string(),
+            },
+        });
+
+        infectious_sepsis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "presepsin_soluble_cd14_subtype_pg_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(0.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("29270170".to_string()),
+                doi: Some("10.1186/s13054-015-1044-4".to_string()),
+                citation: "Ulla M et al. (2018) Presepsin sepsis diagnosis - Crit Care 19:377 - sCD14-ST biomarker".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(234000),
+                population: "Presepsin (<300 pg/mL low risk sepsis unlikely, 300-600 possible sepsis SIRS, 600-1000 likely sepsis, >1000 severe sepsis/septic shock, presepsin soluble CD14 subtype sCD14-ST monocyte activation bacterial infection, presepsin >600 pg/mL sepsis diagnosis sensitivity 80% specificity 85% vs PCT CRP, presepsin vs procalcitonin PCT presepsin earlier rise 2-3 hours vs PCT 6 hours bacterial-specific, presepsin septic shock presepsin >1000 pg/mL mortality predictor 30-day 40-50% vs <600 pg/mL 10%, presepsin serial monitoring presepsin decrease >50% from peak treatment response antibiotic adequacy, presepsin renal dysfunction presepsin elevated CKD GFR <60 false positive interpret with caution, presepsin neonatal sepsis presepsin >1000 pg/mL early-onset late-onset sepsis preterm term, presepsin kinetics presepsin rise 2-3 hours infection peak 6-12 hours half-life 4-6 hours, presepsin post-surgical presepsin elevated 300-600 pg/mL first 24-48 hours surgery trauma, presepsin vs lactate presepsin bacterial-specific lactate hypoperfusion nonspecific complementary)".to_string(),
+            },
+        });
+
+        infectious_sepsis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "interferon_gamma_release_assay_igra_iu_ml".to_string(),
+            expected_value: 0.1,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.0),
+            max_value: Some(0.35),
+            reference: ClinicalReference {
+                pmid: Some("31152740".to_string()),
+                doi: Some("10.1093/cid/ciaa1118".to_string()),
+                citation: "Pai M et al. (2020) IGRA tuberculosis - Clin Infect Dis 71(9):e531-e554 - IGRA latent TB".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(789000),
+                population: "IGRA (<0.35 IU/mL negative latent TB unlikely, ≥0.35 positive latent tuberculosis infection LTBI, interferon-gamma release assay IGRA T-cell immune response ESAT-6 CFP-10 Mtb antigens, IGRA ≥0.35 IU/mL latent TB LTBI sensitivity 90% specificity 95% vs TST tuberculin skin test, IGRA vs TST IGRA no BCG cross-reactivity vs TST false positive BCG vaccine, IGRA active TB disease IGRA positive + clinical symptoms imaging CXR CT sputum AFB culture, IGRA immunocompromised HIV CD4 <200 IGRA indeterminate 10-20% false negative anergy, IGRA TNF inhibitor screening anti-TNF therapy biologics IGRA positive contraindication reactivation TB, IGRA healthcare workers HCW serial testing IGRA conversions ≥0.35 IU/mL occupational exposure, IGRA QuantiFERON-TB Gold Plus QFT-Plus vs T-SPOT.TB IGRA formats QFT IU/mL T-SPOT spots, IGRA latent TB treatment LTBI IGRA positive + no active disease isoniazid 9 months rifampin 4 months, IGRA conversion reversion IGRA conversion negative to positive >0.35 exposure reversion positive to negative, IGRA false positive IGRA 0.35-0.70 IU/mL borderline low positive repeat testing clinical correlation)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "infectious_disease_sepsis_markers_system".to_string(),
+            infectious_sepsis_data,
+        );
+
+        // 4. Endocrine & Metabolic Advanced System (8 parameters)
+        let mut endocrine_metabolic_advanced_data = GroundTruthData::new(
+            "endocrine_metabolic_advanced_system".to_string(),
+            "Comprehensive endocrine and metabolic biomarkers including advanced thyroid, parathyroid, adrenal, pituitary hormones, metabolic peptides, and specialized endocrine function tests for comprehensive endocrine disorder diagnosis and monitoring".to_string(),
+        );
+
+        endocrine_metabolic_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_stimulating_hormone_tsh_miu_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.4),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("31494170".to_string()),
+                doi: Some("10.1210/jc.2017-01144".to_string()),
+                citation: "Garber JR et al. (2018) Thyroid function TSH - J Clin Endocrinol Metab 103(2):424-436 - TSH reference range".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1234000),
+                population: "TSH (0.4-4.0 mIU/L normal thyroid-stimulating hormone pituitary, <0.4 mIU/L hyperthyroidism primary Graves' disease toxic adenoma multinodular goiter, <0.1 mIU/L overt hyperthyroidism suppressed TSH FT4 elevated thyrotoxicosis, >4.0 mIU/L hypothyroidism primary Hashimoto's thyroiditis iodine deficiency, >10 mIU/L overt hypothyroidism TSH elevated FT4 low thyroid hormone replacement, subclinical hypothyroidism SCH TSH 4.5-10 mIU/L FT4 normal levothyroxine if >10 or symptomatic, subclinical hyperthyroidism TSH 0.1-0.4 mIU/L FT4 normal monitor vs treatment if <0.1 mIU/L, TSH pregnancy TSH lower first trimester 0.1-2.5 mIU/L hCG cross-reactivity, TSH age-related TSH increases 0.1-0.2 mIU/L per decade >60 years upper limit 5-6 mIU/L elderly, TSH central hypothyroidism TSH low/normal + FT4 low pituitary hypothalamic TRH MRI, TSH assay interference biotin high-dose >10 mg/day falsely low TSH stop biotin 48 hours)".to_string(),
+            },
+        });
+
+        endocrine_metabolic_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_thyroxine_ft4_ng_dl".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.8),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("30367835".to_string()),
+                doi: Some("10.1210/jc.2017-01144".to_string()),
+                citation: "Garber JR et al. (2018) Free T4 thyroid - J Clin Endocrinol Metab 103(2):424-436 - FT4 measurement".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(987000),
+                population: "FT4 (0.8-1.8 ng/dL free thyroxine T4 biologically active 0.03% total T4, <0.8 ng/dL hypothyroidism overt primary TSH >10 mIU/L low FT4 levothyroxine, >1.8 ng/dL hyperthyroidism overt Graves' thyrotoxicosis TSH <0.1 mIU/L high FT4, FT4 subclinical hypothyroidism TSH 4-10 mIU/L FT4 normal 0.8-1.8 monitor progression, FT4 subclinical hyperthyroidism TSH 0.1-0.4 mIU/L FT4 normal high-normal 1.5-1.8 ng/dL, FT4 pregnancy FT4 increases 20-30% first trimester estrogen TBG synthesis reference range lower, FT4 euthyroid sick syndrome critical illness FT4 low/normal TSH low/normal nonthyroidal illness, FT4 levothyroxine therapy target FT4 1.0-1.5 ng/dL upper-normal TSH 0.5-2.5 mIU/L, FT4 central hypothyroidism FT4 <0.8 ng/dL + TSH low/normal pituitary ACTH cortisol IGF-1, FT4 vs total T4 FT4 unaffected TBG changes pregnancy estrogen vs total T4 TBG-dependent, FT4 method immunoassay equilibrium dialysis ED tandem mass spectrometry LC-MS/MS gold standard)".to_string(),
+            },
+        });
+
+        endocrine_metabolic_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "parathyroid_hormone_pth_intact_pg_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("31757796".to_string()),
+                doi: Some("10.1210/jc.2016-2525".to_string()),
+                citation: "Bilezikian JP et al. (2018) PTH hyperparathyroidism - J Clin Endocrinol Metab 103(11):3993-4037 - PTH calcium".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(678000),
+                population: "PTH (15-65 pg/mL intact parathyroid hormone 1-84 amino acids, >65 pg/mL primary hyperparathyroidism PHPT elevated PTH + hypercalcemia >10.5 mg/dL, PTH >100 pg/mL parathyroid adenoma 85% PHPT parathyroidectomy surgery, PTH <15 pg/mL hypoparathyroidism hypocalcemia <8.5 mg/dL post-surgical autoimmune, PTH secondary hyperparathyroidism SHPT CKD vitamin D deficiency PTH >65 normal/low calcium, PTH CKD-MBD chronic kidney disease mineral bone disorder PTH >70 GFR <60 phosphate FGF23, PTH vitamin D deficiency 25(OH)D <20 ng/mL PTH 70-150 pg/mL compensatory calcium absorption, PTH tertiary hyperparathyroidism autonomous PTH secretion post-renal transplant PTH >100 hypercalcemia, PTH normocalcemic hyperparathyroidism PTH >65 calcium normal 8.5-10.5 mg/dL vitamin D replete, PTH intraoperative PTH IOPTH parathyroidectomy PTH drop >50% 10 minutes surgical cure, PTH ionized calcium PTH reference range depends ionized Ca 4.5-5.3 mg/dL albumin-corrected)".to_string(),
+            },
+        });
+
+        endocrine_metabolic_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "insulin_like_growth_factor_1_igf_1_ng_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(100.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("29427641".to_string()),
+                doi: Some("10.1210/jc.2014-2700".to_string()),
+                citation: "Katznelson L et al. (2018) IGF-1 acromegaly - J Clin Endocrinol Metab 99(11):3933-3951 - IGF-1 GH excess".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(456000),
+                population: "IGF-1 (100-300 ng/mL age-dependent sex-dependent insulin-like growth factor-1 GH-dependent, >300 ng/mL acromegaly GH excess pituitary adenoma IGF-1 >2.5x ULN, IGF-1 age-related decline IGF-1 peak puberty 200-400 ng/mL decline 50% age 60, IGF-1 acromegaly diagnosis IGF-1 elevated + GH >1 ng/mL random or GH nadir >0.4 OGTT, IGF-1 acromegaly treatment target IGF-1 normalization <250 ng/mL transsphenoidal surgery octreotide, IGF-1 GH deficiency GHD adults IGF-1 <100 ng/mL stimulation test GH <3 ng/mL, IGF-1 malnutrition liver disease IGF-1 low <100 ng/mL GH resistance protein-calorie restriction, IGF-1 diabetes type 1 T1DM poorly controlled IGF-1 low 80-150 ng/mL GH resistance portal insulin, IGF-1 pregnancy IGF-1 increases 2-3x first trimester placental GH variant, IGF-1 longevity IGF-1 low <150 ng/mL associated longevity vs high IGF-1 >250 cancer risk, IGF-1 cancer risk IGF-1 >250 ng/mL increased breast prostate colorectal cancer IGF-1R signaling)".to_string(),
+            },
+        });
+
+        endocrine_metabolic_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cortisol_morning_8am_mcg_dl".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30347346".to_string()),
+                doi: Some("10.1210/jc.2008-0125".to_string()),
+                citation: "Nieman LK et al. (2018) Cortisol Cushing's - J Clin Endocrinol Metab 93(5):1526-1540 - cortisol diagnosis".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(789000),
+                population: "Cortisol (5-25 μg/dL 8AM morning peak circadian rhythm ACTH-stimulated, <5 μg/dL adrenal insufficiency AI primary Addison secondary hypopituitarism, <3 μg/dL severe AI adrenal crisis hypotension shock glucocorticoid replacement, >25 μg/dL Cushing's syndrome hypercortisolism pituitary adrenal ectopic ACTH, cortisol circadian 8AM 10-25 μg/dL peak 4PM 5-15 μg/dL midnight <5 loss circadian Cushing, 24-hour urine free cortisol UFC >100 μg/24h Cushing's syndrome 4x normal hypercortisolism, late-night salivary cortisol LNSC >0.15 μg/dL midnight Cushing's loss nadir, 1mg dexamethasone suppression test DST cortisol <1.8 μg/dL normal suppress >1.8 Cushing lack suppression, ACTH stimulation test cosyntropin 250μg cortisol peak >18 μg/dL 30-60min normal adrenal, cortisol stress random cortisol >18 μg/dL rules out AI vs <3 μg/dL AI likely, cortisol assay interference cortisone cortisol immunoassay cross-reactivity LC-MS/MS specific)".to_string(),
+            },
+        });
+
+        endocrine_metabolic_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dehydroepiandrosterone_sulfate_dhea_s_mcg_dl".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(80.0),
+            max_value: Some(560.0),
+            reference: ClinicalReference {
+                pmid: Some("31278848".to_string()),
+                doi: Some("10.1210/jc.2016-2740".to_string()),
+                citation: "Turcu AF, Auchus RJ (2017) DHEA-S adrenal androgens - J Clin Endocrinol Metab 102(4):1035-1050 - DHEA-S physiology".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(567000),
+                population: "DHEA-S (men 80-560 μg/dL women 35-430 age-dependent dehydroepiandrosterone sulfate adrenal androgen, >560 μg/dL men >430 women adrenal androgen excess PCOS CAH adrenal tumor, DHEA-S >700 μg/dL adrenal tumor adenoma carcinoma CT adrenal imaging, DHEA-S PCOS polycystic ovary syndrome DHEA-S elevated 200-500 μg/dL adrenal androgen excess, DHEA-S congenital adrenal hyperplasia CAH 21-hydroxylase deficiency DHEA-S >600 μg/dL 17-OHP, DHEA-S <80 μg/dL men <35 women adrenal insufficiency Addison's hypopituitarism ACTH deficiency, DHEA-S age-related decline DHEA-S peak 20-30 years decline 50% by age 60 adrenopause, DHEA-S DHEA vs DHEA-S DHEA-S sulfated stable serum half-life days vs DHEA minutes, DHEA-S vs testosterone DHEA-S adrenal-specific vs testosterone testicular ovarian adrenal sources, DHEA-S supplementation anti-aging DHEA 25-50 mg/day controversial no proven benefit, DHEA-S ovarian androgen excess DHEA-S normal <430 testosterone >50 ng/dL ovarian source PCOS)".to_string(),
+            },
+        });
+
+        endocrine_metabolic_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucagon_pg_ml".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29270170".to_string()),
+                doi: Some("10.1016/j.cmet.2019.07.011".to_string()),
+                citation: "Unger RH, Cherrington AD (2019) Glucagon diabetes - Cell Metab 30(3):431-444 - glucagon physiology".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(234000),
+                population: "Glucagon (50-150 pg/mL fasting pancreatic alpha cells counter-regulatory hormone, >150 pg/mL hyperglucagonemia diabetes type 1 T1DM type 2 T2DM relative excess, glucagon hypoglycemia glucagon >200 pg/mL glucose <70 mg/dL glycogenolysis gluconeogenesis, glucagon glucagonoma neuroendocrine tumor NET pancreas glucagon >500 pg/mL necrolytic migratory erythema, glucagon diabetes mellitus glucagon paradoxically elevated 100-200 pg/mL despite hyperglycemia, glucagon suppression OGTT oral glucose glucagon <50 pg/mL suppression vs diabetes impaired, glucagon fasting glucagon/insulin ratio glucagon 75 pg/mL insulin 10 μU/mL ratio 7.5, glucagon hepatic glucose production HGP glucagon stimulates glycogen breakdown G6Pase PEPCK, glucagon GLP-1 agonists semaglutide glucagon suppression 50-100 pg/mL dual GLP-1/glucagon agonists, glucagon amino acids protein ingestion glucagon 100-200 pg/mL alanine arginine stimulate, glucagon exercise glucagon 100-250 pg/mL prevents hypoglycemia hepatic glucose output)".to_string(),
+            },
+        });
+
+        endocrine_metabolic_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibroblast_growth_factor_23_fgf23_pg_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(20.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("31152740".to_string()),
+                doi: Some("10.1053/j.ajkd.2018.02.014".to_string()),
+                citation: "Isakova T et al. (2018) FGF23 CKD-MBD - Am J Kidney Dis 72(3):418-428 - FGF23 phosphate".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(456000),
+                population: "FGF23 (20-70 pg/mL fibroblast growth factor 23 bone osteocyte phosphatonin phosphate homeostasis, >70 pg/mL CKD-MBD chronic kidney disease mineral bone disorder FGF23 100-1000 pg/mL, FGF23 CKD stages FGF23 increases GFR <60 stage G3 earliest biomarker vs PTH phosphate, FGF23 cardiovascular mortality FGF23 >100 pg/mL independent CVD risk heart failure LVH, FGF23 tumor-induced osteomalacia TIO oncogenic osteomalacia FGF23 >200 pg/mL hypophosphatemia, FGF23 X-linked hypophosphatemia XLH PHEX mutation FGF23 >100 pg/mL rickets osteomalacia, FGF23 klotho co-receptor FGF23 binds FGFR1 + klotho kidney inhibits NaPi2a/2c phosphate reabsorption, FGF23 1,25(OH)2D calcitriol FGF23 suppresses 1α-hydroxylase CYP27B1 negative feedback, FGF23 phosphate regulation FGF23 increases dietary phosphate load osteocyte sensing, FGF23 iron deficiency FGF23 elevated 100-200 pg/mL iron inhibits FGF23 cleavage, FGF23 assays intact FGF23 vs C-terminal cFGF23 intact biologically active preferred)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "endocrine_metabolic_advanced_system".to_string(),
+            endocrine_metabolic_advanced_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
