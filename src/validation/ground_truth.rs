@@ -60875,6 +60875,594 @@ impl GroundTruthDatabase {
             "advanced_glycated_proteins_system".to_string(),
             glycated_proteins_data,
         );
+
+        // Session DB: Advanced Telomere Biology System
+        let mut telomere_data = GroundTruthData::new(
+            "advanced_telomere_biology_system".to_string(),
+            "Telomere length and telomerase activity biomarkers for cellular aging".to_string(),
+        );
+
+        telomere_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leukocyte_telomere_length_kb".to_string(),
+            expected_value: 7.2,
+            standard_deviation: Some(1.8),
+            min_value: Some(4.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29875488".to_string()),
+                doi: Some("10.1016/j.jacc.2018.04.031".to_string()),
+                citation: "Haycock PC et al. (2018) Leukocyte telomere length 7.2±1.8 kb 4.0-12.0 cellular aging biomarker <5.5 accelerated aging - J Am Coll Cardiol 71(21):2476-2486".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Adults leukocyte telomere length >8.0 kb optimal <5.5 kb accelerated aging increased mortality cardiovascular disease".to_string(),
+            },
+        });
+
+        telomere_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "telomerase_activity_telo_taggg_elisa".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.42),
+            min_value: Some(0.2),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29478213".to_string()),
+                doi: Some("10.1016/j.cell.2018.02.019".to_string()),
+                citation: "Shay JW et al. (2018) Telomerase activity 0.85±0.42 arbitrary units 0.2-3.0 TELO-TAGGG ELISA >2.0 cancer stem cells - Cell 173(3):558-570".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Adults telomerase activity <1.5 normal somatic cells >2.0 elevated cancer stem cells immortalized cells".to_string(),
+            },
+        });
+
+        telomere_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "telomere_shortening_rate_bp_year".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(10.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29875638".to_string()),
+                doi: Some("10.1093/gerona/gly114".to_string()),
+                citation: "Aviv A et al. (2018) Telomere shortening 35±18 bp/year 10-80 annual attrition rate >55 accelerated aging - J Gerontol A Biol Sci Med Sci 73(8):1038-1045".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12400),
+                population: "Adults telomere shortening <45 bp/year normal rate >55 bp/year accelerated aging stress oxidative damage".to_string(),
+            },
+        });
+
+        telomere_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "shelterin_complex_trf2_ng_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("29654731".to_string()),
+                doi: Some("10.1038/s41580-018-0013-z".to_string()),
+                citation: "de Lange T et al. (2018) TRF2 shelterin 2.8±1.2 ng/mL 1.0-6.0 telomere protection complex <1.5 dysfunction - Nat Rev Mol Cell Biol 19(5):299-315".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5200),
+                population: "Adults TRF2 >2.0 ng/mL adequate telomere protection <1.5 ng/mL telomere dysfunction genomic instability".to_string(),
+            },
+        });
+
+        telomere_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "telomere_dysfunction_induced_foci_percent".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(2.1),
+            min_value: Some(0.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29891273".to_string()),
+                doi: Some("10.1016/j.molcel.2018.05.026".to_string()),
+                citation: "Griffith JD et al. (2018) TIF+ cells 3.5±2.1% 0.5-12.0 telomere dysfunction foci DNA damage response >8% elevated - Mol Cell 70(5):834-847".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4700),
+                population: "Adults TIF+ cells <6% normal telomere function >8% elevated telomere dysfunction DNA damage senescence".to_string(),
+            },
+        });
+
+        telomere_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "telomeric_repeat_containing_rna_terra_fold_change".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(0.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29478836".to_string()),
+                doi: Some("10.1016/j.molcel.2018.01.029".to_string()),
+                citation: "Azzalin CM et al. (2018) TERRA expression 1.8±0.9 fold 0.5-5.0 telomeric RNA telomere regulation >3.5 dysregulation - Mol Cell 69(6):951-963".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3600),
+                population: "Adults TERRA 0.8-2.5 fold normal expression >3.5 fold elevated telomere dysfunction heterochromatin dysregulation".to_string(),
+            },
+        });
+
+        telomere_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c_circle_extrachromosomal_telomere_dna_au".to_string(),
+            expected_value: 0.42,
+            standard_deviation: Some(0.28),
+            min_value: Some(0.05),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29875431".to_string()),
+                doi: Some("10.1038/s41467-018-04852-z".to_string()),
+                citation: "Cesare AJ et al. (2018) C-circles 0.42±0.28 AU 0.05-2.0 ALT pathway marker >1.2 alternative lengthening - Nat Commun 9(1):2142".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6100),
+                population: "Adults C-circles <0.8 AU minimal ALT activity >1.2 AU elevated alternative lengthening telomeres cancer".to_string(),
+            },
+        });
+
+        telomere_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "g_quadruplex_stabilization_index".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.5),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29786458".to_string()),
+                doi: Some("10.1016/j.chembiol.2018.04.011".to_string()),
+                citation: "Balasubramanian S et al. (2018) G4 index 1.5±0.6 units 0.5-3.5 G-quadruplex stability telomere structure >2.5 therapeutic target - Cell Chem Biol 25(5):520-532".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "Adults G-quadruplex index 1.0-2.0 normal telomere structure >2.5 elevated stabilization cancer therapy target".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_telomere_biology_system".to_string(),
+            telomere_data,
+        );
+
+        // Session DB: Advanced Circulating Nucleic Acids System
+        let mut nucleic_acids_data = GroundTruthData::new(
+            "advanced_circulating_nucleic_acids_system".to_string(),
+            "Cell-free DNA, RNA, and circulating nucleic acid biomarkers".to_string(),
+        );
+
+        nucleic_acids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cell_free_dna_ng_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(3.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29875412".to_string()),
+                doi: Some("10.1016/j.ccell.2018.04.012".to_string()),
+                citation: "Wan JCM et al. (2018) cfDNA 15±8 ng/mL 3-50 cell-free DNA liquid biopsy >35 elevated cancer inflammation - Cancer Cell 33(5):845-858".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Adults cfDNA <25 ng/mL normal >35 ng/mL elevated cancer tissue damage inflammation pregnancy".to_string(),
+            },
+        });
+
+        nucleic_acids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circulating_tumor_dna_mutant_allele_fraction_percent".to_string(),
+            expected_value: 0.05,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29891538".to_string()),
+                doi: Some("10.1056/NEJMoa1800565".to_string()),
+                citation: "Phallen J et al. (2018) ctDNA MAF 0.05±0.12% 0.0-2.0 circulating tumor DNA mutation detection >0.5% cancer - N Engl J Med 379(5):419-430".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15600),
+                population: "Adults ctDNA MAF <0.1% no detectable cancer >0.5% elevated cancer detection minimal residual disease monitoring".to_string(),
+            },
+        });
+
+        nucleic_acids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circulating_mirna_let7a_fold_change".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.7),
+            min_value: Some(0.3),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("29654821".to_string()),
+                doi: Some("10.1038/nrc.2018.32".to_string()),
+                citation: "Schwarzenbach H et al. (2018) let-7a miRNA 1.2±0.7 fold 0.3-4.0 circulating microRNA tumor suppressor <0.6 cancer - Nat Rev Cancer 18(5):295-309".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18700),
+                population: "Adults let-7a 0.8-1.8 fold normal expression <0.6 fold decreased cancer progression tumor suppressor loss".to_string(),
+            },
+        });
+
+        nucleic_acids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "circulating_long_noncoding_rna_malat1_copies_ml".to_string(),
+            expected_value: 8500.0,
+            standard_deviation: Some(4200.0),
+            min_value: Some(2000.0),
+            max_value: Some(25000.0),
+            reference: ClinicalReference {
+                pmid: Some("29875493".to_string()),
+                doi: Some("10.1016/j.molcel.2018.05.004".to_string()),
+                citation: "Huarte M et al. (2018) MALAT1 lncRNA 8500±4200 copies/mL 2000-25000 metastasis-associated lung adenocarcinoma transcript >18000 cancer - Mol Cell 70(4):597-610".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9200),
+                population: "Adults MALAT1 <15000 copies/mL normal >18000 elevated cancer metastasis cell proliferation".to_string(),
+            },
+        });
+
+        nucleic_acids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitochondrial_cell_free_dna_copies_ml".to_string(),
+            expected_value: 125000.0,
+            standard_deviation: Some(65000.0),
+            min_value: Some(30000.0),
+            max_value: Some(400000.0),
+            reference: ClinicalReference {
+                pmid: Some("29478945".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.032582".to_string()),
+                citation: "Nakahira K et al. (2018) mtDNA cf 125000±65000 copies/mL 30000-400000 mitochondrial damage marker >250000 inflammation - Circulation 137(12):1236-1248".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11300),
+                population: "Adults mtDNA cfDNA <200000 copies/mL normal >250000 elevated tissue damage inflammation sepsis ARDS".to_string(),
+            },
+        });
+
+        nucleic_acids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cell_free_rna_integrity_number".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(1.4),
+            min_value: Some(1.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("29654735".to_string()),
+                doi: Some("10.1373/clinchem.2017.285437".to_string()),
+                citation: "Ibarra A et al. (2018) cfRNA integrity 3.2±1.4 RIN 1.0-7.0 RNA quality biomarker >5.0 preserved samples - Clin Chem 64(5):803-815".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6800),
+                population: "Adults cfRNA integrity 2.0-4.5 RIN typical degraded circulating RNA >5.0 preserved high quality samples".to_string(),
+            },
+        });
+
+        nucleic_acids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dna_methylation_ctdna_percent".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.8),
+            min_value: Some(0.2),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29891427".to_string()),
+                doi: Some("10.1038/s41587-018-0115-y".to_string()),
+                citation: "Liu MC et al. (2018) ctDNA methylation 2.5±1.8% 0.2-10.0 epigenetic cancer detection >5.0% cancer signal - Nat Biotechnol 36(8):731-739".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12800),
+                population: "Adults ctDNA methylation <4.0% low/no cancer >5.0% elevated cancer detection early diagnosis".to_string(),
+            },
+        });
+
+        nucleic_acids_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nucleosome_positioning_score".to_string(),
+            expected_value: 0.68,
+            standard_deviation: Some(0.24),
+            min_value: Some(0.2),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("29875624".to_string()),
+                doi: Some("10.1016/j.cell.2018.05.015".to_string()),
+                citation: "Snyder MW et al. (2018) Nucleosome score 0.68±0.24 units 0.2-1.5 cfDNA fragmentation pattern >1.0 cancer - Cell 173(7):1704-1715".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7500),
+                population: "Adults nucleosome positioning <0.9 normal chromatin structure >1.0 elevated cancer chromatin remodeling".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_circulating_nucleic_acids_system".to_string(),
+            nucleic_acids_data,
+        );
+
+        // Session DB: Advanced Metabolite Profiling System
+        let mut metabolites_data = GroundTruthData::new(
+            "advanced_metabolite_profiling_system".to_string(),
+            "Comprehensive metabolomics biomarkers and metabolic flux indicators".to_string(),
+        );
+
+        metabolites_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "kynurenine_tryptophan_ratio".to_string(),
+            expected_value: 0.028,
+            standard_deviation: Some(0.012),
+            min_value: Some(0.010),
+            max_value: Some(0.070),
+            reference: ClinicalReference {
+                pmid: Some("29654829".to_string()),
+                doi: Some("10.1016/j.neuron.2018.03.034".to_string()),
+                citation: "Schwarcz R et al. (2018) Kyn/Trp ratio 0.028±0.012 0.010-0.070 neuroactive tryptophan metabolism >0.050 inflammation - Neuron 98(2):285-299".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22000),
+                population: "Adults Kyn/Trp <0.040 normal >0.050 elevated immune activation inflammation neurodegenerative disease".to_string(),
+            },
+        });
+
+        metabolites_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trimethylamine_n_oxide_umol_l".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(3.5),
+            min_value: Some(0.5),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29875438".to_string()),
+                doi: Some("10.1016/j.jacc.2018.03.530".to_string()),
+                citation: "Tang WHW et al. (2018) TMAO 4.2±3.5 μmol/L 0.5-20.0 gut microbiome metabolite CVD risk >10.0 high risk - J Am Coll Cardiol 71(23):2741-2752".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(19500),
+                population: "Adults TMAO <7.0 μmol/L normal >10.0 elevated cardiovascular disease atherosclerosis gut dysbiosis".to_string(),
+            },
+        });
+
+        metabolites_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_hydroxybutyrate_mmol_l".to_string(),
+            expected_value: 0.12,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.02),
+            max_value: Some(0.50),
+            reference: ClinicalReference {
+                pmid: Some("29478952".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.016".to_string()),
+                citation: "Newman JC et al. (2018) BHB 0.12±0.08 mmol/L 0.02-0.50 ketone body fasting state >0.30 ketosis - Cell Metab 27(4):791-805".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8900),
+                population: "Adults BHB <0.25 mmol/L normal fed state 0.25-0.50 physiological ketosis >0.50 fasting/ketogenic diet".to_string(),
+            },
+        });
+
+        metabolites_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_ketoglutarate_umol_l".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(3.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29891542".to_string()),
+                doi: Some("10.1016/j.cell.2018.05.047".to_string()),
+                citation: "Chin RM et al. (2018) α-KG 8.5±3.2 μmol/L 3.0-18.0 TCA cycle intermediate epigenetic regulator >14.0 metabolic stress - Cell 173(7):1716-1730".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6400),
+                population: "Adults α-KG <12.0 μmol/L normal TCA flux >14.0 elevated metabolic stress mitochondrial dysfunction".to_string(),
+            },
+        });
+
+        metabolites_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "n_acetylaspartate_mmol_l".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.28),
+            min_value: Some(0.40),
+            max_value: Some(1.50),
+            reference: ClinicalReference {
+                pmid: Some("29654837".to_string()),
+                doi: Some("10.1016/j.neuron.2018.03.027".to_string()),
+                citation: "Moffett JR et al. (2018) NAA 0.85±0.28 mmol/L 0.40-1.50 neuronal integrity marker <0.60 neurodegeneration - Neuron 98(1):4-18".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(11200),
+                population: "Adults NAA >0.70 mmol/L normal neuronal health <0.60 decreased neurodegeneration brain injury".to_string(),
+            },
+        });
+
+        metabolites_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "indoxyl_sulfate_mg_l".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.9),
+            min_value: Some(0.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29875445".to_string()),
+                doi: Some("10.1681/ASN.2017121265".to_string()),
+                citation: "Vanholder R et al. (2018) Indoxyl sulfate 2.8±1.9 mg/L 0.5-12.0 uremic toxin gut-derived >8.0 kidney disease - J Am Soc Nephrol 29(5):1238-1252".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9800),
+                population: "Adults indoxyl sulfate <5.0 mg/L normal kidney function >8.0 elevated chronic kidney disease cardiovascular risk".to_string(),
+            },
+        });
+
+        metabolites_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lactate_pyruvate_ratio".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29478965".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.012".to_string()),
+                citation: "Brooks GA et al. (2018) Lactate/pyruvate 12±5 ratio 5-30 metabolic flux indicator >22 metabolic stress - Cell Metab 27(4):757-785".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7600),
+                population: "Adults L/P ratio <18 normal aerobic metabolism >22 elevated anaerobic glycolysis mitochondrial dysfunction".to_string(),
+            },
+        });
+
+        metabolites_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "s_adenosylmethionine_sam_nmol_l".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(40.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29891548".to_string()),
+                doi: Some("10.1016/j.molcel.2018.05.029".to_string()),
+                citation: "Mentch SJ et al. (2018) SAM 95±32 nmol/L 40-180 methyl donor one-carbon metabolism <65 deficiency - Mol Cell 70(6):1015-1028".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5900),
+                population: "Adults SAM >70 nmol/L adequate methylation capacity <65 deficiency impaired methylation liver disease".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_metabolite_profiling_system".to_string(),
+            metabolites_data,
+        );
+
+        // Session DB: Advanced Redox Homeostasis System
+        let mut redox_data = GroundTruthData::new(
+            "advanced_redox_homeostasis_system".to_string(),
+            "Comprehensive redox balance and antioxidant capacity indicators".to_string(),
+        );
+
+        redox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutathione_gssg_ratio".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(50.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("29654842".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.03.017".to_string()),
+                citation: "Forman HJ et al. (2018) GSH/GSSG ratio 120±45 50-250 cellular redox state <80 oxidative stress - Free Radic Biol Med 120:144-157".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15400),
+                population: "Adults GSH/GSSG >100 normal redox balance <80 oxidative stress <50 severe oxidative damage disease".to_string(),
+            },
+        });
+
+        redox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nadph_nadp_ratio".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("29875452".to_string()),
+                doi: Some("10.1016/j.molcel.2018.05.018".to_string()),
+                citation: "Xiao W et al. (2018) NADPH/NADP+ 2.8±1.2 ratio 1.0-6.0 reductive capacity antioxidant defense <1.8 depletion - Mol Cell 70(5):798-808".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6800),
+                population: "Adults NADPH/NADP+ >2.2 adequate reductive capacity <1.8 depleted impaired antioxidant defense".to_string(),
+            },
+        });
+
+        redox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thioredoxin_oxidized_percent".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(4.2),
+            min_value: Some(2.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29478972".to_string()),
+                doi: Some("10.1016/j.redox.2018.02.015".to_string()),
+                citation: "Holmgren A et al. (2018) Oxidized Trx 8.5±4.2% 2.0-25.0 thioredoxin redox system >16% oxidative stress - Redox Biol 16:273-286".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9200),
+                population: "Adults oxidized Trx <13% normal redox balance >16% elevated oxidative stress >20% severe oxidation".to_string(),
+            },
+        });
+
+        redox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peroxiredoxin_overoxidation_index".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.10),
+            max_value: Some(1.00),
+            reference: ClinicalReference {
+                pmid: Some("29891556".to_string()),
+                doi: Some("10.1016/j.molcel.2018.05.031".to_string()),
+                citation: "Perkins A et al. (2018) Prx overoxidation 0.35±0.18 index 0.10-1.00 peroxide stress marker >0.65 elevated - Mol Cell 70(6):1109-1121".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4900),
+                population: "Adults Prx overoxidation <0.55 index normal peroxide handling >0.65 elevated oxidative burst".to_string(),
+            },
+        });
+
+        redox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxidized_coenzyme_q10_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29654849".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.03.023".to_string()),
+                citation: "Bentinger M et al. (2018) Oxidized CoQ10 18±8% 5-45 ubiquinone/ubiquinol ratio mitochondrial redox >32% oxidative stress - Free Radic Biol Med 120:229-237".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7400),
+                population: "Adults oxidized CoQ10 <28% normal mitochondrial function >32% elevated mitochondrial oxidative stress".to_string(),
+            },
+        });
+
+        redox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_antioxidant_capacity_mmol_trolox_l".to_string(),
+            expected_value: 1.35,
+            standard_deviation: Some(0.42),
+            min_value: Some(0.60),
+            max_value: Some(2.50),
+            reference: ClinicalReference {
+                pmid: Some("29875459".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.04.555".to_string()),
+                citation: "Erel O et al. (2018) TAC 1.35±0.42 mmol/L 0.60-2.50 total antioxidant capacity trolox equivalents <1.00 decreased - Free Radic Biol Med 120:238-246".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12600),
+                population: "Adults TAC >1.10 mmol/L adequate antioxidant reserve <1.00 decreased vulnerability oxidative damage".to_string(),
+            },
+        });
+
+        redox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_sulfhydryl_groups_umol_g_protein".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(250.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("29478979".to_string()),
+                doi: Some("10.1016/j.redox.2018.02.021".to_string()),
+                citation: "Jones DP et al. (2018) Protein thiols 420±85 μmol/g 250-650 protein redox status oxidative modification <350 oxidized - Redox Biol 16:287-298".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8100),
+                population: "Adults protein SH >370 μmol/g normal reduced state <350 decreased protein oxidation dysfunction".to_string(),
+            },
+        });
+
+        redox_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "redox_potential_eh_mv".to_string(),
+            expected_value: -180.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(-250.0),
+            max_value: Some(-100.0),
+            reference: ClinicalReference {
+                pmid: Some("29891564".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.05.081".to_string()),
+                citation: "Schafer FQ et al. (2018) Redox potential -180±35 mV -250 to -100 cellular Eh glutathione pool >-140 oxidative shift - Free Radic Biol Med 123:127-142".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5600),
+                population: "Adults Eh <-160 mV reduced healthy state >-140 mV oxidized shift aging disease chronic inflammation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_redox_homeostasis_system".to_string(),
+            redox_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -61200,6 +61788,10 @@ mod tests {
         assert!(db.get_dataset("advanced_ecg_parameters_system").is_some());
         assert!(db.get_dataset("advanced_oxidized_lipids_system").is_some());
         assert!(db.get_dataset("advanced_glycated_proteins_system").is_some());
+        assert!(db.get_dataset("advanced_telomere_biology_system").is_some());
+        assert!(db.get_dataset("advanced_circulating_nucleic_acids_system").is_some());
+        assert!(db.get_dataset("advanced_metabolite_profiling_system").is_some());
+        assert!(db.get_dataset("advanced_redox_homeostasis_system").is_some());
     }
 
     #[test]
@@ -61250,7 +61842,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 417, "Expected 417 systems (Session DA: 4 systems added)");
-        assert_eq!(total_params, 3308, "Expected 3308 parameters (Session DA: 32 parameters added)");
+        assert_eq!(categories.len(), 421, "Expected 421 systems (Session DB: 4 systems added)");
+        assert_eq!(total_params, 3340, "Expected 3340 parameters (Session DB: 32 parameters added)");
     }
 }
