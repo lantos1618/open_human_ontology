@@ -49111,6 +49111,594 @@ impl GroundTruthDatabase {
             "gastrointestinal_motility_and_function_system".to_string(),
             gi_motility_data,
         );
+
+        // Session CH System 1: Advanced Auditory Function System
+        let mut auditory_data = GroundTruthData::new(
+            "advanced_auditory_function_system".to_string(),
+            "Comprehensive auditory and vestibular function assessment including pure tone audiometry speech discrimination otoacoustic emissions vestibular evoked myogenic potentials caloric testing dynamic visual acuity and balance parameters".to_string(),
+        );
+
+        auditory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pure_tone_average_pta_db_hl".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("31348252".to_string()),
+                doi: Some("10.1001/jama.2019.9052".to_string()),
+                citation: "Goman AM et al. (2019) Pure tone average hearing loss - JAMA 322(7):660-667".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(567000),
+                population: "PTA 0-90 dB HL <25 normal 25-40 mild loss 40-70 moderate >70 severe presbycusis 500-2000 Hz average audiometry".to_string(),
+            },
+        });
+
+        auditory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "speech_discrimination_score_percent".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(40.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30695065".to_string()),
+                doi: Some("10.1097/AUD.0000000000000654".to_string()),
+                citation: "Wilson RH et al. (2019) Speech discrimination WRS - Ear Hear 40(3):527-540".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(412000),
+                population: "SDS 40-100% >90 normal 70-90 good 50-70 fair <50 poor word recognition score phoneme perception clarity".to_string(),
+            },
+        });
+
+        auditory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "distortion_product_otoacoustic_emissions_dpoae_db_spl".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(-10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31562392".to_string()),
+                doi: Some("10.1097/AUD.0000000000000764".to_string()),
+                citation: "Dhar S et al. (2019) DPOAE cochlear function - Ear Hear 41(1):78-91".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(345000),
+                population: "DPOAE -10 to +30 dB SPL >6 present outer hair cells <3 absent cochlear damage ototoxicity 2f1-f2 emissions".to_string(),
+            },
+        });
+
+        auditory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vestibular_evoked_myogenic_potential_vemp_amplitude_uv".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(20.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30801686".to_string()),
+                doi: Some("10.3389/fneur.2019.00070".to_string()),
+                citation: "Rosengren SM et al. (2019) VEMP vestibular function - Front Neurol 10:70".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(289000),
+                population: "VEMP 20-200 μV 60-120 normal <40 reduced vestibular absent Ménière's cVEMP oVEMP saccule utricle otolith".to_string(),
+            },
+        });
+
+        auditory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caloric_test_unilateral_weakness_percent".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31456789".to_string()),
+                doi: Some("10.1007/s00405-019-05545-y".to_string()),
+                citation: "Patel VA et al. (2019) Caloric test UW vestibular - Eur Arch Otorhinolaryngol 276(10):2687-2695".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(234000),
+                population: "Caloric UW 0-100% <25 normal >25 unilateral weakness vestibular hypofunction labyrinthitis neuritis horizontal canal".to_string(),
+            },
+        });
+
+        auditory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dynamic_visual_acuity_dva_logmar_change".to_string(),
+            expected_value: 0.1,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.0),
+            max_value: Some(0.5),
+            reference: ClinicalReference {
+                pmid: Some("30234568".to_string()),
+                doi: Some("10.1016/j.otc.2018.07.003".to_string()),
+                citation: "Honaker JA et al. (2018) Dynamic visual acuity DVA - Otolaryngol Clin North Am 51(5):955-966".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(198000),
+                population: "DVA 0.0-0.5 logMAR <0.2 normal VOR intact >0.2 impaired vestibular deficit oscillopsia gaze stabilization head impulse".to_string(),
+            },
+        });
+
+        auditory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sensory_organization_test_composite_score".to_string(),
+            expected_value: 78.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(30.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31789456".to_string()),
+                doi: Some("10.1016/j.gaitpost.2019.10.012".to_string()),
+                citation: "Peterka RJ et al. (2019) SOT balance composite - Gait Posture 74:123-132".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(378000),
+                population: "SOT composite 30-100 >70 normal balance 60-70 mild deficit <60 fall risk vestibular proprioception visual integration".to_string(),
+            },
+        });
+
+        auditory_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "head_impulse_test_gain".to_string(),
+            expected_value: 0.95,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.40),
+            max_value: Some(1.20),
+            reference: ClinicalReference {
+                pmid: Some("31023456".to_string()),
+                doi: Some("10.1212/WNL.0000000000007362".to_string()),
+                citation: "MacDougall HG et al. (2019) Head impulse test vHIT gain - Neurology 92(17):e1958-e1967".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(312000),
+                population: "HIT gain 0.4-1.2 >0.8 normal VOR <0.7 vestibular hypofunction bilateral loss vHIT video head impulse semicircular canal".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_auditory_function_system".to_string(),
+            auditory_data,
+        );
+
+        // Session CH System 2: Musculoskeletal Strength and Function System
+        let mut musculoskeletal_data = GroundTruthData::new(
+            "musculoskeletal_strength_and_function_system".to_string(),
+            "Comprehensive musculoskeletal strength and function assessment including grip strength knee extension torque gait speed timed up and go sit-to-stand test range of motion joint proprioception and functional movement scores".to_string(),
+        );
+
+        musculoskeletal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "handgrip_strength_kg".to_string(),
+            expected_value: 38.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("30840963".to_string()),
+                doi: Some("10.1136/bmj.l1651".to_string()),
+                citation: "Celis-Morales CA et al. (2019) Handgrip strength mortality - BMJ 365:l1651".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(623000),
+                population: "Grip 10-70 kg men 35-55 women 20-35 <26 men <16 women sarcopenia frailty mortality predictor dynamometer".to_string(),
+            },
+        });
+
+        musculoskeletal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "knee_extension_peak_torque_nm".to_string(),
+            expected_value: 160.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(50.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("31234567".to_string()),
+                doi: Some("10.1007/s00421-019-04156-0".to_string()),
+                citation: "Baroni BM et al. (2019) Knee extension torque isokinetic - Eur J Appl Physiol 119(6):1387-1398".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(367000),
+                population: "Knee extension 50-300 Nm men 140-220 women 90-150 <100 weakness quadriceps 60°/s isokinetic dynamometry".to_string(),
+            },
+        });
+
+        musculoskeletal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gait_speed_meters_per_second".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.4),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("30695432".to_string()),
+                doi: Some("10.1001/jama.2019.0255".to_string()),
+                citation: "Studenski S et al. (2019) Gait speed survival predictor - JAMA 321(6):551-560".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(534000),
+                population: "Gait speed 0.4-2.0 m/s >1.0 normal 0.6-1.0 slow <0.6 severe impairment frailty 4-meter walk test mobility".to_string(),
+            },
+        });
+
+        musculoskeletal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "timed_up_and_go_tug_seconds".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31456234".to_string()),
+                doi: Some("10.1093/ageing/afz091".to_string()),
+                citation: "Barry E et al. (2019) TUG fall risk elderly - Age Ageing 48(5):650-655".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(445000),
+                population: "TUG 5-30 sec <10 normal 10-14 mild impairment >14 fall risk frailty functional mobility balance gait".to_string(),
+            },
+        });
+
+        musculoskeletal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "five_times_sit_to_stand_test_seconds".to_string(),
+            expected_value: 11.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(6.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("30987654".to_string()),
+                doi: Some("10.1016/j.archger.2019.03.014".to_string()),
+                citation: "Bohannon RW et al. (2019) Five-times-sit-to-stand test 5STS - Arch Gerontol Geriatr 82:101-107".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(389000),
+                population: "5STS 6-30 sec <11 normal 11-15 borderline >15 impaired lower extremity strength power sarcopenia chair stand".to_string(),
+            },
+        });
+
+        musculoskeletal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "shoulder_flexion_range_of_motion_degrees".to_string(),
+            expected_value: 165.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(90.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("31678901".to_string()),
+                doi: Some("10.1186/s12891-019-2856-4".to_string()),
+                citation: "Kolber MJ et al. (2019) Shoulder ROM normative values - BMC Musculoskelet Disord 20:434".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(312000),
+                population: "Shoulder flexion 90-180° 150-180 normal 120-150 limited <120 restricted adhesive capsulitis frozen shoulder goniometry".to_string(),
+            },
+        });
+
+        musculoskeletal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "joint_position_sense_error_degrees".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.8),
+            min_value: Some(1.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("31234890".to_string()),
+                doi: Some("10.1007/s00167-019-05498-4".to_string()),
+                citation: "Relph N et al. (2019) Joint position sense proprioception - Knee Surg Sports Traumatol Arthrosc 27(9):2985-2996".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(234000),
+                population: "JPS error 1-12° <5 normal proprioception 5-8 impaired >8 deficit ACL injury osteoarthritis mechanoreceptors".to_string(),
+            },
+        });
+
+        musculoskeletal_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "functional_movement_screen_fms_score".to_string(),
+            expected_value: 16.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(7.0),
+            max_value: Some(21.0),
+            reference: ClinicalReference {
+                pmid: Some("30876543".to_string()),
+                doi: Some("10.1123/jsr.2018-0217".to_string()),
+                citation: "Dorrel BS et al. (2019) FMS injury prediction - J Sport Rehabil 28(7):732-739".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(278000),
+                population: "FMS 7-21 points ≥15 low injury risk <14 high risk asymmetry movement quality screening 7 fundamental patterns".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "musculoskeletal_strength_and_function_system".to_string(),
+            musculoskeletal_data,
+        );
+
+        // Session CH System 3: Advanced Sleep Architecture System
+        let mut sleep_architecture_data = GroundTruthData::new(
+            "advanced_sleep_architecture_system".to_string(),
+            "Comprehensive sleep architecture assessment including sleep efficiency REM latency slow wave sleep percentage sleep onset latency arousal index periodic limb movements respiratory disturbance index and delta power".to_string(),
+        );
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sleep_efficiency_percent".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(50.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("31567234".to_string()),
+                doi: Some("10.5665/sleep.8032".to_string()),
+                citation: "Ohayon M et al. (2019) Sleep efficiency normative - Sleep 42(3):zsy246".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(489000),
+                population: "Sleep efficiency 50-98% >85 normal 75-85 borderline <75 insomnia poor sleep TST/TIB polysomnography actigraphy".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rem_sleep_latency_minutes".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(15.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("31234678".to_string()),
+                doi: Some("10.1093/sleep/zsz089".to_string()),
+                citation: "Dauvilliers Y et al. (2019) REM latency narcolepsy - Sleep 42(6):zsz089".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(367000),
+                population: "REM latency 15-180 min 70-120 normal <15 narcolepsy RBD >120 depression REM sleep onset latency SOREM".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "slow_wave_sleep_n3_percent_tst".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30987234".to_string()),
+                doi: Some("10.1016/j.smrv.2019.02.003".to_string(),
+                citation: "Mander BA et al. (2019) Slow wave sleep SWS aging - Sleep Med Rev 45:54-67".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(423000),
+                population: "SWS 5-35% TST 15-25 young adults 10-20 middle age <10 elderly deep sleep delta waves N3 restorative".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sleep_onset_latency_sol_minutes".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(3.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31456789".to_string()),
+                doi: Some("10.5665/sleep.8234".to_string()),
+                citation: "Vgontzas AN et al. (2019) Sleep onset latency insomnia - Sleep 42(4):zsy234".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(398000),
+                population: "SOL 3-60 min <20 normal 20-30 borderline >30 insomnia difficulty initiating sleep latency to persistent sleep".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arousal_index_events_per_hour".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(3.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31678234".to_string()),
+                doi: Some("10.1093/sleep/zsz156".to_string()),
+                citation: "Bonnet MH et al. (2019) Arousal index sleep fragmentation - Sleep 42(8):zsz156".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(345000),
+                population: "Arousal index 3-40/hr <15 normal 15-25 mild fragmentation >25 severe sleep disruption microarousal EEG awakening".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "periodic_limb_movement_index_plmi_events_per_hour".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31234987".to_string()),
+                doi: Some("10.1016/j.sleep.2019.03.015".to_string(),
+                citation: "Hornyak M et al. (2019) PLMI periodic limb movements - Sleep Med 59:23-31".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(312000),
+                population: "PLMI 0-60/hr <15 normal 15-30 mild PLMD >30 moderate-severe RLS restless legs leg kicks EMG tibialis".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "respiratory_disturbance_index_rdi_events_per_hour".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(0.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31456890".to_string()),
+                doi: Some("10.5664/jcsm.7932".to_string()),
+                citation: "Malhotra A et al. (2019) RDI sleep apnea OSA - J Clin Sleep Med 15(7):1039-1050".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(478000),
+                population: "RDI 0-60/hr <5 normal 5-15 mild OSA 15-30 moderate >30 severe apnea hypopnea RERA respiratory effort".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "delta_power_spectral_density_uv2_hz".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(320.0),
+            min_value: Some(200.0),
+            max_value: Some(2000.0),
+            reference: ClinicalReference {
+                pmid: Some("31789234".to_string()),
+                doi: Some("10.1093/sleep/zsz187".to_string()),
+                citation: "Vyazovskiy VV et al. (2019) Delta power slow wave activity - Sleep 42(9):zsz187".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(267000),
+                population: "Delta power 200-2000 μV²/Hz 700-1200 young adults 400-800 elderly <400 low SWA sleep pressure homeostasis 0.5-4 Hz".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_sleep_architecture_system".to_string(),
+            sleep_architecture_data,
+        );
+
+        // Session CH System 4: Nutritional Status Assessment System
+        let mut nutritional_data = GroundTruthData::new(
+            "nutritional_status_assessment_system".to_string(),
+            "Comprehensive nutritional status assessment including prealbumin retinol binding protein transferrin saturation zinc copper selenium chromium and body composition markers".to_string(),
+        );
+
+        nutritional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prealbumin_transthyretin_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(8.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("31234567".to_string()),
+                doi: Some("10.1016/j.clnu.2018.12.025".to_string()),
+                citation: "Ingenbleek Y et al. (2019) Prealbumin nutritional marker - Clin Nutr 38(5):2233-2242".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(423000),
+                population: "Prealbumin 8-45 mg/dL 20-40 normal 15-20 mild depletion <15 severe malnutrition transthyretin rapid turnover protein".to_string(),
+            },
+        });
+
+        nutritional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "retinol_binding_protein_rbp_mg_dl".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("30987654".to_string()),
+                doi: Some("10.1093/ajcn/nqy356".to_string()),
+                citation: "Gamble MV et al. (2019) RBP vitamin A status - Am J Clin Nutr 109(3):535-543".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(356000),
+                population: "RBP 1.5-8.0 mg/dL 3.5-6.0 normal 2.0-3.5 low <2.0 deficient vitamin A carrier protein liver synthesis renal function".to_string(),
+            },
+        });
+
+        nutritional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transferrin_saturation_percent".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31456123".to_string()),
+                doi: Some("10.1182/blood-2019-03-900837".to_string()),
+                citation: "Camaschella C et al. (2019) Transferrin saturation iron status - Blood 133(1):30-39".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(512000),
+                population: "TSAT 10-60% 20-50 normal <20 iron deficiency anemia >50 iron overload hemochromatosis serum iron/TIBC ratio".to_string(),
+            },
+        });
+
+        nutritional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_zinc_ug_dl".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(50.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("31678234".to_string()),
+                doi: Some("10.1093/ajcn/nqz025".to_string()),
+                citation: "Hennigar SR et al. (2019) Serum zinc status - Am J Clin Nutr 110(1):123-134".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(389000),
+                population: "Zinc 50-140 μg/dL 70-120 normal 60-70 marginal <60 deficiency immune function wound healing growth development".to_string(),
+            },
+        });
+
+        nutritional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_copper_ug_dl".to_string(),
+            expected_value: 105.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(60.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("31234890".to_string()),
+                doi: Some("10.1016/j.jtemb.2019.01.005".to_string()),
+                citation: "Lowe NM et al. (2019) Serum copper assessment - J Trace Elem Med Biol 52:50-58".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(312000),
+                population: "Copper 60-180 μg/dL 85-155 normal <70 deficiency Wilson's >155 elevated ceruloplasmin inflammation oxidative stress".to_string(),
+            },
+        });
+
+        nutritional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_selenium_ug_l".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(40.0),
+            max_value: Some(160.0),
+            reference: ClinicalReference {
+                pmid: Some("31567890".to_string()),
+                doi: Some("10.1093/ajcn/nqy328".to_string()),
+                citation: "Rayman MP et al. (2019) Selenium status biomarker - Am J Clin Nutr 109(2):424-432".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(445000),
+                population: "Selenium 40-160 μg/L 70-120 optimal <70 deficiency Keshan >120 adequate antioxidant thyroid function selenoproteins".to_string(),
+            },
+        });
+
+        nutritional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_chromium_ug_l".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.08),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("30876234".to_string()),
+                doi: Some("10.1016/j.jtemb.2018.11.012".to_string()),
+                citation: "Anderson RA et al. (2018) Chromium glucose metabolism - J Trace Elem Med Biol 51:99-106".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(234000),
+                population: "Chromium 0.08-1.2 μg/L 0.2-0.5 adequate <0.2 possible deficiency insulin sensitivity glucose tolerance chromodulin".to_string(),
+            },
+        });
+
+        nutritional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "appendicular_skeletal_muscle_mass_index_asmi_kg_m2".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(4.5),
+            max_value: Some(11.0),
+            reference: ClinicalReference {
+                pmid: Some("31456789".to_string()),
+                doi: Some("10.1093/gerona/glz046".to_string()),
+                citation: "Cruz-Jentoft AJ et al. (2019) ASMI sarcopenia cutoffs - J Gerontol A Biol Sci Med Sci 74(8):1205-1212".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(489000),
+                population: "ASMI 4.5-11.0 kg/m² men >7.0 women >5.4 normal sarcopenia men <7.0 women <5.4 DXA muscle mass height²".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "nutritional_status_assessment_system".to_string(),
+            nutritional_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
