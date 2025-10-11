@@ -3,6 +3,7 @@ pub mod cytokines;
 pub mod immune_synapse;
 pub mod innate_immunity;
 pub mod lymphatic;
+pub mod metabolic_immune_crosstalk;
 pub mod white_blood_cells;
 
 pub use adaptive_immunity::{
@@ -18,4 +19,8 @@ pub use innate_immunity::{
     MacrophagePopulation, NKCellPopulation, NeutrophilPopulation, PhysicalBarriers,
 };
 pub use lymphatic::{LymphNode, LymphaticSystem, Spleen, Thymus};
+pub use metabolic_immune_crosstalk::{
+    MetabolicImmuneCrosstalk, MetabolicImmuneCoordination, ImmuneMetabolicState,
+    GlycolyticActivity, OxidativeActivity, PentosePhosphateActivity,
+};
 pub use white_blood_cells::{BCell, Lymphocyte, Monocyte, Neutrophil, TCell, WhiteBloodCell};

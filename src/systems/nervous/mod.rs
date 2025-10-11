@@ -1,4 +1,5 @@
 pub mod action_potential;
+pub mod blood_brain_barrier_neuroimmune;
 pub mod brain_connectivity;
 pub mod central;
 pub mod circadian;
@@ -9,6 +10,10 @@ pub mod peripheral;
 pub use action_potential::{
     ActionPotentialDynamics, HodgkinHuxleyModel, IonChannelPopulation, NeuronType,
     NeurotransmitterType, SynapticTransmission,
+};
+pub use blood_brain_barrier_neuroimmune::{
+    BloodBrainBarrierNeuroimmune, BBBNeuroImmuneStatus, BBBStructuralIntegrity,
+    GlymphaticFunction, NeuroinflammationStatus,
 };
 pub use brain_connectivity::*;
 pub use central::{Brain, CentralNervousSystem, SpinalCord};
