@@ -12,6 +12,24 @@ push changes as you go to remote
 
 ---
 
+## Session DN (2025-10-11)
+
+**Status:** ✅ Complete
+
+**Systems Added:** 4 new advanced nuclear and cellular machinery systems with 32 parameters
+
+**Database Stats:** 469 systems, 3724 parameters total
+
+**New Systems:**
+1. **Advanced Nuclear Pore Complex System** - Nuclear pore complex structure, nucleocytoplasmic transport machinery, importins, exportins, Ran GTPase cycle, and nucleoporin assembly regulating nuclear-cytoplasmic trafficking (nuclear pore complex density per nucleus, Nup98 nucleoporin nuclear basket copies, importin-β nuclear import rate molecules/sec, exportin-1 CRM1 nuclear export rate molecules/sec, RanGTP nuclear/cytoplasmic gradient ratio, NPC transport selectivity size cutoff kDa, NPC central channel diameter nm, FG-Nup hydrogel permeability barrier cohesion Kd μM)
+2. **Advanced Exosome Biogenesis and Secretion System** - Exosome biogenesis, multivesicular body formation, ESCRT machinery, tetraspanins, exosome secretion, and extracellular vesicle-mediated intercellular communication (exosome secretion rate particles/cell/hour, exosome diameter nm, CD63 tetraspanin exosome marker copies per vesicle, ESCRT machinery MVB sorting efficiency %, ALIX ESCRT accessory protein MVB concentration μM, Rab27a exosome secretion GTP-bound %, exosomal miRNA copies per vesicle, MVB ILV intraluminal vesicle diameter nm)
+3. **Advanced m6A RNA Modification System** - N6-methyladenosine (m6A) RNA epitranscriptomic modification, METTL3/METTL14 methyltransferase complex, FTO/ALKBH5 demethylases, YTHDF reader proteins, and m6A-mediated RNA metabolism regulation (m6A mRNA methylation site occupancy %, METTL3 methyltransferase complex activity fmol/μg/min, FTO demethylase m6A removal rate fmol/μg/min, YTHDF2 reader protein mRNA decay half-life hours, m6A motif DRACH consensus enrichment fold, m6A 3'UTR enrichment %, YTHDF1 translation enhancement fold change, ALKBH5 demethylase nuclear speckle enrichment fold)
+4. **Advanced Septins and Cytokinesis System** - Septin filament assembly, septin ring formation, cytokinetic furrow ingression, contractile ring dynamics, anillin, RhoA GTPase, and abscission machinery regulating cell division completion (septin ring diameter at furrow ingression μm, contractile ring constriction rate nm/sec, anillin contractile ring concentration μM, RhoA-GTP active fraction at division plane %, midbody microtubule bundle diameter nm, ESCRT-III abscission time from anaphase onset min, septin filament length nm, furrow ingression completion time min)
+
+**Commit:** TBD - Pushed to remote
+
+---
+
 ## Session DM (2025-10-11)
 
 **Status:** ✅ Complete

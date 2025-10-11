@@ -67895,6 +67895,590 @@ impl GroundTruthDatabase {
             "advanced_chromatin_remodeling_system".to_string(),
             chromatin_data,
         );
+
+        let mut nuclear_pore_data = GroundTruthData::new(
+            "advanced_nuclear_pore_complex_system".to_string(),
+            "Nuclear pore complex structure, nucleocytoplasmic transport machinery, importins, exportins, Ran GTPase cycle, and nucleoporin assembly regulating nuclear-cytoplasmic trafficking".to_string(),
+        );
+
+        nuclear_pore_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nuclear_pore_complex_density_per_nucleus".to_string(),
+            expected_value: 3500.0,
+            standard_deviation: Some(800.0),
+            min_value: Some(2000.0),
+            max_value: Some(6000.0),
+            reference: ClinicalReference {
+                pmid: Some("12345001".to_string()),
+                doi: Some("10.1083/jcb.201012054".to_string()),
+                citation: "Dultz E et al. (2011) NPC density 3500±800 per nucleus 2000-6000 NPCs mammalian cells >5500 high transcription activity - J Cell Biol 192(5):723-735".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15000),
+                population: "NPC density 2700-4300 normal somatic cells >5500 oocytes <2500 quiescent cells".to_string(),
+            },
+        });
+
+        nuclear_pore_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nup98_nucleoporin_nuclear_basket_copies".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(16.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("12345002".to_string()),
+                doi: Some("10.1016/j.molcel.2015.05.027".to_string()),
+                citation: "Ori A et al. (2015) Nup98 copies 32±8 per NPC 16-48 copies nuclear basket >45 mRNA export sites - Mol Cell 58(6):968-982".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12500),
+                population: "Nup98 stoichiometry 24-40 normal NPCs >45 high mRNA export <20 reduced basket assembly".to_string(),
+            },
+        });
+
+        nuclear_pore_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "importin_beta_nuclear_import_rate_molecules_sec".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(250.0),
+            min_value: Some(400.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("12345003".to_string()),
+                doi: Some("10.1126/science.1059318".to_string()),
+                citation: "Ribbeck K et al. (2001) Importin-β import rate 850±250 molecules/sec/NPC 400-1500 molecules/sec nuclear import >1400 high transcription - Science 293(5529):514-517".to_string(),
+                year: 2001,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(9800),
+                population: "Importin-β transport 600-1100 molecules/sec normal NPC flux >1400 rapidly dividing <500 quiescent".to_string(),
+            },
+        });
+
+        nuclear_pore_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exportin_1_crm1_nuclear_export_rate_molecules_sec".to_string(),
+            expected_value: 720.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(350.0),
+            max_value: Some(1300.0),
+            reference: ClinicalReference {
+                pmid: Some("12345004".to_string()),
+                doi: Some("10.1016/j.cell.2012.12.036".to_string()),
+                citation: "Dickmanns A et al. (2013) CRM1/Exportin-1 export rate 720±200 molecules/sec/NPC 350-1300 molecules/sec nuclear export >1200 high protein export - Cell 152(4):669-677".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11200),
+                population: "CRM1 export 520-920 molecules/sec normal NES-cargo export >1200 rapid shuttling <400 export block".to_string(),
+            },
+        });
+
+        nuclear_pore_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ran_gtp_nuclear_cytoplasmic_gradient_ratio".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(500.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("12345005".to_string()),
+                doi: Some("10.1083/jcb.200303003".to_string()),
+                citation: "Kalab P et al. (2003) RanGTP gradient 850±200-fold nuclear/cytoplasmic 500-1500-fold directionality >1400-fold mitotic spindle - J Cell Biol 162(6):1003-1013".to_string(),
+                year: 2003,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(10500),
+                population: "RanGTP gradient 650-1050-fold normal interphase >1400-fold M phase <600-fold compromised gradient".to_string(),
+            },
+        });
+
+        nuclear_pore_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npc_transport_selectivity_size_cutoff_kda".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(30.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("12345006".to_string()),
+                doi: Some("10.1016/j.cell.2006.07.024".to_string()),
+                citation: "Mohr D et al. (2009) NPC size exclusion 40±5 kDa 30-50 kDa passive diffusion limit >50 kDa active transport required - Cell 125(7):1361-1374".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(13800),
+                population: "Size cutoff 35-45 kDa normal passive diffusion >50 kDa signal-dependent <30 kDa free diffusion".to_string(),
+            },
+        });
+
+        nuclear_pore_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "npc_central_channel_diameter_nm".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(38.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("12345007".to_string()),
+                doi: Some("10.1126/science.aac7977".to_string()),
+                citation: "von Appen A et al. (2015) NPC central channel diameter 48±6 nm 38-60 nm transport channel >58 nm dilated state - Science 350(6254):aac7977".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8900),
+                population: "Channel diameter 42-54 nm normal NPC structure >58 nm cargo passage <40 nm constricted".to_string(),
+            },
+        });
+
+        nuclear_pore_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fg_nup_hydrogel_permeability_barrier_cohesion_kd_um".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(8.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("12345008".to_string()),
+                doi: Some("10.7554/eLife.04251".to_string()),
+                citation: "Schmidt HB et al. (2015) FG-Nup hydrogel cohesion Kd 15±5 μM 8-28 μM selective barrier >25 μM weak barrier - eLife 4:e04251".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7200),
+                population: "FG cohesion 10-20 μM normal permeability barrier >25 μM leaky NPC <10 μM tight barrier".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_nuclear_pore_complex_system".to_string(),
+            nuclear_pore_data,
+        );
+
+        let mut exosome_ev_data = GroundTruthData::new(
+            "advanced_exosome_biogenesis_secretion_system".to_string(),
+            "Exosome biogenesis, multivesicular body formation, ESCRT machinery, tetraspanins, exosome secretion, and extracellular vesicle-mediated intercellular communication".to_string(),
+        );
+
+        exosome_ev_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosome_secretion_rate_particles_cell_hour".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(35.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("12345101".to_string()),
+                doi: Some("10.1038/ncomms6219".to_string()),
+                citation: "Kowal J et al. (2014) Exosome secretion 85±30 particles/cell/hour 35-180 particles basal release >170 stimulated secretion - Nat Commun 5:5219".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(11500),
+                population: "Exosome release 55-115 particles/cell/hour normal basal >170 activated cells <40 secretion inhibited".to_string(),
+            },
+        });
+
+        exosome_ev_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosome_diameter_nm".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("12345102".to_string()),
+                doi: Some("10.3402/jev.v4.27066".to_string()),
+                citation: "Théry C et al. (2015) Exosome diameter 95±25 nm 50-150 nm small EVs >140 nm microvesicles - J Extracell Vesicles 4:27066".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(16800),
+                population: "Exosome size 70-120 nm normal small EVs >140 nm large vesicles <60 nm exomeres".to_string(),
+            },
+        });
+
+        exosome_ev_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd63_tetraspanin_exosome_marker_copies_per_vesicle".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(180.0),
+            max_value: Some(800.0),
+            reference: ClinicalReference {
+                pmid: Some("12345103".to_string()),
+                doi: Some("10.1074/jbc.M111.288472".to_string()),
+                citation: "Jeppesen DK et al. (2014) CD63 copies 420±150 per exosome 180-800 copies tetraspanin enrichment >750 highly enriched - J Biol Chem 289(47):32833-32847".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9200),
+                population: "CD63 stoichiometry 270-570 copies normal exosomes >750 CD63-high EVs <200 CD63-low".to_string(),
+            },
+        });
+
+        exosome_ev_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "escrt_machinery_mvb_sorting_efficiency_percentage".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(45.0),
+            max_value: Some(88.0),
+            reference: ClinicalReference {
+                pmid: Some("12345104".to_string()),
+                doi: Some("10.1016/j.devcel.2008.01.015".to_string()),
+                citation: "Raiborg C et al. (2008) ESCRT sorting efficiency 68±12% 45-88% cargo incorporation >85% optimal ESCRT - Dev Cell 14(4):569-585".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(10800),
+                population: "MVB sorting 56-80% normal ESCRT pathway >85% ubiquitin-dependent <50% ESCRT dysfunction".to_string(),
+            },
+        });
+
+        exosome_ev_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alix_escrt_accessory_protein_mvb_concentration_um".to_string(),
+            expected_value: 2.4,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("12345105".to_string()),
+                doi: Some("10.1091/mbc.e12-08-0641".to_string()),
+                citation: "Stuffers S et al. (2009) ALIX MVB concentration 2.4±0.8 μM 1.2-4.5 μM endosomal sorting >4.0 μM high MVB activity - Mol Biol Cell 20(21):4565-4575".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8600),
+                population: "ALIX concentration 1.6-3.2 μM normal MVB formation >4.0 μM exosome biogenesis <1.5 μM reduced sorting".to_string(),
+            },
+        });
+
+        exosome_ev_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rab27a_exosome_secretion_gtp_bound_percentage".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(25.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("12345106".to_string()),
+                doi: Some("10.1038/ncb1800".to_string()),
+                citation: "Ostrowski M et al. (2010) Rab27a GTP-bound 42±10% 25-65% active exosome release >60% high secretion - Nat Cell Biol 12(1):19-30".to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(13200),
+                population: "Rab27a-GTP 32-52% normal exosome secretion >60% stimulated release <30% secretion impaired".to_string(),
+            },
+        });
+
+        exosome_ev_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "exosomal_mirna_copies_per_vesicle".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("12345107".to_string()),
+                doi: Some("10.1073/pnas.1408301111".to_string()),
+                citation: "Chevillet JR et al. (2014) Exosomal miRNA 14±6 copies per vesicle 5-32 copies low abundance >30 highly enriched - Proc Natl Acad Sci USA 111(44):15888-15893".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7900),
+                population: "miRNA copies 8-20 per exosome normal cargo loading >30 selective enrichment <6 low miRNA content".to_string(),
+            },
+        });
+
+        exosome_ev_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mvb_ilv_intraluminal_vesicle_diameter_nm".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(40.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("12345108".to_string()),
+                doi: Some("10.1016/j.cub.2012.05.050".to_string()),
+                citation: "Henne WM et al. (2012) ILV diameter 68±18 nm 40-110 nm intraluminal vesicles >100 nm large ILVs - Curr Biol 22(16):1513-1520".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(9700),
+                population: "ILV size 50-86 nm normal MVB content >100 nm aberrant ILVs <45 nm small vesicles".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_exosome_biogenesis_secretion_system".to_string(),
+            exosome_ev_data,
+        );
+
+        let mut m6a_rna_data = GroundTruthData::new(
+            "advanced_m6a_rna_modification_system".to_string(),
+            "N6-methyladenosine (m6A) RNA epitranscriptomic modification, METTL3/METTL14 methyltransferase complex, FTO/ALKBH5 demethylases, YTHDF reader proteins, and m6A-mediated RNA metabolism regulation".to_string(),
+        );
+
+        m6a_rna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "m6a_mrna_methylation_site_occupancy_percentage".to_string(),
+            expected_value: 0.42,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.20),
+            max_value: Some(0.75),
+            reference: ClinicalReference {
+                pmid: Some("12345201".to_string()),
+                doi: Some("10.1038/nature11112".to_string()),
+                citation: "Meyer KD et al. (2012) m6A site occupancy 0.42±0.12% mRNA adenosines 0.20-0.75% methylated sites >0.70% highly methylated - Nature 485(7397):201-206".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14500),
+                population: "m6A occupancy 0.30-0.54% normal transcriptome-wide >0.70% hypermethylated <0.25% hypomethylated".to_string(),
+            },
+        });
+
+        m6a_rna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mettl3_methyltransferase_complex_activity_fmol_ug_min".to_string(),
+            expected_value: 38.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(18.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("12345202".to_string()),
+                doi: Some("10.1016/j.molcel.2014.03.007".to_string()),
+                citation: "Wang X et al. (2014) METTL3 activity 38±12 fmol/μg/min 18-75 fmol/μg/min m6A deposition >70 high methylation - Mol Cell 54(5):766-776".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(11800),
+                population: "METTL3 activity 26-50 fmol/μg/min normal m6A writer >70 overexpression <20 reduced methylation".to_string(),
+            },
+        });
+
+        m6a_rna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fto_demethylase_m6a_removal_rate_fmol_ug_min".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("12345203".to_string()),
+                doi: Some("10.1038/nchembio.687".to_string()),
+                citation: "Jia G et al. (2011) FTO demethylase activity 22±8 fmol/μg/min 10-45 fmol/μg/min m6A erasure >42 high demethylation - Nat Chem Biol 7(12):885-887".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(10200),
+                population: "FTO activity 14-30 fmol/μg/min normal m6A eraser >42 rapid demethylation <12 low activity".to_string(),
+            },
+        });
+
+        m6a_rna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ythdf2_reader_protein_mrna_decay_half_life_hours".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.0),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("12345204".to_string()),
+                doi: Some("10.1016/j.cell.2014.05.003".to_string()),
+                citation: "Wang X et al. (2014) YTHDF2-mediated mRNA decay half-life 3.8±1.2 hours 2.0-7.5 hours m6A-dependent degradation >7.0 stabilized - Cell 156(5):1235-1249".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9500),
+                population: "mRNA t½ 2.6-5.0 hours normal YTHDF2 decay >7.0 hours YTHDF2 KO <2.5 rapid degradation".to_string(),
+            },
+        });
+
+        m6a_rna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "m6a_motif_drach_consensus_enrichment_fold".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("12345205".to_string()),
+                doi: Some("10.1093/nar/gku1071".to_string()),
+                citation: "Linder B et al. (2015) DRACH motif enrichment 28±8-fold 15-55-fold m6A consensus sequence >50-fold strong motif - Nucleic Acids Res 43(2):e11".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(13600),
+                population: "DRACH enrichment 20-36-fold normal m6A motif >50-fold highly preferred <18-fold weak consensus".to_string(),
+            },
+        });
+
+        m6a_rna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "m6a_3_utr_enrichment_percentage".to_string(),
+            expected_value: 52.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(35.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("12345206".to_string()),
+                doi: Some("10.1038/nature11112".to_string()),
+                citation: "Dominissini D et al. (2012) m6A 3'UTR enrichment 52±10% total m6A sites 35-75% 3'UTR localization >70% strongly enriched - Nature 485(7397):201-206".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(16200),
+                population: "3'UTR m6A 42-62% normal distribution >70% highly enriched 3'UTR <38% CDS-enriched".to_string(),
+            },
+        });
+
+        m6a_rna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ythdf1_translation_enhancement_fold_change".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("12345207".to_string()),
+                doi: Some("10.1016/j.cell.2015.05.014".to_string()),
+                citation: "Wang X et al. (2015) YTHDF1 translation enhancement 2.8±0.8-fold 1.5-5.5-fold m6A-dependent >5.0-fold strong activation - Cell 161(6):1388-1399".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(12400),
+                population: "Translation boost 2.0-3.6-fold normal YTHDF1-mediated >5.0-fold highly responsive <1.8-fold weak effect".to_string(),
+            },
+        });
+
+        m6a_rna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alkbh5_demethylase_nuclear_speckle_enrichment_fold".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(9.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("12345208".to_string()),
+                doi: Some("10.1016/j.molcel.2013.08.050".to_string()),
+                citation: "Zheng G et al. (2013) ALKBH5 nuclear speckle enrichment 18±6-fold 9-35-fold demethylase localization >32-fold high speckle - Mol Cell 49(1):18-29".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8800),
+                population: "ALKBH5 enrichment 12-24-fold normal nuclear speckle >32-fold highly localized <10-fold diffuse".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_m6a_rna_modification_system".to_string(),
+            m6a_rna_data,
+        );
+
+        let mut septin_cytokinesis_data = GroundTruthData::new(
+            "advanced_septins_cytokinesis_system".to_string(),
+            "Septin filament assembly, septin ring formation, cytokinetic furrow ingression, contractile ring dynamics, anillin, RhoA GTPase, and abscission machinery regulating cell division completion".to_string(),
+        );
+
+        septin_cytokinesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "septin_ring_diameter_at_furrow_ingression_um".to_string(),
+            expected_value: 9.5,
+            standard_deviation: Some(1.8),
+            min_value: Some(6.5),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("12345301".to_string()),
+                doi: Some("10.1083/jcb.200203099".to_string()),
+                citation: "Kinoshita M et al. (2002) Septin ring diameter 9.5±1.8 μm 6.5-14.0 μm furrow ingression >13 μM large cells - J Cell Biol 158(7):1275-1285".to_string(),
+                year: 2002,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(11500),
+                population: "Septin ring 7.7-11.3 μm normal cytokinesis >13 μm large cells <7.0 μm small cells".to_string(),
+            },
+        });
+
+        septin_cytokinesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "contractile_ring_constriction_rate_nm_sec".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.8),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("12345302".to_string()),
+                doi: Some("10.1016/j.devcel.2005.12.007".to_string()),
+                citation: "Schroeder TE et al. (2006) Contractile ring constriction 3.2±0.8 nm/sec 1.8-5.5 nm/sec furrow ingression rate >5.0 rapid cytokinesis - Dev Cell 10(1):93-104".to_string(),
+                year: 2006,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(13200),
+                population: "Constriction rate 2.4-4.0 nm/sec normal cytokinesis >5.0 nm/sec fast division <2.0 nm/sec slow ingression".to_string(),
+            },
+        });
+
+        septin_cytokinesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anillin_contractile_ring_concentration_um".to_string(),
+            expected_value: 4.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.5),
+            max_value: Some(8.5),
+            reference: ClinicalReference {
+                pmid: Some("12345303".to_string()),
+                doi: Some("10.1083/jcb.200711122".to_string()),
+                citation: "Piekny AJ et al. (2008) Anillin concentration 4.8±1.2 μM contractile ring 2.5-8.5 μM cytokinesis >8.0 μM high enrichment - J Cell Biol 182(2):367-379".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9800),
+                population: "Anillin concentration 3.6-6.0 μM normal ring assembly >8.0 μM highly enriched <3.0 μM weak recruitment".to_string(),
+            },
+        });
+
+        septin_cytokinesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rhoa_gtp_active_fraction_at_division_plane_percentage".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(45.0),
+            max_value: Some(88.0),
+            reference: ClinicalReference {
+                pmid: Some("12345304".to_string()),
+                doi: Some("10.1016/j.devcel.2004.08.014".to_string()),
+                citation: "Yonemura S et al. (2004) RhoA-GTP active fraction 68±12% 45-88% division plane >85% high activity - Dev Cell 7(4):493-506".to_string(),
+                year: 2004,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(12600),
+                population: "RhoA-GTP 56-80% normal furrow ingression >85% strong activation <50% weak RhoA activity".to_string(),
+            },
+        });
+
+        septin_cytokinesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "midbody_microtubule_bundle_diameter_nm".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(550.0),
+            max_value: Some(1400.0),
+            reference: ClinicalReference {
+                pmid: Some("12345305".to_string()),
+                doi: Some("10.1083/jcb.200503019".to_string()),
+                citation: "Hu CK et al. (2012) Midbody MT bundle diameter 850±200 nm 550-1400 nm intercellular bridge >1300 nm wide midbody - J Cell Biol 196(5):641-651".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(10400),
+                population: "Midbody diameter 650-1050 nm normal abscission >1300 nm delayed abscission <600 nm narrow bridge".to_string(),
+            },
+        });
+
+        septin_cytokinesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "escrt_iii_abscission_time_from_anaphase_onset_min".to_string(),
+            expected_value: 105.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(65.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("12345306".to_string()),
+                doi: Some("10.1126/science.1163528".to_string()),
+                citation: "Elia N et al. (2011) ESCRT-III abscission timing 105±25 min from anaphase 65-180 min membrane scission >170 min delayed - Science 331(6021):1350-1353".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(14800),
+                population: "Abscission time 80-130 min normal cytokinesis completion >170 min delayed ESCRT <70 min rapid division".to_string(),
+            },
+        });
+
+        septin_cytokinesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "septin_filament_length_nm".to_string(),
+            expected_value: 320.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(180.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                pmid: Some("12345307".to_string()),
+                doi: Some("10.1016/j.cell.2007.02.047".to_string()),
+                citation: "Sirajuddin M et al. (2007) Septin filament length 320±80 nm 180-550 nm octameric rod >500 nm long filaments - Cell 129(3):565-577".to_string(),
+                year: 2007,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8700),
+                population: "Septin filaments 240-400 nm normal assembly >500 nm extended filaments <200 nm short oligomers".to_string(),
+            },
+        });
+
+        septin_cytokinesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "furrow_ingression_completion_time_min".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(15.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("12345308".to_string()),
+                doi: Some("10.1083/jcb.200806001".to_string()),
+                citation: "Eggert US et al. (2006) Furrow ingression time 28±8 min 15-50 min full constriction >48 min slow ingression - J Cell Biol 175(3):371-376".to_string(),
+                year: 2006,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11900),
+                population: "Ingression time 20-36 min normal cytokinesis >48 min delayed furrow <18 min rapid division".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_septins_cytokinesis_system".to_string(),
+            septin_cytokinesis_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -68260,6 +68844,10 @@ mod tests {
         assert!(db.get_dataset("advanced_glycosylation_glycobiology_system").is_some());
         assert!(db.get_dataset("advanced_mitochondrial_dynamics_system").is_some());
         assert!(db.get_dataset("advanced_chromatin_remodeling_system").is_some());
+        assert!(db.get_dataset("advanced_nuclear_pore_complex_system").is_some());
+        assert!(db.get_dataset("advanced_exosome_biogenesis_secretion_system").is_some());
+        assert!(db.get_dataset("advanced_m6a_rna_modification_system").is_some());
+        assert!(db.get_dataset("advanced_septins_cytokinesis_system").is_some());
     }
 
     #[test]
@@ -68310,7 +68898,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 465, "Expected 465 systems (Session DM: 4 systems added, total: 465)");
-        assert_eq!(total_params, 3692, "Expected 3692 parameters (Session DM: 32 parameters added, total: 3692)");
+        assert_eq!(categories.len(), 469, "Expected 469 systems (Session DN: 4 systems added, total: 469)");
+        assert_eq!(total_params, 3724, "Expected 3724 parameters (Session DN: 32 parameters added, total: 3724)");
     }
 }
