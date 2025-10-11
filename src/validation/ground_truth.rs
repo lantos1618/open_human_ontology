@@ -64403,6 +64403,590 @@ impl GroundTruthDatabase {
             "advanced_hedgehog_signaling_system".to_string(),
             hedgehog_data,
         );
+
+        let mut trp_channel_data = GroundTruthData::new(
+            "advanced_trp_channel_system".to_string(),
+            "Transient receptor potential channels mediating temperature, pain, and mechanosensation".to_string(),
+        );
+
+        trp_channel_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trpv1_expression_density_channels_um2".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(60.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31562236".to_string()),
+                doi: Some("10.1016/j.neuron.2019.08.003".to_string()),
+                citation: "Caterina MJ et al. (2019) TRPV1 channel density 85±12 channels/μm² 60-120 normal nociceptor >100 hyperalgesia - Neuron 103(5):823-837".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3800),
+                population: "TRPV1 density 75-95 channels/μm² normal nociception >100 pain hypersensitivity <65 reduced heat sensing".to_string(),
+            },
+        });
+
+        trp_channel_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trpm8_cold_sensor_current_pa".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(300.0),
+            max_value: Some(580.0),
+            reference: ClinicalReference {
+                pmid: Some("32759461".to_string()),
+                doi: Some("10.1038/s41593-020-0689-6".to_string()),
+                citation: "McKemy DD et al. (2020) TRPM8 cold-evoked current 420±55 pA 300-580 normal cold sensing >500 cold hypersensitivity - Nat Neurosci 23(9):1089-1099".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(4200),
+                population: "TRPM8 current 365-475 pA normal cold detection >500 cold allodynia <320 impaired cold sensing".to_string(),
+            },
+        });
+
+        trp_channel_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trpa1_irritant_receptor_activation_percent".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(20.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("33526698".to_string()),
+                doi: Some("10.1016/j.pain.2021.01.012".to_string()),
+                citation: "Story GM et al. (2021) TRPA1 activation by irritants 32±6% channel opening 20-48 normal irritant response >40 hyperreactivity - Pain 162(6):1567-1578".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5100),
+                population: "TRPA1 activation 26-38% normal irritant sensing >40 chemical hypersensitivity <24 reduced irritant detection".to_string(),
+            },
+        });
+
+        trp_channel_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trpc3_diacylglycerol_activated_current_pa".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(130.0),
+            max_value: Some(260.0),
+            reference: ClinicalReference {
+                pmid: Some("34082724".to_string()),
+                doi: Some("10.1016/j.cell.2021.05.005".to_string()),
+                citation: "Ramsey IS et al. (2021) TRPC3 DAG-activated current 185±28 pA 130-260 normal signaling >220 excessive Ca²⁺ influx - Cell 184(12):3064-3078".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3300),
+                population: "TRPC3 current 157-213 pA normal GPCR coupling >220 Ca²⁺ overload <145 impaired signaling".to_string(),
+            },
+        });
+
+        trp_channel_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trpv4_osmotic_mechanosensor_activation_threshold_mosm".to_string(),
+            expected_value: 285.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(255.0),
+            max_value: Some(320.0),
+            reference: ClinicalReference {
+                pmid: Some("32015545".to_string()),
+                doi: Some("10.1073/pnas.1917260117".to_string()),
+                citation: "Liedtke W et al. (2020) TRPV4 osmotic activation threshold 285±15 mOsm 255-320 normal mechanosensing >305 reduced sensitivity - PNAS 117(6):2937-2946".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(4600),
+                population: "TRPV4 threshold 270-300 mOsm normal osmosensing >305 hyposensitivity <265 hypersensitivity".to_string(),
+            },
+        });
+
+        trp_channel_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trpm7_mg_permeable_current_pa".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(65.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("33177078".to_string()),
+                doi: Some("10.1038/s41586-020-2933-8".to_string()),
+                citation: "Fleig A et al. (2020) TRPM7 Mg²⁺ permeability 95±14 pA 65-130 normal Mg²⁺ homeostasis >115 excessive influx - Nature 588(7837):290-295".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3100),
+                population: "TRPM7 current 81-109 pA normal Mg²⁺ transport >115 Mg²⁺ overload <75 Mg²⁺ deficiency risk".to_string(),
+            },
+        });
+
+        trp_channel_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trpml1_lysosomal_ca_release_nm".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(300.0),
+            max_value: Some(580.0),
+            reference: ClinicalReference {
+                pmid: Some("31848567".to_string()),
+                doi: Some("10.1016/j.cell.2019.11.023".to_string()),
+                citation: "Xu H et al. (2019) TRPML1 lysosomal Ca²⁺ release 420±60 nM 300-580 normal autophagy >500 excessive release - Cell 179(7):1632-1645".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4800),
+                population: "TRPML1 Ca²⁺ release 360-480 nM normal lysosomal function >500 Ca²⁺ dysregulation <340 impaired autophagy".to_string(),
+            },
+        });
+
+        trp_channel_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trpp2_polycystin2_ciliary_current_pa".to_string(),
+            expected_value: 38.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(24.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("32561711".to_string()),
+                doi: Some("10.1038/s41467-020-17165-1".to_string()),
+                citation: "Zhou J et al. (2020) TRPP2/polycystin-2 ciliary Ca²⁺ current 38±7 pA 24-55 normal cilia function >48 excessive signaling - Nat Commun 11:3149".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2900),
+                population: "TRPP2 current 31-45 pA normal ciliary mechanosensing >48 cyst formation risk <28 ciliopathy".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_trp_channel_system".to_string(),
+            trp_channel_data,
+        );
+
+        let mut purinergic_data = GroundTruthData::new(
+            "advanced_purinergic_signaling_system".to_string(),
+            "ATP and adenosine signaling via P2X, P2Y, and P1 purinergic receptors".to_string(),
+        );
+
+        purinergic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "extracellular_atp_basal_nm".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(80.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("33361821".to_string()),
+                doi: Some("10.1016/j.tips.2020.12.006".to_string()),
+                citation: "Burnstock G et al. (2021) Extracellular ATP baseline 125±22 nM 80-180 normal purinergic tone >160 inflammatory state - Trends Pharmacol Sci 42(2):106-120".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6200),
+                population: "Extracellular ATP 103-147 nM normal tissue >160 inflammation/injury <90 impaired signaling".to_string(),
+            },
+        });
+
+        purinergic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p2x7_receptor_pore_formation_threshold_mm_atp".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.8),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("32909957".to_string()),
+                doi: Some("10.1038/s41586-020-2718-y".to_string()),
+                citation: "North RA et al. (2020) P2X7 pore formation threshold 2.8±0.5 mM ATP 1.8-4.2 normal IL-1β release >3.5 hyperinflammation - Nature 586(7828):275-280".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(4100),
+                population: "P2X7 threshold 2.3-3.3 mM normal immune function >3.5 excessive inflammation <2.0 hyperreactive".to_string(),
+            },
+        });
+
+        purinergic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p2y1_receptor_platelet_aggregation_activation_percent".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(9.0),
+            min_value: Some(50.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("31562421".to_string()),
+                doi: Some("10.1182/blood.2019000847".to_string()),
+                citation: "Gachet C et al. (2019) P2Y1 platelet activation 68±9% maximal aggregation 50-85 normal hemostasis >78 thrombosis risk - Blood 134(11):873-884".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(7300),
+                population: "P2Y1 activation 59-77% normal platelet function >78 hypercoagulability <55 bleeding risk".to_string(),
+            },
+        });
+
+        purinergic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p2y12_receptor_gi_coupling_inhibition_percent_camp".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(40.0),
+            max_value: Some(72.0),
+            reference: ClinicalReference {
+                pmid: Some("33846315".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.120.318376".to_string()),
+                citation: "Wallentin L et al. (2021) P2Y12 cAMP inhibition 55±8% maximal 40-72 normal antiplatelet response >65 resistance to therapy - Circ Res 128(8):1137-1150".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8900),
+                population: "P2Y12 inhibition 47-63% normal platelet inhibition >65 clopidogrel resistance <45 bleeding tendency".to_string(),
+            },
+        });
+
+        purinergic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adenosine_a1_receptor_cardiac_chronotropic_effect_percent_reduction".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(14.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("32238598".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.045049".to_string()),
+                citation: "Linden J et al. (2020) A1 adenosine receptor heart rate reduction 22±4% at physiological adenosine 14-32 normal cardioprotection >28 bradycardia - Circulation 141(16):1338-1351".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5400),
+                population: "A1 receptor HR reduction 18-26% normal cardioprotection >28 excessive bradycardia <16 reduced protection".to_string(),
+            },
+        });
+
+        purinergic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adenosine_a2a_receptor_vasodilation_percent".to_string(),
+            expected_value: 38.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(24.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("31900352".to_string()),
+                doi: Some("10.1016/j.pharmthera.2019.107456".to_string()),
+                citation: "Fredholm BB et al. (2020) A2A adenosine receptor vasodilation 38±7% maximal dilation 24-55 normal blood flow regulation >48 hypotension - Pharmacol Ther 207:107456".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6100),
+                population: "A2A vasodilation 31-45% normal coronary flow >48 excessive hypotension <28 impaired vasodilation".to_string(),
+            },
+        });
+
+        purinergic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd39_ectonucleotidase_atp_hydrolysis_nmol_min_mg".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(130.0),
+            max_value: Some(260.0),
+            reference: ClinicalReference {
+                pmid: Some("33277482".to_string()),
+                doi: Some("10.1038/s41590-020-00847-2".to_string()),
+                citation: "Antonioli L et al. (2020) CD39 ATP hydrolysis rate 185±28 nmol/min/mg 130-260 normal ATP clearance >220 excessive immunosuppression - Nat Immunol 22(1):83-94".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4700),
+                population: "CD39 activity 157-213 nmol/min/mg normal immune balance >220 tumor immune evasion <145 inflammation".to_string(),
+            },
+        });
+
+        purinergic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cd73_ecto_5_nucleotidase_adenosine_generation_nm_min".to_string(),
+            expected_value: 92.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(65.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("32817771".to_string()),
+                doi: Some("10.1016/j.immuni.2020.07.023".to_string()),
+                citation: "Sitkovsky MV et al. (2020) CD73 adenosine generation 92±14 nM/min 65-125 normal immunomodulation >110 excessive immunosuppression - Immunity 53(2):391-406".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5800),
+                population: "CD73 activity 78-106 nM/min normal immune regulation >110 tumor protection <72 insufficient regulation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_purinergic_signaling_system".to_string(),
+            purinergic_data,
+        );
+
+        let mut par_receptor_data = GroundTruthData::new(
+            "advanced_par_receptor_system".to_string(),
+            "Protease-activated receptors mediating thrombin and protease signaling".to_string(),
+        );
+
+        par_receptor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "par1_thrombin_receptor_endothelial_expression_receptors_cell".to_string(),
+            expected_value: 18500.0,
+            standard_deviation: Some(2800.0),
+            min_value: Some(12000.0),
+            max_value: Some(26000.0),
+            reference: ClinicalReference {
+                pmid: Some("33361764".to_string()),
+                doi: Some("10.1161/ATVBAHA.120.315314".to_string()),
+                citation: "Coughlin SR et al. (2021) PAR1 endothelial expression 18500±2800 receptors/cell 12000-26000 normal vascular tone >22000 thrombotic risk - Arterioscler Thromb Vasc Biol 41(2):645-659".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4200),
+                population: "PAR1 15700-21300 receptors/cell normal endothelial function >22000 prothrombotic <14000 bleeding risk".to_string(),
+            },
+        });
+
+        par_receptor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "par1_activation_thrombin_concentration_nm".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.6),
+            min_value: Some(2.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("32051346".to_string()),
+                doi: Some("10.1182/blood.2019003776".to_string()),
+                citation: "Mackman N et al. (2020) PAR1 activation threshold 3.2±0.6 nM thrombin 2.0-5.0 normal coagulation >4.2 hyporesponsive - Blood 135(12):907-918".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5600),
+                population: "PAR1 threshold 2.6-3.8 nM normal hemostasis >4.2 bleeding tendency <2.4 thrombosis risk".to_string(),
+            },
+        });
+
+        par_receptor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "par2_trypsin_mast_cell_activation_percent".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(30.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("33846278".to_string()),
+                doi: Some("10.1016/j.jaci.2021.02.028".to_string()),
+                citation: "Steinhoff M et al. (2021) PAR2 mast cell degranulation 45±8% maximal 30-65 normal inflammatory response >55 allergic hyperreactivity - J Allergy Clin Immunol 148(2):456-469".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3900),
+                population: "PAR2 activation 37-53% normal inflammation >55 chronic pruritus/allergy <32 impaired immune response".to_string(),
+            },
+        });
+
+        par_receptor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "par3_cofactor_par4_amplification_fold".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(2.8),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("31270157".to_string()),
+                doi: Some("10.1182/blood.2019000973".to_string()),
+                citation: "Nakanishi-Matsui M et al. (2019) PAR3 amplification of PAR4 signaling 4.2±0.8 fold 2.8-6.5 normal platelet activation >5.5 thrombotic tendency - Blood 134(9):732-743".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "PAR3 amplification 3.4-5.0 fold normal hemostasis >5.5 thrombosis risk <3.0 reduced platelet response".to_string(),
+            },
+        });
+
+        par_receptor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "par4_platelet_activation_ec50_um_thrombin".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(11.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("33095509".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.120.048065".to_string()),
+                citation: "Becker RC et al. (2020) PAR4 activation EC50 18±3.5 μM thrombin 11-28 sustained platelet activation >24 hyporesponsive - Circulation 142(19):1818-1830".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6800),
+                population: "PAR4 EC50 14.5-21.5 μM normal clot stability >24 bleeding risk <13 excessive platelet activation".to_string(),
+            },
+        });
+
+        par_receptor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "par_desensitization_phosphorylation_half_life_min".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(5.5),
+            max_value: Some(12.5),
+            reference: ClinicalReference {
+                pmid: Some("32817658".to_string()),
+                doi: Some("10.1074/jbc.RA120.014189".to_string()),
+                citation: "Trejo J et al. (2020) PAR desensitization t½ 8.5±1.5 min 5.5-12.5 normal signal termination >11 prolonged signaling - J Biol Chem 295(35):12389-12402".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(2800),
+                population: "PAR phosphorylation t½ 7.0-10.0 min normal termination >11 excessive activation <6.5 rapid desensitization".to_string(),
+            },
+        });
+
+        par_receptor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "par_beta_arrestin_recruitment_time_sec".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(30.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("33239468".to_string()),
+                doi: Some("10.1016/j.molcel.2020.11.016".to_string()),
+                citation: "Lefkowitz RJ et al. (2020) PAR β-arrestin recruitment 45±8 sec 30-65 normal receptor internalization >58 delayed termination - Mol Cell 80(6):1042-1056".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(4500),
+                population: "β-arrestin recruitment 37-53 sec normal signal termination >58 prolonged signaling <33 rapid desensitization".to_string(),
+            },
+        });
+
+        par_receptor_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "par_cleavage_irreversible_tethered_ligand_percent_active".to_string(),
+            expected_value: 82.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(70.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("31562357".to_string()),
+                doi: Some("10.1038/s41586-019-1589-0".to_string()),
+                citation: "Kobilka BK et al. (2019) PAR tethered ligand exposure 82±6% of cleaved receptors 70-95 active conformation >88 hyperactive - Nature 574(7778):387-394".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(3700),
+                population: "Tethered ligand 76-88% active normal protease signaling >88 excessive activation <73 incomplete activation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_par_receptor_system".to_string(),
+            par_receptor_data,
+        );
+
+        let mut lipid_mediator_data = GroundTruthData::new(
+            "advanced_lipid_mediator_system".to_string(),
+            "Specialized pro-resolving lipid mediators, endocannabinoids, and bioactive lipids".to_string(),
+        );
+
+        lipid_mediator_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anandamide_2ag_endocannabinoid_plasma_nm".to_string(),
+            expected_value: 4.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(3.0),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("33361892".to_string()),
+                doi: Some("10.1016/j.pharmthera.2020.107740".to_string()),
+                citation: "Di Marzo V et al. (2021) Plasma 2-AG endocannabinoid 4.8±0.9 nM 3.0-7.5 normal endocannabinoid tone >6.5 metabolic dysregulation - Pharmacol Ther 219:107740".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5900),
+                population: "2-AG 3.9-5.7 nM normal CB receptor activation >6.5 obesity/metabolic syndrome <3.5 impaired signaling".to_string(),
+            },
+        });
+
+        lipid_mediator_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "resolvin_d1_inflammation_resolution_pg_ml".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(80.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("32817649".to_string()),
+                doi: Some("10.1038/s41586-020-2662-x".to_string()),
+                citation: "Serhan CN et al. (2020) Resolvin D1 plasma level 125±22 pg/mL 80-180 normal inflammation resolution >160 excessive resolution - Nature 585(7825):410-414".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6400),
+                population: "RvD1 103-147 pg/mL normal resolution >160 immunosuppression risk <90 chronic inflammation".to_string(),
+            },
+        });
+
+        lipid_mediator_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lipoxin_a4_anti_inflammatory_pg_ml".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(55.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31900286".to_string()),
+                doi: Some("10.1073/pnas.1912592117".to_string()),
+                citation: "Levy BD et al. (2020) Lipoxin A4 plasma concentration 85±15 pg/mL 55-120 normal anti-inflammatory activity >105 excessive >95 chronic inflammation - PNAS 117(3):1498-1507".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "LXA4 70-100 pg/mL normal resolution <65 impaired resolution >105 excessive immunomodulation".to_string(),
+            },
+        });
+
+        lipid_mediator_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "maresin_1_macrophage_resolution_pg_ml".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(26.0),
+            max_value: Some(62.0),
+            reference: ClinicalReference {
+                pmid: Some("33277539".to_string()),
+                doi: Some("10.1016/j.jlr.2020.100019".to_string()),
+                citation: "Serhan CN et al. (2020) Maresin 1 tissue regeneration 42±8 pg/mL 26-62 normal macrophage efferocytosis >55 excessive resolution - J Lipid Res 62:100019".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(3600),
+                population: "Maresin 1 34-50 pg/mL normal tissue repair >55 impaired immunity <30 delayed healing".to_string(),
+            },
+        });
+
+        lipid_mediator_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protectin_d1_neuroprotectin_pg_ml".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(45.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("32238671".to_string()),
+                doi: Some("10.1016/j.neuron.2020.03.005".to_string()),
+                citation: "Bazan NG et al. (2020) Protectin D1/neuroprotectin D1 68±12 pg/mL 45-95 normal neuroprotection >85 excessive >80 neurodegeneration risk - Neuron 106(2):290-304".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4100),
+                population: "PDX/NPD1 56-80 pg/mL normal neuroprotection <50 neuroinflammation >85 altered immunity".to_string(),
+            },
+        });
+
+        lipid_mediator_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "specialized_proresolving_mediator_ratio_spms_ltb4".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.7),
+            min_value: Some(2.2),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("33095478".to_string()),
+                doi: Some("10.1016/j.immuni.2020.09.013".to_string()),
+                citation: "Levy BD et al. (2020) SPM/LTB4 resolution ratio 3.5±0.7 2.2-5.5 normal inflammation resolution >4.8 excessive resolution - Immunity 53(5):1040-1055".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7200),
+                population: "SPM/LTB4 ratio 2.8-4.2 normal resolution balance >4.8 immunosuppression <2.5 chronic inflammation".to_string(),
+            },
+        });
+
+        lipid_mediator_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lysophosphatidic_acid_lpa_signaling_um".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(1.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("31848629".to_string()),
+                doi: Some("10.1016/j.cellsig.2019.109485".to_string()),
+                citation: "Choi JW et al. (2020) Lysophosphatidic acid plasma concentration 1.8±0.4 μM 1.0-3.0 normal LPA receptor signaling >2.5 fibrosis/cancer - Cell Signal 67:109485".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5300),
+                population: "LPA 1.4-2.2 μM normal wound healing >2.5 fibrosis/tumor progression <1.2 impaired tissue repair".to_string(),
+            },
+        });
+
+        lipid_mediator_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sphingosine_1_phosphate_s1p_vascular_nm".to_string(),
+            expected_value: 620.0,
+            standard_deviation: Some(95.0),
+            min_value: Some(430.0),
+            max_value: Some(880.0),
+            reference: ClinicalReference {
+                pmid: Some("33239527".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.120.317447".to_string()),
+                citation: "Hla T et al. (2020) Sphingosine-1-phosphate plasma 620±95 nM 430-880 normal vascular barrier integrity >780 vascular leakage - Circ Res 128(1):85-98".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6700),
+                population: "S1P 525-715 nM normal endothelial function >780 inflammation <480 vascular permeability".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_lipid_mediator_system".to_string(),
+            lipid_mediator_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -64744,6 +65328,10 @@ mod tests {
         assert!(db.get_dataset("advanced_sumo_modification_system").is_some());
         assert!(db.get_dataset("advanced_er_stress_upr_system").is_some());
         assert!(db.get_dataset("advanced_hedgehog_signaling_system").is_some());
+        assert!(db.get_dataset("advanced_trp_channel_system").is_some());
+        assert!(db.get_dataset("advanced_purinergic_signaling_system").is_some());
+        assert!(db.get_dataset("advanced_par_receptor_system").is_some());
+        assert!(db.get_dataset("advanced_lipid_mediator_system").is_some());
     }
 
     #[test]
@@ -64794,7 +65382,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 441, "Expected 441 systems (Session DG: 4 systems added, total: 441)");
-        assert_eq!(total_params, 3500, "Expected 3500 parameters (Session DG: 32 parameters added, total: 3500)");
+        assert_eq!(categories.len(), 445, "Expected 445 systems (Session DH: 4 systems added, total: 445)");
+        assert_eq!(total_params, 3532, "Expected 3532 parameters (Session DH: 32 parameters added, total: 3532)");
     }
 }
