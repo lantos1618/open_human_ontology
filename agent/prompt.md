@@ -26,7 +26,7 @@ push changes as you go to remote
 3. **Advanced Ferroptosis System** - Iron-dependent regulated cell death driven by lipid peroxidation and redox imbalance (GPX4 glutathione peroxidase activity, system xc⁻ cystine-glutamate antiporter, lipid peroxides MDA/4-HNE, ACSL4 PUFA incorporation, labile iron pool, FSP1 CoQ10 reduction, DHODH CoQ reduction, TFR1 iron uptake)
 4. **Advanced Gasotransmitter System** - Gaseous signaling molecules: nitric oxide, hydrogen sulfide, carbon monoxide (eNOS endothelial NO production, nNOS neuronal synaptic signaling, iNOS inflammatory NO burst, CBS H₂S production, CSE vascular H₂S, HO-1 CO production, sGC NO-cGMP activation, persulfide/polysulfide signaling ratio)
 
-**Commit:** [pending] - To be pushed to remote
+**Commit:** `dda2af2` - Pushed to remote
 
 ---
 
