@@ -26,7 +26,7 @@ push changes as you go to remote
 3. **Advanced ER Stress/UPR System** - ER stress response, unfolded protein response, and ER-associated degradation (BiP/GRP78, IRE1α endoribonuclease, XBP1 spliced/unspliced ratio, PERK-eIF2α phosphorylation, ATF4, ATF6 p50, CHOP, ERAD flux)
 4. **Advanced Hedgehog Signaling System** - Hedgehog morphogen signaling pathway regulating development and tissue homeostasis (Sonic hedgehog secretion, PTCH1 receptor, Smoothened ciliary localization, GLI1 nuclear accumulation, GLI2 activator/repressor ratio, GLI3 repressor, SUFU cytoplasmic retention, PTCH1 target gene induction)
 
-**Commit:** Pending push
+**Commit:** `798cdd1` - Pushed to remote
 
 ---
 
