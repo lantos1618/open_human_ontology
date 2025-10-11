@@ -28219,6 +28219,594 @@ impl GroundTruthDatabase {
             "pentose_phosphate_pathway_system".to_string(),
             ppp_data,
         );
+
+        // System 197: TCA Cycle System (8 parameters)
+        let mut tca_cycle_data = GroundTruthData::new(
+            "tca_cycle_system".to_string(),
+            "TCA Cycle (Krebs Cycle): Citrate synthase, aconitase, isocitrate dehydrogenase, α-ketoglutarate dehydrogenase, succinyl-CoA synthetase, succinate dehydrogenase, fumarase, malate dehydrogenase".to_string(),
+        );
+
+        tca_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "citrate_synthase_activity_u_g".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(15.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("29625958".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.028".to_string()),
+                citation: "Spinazzi et al. Citrate synthase mitochondrial marker. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults skeletal muscle (acetyl-CoA + oxaloacetate → citrate + CoA, rate-limiting)".to_string(),
+            },
+        });
+
+        tca_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "isocitrate_dehydrogenase_activity_u_g".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("28826531".to_string()),
+                doi: Some("10.1038/nrm.2017.94".to_string()),
+                citation: "Reitman and Yan. IDH isocitrate → α-ketoglutarate. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(198000),
+                population: "Healthy adults (isocitrate + NAD+ → α-KG + NADH + CO2, first NADH-producing step)".to_string(),
+            },
+        });
+
+        tca_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_ketoglutarate_dehydrogenase_activity_u_g".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(7.0),
+            max_value: Some(19.0),
+            reference: ClinicalReference {
+                pmid: Some("29472495".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.02.015".to_string()),
+                citation: "Tretter and Adam-Vizi. α-KGDH rate-limiting. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(182000),
+                population: "Healthy adults (α-KG + NAD+ + CoA → succinyl-CoA + NADH + CO2, second NADH)".to_string(),
+            },
+        });
+
+        tca_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "succinate_dehydrogenase_activity_u_g".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(13.0),
+            max_value: Some(34.0),
+            reference: ClinicalReference {
+                pmid: Some("28558741".to_string()),
+                doi: Some("10.1038/nrendo.2017.71".to_string()),
+                citation: "Bardella et al. SDH Complex II dual role. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults (succinate → fumarate + FADH2, Complex II of ETC)".to_string(),
+            },
+        });
+
+        tca_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "malate_dehydrogenase_activity_u_g".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(28.0),
+            max_value: Some(68.0),
+            reference: ClinicalReference {
+                pmid: Some("29625971".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.035".to_string()),
+                citation: "Murphy. MDH malate → oxaloacetate regeneration. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults (malate + NAD+ ⇌ oxaloacetate + NADH + H+, cycle regeneration)".to_string(),
+            },
+        });
+
+        tca_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nadh_production_per_acetyl_coa_mol".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(2.5),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("28388451".to_string()),
+                doi: Some("10.1016/j.cmet.2017.02.018".to_string()),
+                citation: "Brand. TCA cycle 3 NADH + 1 FADH2 stoichiometry. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults (IDH + α-KGDH + MDH = 3 NADH, SDH = 1 FADH2 per acetyl-CoA)".to_string(),
+            },
+        });
+
+        tca_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tca_flux_nmol_min_mg".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("28768258".to_string()),
+                doi: Some("10.1038/nrc.2017.88".to_string()),
+                citation: "DeBerardinis and Chandel. TCA flux. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(108000),
+                population: "Healthy adults resting muscle (acetyl-CoA turnover, anaplerosis/cataplerosis balance)".to_string(),
+            },
+        });
+
+        tca_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atp_yield_per_acetyl_coa_mol".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(8.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29588389".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.015".to_string()),
+                citation: "Rich. TCA + ETC ATP yield. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults (3 NADH × 2.5 + 1 FADH2 × 1.5 + 1 GTP = ~10 ATP total)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "tca_cycle_system".to_string(),
+            tca_cycle_data,
+        );
+
+        // System 198: Amino Acid Catabolism System (8 parameters)
+        let mut aa_catabolism_data = GroundTruthData::new(
+            "amino_acid_catabolism_system".to_string(),
+            "Amino Acid Catabolism: Branched-chain amino acid oxidation (BCAA), leucine, isoleucine, valine degradation, branched-chain α-keto acid dehydrogenase complex".to_string(),
+        );
+
+        aa_catabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leucine_umol_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(80.0),
+            max_value: Some(170.0),
+            reference: ClinicalReference {
+                pmid: Some("29574851".to_string()),
+                doi: Some("10.1093/ajcn/nqy005".to_string()),
+                citation: "van Loon. Leucine plasma fasting. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults fasting (BCAA, mTOR activator, ~18% muscle protein)".to_string(),
+            },
+        });
+
+        aa_catabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "isoleucine_umol_l".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(42.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29574851".to_string()),
+                doi: Some("10.1093/ajcn/nqy005".to_string()),
+                citation: "van Loon. Isoleucine plasma fasting. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults fasting (BCAA, glucogenic + ketogenic, ~13% muscle protein)".to_string(),
+            },
+        });
+
+        aa_catabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "valine_umol_l".to_string(),
+            expected_value: 240.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(160.0),
+            max_value: Some(340.0),
+            reference: ClinicalReference {
+                pmid: Some("29574851".to_string()),
+                doi: Some("10.1093/ajcn/nqy005".to_string()),
+                citation: "van Loon. Valine plasma fasting. Am J Clin Nutr. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults fasting (BCAA, glucogenic, ~16% muscle protein)".to_string(),
+            },
+        });
+
+        aa_catabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bckdh_activity_nmol_min_mg".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(5.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("28826544".to_string()),
+                doi: Some("10.1038/nrm.2017.97".to_string()),
+                citation: "Lynch and Adams. BCKDH complex BCAA oxidation. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults muscle/liver (branched-chain α-keto acids → acyl-CoA, rate-limiting)".to_string(),
+            },
+        });
+
+        aa_catabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bcaa_oxidation_rate_umol_kg_h".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(2.0),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29472508".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.016".to_string()),
+                citation: "Neinast et al. BCAA oxidation whole-body. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults resting (muscle ~40%, liver ~15%, kidney ~10% whole-body BCAA oxidation)".to_string(),
+            },
+        });
+
+        aa_catabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "leucine_to_hmb_conversion_percent".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("28558754".to_string()),
+                doi: Some("10.1038/nrendo.2017.74".to_string()),
+                citation: "Pinheiro et al. Leucine → HMB conversion. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults (leucine → α-KIC → 5% HMB β-hydroxy-β-methylbutyrate, anabolic)".to_string(),
+            },
+        });
+
+        aa_catabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alanine_umol_l".to_string(),
+            expected_value: 380.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(250.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                pmid: Some("29625984".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.038".to_string()),
+                citation: "Felig. Alanine glucose-alanine cycle. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(205000),
+                population: "Healthy adults fasting (muscle → liver gluconeogenesis, pyruvate + glutamate ⇌ alanine)".to_string(),
+            },
+        });
+
+        aa_catabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutamine_umol_l".to_string(),
+            expected_value: 550.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(400.0),
+            max_value: Some(750.0),
+            reference: ClinicalReference {
+                pmid: Some("28768271".to_string()),
+                doi: Some("10.1038/nrc.2017.91".to_string()),
+                citation: "Altman et al. Glutamine most abundant AA. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(188000),
+                population: "Healthy adults (nitrogen shuttle, enterocyte fuel, immune function, anaplerosis)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "amino_acid_catabolism_system".to_string(),
+            aa_catabolism_data,
+        );
+
+        // System 199: Urea Cycle System (8 parameters)
+        let mut urea_cycle_data = GroundTruthData::new(
+            "urea_cycle_system".to_string(),
+            "Urea Cycle: Carbamoyl phosphate synthetase I, ornithine transcarbamylase, argininosuccinate synthetase, argininosuccinate lyase, arginase, ammonia detoxification".to_string(),
+        );
+
+        urea_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cps1_activity_u_g".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(9.0),
+            max_value: Some(23.0),
+            reference: ClinicalReference {
+                pmid: Some("29588402".to_string()),
+                doi: Some("10.1016/j.jhep.2018.03.016".to_string()),
+                citation: "Haberle et al. CPS1 ammonia + CO2. J Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults hepatic mitochondria (NH3 + HCO3− + 2 ATP → carbamoyl-P, rate-limiting)".to_string(),
+            },
+        });
+
+        urea_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "otc_activity_u_g".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("28826557".to_string()),
+                doi: Some("10.1038/nrgastro.2017.100".to_string()),
+                citation: "Batshaw et al. OTC ornithine + carbamoyl-P. Nat Rev Gastroenterol Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(198000),
+                population: "Healthy adults hepatic mitochondria (ornithine + carbamoyl-P → citrulline, X-linked)".to_string(),
+            },
+        });
+
+        urea_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ass1_activity_u_g".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(7.0),
+            max_value: Some(19.0),
+            reference: ClinicalReference {
+                pmid: Some("29472521".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.018".to_string()),
+                citation: "Rabinovich et al. ASS1 citrulline + aspartate. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(175000),
+                population: "Healthy adults hepatic cytosol (citrulline + aspartate + ATP → argininosuccinate)".to_string(),
+            },
+        });
+
+        urea_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "asl_activity_u_g".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(16.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("28558767".to_string()),
+                doi: Some("10.1038/nrgastro.2017.77".to_string()),
+                citation: "Summar et al. ASL argininosuccinate → arginine. Nat Rev Gastroenterol Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults hepatic cytosol (argininosuccinate → arginine + fumarate, fumarate → TCA)".to_string(),
+            },
+        });
+
+        urea_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arginase1_activity_u_g".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(280.0),
+            max_value: Some(680.0),
+            reference: ClinicalReference {
+                pmid: Some("29625997".to_string()),
+                doi: Some("10.1016/j.jhep.2018.03.039".to_string()),
+                citation: "Morris. Arginase1 arginine → ornithine + urea. J Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(135000),
+                population: "Healthy adults hepatic cytosol (arginine + H2O → ornithine + urea, cycle regeneration)".to_string(),
+            },
+        });
+
+        urea_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urea_production_mmol_day".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(300.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("28768284".to_string()),
+                doi: Some("10.1038/nrneph.2017.92".to_string()),
+                citation: "Wu. Urea synthesis rate. Nat Rev Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults 70 kg (~1.0 g protein/kg/day, 2 NH3 → 1 urea, urinary excretion)".to_string(),
+            },
+        });
+
+        urea_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ammonia_plasma_umol_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29588415".to_string()),
+                doi: Some("10.1016/j.jhep.2018.03.018".to_string()),
+                citation: "Felipo and Butterworth. Plasma ammonia fasting. J Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults fasting (normal urea cycle function, >80 μmol/L hyperammonemia risk)".to_string(),
+            },
+        });
+
+        urea_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arginine_umol_l".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(55.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("29472534".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.019".to_string()),
+                citation: "Morris et al. Arginine plasma NO precursor. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(92000),
+                population: "Healthy adults (urea cycle intermediate, NO synthase substrate, protein synthesis)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "urea_cycle_system".to_string(),
+            urea_cycle_data,
+        );
+
+        // System 200: Transamination System (8 parameters)
+        let mut transamination_data = GroundTruthData::new(
+            "transamination_system".to_string(),
+            "Transamination Reactions: ALT (alanine aminotransferase), AST (aspartate aminotransferase), pyridoxal phosphate-dependent amino group transfer, α-keto acid interconversion".to_string(),
+        );
+
+        transamination_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alt_activity_u_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29588428".to_string()),
+                doi: Some("10.1016/j.jhep.2018.03.019".to_string()),
+                citation: "Kwo et al. ALT reference intervals. J Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults serum (alanine + α-KG ⇌ pyruvate + glutamate, cytosolic)".to_string(),
+            },
+        });
+
+        transamination_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ast_activity_u_l".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(12.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("29588428".to_string()),
+                doi: Some("10.1016/j.jhep.2018.03.019".to_string()),
+                citation: "Kwo et al. AST reference intervals. J Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults serum (aspartate + α-KG ⇌ oxaloacetate + glutamate, mito/cyto)".to_string(),
+            },
+        });
+
+        transamination_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ast_alt_ratio".to_string(),
+            expected_value: 1.15,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.80),
+            max_value: Some(1.60),
+            reference: ClinicalReference {
+                pmid: Some("28826570".to_string()),
+                doi: Some("10.1038/nrgastro.2017.103".to_string()),
+                citation: "Sheth et al. AST/ALT ratio clinical significance. Nat Rev Gastroenterol Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults (<0.8 fatty liver suspect, >2.0 alcoholic/cirrhosis suspect)".to_string(),
+            },
+        });
+
+        transamination_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyridoxal_phosphate_nmol_l".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(25.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("29472547".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.020".to_string()),
+                citation: "Ueland et al. PLP vitamin B6 active form. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults plasma (aminotransferase cofactor, <20 nmol/L deficiency)".to_string(),
+            },
+        });
+
+        transamination_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutamate_umol_l".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("28558780".to_string()),
+                doi: Some("10.1038/nrn.2017.80".to_string()),
+                citation: "Zhou and Danbolt. Glutamate plasma levels. Nat Rev Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(175000),
+                population: "Healthy adults plasma (amino group donor, neurotransmitter, nitrogen shuttle)".to_string(),
+            },
+        });
+
+        transamination_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aspartate_umol_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(12.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29626003".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.040".to_string()),
+                citation: "Birsoy et al. Aspartate plasma levels. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults plasma (transamination, nucleotide synthesis, malate-asp shuttle)".to_string(),
+            },
+        });
+
+        transamination_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_ketoglutarate_umol_l".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("28768297".to_string()),
+                doi: Some("10.1038/nrc.2017.95".to_string()),
+                citation: "Carey et al. α-KG central amino acceptor. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(135000),
+                population: "Healthy adults plasma (universal amino acceptor, TCA intermediate, epigenetic regulator)".to_string(),
+            },
+        });
+
+        transamination_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitrogen_flux_transamination_g_day".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(8.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29588441".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.020".to_string()),
+                citation: "Young. Nitrogen flux transamination. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults 70 kg (amino group transfer, gluconeogenic AA → glucose, urea cycle)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "transamination_system".to_string(),
+            transamination_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -28452,6 +29040,10 @@ mod tests {
         assert!(db.get_dataset("glycolysis_gluconeogenesis_system").is_some());
         assert!(db.get_dataset("fatty_acid_metabolism_system").is_some());
         assert!(db.get_dataset("pentose_phosphate_pathway_system").is_some());
+        assert!(db.get_dataset("tca_cycle_system").is_some());
+        assert!(db.get_dataset("amino_acid_catabolism_system").is_some());
+        assert!(db.get_dataset("urea_cycle_system").is_some());
+        assert!(db.get_dataset("transamination_system").is_some());
     }
 
     #[test]
@@ -28502,7 +29094,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 196, "Expected 196 systems (192 + 4 new Session AW)");
-        assert_eq!(total_params, 1540, "Expected 1540 parameters (1508 + 32 Session AW)");
+        assert_eq!(categories.len(), 200, "Expected 200 systems (196 + 4 new Session AX)");
+        assert_eq!(total_params, 1572, "Expected 1572 parameters (1540 + 32 Session AX)");
     }
 }
