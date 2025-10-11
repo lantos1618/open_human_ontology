@@ -12,6 +12,24 @@ push changes as you go to remote
 
 ---
 
+## Session DD (2025-10-11)
+
+**Status:** ✅ Complete
+
+**Systems Added:** 4 new advanced cellular communication and signaling systems with 32 parameters
+
+**Database Stats:** 429 systems, 3404 parameters total
+
+**New Systems:**
+1. **Advanced GPCR Signaling System** - G-protein coupled receptor pathways and second messengers (β-adrenergic receptor density, cAMP, PKA activity, G-protein α-subunit ratios, phospholipase C, IP3, DAG, PKC)
+2. **Advanced Gap Junction System** - Gap junction channels and intercellular communication (connexin43 expression, gap junction conductance, GJIC dye transfer, hemichannel activity, connexin plaque density, connexin turnover, phosphorylation ratio, Ca²⁺ wave velocity)
+3. **Advanced Ephaptic Coupling System** - Non-synaptic electrical field effects and ephaptic transmission (extracellular field potentials, ephaptic delay, field effect threshold, tissue impedance, axon diameter influence, interaxonal distance, myelination effect, bundle synchronization)
+4. **Advanced Piezo Mechanosensing System** - Piezo channels and mechanotransduction mechanisms (Piezo1/Piezo2 expression, Piezo1 current amplitude, mechanical threshold, inactivation kinetics, calcium influx via Piezo, Yoda1 EC50, pressure sensitivity)
+
+**Commit:** `a9b3fee` - Pushed to remote
+
+---
+
 ## Session DC (2025-10-11)
 
 **Status:** ✅ Complete
