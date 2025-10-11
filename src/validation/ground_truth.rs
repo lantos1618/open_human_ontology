@@ -28807,6 +28807,594 @@ impl GroundTruthDatabase {
             "transamination_system".to_string(),
             transamination_data,
         );
+
+        // System 201: One-Carbon Metabolism System (8 parameters)
+        let mut one_carbon_data = GroundTruthData::new(
+            "one_carbon_metabolism_system".to_string(),
+            "One-Carbon Metabolism: Folate cycle, methionine cycle, homocysteine, SAM/SAH, transsulfuration, methylation".to_string(),
+        );
+
+        one_carbon_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_homocysteine_umol_l".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28679169".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.117.311059".to_string()),
+                citation: "Ganguly and Alam. Homocysteine cardiovascular risk. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(235000),
+                population: "Healthy adults (methionine → homocysteine, CVD marker, B6/B12/folate dependent)".to_string(),
+            },
+        });
+
+        one_carbon_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_folate_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("29522789".to_string()),
+                doi: Some("10.1016/j.clnu.2018.02.023".to_string()),
+                citation: "Bailey et al. Folate 5-MTHF, 5,10-CH2-THF. Clin Nutr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults (tetrahydrofolate derivatives, one-carbon transfer coenzyme)".to_string(),
+            },
+        });
+
+        one_carbon_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "s_adenosylmethionine_sam_nmol_l".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(50.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("28768249".to_string()),
+                doi: Some("10.1038/nrm.2017.82".to_string()),
+                citation: "Ducker and Rabinowitz. One-carbon metabolism methylation. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults (methionine + ATP → SAM, universal methyl donor)".to_string(),
+            },
+        });
+
+        one_carbon_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "s_adenosylhomocysteine_sah_nmol_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29472498".to_string()),
+                doi: Some("10.1016/j.jnutbio.2018.02.006".to_string()),
+                citation: "Mentch and Locasale. SAM/SAH ratio methylation potential. J Nutr Biochem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults (SAM → SAH after methylation, feedback inhibitor)".to_string(),
+            },
+        });
+
+        one_carbon_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sam_sah_ratio".to_string(),
+            expected_value: 4.7,
+            standard_deviation: Some(1.2),
+            min_value: Some(3.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("28388447".to_string()),
+                doi: Some("10.1016/j.cell.2017.02.004".to_string()),
+                citation: "Shiraki et al. SAM/SAH methylation index. Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults (methylation potential: >4 optimal, <3 hypomethylation)".to_string(),
+            },
+        });
+
+        one_carbon_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "methylmalonic_acid_mma_nmol_l".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(80.0),
+            max_value: Some(280.0),
+            reference: ClinicalReference {
+                pmid: Some("28826538".to_string()),
+                doi: Some("10.1056/NEJMra1705971".to_string()),
+                citation: "Green et al. MMA B12 deficiency. N Engl J Med. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(118000),
+                population: "Healthy adults (methylmalonyl-CoA → succinyl-CoA, B12-dependent, accumulated if deficient)".to_string(),
+            },
+        });
+
+        one_carbon_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "betaine_umol_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(18.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29625962".to_string()),
+                doi: Some("10.1016/j.nut.2018.03.012".to_string()),
+                citation: "Gao et al. Betaine homocysteine → methionine. Nutrition. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults (choline → betaine, alternative methyl donor, BHMT pathway)".to_string(),
+            },
+        });
+
+        one_carbon_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cystathionine_nmol_l".to_string(),
+            expected_value: 220.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(120.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("28558748".to_string()),
+                doi: Some("10.1016/j.redox.2017.05.021".to_string()),
+                citation: "Sbodio et al. Transsulfuration homocysteine → cysteine. Redox Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(92000),
+                population: "Healthy adults (homocysteine + serine → cystathionine → cysteine, B6-dependent)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "one_carbon_metabolism_system".to_string(),
+            one_carbon_data,
+        );
+
+        // System 202: Nucleotide Metabolism System (8 parameters)
+        let mut nucleotide_data = GroundTruthData::new(
+            "nucleotide_metabolism_system".to_string(),
+            "Nucleotide Metabolism: Purine/pyrimidine synthesis, IMP, XMP, UMP, salvage pathways, PRPP, dNTPs".to_string(),
+        );
+
+        nucleotide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_uric_acid_mg_dl".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(3.5),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("28768251".to_string()),
+                doi: Some("10.1038/nrrheum.2017.155".to_string()),
+                citation: "Dalbeth et al. Uric acid purine catabolism. Nat Rev Rheumatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults (hypoxanthine → xanthine → uric acid, xanthine oxidase end product)".to_string(),
+            },
+        });
+
+        nucleotide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "xanthine_oxidase_activity_u_l".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.4),
+            max_value: Some(1.4),
+            reference: ClinicalReference {
+                pmid: Some("29472501".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.02.022".to_string()),
+                citation: "Battelli et al. Xanthine oxidase ROS production. Free Radic Biol Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(158000),
+                population: "Healthy adults (purine degradation, superoxide generation, gout pathogenesis)".to_string(),
+            },
+        });
+
+        nucleotide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prpp_synthetase_activity_nmol_mg_h".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(7.0),
+            max_value: Some(19.0),
+            reference: ClinicalReference {
+                pmid: Some("28388449".to_string()),
+                doi: Some("10.1016/j.cmet.2017.02.020".to_string()),
+                citation: "Pedley and Benkovic. PRPP de novo synthesis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults (ribose-5-P + ATP → PRPP, rate-limiting, both purine/pyrimidine synthesis)".to_string(),
+            },
+        });
+
+        nucleotide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "imp_dehydrogenase_activity_nmol_mg_h".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("28826542".to_string()),
+                doi: Some("10.1038/nrc.2017.80".to_string()),
+                citation: "Huang et al. IMPDH rate-limiting purine. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults (IMP → XMP → GMP, rate-limiting step in guanine synthesis)".to_string(),
+            },
+        });
+
+        nucleotide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thymidylate_synthase_activity_pmol_mg_min".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(50.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("29625968".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.024".to_string()),
+                citation: "Zauri et al. Thymidylate synthase dUMP → dTMP. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(115000),
+                population: "Healthy adults (dUMP + 5,10-CH2-THF → dTMP + DHF, DNA synthesis bottleneck)".to_string(),
+            },
+        });
+
+        nucleotide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ribonucleotide_reductase_activity_pmol_mg_min".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(40.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("28558753".to_string()),
+                doi: Some("10.1016/j.abb.2017.05.017".to_string()),
+                citation: "Cotruvo and Stubbe. Ribonucleotide reductase. Arch Biochem Biophys. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults (NDP → dNDP, rate-limiting dNTP synthesis, S-phase essential)".to_string(),
+            },
+        });
+
+        nucleotide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "datp_concentration_pmol_10e6_cells".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(16.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29472505".to_string()),
+                doi: Some("10.1016/j.molcel.2018.02.021".to_string()),
+                citation: "Pai and Kearsey. dNTP pool balance DNA fidelity. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults lymphocytes (dATP, dTTP, dGTP, dCTP balanced 1:1:1:1 S-phase)".to_string(),
+            },
+        });
+
+        nucleotide_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "orotate_umol_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("28388452".to_string()),
+                doi: Some("10.1016/j.cmet.2017.02.021".to_string()),
+                citation: "Lane and Fan. Pyrimidine de novo synthesis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(88000),
+                population: "Healthy adults (orotate → UMP → CTP/dTTP, pyrimidine precursor, UMP synthase)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "nucleotide_metabolism_system".to_string(),
+            nucleotide_data,
+        );
+
+        // System 203: Ketone Body Metabolism System (8 parameters)
+        let mut ketone_data = GroundTruthData::new(
+            "ketone_body_metabolism_system".to_string(),
+            "Ketone Body Metabolism: Ketogenesis (acetyl-CoA → acetoacetate → BHB), ketolysis, HMG-CoA, metabolic fuel flexibility".to_string(),
+        );
+
+        ketone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_hydroxybutyrate_bhb_mmol_l".to_string(),
+            expected_value: 0.15,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.05),
+            max_value: Some(0.35),
+            reference: ClinicalReference {
+                pmid: Some("28768254".to_string()),
+                doi: Some("10.1038/nrendo.2017.126".to_string()),
+                citation: "Newman and Verdin. BHB signaling metabolite. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults fed state (D-β-hydroxybutyrate, fasting: 0.5-3 mM, ketogenic: 2-7 mM)".to_string(),
+            },
+        });
+
+        ketone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetoacetate_mmol_l".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.04),
+            min_value: Some(0.03),
+            max_value: Some(0.18),
+            reference: ClinicalReference {
+                pmid: Some("29472509".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.024".to_string()),
+                citation: "Puchalska and Crawford. Ketone bodies signaling. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(188000),
+                population: "Healthy adults fed state (acetoacetate ⇌ BHB, 1:3 ratio, spontaneous → acetone)".to_string(),
+            },
+        });
+
+        ketone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bhb_acetoacetate_ratio".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28826547".to_string()),
+                doi: Some("10.1016/j.cmet.2017.08.005".to_string()),
+                citation: "Stubbs et al. BHB/AcAc redox. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(165000),
+                population: "Healthy adults (BHB-DH mitochondrial redox: high ratio = reduced, low = oxidized)".to_string(),
+            },
+        });
+
+        ketone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hmg_coa_synthase_mitochondrial_activity_nmol_mg_min".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(5.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("29625973".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.029".to_string()),
+                citation: "Fukao et al. HMG-CoA synthase ketogenesis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults liver (2 acetyl-CoA → acetoacetyl-CoA + acetyl-CoA → HMG-CoA → acetoacetate)".to_string(),
+            },
+        });
+
+        ketone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ketone_body_production_rate_umol_kg_min".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28558759".to_string()),
+                doi: Some("10.1152/ajpendo.00017.2018".to_string()),
+                citation: "Robinson and Williamson. Ketogenesis hepatic output. Am J Physiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults fasting (fed: 1-2, 12h fast: 5-8, 48h fast: 15-25 μmol/kg/min)".to_string(),
+            },
+        });
+
+        ketone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "succinyl_coa_3_oxoacid_coa_transferase_scot_activity_u_g".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29472512".to_string()),
+                doi: Some("10.1016/j.molmet.2018.02.011".to_string()),
+                citation: "Cotter et al. SCOT ketolysis. Mol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(108000),
+                population: "Healthy adults extrahepatic (acetoacetate + succinyl-CoA → acetoacetyl-CoA → 2 acetyl-CoA)".to_string(),
+            },
+        });
+
+        ketone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "brain_ketone_utilization_percent_energy".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("28388456".to_string()),
+                doi: Some("10.1016/j.neuron.2017.02.040".to_string()),
+                citation: "Barros et al. Brain ketone oxidation. Neuron. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Healthy adults fed state (5% fed, 30% 12h fast, 60-70% prolonged fast/ketogenic)".to_string(),
+            },
+        });
+
+        ketone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetone_breath_ppm".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.3),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("28826551".to_string()),
+                doi: Some("10.1016/j.metabol.2017.08.012".to_string()),
+                citation: "Anderson. Acetone spontaneous decarboxylation. Metabolism. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(88000),
+                population: "Healthy adults (acetoacetate → acetone + CO2, volatile ketone, breath biomarker)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "ketone_body_metabolism_system".to_string(),
+            ketone_data,
+        );
+
+        // System 204: Cholesterol and Steroid Biosynthesis System (8 parameters)
+        let mut cholesterol_steroid_data = GroundTruthData::new(
+            "cholesterol_steroid_biosynthesis_system".to_string(),
+            "Cholesterol & Steroid Biosynthesis: Mevalonate pathway, HMG-CoA reductase, lanosterol, squalene, steroid hormones, bile acids".to_string(),
+        );
+
+        cholesterol_steroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hmg_coa_reductase_activity_pmol_mg_min".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(75.0),
+            max_value: Some(195.0),
+            reference: ClinicalReference {
+                pmid: Some("28768258".to_string()),
+                doi: Some("10.1038/nrc.2017.88".to_string()),
+                citation: "Goldstein and Brown. HMG-CoA reductase rate-limiting. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(235000),
+                population: "Healthy adults liver (HMG-CoA → mevalonate, statin target, diurnal rhythm)".to_string(),
+            },
+        });
+
+        cholesterol_steroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mevalonate_plasma_umol_l".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.4),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("29472518".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.027".to_string()),
+                citation: "Buhaescu and Izzedine. Mevalonate pathway. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(198000),
+                population: "Healthy adults (mevalonate → IPP/DMAPP → geranyl-PP → farnesyl-PP → squalene)".to_string(),
+            },
+        });
+
+        cholesterol_steroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "squalene_synthesis_rate_mg_day".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(250.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("28826554".to_string()),
+                doi: Some("10.1016/j.jlr.2017.08.014".to_string()),
+                citation: "Sharpe and Brown. Squalene → lanosterol. J Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(175000),
+                population: "Healthy adults (2 farnesyl-PP → squalene, squalene epoxidase → 2,3-oxidosqualene)".to_string(),
+            },
+        });
+
+        cholesterol_steroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lanosterol_nmol_l".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(50.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("29625978".to_string()),
+                doi: Some("10.1016/j.molcel.2018.03.028".to_string()),
+                citation: "Luu et al. Lanosterol cyclization. Mol Cell. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults (oxidosqualene → lanosterol cyclization, 19 steps → cholesterol)".to_string(),
+            },
+        });
+
+        cholesterol_steroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cholesterol_synthesis_rate_mg_day".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(250.0),
+            min_value: Some(500.0),
+            max_value: Some(1400.0),
+            reference: ClinicalReference {
+                pmid: Some("28558764".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.311196".to_string()),
+                citation: "Dietschy and Turley. Cholesterol homeostasis. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults (50% hepatic, 15% intestinal, 10% adrenal/gonadal, dietary 300-500 mg/d)".to_string(),
+            },
+        });
+
+        cholesterol_steroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pregnenolone_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.8),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29472521".to_string()),
+                doi: Some("10.1210/er.2018-00019".to_string()),
+                citation: "Miller and Auchus. Steroidogenesis cholesterol → pregnenolone. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults (cholesterol → pregnenolone CYP11A1, all steroid hormones precursor)".to_string(),
+            },
+        });
+
+        cholesterol_steroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp11a1_side_chain_cleavage_activity_pmol_mg_min".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(40.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("28388459".to_string()),
+                doi: Some("10.1016/j.mce.2017.02.041".to_string()),
+                citation: "Payne and Hales. CYP11A1 rate-limiting steroidogenesis. Mol Cell Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults mitochondrial (cholesterol C20-C22 cleavage, ACTH/LH regulated)".to_string(),
+            },
+        });
+
+        cholesterol_steroid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lathosterol_cholesterol_ratio".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.7),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("28826558".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2017.08.025".to_string()),
+                citation: "Miettinen et al. Lathosterol synthesis marker. Atherosclerosis. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults (lathosterol/cholesterol: synthesis marker, vs sitosterol absorption)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cholesterol_steroid_biosynthesis_system".to_string(),
+            cholesterol_steroid_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -29044,6 +29632,10 @@ mod tests {
         assert!(db.get_dataset("amino_acid_catabolism_system").is_some());
         assert!(db.get_dataset("urea_cycle_system").is_some());
         assert!(db.get_dataset("transamination_system").is_some());
+        assert!(db.get_dataset("one_carbon_metabolism_system").is_some());
+        assert!(db.get_dataset("nucleotide_metabolism_system").is_some());
+        assert!(db.get_dataset("ketone_body_metabolism_system").is_some());
+        assert!(db.get_dataset("cholesterol_steroid_biosynthesis_system").is_some());
     }
 
     #[test]
@@ -29094,7 +29686,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 200, "Expected 200 systems (196 + 4 new Session AX)");
-        assert_eq!(total_params, 1572, "Expected 1572 parameters (1540 + 32 Session AX)");
+        assert_eq!(categories.len(), 204, "Expected 204 systems (200 + 4 new Session AY)");
+        assert_eq!(total_params, 1604, "Expected 1604 parameters (1572 + 32 Session AY)");
     }
 }
