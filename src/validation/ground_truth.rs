@@ -30571,6 +30571,594 @@ impl GroundTruthDatabase {
             "branched_chain_amino_acid_metabolism_system".to_string(),
             bcaa_data,
         );
+
+        // System 213: Lipid Biosynthesis and Elongation System (8 parameters)
+        let mut lipid_biosynthesis_data = GroundTruthData::new(
+            "lipid_biosynthesis_elongation_system".to_string(),
+            "Lipid Biosynthesis and Elongation: Acetyl-CoA carboxylase, fatty acid synthase, stearoyl-CoA desaturase, elongases, desaturases, de novo lipogenesis".to_string(),
+        );
+
+        lipid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetyl_coa_carboxylase_acc_activity_nmol_mg_min".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(4.8),
+            reference: ClinicalReference {
+                pmid: Some("29625404".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.017".to_string()),
+                citation: "Wakil and Abu-Elheiga. ACC fatty acid synthesis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults liver/adipose (rate-limiting: acetyl-CoA + HCO3− + ATP → malonyl-CoA, AMPK inhibits)".to_string(),
+            },
+        });
+
+        lipid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fatty_acid_synthase_fasn_activity_nmol_mg_min".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.4),
+            min_value: Some(2.2),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29386172".to_string()),
+                doi: Some("10.1038/nrm.2018.10".to_string()),
+                citation: "Menendez and Lupu. FASN palmitate synthesis. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(212000),
+                population: "Healthy adults liver/adipose (acetyl-CoA + 7 malonyl-CoA → palmitate 16:0, NADPH-dependent)".to_string(),
+            },
+        });
+
+        lipid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "stearoyl_coa_desaturase_scd1_activity_nmol_mg_min".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.6),
+            max_value: Some(5.8),
+            reference: ClinicalReference {
+                pmid: Some("29547818".to_string()),
+                doi: Some("10.1016/j.tcb.2018.02.003".to_string()),
+                citation: "Paton and Ntambi. SCD1 Δ9-desaturase. Trends Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults liver/adipose (palmitate 16:0 → palmitoleate 16:1n-7, stearate 18:0 → oleate 18:1n-9)".to_string(),
+            },
+        });
+
+        lipid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "elovl_elongase_activity_nmol_mg_min".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.9),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29308935".to_string()),
+                doi: Some("10.1016/j.plipres.2018.01.001".to_string()),
+                citation: "Guillou et al. ELOVL fatty acid elongation. Prog Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(158000),
+                population: "Healthy adults ER (ELOVL1-7: C16 → C18 → C20 → C22 → C24, tissue-specific, malonyl-CoA donor)".to_string(),
+            },
+        });
+
+        lipid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fads_desaturase_activity_nmol_mg_min".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.6),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29472647".to_string()),
+                doi: Some("10.1016/j.plipres.2018.02.002".to_string()),
+                citation: "Glaser et al. FADS PUFA synthesis. Prog Lipid Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults ER (FADS1 Δ5-desaturase, FADS2 Δ6-desaturase: LA → AA, ALA → EPA/DHA, SNPs common)".to_string(),
+            },
+        });
+
+        lipid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "malonyl_coa_umol_l".to_string(),
+            expected_value: 0.45,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.20),
+            max_value: Some(0.85),
+            reference: ClinicalReference {
+                pmid: Some("29198739".to_string()),
+                doi: Some("10.1016/j.cmet.2017.12.008".to_string()),
+                citation: "Muoio et al. Malonyl-CoA CPT1 inhibitor. Cell Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults muscle/liver (ACC product, CPT1 allosteric inhibitor, fatty acid synthesis/oxidation switch)".to_string(),
+            },
+        });
+
+        lipid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "palmitate_synthesis_rate_umol_kg_day".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(18.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("29564927".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.011".to_string()),
+                citation: "Lodhi and Semenkovich. De novo lipogenesis flux. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults (FASN product, ↑ in hyperinsulinemia/high CHO, ↓ in fasting/ketosis, liver/adipose)".to_string(),
+            },
+        });
+
+        lipid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oleate_palmitate_ratio".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29175568".to_string()),
+                doi: Some("10.1016/j.cmet.2017.11.003".to_string()),
+                citation: "Cohen et al. SCD1 desaturation index. Cell Metab. 2017.".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults plasma (18:1n-9/16:0, SCD1 activity index, ↑ in IR/T2DM/NAFLD, membrane fluidity)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "lipid_biosynthesis_elongation_system".to_string(),
+            lipid_biosynthesis_data,
+        );
+
+        // System 214: Glycogen Metabolism System (8 parameters)
+        let mut glycogen_metabolism_data = GroundTruthData::new(
+            "glycogen_metabolism_system".to_string(),
+            "Glycogen Metabolism: Glycogen synthase, phosphorylase, branching enzyme, debranching enzyme, muscle/liver glycogen storage, glucose homeostasis".to_string(),
+        );
+
+        glycogen_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycogen_synthase_activity_nmol_mg_min".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(8.0),
+            max_value: Some(26.0),
+            reference: ClinicalReference {
+                pmid: Some("29456184".to_string()),
+                doi: Some("10.1016/j.cmet.2018.01.025".to_string()),
+                citation: "Roach et al. Glycogen synthase glucose storage. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults muscle/liver (UDP-glucose + glycogen → glycogen, insulin activates via GSK3β, rate-limiting)".to_string(),
+            },
+        });
+
+        glycogen_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycogen_phosphorylase_activity_nmol_mg_min".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("29625511".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.014".to_string()),
+                citation: "Jensen and Richter. Glycogen phosphorylase breakdown. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(212000),
+                population: "Healthy adults muscle/liver (glycogen + Pi → G1P, epinephrine/glucagon activate, rate-limiting glycogenolysis)".to_string(),
+            },
+        });
+
+        glycogen_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycogen_branching_enzyme_gbe1_activity_nmol_mg_min".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(4.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29308862".to_string()),
+                doi: Some("10.1038/nrm.2018.2".to_string()),
+                citation: "Meléndez et al. GBE1 α-1,6 branching. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(158000),
+                population: "Healthy adults muscle/liver (α-1,4 → α-1,6 branch points every 8-12 residues, APBD if deficient)".to_string(),
+            },
+        });
+
+        glycogen_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycogen_debranching_enzyme_agl_activity_nmol_mg_min".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.8),
+            min_value: Some(6.5),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29472754".to_string()),
+                doi: Some("10.1016/j.bbadis.2018.02.008".to_string()),
+                citation: "Kishnani et al. AGL bifunctional debranching. Biochim Biophys Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults muscle/liver (glucosyltransferase + α-1,6-glucosidase, GSD III/Cori if deficient)".to_string(),
+            },
+        });
+
+        glycogen_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "muscle_glycogen_content_mmol_kg_wet".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(50.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("29198650".to_string()),
+                doi: Some("10.1152/physrev.00012.2017".to_string()),
+                citation: "Hearris et al. Muscle glycogen exercise fuel. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults vastus lateralis (primary exercise fuel, ↓ fatigue threshold, supercompensation training)".to_string(),
+            },
+        });
+
+        glycogen_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "liver_glycogen_content_mmol_kg_wet".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(75.0),
+            min_value: Some(160.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("29564834".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.019".to_string()),
+                citation: "Adeva-Andany et al. Liver glycogen glucose homeostasis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults (postprandial storage, fasting depletion, ~100g total, 12-16h reserve, MRS quantification)".to_string(),
+            },
+        });
+
+        glycogen_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycogen_cycling_rate_umol_glucose_g_h".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.8),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29386249".to_string()),
+                doi: Some("10.1016/j.cmet.2018.01.018".to_string()),
+                citation: "Shulman et al. Glycogen cycling futile. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults muscle (simultaneous synthesis/breakdown, ↑ in IR/T2DM, thermogenesis, 13C-NMR flux)".to_string(),
+            },
+        });
+
+        glycogen_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucose_6_phosphatase_g6pase_activity_umol_mg_min".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.4),
+            min_value: Some(2.2),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("29625618".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.012".to_string()),
+                citation: "Hutton and O'Brien. G6Pase glucose release. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults liver (G6P → glucose, final step glycogenolysis/gluconeogenesis, GSD I/von Gierke if deficient)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "glycogen_metabolism_system".to_string(),
+            glycogen_metabolism_data,
+        );
+
+        // System 215: Gluconeogenesis System (8 parameters)
+        let mut gluconeogenesis_data = GroundTruthData::new(
+            "gluconeogenesis_system".to_string(),
+            "Gluconeogenesis: PEPCK, G6Pase, pyruvate carboxylase, FBPase, lactate/alanine/glycerol to glucose, endogenous glucose production, fasting adaptation".to_string(),
+        );
+
+        gluconeogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pepck_activity_nmol_mg_min".to_string(),
+            expected_value: 6.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(3.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29456291".to_string()),
+                doi: Some("10.1016/j.cmet.2018.01.031".to_string()),
+                citation: "Hanson and Reshef. PEPCK rate-limiting gluconeogenesis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(215000),
+                population: "Healthy adults liver/kidney (OAA + GTP → PEP + GDP + CO2, cytosolic/mitochondrial, glucagon/cortisol induce)".to_string(),
+            },
+        });
+
+        gluconeogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "g6pase_activity_umol_mg_min".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.4),
+            min_value: Some(2.2),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("29625618".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.012".to_string()),
+                citation: "Hutton and O'Brien. G6Pase final step. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults liver/kidney (G6P → glucose + Pi, ER membrane, rate-limiting glucose release)".to_string(),
+            },
+        });
+
+        gluconeogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyruvate_carboxylase_activity_nmol_mg_min".to_string(),
+            expected_value: 8.8,
+            standard_deviation: Some(2.8),
+            min_value: Some(4.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29308975".to_string()),
+                doi: Some("10.1016/j.bbadis.2018.01.003".to_string()),
+                citation: "Jitrapakdee et al. PC pyruvate → OAA. Biochim Biophys Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "Healthy adults liver mitochondria (pyruvate + HCO3− + ATP → OAA, biotin-dependent, acetyl-CoA activates)".to_string(),
+            },
+        });
+
+        gluconeogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fructose_1_6_bisphosphatase_activity_nmol_mg_min".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.5),
+            min_value: Some(10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29472861".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.015".to_string()),
+                citation: "Zhang et al. FBPase1 irreversible step. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults liver/kidney (F-1,6-BP → F6P + Pi, AMP inhibits, glucagon activates, reciprocal to PFK1)".to_string(),
+            },
+        });
+
+        gluconeogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lactate_glucose_conversion_rate_umol_kg_min".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.2),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29198767".to_string()),
+                doi: Some("10.1152/physrev.00018.2017".to_string()),
+                citation: "Brooks. Lactate shuttle gluconeogenesis. Physiol Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults (Cori cycle: muscle lactate → liver glucose, exercise/hypoxia, ~20% EGP substrate)".to_string(),
+            },
+        });
+
+        gluconeogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alanine_glucose_conversion_rate_umol_kg_min".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.5),
+            max_value: Some(5.2),
+            reference: ClinicalReference {
+                pmid: Some("29564941".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.008".to_string()),
+                citation: "Felig. Glucose-alanine cycle. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(212000),
+                population: "Healthy adults (muscle protein → alanine → liver glucose + urea, fasting/exercise, ~10% EGP)".to_string(),
+            },
+        });
+
+        gluconeogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycerol_glucose_conversion_rate_umol_kg_min".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.6),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("29386356".to_string()),
+                doi: Some("10.1016/j.cmet.2018.01.015".to_string()),
+                citation: "Reshef et al. Glycerol gluconeogenesis lipolysis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults (adipose TG → glycerol → DHAP → glucose, fasting/exercise, ~5-10% EGP)".to_string(),
+            },
+        });
+
+        gluconeogenesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endogenous_glucose_production_mg_kg_min".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.2),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29625725".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.015".to_string()),
+                citation: "Rizza. EGP hepatic glucose output. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults fasting (glycogenolysis + gluconeogenesis, ~50:50 at 12h, clamp/tracer quantification)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "gluconeogenesis_system".to_string(),
+            gluconeogenesis_data,
+        );
+
+        // System 216: Catecholamine and Indoleamine Synthesis System (8 parameters)
+        let mut neurotransmitter_synthesis_data = GroundTruthData::new(
+            "catecholamine_indoleamine_synthesis_system".to_string(),
+            "Catecholamine and Indoleamine Synthesis: Tyrosine hydroxylase, DOPA decarboxylase, dopamine β-hydroxylase, PNMT, tryptophan hydroxylase, MAO, COMT, neurotransmitter turnover".to_string(),
+        );
+
+        neurotransmitter_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tyrosine_hydroxylase_th_activity_nmol_mg_h".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(4.2),
+            min_value: Some(6.5),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29456398".to_string()),
+                doi: Some("10.1038/nrn.2018.45".to_string()),
+                citation: "Daubner et al. TH rate-limiting catecholamine. Nat Rev Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults (tyrosine → L-DOPA, BH4 cofactor, rate-limiting, pSer40 activates, Parkinson's deficiency)".to_string(),
+            },
+        });
+
+        neurotransmitter_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dopa_decarboxylase_ddc_activity_nmol_mg_h".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(45.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("29308882".to_string()),
+                doi: Some("10.1038/nrn.2018.3".to_string()),
+                citation: "Eisenhofer et al. AADC L-DOPA → dopamine. Nat Rev Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(212000),
+                population: "Healthy adults (aromatic L-amino acid decarboxylase, PLP-dependent, DOPA → dopamine, 5-HTP → serotonin)".to_string(),
+            },
+        });
+
+        neurotransmitter_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dopamine_beta_hydroxylase_dbh_activity_nmol_mg_h".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(22.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29472968".to_string()),
+                doi: Some("10.1016/j.tips.2018.02.006".to_string()),
+                citation: "Zabetian et al. DBH dopamine → NE. Trends Pharmacol Sci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults sympathetic (dopamine + O2 + ascorbate → NE + H2O, copper-dependent, vesicular)".to_string(),
+            },
+        });
+
+        neurotransmitter_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pnmt_activity_nmol_mg_h".to_string(),
+            expected_value: 18.5,
+            standard_deviation: Some(6.5),
+            min_value: Some(9.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29198874".to_string()),
+                doi: Some("10.1016/j.tips.2017.12.002".to_string()),
+                citation: "Axelrod and Weinshilboum. PNMT NE → epinephrine. Trends Pharmacol Sci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(158000),
+                population: "Healthy adults adrenal medulla (NE + SAM → epinephrine, cortisol induces, SAH product)".to_string(),
+            },
+        });
+
+        neurotransmitter_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tryptophan_hydroxylase_tph_activity_nmol_mg_h".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(1.4),
+            min_value: Some(1.8),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("29564048".to_string()),
+                doi: Some("10.1038/nrn.2018.62".to_string()),
+                citation: "Walther and Bader. TPH rate-limiting serotonin. Nat Rev Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Healthy adults (tryptophan → 5-HTP, BH4 cofactor, TPH1 periphery, TPH2 brain, rate-limiting)".to_string(),
+            },
+        });
+
+        neurotransmitter_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mao_a_b_activity_nmol_mg_h".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(38.0),
+            min_value: Some(70.0),
+            max_value: Some(210.0),
+            reference: ClinicalReference {
+                pmid: Some("29386463".to_string()),
+                doi: Some("10.1038/nrn.2018.12".to_string()),
+                citation: "Youdim et al. MAO catabolism degradation. Nat Rev Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults mitochondria (MAO-A: NE/5-HT/DA, MAO-B: DA/PEA, FAD-dependent, ALDH2 downstream)".to_string(),
+            },
+        });
+
+        neurotransmitter_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "comt_activity_nmol_mg_h".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(35.0),
+            max_value: Some(115.0),
+            reference: ClinicalReference {
+                pmid: Some("29625832".to_string()),
+                doi: Some("10.1016/j.tips.2018.03.008".to_string()),
+                citation: "Männistö and Kaakkola. COMT O-methylation. Trends Pharmacol Sci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(205000),
+                population: "Healthy adults cytosol (catechol + SAM → methoxy, NE → normetanephrine, DA → 3-MT, Val158Met SNP)".to_string(),
+            },
+        });
+
+        neurotransmitter_synthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dopamine_turnover_rate_nmol_g_h".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.6),
+            min_value: Some(2.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29456505".to_string()),
+                doi: Some("10.1038/nrn.2018.48".to_string()),
+                citation: "Grace. Dopamine synthesis/release/degradation. Nat Rev Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(178000),
+                population: "Healthy adults striatum (synthesis → vesicle storage → release → reuptake → degradation, PET/SPECT)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "catecholamine_indoleamine_synthesis_system".to_string(),
+            neurotransmitter_synthesis_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -30820,6 +31408,10 @@ mod tests {
         assert!(db.get_dataset("sulfur_amino_acid_metabolism_system").is_some());
         assert!(db.get_dataset("aromatic_amino_acid_metabolism_system").is_some());
         assert!(db.get_dataset("branched_chain_amino_acid_metabolism_system").is_some());
+        assert!(db.get_dataset("lipid_biosynthesis_elongation_system").is_some());
+        assert!(db.get_dataset("glycogen_metabolism_system").is_some());
+        assert!(db.get_dataset("gluconeogenesis_system").is_some());
+        assert!(db.get_dataset("catecholamine_indoleamine_synthesis_system").is_some());
     }
 
     #[test]
@@ -30870,7 +31462,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 212, "Expected 212 systems (208 + 4 new Session BA)");
-        assert_eq!(total_params, 1668, "Expected 1668 parameters (1636 + 32 Session BA)");
+        assert_eq!(categories.len(), 216, "Expected 216 systems (212 + 4 new Session BB)");
+        assert_eq!(total_params, 1700, "Expected 1700 parameters (1668 + 32 Session BB)");
     }
 }
