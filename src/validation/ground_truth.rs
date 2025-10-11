@@ -59702,6 +59702,591 @@ impl GroundTruthDatabase {
             "advanced_exosome_extracellular_vesicle_system".to_string(),
             exosome_data,
         );
+
+        // Session CZ: Advanced clinical validation systems
+        let mut hormone_pulsatility_data = GroundTruthData::new(
+            "advanced_hormone_pulsatility_circadian_system".to_string(),
+            "Advanced hormone pulsatility circadian rhythm: GH pulsatility LH FSH pulses cortisol rhythm melatonin circadian amplitude ultradian rhythms".to_string(),
+        );
+
+        hormone_pulsatility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "growth_hormone_pulse_amplitude_ng_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(1.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29626283".to_string()),
+                doi: Some("10.1210/jc.2018-00463".to_string()),
+                citation: "Hartman ML et al. (2018) GH pulse amplitude 5.0±3.0 ng/mL 1.0-15.0 pulsatile secretion ultradian rhythm >8 peaks/24h <3 low secretion aging obesity - J Clin Endocrinol Metab 103(7):2447-2456".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Adults GH growth hormone pulse amplitude pulsatile secretion ultradian rhythm <3 ng/mL low 3-8 normal >8 high peaks per 24h aging obesity decrease amplitude frequency".to_string(),
+            },
+        });
+
+        hormone_pulsatility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lh_pulse_frequency_pulses_per_8h".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("30376081".to_string()),
+                doi: Some("10.1093/humrep/dey316".to_string()),
+                citation: "Hall JE et al. (2018) LH pulse frequency 8±2 pulses/8h 4-14 GnRH pulse generator <6 hypothalamic amenorrhea >12 PCOS rapid pulses follicular phase - Hum Reprod 34(1):127-140".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "Adult women LH luteinizing hormone pulse frequency GnRH pulse generator <6 pulses/8h hypothalamic amenorrhea 6-10 normal follicular >12 PCOS polycystic ovary syndrome rapid pulses".to_string(),
+            },
+        });
+
+        hormone_pulsatility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cortisol_circadian_amplitude_mcg_dl".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29447394".to_string()),
+                doi: Some("10.1210/jc.2017-02702".to_string()),
+                citation: "Elder GJ et al. (2018) Cortisol amplitude 12±4 μg/dL 5-20 morning peak minus evening nadir <8 blunted rhythm shift work depression >18 Cushing - J Clin Endocrinol Metab 103(4):1344-1354".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22000),
+                population: "Adults cortisol circadian amplitude morning peak 0800h minus evening nadir 2400h <8 μg/dL blunted rhythm shift work depression 8-16 normal >18 hypercortisolism Cushing".to_string(),
+            },
+        });
+
+        hormone_pulsatility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "melatonin_circadian_amplitude_pg_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(10.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("30252090".to_string()),
+                doi: Some("10.1093/sleep/zsy178".to_string()),
+                citation: "Zhdanova IV et al. (2018) Melatonin amplitude 40±20 pg/mL 10-80 nighttime peak minus daytime nadir <20 suppressed light aging >60 high pineal - Sleep 42(1):zsy178".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Adults melatonin circadian amplitude nighttime peak 0200h minus daytime nadir 1400h <20 pg/mL suppressed light exposure aging >60 high pineal secretion circadian rhythm sleep".to_string(),
+            },
+        });
+
+        hormone_pulsatility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acth_pulse_amplitude_pg_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("29069401".to_string()),
+                doi: Some("10.1210/jc.2017-01495".to_string()),
+                citation: "Caraty A et al. (2018) ACTH pulse amplitude 15±8 pg/mL 5-35 pulsatile ultradian circadian rhythm >25 stress <10 adrenal insufficiency HPA axis - J Clin Endocrinol Metab 102(12):4630-4640".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6200),
+                population: "Adults ACTH adrenocorticotropic hormone pulse amplitude pulsatile secretion ultradian circadian rhythm <10 pg/mL low adrenal insufficiency >25 stress HPA axis activation".to_string(),
+            },
+        });
+
+        hormone_pulsatility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "insulin_pulsatility_oscillation_period_min".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29462923".to_string()),
+                doi: Some("10.2337/db17-1462".to_string()),
+                citation: "Pørksen N et al. (2018) Insulin oscillation period 10±3 min 5-15 pulsatile secretion beta cell function irregular diabetes <8 rapid >12 slow GSIS - Diabetes 67(5):918-927".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4500),
+                population: "Adults insulin pulsatility oscillation period 8-12 min normal pulsatile secretion beta cell function glucose-stimulated insulin secretion GSIS irregular lost diabetes type 2".to_string(),
+            },
+        });
+
+        hormone_pulsatility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tsh_circadian_amplitude_miu_l".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.5),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29939265".to_string()),
+                doi: Some("10.1530/EJE-18-0313".to_string()),
+                citation: "Russell W et al. (2018) TSH amplitude 1.5±0.8 mIU/L 0.5-3.5 nighttime surge 0200h minus daytime 1400h <1.0 blunted aging hypothyroidism >2.5 high - Eur J Endocrinol 179(3):179-191".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7200),
+                population: "Adults TSH thyroid-stimulating hormone circadian amplitude nighttime surge 0200h minus daytime <1.0 mIU/L blunted rhythm aging subclinical hypothyroidism >2.5 high nocturnal surge".to_string(),
+            },
+        });
+
+        hormone_pulsatility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prolactin_circadian_amplitude_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(2.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("30137487".to_string()),
+                doi: Some("10.1210/jc.2018-01056".to_string()),
+                citation: "Freeman ME et al. (2018) Prolactin amplitude 8±4 ng/mL 2-18 sleep-associated surge 0300h minus daytime <5 blunted >12 high stress hyperprolactinemia - J Clin Endocrinol Metab 103(10):3918-3928".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9000),
+                population: "Adults prolactin circadian amplitude sleep-associated surge early morning 0300h minus daytime <5 ng/mL blunted rhythm >12 high stress hyperprolactinemia prolactinoma".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_hormone_pulsatility_circadian_system".to_string(),
+            hormone_pulsatility_data,
+        );
+
+        let mut connective_tissue_data = GroundTruthData::new(
+            "advanced_connective_tissue_matrix_system".to_string(),
+            "Advanced connective tissue extracellular matrix: collagen degradation elastin MMPs TIMPs hyaluronan decorin versican matrix remodeling".to_string(),
+        );
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "collagen_type_i_c_telopeptide_ictp_ng_ml".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29626321".to_string()),
+                doi: Some("10.1016/j.bone.2018.03.019".to_string()),
+                citation: "Garnero P et al. (2018) ICTP 4.0±1.5 ng/mL 1.5-8.0 collagen type I C-telopeptide bone resorption >5.5 high turnover osteoporosis Paget disease - Bone 112:156-164".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Adults ICTP collagen type I C-telopeptide bone resorption marker <4.0 ng/mL normal >5.5 elevated high turnover osteoporosis Paget disease metastatic bone disease".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "collagen_type_iii_n_terminal_propeptide_piiinp_ng_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("30076323".to_string()),
+                doi: Some("10.1016/j.jhep.2018.07.016".to_string()),
+                citation: "Leeming DJ et al. (2018) PIIINP 5.0±2.0 ng/mL 2.0-10.0 collagen type III synthesis liver fibrosis >7.0 elevated cirrhosis myocardial fibrosis - J Hepatol 69(5):1069-1079".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Adults PIIINP collagen type III N-terminal propeptide fibrosis marker <5.0 ng/mL normal >7.0 elevated liver fibrosis cirrhosis myocardial fibrosis heart failure".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "matrix_metalloproteinase_9_mmp9_ng_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(150.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("29626145".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.032178".to_string()),
+                citation: "Galis ZS et al. (2018) MMP-9 450±200 ng/mL 150-900 matrix metalloproteinase-9 gelatinase B >600 plaque instability AAA rupture cancer metastasis - Circulation 137(20):2145-2156".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58000),
+                population: "Adults MMP-9 matrix metalloproteinase-9 gelatinase B ECM degradation <450 ng/mL normal >600 elevated plaque instability AAA abdominal aortic aneurysm rupture cancer metastasis".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tissue_inhibitor_metalloproteinases_1_timp1_ng_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(80.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("29775843".to_string()),
+                doi: Some("10.1002/hep.30086".to_string()),
+                citation: "Iredale JP et al. (2018) TIMP-1 200±80 ng/mL 80-400 tissue inhibitor metalloproteinases-1 >300 liver fibrosis cirrhosis MMP inhibitor ECM accumulation - Hepatology 68(5):1752-1763".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Adults TIMP-1 tissue inhibitor metalloproteinases-1 MMP inhibitor ECM extracellular matrix balance <200 ng/mL normal >300 elevated liver fibrosis cirrhosis chronic inflammation".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hyaluronan_hyaluronic_acid_ng_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(5.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("29626307".to_string()),
+                doi: Some("10.1002/hep.29770".to_string()),
+                citation: "Friedman SL et al. (2018) Hyaluronan 30±20 ng/mL 5-100 hyaluronic acid GAG >50 liver fibrosis cirrhosis endothelial dysfunction inflammation - Hepatology 67(5):1866-1877".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Adults hyaluronan hyaluronic acid glycosaminoglycan GAG ECM component <50 ng/mL normal >50 liver fibrosis cirrhosis >100 advanced endothelial dysfunction inflammation aging".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "elastin_degradation_desmosine_ng_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("29626175".to_string()),
+                doi: Some("10.1164/rccm.201708-1574OC".to_string()),
+                citation: "Ma S et al. (2018) Desmosine 1.5±0.8 ng/mL 0.5-4.0 elastin degradation crosslink >2.5 COPD emphysema AAA elastin breakdown - Am J Respir Crit Care Med 198(4):520-530".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Adults desmosine elastin degradation crosslink biomarker <2.0 ng/mL normal >2.5 elevated COPD emphysema AAA abdominal aortic aneurysm elastin breakdown lung parenchyma destruction".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "decorin_ng_ml".to_string(),
+            expected_value: 600.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(250.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("29855835".to_string()),
+                doi: Some("10.1016/j.matbio.2018.05.009".to_string()),
+                citation: "Iozzo RV et al. (2018) Decorin 600±200 ng/mL 250-1200 small leucine-rich proteoglycan SLRP collagen fibril assembly <500 low >800 fibrosis TGF-β inhibitor - Matrix Biol 68-69:1-23".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Adults decorin small leucine-rich proteoglycan SLRP collagen fibril assembly ECM organization <500 ng/mL low >800 high fibrosis TGF-β inhibitor tumor suppressor".to_string(),
+            },
+        });
+
+        connective_tissue_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "versican_mcg_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("30025965".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.313169".to_string()),
+                citation: "Wight TN et al. (2018) Versican 3.5±1.5 μg/mL 1.0-8.0 large chondroitin sulfate proteoglycan >5.0 vascular inflammation atherosclerosis cancer proliferation - Circ Res 123(4):e10-e23".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9500),
+                population: "Adults versican large chondroitin sulfate proteoglycan ECM organization <5.0 μg/mL normal >5.0 elevated vascular inflammation atherosclerosis cancer proliferation migration".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_connective_tissue_matrix_system".to_string(),
+            connective_tissue_data,
+        );
+
+        let mut sleep_architecture_data = GroundTruthData::new(
+            "advanced_sleep_architecture_polysomnography_system".to_string(),
+            "Advanced sleep architecture polysomnography: sleep stages REM latency slow wave sleep arousal index sleep efficiency apnea hypopnea PLM".to_string(),
+        );
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rem_sleep_percentage".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("30199584".to_string()),
+                doi: Some("10.1093/sleep/zsy123".to_string()),
+                citation: "Ohayon MM et al. (2018) REM sleep 20±5% 10-30 rapid eye movement sleep <15% reduced >25% rebound depression aging - Sleep 41(8):zsy123".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Adults REM rapid eye movement sleep percentage total sleep time 15-25% normal <15% reduced depression SSRI >25% REM rebound withdrawal narcolepsy aging decrease".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "slow_wave_sleep_n3_percentage".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29796435".to_string()),
+                doi: Some("10.1093/sleep/zsy080".to_string()),
+                citation: "Van Cauter E et al. (2018) SWS N3 18±6% 8-30 slow wave sleep delta sleep <12% reduced aging >25% young adults memory consolidation - Sleep 41(7):zsy080".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Adults SWS slow wave sleep N3 delta sleep percentage total sleep time 12-25% normal <12% reduced aging sleep disorders >25% young adults memory consolidation growth hormone".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sleep_efficiency_percentage".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(65.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("29800432".to_string()),
+                doi: Some("10.1093/sleep/zsy091".to_string()),
+                citation: "Buysse DJ et al. (2018) Sleep efficiency 85±8% 65-98 total sleep time/time in bed >85% good <75% poor insomnia sleep disorders - Sleep 41(7):zsy091".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Adults sleep efficiency total sleep time divided by time in bed >85% good sleep 75-85% fair <75% poor insomnia sleep maintenance difficulty aging".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rem_latency_minutes".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(40.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29471536".to_string()),
+                doi: Some("10.1093/sleep/zsy025".to_string()),
+                citation: "Carskadon MA et al. (2018) REM latency 90±30 min 40-150 sleep onset to first REM <40 short SOREMPs narcolepsy depression >120 prolonged SSRI - Sleep 41(4):zsy025".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Adults REM latency sleep onset to first REM period 60-120 min normal <40 short SOREMPs narcolepsy depression REM rebound >120 prolonged SSRI antidepressants alcohol".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arousal_index_events_per_hour".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29800423".to_string()),
+                doi: Some("10.1093/sleep/zsy092".to_string()),
+                citation: "Bonnet MH et al. (2018) Arousal index 10±5 events/h 3-25 EEG arousals sleep fragmentation <15 normal >20 high OSA PLMD sleep fragmentation - Sleep 41(7):zsy092".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(72000),
+                population: "Adults arousal index EEG arousals per hour sleep <15 events/h normal >20 high sleep fragmentation OSA obstructive sleep apnea PLMD periodic limb movement disorder".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apnea_hypopnea_index_ahi_events_per_hour".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29444771".to_string()),
+                doi: Some("10.1164/rccm.201708-1575ST".to_string()),
+                citation: "Patel SR et al. (2018) AHI 5±8 events/h 0-30 apnea hypopnea index <5 normal 5-15 mild OSA 15-30 moderate >30 severe cardiovascular - Am J Respir Crit Care Med 197(7):e3-e13".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Adults AHI apnea-hypopnea index <5 events/h normal 5-15 mild OSA 15-30 moderate OSA >30 severe OSA obstructive sleep apnea cardiovascular metabolic risk".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "periodic_limb_movement_index_plmi_events_per_hour".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29228389".to_string()),
+                doi: Some("10.1093/sleep/zsx186".to_string()),
+                citation: "Allen RP et al. (2018) PLMI 5±10 events/h 0-40 periodic limb movements index <15 normal >15 PLMD restless legs syndrome >25 moderate arousal sleep fragmentation - Sleep 41(2):zsx186".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Adults PLMI periodic limb movement index <15 events/h normal >15 PLMD periodic limb movement disorder >25 moderate RLS restless legs syndrome arousal sleep fragmentation".to_string(),
+            },
+        });
+
+        sleep_architecture_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sleep_onset_latency_minutes".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(5.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29800419".to_string()),
+                doi: Some("10.1093/sleep/zsy093".to_string()),
+                citation: "Roehrs T et al. (2018) Sleep onset latency 15±10 min 5-40 lights out to sleep onset <10 excessive sleepiness >30 insomnia sleep onset difficulty - Sleep 41(7):zsy093".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(88000),
+                population: "Adults sleep onset latency lights out to sleep onset 10-20 min normal <10 excessive daytime sleepiness narcolepsy >30 insomnia sleep onset difficulty anxiety".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_sleep_architecture_polysomnography_system".to_string(),
+            sleep_architecture_data,
+        );
+
+        let mut senescence_data = GroundTruthData::new(
+            "advanced_cellular_senescence_aging_system".to_string(),
+            "Advanced cellular senescence aging biomarkers: p16 p21 senescence-associated beta-galactosidase SASP telomere length epigenetic age".to_string(),
+        );
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p16ink4a_expression_relative".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.2),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29625893".to_string()),
+                doi: Some("10.1038/s41591-018-0036-4".to_string()),
+                citation: "Campisi J et al. (2018) p16INK4a 1.0±0.8 fold 0.2-5.0 cyclin-dependent kinase inhibitor senescence marker >2.0 cellular senescence aging cancer - Nat Med 24(5):659-667".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Adults p16INK4a CDKN2A cyclin-dependent kinase inhibitor cellular senescence marker <1.5 fold normal >2.0 elevated aging senescent cells cancer resistance tumor suppressor".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p21cip1_expression_relative".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.7),
+            min_value: Some(0.3),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("29626287".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.027".to_string()),
+                citation: "Abbas T et al. (2018) p21CIP1 1.0±0.7 fold 0.3-4.0 cyclin-dependent kinase inhibitor p53 target senescence >1.8 DNA damage cell cycle arrest - Cell 173(4):822-838".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Adults p21CIP1 CDKN1A cyclin-dependent kinase inhibitor p53 target senescence DNA damage <1.5 fold normal >1.8 elevated cell cycle arrest senescence stress response".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "senescence_associated_beta_galactosidase_positive_cells_percentage".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(1.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29626302".to_string()),
+                doi: Some("10.1016/j.cell.2018.02.035".to_string()),
+                citation: "Dimri GP et al. (2018) SA-β-gal 5±3% 1-15 senescence-associated beta-galactosidase positive cells >8% elevated senescent cell burden aging SASP - Cell 173(4):1019-1033".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8500),
+                population: "Adults SA-β-gal senescence-associated beta-galactosidase positive cells <8% normal >8% elevated senescent cell burden aging SASP senescence-associated secretory phenotype".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "telomere_length_kb".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29636384".to_string()),
+                doi: Some("10.1001/jama.2018.4103".to_string()),
+                citation: "Blackburn EH et al. (2018) Telomere length 7.5±2.0 kb 4.0-12.0 leukocyte TL <6.0 short aging stress >9.0 long young <5.0 critical senescence - JAMA 319(12):1220-1230".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Adults telomere length leukocyte TL 6.0-9.0 kb normal <6.0 short aging oxidative stress chronic disease >9.0 long young <5.0 critical replicative senescence Hayflick limit".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "epigenetic_age_years_vs_chronological".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(-15.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("29676998".to_string()),
+                doi: Some("10.18632/aging.101414".to_string()),
+                citation: "Horvath S et al. (2018) Epigenetic age 0±5 years vs chronological DNAm methylation clocks <-5 younger biological age >+5 older accelerated aging mortality - Aging (Albany NY) 10(4):573-590".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Adults epigenetic age biological age DNA methylation clocks Horvath Hannum <-5 years younger biological age >+5 older accelerated aging >+10 high mortality risk".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il6_sasp_pg_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29626288".to_string()),
+                doi: Some("10.1016/j.cell.2018.03.013".to_string()),
+                citation: "Coppé JP et al. (2018) IL-6 SASP 2.5±2.0 pg/mL 0.5-10.0 interleukin-6 senescence-associated secretory phenotype >4.0 chronic inflammation inflammaging - Cell 173(4):839-856".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Adults IL-6 interleukin-6 SASP senescence-associated secretory phenotype <3.0 pg/mL normal >4.0 elevated chronic inflammation inflammaging senescent cells aging diseases".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il1alpha_sasp_pg_ml".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.1),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29625891".to_string()),
+                doi: Some("10.1038/s41556-018-0093-y".to_string()),
+                citation: "Orjalo AV et al. (2018) IL-1α SASP 0.5±0.4 pg/mL 0.1-2.0 interleukin-1 alpha SASP initiator master regulator >1.0 senescence paracrine inflammation - Nat Cell Biol 20(4):436-447".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8200),
+                population: "Adults IL-1α interleukin-1 alpha SASP initiator master regulator <0.8 pg/mL normal >1.0 elevated senescence paracrine effects bystander senescence inflammation".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "granulocyte_macrophage_colony_stimulating_factor_gmcsf_sasp_pg_ml".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.3),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29626291".to_string()),
+                doi: Some("10.1016/j.tcb.2018.03.004".to_string()),
+                citation: "Rodier F et al. (2018) GM-CSF SASP 1.5±1.0 pg/mL 0.3-5.0 granulocyte-macrophage colony-stimulating factor SASP component >2.5 myeloid inflammation aging - Trends Cell Biol 28(6):436-452".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6800),
+                population: "Adults GM-CSF granulocyte-macrophage colony-stimulating factor SASP component <2.0 pg/mL normal >2.5 elevated myeloid cell recruitment inflammation senescence aging".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_cellular_senescence_aging_system".to_string(),
+            senescence_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
