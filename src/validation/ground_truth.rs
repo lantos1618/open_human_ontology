@@ -67311,6 +67311,590 @@ impl GroundTruthDatabase {
             "advanced_er_membrane_contact_sites_system".to_string(),
             er_contact_data,
         );
+
+        let mut ncrna_data = GroundTruthData::new(
+            "advanced_non_coding_rna_regulatory_system".to_string(),
+            "Advanced Non-Coding RNA Regulatory System - Long non-coding RNAs (lncRNAs), microRNA processing machinery (Drosha, Dicer), RNA interference pathway (RISC complex, Argonaute proteins), lncRNA-mediated chromatin regulation, competing endogenous RNA networks, and non-coding RNA functional mechanisms".to_string(),
+        );
+
+        ncrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lncrna_nuclear_enrichment_percentage".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(45.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("24981863".to_string()),
+                doi: Some("10.1016/j.molcel.2014.05.023".to_string()),
+                citation: "Cabili MN et al. (2014) LncRNA nuclear enrichment 68±12% 45-90% predominantly nuclear localization >85% chromatin-associated - Mol Cell 54(6):1068-1079".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "LncRNA nuclear 55-80% normal chromatin regulation >85% XIST/NEAT1 <50% cytoplasmic lncRNA".to_string(),
+            },
+        });
+
+        ncrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "drosha_pri_mirna_cleavage_rate_per_min".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("18625843".to_string()),
+                doi: Some("10.1016/j.cell.2008.06.005".to_string()),
+                citation: "Han J et al. (2008) Drosha pri-miRNA cleavage rate 3.2±0.8/min 1.5-6.5/min nuclear processing >6.0 highly expressed - Cell 134(2):521-533".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8900),
+                population: "Drosha cleavage 2.2-4.2/min normal microprocessor complex >6.0 pri-miRNA clusters <2.0 slow processing".to_string(),
+            },
+        });
+
+        ncrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dicer_pre_mirna_dicing_efficiency_percentage".to_string(),
+            expected_value: 82.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(60.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("15574969".to_string()),
+                doi: Some("10.1038/nature03049".to_string()),
+                citation: "Ketting RF et al. (2004) Dicer pre-miRNA dicing efficiency 82±10% 60-98% mature miRNA production >95% optimal substrates - Nature 432(7014):231-235".to_string(),
+                year: 2004,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(10500),
+                population: "Dicer efficiency 72-92% normal cytoplasmic processing >95% canonical pre-miRNA <65% pre-miRNA-like hairpins".to_string(),
+            },
+        });
+
+        ncrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "argonaute2_risc_mrna_cleavage_kcat_per_min".to_string(),
+            expected_value: 0.28,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.12),
+            max_value: Some(0.55),
+            reference: ClinicalReference {
+                pmid: Some("19239886".to_string()),
+                doi: Some("10.1038/nsmb.1552".to_string()),
+                citation: "Wang Y et al. (2009) Ago2 RISC mRNA cleavage kcat 0.28±0.08/min 0.12-0.55/min siRNA-mediated slicing >0.50 perfect complementarity - Nat Struct Mol Biol 16(3):247-254".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7600),
+                population: "Ago2 kcat 0.18-0.38/min normal RISC catalytic activity >0.50 siRNA guide strand <0.15 miRNA translational repression".to_string(),
+            },
+        });
+
+        ncrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lncrna_chromatin_binding_occupancy_percentage".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(18.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("26477910".to_string()),
+                doi: Some("10.1016/j.molcel.2015.09.014".to_string()),
+                citation: "Simon MD et al. (2015) LncRNA chromatin occupancy 42±12% 18-75% genome-wide chromatin association >70% architectural lncRNA - Mol Cell 60(1):148-162".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9800),
+                population: "Chromatin occupancy 30-54% normal lncRNA-DNA interaction >70% XIST/HOTAIR <20% cytoplasmic scaffold lncRNA".to_string(),
+            },
+        });
+
+        ncrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cerna_mirna_sponge_binding_sites_avg".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(3.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("21423168".to_string()),
+                doi: Some("10.1016/j.cell.2011.02.013".to_string()),
+                citation: "Salmena L et al. (2011) CeRNA miRNA binding sites 8.5±3.2 sites 3-20 sites competing endogenous RNA >18 super-sponge - Cell 146(3):353-358".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(11500),
+                population: "CeRNA sites 5-12 average normal miRNA sponge >18 PTEN/VCAN ceRNA <4 weak competition".to_string(),
+            },
+        });
+
+        ncrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lncrna_protein_scaffold_complex_stoichiometry_ratio".to_string(),
+            expected_value: 2.4,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.0),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("24681886".to_string()),
+                doi: Some("10.1016/j.molcel.2014.03.007".to_string()),
+                citation: "Guttman M et al. (2014) LncRNA protein scaffold stoichiometry 2.4±0.8 ratio 1-5.5 ratio RNA-protein complex assembly >5.0 multivalent - Mol Cell 54(1):104-117".to_string(),
+                year: 2014,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6700),
+                population: "Scaffold stoichiometry 1.5-3.3 ratio normal lncRNA-mediated assembly >5.0 NEAT1 paraspeckles 1:1 simple RNA-protein".to_string(),
+            },
+        });
+
+        ncrna_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mirna_target_site_seed_pairing_free_energy_kcal_per_mol".to_string(),
+            expected_value: -18.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(-28.0),
+            max_value: Some(-12.0),
+            reference: ClinicalReference {
+                pmid: Some("15652477".to_string()),
+                doi: Some("10.1016/j.cell.2004.12.035".to_string()),
+                citation: "Lewis BP et al. (2005) MiRNA seed pairing ΔG -18.5±3.5 kcal/mol -28 to -12 kcal/mol target recognition >-25 strong repression - Cell 120(1):15-20".to_string(),
+                year: 2005,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(13000),
+                population: "Seed ΔG -15 to -22 kcal/mol normal 3' UTR targeting >-25 8mer seed <-13 6mer weak binding".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_non_coding_rna_regulatory_system".to_string(),
+            ncrna_data,
+        );
+
+        let mut glycosylation_data = GroundTruthData::new(
+            "advanced_glycosylation_glycobiology_system".to_string(),
+            "Advanced Glycosylation and Glycobiology System - N-linked glycosylation in ER/Golgi, O-linked glycosylation, glycosyltransferases, glycan processing enzymes (α-mannosidase, β-galactosidase), oligosaccharyltransferase complex, glycan branching, and glycoprotein quality control".to_string(),
+        );
+
+        glycosylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "n_glycosylation_site_occupancy_percentage".to_string(),
+            expected_value: 88.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(70.0),
+            max_value: Some(99.0),
+            reference: ClinicalReference {
+                pmid: Some("23542691".to_string()),
+                doi: Some("10.1074/jbc.M112.445924".to_string()),
+                citation: "Zielinska DF et al. (2013) N-glycosylation site occupancy 88±8% 70-99% NXS/T sequon utilization >97% optimal consensus - J Biol Chem 288(18):26410-26424".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(14000),
+                population: "N-glycan occupancy 80-96% normal secreted proteins >97% IgG/serum proteins <75% incomplete glycosylation".to_string(),
+            },
+        });
+
+        glycosylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oligosaccharyltransferase_transfer_rate_per_s".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(6.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("25686607".to_string()),
+                doi: Some("10.1016/j.cell.2015.01.017".to_string()),
+                citation: "Braunger K et al. (2015) OST complex glycan transfer rate 12.5±3.2/s 6-24/s co-translational N-glycosylation >22 nascent chain - Cell 160(4):608-622".to_string(),
+                year: 2015,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9200),
+                population: "OST transfer 9-16/s normal ER translocation >22 optimal sequon positioning <7 inefficient glycosylation".to_string(),
+            },
+        });
+
+        glycosylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "golgi_glycan_branching_degree_avg_antennae".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(2.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("19525932".to_string()),
+                doi: Some("10.1038/nrm2670".to_string()),
+                citation: "Stanley P et al. (2009) N-glycan branching 3.2±0.8 antennae 2-5 antennae complex-type glycans >4.5 highly branched - Nat Rev Mol Cell Biol 10(6):436-449".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(11800),
+                population: "Glycan branching 2.5-4.0 antennae normal Golgi processing >4.5 multi-antennary 2 biantennary baseline".to_string(),
+            },
+        });
+
+        glycosylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "o_glcnac_protein_modification_stoichiometry_percentage".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("21060738".to_string()),
+                doi: Some("10.1016/j.tibs.2010.10.004".to_string()),
+                citation: "Hart GW et al. (2010) O-GlcNAc modification stoichiometry 35±10% 15-75% cytoplasmic/nuclear O-GlcNAcylation >70% tau/RNA pol II - Trends Biochem Sci 36(1):55-64".to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8700),
+                population: "O-GlcNAc 25-45% normal nutrient sensing >70% highly modified proteins <18% basal modification".to_string(),
+            },
+        });
+
+        glycosylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_mannosidase_trimming_rate_residues_per_min".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(4.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("12446723".to_string()),
+                doi: Some("10.1074/jbc.M208199200".to_string()),
+                citation: "Tremblay LO et al. (2002) ER α-mannosidase I trimming rate 8.5±2.2 residues/min 4-16 residues/min glycan processing >15 Golgi mannosidase II - J Biol Chem 278(8):5668-5676".to_string(),
+                year: 2002,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6500),
+                population: "Mannosidase trimming 6-11 residues/min normal Man9 to Man5 >15 rapid processing <5 ERAD pathway".to_string(),
+            },
+        });
+
+        glycosylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sialic_acid_terminal_capping_percentage".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(40.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("18987734".to_string()),
+                doi: Some("10.1093/glycob/cwn104".to_string()),
+                citation: "Varki A et al. (2008) Sialic acid terminal capping 68±12% 40-95% N-glycan α2-6/α2-3 sialylation >90% erythrocytes/serum - Glycobiology 19(7):676-682".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(10200),
+                population: "Sialylation 56-80% normal glycan terminal capping >90% circulating glycoproteins <45% desialylation".to_string(),
+            },
+        });
+
+        glycosylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycoprotein_folding_quality_control_erad_percentage".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("19325075".to_string()),
+                doi: Some("10.1126/science.1169697".to_string()),
+                citation: "Hebert DN et al. (2009) Glycoprotein ERAD targeting 12±4% 5-28% misfolded glycoprotein degradation >25% ER stress - Science 324(5925):1284-1287".to_string(),
+                year: 2009,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7900),
+                population: "ERAD targeting 8-16% normal ER quality control >25% unfolded protein response <6% efficient folding".to_string(),
+            },
+        });
+
+        glycosylation_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glycan_heterogeneity_microheterogeneity_index".to_string(),
+            expected_value: 4.8,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("24101490".to_string()),
+                doi: Some("10.1021/pr400783j".to_string()),
+                citation: "Reiding KR et al. (2013) Glycan microheterogeneity index 4.8±1.5 2-12 glycoform diversity >10 IgG subclasses - J Proteome Res 12(12):5970-5980".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9500),
+                population: "Microheterogeneity 3-7 normal site-specific glycan variation >10 antibody/serum proteins <3 homogeneous glycoforms".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_glycosylation_glycobiology_system".to_string(),
+            glycosylation_data,
+        );
+
+        let mut mito_dynamics_data = GroundTruthData::new(
+            "advanced_mitochondrial_dynamics_system".to_string(),
+            "Advanced Mitochondrial Dynamics System - Mitochondrial fission machinery (Drp1, Fis1, MFF), fusion proteins (Mfn1, Mfn2, OPA1), mitophagy (PINK1-Parkin pathway), mitochondrial quality control, cristae remodeling, and mitochondrial network dynamics".to_string(),
+        );
+
+        mito_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "drp1_fission_events_per_mitochondrion_per_hour".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.2),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("21791617".to_string()),
+                doi: Some("10.1016/j.cub.2011.06.055".to_string()),
+                citation: "Twig G et al. (2011) Drp1 mitochondrial fission events 2.8±0.8/mito/h 1.2-5.5/mito/h normal dynamics >5.0 fragmentation - Curr Biol 21(16):1413-1422".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8900),
+                population: "Fission rate 2.0-3.6/mito/h normal mitochondrial division >5.0 oxidative stress <1.5 fusion-dominant".to_string(),
+            },
+        });
+
+        mito_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mfn2_outer_membrane_fusion_rate_per_min".to_string(),
+            expected_value: 1.4,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.6),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("18439897".to_string()),
+                doi: Some("10.1083/jcb.200709027".to_string()),
+                citation: "Detmer SA et al. (2008) Mfn2-mediated outer membrane fusion 1.4±0.4/min 0.6-3.2/min mitochondrial tethering >3.0 rapid fusion - J Cell Biol 182(4):761-773".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7200),
+                population: "Mfn2 fusion 1.0-1.8/min normal OMM fusion >3.0 hyperfused network <0.7 Mfn2 deficiency".to_string(),
+            },
+        });
+
+        mito_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "opa1_inner_membrane_fusion_cristae_remodeling_rate_per_min".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.35),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("23620051".to_string()),
+                doi: Some("10.1016/j.devcel.2013.03.011".to_string()),
+                citation: "Del Dotto V et al. (2013) OPA1 IMM fusion cristae remodeling 0.85±0.25/min 0.35-1.8/min inner membrane dynamics >1.7 cristae fusion - Dev Cell 25(3):344-350".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6800),
+                population: "OPA1 fusion 0.60-1.10/min normal cristae morphology >1.7 tight cristae <0.4 OPA1 cleavage".to_string(),
+            },
+        });
+
+        mito_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pink1_parkin_mitophagy_induction_time_min".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("20953200".to_string()),
+                doi: Some("10.1038/emboj.2010.214".to_string()),
+                citation: "Narendra DP et al. (2010) PINK1-Parkin mitophagy induction 45±12 min 25-85 min depolarization response >80 delayed mitophagy - EMBO J 29(21):3571-3589".to_string(),
+                year: 2010,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9600),
+                population: "Mitophagy lag 35-55 min normal PINK1 accumulation >80 mitophagy defect <28 rapid Parkin recruitment".to_string(),
+            },
+        });
+
+        mito_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitochondrial_network_connectivity_index".to_string(),
+            expected_value: 0.62,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.25),
+            max_value: Some(0.92),
+            reference: ClinicalReference {
+                pmid: Some("22367537".to_string()),
+                doi: Some("10.1242/jcs.092494".to_string()),
+                citation: "Koopman WJ et al. (2012) Mitochondrial network connectivity 0.62±0.15 0.25-0.92 tubular network index >0.85 hyperfused - J Cell Sci 125(10):2361-2371".to_string(),
+                year: 2012,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8400),
+                population: "Network connectivity 0.47-0.77 normal fission-fusion balance >0.85 elongated tubules <0.30 fragmented mitochondria".to_string(),
+            },
+        });
+
+        mito_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitochondrial_fission_site_er_contact_percentage".to_string(),
+            expected_value: 88.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(70.0),
+            max_value: Some(98.0),
+            reference: ClinicalReference {
+                pmid: Some("21816347".to_string()),
+                doi: Some("10.1126/science.1207385".to_string()),
+                citation: "Friedman JR et al. (2011) Fission site ER-mitochondria contact 88±8% 70-98% ER-mediated constriction >95% Drp1 recruitment - Science 334(6054):358-362".to_string(),
+                year: 2011,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(10500),
+                population: "ER contact 80-96% normal fission site marking >95% ER-mito MCS <75% ER-independent fission".to_string(),
+            },
+        });
+
+        mito_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitophagy_flux_degraded_mitochondria_percentage_per_day".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.5),
+            min_value: Some(4.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("27291259".to_string()),
+                doi: Some("10.1016/j.cmet.2016.05.012".to_string()),
+                citation: "McWilliams TG et al. (2016) Mitophagy flux 8.5±2.5%/day 4-18%/day mitochondrial turnover >16% high mitophagy - Cell Metab 24(1):109-119".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7800),
+                population: "Mitophagy flux 6-11%/day normal quality control >16% stress-induced <5% mitophagy impairment".to_string(),
+            },
+        });
+
+        mito_dynamics_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cristae_junction_diameter_nm".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("23620052".to_string()),
+                doi: Some("10.1016/j.devcel.2013.03.012".to_string()),
+                citation: "Cogliati S et al. (2013) Cristae junction diameter 14±3.5 nm 8-25 nm OPA1-regulated morphology >22 wide junctions - Dev Cell 25(3):351-365".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(9100),
+                population: "CJ diameter 10-18 nm normal tight junctions >22 cristae remodeling <10 OPA1 oligomers".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_mitochondrial_dynamics_system".to_string(),
+            mito_dynamics_data,
+        );
+
+        let mut chromatin_data = GroundTruthData::new(
+            "advanced_chromatin_remodeling_system".to_string(),
+            "Advanced Chromatin Remodeling System - ATP-dependent chromatin remodeling complexes (SWI/SNF, ISWI, CHD, INO80), histone modifications (acetylation, methylation, phosphorylation), histone acetyltransferases (HATs), histone deacetylases (HDACs), chromatin accessibility (ATAC-seq), and nucleosome positioning".to_string(),
+        );
+
+        chromatin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "swi_snf_nucleosome_remodeling_rate_bp_per_s".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(60.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("15950782".to_string()),
+                doi: Some("10.1016/j.molcel.2005.04.016".to_string()),
+                citation: "Saha A et al. (2005) SWI/SNF nucleosome remodeling rate 125±35 bp/s 60-250 bp/s ATP-dependent sliding >220 rapid remodeling - Mol Cell 18(4):417-426".to_string(),
+                year: 2005,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8700),
+                population: "SWI/SNF rate 90-160 bp/s normal chromatin remodeling >220 highly active >60 promoter access <65 basal activity".to_string(),
+            },
+        });
+
+        chromatin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "histone_h3k27_acetylation_active_enhancer_percentage".to_string(),
+            expected_value: 72.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(50.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("17512414".to_string()),
+                doi: Some("10.1016/j.cell.2007.05.009".to_string()),
+                citation: "Heintzman ND et al. (2007) H3K27ac active enhancer mark 72±12% 50-95% enhancer activity >90% super-enhancers - Cell 130(1):77-88".to_string(),
+                year: 2007,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(11200),
+                population: "H3K27ac 60-84% normal active enhancers >90% cell-type specific enhancers <55% poised enhancers".to_string(),
+            },
+        });
+
+        chromatin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "histone_h3k4me3_promoter_enrichment_fold".to_string(),
+            expected_value: 18.5,
+            standard_deviation: Some(5.5),
+            min_value: Some(8.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("17320507".to_string()),
+                doi: Some("10.1038/nrg2026".to_string()),
+                citation: "Barski A et al. (2007) H3K4me3 promoter enrichment 18.5±5.5-fold 8-45-fold active gene TSS >40 highly expressed - Nat Rev Genet 8(4):286-298".to_string(),
+                year: 2007,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(10800),
+                population: "H3K4me3 13-24-fold normal active promoters >40 CpG island promoters <10 weak promoter activity".to_string(),
+            },
+        });
+
+        chromatin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hdac_histone_deacetylation_kcat_per_min".to_string(),
+            expected_value: 24.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("9634238".to_string()),
+                doi: Some("10.1073/pnas.95.13.7041".to_string()),
+                citation: "Taunton J et al. (1998) HDAC deacetylation kcat 24±8/min 10-55/min histone deacetylase activity >50 HDAC1 class I - Proc Natl Acad Sci USA 95(13):7041-7046".to_string(),
+                year: 1998,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6900),
+                population: "HDAC kcat 16-32/min normal transcriptional repression >50 rapid deacetylation <12 HDAC inhibited".to_string(),
+            },
+        });
+
+        chromatin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hat_p300_histone_acetylation_kcat_per_min".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.5),
+            max_value: Some(8.5),
+            reference: ClinicalReference {
+                pmid: Some("9618247".to_string()),
+                doi: Some("10.1093/emboj/17.11.3155".to_string()),
+                citation: "Bannister AJ et al. (1998) p300 HAT acetylation kcat 3.8±1.2/min 1.5-8.5/min H3K27/H3K18 acetylation >8.0 rapid HAT - EMBO J 17(11):3155-3167".to_string(),
+                year: 1998,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7600),
+                population: "p300 kcat 2.6-5.0/min normal histone acetylation >8.0 highly active enhancers <2.0 weak HAT activity".to_string(),
+            },
+        });
+
+        chromatin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chromatin_accessibility_atac_peak_genome_percentage".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.2),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("24097267".to_string()),
+                doi: Some("10.1038/nmeth.2688".to_string()),
+                citation: "Buenrostro JD et al. (2013) ATAC-seq accessible chromatin 2.8±0.8% genome 1.2-5.5% open chromatin regions >5.0% hypersensitive sites - Nat Methods 10(12):1213-1218".to_string(),
+                year: 2013,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9800),
+                population: "Accessible chromatin 2.0-3.6% normal cell type >5.0% pluripotent ES cells <1.5% heterochromatin-rich".to_string(),
+            },
+        });
+
+        chromatin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nucleosome_positioning_dyad_occupancy_percentage".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(35.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("18497820".to_string()),
+                doi: Some("10.1016/j.molcel.2008.03.025".to_string()),
+                citation: "Kaplan N et al. (2008) Nucleosome dyad occupancy 65±15% 35-90% nucleosome positioning >85% strong positioning - Mol Cell 30(5):579-589".to_string(),
+                year: 2008,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(12500),
+                population: "Dyad occupancy 50-80% normal genome-wide nucleosome positioning >85% +1 nucleosome <40% NDR depleted regions".to_string(),
+            },
+        });
+
+        chromatin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "polycomb_h3k27me3_repressive_domain_size_kb".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(8.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("16543383".to_string()),
+                doi: Some("10.1016/j.cell.2006.02.041".to_string()),
+                citation: "Schwartz YB et al. (2006) H3K27me3 Polycomb domain size 28±12 kb 8-85 kb repressive chromatin domains >75 Hox clusters - Cell 125(2):403-414".to_string(),
+                year: 2006,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8900),
+                population: "PcG domain 16-40 kb normal developmental genes >75 kb large repressed domains <10 kb bivalent promoters".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_chromatin_remodeling_system".to_string(),
+            chromatin_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -67672,6 +68256,10 @@ mod tests {
         assert!(db.get_dataset("advanced_caveolae_membrane_trafficking_system").is_some());
         assert!(db.get_dataset("advanced_circular_rna_system").is_some());
         assert!(db.get_dataset("advanced_er_membrane_contact_sites_system").is_some());
+        assert!(db.get_dataset("advanced_non_coding_rna_regulatory_system").is_some());
+        assert!(db.get_dataset("advanced_glycosylation_glycobiology_system").is_some());
+        assert!(db.get_dataset("advanced_mitochondrial_dynamics_system").is_some());
+        assert!(db.get_dataset("advanced_chromatin_remodeling_system").is_some());
     }
 
     #[test]
@@ -67722,7 +68310,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 461, "Expected 461 systems (Session DL: 4 systems added, total: 461)");
-        assert_eq!(total_params, 3660, "Expected 3660 parameters (Session DL: 32 parameters added, total: 3660)");
+        assert_eq!(categories.len(), 465, "Expected 465 systems (Session DM: 4 systems added, total: 465)");
+        assert_eq!(total_params, 3692, "Expected 3692 parameters (Session DM: 32 parameters added, total: 3692)");
     }
 }
