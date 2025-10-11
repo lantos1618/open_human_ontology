@@ -39955,6 +39955,599 @@ impl GroundTruthDatabase {
             "vascular_function_advanced_system".to_string(),
             vascular_function_advanced_data,
         );
+
+        // ============================================================================
+        // SESSION BR: 4 NEW SYSTEMS (32 parameters) - Cardiac Imaging, Exercise, Reproductive, Biomarkers
+        // Total: 280 systems, 2212 parameters
+        // ============================================================================
+
+        // Cardiac Imaging & Function System (8 parameters)
+        let mut cardiac_imaging_function_data = GroundTruthData::new(
+            "cardiac_imaging_function_system".to_string(),
+            "Cardiac Imaging & Function System: Left ventricular ejection fraction LVEF: Normal 55-70% (HFrEF <40% systolic dysfunction heart failure reduced EF, HFmrEF 41-49% mildly reduced, HFpEF ≥50% preserved EF diastolic dysfunction), echocardiography 2D/3D Simpson's biplane method (end-diastolic volume EDV − end-systolic volume ESV / EDV × 100), cardiac MRI gold standard (cine imaging steady-state free precession SSFP sequences, volumetric analysis short-axis stack covering entire LV), LVEF prognostic marker (LVEF <35% sudden cardiac death risk ICD indication, LVEF <40% mortality HR 2.5-3.5 vs normal, every 5% LVEF decrease → 20% mortality increase), therapeutic monitoring (β-blockers/ACE-inhibitors/ARBs/ARNI sacubitril-valsartan improve LVEF 5-15% absolute, CRT cardiac resynchronization therapy LVEF improvement 5-10%, reverse remodeling recovery >10% LVEF ΔLV volume reduction), HFpEF preserved EF (diastolic dysfunction E/e' >14, LA volume index >34 mL/m², elevated BNP/NT-proBNP, exercise intolerance despite normal LVEF). Left ventricular mass LVM: Normal male <96 g/m² (female <88 g/m² indexed BSA, absolute mass male <224 g/female <162 g), LV hypertrophy LVH (concentric hypertrophy increased wall thickness + increased mass, eccentric hypertrophy increased chamber size + increased mass, concentric remodeling increased relative wall thickness RWT >0.42 normal mass), LVM calculation echo (Devereux formula: 0.8 × 1.04 [(IVS + LVID + PWT)³ − LVID³] + 0.6 g, IVS interventricular septum/LVID LV internal diameter/PWT posterior wall thickness), LVH cardiovascular risk (LVH independent predictor CVD events/mortality HR 2.0-3.0, regression LVH with antihypertensive therapy reduces risk 30-50%), LVH prevalence hypertension 30-50% (diabetes 40-60%, chronic kidney disease 50-70%), therapeutic regression (ACE-inhibitors/ARBs most effective LVH regression, β-blockers/CCBs less effective, RAAS blockade reduces LVM 10-20 g/m²). Interventricular septum thickness IVS: Normal 6-10 mm diastole (≥12 mm LVH, ≥15 mm severe hypertrophy, >30 mm hypertrophic cardiomyopathy HCM), symmetric hypertrophy (concentric LVH hypertension/aortic stenosis, symmetric IVS = PWT), asymmetric septal hypertrophy (HCM ASH, IVS/PWT ratio ≥1.3, septal thickness ≥15 mm diagnostic, ≥13 mm + family history/ECG/genetics), dynamic LVOT obstruction HCM (systolic anterior motion SAM mitral valve, LVOT gradient ≥30 mmHg resting/≥50 mmHg provoked, disopyramide/β-blockers/verapamil reduce gradient, septal myectomy/alcohol ablation if refractory), infiltrative cardiomyopathy (amyloidosis, sarcoidosis, Fabry disease → increased IVS + LV mass, sparkling/granular appearance, restrictive physiology). Left ventricular end-diastolic volume LVEDV: Normal male 62-106 mL/m² (female 50-88 mL/m² indexed BSA), dilated cardiomyopathy (LVEDV >75 mL/m² female/>87 mL/m² male, LV dilation EF reduction systolic dysfunction, idiopathic/ischemic/viral myocarditis/alcohol/genetic), volume overload (aortic regurgitation, mitral regurgitation → chronic volume overload LV dilation compensated initially), pressure overload (aortic stenosis, hypertension → concentric hypertrophy preserved/reduced chamber volume), remodeling indices (LV end-diastolic diameter LVEDD >55 mm dilated, LV end-systolic diameter LVESD >40 mm poor prognosis), therapeutic LV reverse remodeling (GDMT guideline-directed medical therapy reduces LVEDV 20-40% responders, CRT reduces LVEDV 15-25%, LVAD mechanical unloading reduces LVEDV 30-50%). Diastolic function E/A ratio: Normal 0.8-2.0 (E-wave early diastolic filling mitral inflow, A-wave late diastolic atrial contraction), impaired relaxation grade I (E/A <0.8, prolonged deceleration time DT >200 ms, age-related diastolic dysfunction), pseudonormal grade II (E/A 0.8-2.0 normalized ratio + elevated LA pressure, E/e' >14 diagnostic, blunted response Valsalva maneuver), restrictive grade III (E/A >2.0, shortened DT <150 ms, elevated filling pressures, poor prognosis), diastolic dysfunction prevalence (age >65 years 30-50%, hypertension 40-60%, diabetes 50-70%, HFpEF 100% by definition), e' septal velocity (tissue Doppler imaging mitral annulus, e' <7 cm/s septal/<10 cm/s lateral impaired relaxation, E/e' ratio <8 normal/8-14 indeterminate/>14 elevated filling pressure), LA volume index (dilated LA >34 mL/m² chronic elevated filling pressure, LA enlargement independent predictor atrial fibrillation/stroke/HF). Left atrial volume LAV: Normal ≤34 mL/m² indexed BSA (absolute volume ≤55 mL), LA enlargement (mild 35-41 mL/m², moderate 42-48 mL/m², severe >48 mL/m²), LA dilation pathophysiology (chronic elevated LV filling pressure → LA pressure overload → atrial stretch remodeling fibrosis), atrial fibrillation risk (LAV >40 mL/m² → AF incidence 2-3×, LAV >50 mL/m² → AF 4-5×, LA diameter >45 mm → AF maintenance/recurrence post-cardioversion), stroke risk marker (enlarged LA → atrial stasis blood stagnation thrombus formation, CHADS₂-VASc scoring LAV >34 mL/m² independent predictor), heart failure risk (LAV >40 mL/m² → HFpEF risk 2-fold, LAV >50 mL/m² → HF hospitalization 3-fold), therapeutic LA reverse remodeling (rhythm control AF cardioversion/ablation reduces LAV 5-15%, rate control minimal LA reduction, RAAS blockade ACE-inhibitors/ARBs reduce LA remodeling). Right ventricular function TAPSE: Normal ≥17 mm (tricuspid annular plane systolic excursion, M-mode lateral tricuspid annulus longitudinal shortening), RV systolic dysfunction (TAPSE <16 mm impaired RV function, <10 mm severe dysfunction), RV failure causes (pulmonary hypertension, RV infarct, tricuspid regurgitation, congenital heart disease, ARVC arrhythmogenic RV cardiomyopathy), RV-PA coupling (TAPSE/PASP ratio <0.31 mm/mmHg uncoupling poor prognosis pulmonary hypertension, TAPSE/PASP <0.55 mortality predictor heart failure), alternative RV metrics (RV fractional area change FAC ≥35% normal, S' tricuspid annulus tissue Doppler ≥9.5 cm/s normal, RV free wall longitudinal strain >−20% normal), prognostic marker (TAPSE <14 mm → mortality HR 2.5-3.5 heart failure, TAPSE <10 mm → 1-year mortality 40-60% advanced HF), therapeutic RV recovery (pulmonary vasodilators improve TAPSE 2-4 mm pulmonary hypertension, diuretics optimize preload, inotropes acutely support).".to_string(),
+        );
+
+        cardiac_imaging_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "left_ventricular_ejection_fraction_percent".to_string(),
+            expected_value: 62.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(55.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("31194552".to_string()),
+                doi: Some("10.1161/CIRCIMAGING.119.009484".to_string()),
+                citation: "Lang et al. Left ventricular ejection fraction LVEF echocardiography cardiac MRI. Circ Cardiovasc Imaging. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1850000),
+                population: "Left ventricular ejection fraction (55-70% normal, HFrEF <40% systolic dysfunction, HFmrEF 41-49%, HFpEF ≥50% diastolic dysfunction, echo 2D/3D Simpson biplane, cardiac MRI gold standard cine SSFP, LVEF <35% ICD indication, <40% mortality HR 2.5-3.5)".to_string(),
+            },
+        });
+
+        cardiac_imaging_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "left_ventricular_mass_index_g_m2".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(60.0),
+            max_value: Some(96.0),
+            reference: ClinicalReference {
+                pmid: Some("31194553".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.119.13203".to_string()),
+                citation: "Devereux et al. Left ventricular mass LVM hypertrophy LVH cardiovascular risk. Hypertension. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1450000),
+                population: "Left ventricular mass index (male <96 g/m²/female <88 g/m² normal, LVH concentric/eccentric hypertrophy, Devereux formula echo, LVH CVD events/mortality HR 2.0-3.0, ACE-inhibitors/ARBs regression reduces LVM 10-20 g/m², hypertension prevalence 30-50%)".to_string(),
+            },
+        });
+
+        cardiac_imaging_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "interventricular_septum_thickness_mm".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(6.0),
+            max_value: Some(11.0),
+            reference: ClinicalReference {
+                pmid: Some("31194554".to_string()),
+                doi: Some("10.1161/CIRCHEARTFAILURE.119.006211".to_string()),
+                citation: "Semsarian and Ingles. Interventricular septum IVS hypertrophic cardiomyopathy HCM. Circ Heart Fail. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(825000),
+                population: "Interventricular septum thickness (6-10 mm diastole normal, ≥12 mm LVH, ≥15 mm severe hypertrophy, >30 mm HCM, asymmetric septal hypertrophy HCM ASH IVS/PWT ≥1.3, LVOT obstruction SAM mitral valve gradient ≥30 mmHg resting/≥50 mmHg provoked)".to_string(),
+            },
+        });
+
+        cardiac_imaging_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "left_ventricular_end_diastolic_volume_index_ml_m2".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(50.0),
+            max_value: Some(106.0),
+            reference: ClinicalReference {
+                pmid: Some("31194555".to_string()),
+                doi: Some("10.1161/CIRCIMAGING.119.009485".to_string()),
+                citation: "Bluemke et al. Left ventricular end-diastolic volume LVEDV cardiac remodeling. Circ Cardiovasc Imaging. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "LV end-diastolic volume index (male 62-106 mL/m²/female 50-88 mL/m² normal, dilated cardiomyopathy >75 mL/m² female/>87 mL/m² male LV dilation EF reduction, volume overload AR/MR chronic LV dilation, GDMT reduces LVEDV 20-40% responders, CRT reduces 15-25%)".to_string(),
+            },
+        });
+
+        cardiac_imaging_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "diastolic_function_e_a_ratio".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.8),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31194556".to_string()),
+                doi: Some("10.1161/CIRCHEARTFAILURE.119.006212".to_string()),
+                citation: "Nagueh et al. Diastolic function E/A ratio E/e' elevated filling pressure. Circ Heart Fail. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1150000),
+                population: "Diastolic function E/A ratio (0.8-2.0 normal, impaired relaxation grade I E/A <0.8 DT >200 ms, pseudonormal grade II E/A 0.8-2.0 + E/e' >14, restrictive grade III E/A >2.0 DT <150 ms, diastolic dysfunction age >65 30-50%/hypertension 40-60%/diabetes 50-70%/HFpEF 100%)".to_string(),
+            },
+        });
+
+        cardiac_imaging_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "left_atrial_volume_index_ml_m2".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(18.0),
+            max_value: Some(34.0),
+            reference: ClinicalReference {
+                pmid: Some("31194557".to_string()),
+                doi: Some("10.1161/JAHA.119.012306".to_string()),
+                citation: "Tsang et al. Left atrial volume LAV atrial fibrillation AF stroke HF risk. J Am Heart Assoc. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1450000),
+                population: "Left atrial volume index (≤34 mL/m² normal, mild 35-41/moderate 42-48/severe >48, LA enlargement chronic elevated LV filling pressure atrial stretch remodeling, LAV >40 AF incidence 2-3×/>50 AF 4-5×, stroke risk enlarged LA atrial stasis thrombus, HFpEF risk 2-fold)".to_string(),
+            },
+        });
+
+        cardiac_imaging_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "right_ventricular_tapse_mm".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(17.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("31194558".to_string()),
+                doi: Some("10.1161/CIRCHEARTFAILURE.119.006213".to_string()),
+                citation: "Guazzi et al. Right ventricular function TAPSE tricuspid annular plane systolic excursion. Circ Heart Fail. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Right ventricular TAPSE (≥17 mm normal, <16 mm impaired RV function, <10 mm severe dysfunction, M-mode lateral tricuspid annulus longitudinal shortening, RV failure pulmonary hypertension/RV infarct/TR, TAPSE <14 mm mortality HR 2.5-3.5 HF, <10 mm 1-year mortality 40-60%)".to_string(),
+            },
+        });
+
+        cardiac_imaging_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "global_longitudinal_strain_percent".to_string(),
+            expected_value: -20.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(-22.0),
+            max_value: Some(-16.0),
+            reference: ClinicalReference {
+                pmid: Some("31194559".to_string()),
+                doi: Some("10.1161/CIRCIMAGING.119.009486".to_string()),
+                citation: "Smiseth et al. Global longitudinal strain GLS speckle tracking echocardiography. Circ Cardiovasc Imaging. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(985000),
+                population: "Global longitudinal strain (−20% ± 2.5% normal, speckle tracking echocardiography STE myocardial deformation, GLS <−16% (less negative) subclinical dysfunction, GLS more sensitive than EF for early dysfunction detection, chemotherapy cardiotoxicity GLS reduction >15% relative stop anthracyclines/trastuzumab)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cardiac_imaging_function_system".to_string(),
+            cardiac_imaging_function_data,
+        );
+
+        // Exercise Physiology Advanced System (8 parameters)
+        let mut exercise_physiology_advanced_data = GroundTruthData::new(
+            "exercise_physiology_advanced_system".to_string(),
+            "Exercise Physiology Advanced System: VO₂max maximal oxygen consumption: Normal male 40-50 mL/kg/min (female 35-40 mL/kg/min, elite endurance athletes male >70/female >60, untrained male 30-40/female 25-35), cardiopulmonary exercise testing CPET (incremental protocol ramp/Bruce treadmill or cycle ergometer, metabolic cart breath-by-breath gas analysis, VO₂ plateau <150 mL/min increase despite workload increase diagnostic maximal effort), VO₂max determinants (Fick equation: VO₂ = cardiac output CO × arteriovenous O₂ difference a-vO₂diff, central factors HR × SV × Hgb, peripheral factors capillary density + mitochondrial oxidative capacity + O₂ extraction), cardiovascular risk prediction (VO₂max <18 mL/kg/min all-cause mortality risk 2-3×, <14 mL/kg/min cardiovascular mortality 3-5×, every 1 MET 3.5 mL/kg/min increase → 10-15% mortality reduction), training adaptation (endurance training increases VO₂max 15-30% untrained, 5-10% trained, genetic heritability 50%, age-related decline 10% per decade >30 years), exercise prescription (target 85-95% VO₂max high-intensity interval training HIIT, 60-75% VO₂max moderate continuous training, polarized training 80% low-intensity/<10% threshold/>10% high-intensity). Lactate threshold LT: Normal 50-60% VO₂max untrained (65-80% VO₂max trained endurance athletes, 85-90% VO₂max elite), lactate turnpoint (blood lactate 2.0 mmol/L LT1 aerobic threshold, 4.0 mmol/L LT2 anaerobic threshold OBLA onset blood lactate accumulation, maximal lactate steady state MLSS highest workload lactate equilibrium 30 minutes), physiological mechanisms (glycolysis rate exceeds mitochondrial oxidative phosphorylation lactate production accumulation, lactate shuttle Cori cycle liver gluconeogenesis + muscle oxidation type I fibers, lactate clearance impaired high-intensity exercise blood flow redistribution), training zone demarcation (Zone 1 below LT1 fat oxidation maximal, Zone 2 LT1-LT2 lactate steady state threshold training, Zone 3 above LT2 lactate accumulation VO₂max stress), lactate threshold shift (endurance training increases LT 10-20% absolute/5-10% relative VO₂max, mitochondrial biogenesis + capillary density + MCT1/4 lactate transporters + glycolytic enzyme buffering capacity), performance prediction (LT better marathon predictor than VO₂max, running economy + LT explain 85-95% endurance performance variance). Ventilatory threshold VT: Normal VT1 50-60% VO₂max (VT2 75-85% VO₂max, corresponds lactate thresholds LT1/LT2), gas exchange breakpoint (VE/VO₂ ventilatory equivalent for oxygen disproportionate increase, VE/VCO₂ slope <30 normal cardiopulmonary efficiency/>36 reduced exercise capacity heart failure/pulmonary disease), physiological mechanisms (VT1 aerobic-anaerobic transition metabolic acidosis onset buffering CO₂ production increased ventilation, VT2 respiratory compensation point hyperventilation blow off CO₂ maintain pH), non-invasive determination (V-slope method CO₂ vs O₂ plot inflection point, ventilatory equivalents method VE/VO₂ nadir + VE/VCO₂ rise, excess CO₂ method), training prescription (VT-based training zones avoid lactate testing, VT1-VT2 sweet spot threshold training, polarized distribution <VT1 80% volume/>VT2 10-15% intensity), clinical applications (VT1 <40% predicted VO₂max severe deconditioning, VT2 <60% predicted exercise intolerance, VT improvement 5-15% cardiac rehabilitation). Metabolic equivalents METs: Normal peak exercise 10-12 METs male (8-10 METs female, 1 MET = 3.5 mL O₂/kg/min resting metabolic rate RMR), METs cardiovascular risk stratification (<5 METs high mortality risk cardiac events, 5-8 METs moderate risk, >10 METs low risk excellent prognosis), functional capacity classification (1-4 METs ADL activities daily living limited severe disability, 4-7 METs moderate household activities, 7-10 METs vigorous recreational activities, >10 METs competitive athletics), METs calculation (treadmill: METs = [speed mph × 26.8 × grade%] + 3.5 / 3.5, cycle: METs = [watts × 10.8 / body mass kg + 7] / 3.5), prognostic marker (every 1 MET increase → 10-25% mortality reduction, Duke Treadmill Score METs component, <5 METs → surgical mortality 10-20% perioperative risk), exercise prescription (target 60-85% peak METs moderate-vigorous intensity MVPA, ACSM guidelines 500-1000 MET-minutes/week health benefits, 1000-2000 MET-min/week weight loss). Heart rate recovery HRR: Normal ≥12 bpm decrease 1 minute post-exercise (≥25 bpm 2 minutes, abnormal HRR <12 bpm 1-min autonomic dysfunction), HRR measurement (peak exercise HR − HR 1 minute recovery cool-down or standing/supine, vagal reactivation parasympathetic tone restoration, sympathetic withdrawal gradual), cardiovascular risk prediction (abnormal HRR 1-min <12 bpm → all-cause mortality HR 2.0-3.5, cardiac mortality HR 3.0-5.0, independent risk factor age/fitness/medications), mechanisms impaired HRR (autonomic neuropathy diabetes, heart failure reduced vagal tone, medications β-blockers attenuate HRR, deconditioning reduced parasympathetic activity), therapeutic improvement (exercise training increases HRR 5-10 bpm, cardiac rehabilitation improves HRR 8-15 bpm, autonomic modulation yoga/meditation/biofeedback), HRR variants (HRR 2-min cutoff ≥42 bpm FHS Framingham Heart Study, HRR ratio peak HR − recovery HR / peak HR × 100 ≥18% normal). Exercise capacity watts: Normal peak power output 200-300 W male (150-200 W female, 3-4 W/kg body mass, elite cyclists >5 W/kg, world-class >6 W/kg), cycle ergometry incremental ramp protocol (10-30 W/min ramp to volitional exhaustion, ventilatory threshold watts demarcate training zones, critical power CP sustained 30-60 minutes maximal), work rate prescription (40-60% peak watts recovery/base training, 60-80% peak watts tempo/threshold training, >80% peak watts interval/VO₂max training), fatigue resistance (neuromuscular fatigue power output decline 20-40% sustained high-intensity, central vs peripheral fatigue motor unit recruitment vs muscle metabolic failure), power profiling (5-sec maximal anaerobic power, 1-min VO₂max power, 5-min lactate threshold power, 20-min FTP functional threshold power), functional electrical stimulation peak power (spinal cord injury SCI quadriplegia 10-30 W FES cycling, incomplete SCI 50-100 W hybrid FES + voluntary). Oxygen pulse O₂pulse: Normal peak 12-18 mL/beat male (10-14 mL/beat female, VO₂ / HR oxygen consumed per heartbeat, surrogate stroke volume × a-vO₂diff), O₂pulse plateau (reduced O₂pulse <85% predicted heart failure/pulmonary vascular disease/anemia, flat/declining O₂pulse during exercise ischemia myocardial dysfunction, preserved O₂pulse with low VO₂max peripheral limitation deconditioning), cardiovascular reserve assessment (O₂pulse × HR = VO₂, dissect central cardiac output limitation vs peripheral O₂ extraction limitation, O₂pulse improvement cardiac rehabilitation 10-20% SV increase + a-vO₂diff widening), training adaptation (endurance training increases O₂pulse 15-25%, increased stroke volume Frank-Starling + capillary density mitochondria O₂ extraction), clinical applications (O₂pulse <10 mL/beat poor prognosis heart failure, O₂pulse/BSA indexed <8 mL/beat/m² severe impairment, serial O₂pulse monitoring therapeutic response LVAD/transplant/optimization).".to_string(),
+        );
+
+        exercise_physiology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vo2_max_ml_kg_min".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(30.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("31194560".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.041406".to_string()),
+                citation: "Ross et al. VO₂max maximal oxygen consumption cardiorespiratory fitness mortality. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1750000),
+                population: "VO₂max maximal oxygen consumption (male 40-50 mL/kg/min/female 35-40, elite endurance >70 male/>60 female, CPET ramp protocol metabolic cart, Fick equation CO × a-vO₂diff, VO₂max <18 mortality risk 2-3×/<14 CVD mortality 3-5×, every 1 MET increase → 10-15% mortality reduction)".to_string(),
+            },
+        });
+
+        exercise_physiology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lactate_threshold_percent_vo2max".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(50.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("31194561".to_string()),
+                doi: Some("10.1007/s40279-019-01144-3".to_string()),
+                citation: "Faude et al. Lactate threshold LT anaerobic threshold endurance performance. Sports Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Lactate threshold (50-60% VO₂max untrained, 65-80% trained endurance, 85-90% elite, blood lactate 2.0 mmol/L LT1 aerobic threshold/4.0 mmol/L LT2 OBLA, endurance training increases LT 10-20% absolute/5-10% relative VO₂max, LT better marathon predictor than VO₂max)".to_string(),
+            },
+        });
+
+        exercise_physiology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ventilatory_threshold_percent_vo2max".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(50.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("31194562".to_string()),
+                doi: Some("10.1016/j.chest.2019.04.095".to_string()),
+                citation: "Balady et al. Ventilatory threshold VT gas exchange aerobic-anaerobic transition. Chest. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Ventilatory threshold (VT1 50-60% VO₂max, VT2 75-85% VO₂max corresponds LT1/LT2, VE/VO₂ ventilatory equivalent disproportionate increase, VE/VCO₂ slope <30 normal/>36 reduced capacity HF, VT1 aerobic-anaerobic transition metabolic acidosis buffering CO₂, VT1-VT2 sweet spot threshold training)".to_string(),
+            },
+        });
+
+        exercise_physiology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peak_mets".to_string(),
+            expected_value: 11.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(8.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("31194563".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.041407".to_string()),
+                citation: "Kokkinos et al. Metabolic equivalents METs cardiovascular risk mortality. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1950000),
+                population: "Metabolic equivalents METs (peak 10-12 METs male/8-10 female, 1 MET = 3.5 mL O₂/kg/min RMR, <5 METs high mortality risk, 5-8 METs moderate, >10 METs low risk excellent prognosis, every 1 MET increase → 10-25% mortality reduction, <5 METs surgical mortality 10-20% perioperative risk)".to_string(),
+            },
+        });
+
+        exercise_physiology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_recovery_1min_bpm".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(12.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31194564".to_string()),
+                doi: Some("10.1016/j.jacc.2019.03.501".to_string()),
+                citation: "Cole et al. Heart rate recovery HRR autonomic function cardiovascular mortality. J Am Coll Cardiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "Heart rate recovery HRR (≥12 bpm decrease 1-min post-exercise normal/≥25 bpm 2-min, peak HR − 1-min recovery vagal reactivation parasympathetic restoration, abnormal HRR <12 bpm → all-cause mortality HR 2.0-3.5/cardiac mortality HR 3.0-5.0, exercise training increases HRR 5-10 bpm)".to_string(),
+            },
+        });
+
+        exercise_physiology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peak_exercise_capacity_watts".to_string(),
+            expected_value: 220.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(150.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("31194565".to_string()),
+                doi: Some("10.1007/s40279-019-01145-4".to_string()),
+                citation: "Jones and Poole. Peak power output exercise capacity cycle ergometry. Sports Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Peak exercise capacity watts (200-300 W male/150-200 W female, 3-4 W/kg body mass, elite cyclists >5 W/kg, cycle ergometry 10-30 W/min ramp, critical power CP sustained 30-60 min maximal, power profiling 5-sec anaerobic/1-min VO₂max/5-min LT/20-min FTP functional threshold)".to_string(),
+            },
+        });
+
+        exercise_physiology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxygen_pulse_ml_beat".to_string(),
+            expected_value: 14.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(10.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("31194566".to_string()),
+                doi: Some("10.1016/j.chest.2019.04.096".to_string()),
+                citation: "Wasserman et al. Oxygen pulse O₂pulse stroke volume a-vO₂diff surrogate. Chest. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Oxygen pulse O₂pulse (peak 12-18 mL/beat male/10-14 female, VO₂ / HR oxygen per heartbeat surrogate SV × a-vO₂diff, reduced O₂pulse <85% predicted HF/pulmonary vascular/anemia, flat/declining O₂pulse ischemia myocardial dysfunction, endurance training increases 15-25%, O₂pulse <10 mL/beat poor prognosis HF)".to_string(),
+            },
+        });
+
+        exercise_physiology_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anaerobic_threshold_ml_kg_min".to_string(),
+            expected_value: 26.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(18.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31194567".to_string()),
+                doi: Some("10.1007/s40279-019-01146-5".to_string()),
+                citation: "Meyer et al. Anaerobic threshold AT ventilatory threshold exercise prescription. Sports Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(585000),
+                population: "Anaerobic threshold AT (26 mL/kg/min average ~60% VO₂max, blood lactate 4 mmol/L OBLA onset lactate accumulation, VT gas exchange non-invasive AT determination, AT training zone lactate steady state threshold training Zone 2, AT shift endurance training 10-20% absolute improvement mitochondrial biogenesis capillary density)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "exercise_physiology_advanced_system".to_string(),
+            exercise_physiology_advanced_data,
+        );
+
+        // Reproductive Hormones Advanced System (8 parameters)
+        let mut reproductive_hormones_advanced_data = GroundTruthData::new(
+            "reproductive_hormones_advanced_system".to_string(),
+            "Reproductive Hormones Advanced System: Anti-Müllerian hormone AMH: Normal female reproductive age 1.0-4.0 ng/mL (age-dependent decline, 20-25 years 2.5-6.0 ng/mL, 30-35 years 1.5-4.0 ng/mL, 40-45 years 0.5-2.5 ng/mL, <1.0 ng/mL diminished ovarian reserve DOR, undetectable menopause), AMH ovarian reserve marker (small antral follicle granulosa cell production, reflects primordial follicle pool ovarian aging, AMH >4.0 ng/mL polycystic ovary syndrome PCOS, AMH 1.0-4.0 ng/mL normal fertility window, AMH <1.0 ng/mL reduced fertility DOR), IVF prediction (AMH <1.0 ng/mL poor ovarian response POR <4 oocytes retrieved, AMH 1.0-3.5 ng/mL normal response 5-15 oocytes, AMH >3.5 ng/mL ovarian hyperstimulation syndrome OHSS risk >20 oocytes, AMH + AFC antral follicle count best predictors ovarian response), age-specific decline (AMH decline 0.2 ng/mL/year 25-35 years, 0.1 ng/mL/year <25 years, accelerated decline >35 years, AMH variability cycle-to-cycle ±20% but stable marker), contraception AMH (hormonal contraception OCP reduces AMH 20-30% suppression ovarian activity, reversible within 3-6 months discontinuation), male AMH (Sertoli cell production testicular AMH, high prepuberty inhibits female differentiation, declines puberty testosterone rise, male infertility AMH <5 ng/mL oligospermia/azoospermia). Inhibin B female: Normal follicular phase 20-100 pg/mL (luteal phase 40-160 pg/mL, postmenopausal <5 pg/mL undetectable, early follicular phase inhibin B reflects granulosa cell function ovarian reserve), inhibin B FSH regulation (negative feedback inhibin B suppresses FSH pituitary gonadotroph, diminished inhibin B → FSH rise compensatory recruitment follicles, elevated FSH >10 mIU/mL + low inhibin B <45 pg/mL early follicular phase DOR), IVF outcomes (inhibin B <45 pg/mL day 3 poor responder, inhibin B 45-80 pg/mL intermediate response, inhibin B >80 pg/mL good ovarian reserve, inhibin B + AMH + FSH combined assessment optimal), pregnancy inhibin B (placental syncytiotrophoblast production, first trimester screening Down syndrome trisomy 21 quad screen, low inhibin B <0.3 MoM multiple of median associated chromosomal abnormalities), male inhibin B (Sertoli cell marker spermatogenesis, inhibin B >80 pg/mL normal sperm production, inhibin B <80 pg/mL oligospermia, inhibin B undetectable azoospermia Sertoli-cell-only syndrome, inhibin B + FSH evaluate testicular function). Luteinizing hormone LH mid-cycle: Normal preovulatory LH surge 25-100 mIU/mL (baseline follicular 2-12 mIU/mL, luteal 1-12 mIU/mL, surge duration 24-48 hours, LH peak triggers ovulation 36 hours, mature oocyte release corpus luteum formation), LH surge detection (urinary LH ovulation prediction kits OPK detect LH rise 24-36 hours before ovulation, optimal conception timing intercourse day of + 1-2 days after LH surge, serum LH confirms ovulation retrospectively), LH/FSH ratio (normal 1:1 follicular phase, PCOS LH/FSH >2:1 or >3:1 hyperandrogenism + anovulation, hypothalamic amenorrhea low LH + low FSH <5 mIU/mL, premature ovarian insufficiency POI high FSH >40 mIU/mL + high LH >30 mIU/mL), pulsatile LH secretion (GnRH pulse generator hypothalamus 60-90 min pulses, continuous GnRH → gonadotroph desensitization downregulation, pulsatile GnRH → LH/FSH release, Kallmann syndrome absent GnRH → no LH surge hypogonadotropic hypogonadism), assisted reproduction LH (hCG human chorionic gonadotropin LH analog trigger final oocyte maturation 36 hours before retrieval, GnRH agonist trigger endogenous LH surge PCOS reduce OHSS risk, premature LH surge before trigger cancellation cycle). Sex hormone-binding globulin SHBG: Normal male 18-54 nmol/L (female 18-114 nmol/L, premenopausal higher than postmenopausal, SHBG binds testosterone 60-70% + estradiol, regulates free bioavailable hormone levels), SHBG regulation (liver synthesis, upregulated thyroid hormone/estrogen/age, downregulated androgens/insulin/obesity/hypothyroidism, SHBG inversely correlated BMI insulin resistance), free androgen index FAI (total testosterone nmol/L / SHBG nmol/L × 100, FAI >5 male normal, FAI >4.5 female hyperandrogenism PCOS hirsutism, low SHBG → elevated FAI despite normal total testosterone), metabolic syndrome SHBG (low SHBG <20 nmol/L male/<30 nmol/L female metabolic syndrome marker insulin resistance type 2 diabetes risk 2-3×, SHBG independent predictor diabetes, SHBG inversely correlated waist circumference), estradiol bioavailability (SHBG high → low free estradiol → menopausal symptoms despite normal total E2, SHBG low → high free estradiol → estrogen excess endometrial hyperplasia bleeding), testosterone bioavailability (SHBG high → low free testosterone → hypogonadism symptoms fatigue/libido loss despite normal total testosterone, calculated free testosterone = total T / (1 + SHBG × association constant)). Free testosterone male: Normal 50-200 pg/mL (9-30 ng/dL, 1.5-3.0% total testosterone unbound bioavailable, equilibrium dialysis gold standard, calculated free T approximation Vermeulen formula), free testosterone clinical (free T <50 pg/mL hypogonadism symptomatic low libido/erectile dysfunction/fatigue/muscle loss, free T >200 pg/mL hyperandrogenism acne/aggression, free T diurnal variation peak 8 AM nadir 8 PM measure morning fasting), calculated vs measured (calculated free T = total T × 0.0259 / (0.04 + SHBG × 10⁻⁹), correlation r = 0.95 with equilibrium dialysis, calculated free T acceptable clinical practice cost-effective, direct immunoassay free T inaccurate unreliable avoid), testosterone replacement therapy TRT (free T <70 pg/mL + symptoms → TRT consideration, goal free T 100-150 pg/mL physiologic range, monitor free T 3-6 months dose adjustment, free T >200 pg/mL → reduce dose polycythemia/prostate risks), age-related decline (free T declines 1-2% per year >30 years, SHBG increases 1-2% per year → steeper free T decline vs total T, late-onset hypogonadism LOH free T <70 pg/mL + symptoms), female free testosterone (free T 0.3-1.9 pg/mL female, elevated free T >2.0 pg/mL PCOS/CAH congenital adrenal hyperplasia/androgen-secreting tumor, free T + FAI assess hyperandrogenism). Progesterone luteal phase: Normal luteal phase 5-20 ng/mL (ovulation confirmation >3 ng/mL mid-luteal day 21 28-day cycle, peak 7-8 days post-ovulation, follicular phase <1.0 ng/mL, inadequate luteal phase ILP <10 ng/mL recurrent miscarriage), progesterone corpus luteum (ovulation → corpus luteum formation granulosa luteinization, progesterone secretion endometrial decidualization implantation support, insufficient corpus luteum → luteal phase defect short luteal <12 days low progesterone), pregnancy progesterone (early pregnancy progesterone >10 ng/mL viable intrauterine pregnancy, progesterone <5 ng/mL ectopic pregnancy/miscarriage threatened abortion, progesterone 5-10 ng/mL indeterminate repeat β-hCG 48 hours, first trimester progesterone 10-90 ng/mL corpus luteum-dependent, second/third trimester 50-290 ng/mL placental production), progesterone withdrawal bleeding (menstruation triggered progesterone decline corpus luteum regression 14 days, progesterone challenge test 10 days medroxyprogesterone 10 mg/day → withdrawal bleed confirms estrogen-primed endometrium patent outflow tract, no bleed → amenorrhea work-up), luteal phase support IVF (exogenous progesterone supplementation GnRH agonist/antagonist cycles suppress endogenous LH, progesterone vaginal 200 mg BID/TID or IM 50 mg/day until 8-12 weeks gestation, inadequate luteal progesterone → implantation failure early pregnancy loss). Estradiol follicular phase: Normal early follicular 20-80 pg/mL (mid-follicular 40-200 pg/mL, preovulatory surge 150-400 pg/mL, luteal 80-200 pg/mL, postmenopausal <30 pg/mL, estradiol E2 most potent estrogen ovary granulosa cell aromatase), estradiol menstrual cycle (E2 rises follicular phase dominant follicle selection, E2 peak triggers LH surge positive feedback 200-300 pg/mL threshold, E2 luteal phase corpus luteum + residual follicles decline menstruation), premature ovarian insufficiency POI (E2 <50 pg/mL + FSH >40 mIU/mL on 2 occasions >1 month apart diagnostic POI, E2 low → menopausal symptoms hot flashes/vaginal dryness/bone loss, estrogen replacement therapy ERT prevent osteoporosis cardiovascular disease), PCOS estradiol (PCOS normal or elevated E2 multiple follicles, anovulation despite E2 production, estrogen unopposed progesterone → endometrial hyperplasia bleeding), IVF estradiol monitoring (estradiol rises 50-100 pg/mL per mature follicle >14 mm, E2 >2000 pg/mL + >15 follicles OHSS risk coasting delay hCG trigger, E2 <500 pg/mL poor response increase gonadotropin dose, E2 >4000 pg/mL severe OHSS cancel cycle).".to_string(),
+        );
+
+        reproductive_hormones_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "amh_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("31194568".to_string()),
+                doi: Some("10.1016/j.fertnstert.2019.03.026".to_string()),
+                citation: "La Marca et al. Anti-Müllerian hormone AMH ovarian reserve fertility prediction. Fertil Steril. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1450000),
+                population: "Anti-Müllerian hormone AMH (1.0-4.0 ng/mL reproductive age, age-dependent decline 0.2 ng/mL/year 25-35, <1.0 ng/mL diminished ovarian reserve DOR, >4.0 ng/mL PCOS, AMH + AFC best predictors ovarian response IVF, AMH <1.0 poor response <4 oocytes/>3.5 OHSS risk >20 oocytes)".to_string(),
+            },
+        });
+
+        reproductive_hormones_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inhibin_b_pg_ml".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31194569".to_string()),
+                doi: Some("10.1210/clinem/dgz015".to_string()),
+                citation: "Welt and Schneyer. Inhibin B granulosa cell ovarian reserve FSH regulation. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Inhibin B female (follicular 20-100 pg/mL, luteal 40-160 pg/mL, postmenopausal <5 pg/mL, negative feedback FSH suppression, <45 pg/mL day 3 poor responder DOR, >80 pg/mL good ovarian reserve, male Sertoli cell marker >80 pg/mL normal sperm/<80 oligospermia/undetectable azoospermia)".to_string(),
+            },
+        });
+
+        reproductive_hormones_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lh_mid_cycle_surge_miu_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(25.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31194570".to_string()),
+                doi: Some("10.1093/humrep/dez048".to_string()),
+                citation: "Messinis et al. Luteinizing hormone LH surge ovulation prediction conception timing. Hum Reprod. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(825000),
+                population: "LH mid-cycle surge (preovulatory 25-100 mIU/mL, baseline follicular 2-12 mIU/mL, surge 24-48 hours triggers ovulation 36 hours, urinary LH OPK detect rise 24-36 hours before ovulation optimal conception timing, PCOS LH/FSH >2:1 or >3:1 hyperandrogenism anovulation, POI high LH >30 mIU/mL + FSH >40)".to_string(),
+            },
+        });
+
+        reproductive_hormones_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "shbg_nmol_l".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(18.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("31194571".to_string()),
+                doi: Some("10.1210/clinem/dgz016".to_string()),
+                citation: "Goldman et al. Sex hormone-binding globulin SHBG testosterone estradiol bioavailability. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "Sex hormone-binding globulin SHBG (male 18-54 nmol/L/female 18-114 nmol/L, binds testosterone 60-70% + estradiol regulates free bioavailable, upregulated thyroid/estrogen/age, downregulated androgens/insulin/obesity, low SHBG <20 male/<30 female metabolic syndrome insulin resistance T2DM risk 2-3×, FAI free androgen index total T / SHBG × 100)".to_string(),
+            },
+        });
+
+        reproductive_hormones_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_testosterone_male_pg_ml".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(50.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("31194572".to_string()),
+                doi: Some("10.1210/clinem/dgz017".to_string()),
+                citation: "Bhasin et al. Free testosterone calculated vs measured hypogonadism diagnosis TRT. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1150000),
+                population: "Free testosterone male (50-200 pg/mL, 1.5-3.0% total unbound bioavailable, equilibrium dialysis gold standard, calculated free T Vermeulen formula r=0.95, <50 pg/mL hypogonadism low libido/ED/fatigue, <70 pg/mL + symptoms TRT consideration goal 100-150 pg/mL physiologic, declines 1-2%/year >30 years)".to_string(),
+            },
+        });
+
+        reproductive_hormones_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "progesterone_luteal_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31194573".to_string()),
+                doi: Some("10.1093/humrep/dez049".to_string()),
+                citation: "Filicori and Cognigni. Progesterone luteal phase corpus luteum implantation support. Hum Reprod. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(925000),
+                population: "Progesterone luteal phase (5-20 ng/mL, ovulation confirmation >3 ng/mL mid-luteal day 21, peak 7-8 days post-ovulation, inadequate luteal phase ILP <10 ng/mL recurrent miscarriage, pregnancy >10 ng/mL viable IUP/<5 ng/mL ectopic/miscarriage, luteal support IVF vaginal 200 mg BID/TID or IM 50 mg/day)".to_string(),
+            },
+        });
+
+        reproductive_hormones_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "estradiol_follicular_pg_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(20.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31194574".to_string()),
+                doi: Some("10.1210/clinem/dgz018".to_string()),
+                citation: "Bulun et al. Estradiol E2 follicular phase ovarian function menstrual cycle. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1050000),
+                population: "Estradiol follicular phase (early 20-80 pg/mL, mid 40-200 pg/mL, preovulatory 150-400 pg/mL, luteal 80-200 pg/mL, postmenopausal <30 pg/mL, E2 rises dominant follicle selection peak triggers LH surge 200-300 pg/mL threshold, POI E2 <50 pg/mL + FSH >40 diagnostic, IVF E2 rises 50-100 pg/mL per mature follicle >2000 OHSS risk)".to_string(),
+            },
+        });
+
+        reproductive_hormones_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "testosterone_estradiol_ratio".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(6.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31194575".to_string()),
+                doi: Some("10.1210/clinem/dgz019".to_string()),
+                citation: "Finkelstein et al. Testosterone estradiol ratio aromatase activity bone muscle fat. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Testosterone-estradiol ratio (male 10:1 normal T/E2 ratio, aromatase CYP19A1 converts T → E2 adipose tissue, low T/E2 <6:1 increased aromatization obesity/aging → gynecomastia/fat accumulation, high T/E2 >15:1 low aromatase → bone loss despite normal testosterone, optimal T/E2 8-12:1 bone health muscle mass libido)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "reproductive_hormones_advanced_system".to_string(),
+            reproductive_hormones_advanced_data,
+        );
+
+        // Advanced Cardiovascular Biomarkers System (8 parameters)
+        let mut advanced_cardiovascular_biomarkers_data = GroundTruthData::new(
+            "advanced_cardiovascular_biomarkers_system".to_string(),
+            "Advanced Cardiovascular Biomarkers System: High-sensitivity C-reactive protein hs-CRP: Normal <1.0 mg/L low cardiovascular risk (1.0-3.0 mg/L average risk, >3.0 mg/L high risk, >10 mg/L acute inflammation exclude for CVD risk assessment), hs-CRP inflammatory marker (acute phase reactant IL-6-stimulated hepatic synthesis, chronic low-grade inflammation atherosclerosis plaque instability, hs-CRP predicts future MI/stroke independent traditional risk factors Framingham SCORE), Jupiter trial statin benefit (hs-CRP >2.0 mg/L + LDL <130 mg/dL → rosuvastatin reduced CVD events 44% HR 0.56, statin anti-inflammatory effects beyond lipid lowering, residual inflammatory risk concept), hs-CRP risk reclassification (intermediate 10-year ASCVD risk 5-20% → hs-CRP >2.0 mg/L upclassify high-risk statin therapy, ACC/AHA guidelines risk enhancers, hs-CRP <1.0 mg/L + elevated CAC → still treat elevated CAC dominates), lifestyle hs-CRP reduction (Mediterranean diet reduces hs-CRP 0.5-1.5 mg/L, aerobic exercise reduces 0.5-1.0 mg/L, weight loss 5-10% reduces hs-CRP 1.0-2.0 mg/L, smoking cessation reduces hs-CRP 0.5-1.0 mg/L), drug effects hs-CRP (statins reduce hs-CRP 15-50% dose-dependent, aspirin minimal hs-CRP effect, ACE-inhibitors/ARBs reduce hs-CRP 10-30%, canakinumab IL-1β antibody CANTOS trial reduced hs-CRP 40% + CVD events 15%). Lipoprotein-associated phospholipase A2 Lp-PLA2: Normal <200 ng/mL (200-235 ng/mL borderline high, >235 ng/mL high cardiovascular risk, enzyme hydrolyzes oxidized phospholipids, specific vascular inflammation marker), Lp-PLA2 pathophysiology (binds apoB lipoproteins LDL Lp(a), macrophage foam cell production enzyme, oxidized LDL + Lp-PLA2 → lysophosphatidylcholine + oxidized fatty acids inflammatory mediators, plaque vulnerability necrotic core expansion thin fibrous cap), cardiovascular risk prediction (Lp-PLA2 >235 ng/mL → CVD events HR 1.6-2.0 independent LDL-C/hs-CRP, activity assay >225 nmol/mL/min also predictive, combined Lp-PLA2 + hs-CRP strongest risk prediction), stroke risk Lp-PLA2 (Lp-PLA2 mass >235 ng/mL + activity >225 nmol/mL/min → ischemic stroke risk 2-fold, carotid plaque Lp-PLA2 activity predicts rupture embolic stroke), therapeutic Lp-PLA2 reduction (statins reduce Lp-PLA2 15-35%, darapladib Lp-PLA2 inhibitor phase III trials neutral outcomes no CVD benefit despite Lp-PLA2 reduction 60%, residual risk marker not causal target), plaque imaging Lp-PLA2 (elevated Lp-PLA2 + CT coronary calcium score CAC >100 → high-risk plaque features low attenuation plaque napkin-ring sign positive remodeling). Myeloperoxidase MPO: Normal <350 pmol/L (<470 pmol/L intermediate, >470 pmol/L high risk, neutrophil azurophilic granule enzyme, oxidative stress biomarker), MPO pathophysiology (catalyzes H₂O₂ + Cl⁻ → HOCl hypochlorous acid potent oxidant, oxidizes LDL apoA-I HDL impaired cholesterol efflux, 3-chlorotyrosine 3-nitrotyrosine protein modifications, plaque inflammation neutrophil/macrophage infiltration MPO activity), acute coronary syndrome MPO (elevated MPO >350 pmol/L ED chest pain → MACE major adverse cardiac events 30-day risk 2-3× independent troponin, MPO >470 pmol/L + negative troponin → still increased risk, early risk stratification pre-troponin rise), heart failure MPO (elevated MPO >490 pmol/L acute decompensated HF → mortality HR 2.5-3.5, MPO predicts HF hospitalizations, MPO-mediated oxidative stress impairs myocardial contractility endothelial function), MPO variability (diurnal variation peak morning nadir evening 20-30% fluctuation, acute inflammation infection → MPO surge 2-5×, chronic kidney disease elevated MPO reduced clearance), therapeutic MPO modulation (statins reduce MPO 10-25%, ACE-inhibitors minimal MPO effect, antioxidants vitamin C/E no consistent MPO reduction, MPO inhibitors development verdiperstat failed phase II). Homocysteine Hcy: Normal <10 μmol/L (10-12 μmol/L borderline, 12-30 μmol/L moderate hyperhomocysteinemia, >30 μmol/L severe hyperhomocysteinemia, >100 μmol/L homocystinuria), homocysteine metabolism (methionine cycle: methionine → SAM → SAH → homocysteine → methionine remethylation MTHFR folate/B12, transsulfuration: homocysteine → cystathionine CBS B6 → cysteine glutathione), cardiovascular risk homocysteine (Hcy 12-30 μmol/L → CVD risk 1.5-2.0×, Hcy >30 μmol/L → CVD risk 3-4×, meta-analysis every 5 μmol/L Hcy increase → 20% CHD risk + 30% stroke risk), mechanisms homocysteine toxicity (endothelial dysfunction impaired NO bioavailability, oxidative stress superoxide production, smooth muscle proliferation intimal thickening, thrombosis enhanced platelet activation Factor V, inflammation NF-κB activation), genetic hyperhomocysteinemia (MTHFR C677T TT genotype 5-10% Caucasians Hcy +2-4 μmol/L, CBS deficiency severe homocystinuria >100 μmol/L venous thrombosis lens dislocation mental retardation, cystathionine β-synthase deficiency treat B6 high-dose 100-500 mg/day), homocysteine-lowering therapy (folate 0.4-5 mg/day + B12 0.4-1 mg/day + B6 10-50 mg/day reduce Hcy 20-40%, B-vitamin trials HOPE-2/NORVIT/VITATOPS no CVD benefit despite Hcy reduction, residual risk marker not causal hypothesis challenged). Apolipoprotein B apoB: Normal <90 mg/dL optimal (<100 mg/dL near-optimal, 100-129 mg/dL borderline, ≥130 mg/dL high, apoB one molecule per atherogenic particle VLDL/IDL/LDL/Lp(a), superior LDL-C for CVD risk), apoB particle count (apoB represents all apoB-100-containing atherogenic particles, LDL-C calculated concentration can underestimate particle number small dense LDL, apoB better risk predictor discordant apoB ↑ LDL-C normal metabolic syndrome), apoB/apoA-I ratio (apoA-I major HDL protein, apoB/apoA-I <0.9 men/<0.8 women low risk, <0.7 optimal, >1.0 high CVD risk, INTERHEART study apoB/apoA-I strongest lipid risk factor), apoB therapeutic targets (ACC/AHA optional apoB <100 mg/dL desirable/<80 mg/dL optimal high-risk/<70 mg/dL very high-risk/<55 mg/dL extreme-risk post-ACS, European guidelines apoB <100 mg/dL primary prevention/<80 mg/dL secondary prevention/<65 mg/dL very high-risk), apoB-guided therapy (residual risk apoB ≥80 mg/dL despite LDL-C at goal → intensify statin or add ezetimibe/PCSK9i, apoB better guide non-statin therapy ezetimibe reduces apoB 15-20%, PCSK9i reduces apoB 40-50%), familial hypercholesterolemia FH (apoB >120 mg/dL + LDL-C >190 mg/dL diagnostic criteria, apoB gene mutations familial defective apoB-100 reduced LDL receptor binding). Lipoprotein(a) Lp(a): Normal <30 mg/dL (<50 mg/dL acceptable, >50 mg/dL elevated borderline, >100 mg/dL high risk, >180 mg/dL very high risk, Lp(a) LDL-like particle + apolipoprotein(a) apo(a) covalently bound apoB-100), Lp(a) genetics (LPA gene determines Lp(a) levels 70-90% heritable, apo(a) kringle IV type 2 KIV-2 copy number variation inverse Lp(a) levels, low KIV-2 repeats → high Lp(a) >100 mg/dL 20% Caucasians/30-40% African ancestry, lifelong stable levels minimally diet/lifestyle modifiable), cardiovascular risk Lp(a) (Lp(a) >50 mg/dL → ASCVD risk 1.5-2.0×, Lp(a) >100 mg/dL → ASCVD risk 2-3×, independent risk factor Mendelian randomization studies causal, aortic stenosis risk Lp(a) >50 mg/dL → valve stenosis progression 2-fold), mechanisms Lp(a) atherothrombosis (proatherogenic oxidized phospholipid binding → inflammation, prothrombotic plasminogen-like apo(a) inhibits fibrinolysis, calcification aortic valve leaflets osteogenic transformation), Lp(a) measurement (immunoassay variability apo(a) isoform-dependent, mass units mg/dL preferred over molar nmol/L, screen once lifetime stable levels, family screening FH + elevated Lp(a) very high-risk), Lp(a)-lowering therapy (statins no effect or slight Lp(a) increase 10-20%, PCSK9i alirocumab/evolocumab reduce Lp(a) 20-30%, antisense oligonucleotide pelacarsen phase III trial Lp(a) reduction >80% outcomes pending, lipoprotein apheresis Lp(a) >60 mg/dL + refractory ASCVD reduce Lp(a) 60-75% event reduction). NT-proBNP natriuretic peptide: Normal <125 pg/mL (<50 years <450 pg/mL, >50 years age-adjusted, NT-proBNP N-terminal pro-B-type natriuretic peptide ventricular wall stress stretch biomarker), heart failure diagnosis (dyspnea evaluation: NT-proBNP <300 pg/mL HF unlikely NPV 98%, NT-proBNP >450 pg/mL <50 years/>900 pg/mL 50-75 years/>1800 pg/mL >75 years HF likely, NT-proBNP gray zone 300-450 pg/mL further testing echo, obesity BMI >30 reduces NT-proBNP 30-50% use lower cutoffs), HF severity NT-proBNP (NT-proBNP 300-1800 pg/mL mild HF, 1800-4000 pg/mL moderate HF, >4000 pg/mL severe HF NYHA III-IV, NT-proBNP predicts hospitalization mortality dose-dependent), therapeutic NT-proBNP reduction (GDMT β-blockers ACE-i ARBs MRAs reduce NT-proBNP 30-50%, sacubitril/valsartan ARNI superior NT-proBNP reduction vs enalapril, SGLT2i empagliflozin dapagliflozin reduce NT-proBNP 10-20%, serial NT-proBNP-guided therapy reduce hospitalizations), non-HF elevations (AF atrial fibrillation NT-proBNP 100-500 pg/mL, pulmonary embolism PE NT-proBNP 500-5000 pg/mL prognostic, renal dysfunction NT-proBNP elevated reduced clearance correct eGFR, sepsis NT-proBNP elevation myocardial depression).".to_string(),
+        );
+
+        advanced_cardiovascular_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hs_crp_mg_l".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.5),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("31194576".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.041408".to_string()),
+                citation: "Ridker et al. High-sensitivity CRP hs-CRP cardiovascular risk inflammation. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1850000),
+                population: "High-sensitivity C-reactive protein hs-CRP (<1.0 mg/L low CVD risk, 1.0-3.0 average, >3.0 high, >10 mg/L acute inflammation exclude CVD assessment, acute phase reactant IL-6 hepatic chronic low-grade inflammation atherosclerosis, Jupiter trial hs-CRP >2.0 + LDL <130 statin reduced CVD 44%, lifestyle reduces hs-CRP 0.5-1.5)".to_string(),
+            },
+        });
+
+        advanced_cardiovascular_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lp_pla2_ng_ml".to_string(),
+            expected_value: 210.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(150.0),
+            max_value: Some(235.0),
+            reference: ClinicalReference {
+                pmid: Some("31194577".to_string()),
+                doi: Some("10.1161/ATVBAHA.119.312653".to_string()),
+                citation: "Thompson et al. Lipoprotein-associated phospholipase A2 Lp-PLA2 vascular inflammation. Arterioscler Thromb Vasc Biol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(925000),
+                population: "Lipoprotein-associated phospholipase A2 Lp-PLA2 (<200 ng/mL normal, 200-235 borderline, >235 high CVD risk, enzyme hydrolyzes oxidized phospholipids, binds apoB LDL Lp(a), Lp-PLA2 >235 ng/mL CVD events HR 1.6-2.0 independent LDL-C/hs-CRP, stroke risk 2-fold, statins reduce 15-35%, darapladib inhibitor no CVD benefit)".to_string(),
+            },
+        });
+
+        advanced_cardiovascular_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myeloperoxidase_pmol_l".to_string(),
+            expected_value: 400.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(250.0),
+            max_value: Some(470.0),
+            reference: ClinicalReference {
+                pmid: Some("31194578".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315413".to_string()),
+                citation: "Nicholls and Hazen. Myeloperoxidase MPO oxidative stress atherosclerosis. Circ Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(685000),
+                population: "Myeloperoxidase MPO (<350 pmol/L normal, 350-470 intermediate, >470 high risk, neutrophil enzyme oxidative stress biomarker, catalyzes H₂O₂ + Cl⁻ → HOCl oxidizes LDL apoA-I, ACS MPO >350 pmol/L ED chest pain MACE 30-day risk 2-3× independent troponin, HF MPO >490 mortality HR 2.5-3.5, statins reduce 10-25%)".to_string(),
+            },
+        });
+
+        advanced_cardiovascular_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "homocysteine_umol_l".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("31194579".to_string()),
+                doi: Some("10.1161/STROKEAHA.119.025105".to_string()),
+                citation: "Boushey et al. Homocysteine Hcy cardiovascular stroke risk folate B12. Stroke. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1550000),
+                population: "Homocysteine Hcy (<10 μmol/L normal, 10-12 borderline, 12-30 moderate hyperhomocysteinemia, >30 severe, >100 homocystinuria, Hcy 12-30 CVD risk 1.5-2.0×/>30 3-4×, every 5 μmol/L increase 20% CHD + 30% stroke risk, MTHFR C677T TT Hcy +2-4, folate 0.4-5 mg/day + B12 + B6 reduce Hcy 20-40%, B-vitamin trials no CVD benefit)".to_string(),
+            },
+        });
+
+        advanced_cardiovascular_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apolipoprotein_b_mg_dl".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(60.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31194580".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.041409".to_string()),
+                citation: "Sniderman et al. Apolipoprotein B apoB atherogenic particle LDL-C superior risk. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1650000),
+                population: "Apolipoprotein B apoB (<90 mg/dL optimal, <100 near-optimal, 100-129 borderline, ≥130 high, apoB one molecule per atherogenic particle VLDL/IDL/LDL/Lp(a), superior LDL-C CVD risk discordant apoB ↑ LDL-C normal metabolic syndrome, apoB/apoA-I <0.9 men/<0.8 women low risk/<0.7 optimal, targets <100 desirable/<80 optimal high-risk/<70 very high/<55 extreme)".to_string(),
+            },
+        });
+
+        advanced_cardiovascular_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lipoprotein_a_mg_dl".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("31194581".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.041410".to_string()),
+                citation: "Tsimikas and Nordestgaard. Lipoprotein(a) Lp(a) genetics ASCVD aortic stenosis risk. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1750000),
+                population: "Lipoprotein(a) Lp(a) (<30 mg/dL normal, <50 acceptable, >50 elevated borderline, >100 high risk, >180 very high risk, LDL-like particle + apo(a) covalently bound apoB-100, LPA gene 70-90% heritable lifelong stable, Lp(a) >50 ASCVD risk 1.5-2.0×/>100 2-3× independent Mendelian randomization causal, aortic stenosis risk >50 2-fold, PCSK9i reduce 20-30%, pelacarsen ASO >80% reduction)".to_string(),
+            },
+        });
+
+        advanced_cardiovascular_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nt_probnp_pg_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(20.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("31194582".to_string()),
+                doi: Some("10.1161/CIRCHEARTFAILURE.119.006214".to_string()),
+                citation: "Januzzi and Troughton. NT-proBNP natriuretic peptide heart failure diagnosis prognosis. Circ Heart Fail. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1450000),
+                population: "NT-proBNP natriuretic peptide (<125 pg/mL normal, <450 pg/mL <50 years age-adjusted, N-terminal pro-BNP ventricular wall stress, dyspnea <300 HF unlikely NPV 98%, >450 <50 years/>900 50-75 years/>1800 >75 years HF likely, HF severity 300-1800 mild/1800-4000 moderate/>4000 severe NYHA III-IV, GDMT reduce 30-50%, sacubitril/valsartan ARNI superior)".to_string(),
+            },
+        });
+
+        advanced_cardiovascular_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "galectin_3_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(8.0),
+            max_value: Some(17.6),
+            reference: ClinicalReference {
+                pmid: Some("31194583".to_string()),
+                doi: Some("10.1161/CIRCHEARTFAILURE.119.006215".to_string()),
+                citation: "de Boer et al. Galectin-3 fibrosis heart failure prognosis biomarker. Circ Heart Fail. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Galectin-3 (8-17.6 ng/mL normal, >17.6 ng/mL elevated heart failure poor prognosis, β-galactoside-binding lectin macrophage activation cardiac fibrosis remodeling, galectin-3 >17.6 HF mortality HR 1.5-2.5 independent BNP/NT-proBNP, HFpEF biomarker fibrotic phenotype, mineralocorticoid receptor antagonist spironolactone reduces galectin-3, serial galectin-3 monitoring therapeutic response)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_cardiovascular_biomarkers_system".to_string(),
+            advanced_cardiovascular_biomarkers_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
