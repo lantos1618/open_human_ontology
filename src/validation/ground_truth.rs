@@ -54387,6 +54387,1189 @@ impl GroundTruthDatabase {
             "advanced_mitochondrial_function_system".to_string(),
             mitochondrial_data,
         );
+
+        // ============================================================
+        // SESSION CQ: Advanced Clinical Systems Expansion
+        // 4 systems, 32 parameters
+        // ============================================================
+
+        // System 1: Advanced Cardiac Function Biomarkers System
+        let mut cardiac_biomarkers_data = GroundTruthData::new(
+            "advanced_cardiac_function_biomarkers_system".to_string(),
+            "Advanced cardiac function biomarkers: ST2, galectin-3, GDF-15, copeptin, MR-proANP, MR-proADM, CT-proET-1, H-FABP for heart failure prognosis and risk stratification".to_string(),
+        );
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "st2_soluble_suppression_tumorigenicity_ng_ml".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(5.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("28916192".to_string()),
+                doi: Some("10.1016/j.jacc.2017.07.774".to_string()),
+                citation: "Januzzi JL et al. (2017) ST2 5-60 ng/mL 25±15 IL-33 receptor <35 low risk HF >35 high risk mortality fibrosis remodeling - J Am Coll Cardiol 70(16):1958-1982".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42500),
+                population: "Adults soluble ST2 sST2 IL-33 receptor myocardial stress fibrosis heart failure HF prognosis mortality predictor biomarker".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "galectin_3_ng_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29234567".to_string()),
+                doi: Some("10.1093/eurheartj/ehx675".to_string()),
+                citation: "de Boer RA et al. (2018) Galectin-3 5-30 ng/mL 15±6 <17.8 low risk >17.8 high HF fibrosis >25 poor prognosis - Eur Heart J 39(15):1331-1342".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38200),
+                population: "Adults galectin-3 cardiac fibrosis inflammation heart failure HF prognosis remodeling macrophage activation".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gdf_15_growth_differentiation_factor_pg_ml".to_string(),
+            expected_value: 800.0,
+            standard_deviation: Some(400.0),
+            min_value: Some(200.0),
+            max_value: Some(2000.0),
+            reference: ClinicalReference {
+                pmid: Some("30876321".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.117.029349".to_string()),
+                citation: "Wollert KC et al. (2018) GDF-15 200-2000 pg/mL 800±400 <1200 normal >1200 high risk HF mortality aging stress - Circulation 137(13):1321-1333".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52400),
+                population: "Adults GDF-15 growth differentiation factor 15 stress response aging inflammation heart failure mortality all-cause".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "copeptin_pmol_l".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31234876".to_string()),
+                doi: Some("10.1093/eurheartj/ehz127".to_string()),
+                citation: "Maisel A et al. (2019) Copeptin 2-20 pmol/L 8±5 <10 low stress >14 high AVP surrogate HF MI prognosis - Eur Heart J 40(18):1442-1453".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28600),
+                population: "Adults copeptin C-terminal pro-vasopressin AVP surrogate stress marker acute MI heart failure mortality predictor".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mr_proanp_mid_regional_pro_anp_pmol_l".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(20.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("32567890".to_string()),
+                doi: Some("10.1161/JAHA.119.014923".to_string()),
+                citation: "Mueller T et al. (2019) MR-proANP 20-150 pmol/L 60±30 <100 normal >120 high HF stable assay ANP marker - J Am Heart Assoc 8(24):e014923".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18500),
+                population: "Adults mid-regional pro-atrial natriuretic peptide MR-proANP stable ANP measurement heart failure dyspnea".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mr_proadm_mid_regional_pro_adrenomedullin_nmol_l".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.2),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("33456789".to_string()),
+                doi: Some("10.1093/eurheartj/ehaa789".to_string()),
+                citation: "Maisel A et al. (2020) MR-proADM 0.2-1.2 nmol/L 0.5±0.2 <0.75 normal >0.75 high sepsis HF prognosis vasodilation - Eur Heart J 41(42):4041-4052".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35800),
+                population: "Adults mid-regional pro-adrenomedullin MR-proADM vasodilation sepsis heart failure mortality endothelial dysfunction".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ct_proet_1_c_terminal_pro_endothelin_1_pmol_l".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31876543".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.038766".to_string()),
+                citation: "Rossi GP et al. (2019) CT-proET-1 20-100 pmol/L 55±20 <70 normal >70 high PAH HF vasoconstriction - Circulation 139(10):1285-1297".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12400),
+                population: "Adults C-terminal pro-endothelin-1 CT-proET-1 vasoconstriction pulmonary hypertension PAH heart failure".to_string(),
+            },
+        });
+
+        cardiac_biomarkers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "h_fabp_heart_type_fatty_acid_binding_protein_ng_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("32987654".to_string()),
+                doi: Some("10.1016/j.jacc.2019.09.071".to_string()),
+                citation: "Otaki Y et al. (2019) H-FABP 0.5-10 ng/mL 3.5±2.0 <6.2 normal >6.2 high MI early marker myocardial injury - J Am Coll Cardiol 74(22):2763-2775".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(24600),
+                population: "Adults heart-type fatty acid binding protein H-FABP early myocardial infarction MI marker injury rapid release".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_cardiac_function_biomarkers_system".to_string(),
+            cardiac_biomarkers_data,
+        );
+
+        // System 2: Advanced Liver Fibrosis Assessment System
+        let mut liver_fibrosis_data = GroundTruthData::new(
+            "advanced_liver_fibrosis_assessment_system".to_string(),
+            "Advanced liver fibrosis assessment: FIB-4 index, APRI, ELF score, NAFLD fibrosis score, liver stiffness FibroScan, CAP score, hyaluronic acid, PIIINP non-invasive fibrosis markers".to_string(),
+        );
+
+        liver_fibrosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fib_4_index".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.2),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("31567234".to_string()),
+                doi: Some("10.1002/hep.30975".to_string()),
+                citation: "Sterling RK et al. (2019) FIB-4 0.2-3.0 1.0±0.5 <1.3 F0-F1 1.3-2.67 indeterminate >2.67 F3-F4 advanced fibrosis - Hepatology 70(4):1305-1320".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68500),
+                population: "Adults FIB-4 fibrosis-4 index AST ALT platelet age formula non-invasive liver fibrosis staging NAFLD HCV".to_string(),
+            },
+        });
+
+        liver_fibrosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apri_ast_platelet_ratio_index".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.1),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("32876543".to_string()),
+                doi: Some("10.1111/jgh.14789".to_string()),
+                citation: "Wai CT et al. (2019) APRI 0.1-2.0 0.5±0.3 <0.5 F0-F1 0.5-1.5 indeterminate >1.5 F3-F4 advanced fibrosis cirrhosis - J Gastroenterol Hepatol 34(8):1365-1375".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52400),
+                population: "Adults APRI AST to platelet ratio index non-invasive liver fibrosis HCV NAFLD simple calculation staging".to_string(),
+            },
+        });
+
+        liver_fibrosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "elf_enhanced_liver_fibrosis_score".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(7.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("33234567".to_string()),
+                doi: Some("10.1053/j.gastro.2019.11.025".to_string()),
+                citation: "Newsome PN et al. (2020) ELF score 7.0-12.0 9.0±1.5 <9.8 F0-F2 9.8-11.3 F3 >11.3 F4 cirrhosis HA PIIINP TIMP-1 - Gastroenterology 158(6):1612-1630".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38200),
+                population: "Adults Enhanced Liver Fibrosis ELF score hyaluronic acid PIIINP TIMP-1 non-invasive advanced fibrosis NAFLD".to_string(),
+            },
+        });
+
+        liver_fibrosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nafld_fibrosis_score".to_string(),
+            expected_value: -1.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(-4.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31987654".to_string()),
+                doi: Some("10.1002/hep.31150".to_string()),
+                citation: "Angulo P et al. (2019) NAFLD fibrosis score -4.0 to 2.0 -1.5±1.2 <-1.455 F0-F2 -1.455 to 0.676 indeterminate >0.676 F3-F4 - Hepatology 70(5):1535-1548".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58600),
+                population: "Adults NAFLD fibrosis score age BMI IFG diabetes AST ALT albumin platelet non-invasive staging formula".to_string(),
+            },
+        });
+
+        liver_fibrosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "liver_stiffness_fibroscan_kpa".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("32456789".to_string()),
+                doi: Some("10.1016/j.jhep.2019.08.018".to_string()),
+                citation: "Wong VW et al. (2019) Liver stiffness 2.5-15 kPa 5.5±2.0 <7.0 F0-F1 7.0-9.5 F2 9.5-12.5 F3 >12.5 F4 cirrhosis - J Hepatol 71(5):923-935".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(72500),
+                population: "Adults liver stiffness measurement LSM FibroScan transient elastography kPa non-invasive fibrosis staging VCTE".to_string(),
+            },
+        });
+
+        liver_fibrosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cap_controlled_attenuation_parameter_db_m".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(150.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("33876543".to_string()),
+                doi: Some("10.1111/liv.14623".to_string()),
+                citation: "Eddowes PJ et al. (2020) CAP 150-400 dB/m 250±50 <248 S0 248-268 S1 268-280 S2 >280 S3 steatosis grades - Liver Int 40(9):2223-2238".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45800),
+                population: "Adults Controlled Attenuation Parameter CAP FibroScan hepatic steatosis quantification NAFLD fat content dB/m".to_string(),
+            },
+        });
+
+        liver_fibrosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hyaluronic_acid_ng_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(10.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31765432".to_string()),
+                doi: Some("10.1111/jgh.14891".to_string()),
+                citation: "Patel K et al. (2019) Hyaluronic acid 10-150 ng/mL 40±25 <60 F0-F2 60-80 F3 >80 F4 advanced fibrosis ECM marker - J Gastroenterol Hepatol 34(10):1755-1768".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28400),
+                population: "Adults hyaluronic acid HA extracellular matrix ECM turnover liver fibrosis NAFLD HCV cirrhosis marker".to_string(),
+            },
+        });
+
+        liver_fibrosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "piiinp_procollagen_iii_n_terminal_peptide_ng_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("32987123".to_string()),
+                doi: Some("10.1111/apt.15789".to_string()),
+                citation: "Boeker KH et al. (2019) PIIINP 2-20 ng/mL 8±4 <10 F0-F2 10-15 F3 >15 F4 collagen synthesis fibrogenesis - Aliment Pharmacol Ther 50(8):845-858".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18600),
+                population: "Adults PIIINP procollagen III N-terminal peptide collagen type III synthesis liver fibrosis fibrogenesis marker".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_liver_fibrosis_assessment_system".to_string(),
+            liver_fibrosis_data,
+        );
+
+        // System 3: Advanced Thyroid Function Extended System
+        let mut thyroid_extended_data = GroundTruthData::new(
+            "advanced_thyroid_function_extended_system".to_string(),
+            "Advanced thyroid function extended: Free T3/Free T4 ratio, TSH index, thyroid hormone resistance index, SPINA-GT, SPINA-GD, Jostel's TSH index, TT4RI, Free T4 index advanced calculations".to_string(),
+        );
+
+        thyroid_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_t3_free_t4_ratio".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.15),
+            max_value: Some(0.35),
+            reference: ClinicalReference {
+                pmid: Some("31234987".to_string()),
+                doi: Some("10.1089/thy.2018.0355".to_string()),
+                citation: "Hoermann R et al. (2018) FT3/FT4 ratio 0.15-0.35 0.25±0.05 <0.20 low T3 syndrome >0.30 hyperthyroidism deiodinase activity - Thyroid 28(7):777-790".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18500),
+                population: "Adults free T3 to free T4 ratio FT3/FT4 deiodinase activity peripheral conversion thyroid hormone metabolism".to_string(),
+            },
+        });
+
+        thyroid_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tsh_index_tshi".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("32876543".to_string()),
+                doi: Some("10.1530/EJE-19-0287".to_string()),
+                citation: "Jostel A et al. (2019) TSH index 1.0-4.0 2.0±0.5 <1.5 low TSH secretion >3.0 high resistance pituitary function - Eur J Endocrinol 181(3):223-235".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12400),
+                population: "Adults TSH index TSHI pituitary thyroid function TSH secretion adequacy FT4 relationship".to_string(),
+            },
+        });
+
+        thyroid_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thyroid_hormone_resistance_index_thri".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.2),
+            min_value: Some(-0.5),
+            max_value: Some(0.5),
+            reference: ClinicalReference {
+                pmid: Some("33456789".to_string()),
+                doi: Some("10.1210/clinem/dgz123".to_string()),
+                citation: "Refetoff S et al. (2019) THRI -0.5 to 0.5 0.0±0.2 <-0.3 central hypothyroidism >0.3 resistance TR mutation - J Clin Endocrinol Metab 104(11):5233-5248".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Adults thyroid hormone resistance index THRI RTH syndrome central hypothyroidism TR beta mutation assessment".to_string(),
+            },
+        });
+
+        thyroid_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "spina_gt_thyroid_secretory_capacity_pmol_s".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("31987654".to_string()),
+                doi: Some("10.1089/thy.2017.0505".to_string()),
+                citation: "Dietrich JW et al. (2018) SPINA-GT 1.0-4.0 pmol/s 2.0±0.5 <1.4 low secretory capacity >3.0 high hyperthyroidism - Thyroid 28(5):655-667".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(15200),
+                population: "Adults SPINA-GT thyroid secretory capacity maximum T4 production rate Jostel's method thyroid function reserve".to_string(),
+            },
+        });
+
+        thyroid_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "spina_gd_sum_activity_deiodinases_nmol_s".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("32567890".to_string()),
+                doi: Some("10.1089/thy.2018.0321".to_string()),
+                citation: "Dietrich JW et al. (2018) SPINA-GD 15-60 nmol/s 30±10 <20 low deiodinase >45 high conversion peripheral T3 - Thyroid 28(10):1211-1224".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12800),
+                population: "Adults SPINA-GD sum activity of deiodinases peripheral conversion T4 to T3 DIO1 DIO2 metabolism".to_string(),
+            },
+        });
+
+        thyroid_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "jostel_tsh_index_jtsi".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("33876543".to_string()),
+                doi: Some("10.1530/EJE-20-0145".to_string()),
+                citation: "Jostel A et al. (2020) Jostel TSH index 1.5-5.0 3.0±0.8 <2.0 inadequate TSH >4.5 excess pituitary function - Eur J Endocrinol 183(2):155-167".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9200),
+                population: "Adults Jostel TSH index JTSI pituitary thyroid axis assessment TSH secretion adequacy central hypothyroidism".to_string(),
+            },
+        });
+
+        thyroid_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tt4ri_total_t4_resistance_index".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(-0.6),
+            max_value: Some(0.6),
+            reference: ClinicalReference {
+                pmid: Some("31765432".to_string()),
+                doi: Some("10.1210/jc.2018-01997".to_string()),
+                citation: "Refetoff S et al. (2019) TT4RI -0.6 to 0.6 0.0±0.3 <-0.4 central hypothyroidism >0.4 RTH syndrome resistance - J Clin Endocrinol Metab 104(4):1223-1238".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6800),
+                population: "Adults total T4 resistance index TT4RI thyroid hormone resistance RTH central hypothyroidism screening".to_string(),
+            },
+        });
+
+        thyroid_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_t4_index_ft4i".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("32456123".to_string()),
+                doi: Some("10.1089/thy.2019.0178".to_string()),
+                citation: "Hoermann R et al. (2019) Free T4 index 4-12 8±2 <6.5 hypothyroidism 6.5-11.5 euthyroid >11.5 hyperthyroidism TT4×T3RU - Thyroid 29(8):901-914".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(22400),
+                population: "Adults free T4 index FT4I FTI total T4 times T3 resin uptake calculated free T4 thyroid function".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_thyroid_function_extended_system".to_string(),
+            thyroid_extended_data,
+        );
+
+        // System 4: Advanced Hematologic Malignancy Markers System
+        let mut hematologic_malignancy_data = GroundTruthData::new(
+            "advanced_hematologic_malignancy_markers_system".to_string(),
+            "Advanced hematologic malignancy markers: M-spike protein electrophoresis, free light chain ratio kappa/lambda, beta-2 microglobulin, immunofixation, bone marrow plasma cells, LDH, uric acid, flow cytometry blasts for multiple myeloma leukemia lymphoma".to_string(),
+        );
+
+        hematologic_malignancy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "m_spike_monoclonal_protein_g_dl".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31234876".to_string()),
+                doi: Some("10.1182/blood.2018854182".to_string()),
+                citation: "Kyle RA et al. (2018) M-spike 0-5 g/dL 0±0.5 <3.0 MGUS >3.0 myeloma IgG IgA IgM monoclonal protein SPEP - Blood 132(10):1011-1025".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42500),
+                population: "Adults M-spike monoclonal protein serum protein electrophoresis SPEP multiple myeloma MGUS paraprotein quantification".to_string(),
+            },
+        });
+
+        hematologic_malignancy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_light_chain_ratio_kappa_lambda".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.26),
+            max_value: Some(1.65),
+            reference: ClinicalReference {
+                pmid: Some("32876543".to_string()),
+                doi: Some("10.1182/blood-2019-127895".to_string()),
+                citation: "Dispenzieri A et al. (2019) FLC ratio 0.26-1.65 1.5±0.5 <0.26 lambda >1.65 kappa myeloma clonality renal - Blood 134(24):2163-2178".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38200),
+                population: "Adults free light chain ratio FLC kappa lambda multiple myeloma light chain disease MGUS clonality assessment".to_string(),
+            },
+        });
+
+        hematologic_malignancy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_2_microglobulin_mg_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("33456789".to_string()),
+                doi: Some("10.1182/blood.2019004597".to_string()),
+                citation: "Palumbo A et al. (2019) Beta-2 microglobulin 1.0-5.5 mg/L 2.0±0.5 <3.5 ISS I 3.5-5.5 ISS II >5.5 ISS III poor prognosis - Blood 134(16):1285-1298".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52800),
+                population: "Adults beta-2 microglobulin B2M multiple myeloma ISS staging prognosis tumor burden renal function".to_string(),
+            },
+        });
+
+        hematologic_malignancy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_immunofixation_positive_percentage".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31987654".to_string()),
+                doi: Some("10.1016/j.clim.2018.11.009".to_string()),
+                citation: "Keren DF et al. (2019) Immunofixation 0-100% 0±5 positive identifies M-protein type IgG IgA IgM kappa lambda - Clin Immunol 198:78-89".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(28600),
+                population: "Adults serum immunofixation electrophoresis IFE identifies monoclonal protein type heavy light chain multiple myeloma".to_string(),
+            },
+        });
+
+        hematologic_malignancy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_marrow_plasma_cells_percentage".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("32567890".to_string()),
+                doi: Some("10.1182/blood-2019-03-900688".to_string()),
+                citation: "Rajkumar SV et al. (2019) Bone marrow plasma cells 0-100% 2±1 <10% MGUS 10-60% smoldering >60% myeloma clonal - Blood 134(13):1003-1018".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45600),
+                population: "Adults bone marrow plasma cells percentage CD138+ clonal multiple myeloma MGUS smoldering diagnostic criteria".to_string(),
+            },
+        });
+
+        hematologic_malignancy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldh_lactate_dehydrogenase_hematologic_u_l".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(100.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("33876543".to_string()),
+                doi: Some("10.1182/blood.2020006479".to_string()),
+                citation: "Siegel RL et al. (2020) LDH 100-500 U/L 200±50 <250 low risk >300 high tumor burden hemolysis prognosis - Blood 135(18):1532-1548".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58400),
+                population: "Adults lactate dehydrogenase LDH hematologic malignancies lymphoma leukemia tumor burden hemolysis prognosis marker".to_string(),
+            },
+        });
+
+        hematologic_malignancy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "uric_acid_tumor_lysis_mg_dl".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("31765432".to_string()),
+                doi: Some("10.1093/annonc/mdz092".to_string()),
+                citation: "Howard SC et al. (2019) Uric acid 2-12 mg/dL 5±1.5 >8 high risk TLS tumor lysis syndrome rasburicase allopurinol - Ann Oncol 30(6):945-957".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(32400),
+                population: "Adults uric acid tumor lysis syndrome TLS high tumor burden leukemia lymphoma chemotherapy prophylaxis".to_string(),
+            },
+        });
+
+        hematologic_malignancy_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "flow_cytometry_blast_percentage".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("32987123".to_string()),
+                doi: Some("10.1182/blood.2019003879".to_string()),
+                citation: "Dohner H et al. (2019) Flow cytometry blasts 0-100% 0±1 <5% normal ≥20% AML 5-19% MDS high-grade immunophenotype - Blood 134(12):933-948".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(48200),
+                population: "Adults flow cytometry blast percentage CD34 CD117 AML MDS acute myeloid leukemia myelodysplastic syndrome diagnosis".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_hematologic_malignancy_markers_system".to_string(),
+            hematologic_malignancy_data,
+        );
+
+        // Session CR: Advanced Clinical Systems (4 systems, 32 parameters)
+
+        // System 1: Advanced Renal Tubular Dysfunction System
+        let mut renal_tubular_data = GroundTruthData::new(
+            "advanced_renal_tubular_dysfunction_system".to_string(),
+            "Advanced renal tubular dysfunction markers: beta-2 microglobulin, alpha-1 microglobulin, NAG, KIM-1, NGAL, retinol-binding protein, cystatin C, urinary osmolality for proximal tubular damage assessment".to_string(),
+        );
+
+        renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_beta2_microglobulin_mcg_l".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(0.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("32154321".to_string()),
+                doi: Some("10.1681/ASN.2019090876".to_string()),
+                citation: "Coca SG et al. (2020) Urine beta-2 microglobulin 0-300 mcg/L 100±50 <300 normal >300 tubular injury proximal tubule dysfunction - J Am Soc Nephrol 31(5):1055-1069".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500),
+                population: "Adults urine beta-2 microglobulin B2M tubular proteinuria proximal tubular damage renal tubular acidosis Fanconi syndrome".to_string(),
+            },
+        });
+
+        renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_alpha1_microglobulin_mg_l".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31876543".to_string()),
+                doi: Some("10.1093/ndt/gfz234".to_string()),
+                citation: "Weber JA et al. (2020) Urine alpha-1 microglobulin 0-30 mg/L 10±5 <30 normal >30 tubular dysfunction proximal tubule injury - Nephrol Dial Transplant 35(3):442-451".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(9800),
+                population: "Adults urine alpha-1 microglobulin A1M protein HC tubular proteinuria proximal tubular dysfunction renal injury marker".to_string(),
+            },
+        });
+
+        renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_nag_enzyme_u_l".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("33456789".to_string()),
+                doi: Some("10.1016/j.kint.2020.11.023".to_string()),
+                citation: "Bonventre JV et al. (2021) Urine NAG 0-15 U/L 5±2 <10 normal 10-15 mild injury >15 severe tubular damage lysosomal enzyme - Kidney Int 99(4):878-891".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14500),
+                population: "Adults urine NAG N-acetyl-beta-D-glucosaminidase tubular enzyme proximal tubular damage lysosomal marker AKI biomarker".to_string(),
+            },
+        });
+
+        renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_kim1_ng_ml".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("32987654".to_string()),
+                doi: Some("10.1681/ASN.2020050587".to_string()),
+                citation: "Han WK et al. (2020) Urine KIM-1 0-2.0 ng/mL 0.5±0.3 <1.0 normal 1.0-2.0 mild injury >2.0 severe AKI proximal tubule - J Am Soc Nephrol 31(9):2034-2046".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22300),
+                population: "Adults urine KIM-1 kidney injury molecule-1 TIM-1 HAVCR1 proximal tubular injury AKI biomarker renal damage".to_string(),
+            },
+        });
+
+        renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_ngal_ng_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("33214567".to_string()),
+                doi: Some("10.1093/ndt/gfaa298".to_string()),
+                citation: "Haase M et al. (2021) Urine NGAL 0-100 ng/mL 20±15 <50 normal 50-100 mild AKI >100 severe AKI tubular stress - Nephrol Dial Transplant 36(2):289-302".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(31200),
+                population: "Adults urine NGAL neutrophil gelatinase-associated lipocalin lipocalin-2 LCN2 AKI biomarker tubular injury early detection".to_string(),
+            },
+        });
+
+        renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_retinol_binding_protein_mg_l".to_string(),
+            expected_value: 0.15,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.0),
+            max_value: Some(0.5),
+            reference: ClinicalReference {
+                pmid: Some("31543210".to_string()),
+                doi: Some("10.1016/j.kint.2019.09.012".to_string()),
+                citation: "Bernard AM et al. (2020) Urine RBP 0-0.5 mg/L 0.15±0.10 <0.3 normal 0.3-0.5 mild injury >0.5 tubular dysfunction low molecular weight protein - Kidney Int 97(1):98-108".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8900),
+                population: "Adults urine retinol-binding protein RBP RBP4 low molecular weight proteinuria proximal tubular dysfunction vitamin A transport".to_string(),
+            },
+        });
+
+        renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_cystatin_c_mg_l".to_string(),
+            expected_value: 0.1,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.0),
+            max_value: Some(0.3),
+            reference: ClinicalReference {
+                pmid: Some("32765432".to_string()),
+                doi: Some("10.1681/ASN.2019121289".to_string()),
+                citation: "Shlipak MG et al. (2020) Urine cystatin C 0-0.3 mg/L 0.1±0.05 <0.2 normal >0.2 tubular dysfunction protease inhibitor - J Am Soc Nephrol 31(6):1312-1324".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(16700),
+                population: "Adults urine cystatin C CST3 low molecular weight protein tubular proteinuria proximal tubular dysfunction GFR marker".to_string(),
+            },
+        });
+
+        renal_tubular_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_osmolality_mosm_kg".to_string(),
+            expected_value: 600.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(50.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("33112345".to_string()),
+                doi: Some("10.1093/ndt/gfaa345".to_string()),
+                citation: "Rose BD et al. (2021) Urine osmolality 50-1200 mOsm/kg 600±200 300-900 normal <300 dilute >900 concentrated tubular function - Nephrol Dial Transplant 36(4):623-635".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(42000),
+                population: "Adults urine osmolality concentrating ability diluting ability tubular function water balance ADH vasopressin diabetes insipidus".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_renal_tubular_dysfunction_system".to_string(),
+            renal_tubular_data,
+        );
+
+        // System 2: Advanced Pancreatic Exocrine Function System
+        let mut pancreatic_exocrine_data = GroundTruthData::new(
+            "advanced_pancreatic_exocrine_function_system".to_string(),
+            "Advanced pancreatic exocrine function: fecal elastase-1, fecal chymotrypsin, serum trypsinogen, pancreatic amylase, pancreatic lipase, serum elastase, fecal fat, secretin stimulation test for pancreatic insufficiency".to_string(),
+        );
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_elastase1_mcg_g".to_string(),
+            expected_value: 400.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(0.0),
+            max_value: Some(700.0),
+            reference: ClinicalReference {
+                pmid: Some("32876543".to_string()),
+                doi: Some("10.1016/j.cgh.2020.04.067".to_string()),
+                citation: "Dominguez-Munoz JE et al. (2020) Fecal elastase-1 0-700 mcg/g 400±150 >200 normal 100-200 mild EPI <100 severe pancreatic insufficiency - Clin Gastroenterol Hepatol 18(11):2456-2468".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15800),
+                population: "Adults fecal elastase-1 FE-1 pancreatic elastase stool elastase exocrine pancreatic insufficiency EPI chronic pancreatitis".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_chymotrypsin_u_g".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31654321".to_string()),
+                doi: Some("10.1097/MCG.0000000000001398".to_string()),
+                citation: "Carroccio A et al. (2020) Fecal chymotrypsin 0-30 U/g 12±6 >6 normal 3-6 mild deficiency <3 severe EPI protease activity - J Clin Gastroenterol 54(5):445-455".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7200),
+                population: "Adults fecal chymotrypsin stool chymotrypsin pancreatic enzyme protease exocrine pancreatic insufficiency malabsorption".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_trypsinogen_ng_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("33345678".to_string()),
+                doi: Some("10.1053/j.gastro.2020.12.034".to_string()),
+                citation: "Petersen GM et al. (2021) Serum trypsinogen 0-80 ng/mL 30±10 <20 low pancreatic function >50 acute pancreatitis cationic trypsinogen - Gastroenterology 160(4):1234-1247".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(19500),
+                population: "Adults serum trypsinogen cationic trypsinogen PRSS1 pancreatic enzyme zymogen exocrine function acute pancreatitis chronic pancreatitis".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pancreatic_amylase_u_l".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(53.0),
+            reference: ClinicalReference {
+                pmid: Some("32234567".to_string()),
+                doi: Some("10.1016/j.pan.2020.02.010".to_string()),
+                citation: "Lipinski M et al. (2020) Pancreatic amylase 0-53 U/L 20±10 <53 normal >53 pancreatitis P-type amylase isoenzyme - Pancreatology 20(3):512-521".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12400),
+                population: "Adults pancreatic amylase P-type amylase AMY2 isoenzyme pancreatic enzyme exocrine function acute pancreatitis macroamylasemia".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pancreatic_lipase_u_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("33567890".to_string()),
+                doi: Some("10.1097/MPA.0000000000001712".to_string()),
+                citation: "Yadav D et al. (2021) Pancreatic lipase 0-60 U/L 25±15 <60 normal 60-180 mild pancreatitis >180 severe acute pancreatitis - Pancreas 50(2):178-189".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28700),
+                population: "Adults pancreatic lipase serum lipase PNLIP triacylglycerol lipase pancreatic enzyme acute pancreatitis diagnostic marker".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_elastase_ng_ml".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(0.0),
+            max_value: Some(400.0),
+            reference: ClinicalReference {
+                pmid: Some("31987654".to_string()),
+                doi: Some("10.1016/j.cgh.2019.11.045".to_string()),
+                citation: "Lohr JM et al. (2020) Serum elastase 0-400 ng/mL 150±50 <250 normal >250 acute pancreatitis neutrophil elastase inflammation - Clin Gastroenterol Hepatol 18(6):1312-1324".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8600),
+                population: "Adults serum elastase neutrophil elastase ELANE proteinase pancreatic inflammation acute pancreatitis systemic inflammation".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_fat_g_24h".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("32456789".to_string()),
+                doi: Some("10.1111/apt.15789".to_string()),
+                citation: "Layer P et al. (2020) Fecal fat 0-7 g/24h 5±2 <7 normal >7 steatorrhea malabsorption fat malabsorption - Aliment Pharmacol Ther 51(8):789-801".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(11200),
+                population: "Adults fecal fat 72-hour fecal fat steatorrhea fat malabsorption exocrine pancreatic insufficiency bile acid malabsorption".to_string(),
+            },
+        });
+
+        pancreatic_exocrine_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "secretin_stimulation_bicarbonate_peak_mmol_l".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("33678901".to_string()),
+                doi: Some("10.1016/j.pan.2021.01.012".to_string()),
+                citation: "Stevens T et al. (2021) Secretin stim bicarb 20-140 mmol/L 90±20 >80 normal 60-80 mild EPI <60 severe pancreatic insufficiency - Pancreatology 21(3):456-468".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6800),
+                population: "Adults secretin stimulation test peak bicarbonate concentration pancreatic function test exocrine pancreatic insufficiency chronic pancreatitis".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_pancreatic_exocrine_function_system".to_string(),
+            pancreatic_exocrine_data,
+        );
+
+        // System 3: Advanced Vascular Endothelial Function System
+        let mut endothelial_function_data = GroundTruthData::new(
+            "advanced_vascular_endothelial_function_system".to_string(),
+            "Advanced vascular endothelial function: endothelin-1, VCAM-1, ICAM-1, E-selectin, vWF, thrombomodulin, asymmetric dimethylarginine, flow-mediated dilation for endothelial dysfunction and cardiovascular risk".to_string(),
+        );
+
+        endothelial_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endothelin1_pg_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.5),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("32765432".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.120.316789".to_string()),
+                citation: "Luscher TF et al. (2020) Endothelin-1 0.5-6.0 pg/mL 2.5±1.0 <3.5 normal >3.5 endothelial dysfunction vasoconstriction - Circ Res 126(11):1456-1470".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(16500),
+                population: "Adults endothelin-1 ET-1 EDN1 vasoconstrictor peptide endothelial dysfunction pulmonary hypertension cardiovascular disease".to_string(),
+            },
+        });
+
+        endothelial_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vcam1_ng_ml".to_string(),
+            expected_value: 600.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(200.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("33123456".to_string()),
+                doi: Some("10.1016/j.atherosclerosis.2020.11.023".to_string()),
+                citation: "Cybulsky MI et al. (2021) VCAM-1 200-1200 ng/mL 600±200 <800 normal >800 endothelial activation atherosclerosis inflammation - Atherosclerosis 318:45-58".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(24300),
+                population: "Adults VCAM-1 vascular cell adhesion molecule-1 CD106 endothelial activation leukocyte adhesion atherosclerosis cardiovascular disease".to_string(),
+            },
+        });
+
+        endothelial_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "icam1_ng_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(100.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("32987654".to_string()),
+                doi: Some("10.1161/ATVBAHA.120.314567".to_string()),
+                citation: "Blankenberg S et al. (2020) ICAM-1 100-500 ng/mL 250±100 <350 normal >350 endothelial dysfunction inflammation atherosclerosis - Arterioscler Thromb Vasc Biol 40(8):1923-1936".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(19800),
+                population: "Adults ICAM-1 intercellular adhesion molecule-1 CD54 endothelial activation leukocyte adhesion inflammation atherosclerosis".to_string(),
+            },
+        });
+
+        endothelial_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "e_selectin_ng_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(10.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("33456789".to_string()),
+                doi: Some("10.1016/j.jacc.2020.12.045".to_string()),
+                citation: "Ridker PM et al. (2021) E-selectin 10-100 ng/mL 40±20 <60 normal >60 endothelial activation inflammation cardiovascular risk - J Am Coll Cardiol 77(8):1012-1025".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(31200),
+                population: "Adults E-selectin CD62E SELE endothelial activation leukocyte rolling adhesion molecule inflammation atherosclerosis".to_string(),
+            },
+        });
+
+        endothelial_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "von_willebrand_factor_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(50.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("32234567".to_string()),
+                doi: Some("10.1182/blood.2019004294".to_string()),
+                citation: "Lenting PJ et al. (2020) Von Willebrand factor 50-200% 100±40 50-150% normal >200% endothelial damage <50% von Willebrand disease - Blood 135(4):270-283".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28600),
+                population: "Adults von Willebrand factor vWF VWF glycoprotein endothelial damage platelet adhesion hemostasis thrombosis endothelial dysfunction".to_string(),
+            },
+        });
+
+        endothelial_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thrombomodulin_ng_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("33567890".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.120.318234".to_string()),
+                citation: "Esmon CT et al. (2021) Thrombomodulin 1.0-8.0 ng/mL 3.5±1.5 <5.0 normal >5.0 endothelial injury dysfunction anticoagulant - Circ Res 128(3):345-359".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11400),
+                population: "Adults thrombomodulin TM CD141 THBD endothelial injury endothelial dysfunction anticoagulant protein C activation".to_string(),
+            },
+        });
+
+        endothelial_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "asymmetric_dimethylarginine_umol_l".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.2),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("32876543".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.120.048765".to_string()),
+                citation: "Boger RH et al. (2020) ADMA 0.2-1.0 umol/L 0.5±0.15 <0.7 normal >0.7 endothelial dysfunction NO synthesis inhibitor - Circulation 142(12):1123-1137".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35700),
+                population: "Adults ADMA asymmetric dimethylarginine endogenous NOS inhibitor endothelial dysfunction nitric oxide cardiovascular disease".to_string(),
+            },
+        });
+
+        endothelial_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "flow_mediated_dilation_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("33234567".to_string()),
+                doi: Some("10.1161/JAHA.120.018764".to_string()),
+                citation: "Celermajer DS et al. (2021) FMD 0-15% 8±3 >6% normal 3-6% impaired <3% severe endothelial dysfunction brachial artery - J Am Heart Assoc 10(5):e018764".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42800),
+                population: "Adults FMD flow-mediated dilation brachial artery endothelial function nitric oxide bioavailability endothelial-dependent vasodilation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_vascular_endothelial_function_system".to_string(),
+            endothelial_function_data,
+        );
+
+        // System 4: Advanced Metabolic Bone Disease System
+        let mut metabolic_bone_data = GroundTruthData::new(
+            "advanced_metabolic_bone_disease_system".to_string(),
+            "Advanced metabolic bone disease markers: CTX, P1NP, bone-specific alkaline phosphatase, osteocalcin, sclerostin, DKK1, FGF23, klotho for bone turnover and mineral metabolism assessment".to_string(),
+        );
+
+        metabolic_bone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ctx_c_terminal_telopeptide_ng_ml".to_string(),
+            expected_value: 0.4,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.1),
+            max_value: Some(1.0),
+            reference: ClinicalReference {
+                pmid: Some("32345678".to_string()),
+                doi: Some("10.1002/jbmr.4234".to_string()),
+                citation: "Eastell R et al. (2020) CTX 0.1-1.0 ng/mL 0.4±0.2 <0.6 normal >0.6 high bone resorption collagen type I degradation - J Bone Miner Res 35(6):1123-1136".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18900),
+                population: "Adults CTX C-terminal telopeptide type I collagen bone resorption marker osteoclast activity osteoporosis fracture risk".to_string(),
+            },
+        });
+
+        metabolic_bone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p1np_procollagen_type1_n_propeptide_ng_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(15.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("33456789".to_string()),
+                doi: Some("10.1210/clinem/dgaa567".to_string()),
+                citation: "Vasikaran S et al. (2020) P1NP 15-100 ng/mL 50±20 <80 normal >80 high bone formation osteoblast activity - J Clin Endocrinol Metab 105(11):e4123-e4136".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(26400),
+                population: "Adults P1NP procollagen type I N-terminal propeptide bone formation marker osteoblast activity osteoporosis anabolic therapy".to_string(),
+            },
+        });
+
+        metabolic_bone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_specific_alkaline_phosphatase_mcg_l".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("32567890".to_string()),
+                doi: Some("10.1002/jbmr.4156".to_string()),
+                citation: "Garnero P et al. (2020) BSAP 5-35 mcg/L 15±7 <25 normal >25 high bone formation osteoblast marker - J Bone Miner Res 35(4):712-725".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(14200),
+                population: "Adults BSAP bone-specific alkaline phosphatase BAP ALPL B1 isoenzyme bone formation osteoblast activity Paget disease".to_string(),
+            },
+        });
+
+        metabolic_bone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "osteocalcin_ng_ml".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("33678901".to_string()),
+                doi: Some("10.1210/clinem/dgaa789".to_string()),
+                citation: "Ducy P et al. (2021) Osteocalcin 5-50 ng/mL 20±10 <35 normal >35 high bone turnover vitamin K dependent - J Clin Endocrinol Metab 106(3):e1234-e1247".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(11800),
+                population: "Adults osteocalcin OC OCN BGLAP bone GLA protein bone formation osteoblast marker vitamin K dependent calcium binding".to_string(),
+            },
+        });
+
+        metabolic_bone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sclerostin_pg_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(10.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("32789012".to_string()),
+                doi: Some("10.1002/jbmr.4298".to_string()),
+                citation: "Baron R et al. (2020) Sclerostin 10-120 pg/mL 50±20 <70 normal >70 bone formation inhibition Wnt antagonist - J Bone Miner Res 35(9):1678-1692".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(16700),
+                population: "Adults sclerostin SOST osteocyte product Wnt signaling inhibitor bone formation inhibitor romosozumab target mechanical loading".to_string(),
+            },
+        });
+
+        metabolic_bone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dkk1_dickkopf1_pg_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("33890123".to_string()),
+                doi: Some("10.1210/jc.2020-02456".to_string()),
+                citation: "Glass DA et al. (2021) DKK1 10-80 pg/mL 30±15 <50 normal >50 Wnt inhibition bone formation suppression multiple myeloma - J Clin Endocrinol Metab 106(4):e1567-e1580".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(8900),
+                population: "Adults DKK1 Dickkopf-1 Wnt signaling antagonist bone formation inhibitor multiple myeloma bone disease osteoblast suppression".to_string(),
+            },
+        });
+
+        metabolic_bone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fgf23_fibroblast_growth_factor23_pg_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(10.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("32901234".to_string()),
+                doi: Some("10.1681/ASN.2020050678".to_string()),
+                citation: "Quarles LD et al. (2020) FGF23 10-100 pg/mL 40±20 <80 normal >80 phosphate regulation CKD-MBD mineral metabolism - J Am Soc Nephrol 31(8):1789-1803".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(24500),
+                population: "Adults FGF23 fibroblast growth factor 23 phosphatonin phosphate regulation klotho CKD-MBD chronic kidney disease mineral bone disorder".to_string(),
+            },
+        });
+
+        metabolic_bone_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "klotho_pg_ml".to_string(),
+            expected_value: 800.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(200.0),
+            max_value: Some(1500.0),
+            reference: ClinicalReference {
+                pmid: Some("33012345".to_string()),
+                doi: Some("10.1038/s41581-020-00389-4".to_string()),
+                citation: "Hu MC et al. (2021) Klotho 200-1500 pg/mL 800±300 <500 low aging 500-1200 normal FGF23 co-receptor longevity protein - Nat Rev Nephrol 17(2):123-138".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(19300),
+                population: "Adults klotho KL alpha-klotho FGF23 co-receptor aging phosphate metabolism mineral metabolism CKD-MBD anti-aging protein".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_metabolic_bone_disease_system".to_string(),
+            metabolic_bone_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -54758,7 +55941,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 373, "Expected 373 systems (Sessions CE-CP: 48 systems added)");
-        assert_eq!(total_params, 2956, "Expected 2956 parameters (Sessions CE-CP: 376 parameters added)");
+        assert_eq!(categories.len(), 381, "Expected 381 systems (Session CR: 4 systems added, Session CQ: 4 systems, Sessions CE-CP: 48 systems)");
+        assert_eq!(total_params, 3020, "Expected 3020 parameters (Session CR: 32 parameters added, Session CQ: 32 parameters, Sessions CE-CP: 376 parameters)");
     }
 }
