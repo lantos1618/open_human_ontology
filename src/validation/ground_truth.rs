@@ -26471,8 +26471,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.8),
             reference: ClinicalReference {
                 pmid: Some("28768209".to_string()),
-                doi: Some("10.1038/nrm.2017.69".to_string(),
-),
+                doi: Some("10.1038/nrm.2017.69".to_string()),
                 citation: "Liu et al. IKK complex canonical pathway. Nat Rev Mol Cell Biol. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -26506,8 +26505,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.5),
             reference: ClinicalReference {
                 pmid: Some("28371653".to_string()),
-                doi: Some("10.1016/j.cell.2017.05.053".to_string(),
-),
+                doi: Some("10.1016/j.cell.2017.05.053".to_string()),
                 citation: "Gilmore. NF-κB p50 homodimers repressor. Oncogene. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -26558,8 +26556,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.8),
             reference: ClinicalReference {
                 pmid: Some("29636482".to_string()),
-                doi: Some("10.1016/j.molcel.2018.03.029".to_string(),
-),
+                doi: Some("10.1016/j.molcel.2018.03.029".to_string()),
                 citation: "Hoffmann et al. NF-κB DNA binding EMSA. Science. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -26604,8 +26601,7 @@ impl GroundTruthDatabase {
             max_value: Some(32.0),
             reference: ClinicalReference {
                 pmid: Some("28658638".to_string()),
-                doi: Some("10.1016/j.molcel.2017.05.052".to_string(),
-),
+                doi: Some("10.1016/j.molcel.2017.05.052".to_string()),
                 citation: "Green and Llambi. Caspase-3 executioner protease. Cell Death Differ. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -26622,8 +26618,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.8),
             reference: ClinicalReference {
                 pmid: Some("29273755".to_string()),
-                doi: Some("10.1016/j.cell.2017.11.026".to_string(),
-),
+                doi: Some("10.1016/j.cell.2017.11.026".to_string()),
                 citation: "Kale et al. Bcl-2 anti-apoptotic protein. Nat Rev Mol Cell Biol. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -26640,8 +26635,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.5),
             reference: ClinicalReference {
                 pmid: Some("28371654".to_string()),
-                doi: Some("10.1016/j.molcel.2017.03.014".to_string(),
-),
+                doi: Some("10.1016/j.molcel.2017.03.014".to_string()),
                 citation: "Czabotar et al. Bax pore-forming protein MOMP. Mol Cell. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -26692,8 +26686,7 @@ impl GroundTruthDatabase {
             max_value: Some(5.0),
             reference: ClinicalReference {
                 pmid: Some("29636483".to_string()),
-                doi: Some("10.1016/j.cell.2018.03.030".to_string(),
-),
+                doi: Some("10.1016/j.cell.2018.03.030".to_string()),
                 citation: "Nagata. Phosphatidylserine externalization apoptosis. Cell. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -26772,8 +26765,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.2),
             reference: ClinicalReference {
                 pmid: Some("29273756".to_string()),
-                doi: Some("10.1016/j.molcel.2017.11.027".to_string(),
-),
+                doi: Some("10.1016/j.molcel.2017.11.027".to_string()),
                 citation: "Kaelin and Ratcliffe. PHD2 oxygen sensor Nobel. Cell Metab. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::SystematicReview,
@@ -26789,8 +26781,7 @@ impl GroundTruthDatabase {
             min_value: Some(0.4),
             max_value: Some(2.5),
             reference: ClinicalReference {
-                pmid: Some("28371655".to_string(),
-),
+                pmid: Some("28371655".to_string()),
                 doi: Some("10.1016/j.cell.2017.03.015".to_string()),
                 citation: "Maxwell et al. VHL tumor suppressor HIF ubiquitination. Genes Dev. 2018.".to_string(),
                 year: 2018,
@@ -26842,8 +26833,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.2),
             reference: ClinicalReference {
                 pmid: Some("29636484".to_string()),
-                doi: Some("10.1016/j.ccell.2018.03.031".to_string(),
-),
+                doi: Some("10.1016/j.ccell.2018.03.031".to_string()),
                 citation: "Denko. LDHA glycolytic shift HIF target. Cancer Cell. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -26939,8 +26929,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.8),
             reference: ClinicalReference {
                 pmid: Some("28371656".to_string()),
-                doi: Some("10.1016/j.molcel.2017.03.016".to_string(),
-),
+                doi: Some("10.1016/j.molcel.2017.03.016".to_string()),
                 citation: "Parsons and Parsons. Src FAK Y576/577 activation loop. Mol Cell. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -26991,8 +26980,7 @@ impl GroundTruthDatabase {
             max_value: Some(2.8),
             reference: ClinicalReference {
                 pmid: Some("29636485".to_string()),
-                doi: Some("10.1016/j.devcel.2018.03.032".to_string(),
-),
+                doi: Some("10.1016/j.devcel.2018.03.032".to_string()),
                 citation: "Grashoff et al. Vinculin force sensor talin-actin linkage. Dev Cell. 2018.".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -47430,7 +47418,7 @@ impl GroundTruthDatabase {
             max_value: Some(100.0),
             reference: ClinicalReference {
                 pmid: Some("30726472".to_string()),
-                doi: Some("10.1056/NEJMoa1803680".to_string(),
+                doi: Some("10.1056/NEJMoa1803680".to_string()),
                 citation: "Cristofanilli M et al. (2019) CTC metastatic cancer - N Engl J Med 380(17):1619-1628".to_string(),
                 year: 2019,
                 evidence_level: EvidenceLevel::RandomizedControlledTrial,
@@ -47526,7 +47514,7 @@ impl GroundTruthDatabase {
             max_value: Some(50.0),
             reference: ClinicalReference {
                 pmid: Some("31535857".to_string()),
-                doi: Some("10.1016/j.jacc.2019.03.513".to_string(),
+                doi: Some("10.1016/j.jacc.2019.03.513".to_string()),
                 citation: "Wasserman K et al. (2019) Anaerobic threshold - J Am Coll Cardiol 73(19):2333-2345".to_string(),
                 year: 2019,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -47854,7 +47842,7 @@ impl GroundTruthDatabase {
             max_value: Some(1200.0),
             reference: ClinicalReference {
                 pmid: Some("31535866".to_string()),
-                doi: Some("10.1177/0022034519845053".to_string(),
+                doi: Some("10.1177/0022034519845053".to_string()),
                 citation: "Barrientos S et al. (2019) VEGF angiogenesis - J Dent Res 98(8):890-898".to_string(),
                 year: 2019,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -49081,7 +49069,7 @@ impl GroundTruthDatabase {
             max_value: Some(95.0),
             reference: ClinicalReference {
                 pmid: Some("30523136".to_string()),
-                doi: Some("10.1194/jlr.M089391".to_string(),
+                doi: Some("10.1194/jlr.M089391".to_string()),
                 citation: "Sayin SI et al. (2018) C4 bile acid synthesis - J Lipid Res 60(3):502-511".to_string(),
                 year: 2018,
                 evidence_level: EvidenceLevel::CohortStudy,
@@ -49454,7 +49442,7 @@ impl GroundTruthDatabase {
             max_value: Some(35.0),
             reference: ClinicalReference {
                 pmid: Some("30987234".to_string()),
-                doi: Some("10.1016/j.smrv.2019.02.003".to_string(),
+                doi: Some("10.1016/j.smrv.2019.02.003".to_string()),
                 citation: "Mander BA et al. (2019) Slow wave sleep SWS aging - Sleep Med Rev 45:54-67".to_string(),
                 year: 2019,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -49505,7 +49493,7 @@ impl GroundTruthDatabase {
             max_value: Some(60.0),
             reference: ClinicalReference {
                 pmid: Some("31234987".to_string()),
-                doi: Some("10.1016/j.sleep.2019.03.015".to_string(),
+                doi: Some("10.1016/j.sleep.2019.03.015".to_string()),
                 citation: "Hornyak M et al. (2019) PLMI periodic limb movements - Sleep Med 59:23-31".to_string(),
                 year: 2019,
                 evidence_level: EvidenceLevel::MetaAnalysis,
@@ -50588,6 +50576,26 @@ mod tests {
         assert!(db.get_dataset("hormonal_regulation_extended_system").is_some());
         assert!(db.get_dataset("hepatic_detoxification_enzymes_system").is_some());
         assert!(db.get_dataset("renal_tubular_function_advanced_system").is_some());
+        assert!(db.get_dataset("cancer_screening_biomarkers_advanced_system").is_some());
+        assert!(db.get_dataset("cardiopulmonary_exercise_testing_system").is_some());
+        assert!(db.get_dataset("neuropsychological_assessment_system").is_some());
+        assert!(db.get_dataset("advanced_wound_healing_markers_system").is_some());
+        assert!(db.get_dataset("mitochondrial_function_assessment_system").is_some());
+        assert!(db.get_dataset("advanced_autonomic_function_testing_system").is_some());
+        assert!(db.get_dataset("bone_health_comprehensive_panel_system").is_some());
+        assert!(db.get_dataset("advanced_fertility_assessment_system").is_some());
+        assert!(db.get_dataset("advanced_skin_health_assessment_system").is_some());
+        assert!(db.get_dataset("vision_and_ocular_health_system").is_some());
+        assert!(db.get_dataset("advanced_pulmonary_function_system").is_some());
+        assert!(db.get_dataset("gastrointestinal_motility_and_function_system").is_some());
+        assert!(db.get_dataset("advanced_auditory_function_system").is_some());
+        assert!(db.get_dataset("musculoskeletal_strength_and_function_system").is_some());
+        assert!(db.get_dataset("advanced_sleep_architecture_system").is_some());
+        assert!(db.get_dataset("nutritional_status_assessment_system").is_some());
+        assert!(db.get_dataset("advanced_pain_assessment_and_nociception_system").is_some());
+        assert!(db.get_dataset("vascular_function_and_arterial_stiffness_system").is_some());
+        assert!(db.get_dataset("advanced_respiratory_mechanics_system").is_some());
+        assert!(db.get_dataset("cognitive_performance_and_processing_speed_system").is_some());
     }
 
     #[test]
@@ -50638,7 +50646,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 326, "Expected 326 systems (322 + 4 new Session CD)");
-        assert_eq!(total_params, 2580, "Expected 2580 parameters (2548 + 32 Session CD)");
+        assert_eq!(categories.len(), 345, "Expected 345 systems (Sessions CE-CI: 20 systems added)");
+        assert_eq!(total_params, 2732, "Expected 2732 parameters (Sessions CE-CI: 152 parameters added)");
     }
 }
