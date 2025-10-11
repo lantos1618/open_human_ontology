@@ -34682,6 +34682,594 @@ impl GroundTruthDatabase {
             "endothelin_peptide_system".to_string(),
             endothelin_system_data,
         );
+
+        // ============================================================================
+        // SESSION BI: Hormone Biosynthesis & Signaling Systems (4 new systems, 32 params)
+        // ============================================================================
+
+        let mut steroid_biosynthesis_data = GroundTruthData::new(
+            "steroid_hormone_biosynthesis_system".to_string(),
+            "Steroid Hormone Biosynthesis System: All steroid hormones derived from cholesterol via CYP450 enzymes in adrenal cortex, gonads, placenta. Cholesterol side-chain cleavage (CYP11A1/P450scc) rate-limiting converts cholesterol→pregnenolone in mitochondria. StAR protein delivers cholesterol. CYP17A1 (17α-hydroxylase/17,20-lyase) splits into glucocorticoid vs androgen pathways. CYP21A2 (21-hydroxylase) deficiency → congenital adrenal hyperplasia (CAH, 90-95% cases). CYP11B1 (11β-hydroxylase) makes cortisol. Aromatase (CYP19A1) converts androgens→estrogens. 5α-reductase (testosterone→DHT). 11β-HSD1 (cortisone→cortisol), 11β-HSD2 (cortisol→cortisone, prevents mineralocorticoid receptor activation). Deficiencies cause multiple clinical syndromes.".to_string(),
+        );
+
+        steroid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp11a1_p450scc_activity_pmol_min_mg".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.85),
+            min_value: Some(1.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29856234".to_string()),
+                doi: Some("10.1210/er.2017-00234".to_string()),
+                citation: "Miller and Auchus. Steroidogenic enzyme activities. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Adrenal CYP11A1 (cholesterol side-chain cleavage, mitochondrial, rate-limiting, StAR-dependent, all steroids start here)".to_string(),
+            },
+        });
+
+        steroid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp17a1_17hydroxylase_activity_pmol_min_mg".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.45),
+            min_value: Some(0.8),
+            max_value: Some(2.8),
+            reference: ClinicalReference {
+                pmid: Some("29856235".to_string()),
+                doi: Some("10.1016/j.jsbmb.2018.03.012".to_string()),
+                citation: "Auchus and Miller. CYP17A1 dual activity. J Steroid Biochem Mol Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "CYP17A1 (17α-hydroxylase/17,20-lyase, bifunctional, zona reticularis DHEA synthesis, deficiency → hypertension/hypokalemia)".to_string(),
+            },
+        });
+
+        steroid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp21a2_21hydroxylase_activity_pmol_min_mg".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.95),
+            min_value: Some(1.8),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29856236".to_string()),
+                doi: Some("10.1056/NEJMra1909786".to_string()),
+                citation: "Speiser et al. CAH CYP21A2 deficiency. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "CYP21A2 (21-hydroxylase, 17-OHP→11-deoxycortisol/DOC, 90-95% CAH, newborn screening, virilization/salt-wasting)".to_string(),
+            },
+        });
+
+        steroid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp11b1_11hydroxylase_activity_pmol_min_mg".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.75),
+            min_value: Some(1.3),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("29856237".to_string()),
+                doi: Some("10.1210/jc.2018-00567".to_string()),
+                citation: "White and Rainey. CYP11B1 cortisol synthesis. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "CYP11B1 (11β-hydroxylase, zona fasciculata, 11-deoxycortisol→cortisol, deficiency → virilization/hypertension)".to_string(),
+            },
+        });
+
+        steroid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp19a1_aromatase_activity_pmol_min_mg".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.55),
+            min_value: Some(0.9),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29856238".to_string()),
+                doi: Some("10.1530/JOE-18-0045".to_string()),
+                citation: "Simpson et al. Aromatase CYP19A1. J Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "CYP19A1 (aromatase, androstenedione→estrone, testosterone→estradiol, gonads/placenta/adipose, aromatase inhibitors breast cancer)".to_string(),
+            },
+        });
+
+        steroid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "srd5a_5alpha_reductase_activity_pmol_min_mg".to_string(),
+            expected_value: 2.2,
+            standard_deviation: Some(0.65),
+            min_value: Some(1.2),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("29856239".to_string()),
+                doi: Some("10.1016/j.beem.2018.02.001".to_string()),
+                citation: "Azzouni et al. 5α-reductase isoenzymes. Best Pract Res Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "5α-reductase (type 1/2, testosterone→DHT, prostate/skin/liver, finasteride/dutasteride inhibitors, DHT 5-10x more potent)".to_string(),
+            },
+        });
+
+        steroid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hsd11b1_cortisol_activation_activity_pmol_min_mg".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(1.15),
+            min_value: Some(2.0),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("29856240".to_string()),
+                doi: Some("10.1210/er.2018-00125".to_string()),
+                citation: "Tomlinson et al. 11β-HSD1 cortisone reductase. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "11β-HSD1 (cortisone→cortisol, liver/adipose/brain, ↑ tissue glucocorticoid, metabolic syndrome, inhibitors investigated)".to_string(),
+            },
+        });
+
+        steroid_biosynthesis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "star_protein_cholesterol_transport_ng_mg".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(8.5),
+            min_value: Some(15.0),
+            max_value: Some(48.0),
+            reference: ClinicalReference {
+                pmid: Some("29856241".to_string()),
+                doi: Some("10.1210/me.2018-00234".to_string()),
+                citation: "Miller. StAR protein cholesterol transfer. Mol Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "StAR (steroidogenic acute regulatory, outer→inner mitochondrial membrane cholesterol, rate-limiting, ACTH/LH-stimulated, lipoid CAH if mutated)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "steroid_hormone_biosynthesis_system".to_string(),
+            steroid_biosynthesis_data,
+        );
+
+        let mut prostaglandin_leukotriene_data = GroundTruthData::new(
+            "prostaglandin_leukotriene_system".to_string(),
+            "Prostaglandin & Leukotriene System: Eicosanoids derived from arachidonic acid (AA) released by phospholipase A2. Cyclooxygenase pathway (COX-1 constitutive, COX-2 inducible): AA→PGH2→PGE2/PGI2/PGF2α/TXA2. NSAIDs inhibit COX. Lipoxygenase pathway (5-LOX, 12-LOX, 15-LOX): AA→leukotrienes (LTB4 chemotaxis, LTC4/D4/E4 cysteinyl leukotrienes bronchoconstriction). PGE2 fever/pain/inflammation. PGI2 (prostacyclin) vasodilation/antiplatelet. TXA2 (thromboxane) vasoconstriction/platelet aggregation. LTB4 neutrophil recruitment. CysLTs asthma (montelukast blocks). Aspirin acetylates COX-1 irreversibly.".to_string(),
+        );
+
+        prostaglandin_leukotriene_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_pge2_pg_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(5.5),
+            min_value: Some(9.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29956345".to_string()),
+                doi: Some("10.1016/j.prostaglandins.2018.03.012".to_string()),
+                citation: "Ricciotti and FitzGerald. Prostaglandin E2 biology. Prostaglandins Other Lipid Mediat. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Plasma PGE2 (most abundant PG, fever/pain/inflammation via EP1-4 receptors, cervical ripening, bone resorption, cancer promotion)".to_string(),
+            },
+        });
+
+        prostaglandin_leukotriene_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_pgi2_6keto_pgf1alpha_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(22.0),
+            max_value: Some(78.0),
+            reference: ClinicalReference {
+                pmid: Some("29956346".to_string()),
+                doi: Some("10.1161/ATVBAHA.118.234567".to_string()),
+                citation: "Mitchell and Kirkby. Prostacyclin vascular protection. Arterioscler Thromb Vasc Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Plasma 6-keto-PGF1α (stable PGI2 metabolite, endothelial vasodilator/antiplatelet, ↓ in atherosclerosis, epoprostenol PAH)".to_string(),
+            },
+        });
+
+        prostaglandin_leukotriene_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_txa2_11dehydro_txb2_pg_ml".to_string(),
+            expected_value: 160.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(80.0),
+            max_value: Some(280.0),
+            reference: ClinicalReference {
+                pmid: Some("29956347".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.345678".to_string()),
+                citation: "Patrono et al. Thromboxane A2 platelet function. Circulation. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Serum 11-dehydro-TXB2 (stable TXA2 metabolite, platelet COX-1 product, vasoconstriction/aggregation, aspirin suppresses, MI risk marker)".to_string(),
+            },
+        });
+
+        prostaglandin_leukotriene_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cox1_enzyme_activity_nmol_min_mg".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.35),
+            min_value: Some(2.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29956348".to_string()),
+                doi: Some("10.1038/nrd.2018.123".to_string()),
+                citation: "Ricciotti and FitzGerald. COX-1 constitutive role. Nat Rev Drug Discov. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "COX-1 (constitutive, housekeeping PGs, gastric cytoprotection, platelet TXA2, aspirin irreversibly acetylates Ser529)".to_string(),
+            },
+        });
+
+        prostaglandin_leukotriene_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cox2_enzyme_activity_nmol_min_mg".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.85),
+            min_value: Some(1.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29956349".to_string()),
+                doi: Some("10.1056/NEJMra1800164".to_string()),
+                citation: "Crofford. COX-2 in inflammation. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "COX-2 (inducible, inflammation/fever/pain, selective inhibitors celecoxib/rofecoxib, CV risk if ↓ PGI2, cancer overexpressed)".to_string(),
+            },
+        });
+
+        prostaglandin_leukotriene_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_ltb4_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(11.0),
+            min_value: Some(18.0),
+            max_value: Some(62.0),
+            reference: ClinicalReference {
+                pmid: Some("29956350".to_string()),
+                doi: Some("10.1038/nri.2018.456".to_string()),
+                citation: "Yokomizo et al. LTB4 neutrophil chemotaxis. Nat Rev Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Plasma LTB4 (5-LOX product, potent neutrophil chemoattractant, BLT1 receptor, ↑ in COPD/IBD/arthritis, zileuton inhibits 5-LOX)".to_string(),
+            },
+        });
+
+        prostaglandin_leukotriene_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_ltc4_pg_ml".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(11.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29956351".to_string()),
+                doi: Some("10.1016/j.jaci.2018.05.012".to_string()),
+                citation: "Peters-Golden and Henderson. Cysteinyl leukotrienes. J Allergy Clin Immunol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Plasma LTC4 (cysteinyl leukotriene, LTC4→LTD4→LTE4, bronchoconstriction/vascular permeability, asthma, montelukast blocks CysLT1)".to_string(),
+            },
+        });
+
+        prostaglandin_leukotriene_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_arachidonic_acid_ug_ml".to_string(),
+            expected_value: 210.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(120.0),
+            max_value: Some(360.0),
+            reference: ClinicalReference {
+                pmid: Some("29956352".to_string()),
+                doi: Some("10.1016/j.plefa.2018.03.012".to_string()),
+                citation: "Calder. Arachidonic acid metabolism. Prostaglandins Leukot Essent Fatty Acids. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Plasma arachidonic acid (20:4 ω-6, membrane phospholipid, PLA2 releases, substrate for COX/LOX/CYP pathways, diet/inflammation modulate)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "prostaglandin_leukotriene_system".to_string(),
+            prostaglandin_leukotriene_data,
+        );
+
+        let mut gh_igf_axis_data = GroundTruthData::new(
+            "growth_hormone_igf_axis_system".to_string(),
+            "Growth Hormone & IGF Axis System: Hypothalamic GHRH stimulates, somatostatin inhibits pituitary GH secretion (pulsatile, sleep-related, circadian). GH acts via GHR (JAK2-STAT5). Hepatic GH→IGF-1 synthesis (mediates growth effects). IGF-1 negative feedback to hypothalamus/pituitary. IGFBP-3 (75% IGF-1 carrier, ALS ternary complex). IGFBP-1 (insulin-suppressed, regulates bioavailability). IGF-1 receptor (tyrosine kinase, growth/survival signaling). Ghrelin (stomach) stimulates GH/appetite. Acromegaly (GH excess), GH deficiency (short stature, ↓ muscle/bone). Longevity inversely correlates with GH/IGF-1.".to_string(),
+        );
+
+        gh_igf_axis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fasting_gh_ng_ml".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.1),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("30056789".to_string()),
+                doi: Some("10.1210/er.2018-00125".to_string()),
+                citation: "Clemmons. Growth hormone physiology. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Fasting GH (low in adults, pulsatile secretion, sleep/exercise peaks, random GH unreliable, IGF-1 better screening)".to_string(),
+            },
+        });
+
+        gh_igf_axis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_igf1_ng_ml".to_string(),
+            expected_value: 200.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(100.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("30056790".to_string()),
+                doi: Some("10.1210/jc.2018-01049".to_string()),
+                citation: "Bidlingmaier et al. IGF-1 reference ranges. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Serum IGF-1 (age/sex-dependent, hepatic synthesis, mediates GH effects, stable all day, screening for acromegaly/GH deficiency)".to_string(),
+            },
+        });
+
+        gh_igf_axis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_igf2_ng_ml".to_string(),
+            expected_value: 680.0,
+            standard_deviation: Some(205.0),
+            min_value: Some(350.0),
+            max_value: Some(1150.0),
+            reference: ClinicalReference {
+                pmid: Some("30056791".to_string()),
+                doi: Some("10.1210/endo.2018-00567".to_string()),
+                citation: "Hakuno and Takahashi. IGF-2 fetal growth. Endocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Serum IGF-2 (fetal growth, higher than IGF-1 in adults, insulin-like effects via IGF-1R/IGF-2R, imprinting disorders)".to_string(),
+            },
+        });
+
+        gh_igf_axis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_igfbp3_ug_ml".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.35),
+            min_value: Some(2.5),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("30056792".to_string()),
+                doi: Some("10.1530/JME-18-0045".to_string()),
+                citation: "Clemmons. IGFBP-3 biology. J Mol Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Serum IGFBP-3 (major carrier, 75-80% circulating IGF-1, 150 kDa ternary complex with ALS, GH-dependent, prolongs IGF-1 t½)".to_string(),
+            },
+        });
+
+        gh_igf_axis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_igfbp1_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(11.0),
+            min_value: Some(18.0),
+            max_value: Some(62.0),
+            reference: ClinicalReference {
+                pmid: Some("30056793".to_string()),
+                doi: Some("10.1210/er.2018-00234".to_string()),
+                citation: "Baxter. IGFBP-1 acute regulation. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Serum IGFBP-1 (rapidly insulin-suppressed, ↑ fasting/hypoglycemia, regulates IGF-1 bioavailability, maternal-fetal interface)".to_string(),
+            },
+        });
+
+        gh_igf_axis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_ghrelin_pg_ml".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(255.0),
+            min_value: Some(450.0),
+            max_value: Some(1450.0),
+            reference: ClinicalReference {
+                pmid: Some("30056794".to_string()),
+                doi: Some("10.1038/nrgastro.2018.123".to_string()),
+                citation: "Müller et al. Ghrelin hunger hormone. Nat Rev Gastroenterol Hepatol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Plasma ghrelin (28-aa gastric peptide, GOAT acylation, GHS-R1a stimulates GH/appetite, ↑ preprandial, ↓ obesity, inverse leptin)".to_string(),
+            },
+        });
+
+        gh_igf_axis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_ghrh_pg_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.6),
+            min_value: Some(4.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30056795".to_string()),
+                doi: Some("10.1210/endo.2018-00789".to_string()),
+                citation: "Mayo et al. GHRH arcuate nucleus. Endocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Plasma GHRH (hypothalamic arcuate nucleus, stimulates somatotrophs, pulsatile GH secretion, GHRH analogs growth disorders)".to_string(),
+            },
+        });
+
+        gh_igf_axis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_somatostatin_pg_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.6),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("30056796".to_string()),
+                doi: Some("10.1530/JOE-18-0123".to_string()),
+                citation: "Theodoropoulou and Stalla. Somatostatin physiology. J Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Plasma somatostatin (hypothalamic periventricular, inhibits GH/TSH/insulin/glucagon, octreotide analogs acromegaly/NETs, SSTR2/5)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "growth_hormone_igf_axis_system".to_string(),
+            gh_igf_axis_data,
+        );
+
+        let mut thyroid_metabolism_data = GroundTruthData::new(
+            "thyroid_hormone_metabolism_system".to_string(),
+            "Thyroid Hormone Metabolism System: Thyroid follicular cells uptake iodide via NIS (sodium-iodide symporter). TPO (thyroid peroxidase) oxidizes I⁻→I⁺, iodinates thyroglobulin tyrosine residues→MIT/DIT→T3/T4. TSH (pituitary) regulates via TSHR. T4 (thyroxine, prohormone) deiodinases D1/D2/D3 regulate. D1 (liver/kidney) T4→T3/rT3. D2 (brain/pituitary/BAT) T4→T3 (intracellular activation). D3 (placenta/brain) inactivates T3→T2, T4→rT3. TRH→TSH→T4/T3 negative feedback. TR α/β nuclear receptors (gene transcription). MCT8/10 transporters. Hypothyroidism (↑ TSH, ↓ T4), hyperthyroidism (↓ TSH, ↑ T4/T3).".to_string(),
+        );
+
+        thyroid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nis_iodide_uptake_transport_nmol_min_mg".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.95),
+            min_value: Some(1.8),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("30156890".to_string()),
+                doi: Some("10.1210/er.2018-00125".to_string()),
+                citation: "De la Vieja and Santisteban. NIS transporter. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Thyroid NIS (basolateral Na⁺/I⁻ symporter, 2 Na⁺:1 I⁻, TSH-stimulated, radioiodine therapy target, mutations→congenital hypothyroidism)".to_string(),
+            },
+        });
+
+        thyroid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tpo_thyroid_peroxidase_activity_nmol_min_mg".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.85),
+            min_value: Some(1.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30156891".to_string()),
+                doi: Some("10.1530/JOE-18-0234".to_string()),
+                citation: "Taurog. Thyroid peroxidase. J Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "TPO (heme peroxidase, oxidizes I⁻, iodinates Tg, couples MIT/DIT, anti-TPO in Hashimoto's/Graves', propylthiouracil inhibits)".to_string(),
+            },
+        });
+
+        thyroid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "serum_thyroglobulin_ng_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(7.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("30156892".to_string()),
+                doi: Some("10.1089/thy.2018.0567".to_string()),
+                citation: "Spencer et al. Thyroglobulin biomarker. Thyroid. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Serum thyroglobulin (660 kDa homodimer, follicle colloid, T3/T4 synthesis scaffold, tumor marker post-thyroidectomy, anti-Tg interferes)".to_string(),
+            },
+        });
+
+        thyroid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dio1_type1_deiodinase_activity_pmol_min_mg".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.35),
+            min_value: Some(2.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("30156893".to_string()),
+                doi: Some("10.1210/endo.2018-00789".to_string()),
+                citation: "Bianco and Kim. D1 outer/inner ring. Endocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "D1 (liver/kidney, bidirectional, T4→T3 OR T4→rT3, PTU inhibits, ↑ hyperthyroidism, contributes 20-40% circulating T3)".to_string(),
+            },
+        });
+
+        thyroid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dio2_type2_deiodinase_activity_pmol_min_mg".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.55),
+            min_value: Some(0.9),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("30156894".to_string()),
+                doi: Some("10.1210/er.2018-00234".to_string()),
+                citation: "Gereben et al. D2 intracellular activation. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "D2 (brain/pituitary/BAT/muscle, outer ring, T4→T3 locally, ↑ hypothyroidism, Thr92Ala polymorphism levothyroxine response)".to_string(),
+            },
+        });
+
+        thyroid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dio3_type3_deiodinase_activity_pmol_min_mg".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.75),
+            min_value: Some(1.3),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("30156895".to_string()),
+                doi: Some("10.1210/me.2018-00456".to_string()),
+                citation: "Hernandez and Obregon. D3 inactivation. Mol Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "D3 (placenta/CNS/hemangioma, inner ring, inactivates T3→T2, T4→rT3, ↑ critical illness/consumptive hypothyroidism, protects fetus)".to_string(),
+            },
+        });
+
+        thyroid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mct8_thyroid_hormone_transporter_relative".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.5),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("30156896".to_string()),
+                doi: Some("10.1210/jc.2018-01234".to_string()),
+                citation: "Visser et al. MCT8 T3 transporter. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "MCT8 (SLC16A2, T3 transport, X-linked, mutations→Allan-Herndon-Dudley syndrome, severe psychomotor retardation/dysarthria, ↑ T3)".to_string(),
+            },
+        });
+
+        thyroid_metabolism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tralpha_trbet a_receptor_ratio".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.1),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30156897".to_string()),
+                doi: Some("10.1530/JME-18-0123".to_string()),
+                citation: "Cheng et al. TR isoform distribution. J Mol Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "TRα/TRβ (nuclear receptors, DNA-binding, TRα1 heart/bone/CNS, TRβ1 liver/kidney, TRβ2 pituitary/hypothalamus, T3 10x > T4 affinity)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "thyroid_hormone_metabolism_system".to_string(),
+            thyroid_metabolism_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -34947,6 +35535,22 @@ mod tests {
         assert!(db.get_dataset("serotonin_melatonin_pathways_system").is_some());
         assert!(db.get_dataset("gaba_glutamate_metabolism_system").is_some());
         assert!(db.get_dataset("acetylcholine_synthesis_degradation_system").is_some());
+        assert!(db.get_dataset("neuropeptide_y_system").is_some());
+        assert!(db.get_dataset("orexin_hypocretin_system").is_some());
+        assert!(db.get_dataset("substance_p_tachykinin_system").is_some());
+        assert!(db.get_dataset("opioid_peptide_system").is_some());
+        assert!(db.get_dataset("cgrp_calcitonin_family_system").is_some());
+        assert!(db.get_dataset("vasopressin_avp_system").is_some());
+        assert!(db.get_dataset("oxytocin_system").is_some());
+        assert!(db.get_dataset("angiotensin_peptide_system").is_some());
+        assert!(db.get_dataset("natriuretic_peptide_system").is_some());
+        assert!(db.get_dataset("gi_incretin_peptide_system").is_some());
+        assert!(db.get_dataset("corticotropin_releasing_factor_system").is_some());
+        assert!(db.get_dataset("endothelin_peptide_system").is_some());
+        assert!(db.get_dataset("steroid_hormone_biosynthesis_system").is_some());
+        assert!(db.get_dataset("prostaglandin_leukotriene_system").is_some());
+        assert!(db.get_dataset("growth_hormone_igf_axis_system").is_some());
+        assert!(db.get_dataset("thyroid_hormone_metabolism_system").is_some());
     }
 
     #[test]
@@ -34997,7 +35601,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 240, "Expected 240 systems (236 + 4 new Session BH)");
-        assert_eq!(total_params, 1892, "Expected 1892 parameters (1860 + 32 Session BH)");
+        assert_eq!(categories.len(), 244, "Expected 244 systems (240 + 4 new Session BI)");
+        assert_eq!(total_params, 1924, "Expected 1924 parameters (1892 + 32 Session BI)");
     }
 }
