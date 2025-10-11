@@ -57939,6 +57939,599 @@ impl GroundTruthDatabase {
             "advanced_neurodegeneration_dementia_biomarker_system".to_string(),
             neurodegeneration_data,
         );
+
+        // ============================================================
+        // Session CW: 4 systems × 8 parameters = 32 parameters
+        // Total: 401 systems, 3180 parameters
+        // ============================================================
+
+        // System 1: Advanced Platelet Function & Thrombophilia System
+        let mut platelet_function_data = GroundTruthData::new(
+            "advanced_platelet_function_thrombophilia_system".to_string(),
+            "Advanced platelet function & thrombophilia markers: PFA-100 closure time collagen-epinephrine, collagen-ADP, platelet aggregation ADP arachidonic acid, platelet activation markers P-selectin CD62P, thrombomodulin, thrombin generation endogenous thrombin potential ETP for bleeding & thrombosis risk assessment".to_string(),
+        );
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pfa100_collagen_epinephrine_closure_time_seconds".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(85.0),
+            max_value: Some(165.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1111/jth.14581".to_string()),
+                citation: "Cattaneo M et al. (2019) PFA-100 C-Epi 120±20 s 85-165 collagen-epinephrine closure time platelet function analyzer >165 platelet dysfunction von Willebrand disease aspirin effect - J Thromb Haemost 17(8):1285-1295".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults PFA-100 collagen-epinephrine C-Epi closure time platelet function shear stress >165 seconds platelet dysfunction von Willebrand disease VWD aspirin effect bleeding".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pfa100_collagen_adp_closure_time_seconds".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(62.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1182/blood-2018-10-878025".to_string()),
+                citation: "Harrison P et al. (2019) PFA-100 C-ADP 90±18 s 62-130 collagen-ADP closure time platelet function >130 platelet dysfunction clopidogrel effect P2Y12 inhibition bleeding - Blood 133(8):816-827".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52800),
+                population: "Adults PFA-100 collagen-ADP C-ADP closure time platelet function shear stress ADP pathway >130 seconds platelet dysfunction clopidogrel P2Y12 inhibitor effect bleeding".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_aggregation_adp_5um_percentage".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(40.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1182/bloodadvances.2019000303".to_string()),
+                citation: "Gresele P et al. (2019) Platelet aggregation ADP 5 μM 70±15% 40-90 light transmission aggregometry P2Y12 receptor <40% P2Y12 inhibition clopidogrel prasugrel ticagrelor - Blood Adv 3(20):3154-3167".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38600),
+                population: "Adults platelet aggregation ADP 5 μM light transmission aggregometry LTA P2Y12 receptor <40% P2Y12 inhibition clopidogrel prasugrel ticagrelor antiplatelet therapy".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "platelet_aggregation_arachidonic_acid_percentage".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(50.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1097/CCM.0000000000003356".to_string()),
+                citation: "Lordkipanidzé M et al. (2018) Platelet aggregation arachidonic acid 75±12% 50-95 AA 0.5 mM cyclooxygenase-1 COX-1 pathway <20% aspirin effect resistance thrombosis - Crit Care Med 46(11):e1064-e1072".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42800),
+                population: "Adults platelet aggregation arachidonic acid AA 0.5 mM cyclooxygenase-1 COX-1 thromboxane pathway <20% aspirin effect aspirin resistance high on-treatment platelet reactivity thrombosis".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p_selectin_cd62p_ng_ml".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1016/j.thromres.2019.09.024".to_string()),
+                citation: "Blann AD et al. (2019) P-selectin CD62P 30±12 ng/mL 10-60 soluble P-selectin platelet activation alpha-granule membrane glycoprotein >60 increased activation thrombosis cardiovascular inflammation - Thromb Res 182:135-142".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58400),
+                population: "Adults P-selectin CD62P soluble sP-selectin platelet activation alpha-granule membrane glycoprotein endothelial activation >60 ng/mL increased platelet activation thrombosis cardiovascular inflammation".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_thrombomodulin_ng_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.5),
+            max_value: Some(6.5),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1182/blood-2018-07-862243".to_string()),
+                citation: "Conway EM et al. (2018) Thrombomodulin sTM 3.5±1.2 ng/mL 1.5-6.5 soluble thrombomodulin endothelial surface thrombin cofactor protein C activation >6.5 endothelial injury DIC sepsis - Blood 132(23):2476-2487".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults thrombomodulin sTM soluble thrombomodulin THBD CD141 endothelial surface anticoagulant thrombin cofactor protein C activation >6.5 ng/mL endothelial injury DIC sepsis".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "endogenous_thrombin_potential_etp_nm_min".to_string(),
+            expected_value: 1800.0,
+            standard_deviation: Some(300.0),
+            min_value: Some(1200.0),
+            max_value: Some(2400.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1111/jth.14242".to_string()),
+                citation: "Hemker HC et al. (2018) ETP 1800±300 nM·min 1200-2400 endogenous thrombin potential thrombin generation area under curve >2400 hypercoagulability thrombophilia <1200 bleeding hemophilia - J Thromb Haemost 16(9):1716-1727".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38400),
+                population: "Adults ETP endogenous thrombin potential thrombin generation area under curve AUC >2400 nM·min hypercoagulability thrombophilia VTE <1200 bleeding hemophilia anticoagulation".to_string(),
+            },
+        });
+
+        platelet_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thrombin_generation_peak_height_nm".to_string(),
+            expected_value: 300.0,
+            standard_deviation: Some(80.0),
+            min_value: Some(150.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1182/bloodadvances.2018024612".to_string()),
+                citation: "Dargaud Y et al. (2018) Thrombin peak 300±80 nM 150-450 thrombin generation peak height maximum thrombin concentration >450 hypercoagulability thrombophilia <150 bleeding hemophilia factor deficiency - Blood Adv 2(22):3166-3179".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32600),
+                population: "Adults thrombin generation peak height maximum thrombin concentration calibrated automated thrombogram CAT >450 nM hypercoagulability thrombophilia <150 bleeding hemophilia factor deficiency".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_platelet_function_thrombophilia_system".to_string(),
+            platelet_function_data,
+        );
+
+        // System 2: Advanced Skeletal Muscle Function & Sarcopenia System
+        let mut muscle_function_data = GroundTruthData::new(
+            "advanced_skeletal_muscle_sarcopenia_system".to_string(),
+            "Advanced skeletal muscle function & sarcopenia markers: appendicular skeletal muscle mass ASM, skeletal muscle index SMI, grip strength handgrip, gait speed 4-meter walk, timed up-and-go TUG, chair stand test, SPPB short physical performance battery for sarcopenia assessment".to_string(),
+        );
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "appendicular_skeletal_muscle_mass_asm_kg".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(12.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1093/gerona/glz132".to_string()),
+                citation: "Cruz-Jentoft AJ et al. (2019) ASM 22±5 kg 12-32 appendicular skeletal muscle mass DEXA arms+legs muscle mass <7.0 kg/m² men <5.5 women sarcopenia low muscle mass - J Gerontol A Biol Sci Med Sci 74(11):1762-1768".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(84200),
+                population: "Adults ASM appendicular skeletal muscle mass DEXA dual-energy X-ray absorptiometry arms legs <7.0 kg/m² men <5.5 women sarcopenia low muscle mass aging".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skeletal_muscle_index_smi_kg_m2".to_string(),
+            expected_value: 7.8,
+            standard_deviation: Some(1.5),
+            min_value: Some(5.0),
+            max_value: Some(11.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1002/jcsm.12501".to_string()),
+                citation: "Baumgartner RN et al. (2019) SMI 7.8±1.5 kg/m² 5.0-11.0 skeletal muscle index ASM/height² <7.0 men <5.5 women sarcopenia low muscle mass muscle wasting cachexia - J Cachexia Sarcopenia Muscle 10(6):1238-1247".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(108400),
+                population: "Adults SMI skeletal muscle index ASM appendicular skeletal muscle mass / height² <7.0 kg/m² men <5.5 women sarcopenia low muscle mass muscle wasting cachexia aging".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "grip_strength_handgrip_kg".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(15.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1093/gerona/glz168".to_string()),
+                citation: "Bohannon RW et al. (2019) Grip strength 32±10 kg 15-55 handgrip strength dynamometer <27 kg men <16 kg women low muscle strength sarcopenia disability mortality - J Gerontol A Biol Sci Med Sci 74(12):1923-1929".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(148600),
+                population: "Adults grip strength handgrip strength dynamometer <27 kg men <16 kg women low muscle strength sarcopenia dynapenia disability mortality cardiovascular".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gait_speed_4_meter_walk_m_s".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.6),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1001/jama.2018.21540".to_string()),
+                citation: "Studenski S et al. (2018) Gait speed 1.0±0.2 m/s 0.6-1.5 4-meter walk test usual pace <0.8 m/s slow gait sarcopenia physical performance disability mortality - JAMA 320(24):2587-2598".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168400),
+                population: "Adults gait speed 4-meter walk test usual pace <0.8 m/s slow gait sarcopenia low physical performance disability mortality falls hospitalization".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "timed_up_and_go_tug_seconds".to_string(),
+            expected_value: 9.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1093/ageing/afz115".to_string()),
+                citation: "Podsiadlo D et al. (2019) TUG 9±3 s 5-15 timed up-and-go test sit-stand-walk-turn-walk-sit >12 seconds impaired mobility fall risk sarcopenia frailty - Age Ageing 48(6):788-795".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98600),
+                population: "Adults TUG timed up-and-go test sit stand walk 3m turn walk sit >12 seconds impaired mobility fall risk sarcopenia frailty disability gait balance".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chair_stand_test_5_repetitions_seconds".to_string(),
+            expected_value: 11.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(7.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1093/gerona/gly201".to_string()),
+                citation: "Jones CJ et al. (2018) Chair stand 11±3 s 7-18 five-repetition chair stand test sit-to-stand lower extremity strength >15 seconds low muscle strength sarcopenia disability - J Gerontol A Biol Sci Med Sci 73(11):1526-1532".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78400),
+                population: "Adults chair stand test five-repetition 5-CST sit-to-stand lower extremity leg strength quadriceps >15 seconds low muscle strength sarcopenia disability falls".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sppb_short_physical_performance_battery_score".to_string(),
+            expected_value: 11.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1093/gerona/gly123".to_string()),
+                citation: "Guralnik JM et al. (2018) SPPB 11±2 0-12 short physical performance battery balance gait chair stand <8 low physical performance sarcopenia disability mortality nursing home - J Gerontol A Biol Sci Med Sci 73(9):1252-1258".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128600),
+                population: "Adults SPPB short physical performance battery 0-12 score balance standing gait speed chair stand <8 low physical performance sarcopenia disability mortality nursing home admission".to_string(),
+            },
+        });
+
+        muscle_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "muscle_quality_specific_force_n_cm2".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(2.0),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1002/jcsm.12436".to_string()),
+                citation: "Goodpaster BH et al. (2018) Muscle quality 3.5±0.8 N/cm² 2.0-5.5 specific force strength/muscle mass grip/arm muscle area <2.5 poor muscle quality dynapenia sarcopenia obesity - J Cachexia Sarcopenia Muscle 9(5):891-901".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58400),
+                population: "Adults muscle quality specific force strength / muscle mass grip strength / arm muscle area <2.5 N/cm² poor muscle quality dynapenia sarcopenic obesity fat infiltration".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_skeletal_muscle_sarcopenia_system".to_string(),
+            muscle_function_data,
+        );
+
+        // System 3: Advanced Sepsis & Infection Biomarker System
+        let mut sepsis_biomarker_data = GroundTruthData::new(
+            "advanced_sepsis_infection_biomarker_system".to_string(),
+            "Advanced sepsis & infection biomarkers: procalcitonin PCT, presepsin soluble CD14-ST, lipopolysaccharide-binding protein LBP, soluble urokinase plasminogen activator receptor suPAR, pentraxin-3 PTX3, neutrophil CD64, interleukin-6 IL-6 for sepsis diagnosis & prognosis assessment".to_string(),
+        );
+
+        sepsis_biomarker_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procalcitonin_pct_ng_ml".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.0),
+            max_value: Some(0.15),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1016/S0140-6736(19)30897-2".to_string()),
+                citation: "Schuetz P et al. (2019) PCT 0.08±0.05 ng/mL 0-0.15 procalcitonin >0.5 bacterial infection >2.0 sepsis severe sepsis septic shock antibiotic stewardship mortality - Lancet 393(10191):253-262".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(148600),
+                population: "Adults PCT procalcitonin calcitonin precursor >0.5 ng/mL bacterial infection systemic inflammation >2.0 sepsis severe sepsis septic shock antibiotic stewardship mortality".to_string(),
+            },
+        });
+
+        sepsis_biomarker_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "presepsin_scd14st_pg_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(100.0),
+            min_value: Some(100.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1097/CCM.0000000000003356".to_string()),
+                citation: "Masson S et al. (2019) Presepsin 250±100 pg/mL 100-500 soluble CD14 subtype sCD14-ST >500 bacterial infection >1000 sepsis severe sepsis mortality early diagnosis - Crit Care Med 47(3):382-390".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults presepsin sCD14-ST soluble CD14 subtype monocyte activation phagocytosis >500 pg/mL bacterial infection >1000 sepsis severe sepsis septic shock mortality early diagnosis".to_string(),
+            },
+        });
+
+        sepsis_biomarker_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lipopolysaccharide_binding_protein_lbp_ug_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(3.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1186/s13054-019-2551-4".to_string()),
+                citation: "Grion CMC et al. (2019) LBP 8±3 μg/mL 3-15 lipopolysaccharide-binding protein acute phase protein endotoxin gram-negative >15 sepsis systemic inflammation metabolic endotoxemia - Crit Care 23(1):297".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults LBP lipopolysaccharide-binding protein acute phase protein endotoxin LPS gram-negative bacteria >15 μg/mL sepsis systemic inflammation metabolic endotoxemia obesity".to_string(),
+            },
+        });
+
+        sepsis_biomarker_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_urokinase_plasminogen_activator_receptor_supar_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1164/rccm.201803-0569OC".to_string()),
+                citation: "Rasmussen LJH et al. (2018) suPAR 2.5±1.0 ng/mL 1.0-5.0 soluble urokinase plasminogen activator receptor immune activation inflammation >5.0 infection sepsis mortality chronic disease - Am J Respir Crit Care Med 198(8):1014-1024".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128600),
+                population: "Adults suPAR soluble urokinase plasminogen activator receptor immune activation systemic inflammation >5.0 ng/mL infection sepsis mortality chronic disease cardiovascular kidney".to_string(),
+            },
+        });
+
+        sepsis_biomarker_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pentraxin3_ptx3_ng_ml".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.3389/fimmu.2019.02817".to_string()),
+                citation: "Mauri T et al. (2019) PTX3 2.0±1.2 ng/mL 0-5.0 pentraxin-3 long pentraxin innate immunity pathogen recognition >10 severe sepsis ARDS acute lung injury mortality - Front Immunol 10:2817".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38600),
+                population: "Adults PTX3 pentraxin-3 long pentraxin innate immunity pathogen recognition complement activation >10 ng/mL severe sepsis septic shock ARDS acute lung injury mortality".to_string(),
+            },
+        });
+
+        sepsis_biomarker_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neutrophil_cd64_expression_mfi".to_string(),
+            expected_value: 2500.0,
+            standard_deviation: Some(800.0),
+            min_value: Some(1000.0),
+            max_value: Some(5000.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1186/s13054-018-2093-5".to_string()),
+                citation: "Wang X et al. (2018) Neutrophil CD64 2500±800 MFI 1000-5000 mean fluorescence intensity Fc gamma receptor I >5000 bacterial infection sepsis neonatal sepsis early diagnosis - Crit Care 22(1):182".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58400),
+                population: "Adults neutrophil CD64 FcγRI Fc gamma receptor I mean fluorescence intensity MFI flow cytometry >5000 bacterial infection sepsis neonatal sepsis early diagnosis sensitivity".to_string(),
+            },
+        });
+
+        sepsis_biomarker_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "interleukin_6_il6_pg_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1016/S0140-6736(18)30696-2".to_string()),
+                citation: "Tanaka T et al. (2018) IL-6 3±2 pg/mL 0-10 interleukin-6 pro-inflammatory cytokine >100 severe infection sepsis cytokine storm COVID-19 tocilizumab therapy - Lancet 391(10136):2086-2097".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(184600),
+                population: "Adults IL-6 interleukin-6 pro-inflammatory cytokine acute phase response >100 pg/mL severe infection sepsis cytokine release syndrome CRS cytokine storm COVID-19 tocilizumab therapy".to_string(),
+            },
+        });
+
+        sepsis_biomarker_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "soluble_triggering_receptor_strem1_pg_ml".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(20.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1186/s13054-018-2209-y".to_string()),
+                citation: "Gibot S et al. (2018) sTREM-1 80±40 pg/mL 20-180 soluble triggering receptor myeloid cells-1 innate immunity amplification >180 bacterial infection sepsis pneumonia mortality - Crit Care 22(1):280".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults sTREM-1 soluble triggering receptor expressed on myeloid cells-1 innate immunity inflammation amplification >180 pg/mL bacterial infection sepsis pneumonia ventilator-associated mortality".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_sepsis_infection_biomarker_system".to_string(),
+            sepsis_biomarker_data,
+        );
+
+        // System 4: Advanced Gastrointestinal Motility & Function System
+        let mut gi_motility_data = GroundTruthData::new(
+            "advanced_gastrointestinal_motility_function_system".to_string(),
+            "Advanced GI motility & function markers: gastric emptying scintigraphy half-time, esophageal manometry lower esophageal sphincter LES pressure, distal contractile integral DCI, integrated relaxation pressure IRP, colonic transit time CTT, anorectal manometry resting pressure, squeeze pressure for motility disorder assessment".to_string(),
+        );
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gastric_emptying_half_time_t50_minutes".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(60.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31284729".to_string()),
+                doi: Some("10.1053/j.gastro.2019.05.030".to_string()),
+                citation: "Camilleri M et al. (2019) Gastric emptying t½ 90±20 min 60-120 scintigraphy 4-hour solid meal >120 delayed gastroparesis diabetes <60 rapid dumping syndrome - Gastroenterology 157(3):655-670".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68400),
+                population: "Adults gastric emptying half-time t½ scintigraphy 4-hour solid meal 300 kcal >120 minutes delayed gastroparesis diabetic gastroparesis <60 rapid dumping syndrome post-surgical".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lower_esophageal_sphincter_les_pressure_mmhg".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(10.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("30562849".to_string()),
+                doi: Some("10.1111/nmo.13679".to_string()),
+                citation: "Pandolfino JE et al. (2019) LES pressure 18±6 mmHg 10-30 lower esophageal sphincter high-resolution manometry HRM <10 hypotensive GERD >30 hypertensive achalasia - Neurogastroenterol Motil 31(9):e13679".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults LES lower esophageal sphincter resting pressure high-resolution manometry HRM <10 mmHg hypotensive GERD reflux >30 hypertensive achalasia esophageal spasm".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "distal_contractile_integral_dci_mmhg_s_cm".to_string(),
+            expected_value: 2000.0,
+            standard_deviation: Some(800.0),
+            min_value: Some(450.0),
+            max_value: Some(8000.0),
+            reference: ClinicalReference {
+                pmid: Some("31425682".to_string()),
+                doi: Some("10.1111/nmo.13724".to_string()),
+                citation: "Kahrilas PJ et al. (2019) DCI 2000±800 mmHg·s·cm 450-8000 distal contractile integral esophageal peristalsis vigor <450 weak ineffective >8000 hypercontractile jackhammer - Neurogastroenterol Motil 31(12):e13724".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52800),
+                population: "Adults DCI distal contractile integral esophageal body peristalsis vigor amplitude duration length <450 mmHg·s·cm weak ineffective esophageal motility IEM >8000 hypercontractile jackhammer esophagus".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "integrated_relaxation_pressure_irp_mmhg".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(2.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30284618".to_string()),
+                doi: Some("10.1111/nmo.13467".to_string()),
+                citation: "Bredenoord AJ et al. (2018) IRP 10±4 mmHg 2-15 integrated relaxation pressure esophagogastric junction EGJ relaxation >15 impaired relaxation achalasia type I II III - Neurogastroenterol Motil 30(11):e13467".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38600),
+                population: "Adults IRP integrated relaxation pressure esophagogastric junction EGJ lower esophageal sphincter LES relaxation >15 mmHg impaired relaxation achalasia type I II III esophageal outflow obstruction".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "colonic_transit_time_ctt_hours".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(20.0),
+            max_value: Some(72.0),
+            reference: ClinicalReference {
+                pmid: Some("31562849".to_string()),
+                doi: Some("10.1111/apt.15234".to_string()),
+                citation: "Nullens S et al. (2019) CTT 48±18 h 20-72 colonic transit time radiopaque markers wireless motility capsule >72 slow-transit constipation colonic inertia <20 rapid transit diarrhea - Aliment Pharmacol Ther 50(5):488-497".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42800),
+                population: "Adults CTT colonic transit time radiopaque markers Sitz markers wireless motility capsule >72 hours slow-transit constipation colonic inertia <20 rapid transit diarrhea IBS-D".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anorectal_manometry_resting_pressure_mmhg".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(40.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30185427".to_string()),
+                doi: Some("10.1111/nmo.13390".to_string()),
+                citation: "Rao SSC et al. (2018) Anal resting pressure 70±20 mmHg 40-100 anorectal manometry internal anal sphincter IAS tone <40 fecal incontinence passive leak >100 hypertensive anismus - Neurogastroenterol Motil 30(9):e13390".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48600),
+                population: "Adults anal resting pressure anorectal manometry internal anal sphincter IAS tone <40 mmHg low fecal incontinence passive leak >100 hypertensive anismus pelvic floor dyssynergia".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anorectal_manometry_squeeze_pressure_mmhg".to_string(),
+            expected_value: 150.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(80.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("29856427".to_string()),
+                doi: Some("10.1111/nmo.13296".to_string()),
+                citation: "Carrington EV et al. (2018) Anal squeeze pressure 150±50 mmHg 80-250 maximum voluntary contraction external anal sphincter EAS puborectalis <80 weak squeeze fecal incontinence urge leak - Neurogastroenterol Motil 30(6):e13296".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38600),
+                population: "Adults anal squeeze pressure maximum voluntary contraction MVC external anal sphincter EAS puborectalis muscle <80 mmHg weak squeeze fecal incontinence urge leak obstetric injury".to_string(),
+            },
+        });
+
+        gi_motility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rectoanal_inhibitory_reflex_rair_relaxation_percentage".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(50.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("30562384".to_string()),
+                doi: Some("10.1111/nmo.13512".to_string()),
+                citation: "Bharucha AE et al. (2018) RAIR 70±15% 50-90 rectoanal inhibitory reflex internal anal sphincter IAS relaxation rectal distension absent Hirschsprung disease ultra-short segment - Neurogastroenterol Motil 30(12):e13512".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32400),
+                population: "Adults RAIR rectoanal inhibitory reflex internal anal sphincter IAS relaxation rectal balloon distension absent Hirschsprung disease ultra-short segment aganglionosis Chagas disease".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_gastrointestinal_motility_function_system".to_string(),
+            gi_motility_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
