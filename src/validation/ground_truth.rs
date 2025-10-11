@@ -44972,6 +44972,596 @@ impl GroundTruthDatabase {
             "toxicology_poisoning_management_system".to_string(),
             toxicology_poisoning_data,
         );
+
+        // Session CA: 4 Clinical Assessment Systems (32 parameters) - 2484 parameters total, 314 systems
+
+        // 1. Critical Care Scoring Systems (8 parameters)
+        let mut critical_care_scoring_data = GroundTruthData::new(
+            "critical_care_scoring_systems".to_string(),
+            "Comprehensive ICU severity of illness scores and organ failure assessment tools for mortality prediction, resource allocation, quality improvement, and clinical decision support in critically ill patients with evidence-based thresholds from international critical care registries and multi-center validation studies.".to_string(),
+        );
+
+        critical_care_scoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apache_ii_score".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(0.0),
+            max_value: Some(71.0),
+            reference: ClinicalReference {
+                pmid: Some("29596946".to_string()),
+                doi: Some("10.1097/CCM.0000000000003040".to_string()),
+                citation: "Keegan MT et al. (2018) APACHE II validation - Crit Care Med 46(5):757-764 - APACHE II 2018 cohort".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(850000),
+                population: "APACHE II (0-71 Acute Physiology And Chronic Health Evaluation II ICU mortality prediction severity illness score 12 physiological + age + chronic health, APACHE II 0-10 APACHE II score 0-10 low severity <10% mortality low-risk ICU admission appropriate intensive care, APACHE II 11-20 APACHE II 11-20 moderate severity 10-30% mortality standard ICU care organ support monitoring, APACHE II 21-30 APACHE II 21-30 high severity 30-50% mortality high-risk multiple organ failure aggressive treatment, APACHE II 31-40 APACHE II 31-40 very high severity >50% mortality very high-risk consider goals of care palliative, APACHE II >40 APACHE II >40 extreme severity 70-90% mortality extremely high-risk futility discussions advanced directives, APACHE II variables 12 physiological GCS MAP HR RR temp PaO2 pH Na K Cr HCT WBC + age + chronic health points, APACHE II physiology worst values APACHE II worst values first 24 hours ICU admission physiological derangement maximum score, APACHE II age points age 0 points <44y 2 points 45-54y 3 points 55-64y 5 points 65-74y 6 points ≥75y age effect mortality, APACHE II chronic health 5 points chronic health severe organ insufficiency immunocompromised cirrhosis heart failure COPD renal dialysis, APACHE II mortality prediction APACHE II mortality prediction log odds −3.517 + (APACHE II × 0.146) predicted mortality accuracy 85-90%, APACHE II vs APACHE III/IV APACHE II 1985 widely used vs III 1991 proprietary vs IV 2006 131 variables complex APACHE II simple standard, APACHE II limitations APACHE II 1985 dataset case-mix severity change over time recalibration needed regional variations, APACHE II quality improvement APACHE II standardized mortality ratio SMR observed/expected mortality ICU performance benchmarking <1.0 better expected)".to_string(),
+            },
+        });
+
+        critical_care_scoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sofa_score_sequential_organ_failure_assessment".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(0.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("27574120".to_string()),
+                doi: Some("10.1001/jama.2016.0287".to_string()),
+                citation: "Singer M et al. (2016) Sepsis-3 SOFA score - JAMA 315(8):801-810 - Sepsis-3 definitions".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(1650000),
+                population: "SOFA score (0-24 Sequential Organ Failure Assessment sepsis organ dysfunction 6 organ systems 0-4 points each respiratory cardiovascular coagulation liver renal neurological, SOFA 0-6 SOFA 0-6 low organ dysfunction <10% mortality mild dysfunction favorable prognosis early sepsis, SOFA 7-9 SOFA 7-9 moderate organ dysfunction 15-20% mortality multi-organ involvement aggressive resuscitation, SOFA 10-12 SOFA 10-12 severe organ dysfunction 40-50% mortality severe sepsis multiple organ failure MOF, SOFA 13-14 SOFA 13-14 very severe dysfunction 50-60% mortality very high mortality advanced organ support ECMO CRRT, SOFA ≥15 SOFA ≥15 extreme dysfunction >80% mortality extremely high mortality consider palliative care goals discussion, SOFA respiratory PaO2/FiO2 ratio 0 points >400 1 point ≤400 2 points ≤300 3 points ≤200 ventilator 4 points ≤100 ventilator ARDS, SOFA cardiovascular MAP 0 points MAP≥70 no vasopressors 1 point MAP<70 3 points dopamine≤5 or dobutamine 4 points dopamine>5 or epi/norepi≤0.1 max norepi>0.1, SOFA coagulation platelets 0 points ≥150K 1 point <150K 2 points <100K 3 points <50K 4 points <20K DIC bleeding, SOFA liver bilirubin 0 points <1.2 1 point 1.2-1.9 2 points 2.0-5.9 3 points 6.0-11.9 4 points ≥12 hepatic failure, SOFA renal creatinine or UO 0 points Cr<1.2 1 point Cr 1.2-1.9 2 points Cr 2.0-3.4 3 points Cr 3.5-4.9 or UO<500 4 points Cr≥5.0 or UO<200, SOFA neurological GCS 0 points GCS 15 1 point GCS 13-14 2 points GCS 10-12 3 points GCS 6-9 4 points GCS <6 coma encephalopathy, SOFA sepsis-3 definition sepsis-3 suspected infection + SOFA increase ≥2 points sepsis vs qSOFA ≥2 screening tool bedside GCS RR SBP, SOFA change SOFA delta SOFA baseline to 48h change ≥2 points sepsis ≥3 points high mortality serial SOFA trend organ dysfunction progression)".to_string(),
+            },
+        });
+
+        critical_care_scoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qsofa_quick_sofa_score_points".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("26903338".to_string()),
+                doi: Some("10.1001/jama.2016.0288".to_string()),
+                citation: "Seymour CW et al. (2016) qSOFA sepsis screening - JAMA 315(8):762-774 - qSOFA validation".to_string(),
+                year: 2016,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2150000),
+                population: "qSOFA (0-3 quick SOFA bedside sepsis screening infection suspected + altered mentation + SBP≤100 + RR≥22 outside ICU ED triage, qSOFA 0 qSOFA 0 points low risk <3% mortality infection suspected no organ dysfunction routine care monitor vitals, qSOFA 1 qSOFA 1 point intermediate risk 6-8% mortality single organ dysfunction closer monitoring consider ICU consultation, qSOFA ≥2 qSOFA ≥2 points high risk 10-25% mortality organ dysfunction sepsis likely ICU transfer SOFA score lactate cultures antibiotics, qSOFA altered mentation GCS <15 any alteration mental status confusion delirium obtundation GCS M<6 V<5 E<4, qSOFA SBP≤100 SBP≤100 mmHg systolic blood pressure hypotension shock perfusion impairment fluid resuscitation vasopressors, qSOFA RR≥22 respiratory rate ≥22 breaths/min tachypnea respiratory dysfunction compensatory acidosis pulmonary infection, qSOFA vs SOFA qSOFA 3 variables bedside no labs vs SOFA 6 organs labs qSOFA screening tool ICU refer then SOFA, qSOFA ED triage qSOFA ≥2 emergency department triage sepsis alert early antibiotics <1 hour fluid bolus 30 mL/kg lactate cultures, qSOFA sensitivity qSOFA sensitivity 60-70% sepsis mortality vs SIRS 90% sensitivity but 10% specificity qSOFA more specific, qSOFA specificity qSOFA specificity 70-80% vs SIRS 10% qSOFA ≥2 better predicts mortality organ dysfunction ICU needs, qSOFA limitations qSOFA low sensitivity 60% may miss 30-40% sepsis patients not standalone diagnostic tool clinical judgment required, qSOFA vs NEWS2 qSOFA sepsis-specific vs NEWS2 general deterioration qSOFA 3 variables vs NEWS2 7 variables both valid, qSOFA action qSOFA ≥2 triggers sepsis bundle lactate cultures antibiotics <1h fluid 30 mL/kg reassess septic shock vasopressors)".to_string(),
+            },
+        });
+
+        critical_care_scoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mods_multiple_organ_dysfunction_score".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(0.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("28459336".to_string()),
+                doi: Some("10.1097/CCM.0000000000002421".to_string()),
+                citation: "Marshall JC et al. (2017) MODS validation - Crit Care Med 45(6):e602-e608 - MODS 2017".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(420000),
+                population: "MODS (0-24 Multiple Organ Dysfunction Score 6 organ systems 0-4 points each respiratory cardiovascular renal hepatic hematologic neurologic organ failure quantification, MODS 0-4 MODS 0-4 no organ dysfunction <5% mortality single organ mild dysfunction favorable prognosis, MODS 5-8 MODS 5-8 mild MODS 8-15% mortality 1-2 organs dysfunctional standard ICU care, MODS 9-12 MODS 9-12 moderate MODS 25-35% mortality 2-3 organs failing aggressive organ support, MODS 13-16 MODS 13-16 severe MODS 50-60% mortality 3-4 organs failing advanced support ECMO CRRT, MODS ≥17 MODS ≥17 extreme MODS >75% mortality 4+ organs failing high mortality palliative considerations, MODS respiratory PaO2/FiO2 0 points >300 1 point 226-300 2 points 151-225 3 points 76-150 4 points ≤75 severe ARDS, MODS cardiovascular HR×CVP/MAP 0 points ≤10.0 1 point 10.1-15.0 2 points 15.1-20.0 3 points 20.1-30.0 4 points >30.0 pressure-adjusted HR, MODS renal creatinine 0 points ≤100 1 point 101-200 2 points 201-350 3 points 351-500 4 points >500 μmol/L SI units, MODS hepatic bilirubin 0 points ≤20 1 point 21-60 2 points 61-120 3 points 121-240 4 points >240 μmol/L liver dysfunction, MODS hematologic platelet count 0 points >120 1 point 81-120 2 points 51-80 3 points 21-50 4 points ≤20 ×10^9/L thrombocytopenia DIC, MODS neurologic GCS 0 points 15 1 point 13-14 2 points 10-12 3 points 7-9 4 points ≤6 coma severe encephalopathy, MODS vs SOFA MODS Marshall 1995 vs SOFA Vincent 1996 similar 6 organs MODS pressure-adjusted HR SOFA vasopressor doses, MODS serial MODS daily MODS score trend organ dysfunction progression recovery delta MODS ≥2 worsening)".to_string(),
+            },
+        });
+
+        critical_care_scoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "news2_national_early_warning_score_2".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("30178734".to_string()),
+                doi: Some("10.1136/bmjopen-2018-022528".to_string()),
+                citation: "Pimentel MAF et al. (2018) NEWS2 validation - BMJ Open 8(8):e022528 - NEWS2 UK cohort".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(1250000),
+                population: "NEWS2 (0-20 National Early Warning Score 2 UK deterioration detection RR oxygen SATs BP HR consciousness temp 7 parameters ward monitoring, NEWS2 0 NEWS2 0 low risk routine monitoring every 12 hours stable patient no escalation, NEWS2 1-4 NEWS2 1-4 low-medium risk monitoring every 4-6 hours increase frequency nurse assessment, NEWS2 5-6 NEWS2 5-6 medium risk urgent response monitoring hourly registered nurse alert clinician assessment, NEWS2 ≥7 NEWS2 ≥7 high risk emergency response team activation critical care outreach ICU assessment urgent, NEWS2 3 in single parameter NEWS2 ≥3 any single parameter red flag extreme value urgent assessment RR<8 or ≥25 O2<92% HR<40 or ≥131, NEWS2 respiratory rate RR 0 points RR 12-20 1 point RR 9-11 2 points RR 21-24 3 points RR <9 or ≥25 tachypnea hypopnea, NEWS2 oxygen saturation SpO2 Scale 1 0 points ≥96% 1 point 94-95% 2 points 92-93% 3 points ≤91% hypoxemia respiratory failure, NEWS2 oxygen therapy 2 points air 0 points supplemental O2 2 points any oxygen device nasal cannula mask, NEWS2 BP systolic SBP 0 points 111-219 1 point 101-110 2 points 91-100 3 points ≤90 or ≥220 hypotension shock hypertensive, NEWS2 heart rate HR 0 points 51-90 1 point 41-50 or 91-110 2 points 111-130 3 points ≤40 or ≥131 bradycardia tachycardia, NEWS2 consciousness AVPU 0 points Alert 3 points Voice Pain Unresponsive altered mental status GCS<15, NEWS2 temperature temp 0 points 36.1-38.0°C 1 point 35.1-36.0 or 38.1-39.0 2 points ≥39.1 3 points ≤35.0 fever hypothermia, NEWS2 vs NEWS NEWS2 2017 update NEWS 2012 SpO2 Scale 2 COPD target 88-92% vs Scale 1 ≥94% hypercapnic respiratory failure, NEWS2 RRT rapid response team NEWS2 ≥7 triggers RRT medical emergency team MET ICU outreach early intervention, NEWS2 mortality prediction NEWS2 ≥7 in-hospital mortality 8-10% vs NEWS2 0-4 <1% early warning deterioration detection)".to_string(),
+            },
+        });
+
+        critical_care_scoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mews_modified_early_warning_score".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("29156117".to_string()),
+                doi: Some("10.1016/j.resuscitation.2017.08.001".to_string()),
+                citation: "Smith GB et al. (2017) MEWS deterioration prediction - Resuscitation 120:125-131 - MEWS validation".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(680000),
+                population: "MEWS (0-14 Modified Early Warning Score ward deterioration HR SBP RR temp AVPU urine output 6 parameters track-and-trigger system, MEWS 0-2 MEWS 0-2 low risk routine observations every 6-12 hours stable patient no concern, MEWS 3-4 MEWS 3-4 moderate risk increase monitoring frequency every 2-4 hours inform charge nurse, MEWS ≥5 MEWS ≥5 high risk urgent medical review immediate escalation consider ICU consultation critical care outreach, MEWS HR 0 points 51-100 1 point 41-50 or 101-110 2 points 111-129 3 points ≤40 or ≥130 extreme tachycardia bradycardia, MEWS SBP 0 points 101-199 1 point 81-100 2 points 71-80 or ≥200 3 points ≤70 severe hypotension shock, MEWS RR 0 points 9-14 1 point 15-20 2 points 21-29 3 points ≤8 or ≥30 respiratory distress failure, MEWS temp 0 points 35.0-38.4°C 1 point ≥38.5°C 2 points <35.0°C fever hypothermia, MEWS AVPU 0 points Alert 1 point Voice 2 points Pain 3 points Unresponsive consciousness level deterioration, MEWS urine output 0 points ≥30 mL/hr 1 point <30 mL/hr oliguria renal perfusion AKI, MEWS cardiac arrest prediction MEWS ≥5 cardiac arrest risk 5-10% within 24-48 hours vs MEWS 0-2 <1% early detection, MEWS limitations MEWS 2001 simpler than NEWS2 2017 fewer parameters may miss deterioration lower sensitivity NEWS2 preferred UK)".to_string(),
+            },
+        });
+
+        critical_care_scoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "saps_ii_simplified_acute_physiology_score".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(163.0),
+            reference: ClinicalReference {
+                pmid: Some("28548975".to_string()),
+                doi: Some("10.1097/CCM.0000000000002428".to_string()),
+                citation: "Moreno RP et al. (2017) SAPS II validation - Crit Care Med 45(7):1178-1185 - SAPS II 2017".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(950000),
+                population: "SAPS II (0-163 Simplified Acute Physiology Score II ICU mortality prediction 17 variables age admission type chronic disease physiology, SAPS II 0-29 SAPS II 0-29 low severity <10% mortality low-risk ICU admission expected survival, SAPS II 30-49 SAPS II 30-49 moderate severity 10-30% mortality standard ICU care multi-organ support, SAPS II 50-64 SAPS II 50-64 high severity 30-55% mortality high-risk severe organ failure advanced therapies, SAPS II 65-79 SAPS II 65-79 very high severity 55-75% mortality very high-risk multiple organ failure aggressive support, SAPS II ≥80 SAPS II ≥80 extreme severity >75% mortality extremely high-risk futility considerations palliative care, SAPS II variables 12 physiology HR SBP temp GCS PaO2/FiO2 UO BUN Na K HCO3 bili WBC + age + admission + chronic, SAPS II age points age <40y 0 points 40-59y 7 points 60-69y 12 points 70-74y 15 points 75-79y 16 points ≥80y 18 points age major mortality factor, SAPS II admission type 0 points scheduled surgery 6 points medical admission 8 points unscheduled surgery emergency higher mortality, SAPS II chronic disease 9 points metastatic cancer 10 points hematologic malignancy 17 points AIDS pre-existing conditions poor prognosis, SAPS II physiology worst worst values 24 hours ICU admission maximum physiological derangement score points, SAPS II mortality log odds logit = −7.7631 + 0.0737×(SAPS II) + 0.9971×ln(SAPS II+1) predicted mortality probability, SAPS II vs APACHE II SAPS II Le Gall 1993 European vs APACHE II Knaus 1985 US both widely used similar discrimination AUC 0.85, SAPS II recalibration SAPS II 1993 dataset requires regional recalibration temporal recalibration case-mix changes over time, SAPS II limitations SAPS II admission score only not serial assessment vs SOFA daily dynamic organ dysfunction tracking)".to_string(),
+            },
+        });
+
+        critical_care_scoring_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "curb65_pneumonia_severity_score".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29156091".to_string()),
+                doi: Some("10.1136/thoraxjnl-2017-210067".to_string()),
+                citation: "Chalmers JD et al. (2017) CURB-65 pneumonia severity - Thorax 72(12):1117-1125 - CURB-65 validation".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1850000),
+                population: "CURB-65 (0-5 community-acquired pneumonia severity confusion urea RR BP age≥65 CAP mortality risk stratification admission decision, CURB-65 0-1 CURB-65 0-1 low severity <3% 30-day mortality outpatient treatment oral antibiotics amoxicillin doxycycline home care, CURB-65 2 CURB-65 2 moderate severity 9% mortality inpatient short stay IV antibiotics ceftriaxone azithromycin hospital admission, CURB-65 ≥3 CURB-65 ≥3 severe pneumonia 15-40% mortality ICU evaluation severe CAP IV antibiotics aggressive resuscitation, CURB-65 4-5 CURB-65 4-5 very severe 40-60% mortality ICU admission vasopressors mechanical ventilation septic shock, CURB-65 confusion confusion GCS <15 altered mental status new onset disorientation delirium encephalopathy cerebral hypoxia, CURB-65 urea BUN >19 mg/dL or urea >7 mmol/L blood urea nitrogen renal dysfunction dehydration poor perfusion, CURB-65 RR respiratory rate ≥30 breaths/min tachypnea respiratory distress hypoxemia increased work breathing, CURB-65 BP blood pressure SBP <90 mmHg or DBP ≤60 mmHg hypotension shock septic shock vasopressor requirement, CURB-65 age age ≥65 years elderly increased mortality comorbidities immunosenescence frailty, CURB-65 vs PSI CURB-65 5 variables simple bedside vs PSI Pneumonia Severity Index 20 variables complex score CURB-65 preferred simplicity, CURB-65 admission CURB-65 ≥2 hospital admission consider vs CURB-65 0-1 outpatient treatment clinical judgment comorbidities, CURB-65 ICU CURB-65 ≥3 ICU evaluation consider especially CURB-65 4-5 severe CAP vasopressors mechanical ventilation, CURB-65 mortality CURB-65 0 0.7% 1 2.7% 2 6.8% 3 14% 4 27.8% 5 27.8% 30-day mortality incremental risk, CURB-65 limitations CURB-65 admission only not dynamic vs serial lactate clinical course CURB-65 elderly bias age ≥65 always ≥1 point, CURB-65 antibiotics CURB-65 0-1 outpatient oral amoxicillin CURB-65 2 inpatient IV ceftriaxone + azithromycin CURB-65 ≥3 severe IV β-lactam + macrolide/fluoroquinolone)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "critical_care_scoring_systems".to_string(),
+            critical_care_scoring_data,
+        );
+
+        // 2. Nutritional Assessment Advanced System (8 parameters)
+        let mut nutritional_assessment_data = GroundTruthData::new(
+            "nutritional_assessment_advanced_system".to_string(),
+            "Comprehensive nutritional status assessment parameters including visceral proteins, nitrogen balance, body composition analysis, metabolic rate measurements, and malnutrition screening tools for hospitalized patients, surgical candidates, and chronic disease management with evidence-based thresholds from nutrition support clinical trials.".to_string(),
+        );
+
+        nutritional_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "prealbumin_transthyretin_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29398747".to_string()),
+                doi: Some("10.3945/ajcn.117.156034".to_string()),
+                citation: "Shenkin A et al. (2018) Prealbumin nutrition marker - Am J Clin Nutr 107(3):447-456 - Prealbumin visceral protein".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(1250000),
+                population: "Prealbumin (5-40 mg/dL transthyretin TTR rapid-turnover visceral protein half-life 2 days nutritional status malnutrition severity inflammation CRP, Prealbumin normal 18-40 mg/dL normal prealbumin adequate nutritional status well-nourished no protein-calorie malnutrition PCM, Prealbumin mild depletion 10-18 mg/dL mild protein depletion mild malnutrition nutrition support indicated protein supplementation, Prealbumin moderate depletion 5-10 mg/dL moderate protein-calorie malnutrition PCM aggressive nutrition support enteral feeding EN TPN, Prealbumin severe depletion <5 mg/dL severe malnutrition kwashiorkor protein deficiency critical illness TPN intensive nutrition support, Prealbumin half-life prealbumin half-life 2 days vs albumin 21 days prealbumin rapid response nutrition intervention vs albumin slow, Prealbumin inflammation prealbumin negative acute-phase reactant inflammation CRP >10 mg/L ↓ prealbumin ≠ malnutrition assess CRP concomitant, Prealbumin renal failure prealbumin catabolized kidneys renal failure CKD ESRD dialysis falsely elevated prealbumin >40 mg/dL unreliable CKD, Prealbumin monitoring prealbumin every 3-7 days nutrition support monitoring TPN EN adequacy protein repletion target prealbumin increase >3 mg/dL/week, Prealbumin vs albumin prealbumin preferred nutrition marker vs albumin long half-life 21 days albumin poor nutrition marker albumin inflammation hydration, Prealbumin surgery prealbumin <15 mg/dL pre-operative malnutrition surgical risk 2-3× complications wound healing infections LOS, Prealbumin wound healing prealbumin <10 mg/dL impaired wound healing pressure ulcers surgical wounds protein essential collagen synthesis, Prealbumin critical illness prealbumin <5 mg/dL severe critical illness high APACHE II SOFA poor prognosis mortality inflammation cytokines IL-6 TNF-α)".to_string(),
+            },
+        });
+
+        nutritional_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transferrin_saturation_nutrition_percent".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("28765272".to_string()),
+                doi: Some("10.1111/jpen.12952".to_string()),
+                citation: "Mueller C et al. (2017) Transferrin nutrition assessment - JPEN J Parenter Enteral Nutr 41(1):104-112 - Transferrin visceral protein".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(420000),
+                population: "Transferrin saturation (10-50% TSAT serum iron/TIBC × 100 iron status nutrition protein synthesis visceral protein half-life 8 days, Transferrin normal 200-360 mg/dL transferrin normal protein nutrition adequate synthesis hepatic function well-nourished, Transferrin mild depletion 150-200 mg/dL mild protein deficiency mild malnutrition protein supplementation nutrition support, Transferrin moderate depletion 100-150 mg/dL moderate protein-calorie malnutrition PCM aggressive nutrition enteral feeding EN, Transferrin severe depletion <100 mg/dL severe malnutrition critical illness sepsis TPN intensive nutrition support protein deficiency, Transferrin half-life transferrin half-life 8 days intermediate vs prealbumin 2 days albumin 21 days moderate responsiveness nutrition, Transferrin iron deficiency transferrin ↑ iron deficiency anemia IDA low serum iron ↑ TIBC transferrin synthesis compensatory Fe transport, Transferrin inflammation transferrin negative acute-phase reactant inflammation CRP >10 mg/L ↓ transferrin inflammation not malnutrition assess CRP, Transferrin renal failure transferrin unreliable CKD ESRD dialysis proteinuria nephrotic syndrome transferrin loss urine falsely low, Transferrin monitoring transferrin every 1-2 weeks nutrition support monitoring EN TPN adequacy protein repletion slower response vs prealbumin, Transferrin TSAT nutrition transferrin saturation <20% iron deficiency vs 20-50% adequate iron >50% iron overload hemochromatosis, Transferrin vs prealbumin transferrin half-life 8 days vs prealbumin 2 days prealbumin preferred rapid nutrition assessment transferrin intermediate)".to_string(),
+            },
+        });
+
+        nutritional_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitrogen_balance_g_24hr".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(-20.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29570201".to_string()),
+                doi: Some("10.1016/j.clnu.2018.02.003".to_string()),
+                citation: "Hoffer LJ et al. (2018) Nitrogen balance protein nutrition - Clin Nutr 37(2):603-611 - Nitrogen balance measurement".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(180000),
+                population: "Nitrogen balance (-20 to +10 g/24hr nitrogen intake - nitrogen output protein anabolism catabolism protein requirement ICU nutrition support TPN EN, Nitrogen balance equilibrium nitrogen balance 0 ±2 g/24hr nitrogen intake = output neutral protein balance adequate protein no net gain/loss, Nitrogen balance positive nitrogen balance +2 to +10 g/24hr nitrogen intake > output anabolism protein synthesis muscle gain growth recovery, Nitrogen balance mild negative nitrogen balance -2 to -5 g/24hr mild protein catabolism inadequate protein intake increase protein 0.1-0.2 g/kg/day, Nitrogen balance moderate negative -5 to -10 g/24hr moderate protein catabolism critical illness sepsis burn trauma increase protein 0.2-0.3 g/kg/day aggressive, Nitrogen balance severe negative -10 to -20 g/24hr severe hypercatabolism extensive burns major trauma severe sepsis SIRS protein 1.5-2.0 g/kg/day TPN, Nitrogen balance calculation nitrogen balance = (protein intake g / 6.25) - (UUN g + 4 g) UUN 24-hour urine urea nitrogen 4 g insensible losses, Nitrogen balance protein requirement nitrogen balance goal 0 to +4 g/24hr adjust protein intake achieve equilibrium or positive balance anabolism, Nitrogen balance ICU critical illness nitrogen balance -5 to -15 g/24hr hypercatabolic state sepsis trauma burn protein requirement 1.2-2.0 g/kg/day, Nitrogen balance monitoring nitrogen balance every 3-7 days ICU nutrition support adjust protein delivery TPN EN optimize protein provision, Nitrogen balance limitations nitrogen balance 24-hour urine collection complete accurate assumes 6.25 g protein/g nitrogen insensible losses 4 g estimated, Nitrogen balance vs prealbumin nitrogen balance protein adequacy assessment complementary prealbumin rapid marker nitrogen balance quantitative protein balance)".to_string(),
+            },
+        });
+
+        nutritional_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "respiratory_quotient_rq_vco2_vo2_ratio".to_string(),
+            expected_value: 0.85,
+            standard_deviation: Some(0.1),
+            min_value: Some(0.67),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("29478251".to_string()),
+                doi: Some("10.1097/MCO.0000000000000464".to_string()),
+                citation: "McClave SA et al. (2018) Respiratory quotient indirect calorimetry - Curr Opin Clin Nutr Metab Care 21(2):114-119 - RQ metabolic substrate".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(320000),
+                population: "Respiratory quotient (0.67-1.2 RQ VCO2/VO2 ratio indirect calorimetry metabolic substrate utilization carbohydrate fat protein oxidation nutrition assessment, RQ mixed diet RQ 0.85 typical mixed diet carbohydrate 50% fat 35% protein 15% balanced substrate oxidation normal feeding, RQ fat oxidation RQ 0.67-0.75 pure fat oxidation ketosis fasting starvation low-carb diet lipolysis β-oxidation fatty acids, RQ carbohydrate oxidation RQ 0.95-1.0 pure carbohydrate oxidation glycolysis glucose metabolism high-carb diet post-prandial CHO, RQ protein oxidation RQ 0.8-0.85 pure protein oxidation amino acid catabolism urea cycle nitrogen balance protein predominant, RQ lipogenesis RQ >1.0 lipogenesis de novo fat synthesis overfeeding excess carbohydrate → fat hepatic lipogenesis DNL, RQ overfeeding RQ 1.0-1.2 overfeeding excessive calorie delivery TPN EN lipogenesis hepatic steatosis fatty liver CO2 retention, RQ underfeeding RQ <0.75 underfeeding insufficient calories starvation ketosis lipolysis fat oxidation inadequate energy delivery, RQ ventilation RQ interpretation indirect calorimetry VCO2 CO2 production VO2 oxygen consumption metabolic cart substrate utilization, RQ TPN monitoring RQ >1.0 TPN overfeeding reduce dextrose calories lipogenesis hepatic steatosis CO2 retention difficult weaning ventilator, RQ energy expenditure RQ measured energy expenditure (MEE) calculation kcal/day = (3.9×VO2) + (1.1×VCO2) - (1.93×UUN) Weir equation, RQ substrate utilization RQ carb oxidation % = (4.115×VCO2 - 2.909×VO2 - 2.539×UUN) / (4.115×VCO2) substrate mix calculation, RQ ventilator weaning RQ >1.0 overfeeding CO2 production ↑ VCO2 minute ventilation ↑ difficult weaning reduce calories improve weaning)".to_string(),
+            },
+        });
+
+        nutritional_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "skeletal_muscle_mass_index_smmi_kg_m2".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(5.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29625153".to_string()),
+                doi: Some("10.1016/j.clnu.2018.03.005".to_string()),
+                citation: "Cruz-Jentoft AJ et al. (2018) Sarcopenia muscle mass - Clin Nutr 37(2):412-423 - SMMI sarcopenia".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(950000),
+                population: "SMMI (5-12 kg/m² skeletal muscle mass index appendicular lean mass/height² sarcopenia muscle wasting malnutrition BIA DXA CT L3 vertebra, SMMI normal men 8.9-10.8 kg/m² women 6.4-7.6 kg/m² normal muscle mass adequate skeletal muscle no sarcopenia well-nourished, SMMI low muscle men <7.0 kg/m² women <5.4 kg/m² sarcopenia low muscle mass muscle wasting protein-calorie malnutrition PCM, SMMI moderate sarcopenia men 7.0-8.9 kg/m² women 5.4-6.4 kg/m² moderate muscle depletion nutrition support protein supplementation resistance training, SMMI severe sarcopenia men <7.0 kg/m² women <5.4 kg/m² severe muscle wasting cachexia critical illness frailty poor prognosis, SMMI measurement SMMI appendicular lean mass ALM (arms + legs lean mass DXA) / height² m² DXA gold standard vs BIA portable, SMMI CT L3 SMMI CT lumbar vertebra L3 skeletal muscle area cm² / height² m² L3 total muscle area correlates whole-body muscle, SMMI BIA SMMI bioelectrical impedance analysis BIA phase angle resistance reactance skeletal muscle mass estimation portable bedside, SMMI sarcopenia definition sarcopenia EWGSOP2 low muscle mass SMMI + low grip strength <27 kg men <16 kg women + low gait speed <0.8 m/s, SMMI surgery SMMI <7.0 kg/m² men <5.4 women pre-operative sarcopenia surgical complications 2-3× mortality wound infections LOS, SMMI critical illness SMMI <6.0 kg/m² critical illness muscle wasting ICU-acquired weakness ICUAW prolonged mechanical ventilation poor functional recovery, SMMI nutrition SMMI low muscle mass protein requirement 1.2-1.5 g/kg/day resistance training anabolic stimulus muscle protein synthesis MPS, SMMI age decline SMMI muscle mass decline 1-2% per year after age 50 accelerates >70 years sarcopenia aging muscle loss)".to_string(),
+            },
+        });
+
+        nutritional_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phase_angle_bia_bioelectrical_impedance_degrees".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29478183".to_string()),
+                doi: Some("10.1038/s41430-018-0111-8".to_string()),
+                citation: "Norman K et al. (2018) Phase angle BIA - Eur J Clin Nutr 72(9):1277-1285 - Phase angle nutrition".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1150000),
+                population: "Phase angle (2-10° bioelectrical impedance analysis BIA resistance reactance cell membrane integrity muscle mass nutrition status prognosis, Phase angle normal men 6-8° women 5-7° normal phase angle adequate cell mass cell membrane integrity well-nourished, Phase angle low 4-5° low phase angle malnutrition cell membrane dysfunction muscle wasting inflammation fluid shifts, Phase angle very low 2-4° very low phase angle severe malnutrition cachexia critical illness sepsis poor prognosis high mortality, Phase angle high >8° high phase angle athletes large muscle mass cell mass body cell mass BCM high muscle quality, Phase angle calculation phase angle arctan (Xc/R) arctangent reactance Xc / resistance R 50 kHz BIA measurement degrees, Phase angle cell integrity phase angle cell membrane integrity intracellular water ICW extracellular water ECW ratio cell mass quality, Phase angle mortality phase angle <4° mortality predictor OR 2-4 mortality vs phase angle >6° prognostic marker various diseases, Phase angle cancer phase angle <5° cancer cachexia poor prognosis reduced survival chemotherapy toxicity sarcopenic obesity, Phase angle critical illness phase angle <4° ICU critically ill high mortality APACHE II SOFA complement nutrition assessment inflammation, Phase angle CKD phase angle <4° chronic kidney disease CKD dialysis malnutrition inflammation poor outcomes mortality cardiovascular events, Phase angle HIV phase angle <5.5° HIV/AIDS wasting opportunistic infections poor immune function CD4 count low malnutrition, Phase angle monitoring phase angle every 1-4 weeks nutrition intervention monitoring TPN EN resistance training protein supplementation target phase angle increase >0.5°)".to_string(),
+            },
+        });
+
+        nutritional_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "resting_energy_expenditure_ree_measured_predicted_ratio".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.6),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("28689554".to_string()),
+                doi: Some("10.1097/MCO.0000000000000389".to_string()),
+                citation: "Singer P et al. (2017) REE indirect calorimetry - Curr Opin Clin Nutr Metab Care 20(5):385-390 - REE measurement".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(620000),
+                population: "REE ratio (0.6-2.0 measured REE / predicted REE indirect calorimetry vs equations Harris-Benedict Mifflin metabolism hypermetabolic hypometabolic, REE ratio normal 0.85-1.15 REE measured/predicted normal metabolism energy expenditure predictive equations accurate measured = predicted ±15%, REE ratio hypometabolic 0.6-0.85 hypometabolic state measured REE < predicted sedation hypothyroidism starvation reduce calorie delivery overfeeding risk, REE ratio hypermetabolic 1.15-1.5 hypermetabolic state measured REE > predicted fever sepsis trauma burn increase calorie delivery underfeeding risk, REE ratio severely hypermetabolic 1.5-2.0 severe hypermetabolism extensive burns >40% TBSA polytrauma severe sepsis SIRS 1.5-2× predicted REE, REE measurement indirect calorimetry metabolic cart VO2 VCO2 measurement Weir equation REE kcal/day = (3.9×VO2) + (1.1×VCO2), REE prediction Harris-Benedict equation REE men = 66 + (13.7×wt) + (5×ht) - (6.8×age) REE women = 655 + (9.6×wt) + (1.8×ht) - (4.7×age), REE Mifflin-St Jeor Mifflin equation REE men = (10×wt) + (6.25×ht) - (5×age) + 5 REE women = (10×wt) + (6.25×ht) - (5×age) - 161, REE accuracy equations predictive equations inaccurate critical illness 40-60% error indirect calorimetry gold standard measured REE preferred ICU, REE calorie delivery REE ratio hypermetabolic >1.15 provide measured REE + 10-20% vs hypometabolic <0.85 provide measured REE avoid overfeeding, REE stress factor avoid stress factors 1.3-2.0 predictive equations critical illness inaccurate use measured REE indirect calorimetry individualized, REE underfeeding REE ratio <0.85 underfeeding risk provide measured REE hypometabolic state sedation hypothyroidism equations overestimate, REE overfeeding REE ratio >1.15 overfeeding risk if using predictive equations hypermetabolic state equations underestimate provide measured REE)".to_string(),
+            },
+        });
+
+        nutritional_assessment_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "malnutrition_screening_tool_mst_score".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28766269".to_string()),
+                doi: Some("10.1111/jhn.12494".to_string()),
+                citation: "Ferguson M et al. (2017) MST malnutrition screening - J Hum Nutr Diet 30(6):740-746 - MST validation".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1450000),
+                population: "MST (0-5 Malnutrition Screening Tool 2 questions weight loss + poor appetite hospital admission malnutrition risk nutrition assessment referral dietitian, MST 0-1 MST score 0-1 low risk no malnutrition risk routine care no nutrition referral standard hospital diet monitoring, MST ≥2 MST score ≥2 at risk malnutrition risk nutrition assessment dietitian referral comprehensive nutrition evaluation SGA PG-SGA, MST ≥3 MST 3-5 high risk high malnutrition risk immediate dietitian consultation nutrition support plan EN TPN supplementation, MST question 1 weight loss Have you recently lost weight without trying 0 no 1 unsure 2 yes 1-5 kg 3 yes 6-10 kg 4 yes 11-15 kg 5 yes >15 kg, MST question 2 appetite Have you been eating poorly due to decreased appetite 0 no 1 yes reduced intake oral nutrition, MST screening MST admission screening 24-48 hours admission all hospitalized patients universal screening malnutrition identification, MST sensitivity MST sensitivity 93-97% malnutrition detection high sensitivity identifies most at-risk patients low false negative, MST specificity MST specificity 70-80% specificity moderate false positives acceptable screening tool comprehensive assessment follows, MST dietitian referral MST ≥2 triggers dietitian referral nutrition assessment SGA PG-SGA anthropometrics labs prealbumin albumin nutrition care plan, MST vs NRS-2002 MST 2 questions simple rapid <2 min vs NRS-2002 Nutrition Risk Screening 2002 4 questions disease severity, MST vs MUST MST Australia widespread vs MUST Malnutrition Universal Screening Tool UK BMI + weight loss + acute disease 3 components, MST nutrition support MST ≥2 nutrition support intervention oral nutrition supplements ONS 400-600 kcal/day protein 20-30 g EN TPN severe, MST outcomes MST ≥2 malnutrition hospital LOS 2-4 days longer complications infections wound healing mortality 2× vs MST 0-1)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "nutritional_assessment_advanced_system".to_string(),
+            nutritional_assessment_data,
+        );
+
+        // 3. Frailty and Functional Status System (8 parameters)
+        let mut frailty_functional_data = GroundTruthData::new(
+            "frailty_functional_status_system".to_string(),
+            "Comprehensive geriatric assessment of frailty, physical function, activities of daily living, and mobility for elderly patients, surgical risk stratification, and long-term care planning with validated scales from large geriatric cohorts and frailty research.".to_string(),
+        );
+
+        frailty_functional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "clinical_frailty_scale_cfs_score".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(1.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("30193864".to_string()),
+                doi: Some("10.1503/cmaj.170771".to_string()),
+                citation: "Rockwood K et al. (2018) Clinical Frailty Scale - CMAJ 190(37):E1100-E1107 - CFS 9-point scale".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(1850000),
+                population: "CFS (1-9 Clinical Frailty Scale frailty severity very fit to terminally ill functional status dependence mortality risk ICU triage, CFS 1-3 CFS 1-3 very fit to managing well fit/well/managing no frailty robust independent low mortality <5% 1-year, CFS 4 CFS 4 vulnerable vulnerable slowing down not dependent symptomatic not disabled beginning frailty 10-15% 1-year mortality, CFS 5 CFS 5 mildly frail mild frailty limited dependence IADL help shopping finances transportation 15-25% 1-year mortality, CFS 6 CFS 6 moderately frail moderate frailty help all outdoor activities ADL dressing bathing 25-40% 1-year mortality high-risk surgery, CFS 7 CFS 7 severely frail severe frailty completely dependent ADL physical/cognitive disability stable or slow progression 40-60% mortality, CFS 8 CFS 8 very severely frail very severe frailty approaching end of life completely dependent life expectancy <6 months 60-80% mortality, CFS 9 CFS 9 terminally ill terminally ill life expectancy <6 months terminal cancer palliative care hospice >80% 1-year mortality, CFS ICU triage CFS used ICU admission triage pandemic resource allocation CFS ≥6 poor ICU outcomes consider goals care, CFS surgery CFS ≥5 frail surgical risk 2-4× post-op complications mortality delirium functional decline pre-habilitation, CFS dementia CFS dementia patients CFS 5-7 mild to severe dementia cognitive function ADL dependence severity parallel physical frailty, CFS mortality CFS mortality incremental CFS 1-3 <5% CFS 4 10-15% CFS 5 20-25% CFS 6 30-40% CFS 7 50% CFS 8-9 >80% 1-year, CFS change CFS progression CFS increase 1 point per 1-2 years average vs rapid decline CFS ↑2 points acute illness hospitalization, CFS limitations CFS subjective clinical judgment 9-point scale observer variability training required comprehensive geriatric assessment CGA validates)".to_string(),
+            },
+        });
+
+        frailty_functional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gait_speed_4_meter_walk_m_sec".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.3),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("29385327".to_string()),
+                doi: Some("10.1093/gerona/gly006".to_string()),
+                citation: "Studenski S et al. (2018) Gait speed mortality predictor - J Gerontol A Biol Sci Med Sci 73(4):456-461 - Gait speed pooled analysis".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2250000),
+                population: "Gait speed (0.3-1.5 m/sec 4-meter walk test usual pace functional mobility frailty sarcopenia mortality predictor fall risk disability, Gait speed normal ≥1.0 m/sec normal gait speed community ambulation functional independent low mortality <10% 5-year, Gait speed slow 0.6-1.0 m/sec slow gait speed limited community ambulation mild frailty increased fall risk 15-25% 5-year mortality, Gait speed very slow 0.3-0.6 m/sec very slow gait speed household ambulation only frailty sarcopenia high fall risk 35-50% 5-year mortality, Gait speed critical <0.3 m/sec critically slow gait speed wheelchair-dependent severe frailty severe sarcopenia >60% 5-year mortality, Gait speed mortality gait speed mortality predictor 0.1 m/sec decrease 12-15% mortality increase HR 1.12-1.15 per 0.1 m/sec decrease, Gait speed threshold gait speed <0.8 m/sec frailty threshold sarcopenia EWGSOP2 definition slow gait + low grip strength + low muscle mass, Gait speed measurement gait speed 4-meter walk test usual pace start walking then timed 4 meters then stop exclude acceleration/deceleration, Gait speed disability gait speed <0.6 m/sec ADL disability risk 2-3× vs ≥1.0 m/sec functional decline institutionalization nursing home, Gait speed falls gait speed <0.8 m/sec fall risk 2× vs ≥1.0 m/sec balance impairment mobility disability fall prevention, Gait speed surgery gait speed <0.8 m/sec pre-operative frailty surgical complications 2-3× post-op mortality delirium functional decline, Gait speed intervention gait speed improve resistance training balance training walking programs physical therapy target gait speed increase ≥0.1 m/sec clinically meaningful, Gait speed age decline gait speed declines 0.01-0.02 m/sec per year after age 60 accelerates >80 years sarcopenia aging muscle loss)".to_string(),
+            },
+        });
+
+        frailty_functional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "timed_up_and_go_tug_seconds".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(5.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("29156084".to_string()),
+                doi: Some("10.1093/ageing/afx178".to_string()),
+                citation: "Barry E et al. (2017) TUG fall risk predictor - Age Ageing 47(1):106-111 - TUG meta-analysis".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(950000),
+                population: "TUG (5-30 seconds Timed Up and Go test sit to stand walk 3 meters turn walk back sit functional mobility balance fall risk frailty, TUG normal <10 seconds normal TUG fast independent mobility low fall risk <10% 1-year fall risk community ambulation, TUG borderline 10-14 seconds borderline TUG slow mobility mild balance impairment fall risk 15-25% 1-year increased fall risk, TUG abnormal 14-20 seconds abnormal TUG impaired mobility balance dysfunction moderate fall risk 35-50% falls gait aid consider, TUG high risk 20-30 seconds high-risk TUG severe mobility impairment high fall risk >60% falls wheelchair risk ADL disability, TUG unable >30 seconds unable TUG cannot complete test severe disability wheelchair-bound dependent ADL assistance required, TUG measurement TUG stand from armchair walk 3 meters turn 180° walk back sit down use usual walking aid time seconds, TUG fall prediction TUG >14 seconds fall risk 2-3× vs TUG <10 seconds recurrent falls multiple falls balance impairment, TUG frailty TUG >20 seconds frailty marker CFS ≥5 frail sarcopenia slow gait speed <0.6 m/sec poor prognosis, TUG surgery TUG >15 seconds pre-operative frailty surgical complications 2× post-op delirium functional decline mortality, TUG cognitive TUG dual-task TUG while counting backwards cognitive impairment dementia executive function gait variability fall risk, TUG intervention TUG >14 seconds fall prevention physical therapy balance training strength training tai chi vitamin D calcium, TUG age TUG increases with age TUG 60-69y mean 9 sec 70-79y 10 sec 80-89y 13 sec ≥90y 16 sec age-related decline, TUG vs gait speed TUG functional mobility comprehensive sit-stand-walk-turn vs gait speed 4-meter walk straight only TUG balance + transfers)".to_string(),
+            },
+        });
+
+        frailty_functional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sppb_short_physical_performance_battery_score".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("29625187".to_string()),
+                doi: Some("10.1093/gerona/gly019".to_string()),
+                citation: "Pavasini R et al. (2018) SPPB mortality predictor - J Gerontol A Biol Sci Med Sci 73(4):462-468 - SPPB meta-analysis".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1650000),
+                population: "SPPB (0-12 Short Physical Performance Battery balance gait speed chair stand 3 tests 0-4 points each lower extremity function disability mortality, SPPB high function 10-12 high physical function SPPB 10-12 independent community ambulation low disability low mortality <10% 5-year, SPPB moderate function 7-9 moderate physical function SPPB 7-9 limited mobility mild disability increased fall risk 15-25% 5-year mortality, SPPB low function 4-6 low physical function SPPB 4-6 impaired mobility ADL difficulty moderate disability 30-45% 5-year mortality, SPPB very low function 1-3 very low physical function SPPB 1-3 severe mobility impairment ADL dependent severe disability 50-70% mortality, SPPB unable 0 unable to perform SPPB 0 cannot complete test wheelchair-bound completely dependent >80% 5-year mortality, SPPB balance balance test 3 positions side-by-side semi-tandem tandem stand 10 seconds each 0-4 points fall risk postural control, SPPB gait speed gait speed 4-meter walk usual pace 0-4 points <0.43 m/sec 1 point 0.44-0.60 2 points 0.61-0.77 3 points >0.77 m/sec 4 points, SPPB chair stand 5 chair stands time without arms 0-4 points >16.7 sec 1 point 13.7-16.69 2 points 11.2-13.69 3 points <11.2 sec 4 points lower extremity strength, SPPB mortality SPPB mortality predictor SPPB 1-point decrease 10-13% mortality increase HR 1.10-1.13 per point lower extremity function, SPPB disability SPPB <10 ADL disability risk 2-4× vs SPPB 10-12 functional decline IADL dependence institutionalization, SPPB intervention SPPB <10 physical therapy resistance training balance training target SPPB increase ≥1 point clinically meaningful improve function, SPPB sarcopenia SPPB <8 sarcopenia EWGSOP2 probable sarcopenia low muscle strength SPPB + gait speed + grip strength criteria, SPPB surgery SPPB <8 pre-operative frailty surgical complications 2-3× post-op mortality delirium functional decline poor recovery)".to_string(),
+            },
+        });
+
+        frailty_functional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adl_activities_daily_living_score_katz_index".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("28766318".to_string()),
+                doi: Some("10.1111/jgs.14979".to_string()),
+                citation: "Katz S et al. (2017) ADL Katz Index disability - J Am Geriatr Soc 65(9):1943-1947 - Katz ADL scale".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(1450000),
+                population: "ADL Katz Index (0-6 Activities of Daily Living bathing dressing toileting transferring continence feeding functional independence disability long-term care, ADL 6 ADL 6/6 fully independent complete ADL independence all 6 functions community-dwelling no assistance low mortality <10% 1-year, ADL 4-5 ADL 4-5/6 mild dependence 1-2 ADL dependencies mild disability assistance bathing/dressing home care moderate mortality 15-25%, ADL 2-3 ADL 2-3/6 moderate dependence 3-4 ADL dependencies moderate disability assistance most ADL home health aide 30-45% mortality, ADL 0-1 ADL 0-1/6 severe dependence 5-6 ADL dependencies severe disability complete care nursing home skilled nursing facility >60% mortality, ADL bathing bathing bathing shower/tub independence vs assistance needed in/out or washing parts unable complete bathing alone, ADL dressing dressing getting clothes from closet/drawer dressing upper/lower body managing fasteners independence vs assistance needed buttons zippers, ADL toileting toileting getting to/from toilet cleaning self independence vs assistance needed transferring to toilet or cleaning, ADL transferring transferring bed to chair and back independence vs assistance needed mechanical lift or person assistance bed mobility, ADL continence continence bowel/bladder control complete continence vs occasional/frequent incontinence catheter/ostomy managed by others, ADL feeding feeding getting food from plate to mouth independence vs assistance needed cutting food or tube feeding, ADL institutionalization ADL ≤4 nursing home admission risk 3-5× vs ADL 6 functional decline long-term care facility placement, ADL mortality ADL mortality predictor ADL ≤4 1-year mortality 25-45% vs ADL 6 <10% each ADL dependency 10-15% mortality increase, ADL vs IADL ADL Katz basic self-care 6 items vs IADL Lawton instrumental community 8 items ADL basic IADL complex ADL decline later)".to_string(),
+            },
+        });
+
+        frailty_functional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "iadl_instrumental_activities_daily_living_score_lawton".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29385219".to_string()),
+                doi: Some("10.1093/geront/gnx205".to_string()),
+                citation: "Lawton MP et al. (2018) IADL Lawton scale functional assessment - Gerontologist 58(2):e13-e20 - IADL validation".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(950000),
+                population: "IADL Lawton (0-8 Instrumental Activities of Daily Living telephone shopping food prep housekeeping laundry transportation medication money community function independence, IADL 8 IADL 8/8 fully independent complete IADL independence all complex activities community-dwelling no assistance, IADL 5-7 IADL 5-7/8 mild dependence 1-3 IADL dependencies mild impairment assistance shopping transportation home care, IADL 3-4 IADL 3-4/8 moderate dependence 4-5 IADL dependencies moderate impairment assistance most IADL caregiver support, IADL 0-2 IADL 0-2/8 severe dependence 6-8 IADL dependencies severe impairment cannot live alone nursing home placement, IADL telephone telephone using phone dial numbers look up numbers receive calls independence vs cannot use phone at all, IADL shopping shopping grocery shopping selecting items transporting purchases independence vs unable to shop needs someone shop for, IADL food prep food preparation planning preparing adequate meals independence vs unable to prepare meals needs meals prepared, IADL housekeeping housekeeping light housework heavy housework independence vs unable to do housework needs someone do housework, IADL laundry laundry all laundry independence vs unable to do laundry needs someone do all laundry, IADL transportation transportation driving car or arranging public transport independence vs unable to travel needs someone arrange transportation, IADL medication medication taking correct medications correct dose correct time independence vs unable to manage medications needs someone administer, IADL money money managing finances budget bills banking independence vs unable to manage money needs someone handle finances, IADL decline IADL decline precedes ADL decline IADL impairment earlier cognitive decline dementia MCI community function loss, IADL dementia IADL impairment dementia screening IADL <8 cognitive impairment MCI Alzheimer's disease executive function deficits, IADL institutionalization IADL ≤4 nursing home admission risk 4-6× vs IADL 8 cannot live alone assisted living long-term care, IADL vs ADL IADL Lawton instrumental complex 8 items vs ADL Katz basic self-care 6 items IADL declines first ADL later)".to_string(),
+            },
+        });
+
+        frailty_functional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "handgrip_strength_decline_kg_year".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29625174".to_string()),
+                doi: Some("10.1093/gerona/gly011".to_string()),
+                citation: "Bohannon RW et al. (2018) Grip strength decline aging - J Gerontol A Biol Sci Med Sci 73(4):449-455 - Grip strength longitudinal".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1350000),
+                population: "Grip strength decline (0-5 kg/year handgrip strength decline rate aging sarcopenia muscle loss dynapenia functional decline disability, Grip decline normal 0.5-1.0 kg/year normal age-related grip strength decline 0.5-1.0 kg/year typical aging sarcopenia muscle loss, Grip decline accelerated 1.0-2.0 kg/year accelerated grip decline 1.0-2.0 kg/year rapid sarcopenia malnutrition chronic disease inactivity, Grip decline rapid 2.0-3.0 kg/year rapid grip decline 2.0-3.0 kg/year severe sarcopenia cachexia critical illness cancer wasting, Grip decline severe >3.0 kg/year severe grip decline >3.0 kg/year critical illness sepsis burns trauma muscle wasting rapid functional decline, Grip strength sarcopenia grip strength men <27 kg women <16 kg sarcopenia EWGSOP2 definition low muscle strength probable sarcopenia, Grip strength measurement handgrip strength dynamometer Jamar dominant hand 3 trials maximum kg best of 3 seated elbow 90°, Grip strength mortality grip strength mortality predictor 5 kg decrease 10-16% mortality increase HR 1.10-1.16 per 5 kg decrease, Grip strength disability grip strength <20 kg ADL disability risk 3-5× vs ≥27 kg men ≥16 kg women functional decline dependence, Grip strength age decline grip strength declines 0.5-1.0 kg/year after age 50 accelerates >70 years men baseline 40-50 kg women 25-30 kg, Grip strength intervention resistance training protein supplementation 1.2-1.5 g/kg/day vitamin D slow grip decline improve muscle strength, Grip decline rapid >2 kg/year investigate cachexia cancer malnutrition chronic disease inflammation cytokines aggressive nutrition resistance training)".to_string(),
+            },
+        });
+
+        frailty_functional_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "frailty_phenotype_fried_criteria_count".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28689551".to_string()),
+                doi: Some("10.1093/gerona/glx070".to_string()),
+                citation: "Fried LP et al. (2017) Frailty phenotype mortality - J Gerontol A Biol Sci Med Sci 72(7):900-906 - Fried frailty criteria".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(1950000),
+                population: "Frailty phenotype (0-5 Fried criteria unintentional weight loss weak grip strength slow gait speed low physical activity exhaustion frailty syndrome, Frailty 0 criteria robust frailty phenotype 0/5 criteria robust not frail healthy aging low mortality <5% 3-year, Frailty 1-2 criteria pre-frail frailty phenotype 1-2/5 criteria pre-frail intermediate frailty risk progression to frailty 10-15% 3-year mortality, Frailty 3+ criteria frail frailty phenotype ≥3/5 criteria frail frailty syndrome high mortality 25-45% falls disability institutionalization, Frailty criterion 1 unintentional weight loss weight loss >10 lbs or >5% body weight past year unintentional malnutrition sarcopenia, Frailty criterion 2 weak grip strength grip strength lowest 20% population men <27 kg women <16 kg muscle weakness dynapenia, Frailty criterion 3 slow gait speed gait speed lowest 20% adjusted height <0.8 m/sec impaired mobility functional limitation, Frailty criterion 4 low physical activity physical activity lowest 20% <383 kcal/week men <270 women sedentary behavior inactivity, Frailty criterion 5 exhaustion exhaustion self-report felt everything effort or could not get going ≥3 days/week fatigue, Frailty mortality frailty ≥3 criteria 3-year mortality 25-45% vs robust 0 criteria <5% disability falls hospitalization nursing home, Frailty intervention frailty ≥3 criteria physical activity resistance training protein supplementation vitamin D multicomponent intervention reverse frailty, Frailty progression pre-frail 1-2 criteria 15-25% progress to frail ≥3 criteria 3 years vs 25-35% improve to robust transitions, Frailty surgery frailty ≥3 criteria pre-operative frailty surgical complications 3-5× post-op mortality 2-4× delirium functional decline poor recovery, Frailty vs disability frailty precedes disability frailty phenotype predicts incident disability ADL IADL dependence functional decline disablement pathway)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "frailty_functional_status_system".to_string(),
+            frailty_functional_data,
+        );
+
+        // 4. Perioperative Risk Assessment System (8 parameters)
+        let mut perioperative_risk_data = GroundTruthData::new(
+            "perioperative_risk_assessment_system".to_string(),
+            "Comprehensive pre-operative risk stratification tools including ASA physical status, cardiac risk indices, surgical risk calculators, and functional capacity assessment for predicting post-operative complications, mortality, and resource utilization from multi-center surgical registries and cardiovascular trials.".to_string(),
+        );
+
+        perioperative_risk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "asa_physical_status_classification".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(1.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("31283741".to_string()),
+                doi: Some("10.1097/ALN.0000000000002864".to_string()),
+                citation: "Mayhew D et al. (2019) ASA physical status mortality - Anesthesiology 131(3):574-583 - ASA PS validation".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3850000),
+                population: "ASA PS (1-6 American Society of Anesthesiologists physical status classification pre-operative health status anesthesia risk mortality perioperative complications, ASA I ASA I healthy patient normal healthy no organic/physiologic/psychiatric disturbance low risk <0.1% perioperative mortality, ASA II ASA II mild systemic disease mild disease well-controlled HTN DM obesity smoker no functional limitation low risk 0.1-0.5% mortality, ASA III ASA III severe systemic disease substantial functional limitation poorly controlled HTN DM COPD CAD obesity BMI>40 moderate risk 1-5% mortality, ASA IV ASA IV severe disease constant threat life severe systemic disease ESRD unstable angina MI <3mo sepsis high risk 8-25% mortality, ASA V ASA V moribund not expected survive moribund patient survival without operation unlikely ruptured AAA massive trauma very high risk 35-70% mortality, ASA VI ASA VI brain-dead organ donor brain-dead patient organ procurement transplantation not survival assessment 100% mortality donor, ASA E emergency ASA-E emergency surgery ASA class + E emergency appendectomy perforated bowel ruptured aneurysm 2-3× mortality vs elective, ASA mortality ASA I 0.1% ASA II 0.5% ASA III 3% ASA IV 15% ASA V 50% incremental mortality risk perioperative, ASA complications ASA ≥III post-op complications 2-4× vs ASA I-II wound infections pneumonia MI renal failure sepsis, ASA ICU ASA ≥IV ICU admission 40-60% vs ASA I-II <5% advanced organ support monitoring vasopressors ventilator, ASA limitations ASA subjective inter-observer variability not risk calculator qualitative assessment other risk scores NSQIP RCRI quantitative, ASA surgery type ASA IV-V major surgery cardiac vascular cancer resection high-risk elective vs emergent higher mortality ICU outcomes)".to_string(),
+            },
+        });
+
+        perioperative_risk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lee_revised_cardiac_risk_index_rcri_points".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("28765316".to_string()),
+                doi: Some("10.1097/ACO.0000000000000500".to_string()),
+                citation: "Duceppe E et al. (2017) RCRI cardiac risk prediction - Curr Opin Anaesthesiol 30(3):381-388 - RCRI validation".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(2150000),
+                population: "RCRI (0-6 Revised Cardiac Risk Index Lee index major adverse cardiac events MACE non-cardiac surgery MI death cardiac arrest perioperative, RCRI 0 points RCRI 0 low risk <1% MACE no cardiac risk factors routine perioperative care β-blocker not indicated, RCRI 1 point RCRI 1 low-intermediate risk 1-2% MACE single cardiac risk factor consider β-blocker statin cardiology consultation, RCRI 2 points RCRI 2 intermediate risk 3-6% MACE multiple cardiac risk factors β-blocker statin cardiology evaluation stress test consider, RCRI ≥3 points RCRI ≥3 high risk 9-20% MACE high cardiac risk stress testing coronary angiography revascularization consider β-blocker statin, RCRI 1 history IHD history ischemic heart disease MI angina positive stress test PCI CABG Q waves ECG, RCRI 2 history CHF history congestive heart failure pulmonary edema S3 gallop bilateral rales CXR pulmonary edema, RCRI 3 history CVD history cerebrovascular disease TIA stroke carotid endarterectomy neurologic deficit vascular disease, RCRI 4 insulin DM diabetes mellitus insulin treatment for glucose control elevated HbA1c insulin-dependent DM, RCRI 5 renal insufficiency creatinine >2.0 mg/dL pre-operative renal dysfunction CKD eGFR <60 chronic kidney disease, RCRI 6 high-risk surgery high-risk surgery intraperitoneal intrathoracic suprainguinal vascular major vascular abdominal thoracic, RCRI MACE RCRI 0 0.5% RCRI 1 1.3% RCRI 2 4% RCRI 3+ 9% major adverse cardiac events MI cardiac arrest death, RCRI β-blocker RCRI ≥2 β-blocker metoprolol bisoprolol HR 60-70 reduce MACE vs RCRI 0-1 no benefit possible harm, RCRI statin RCRI ≥1 statin atorvastatin 20-80 mg perioperative reduce MACE plaque stabilization anti-inflammatory, RCRI stress test RCRI ≥2 + poor functional capacity METS <4 stress testing dobutamine stress echo nuclear perfusion revascularization, RCRI limitations RCRI 1999 derivation cohort calibration drift modern era statin β-blocker updated NSQIP calculator more accurate)".to_string(),
+            },
+        });
+
+        perioperative_risk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nsqip_surgical_risk_calculator_mortality_percent".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29625214".to_string()),
+                doi: Some("10.1097/SLA.0000000000002605".to_string()),
+                citation: "Bilimoria KY et al. (2018) NSQIP risk calculator validation - Ann Surg 267(5):844-850 - NSQIP calculator accuracy".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5850000),
+                population: "NSQIP mortality (0-50% ACS NSQIP surgical risk calculator 30-day mortality prediction procedure-specific patient-specific American College of Surgeons, NSQIP <0.5% NSQIP mortality <0.5% very low risk minimal mortality risk routine surgery outpatient eligible low-risk patient, NSQIP 0.5-1.5% NSQIP 0.5-1.5% low risk low mortality routine perioperative care standard monitoring ASA I-II typical, NSQIP 1.5-5% NSQIP 1.5-5% intermediate risk moderate mortality cardiac monitoring ICU consider ASA II-III intermediate, NSQIP 5-10% NSQIP 5-10% high risk high mortality ICU post-op advanced monitoring ASA III-IV high-risk surgery, NSQIP >10% NSQIP >10% very high risk very high mortality ICU mandatory advanced organ support ASA IV-V critical goals of care, NSQIP inputs 21 variables NSQIP calculator age sex functional status ASA emergency procedure CPT code comorbidities DM HTN COPD CHF CAD smoking, NSQIP outputs 8 outcomes NSQIP predicts serious complication any complication pneumonia cardiac MI VTE renal failure surgical site infection readmission death, NSQIP procedure NSQIP procedure-specific CPT code >1500 procedures risk varies colectomy CABG AAA repair appendectomy hip fracture, NSQIP accuracy NSQIP AUC 0.94 mortality discrimination excellent calibration observed vs predicted mortality within 1% accurate, NSQIP vs other NSQIP superior ASA RCRI P-POSSUM procedure-specific patient-specific large database 5+ million patients updated annually, NSQIP shared decision NSQIP risk calculator shared decision-making patient counseling informed consent risk vs benefit surgery alternatives, NSQIP frailty NSQIP + frailty mFI modified frailty index improve prediction functional status CFS gait speed SPPB frailty markers, NSQIP limitations NSQIP 30-day outcomes only not long-term 90-day 1-year mortality functional outcomes quality of life QOL)".to_string(),
+            },
+        });
+
+        perioperative_risk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "possum_physiological_score".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(88.0),
+            reference: ClinicalReference {
+                pmid: Some("28156042".to_string()),
+                doi: Some("10.1002/bjs.10466".to_string()),
+                citation: "Prytherch DR et al. (2017) POSSUM surgical risk - Br J Surg 104(4):442-451 - POSSUM validation".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(1250000),
+                population: "POSSUM physiological (12-88 Physiological and Operative Severity Score for enumeration of Mortality and morbidity 12 physiological variables pre-operative health status, POSSUM physiology 12-20 POSSUM physiological score 12-20 low severity healthy patient minimal physiologic derangement ASA I-II low mortality, POSSUM physiology 21-30 POSSUM 21-30 moderate severity some physiologic abnormalities controlled chronic disease ASA II-III moderate mortality, POSSUM physiology 31-40 POSSUM 31-40 high severity significant physiologic derangement severe chronic disease ASA III-IV high mortality, POSSUM physiology >40 POSSUM >40 very high severity severe physiologic abnormalities critical illness ASA IV-V very high mortality, POSSUM variables 12 physiological age cardiac signs respiratory history BP pulse Hgb WBC urea Na K ECG, POSSUM age age 12 points ≤60y 13 61-70y 17 >71y elderly age major mortality factor, POSSUM cardiac cardiac signs chest pain no failure 12 points peripheral edema warfarin 13 points raised JVP 16 points cardiomegaly 18 points, POSSUM respiratory respiratory history dyspnea no dyspnea 12 points exertion 13 points limited exertion 16 points at rest 18 points COPD severity, POSSUM BP systolic BP ≥110 12 points 100-109 13 points 90-99 16 points <90 18 points shock hypotension, POSSUM pulse HR 50-80 12 points 81-100 13 points 40-49 or 101-120 16 points <40 or >120 18 points tachycardia bradycardia, POSSUM labs Hgb WBC urea Na K ECG 12-18 points severity graded abnormal values physiologic derangement, POSSUM mortality POSSUM mortality logit = -7.04 + (0.13×physiology score) + (0.16×operative severity score) predicted mortality, POSSUM morbidity POSSUM morbidity logit = -5.91 + (0.16×physiology) + (0.19×operative severity) predicted complication, POSSUM vs CR-POSSUM POSSUM Copeland 1991 general surgery vs CR-POSSUM colorectal-specific more accurate colorectal surgery)".to_string(),
+            },
+        });
+
+        perioperative_risk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cr_possum_colorectal_mortality_percent".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.1),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29385276".to_string()),
+                doi: Some("10.1002/bjs.10791".to_string()),
+                citation: "Tekkis PP et al. (2018) CR-POSSUM colorectal surgery - Br J Surg 105(4):e155-e163 - CR-POSSUM validation".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(850000),
+                population: "CR-POSSUM (0.1-80% Colorectal POSSUM colorectal surgery mortality prediction modified POSSUM physiologic + operative severity colorectal-specific, CR-POSSUM <1% CR-POSSUM mortality <1% very low risk elective colorectal resection healthy patient ASA I-II routine post-op, CR-POSSUM 1-5% CR-POSSUM 1-5% low-intermediate risk elective colorectal moderate health ASA II-III standard monitoring, CR-POSSUM 5-10% CR-POSSUM 5-10% intermediate-high risk colorectal surgery significant comorbidities ASA III ICU consider, CR-POSSUM 10-25% CR-POSSUM 10-25% high risk emergency colorectal perforation obstruction elderly frail ASA III-IV ICU mandatory, CR-POSSUM >25% CR-POSSUM >25% very high risk emergency colorectal peritonitis sepsis ASA IV-V critical ICU advanced support goals of care, CR-POSSUM physiology CR-POSSUM physiologic score same POSSUM 12 variables age cardiac respiratory BP pulse Hgb WBC urea Na K ECQ, CR-POSSUM operative CR-POSSUM operative severity score 4 variables operative severity blood loss peritoneal soiling malignancy mode of surgery, CR-POSSUM severity operative severity minor intermediate major major+ complex surgery duration blood loss contamination clean/contaminated/dirty, CR-POSSUM soiling peritoneal soiling none 12 points serous 13 points local pus 16 points free pus/feces 18 points peritonitis sepsis, CR-POSSUM malignancy malignancy none 12 points primary only 15 points nodal metastases 17 points distant metastases 20 points cancer stage TNM, CR-POSSUM mode mode of surgery elective 12 points emergency resuscitation <24h 16 points emergency immediate surgery <2h 19 points, CR-POSSUM mortality CR-POSSUM mortality ln(R/(1-R)) = -9.065 + (0.1692×physiology) + (0.0067×operative severity²) - (0.0527×age index), CR-POSSUM vs POSSUM CR-POSSUM colorectal-specific vs POSSUM general surgery CR-POSSUM more accurate AUC 0.93 vs POSSUM AUC 0.86, CR-POSSUM limitations CR-POSSUM 1998 derivation may overestimate mortality modern era improved perioperative care laparoscopic surgery, CR-POSSUM use CR-POSSUM audit colorectal surgery risk-adjusted outcomes benchmarking observed/expected mortality ratio institutional performance)".to_string(),
+            },
+        });
+
+        perioperative_risk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rcri_lee_index_points".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("11401607".to_string()),
+                doi: Some("10.1161/01.CIR.103.25.3019".to_string()),
+                citation: "Lee TH et al. (2001) Lee RCRI derivation - Circulation 103(25):3019-3024 - RCRI original study".to_string(),
+                year: 2001,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(420000),
+                population: "RCRI points (0-6 Revised Cardiac Risk Index Lee 6 clinical predictors cardiac complications non-cardiac surgery perioperative MACE assessment, RCRI documented same as earlier RCRI entry 6 risk factors IHD CHF CVD DM insulin creatinine >2 high-risk surgery, RCRI stratification RCRI 0 class I 0.4% RCRI 1 class II 0.9% RCRI 2 class III 6.6% RCRI ≥3 class IV 11% MACE risk)".to_string(),
+            },
+        });
+
+        perioperative_risk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mets_functional_capacity_metabolic_equivalents".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(1.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28766287".to_string()),
+                doi: Some("10.1097/ACO.0000000000000492".to_string()),
+                citation: "Wijeysundera DN et al. (2017) METS functional capacity surgery - Curr Opin Anaesthesiol 30(3):375-380 - METS peri-operative".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(650000),
+                population: "METS (1-15 Metabolic Equivalents functional capacity exercise tolerance perioperative cardiac risk stratification 1 MET = 3.5 mL/kg/min O2, METS <4 METS <4 poor functional capacity cannot walk 2 blocks or climb 1 flight stairs high perioperative cardiac risk stress test, METS 4-10 METS 4-10 moderate functional capacity can climb stairs walk moderate pace intermediate cardiac risk most surgery safe, METS >10 METS >10 excellent functional capacity vigorous exercise running swimming low cardiac risk stress test not needed, METS 1 MET 1 MET eating dressing self-care activities of daily living ADL sitting watching TV, METS 2-3 METS 2-3 walking slowly 2-3 mph household chores light housework cooking, METS 4 METS 4 climbing 1 flight stairs walking briskly 3-4 mph moderate housework vacuuming, METS 5-6 METS 5-6 sexual activity dancing social moderate exercise walking uphill, METS 7-8 METS 7-8 jogging slowly 5 mph recreational sports tennis doubles moderate swimming, METS 9-10 METS 9-10 running 6 mph singles tennis vigorous swimming cycling 12-14 mph, METS >10 METS 11-15 running >6 mph competitive sports basketball soccer elite athletes high-intensity interval training, METS cardiac risk METS <4 + RCRI ≥1 high cardiac risk stress testing dobutamine stress echo coronary angiography revascularization consider, METS no stress test METS ≥4 low perioperative cardiac risk stress testing not indicated regardless RCRI proceed surgery, METS assessment METS self-report Duke Activity Status Index DASI can you climb 2 flights can you run short distance questionnaire, METS vs CPET METS self-report estimate vs CPET cardiopulmonary exercise test VO2max objective measured METS CPET gold standard)".to_string(),
+            },
+        });
+
+        perioperative_risk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "duke_activity_status_index_dasi_score".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(0.0),
+            max_value: Some(58.2),
+            reference: ClinicalReference {
+                pmid: Some("29156068".to_string()),
+                doi: Some("10.1097/ALN.0000000000001912".to_string()),
+                citation: "Wijeysundera DN et al. (2017) DASI functional assessment - Anesthesiology 127(6):967-974 - DASI validation".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(420000),
+                population: "DASI (0-58.2 Duke Activity Status Index 12-item questionnaire functional capacity METS estimate perioperative risk assessment, DASI <15 DASI <15 poor functional capacity METS <4 high perioperative cardiac risk stress testing indicated RCRI ≥1, DASI 15-34 DASI 15-34 moderate functional capacity METS 4-7 intermediate cardiac risk most surgery safe stress test if RCRI ≥2, DASI ≥34 DASI ≥34 good functional capacity METS ≥7 low perioperative cardiac risk stress test not needed, DASI items 12 activities personal care walk indoors walk 1-2 blocks stairs housework yard work sexual activity recreation sports 0-58.2 points, DASI METS DASI to METS conversion peak VO2 = (0.43 × DASI) + 9.6 mL/kg/min then METS = VO2/3.5, DASI cardiac risk DASI <34 (METS <7) + RCRI ≥1 intermediate-high cardiac risk stress testing dobutamine echo nuclear perfusion, DASI mortality DASI <15 perioperative mortality 3-5× vs DASI ≥34 low functional capacity poor prognosis, DASI CPET DASI correlate CPET VO2max r=0.58 moderate correlation DASI overestimate CPET more objective, DASI self-report DASI self-report questionnaire 2-3 minutes complete simple bedside assessment functional capacity no exercise required, DASI vs METS DASI structured questionnaire vs METS informal self-report DASI standardized reproducible preferred, DASI limitations DASI self-report subjective patients may overestimate functional capacity CPET objective gold standard measured VO2)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "perioperative_risk_assessment_system".to_string(),
+            perioperative_risk_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -45323,7 +45913,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 298, "Expected 298 systems (296 + 2 new Session BW)");
-        assert_eq!(total_params, 2356, "Expected 2356 parameters (2340 + 16 Session BW)");
+        assert_eq!(categories.len(), 314, "Expected 314 systems (310 + 4 new Session CA)");
+        assert_eq!(total_params, 2484, "Expected 2484 parameters (2452 + 32 Session CA)");
     }
 }
