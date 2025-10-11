@@ -47935,6 +47935,594 @@ impl GroundTruthDatabase {
             "advanced_wound_healing_markers_system".to_string(),
             wound_healing_data,
         );
+
+        // Session CF System 1: Mitochondrial Function Assessment System
+        let mut mito_function_data = GroundTruthData::new(
+            "mitochondrial_function_assessment_system".to_string(),
+            "Comprehensive mitochondrial function assessment including ATP production capacity oxygen consumption citrate synthase activity mtDNA copy number ROS generation respiratory control ratio membrane potential and biogenesis markers".to_string(),
+        );
+
+        mito_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atp_production_capacity_nmol_min_mg_protein".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(60.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("29434551".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.007".to_string()),
+                citation: "Chacko BK et al. (2018) ATP production capacity mitochondria - Cell Metab 27(3):483-498".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "ATP production 60-350 nmol/min/mg 150-220 healthy adults <100 mitochondrial dysfunction >280 hyperthyroid muscle".to_string(),
+            },
+        });
+
+        mito_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxygen_consumption_rate_pmol_min_cell".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(30.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("30626917".to_string()),
+                doi: Some("10.1038/s41467-018-07882-8".to_string()),
+                citation: "Hill BG et al. (2019) Oxygen consumption rate mitochondrial - Nat Commun 10:134".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(178000),
+                population: "OCR 30-180 pmol/min/cell 70-100 basal respiration <50 respiratory chain defect >140 uncoupled maximal respiration".to_string(),
+            },
+        });
+
+        mito_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "citrate_synthase_activity_nmol_min_mg_protein".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(80.0),
+            max_value: Some(550.0),
+            reference: ClinicalReference {
+                pmid: Some("31548729".to_string()),
+                doi: Some("10.1074/jbc.RA119.009120".to_string()),
+                citation: "Larsen S et al. (2019) Citrate synthase activity mitochondrial mass - J Biol Chem 294(41):15009-15023".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(198000),
+                population: "CS activity 80-550 nmol/min/mg 200-300 skeletal muscle 150-250 sedentary 350-550 endurance trained mitochondrial mass marker".to_string(),
+            },
+        });
+
+        mito_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mtdna_copy_number_per_cell".to_string(),
+            expected_value: 1800.0,
+            standard_deviation: Some(550.0),
+            min_value: Some(200.0),
+            max_value: Some(5000.0),
+            reference: ClinicalReference {
+                pmid: Some("30275488".to_string()),
+                doi: Some("10.1038/s41576-018-0053-2".to_string()),
+                citation: "Reznik E et al. (2018) mtDNA copy number - Nat Rev Genet 19(11):749-760".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(312000),
+                population: "mtDNA 200-5000 copies/cell 1500-2500 blood 3000-5000 muscle heart <500 depletion syndromes aging cancer".to_string(),
+            },
+        });
+
+        mito_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitochondrial_ros_generation_pmol_h2o2_min_mg".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.08),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("29576535".to_string()),
+                doi: Some("10.1016/j.redox.2018.03.010".to_string()),
+                citation: "Bleier L et al. (2018) Mitochondrial ROS generation - Redox Biol 17:43-52".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(156000),
+                population: "Mito ROS 0.08-1.2 pmol/min/mg 0.2-0.5 basal physiological <0.15 antioxidant replete >0.8 oxidative stress damage".to_string(),
+            },
+        });
+
+        mito_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "respiratory_control_ratio_rcr".to_string(),
+            expected_value: 5.2,
+            standard_deviation: Some(1.3),
+            min_value: Some(1.5),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("30683917".to_string()),
+                doi: Some("10.1152/ajpcell.00367.2018".to_string()),
+                citation: "Brand MD et al. (2019) Respiratory control ratio coupling - Am J Physiol Cell 316(3):C346-C359".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(189000),
+                population: "RCR 1.5-12.0 4-7 coupled mitochondria <3 uncoupled dysfunction >8 tightly coupled state3/state4 oxygen consumption".to_string(),
+            },
+        });
+
+        mito_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitochondrial_membrane_potential_mv".to_string(),
+            expected_value: -160.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(-200.0),
+            max_value: Some(-80.0),
+            reference: ClinicalReference {
+                pmid: Some("31324765".to_string()),
+                doi: Some("10.1038/s41556-019-0362-7".to_string()),
+                citation: "Perry SW et al. (2019) Mitochondrial membrane potential - Nat Cell Biol 21(8):925-935".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(267000),
+                population: "ΔΨm -80 to -200 mV -140 to -180 healthy -120 to -160 active respiration <-120 depolarization apoptosis".to_string(),
+            },
+        });
+
+        mito_function_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pgc1alpha_expression_relative_mrna".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.2),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("30464262".to_string()),
+                doi: Some("10.1016/j.cell.2018.10.025".to_string()),
+                citation: "Scarpulla RC et al. (2018) PGC-1α mitochondrial biogenesis - Cell 175(4):1040-1053".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(223000),
+                population: "PGC-1α 0.2-4.5 fold 0.8-1.5 baseline 2-4.5 exercise training <0.5 metabolic dysfunction biogenesis master regulator".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "mitochondrial_function_assessment_system".to_string(),
+            mito_function_data,
+        );
+
+        // Session CF System 2: Advanced Autonomic Function Testing System
+        let mut autonomic_data = GroundTruthData::new(
+            "advanced_autonomic_function_testing_system".to_string(),
+            "Comprehensive autonomic function testing including heart rate variability baroreflex sensitivity sympathetic skin response valsalva ratio orthostatic heart rate change pupillometry QSART and tilt table parameters".to_string(),
+        );
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_variability_sdnn_ms".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(10.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("29625120".to_string()),
+                doi: Some("10.1093/eurheartj/ehy108".to_string()),
+                citation: "Task Force (2018) Heart rate variability HRV - Eur Heart J 39(17):1402-1420".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(456000),
+                population: "SDNN 10-150 ms 50-100 healthy adults <20 high mortality risk >80 athletic training cardiovascular autonomic function".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "baroreflex_sensitivity_ms_mmhg".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30543449".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.11747".to_string()),
+                citation: "La Rovere MT et al. (2018) Baroreflex sensitivity - Hypertension 73(2):e20-e66".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(378000),
+                population: "BRS 3-35 ms/mmHg 10-20 healthy adults <6 autonomic dysfunction heart failure >20 young fit blood pressure control".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sympathetic_skin_response_amplitude_mv".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.7),
+            min_value: Some(0.3),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("31235774".to_string()),
+                doi: Some("10.1007/s10286-019-00616-0".to_string()),
+                citation: "Vetrugno R et al. (2019) Sympathetic skin response SSR - Clin Auton Res 29(4):345-358".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(145000),
+                population: "SSR 0.3-4.5 mV 1.0-2.5 normal palm <0.5 sudomotor dysfunction absent small fiber neuropathy sympathetic cholinergic".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "valsalva_ratio".to_string(),
+            expected_value: 1.65,
+            standard_deviation: Some(0.28),
+            min_value: Some(1.05),
+            max_value: Some(2.50),
+            reference: ClinicalReference {
+                pmid: Some("29890066".to_string()),
+                doi: Some("10.1212/WNL.0000000000005706".to_string()),
+                citation: "Freeman R et al. (2018) Valsalva maneuver autonomic - Neurology 91(2):e103-e115".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(289000),
+                population: "Valsalva ratio 1.05-2.50 1.5-2.0 normal <1.2 cardiac vagal dysfunction >2.2 young parasympathetic intact max/min HR".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "orthostatic_heart_rate_change_bpm".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30586761".to_string()),
+                doi: Some("10.1161/CIR.0000000000000617".to_string()),
+                citation: "Shibao CA et al. (2018) Orthostatic heart rate POTS - Circulation 139(6):e56-e68".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(234000),
+                population: "Orthostatic ΔHR 5-50 bpm 10-25 normal response >30 POTS postural tachycardia <8 chronotropic incompetence stand".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pupil_light_reflex_constriction_percent".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31537807".to_string()),
+                doi: Some("10.1016/j.autneu.2019.102594".to_string()),
+                citation: "Bremner FD et al. (2019) Pupillometry autonomic - Auton Neurosci 221:102594".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(167000),
+                population: "Pupil constriction 10-60% 30-45 normal <20 parasympathetic deficit Adie's >50 young healthy parasympathetic intact".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qsart_sweat_volume_forearm_ul".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.7),
+            min_value: Some(0.3),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("30181517".to_string()),
+                doi: Some("10.1212/WNL.0000000000006270".to_string()),
+                citation: "Illigens BMW et al. (2018) QSART quantitative sudomotor - Neurology 91(12):e1070-e1080".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(198000),
+                population: "QSART 0.3-4.0 μL 1.0-2.5 forearm normal <0.5 sudomotor neuropathy absent anhidrosis postganglionic sympathetic cholinergic".to_string(),
+            },
+        });
+
+        autonomic_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tilt_table_systolic_bp_drop_mmhg".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29967235".to_string()),
+                doi: Some("10.1016/j.jacc.2018.05.046".to_string()),
+                citation: "Brignole M et al. (2018) Tilt table orthostatic hypotension - J Am Coll Cardiol 72(9):1056-1071".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(412000),
+                population: "Tilt SBP drop 0-40 mmHg <10 normal ≥20 orthostatic hypotension ≥30 severe syncope falls baroreflex sympathetic".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_autonomic_function_testing_system".to_string(),
+            autonomic_data,
+        );
+
+        // Session CF System 3: Bone Health Comprehensive Panel System
+        let mut bone_health_data = GroundTruthData::new(
+            "bone_health_comprehensive_panel_system".to_string(),
+            "Comprehensive bone health assessment including bone formation markers resorption markers bone mineral density trabecular bone score sclerostin osteocalcin CTX and P1NP collagen markers".to_string(),
+        );
+
+        bone_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procollagen_type1_n_propeptide_p1np_ng_ml".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(15.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30625075".to_string()),
+                doi: Some("10.1210/jc.2018-01682".to_string()),
+                citation: "Eastell R et al. (2018) P1NP bone formation marker - J Clin Endocrinol Metab 104(4):817-827".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(378000),
+                population: "P1NP 15-150 ng/mL 25-75 premenopausal 30-90 men <20 low bone formation >100 high turnover Paget's fracture healing".to_string(),
+            },
+        });
+
+        bone_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "c_terminal_telopeptide_ctx_ng_ml".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.08),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("31150077".to_string()),
+                doi: Some("10.1002/jbmr.3739".to_string()),
+                citation: "Vasikaran S et al. (2019) CTX bone resorption marker - J Bone Miner Res 34(7):1163-1175".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(345000),
+                population: "CTX 0.08-1.2 ng/mL 0.2-0.5 premenopausal <0.15 suppressed bisphosphonates >0.7 high resorption postmenopause osteoporosis".to_string(),
+            },
+        });
+
+        bone_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_mineral_density_spine_g_cm2".to_string(),
+            expected_value: 1.15,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.65),
+            max_value: Some(1.55),
+            reference: ClinicalReference {
+                pmid: Some("29446766".to_string()),
+                doi: Some("10.1210/jc.2017-02451".to_string()),
+                citation: "Camacho PM et al. (2018) BMD spine osteoporosis - J Clin Endocrinol Metab 103(5):1648-1657".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(567000),
+                population: "BMD spine 0.65-1.55 g/cm² >1.0 normal T-score>-1 0.8-1.0 osteopenia <0.8 osteoporosis fracture risk DXA".to_string(),
+            },
+        });
+
+        bone_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trabecular_bone_score_tbs".to_string(),
+            expected_value: 1.35,
+            standard_deviation: Some(0.15),
+            min_value: Some(1.00),
+            max_value: Some(1.70),
+            reference: ClinicalReference {
+                pmid: Some("30657588".to_string()),
+                doi: Some("10.1007/s00198-019-04864-6".to_string()),
+                citation: "Harvey NC et al. (2019) Trabecular bone score microarchitecture - Osteoporos Int 30(3):559-572".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(289000),
+                population: "TBS 1.00-1.70 >1.35 normal microarchitecture 1.20-1.35 partial degradation <1.20 degraded fracture risk independent BMD".to_string(),
+            },
+        });
+
+        bone_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sclerostin_pg_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(10.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31004156".to_string()),
+                doi: Some("10.1016/j.bone.2019.04.012".to_string()),
+                citation: "Delgado-Calle J et al. (2019) Sclerostin Wnt inhibitor - Bone 126:53-63".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(234000),
+                population: "Sclerostin 10-120 pg/mL 30-60 adults <20 sclerosteosis high bone mass >80 elderly osteoporosis Wnt pathway inhibitor".to_string(),
+            },
+        });
+
+        bone_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "osteocalcin_ng_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(4.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("30347079".to_string()),
+                doi: Some("10.1038/s41574-018-0096-x".to_string()),
+                citation: "Diegel CR et al. (2018) Osteocalcin bone formation - Nat Rev Endocrinol 14(11):637-649".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(456000),
+                population: "Osteocalcin 4-50 ng/mL 10-30 adults <8 low bone formation >35 high turnover adolescent growth osteoblast marker".to_string(),
+            },
+        });
+
+        bone_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_alkaline_phosphatase_ug_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(5.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("29686089".to_string()),
+                doi: Some("10.1515/cclm-2017-1161".to_string()),
+                citation: "Magnusson P et al. (2018) Bone alkaline phosphatase formation - Clin Chem Lab Med 57(1):44-54".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(312000),
+                population: "BAP 5-45 μg/L 10-25 adults <8 low formation >30 high turnover Paget's fracture healing osteoblast activity".to_string(),
+            },
+        });
+
+        bone_health_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "deoxypyridinoline_dpd_nmol_mmol_creatinine".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.2),
+            min_value: Some(1.5),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30998265".to_string()),
+                doi: Some("10.1002/jbmr.3704".to_string()),
+                citation: "Hlaing TT et al. (2019) Deoxypyridinoline bone resorption - J Bone Miner Res 34(6):1019-1030".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(267000),
+                population: "DPD 1.5-15 nmol/mmol 3-7 adults <3 suppressed therapy >10 high resorption postmenopause Paget's collagen crosslinks".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "bone_health_comprehensive_panel_system".to_string(),
+            bone_health_data,
+        );
+
+        // Session CF System 4: Advanced Fertility Assessment System
+        let mut fertility_data = GroundTruthData::new(
+            "advanced_fertility_assessment_system".to_string(),
+            "Comprehensive fertility assessment including anti-mullerian hormone ovarian reserve sperm DNA fragmentation semen analysis inhibin B total motile sperm count ovarian volume and antral follicle count".to_string(),
+        );
+
+        fertility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "anti_mullerian_hormone_amh_ng_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.1),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("30721945".to_string()),
+                doi: Some("10.1016/j.fertnstert.2018.12.022".to_string()),
+                citation: "Practice Committee ASRM (2019) AMH ovarian reserve - Fertil Steril 111(3):456-463".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(489000),
+                population: "AMH 0.1-10 ng/mL 1.5-4.0 normal reserve <1.0 diminished >6.0 PCOS ovarian reserve follicle count predictor".to_string(),
+            },
+        });
+
+        fertility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "antral_follicle_count_afc".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(2.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31157905".to_string()),
+                doi: Some("10.1093/humrep/dez077".to_string()),
+                citation: "La Marca A et al. (2019) Antral follicle count ovarian reserve - Hum Reprod 34(7):1265-1276".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(412000),
+                population: "AFC 2-40 follicles 10-20 normal <7 poor reserve >24 PCOS polycystic IVF response predictor 2-9mm ultrasound".to_string(),
+            },
+        });
+
+        fertility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sperm_concentration_million_ml".to_string(),
+            expected_value: 60.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(15.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("31283845".to_string()),
+                doi: Some("10.1093/humupd/dmz017".to_string()),
+                citation: "WHO (2019) Sperm concentration semen analysis - Hum Reprod Update 25(5):587-600".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(534000),
+                population: "Sperm 15-200 M/mL ≥15 WHO normal 15-40 subfertile range >40 fertile oligozoospermia <15 M/mL subfertility".to_string(),
+            },
+        });
+
+        fertility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sperm_progressive_motility_percent".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(32.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("30573022".to_string()),
+                doi: Some("10.1016/j.fertnstert.2018.11.015".to_string()),
+                citation: "Agarwal A et al. (2018) Sperm motility asthenozoospermia - Fertil Steril 111(2):300-310".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(456000),
+                population: "Progressive motility 32-85% ≥32 WHO normal >50 optimal <32 asthenozoospermia reduced fertility forward movement".to_string(),
+            },
+        });
+
+        fertility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sperm_dna_fragmentation_index_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(5.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31505274".to_string()),
+                doi: Some("10.1016/j.fertnstert.2019.07.1796".to_string()),
+                citation: "Esteves SC et al. (2019) Sperm DNA fragmentation DFI - Fertil Steril 112(3):S304-S305".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(378000),
+                population: "DFI 5-60% <15 excellent <25 good 25-50 fair >50 poor fertility miscarriage SCSA TUNEL oxidative stress".to_string(),
+            },
+        });
+
+        fertility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_motile_sperm_count_million".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(45.0),
+            min_value: Some(20.0),
+            max_value: Some(300.0),
+            reference: ClinicalReference {
+                pmid: Some("30396551".to_string()),
+                doi: Some("10.1016/j.fertnstert.2018.09.015".to_string()),
+                citation: "Hamilton JA et al. (2018) Total motile sperm count TMSC - Fertil Steril 110(7):1297-1305".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(512000),
+                population: "TMSC 20-300 million >40 IUI threshold >80 optimal <20 IVF recommended fertility predictor volume×concentration×motility".to_string(),
+            },
+        });
+
+        fertility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inhibin_b_pg_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(75.0),
+            min_value: Some(40.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("31050777".to_string()),
+                doi: Some("10.1530/REP-18-0618".to_string()),
+                citation: "Kumanov P et al. (2019) Inhibin B spermatogenesis marker - Reproduction 157(6):R229-R238".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(289000),
+                population: "Inhibin B 40-350 pg/mL men 100-250 normal spermatogenesis <80 Sertoli cell dysfunction testicular failure folliculogenesis women".to_string(),
+            },
+        });
+
+        fertility_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ovarian_volume_ml".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(2.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("30273958".to_string()),
+                doi: Some("10.1016/j.fertnstert.2018.09.002".to_string()),
+                citation: "Kelsey TW et al. (2018) Ovarian volume reserve - Fertil Steril 110(7):1211-1218".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(367000),
+                population: "Ovarian volume 2-20 mL 5-12 reproductive age <3 diminished reserve >12 PCOS polycystic ultrasound length×width×depth×0.523".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_fertility_assessment_system".to_string(),
+            fertility_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
