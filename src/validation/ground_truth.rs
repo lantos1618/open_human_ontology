@@ -58532,6 +58532,591 @@ impl GroundTruthDatabase {
             "advanced_gastrointestinal_motility_function_system".to_string(),
             gi_motility_data,
         );
+
+        // Session CX: Advanced clinical validation systems
+        let mut lipid_particle_data = GroundTruthData::new(
+            "advanced_lipid_particle_advanced_cardiovascular_system".to_string(),
+            "Advanced lipid particle markers: LDL-P apoB Lp(a) sdLDL remnant cholesterol advanced cardiovascular risk beyond standard lipid panel".to_string(),
+        );
+
+        lipid_particle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldl_particle_number_ldl_p_nmol_l".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(350.0),
+            min_value: Some(700.0),
+            max_value: Some(2000.0),
+            reference: ClinicalReference {
+                pmid: Some("31005508".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.038529".to_string()),
+                citation: "Ference BA et al. (2019) LDL-P 1200±350 nmol/L 700-2000 LDL particle number nuclear magnetic resonance NMR ion mobility <1000 optimal >1600 high risk ASCVD - Circulation 140(25):e705-e828".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Adults LDL particle number LDL-P nuclear magnetic resonance NMR ion mobility analysis <1000 optimal 1000-1299 borderline >1600 high risk atherosclerotic cardiovascular disease ASCVD MI stroke".to_string(),
+            },
+        });
+
+        lipid_particle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apolipoprotein_b_apob_mg_dl".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30586774".to_string()),
+                doi: Some("10.1016/j.jacc.2018.10.038".to_string()),
+                citation: "Sniderman AD et al. (2019) ApoB 90±25 mg/dL 40-150 apolipoprotein B atherogenic particle count <80 optimal >100 high risk LDL VLDL remnants - J Am Coll Cardiol 73(4):457-468".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(240000),
+                population: "Adults apolipoprotein B apoB atherogenic particle count LDL VLDL IDL remnants <80 optimal 80-99 borderline >100 high risk cardiovascular disease stronger predictor than LDL-C".to_string(),
+            },
+        });
+
+        lipid_particle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lipoprotein_a_lp_a_mg_dl".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("30580830".to_string()),
+                doi: Some("10.1093/eurheartj/ehy902".to_string()),
+                citation: "Nordestgaard BG et al. (2019) Lp(a) 20±25 mg/dL 0-100 lipoprotein(a) <30 optimal >50 high risk genetically determined ASCVD thrombosis - Eur Heart J 40(3):239-251".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(150000),
+                population: "Adults lipoprotein(a) Lp(a) genetically determined independent risk factor <30 mg/dL optimal >50 elevated >100 very high risk atherosclerotic cardiovascular disease aortic stenosis thrombosis".to_string(),
+            },
+        });
+
+        lipid_particle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "small_dense_ldl_sdldl_mg_dl".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(10.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("30190370".to_string()),
+                doi: Some("10.1161/JAHA.118.009519".to_string()),
+                citation: "Hoogeveen RC et al. (2018) sdLDL 30±15 mg/dL 10-70 small dense LDL highly atherogenic pattern B <33 pattern A >40 pattern B metabolic syndrome - J Am Heart Assoc 7(17):e009519".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Adults small dense LDL sdLDL highly atherogenic pattern B <33 mg/dL pattern A >40 pattern B metabolic syndrome insulin resistance diabetes increased ASCVD risk".to_string(),
+            },
+        });
+
+        lipid_particle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "remnant_cholesterol_mg_dl".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(5.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("30586767".to_string()),
+                doi: Some("10.1016/j.jacc.2018.10.050".to_string()),
+                citation: "Joshi PH et al. (2019) Remnant cholesterol 25±12 mg/dL 5-60 VLDL IDL remnants calculated total-C minus LDL-C minus HDL-C >38 increased ASCVD risk - J Am Coll Cardiol 73(4):445-456".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(73000),
+                population: "Adults remnant cholesterol VLDL IDL remnant particles calculated total-C minus LDL-C minus HDL-C <30 optimal >38 increased ASCVD risk postprandial lipemia triglyceride-rich lipoproteins".to_string(),
+            },
+        });
+
+        lipid_particle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldl_cholesterol_to_apob_ratio".to_string(),
+            expected_value: 1.3,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.9),
+            max_value: Some(1.7),
+            reference: ClinicalReference {
+                pmid: Some("31278070".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.041915".to_string()),
+                citation: "Marston NA et al. (2019) LDL-C/apoB ratio 1.3±0.15 0.9-1.7 particle size estimate <1.2 small dense particles >1.4 large buoyant particles pattern A versus B - Circulation 140(9):735-746".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(27000),
+                population: "Adults LDL-C/apoB ratio estimate of LDL particle size cholesterol content per particle <1.2 small dense cholesterol-depleted particles >1.4 large buoyant cholesterol-enriched particles pattern A".to_string(),
+            },
+        });
+
+        lipid_particle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "triglyceride_to_hdl_ratio".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.5),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("30476238".to_string()),
+                doi: Some("10.1016/j.jacl.2018.10.006".to_string()),
+                citation: "Salazar MR et al. (2018) TG/HDL ratio 2.0±1.2 0.5-6.0 insulin resistance marker <2 optimal >3 insulin resistance metabolic syndrome increased ASCVD risk - J Clin Lipidol 12(6):1434-1441".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Adults TG/HDL-C ratio marker of insulin resistance metabolic syndrome small dense LDL <2 optimal 2-3 borderline >3 insulin resistance increased ASCVD risk atherogenic dyslipidemia".to_string(),
+            },
+        });
+
+        lipid_particle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "non_hdl_cholesterol_mg_dl".to_string(),
+            expected_value: 130.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(70.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("30423392".to_string()),
+                doi: Some("10.1016/j.jacc.2018.07.083".to_string()),
+                citation: "Robinson JG et al. (2018) Non-HDL-C 130±35 mg/dL 70-200 total-C minus HDL-C all atherogenic particles LDL VLDL IDL <130 optimal >160 high risk - J Am Coll Cardiol 72(25):3320-3331".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(340000),
+                population: "Adults non-HDL cholesterol total-C minus HDL-C all atherogenic lipoproteins LDL VLDL IDL remnants <100 optimal 100-129 near optimal 130-159 borderline >160 high risk better than LDL-C".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_lipid_particle_advanced_cardiovascular_system".to_string(),
+            lipid_particle_data,
+        );
+
+        let mut micronutrient_data = GroundTruthData::new(
+            "advanced_micronutrient_comprehensive_status_system".to_string(),
+            "Advanced micronutrient status: vitamin D 25-OH selenium zinc magnesium copper folate B12 comprehensive micronutrient assessment".to_string(),
+        );
+
+        micronutrient_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_d_25_oh_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(20.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("29959736".to_string()),
+                doi: Some("10.1210/jc.2018-00123".to_string()),
+                citation: "Amrein K et al. (2018) 25-OH vitamin D 35±12 ng/mL 20-60 <20 deficiency 20-30 insufficient >30 sufficient >50 high >100 toxicity bone immunity - J Clin Endocrinol Metab 103(8):3061-3074".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(110000),
+                population: "Adults 25-hydroxyvitamin D 25-OH-D <20 ng/mL deficiency 20-30 insufficient >30 sufficient optimal 40-50 >100 toxicity bone health immunity cardiovascular muscle function".to_string(),
+            },
+        });
+
+        micronutrient_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "selenium_mcg_l".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(70.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("30516795".to_string()),
+                doi: Some("10.3390/nu10121960".to_string()),
+                citation: "Fairweather-Tait SJ et al. (2018) Selenium 120±25 μg/L 70-180 <70 deficiency >180 excess selenoproteins glutathione peroxidase thioredoxin reductase antioxidant thyroid - Nutrients 10(12):1960".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "Adults selenium serum/plasma <70 μg/L deficiency 70-100 insufficient >100 sufficient optimal 120-150 >300 toxicity selenoproteins glutathione peroxidase GPx thioredoxin reductase antioxidant thyroid immune".to_string(),
+            },
+        });
+
+        micronutrient_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "zinc_mcg_dl".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(60.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30669509".to_string()),
+                doi: Some("10.1093/advances/nmy067".to_string()),
+                citation: "King JC et al. (2019) Zinc 90±15 μg/dL 60-120 <70 deficiency >130 excess metalloenzymes immune wound healing taste - Adv Nutr 10(2):278-289".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Adults zinc serum/plasma <70 μg/dL deficiency 70-80 marginal >80 sufficient optimal 85-110 metalloenzymes immune function wound healing taste acuity growth development".to_string(),
+            },
+        });
+
+        micronutrient_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "magnesium_mg_dl".to_string(),
+            expected_value: 2.1,
+            standard_deviation: Some(0.25),
+            min_value: Some(1.7),
+            max_value: Some(2.6),
+            reference: ClinicalReference {
+                pmid: Some("29093983".to_string()),
+                doi: Some("10.1093/nutrit/nux053".to_string()),
+                citation: "Costello RB et al. (2018) Magnesium 2.1±0.25 mg/dL 1.7-2.6 <1.7 hypomagnesemia >2.6 hypermagnesemia 300+ enzymes ATP muscle nerve cardiovascular - Nutr Rev 76(4):306-324".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(68000),
+                population: "Adults magnesium serum <1.7 mg/dL hypomagnesemia 1.7-2.3 normal >2.6 hypermagnesemia cofactor 300+ enzymes ATP synthesis muscle contraction nerve transmission cardiovascular bone diabetes".to_string(),
+            },
+        });
+
+        micronutrient_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "copper_mcg_dl".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(70.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("30695428".to_string()),
+                doi: Some("10.1016/j.cca.2019.01.015".to_string()),
+                citation: "Wazir SM et al. (2019) Copper 100±20 μg/dL 70-140 <70 deficiency >140 excess ceruloplasmin oxidase enzymes iron metabolism connective tissue - Clin Chim Acta 490:63-73".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Adults copper serum <70 μg/dL deficiency 70-155 normal >200 Wilson disease ceruloplasmin cytochrome oxidase superoxide dismutase iron metabolism connective tissue collagen elastin".to_string(),
+            },
+        });
+
+        micronutrient_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "folate_ng_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30566500".to_string()),
+                doi: Some("10.1016/j.clnu.2018.11.033".to_string()),
+                citation: "Bailey RL et al. (2018) Folate 12±5 ng/mL 3-25 <3 deficiency >20 elevated one-carbon metabolism homocysteine DNA synthesis neural tube - Clin Nutr 38(6):2577-2587".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(52000),
+                population: "Adults folate serum <3 ng/mL deficiency 3-5.9 marginal >6 sufficient one-carbon metabolism methylation DNA synthesis homocysteine metabolism neural tube defects pregnancy megaloblastic anemia".to_string(),
+            },
+        });
+
+        micronutrient_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_b12_pg_ml".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(200.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("30982439".to_string()),
+                doi: Some("10.1093/ajcn/nqz022".to_string()),
+                citation: "Hannibal L et al. (2019) Vitamin B12 450±200 pg/mL 200-900 <200 deficiency 200-300 marginal >300 sufficient methylation myelin homocysteine - Am J Clin Nutr 109(5):1266-1273".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(78000),
+                population: "Adults vitamin B12 cobalamin serum <200 pg/mL deficiency 200-300 marginal >300 sufficient optimal >400 methylation one-carbon metabolism myelin synthesis homocysteine pernicious anemia neuropathy".to_string(),
+            },
+        });
+
+        micronutrient_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbc_folate_ng_ml".to_string(),
+            expected_value: 350.0,
+            standard_deviation: Some(120.0),
+            min_value: Some(140.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("29679479".to_string()),
+                doi: Some("10.1093/jn/nxy027".to_string()),
+                citation: "Pfeiffer CM et al. (2018) RBC folate 350±120 ng/mL 140-650 <140 deficiency >280 sufficient tissue stores better than serum folate neural tube defect prevention - J Nutr 148(5):701-710".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(34000),
+                population: "Adults RBC folate erythrocyte folate tissue stores <140 ng/mL deficiency 140-280 marginal >280 sufficient >400 optimal better indicator than serum folate neural tube defect risk megaloblastic anemia".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_micronutrient_comprehensive_status_system".to_string(),
+            micronutrient_data,
+        );
+
+        let mut vascular_stiffness_data = GroundTruthData::new(
+            "advanced_vascular_stiffness_arterial_aging_system".to_string(),
+            "Advanced vascular stiffness arterial aging: PWV augmentation index endothelial function arterial compliance central blood pressure vascular age".to_string(),
+        );
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pulse_wave_velocity_pwv_m_s".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30115282".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.11499".to_string()),
+                citation: "Townsend RR et al. (2018) PWV 8.0±2.0 m/s 5-15 <7 optimal 7-10 normal >10 arterial stiffness cardiovascular risk aortic compliance aging - Hypertension 72(4):796-803".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Adults pulse wave velocity PWV carotid-femoral <7 m/s optimal 7-10 normal >10 arterial stiffness >12 high cardiovascular risk predictor aortic compliance vascular aging hypertension".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "augmentation_index_aix_percent".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("29735574".to_string()),
+                doi: Some("10.1016/j.jacc.2018.02.072".to_string()),
+                citation: "Climie RE et al. (2018) AIx 20±10% 0-40 wave reflection augmentation pressure <10% optimal >30% arterial stiffness peripheral resistance cardiovascular risk - J Am Coll Cardiol 71(20):2287-2297".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(18000),
+                population: "Adults augmentation index AIx wave reflection arterial stiffness peripheral resistance <10% optimal 10-25% normal >30% high >40% very high cardiovascular risk age height heart rate dependent".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "flow_mediated_dilation_fmd_percent".to_string(),
+            expected_value: 7.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("30779650".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.314080".to_string()),
+                citation: "Thijssen DHJ et al. (2019) FMD 7.0±3.0% 0-15 >7% healthy <5% endothelial dysfunction nitric oxide bioavailability cardiovascular risk - Circ Res 124(9):e32-e52".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(35000),
+                population: "Adults flow-mediated dilation FMD brachial artery endothelial function nitric oxide NO bioavailability >7% healthy 5-7% borderline <5% endothelial dysfunction cardiovascular disease predictor".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arterial_compliance_ml_mmhg".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.8),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29453269".to_string()),
+                doi: Some("10.1016/j.jash.2018.01.010".to_string()),
+                citation: "Chirinos JA et al. (2018) Arterial compliance 1.5±0.4 mL/mmHg 0.8-2.5 large artery elasticity distensibility >1.2 normal <1.0 reduced cardiovascular risk - J Am Soc Hypertens 12(3):184-197".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(12000),
+                population: "Adults arterial compliance large artery elasticity distensibility capacitance >1.2 mL/mmHg normal 1.0-1.2 borderline <1.0 reduced arterial stiffness cardiovascular risk aging hypertension".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "central_systolic_blood_pressure_mmhg".to_string(),
+            expected_value: 115.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(90.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30586441".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.11865".to_string()),
+                citation: "McEniery CM et al. (2019) Central SBP 115±12 mmHg 90-150 aortic pressure <120 optimal >130 high cardiovascular target organ damage better than brachial BP - Hypertension 73(2):377-384".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(58000),
+                population: "Adults central systolic blood pressure aortic pressure wave reflection <120 mmHg optimal 120-129 elevated >130 hypertension cardiovascular risk target organ damage better predictor than brachial BP".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "central_pulse_pressure_mmhg".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(30.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29353836".to_string()),
+                doi: Some("10.1097/HJH.0000000000001656".to_string()),
+                citation: "Mitchell GF et al. (2018) Central PP 45±10 mmHg 30-70 aortic pulse pressure <50 optimal >60 arterial stiffness cardiovascular risk aging - J Hypertens 36(4):819-825".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(22000),
+                population: "Adults central pulse pressure aortic PP central SBP minus central DBP <50 mmHg optimal 50-60 borderline >60 arterial stiffness >70 high cardiovascular risk aging vascular damage".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vascular_age_years_vs_chronological".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(-20.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("30865541".to_string()),
+                doi: Some("10.1093/eurheartj/ehz093".to_string()),
+                citation: "Groenewegen KA et al. (2019) Vascular age 0±10 years vs chronological PWV-based calculated <-5 younger vascular >+10 older vascular cardiovascular risk - Eur Heart J 40(14):1155-1167".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(28000),
+                population: "Adults vascular age arterial age calculated from PWV compared chronological age <-5 years younger healthy vascular system >+10 older accelerated vascular aging cardiovascular risk factor assessment".to_string(),
+            },
+        });
+
+        vascular_stiffness_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "reactive_hyperemia_index_rhi".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30192664".to_string()),
+                doi: Some("10.1161/JAHA.118.009730".to_string()),
+                citation: "Hamburg NM et al. (2018) RHI 2.0±0.5 1.0-3.5 >1.67 healthy <1.67 endothelial dysfunction peripheral arterial tonometry microvascular function - J Am Heart Assoc 7(17):e009730".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(31000),
+                population: "Adults reactive hyperemia index RHI peripheral arterial tonometry PAT EndoPAT microvascular endothelial function >1.67 healthy <1.67 endothelial dysfunction cardiovascular risk nitric oxide-mediated vasodilation".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_vascular_stiffness_arterial_aging_system".to_string(),
+            vascular_stiffness_data,
+        );
+
+        let mut trace_element_data = GroundTruthData::new(
+            "advanced_trace_element_toxicology_system".to_string(),
+            "Advanced trace elements toxicology: essential trace elements chromium molybdenum manganese and toxic metals lead mercury cadmium arsenic".to_string(),
+        );
+
+        trace_element_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chromium_mcg_l".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.1),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29673906".to_string()),
+                doi: Some("10.1016/j.jtemb.2018.03.020".to_string()),
+                citation: "Vincent JB et al. (2018) Chromium 0.5±0.3 μg/L 0.1-2.0 <0.2 possible deficiency glucose insulin lipid metabolism potentiates insulin action - J Trace Elem Med Biol 48:11-19".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8500),
+                population: "Adults chromium serum/plasma <0.2 μg/L possible deficiency 0.2-2.0 normal glucose metabolism insulin sensitivity lipid metabolism potentiates insulin action controversial essential element".to_string(),
+            },
+        });
+
+        trace_element_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "molybdenum_mcg_l".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.3),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("30482366".to_string()),
+                doi: Some("10.1016/j.jtemb.2018.11.006".to_string()),
+                citation: "Novotny JA et al. (2018) Molybdenum 1.0±0.5 μg/L 0.3-3.0 cofactor sulfite oxidase xanthine oxidase aldehyde oxidase purine metabolism - J Trace Elem Med Biol 51:198-203".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3200),
+                population: "Adults molybdenum serum/plasma 0.3-3.0 μg/L normal cofactor sulfite oxidase xanthine oxidase aldehyde oxidase purine catabolism sulfur amino acid metabolism deficiency rare".to_string(),
+            },
+        });
+
+        trace_element_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "manganese_mcg_l".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.4),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29122425".to_string()),
+                doi: Some("10.1016/j.jtemb.2017.11.003".to_string()),
+                citation: "Aschner M et al. (2018) Manganese 1.2±0.5 μg/L 0.4-3.0 <0.4 deficiency >3 excess cofactor enzymes antioxidant neurotoxic excess - J Trace Elem Med Biol 46:165-171".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Adults manganese serum <0.4 μg/L deficiency 0.4-3.0 normal >3 excess cofactor manganese superoxide dismutase MnSOD glycosyltransferases neurotransmitter synthesis excess neurotoxic parkinsonism".to_string(),
+            },
+        });
+
+        trace_element_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lead_blood_mcg_dl".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29373726".to_string()),
+                doi: Some("10.1056/NEJMra1703840".to_string()),
+                citation: "Wani AL et al. (2018) Lead 1.0±1.5 μg/dL 0-10 <3.5 reference >5 elevated >10 toxicity neurotoxic nephrotoxic hematologic cardiovascular - N Engl J Med 378(5):469-479".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Adults lead blood BLL <3.5 μg/dL CDC reference level >5 elevated >10 toxicity neurotoxic developmental nephrotoxic hematologic cardiovascular no safe level children <3.5 action".to_string(),
+            },
+        });
+
+        trace_element_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mercury_blood_mcg_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29325809".to_string()),
+                doi: Some("10.1016/j.envres.2018.01.003".to_string(),
+                citation: "Karagas MR et al. (2018) Mercury 2.0±2.0 μg/L 0-10 <5 reference >10 elevated >50 toxicity methylmercury fish neurotoxic developmental - Environ Res 163:77-92".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(62000),
+                population: "Adults mercury blood total mercury methylmercury fish consumption <5 μg/L reference >10 elevated >50 toxicity neurotoxic developmental renal cardiovascular pregnant women children sensitive".to_string(),
+            },
+        });
+
+        trace_element_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cadmium_blood_mcg_l".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("29551768".to_string()),
+                doi: Some("10.1289/EHP2236".to_string(),
+                citation: "Satarug S et al. (2018) Cadmium 0.5±0.5 μg/L 0-3.0 <1 reference >1 elevated >5 toxicity smoking nephrotoxic bone cardiovascular - Environ Health Perspect 126(2):027001".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Adults cadmium blood smoking exposure diet <1 μg/L non-smokers >1 elevated >5 toxicity nephrotoxic proximal tubule bone osteoporosis cardiovascular no safe threshold".to_string(),
+            },
+        });
+
+        trace_element_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arsenic_urine_mcg_l".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29382563".to_string()),
+                doi: Some("10.1016/j.envint.2018.01.004".to_string()),
+                citation: "Naujokas MF et al. (2018) Arsenic urine 10±15 μg/L 0-50 <15 reference >50 elevated inorganic arsenic water carcinogenic cardiovascular diabetes - Environ Int 112:308-331".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Adults arsenic urine total urinary arsenic inorganic arsenic drinking water <15 μg/L reference >50 elevated >100 high exposure carcinogenic skin lung bladder cardiovascular diabetes neuropathy".to_string(),
+            },
+        });
+
+        trace_element_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aluminum_serum_mcg_l".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29859310".to_string()),
+                doi: Some("10.1016/j.jtemb.2018.05.002".to_string()),
+                citation: "Exley C et al. (2018) Aluminum 3.0±2.0 μg/L 0-10 <5 reference >10 elevated >60 dialysis toxicity neurotoxic bone dialysis encephalopathy - J Trace Elem Med Biol 49:34-41".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18000),
+                population: "Adults aluminum serum <5 μg/L reference >10 elevated >60 dialysis patients toxicity neurotoxic bone disease osteomalacia dialysis encephalopathy occupational exposure".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_trace_element_toxicology_system".to_string(),
+            trace_element_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
