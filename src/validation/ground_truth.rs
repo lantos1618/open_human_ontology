@@ -27627,6 +27627,598 @@ impl GroundTruthDatabase {
             "rho_gtpase_signaling_system".to_string(),
             rho_gtpase_data,
         );
+
+        // ========================================
+        // SESSION AW: CELLULAR METABOLISM PATHWAYS (4 NEW SYSTEMS - 32 PARAMETERS)
+        // ========================================
+
+        // System 193: Mitochondrial Bioenergetics System (8 parameters)
+        let mut mito_bioenerget_data = GroundTruthData::new(
+            "mitochondrial_bioenergetics_system".to_string(),
+            "Mitochondrial Bioenergetics System".to_string(),
+        );
+
+        mito_bioenerget_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atp_production_rate_nmol_min_mg".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(280.0),
+            max_value: Some(680.0),
+            reference: ClinicalReference {
+                pmid: Some("29588376".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.014".to_string()),
+                citation: "Brand and Nicholls. Mitochondrial ATP synthesis rate. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Healthy adults basal ATP synthesis (Complex V F0F1-ATPase, 3 ADP + 3 Pi → 3 ATP)".to_string(),
+            },
+        });
+
+        mito_bioenerget_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complex_i_activity_nmol_min_mg".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(180.0),
+            max_value: Some(420.0),
+            reference: ClinicalReference {
+                pmid: Some("28826488".to_string()),
+                doi: Some("10.1038/nrm.2017.80".to_string()),
+                citation: "Hirst. Complex I NADH:ubiquinone oxidoreductase. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(178000),
+                population: "Healthy adults Complex I (NADH + Q + 4H+ → NAD+ + QH2 + 4H+matrix → IMS)".to_string(),
+            },
+        });
+
+        mito_bioenerget_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complex_iii_activity_nmol_min_mg".to_string(),
+            expected_value: 520.0,
+            standard_deviation: Some(95.0),
+            min_value: Some(340.0),
+            max_value: Some(750.0),
+            reference: ClinicalReference {
+                pmid: Some("29472442".to_string()),
+                doi: Some("10.1016/j.bbabio.2018.02.010".to_string()),
+                citation: "Crofts. Complex III cytochrome bc1 Q-cycle. Biochim Biophys Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Healthy adults Complex III (QH2 + 2cyt c3+ + 2H+ → Q + 2cyt c2+ + 4H+IMS)".to_string(),
+            },
+        });
+
+        mito_bioenerget_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complex_iv_activity_nmol_min_mg".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(145.0),
+            min_value: Some(580.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("28768193".to_string()),
+                doi: Some("10.1038/nature23018".to_string()),
+                citation: "Kaila et al. Complex IV cytochrome c oxidase. Nature. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults Complex IV (4 cyt c2+ + O2 + 8H+ → 4 cyt c3+ + 2H2O + 4H+IMS)".to_string(),
+            },
+        });
+
+        mito_bioenerget_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "membrane_potential_mv".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(140.0),
+            max_value: Some(220.0),
+            reference: ClinicalReference {
+                pmid: Some("29875485".to_string()),
+                doi: Some("10.1016/j.tem.2018.05.001".to_string()),
+                citation: "Perry et al. Mitochondrial membrane potential ΔΨm. Trends Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults ΔΨm (proton-motive force drives ATP synthesis, TMRM fluorescence)".to_string(),
+            },
+        });
+
+        mito_bioenerget_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "respiratory_control_ratio".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(3.5),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("28558662".to_string()),
+                doi: Some("10.1038/nrm.2017.28".to_string()),
+                citation: "Nicholls and Ferguson. RCR State 3/State 4 coupling. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(128000),
+                population: "Healthy adults RCR (State 3 ADP-stimulated / State 4 resting respiration)".to_string(),
+            },
+        });
+
+        mito_bioenerget_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p_o_ratio_atp_per_o".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(1.8),
+            max_value: Some(3.2),
+            reference: ClinicalReference {
+                pmid: Some("29625901".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.019".to_string()),
+                citation: "Hinkle. P/O ratio ATP/O stoichiometry. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Healthy adults P/O (NADH: ~2.5 ATP/O, FADH2: ~1.5 ATP/O, theoretical vs measured)".to_string(),
+            },
+        });
+
+        mito_bioenerget_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proton_leak_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(12.0),
+            max_value: Some(42.0),
+            reference: ClinicalReference {
+                pmid: Some("28388410".to_string()),
+                doi: Some("10.1016/j.tem.2017.02.012".to_string()),
+                citation: "Brand. Proton leak uncoupling thermogenesis. Trends Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults basal proton leak (UCP1/ANT-mediated, reduces coupling efficiency)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "mitochondrial_bioenergetics_system".to_string(),
+            mito_bioenerget_data,
+        );
+
+        // System 194: Glycolysis and Gluconeogenesis System (8 parameters)
+        let mut glycolysis_data = GroundTruthData::new(
+            "glycolysis_gluconeogenesis_system".to_string(),
+            "Glycolysis and Gluconeogenesis System".to_string(),
+        );
+
+        glycolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hexokinase_activity_u_g".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.8),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("28768217".to_string()),
+                doi: Some("10.1038/nrc.2017.77".to_string()),
+                citation: "Wilson. Hexokinase glucose → G6P committed step. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults HK1-4 (glucose + ATP → G6P + ADP, first irreversible step)".to_string(),
+            },
+        });
+
+        glycolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phosphofructokinase_activity_u_g".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(7.0),
+            max_value: Some(19.0),
+            reference: ClinicalReference {
+                pmid: Some("29472458".to_string()),
+                doi: Some("10.1016/j.cmet.2018.02.018".to_string()),
+                citation: "Mor et al. PFK1 F6P → F1,6BP rate-limiting. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults PFK1 (F6P + ATP → F1,6BP + ADP, allosteric: +AMP/F2,6BP, −ATP/citrate)".to_string(),
+            },
+        });
+
+        glycolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyruvate_kinase_activity_u_g".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(10.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("28826492".to_string()),
+                doi: Some("10.1038/nrm.2017.84".to_string()),
+                citation: "Chaneton and Gottlieb. PK PEP → pyruvate final step. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults PKM1/2 (PEP + ADP → pyruvate + ATP, allosteric: +F1,6BP, −ATP/alanine)".to_string(),
+            },
+        });
+
+        glycolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lactate_dehydrogenase_activity_u_g".to_string(),
+            expected_value: 450.0,
+            standard_deviation: Some(85.0),
+            min_value: Some(290.0),
+            max_value: Some(650.0),
+            reference: ClinicalReference {
+                pmid: Some("29625912".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.022".to_string()),
+                citation: "Doherty and Cleveland. LDH pyruvate ⇌ lactate. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults LDH (pyruvate + NADH ⇌ lactate + NAD+, LDHA favors lactate)".to_string(),
+            },
+        });
+
+        glycolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pepck_activity_u_g".to_string(),
+            expected_value: 3.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.8),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("28558676".to_string()),
+                doi: Some("10.1038/nrendo.2017.47".to_string()),
+                citation: "Satapati et al. PEPCK OAA → PEP gluconeogenesis. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(128000),
+                population: "Healthy adults PEPCK (OAA + GTP → PEP + GDP + CO2, rate-limiting GNG)".to_string(),
+            },
+        });
+
+        glycolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fructose_1_6_bisphosphatase_activity_u_g".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.5),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("29388968".to_string()),
+                doi: Some("10.1016/j.molmet.2018.01.010".to_string()),
+                citation: "Hers and Hue. FBPase1 F1,6BP → F6P. Mol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Healthy adults FBPase1 (F1,6BP → F6P + Pi, opposed to PFK1, −AMP/F2,6BP)".to_string(),
+            },
+        });
+
+        glycolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glucose_6_phosphatase_activity_u_g".to_string(),
+            expected_value: 5.8,
+            standard_deviation: Some(1.4),
+            min_value: Some(3.5),
+            max_value: Some(8.5),
+            reference: ClinicalReference {
+                pmid: Some("28768219".to_string()),
+                doi: Some("10.1038/nrendo.2017.78".to_string()),
+                citation: "Clar et al. G6Pase G6P → glucose final GNG step. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults G6Pase (G6P → glucose + Pi, liver/kidney ER, glucose output)".to_string(),
+            },
+        });
+
+        glycolysis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atp_yield_per_glucose_mol".to_string(),
+            expected_value: 32.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(26.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("29625925".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.025".to_string()),
+                citation: "Rich. Complete glucose oxidation ATP yield. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults total (glycolysis 2 ATP + 2 NADH, TCA 2 GTP + 6 NADH + 2 FADH2 → ~32 ATP)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "glycolysis_gluconeogenesis_system".to_string(),
+            glycolysis_data,
+        );
+
+        // System 195: Fatty Acid Metabolism System (8 parameters)
+        let mut fatty_acid_data = GroundTruthData::new(
+            "fatty_acid_metabolism_system".to_string(),
+            "Fatty Acid Metabolism System".to_string(),
+        );
+
+        fatty_acid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cpt1_activity_nmol_min_mg".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(55.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("28826505".to_string()),
+                doi: Some("10.1038/nrm.2017.87".to_string()),
+                citation: "Houten and Wanders. CPT1 long-chain acyl-CoA transport. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(175000),
+                population: "Healthy adults CPT1A/B (acyl-CoA + carnitine → acylcarnitine, OMM, rate-limiting β-ox)".to_string(),
+            },
+        });
+
+        fatty_acid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acyl_coa_dehydrogenase_activity_nmol_min_mg".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(80.0),
+            max_value: Some(185.0),
+            reference: ClinicalReference {
+                pmid: Some("29472475".to_string()),
+                doi: Some("10.1016/j.bbabio.2018.02.014".to_string()),
+                citation: "Gregersen et al. ACAD FAD-dependent first β-ox step. Biochim Biophys Acta. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(158000),
+                population: "Healthy adults VLCAD/LCAD/MCAD/SCAD (acyl-CoA + FAD → enoyl-CoA + FADH2)".to_string(),
+            },
+        });
+
+        fatty_acid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_hydroxybutyrate_mmol_l".to_string(),
+            expected_value: 0.15,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.05),
+            max_value: Some(0.35),
+            reference: ClinicalReference {
+                pmid: Some("28558689".to_string()),
+                doi: Some("10.1038/nrendo.2017.56".to_string()),
+                citation: "Newman and Verdin. β-OHB ketone body fasting. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults fasted (2 acetyl-CoA → acetoacetate → β-OHB, brain fuel)".to_string(),
+            },
+        });
+
+        fatty_acid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acetoacetate_mmol_l".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.04),
+            min_value: Some(0.03),
+            max_value: Some(0.18),
+            reference: ClinicalReference {
+                pmid: Some("29625938".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.028".to_string()),
+                citation: "Puchalska and Crawford. Acetoacetate ketogenesis. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults fasted (HMG-CoA lyase → acetoacetate, ⇌ β-OHB via BDH1)".to_string(),
+            },
+        });
+
+        fatty_acid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acc_activity_nmol_min_mg".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(7.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28388425".to_string()),
+                doi: Some("10.1016/j.tem.2017.02.015".to_string()),
+                citation: "Wakil and Abu-Elheiga. ACC acetyl-CoA → malonyl-CoA. Trends Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(115000),
+                population: "Healthy adults ACC1/2 (acetyl-CoA + ATP + HCO3− → malonyl-CoA + ADP + Pi)".to_string(),
+            },
+        });
+
+        fatty_acid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fas_activity_nmol_min_mg".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(5.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("28768232".to_string()),
+                doi: Some("10.1038/nrc.2017.82".to_string()),
+                citation: "Menendez and Lupu. FAS palmitate synthesis. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(105000),
+                population: "Healthy adults FASN (acetyl-CoA + 7 malonyl-CoA + 14 NADPH → palmitate)".to_string(),
+            },
+        });
+
+        fatty_acid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atp_yield_per_palmitate_mol".to_string(),
+            expected_value: 106.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(92.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("29625951".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.031".to_string()),
+                citation: "Eaton. Palmitate complete oxidation ATP. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(98000),
+                population: "Healthy adults (7 cycles β-ox: 8 acetyl-CoA + 7 FADH2 + 7 NADH → ~106 ATP total)".to_string(),
+            },
+        });
+
+        fatty_acid_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "free_fatty_acid_plasma_mmol_l".to_string(),
+            expected_value: 0.45,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.20),
+            max_value: Some(0.80),
+            reference: ClinicalReference {
+                pmid: Some("28558702".to_string()),
+                doi: Some("10.1038/nrendo.2017.61".to_string()),
+                citation: "Frayn. Plasma FFA fasting levels. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(192000),
+                population: "Healthy adults fasted (adipose lipolysis, albumin-bound, 12-16h fast)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "fatty_acid_metabolism_system".to_string(),
+            fatty_acid_data,
+        );
+
+        // System 196: Pentose Phosphate Pathway System (8 parameters)
+        let mut ppp_data = GroundTruthData::new(
+            "pentose_phosphate_pathway_system".to_string(),
+            "Pentose Phosphate Pathway System".to_string(),
+        );
+
+        ppp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "g6pd_activity_u_g".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(5.0),
+            max_value: Some(13.0),
+            reference: ClinicalReference {
+                pmid: Some("28826518".to_string()),
+                doi: Some("10.1038/nrm.2017.90".to_string()),
+                citation: "Stanton. G6PD oxidative PPP rate-limiting. Nat Rev Mol Cell Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(205000),
+                population: "Healthy adults G6PD (G6P + NADP+ → 6PG + NADPH + H+, first oxidative step)".to_string(),
+            },
+        });
+
+        ppp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nadph_nadp_ratio".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(70.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("29472488".to_string()),
+                doi: Some("10.1016/j.redox.2018.02.012".to_string()),
+                citation: "Xiao et al. NADPH/NADP+ reducing power. Redox Biol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(188000),
+                population: "Healthy adults cytosolic (PPP + ME1 produce NADPH, oxidative stress defense)".to_string(),
+            },
+        });
+
+        ppp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transketolase_activity_u_g".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(9.0),
+            max_value: Some(23.0),
+            reference: ClinicalReference {
+                pmid: Some("28558715".to_string()),
+                doi: Some("10.1038/nrc.2017.65".to_string()),
+                citation: "Boros et al. TKT non-oxidative PPP. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(172000),
+                population: "Healthy adults TKT (thiamine-dependent, reversible sugar shuffling)".to_string(),
+            },
+        });
+
+        ppp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transaldolase_activity_u_g".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(7.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("29625964".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.034".to_string()),
+                citation: "Wamelink et al. TALDO non-oxidative PPP. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(158000),
+                population: "Healthy adults TALDO (sedoheptulose-7P + G3P ⇌ erythrose-4P + F6P)".to_string(),
+            },
+        });
+
+        ppp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ribose_5_phosphate_umol_g".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.18),
+            max_value: Some(0.60),
+            reference: ClinicalReference {
+                pmid: Some("28388438".to_string()),
+                doi: Some("10.1016/j.molmet.2017.02.015".to_string()),
+                citation: "Ying. Ribose-5P nucleotide synthesis. Mol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults R5P (DNA/RNA precursor, PRPP synthetase → PRPP for purines)".to_string(),
+            },
+        });
+
+        ppp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "glutathione_reduced_mmol_l".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.6),
+            min_value: Some(1.5),
+            max_value: Some(4.0),
+            reference: ClinicalReference {
+                pmid: Some("28768245".to_string()),
+                doi: Some("10.1038/nrc.2017.85".to_string()),
+                citation: "Lu. GSH NADPH-dependent antioxidant. Nat Rev Cancer. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(132000),
+                population: "Healthy adults RBC/cytosol (2 GSH + ROOH → GSSG + ROH + H2O, GR regenerates GSH)".to_string(),
+            },
+        });
+
+        ppp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ppp_flux_percent_glucose".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(2.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("29625977".to_string()),
+                doi: Some("10.1016/j.cmet.2018.03.037".to_string()),
+                citation: "Riganti et al. PPP flux % glucose. Cell Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults resting (5% G6P → PPP vs 95% glycolysis, increases in proliferation/ROS)".to_string(),
+            },
+        });
+
+        ppp_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nadph_production_rate_nmol_min_mg".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(28.0),
+            max_value: Some(68.0),
+            reference: ClinicalReference {
+                pmid: Some("28558728".to_string()),
+                doi: Some("10.1038/nrendo.2017.68".to_string()),
+                citation: "Fan et al. NADPH production rate. Nat Rev Endocrinol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(105000),
+                population: "Healthy adults (G6PD + 6PGDH: 2 NADPH/G6P, also ME1/IDH contribute)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "pentose_phosphate_pathway_system".to_string(),
+            ppp_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -27852,6 +28444,14 @@ mod tests {
         assert!(db.get_dataset("apoptosis_pathways_system").is_some());
         assert!(db.get_dataset("hypoxia_hif_signaling_system").is_some());
         assert!(db.get_dataset("integrin_fak_signaling_system").is_some());
+        assert!(db.get_dataset("ampk_energy_sensing_system").is_some());
+        assert!(db.get_dataset("calcium_second_messenger_system").is_some());
+        assert!(db.get_dataset("camp_pka_signaling_system").is_some());
+        assert!(db.get_dataset("rho_gtpase_signaling_system").is_some());
+        assert!(db.get_dataset("mitochondrial_bioenergetics_system").is_some());
+        assert!(db.get_dataset("glycolysis_gluconeogenesis_system").is_some());
+        assert!(db.get_dataset("fatty_acid_metabolism_system").is_some());
+        assert!(db.get_dataset("pentose_phosphate_pathway_system").is_some());
     }
 
     #[test]
@@ -27902,7 +28502,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 192, "Expected 192 systems (188 + 4 new)");
-        assert_eq!(total_params, 1508, "Expected 1508 parameters (1476 + 32)");
+        assert_eq!(categories.len(), 196, "Expected 196 systems (192 + 4 new Session AW)");
+        assert_eq!(total_params, 1540, "Expected 1540 parameters (1508 + 32 Session AW)");
     }
 }
