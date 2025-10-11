@@ -12,6 +12,24 @@ push changes as you go to remote
 
 ---
 
+## Session DM (2025-10-11)
+
+**Status:** ✅ Complete
+
+**Systems Added:** 4 new advanced cellular and molecular systems with 32 parameters
+
+**Database Stats:** 465 systems, 3692 parameters total
+
+**New Systems:**
+1. **Advanced Non-Coding RNA Regulatory System** - Long non-coding RNAs (lncRNAs), microRNA processing machinery (Drosha, Dicer), RNA interference pathway (RISC complex, Argonaute proteins), lncRNA-mediated chromatin regulation, competing endogenous RNA networks, and non-coding RNA functional mechanisms (lncRNA nuclear enrichment %, Drosha pri-miRNA cleavage rate/min, Dicer pre-miRNA dicing efficiency %, Argonaute2 RISC mRNA cleavage kcat, lncRNA chromatin binding occupancy %, ceRNA miRNA sponge binding sites avg, lncRNA protein scaffold complex stoichiometry ratio, miRNA target site seed pairing free energy kcal/mol)
+2. **Advanced Glycosylation and Glycobiology System** - N-linked glycosylation in ER/Golgi, O-linked glycosylation, glycosyltransferases, glycan processing enzymes (α-mannosidase, β-galactosidase), oligosaccharyltransferase complex, glycan branching, and glycoprotein quality control (N-glycosylation site occupancy %, oligosaccharyltransferase transfer rate/s, Golgi glycan branching degree avg antennae, O-GlcNAc protein modification stoichiometry %, α-mannosidase trimming rate residues/min, sialic acid terminal capping %, glycoprotein folding quality control ERAD %, glycan heterogeneity microheterogeneity index)
+3. **Advanced Mitochondrial Dynamics System** - Mitochondrial fission machinery (Drp1, Fis1, MFF), fusion proteins (Mfn1, Mfn2, OPA1), mitophagy (PINK1-Parkin pathway), mitochondrial quality control, cristae remodeling, and mitochondrial network dynamics (Drp1 fission events/mitochondrion/hour, Mfn2 outer membrane fusion rate/min, OPA1 inner membrane fusion cristae remodeling rate/min, PINK1-Parkin mitophagy induction time min, mitochondrial network connectivity index, mitochondrial fission site ER contact %, mitophagy flux degraded mitochondria %/day, cristae junction diameter nm)
+4. **Advanced Chromatin Remodeling System** - ATP-dependent chromatin remodeling complexes (SWI/SNF, ISWI, CHD, INO80), histone modifications (acetylation, methylation, phosphorylation), histone acetyltransferases (HATs), histone deacetylases (HDACs), chromatin accessibility (ATAC-seq), and nucleosome positioning (SWI/SNF nucleosome remodeling rate bp/s, histone H3K27 acetylation active enhancer %, histone H3K4me3 promoter enrichment fold, HDAC histone deacetylation kcat/min, HAT p300 histone acetylation kcat/min, chromatin accessibility ATAC peak genome %, nucleosome positioning dyad occupancy %, Polycomb H3K27me3 repressive domain size kb)
+
+**Commit:** `5ef25af` - Pushed to remote
+
+---
+
 ## Session DL (2025-10-11)
 
 **Status:** ✅ Complete
