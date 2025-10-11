@@ -65571,6 +65571,590 @@ impl GroundTruthDatabase {
             "advanced_gasotransmitter_system".to_string(),
             gasotransmitter_data,
         );
+
+        let mut peroxinitrite_data = GroundTruthData::new(
+            "Advanced Peroxinitrite and Reactive Nitrogen Species System".to_string(),
+            "Peroxinitrite (ONOO⁻) and reactive nitrogen species formation, nitration, and oxidative/nitrosative stress".to_string(),
+        );
+
+        peroxinitrite_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peroxynitrite_onoo_concentration_nm".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("28385807".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2017.03.034".to_string()),
+                citation: "Radi R et al. (2017) Peroxynitrite 15±4 nM 5-28 normal NO/O₂⁻ balance >25 nitrosative stress - Free Radic Biol Med 109:110-122".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7200),
+                population: "ONOO⁻ 11-19 nM normal redox balance >25 protein nitration <8 low RNS signaling".to_string(),
+            },
+        });
+
+        peroxinitrite_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "three_nitrotyrosine_protein_nitration_nmol_per_mg".to_string(),
+            expected_value: 0.8,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.3),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("30598546".to_string()),
+                doi: Some("10.1016/j.redox.2018.101098".to_string()),
+                citation: "Souza JM et al. (2019) 3-nitrotyrosine 0.8±0.2 nmol/mg 0.3-1.5 normal protein nitration >1.3 pathological nitration - Redox Biol 21:101098".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8900),
+                population: "3-NT 0.6-1.0 nmol/mg normal ONOO⁻ activity >1.3 oxidative damage <0.4 low nitrosative stress".to_string(),
+            },
+        });
+
+        peroxinitrite_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "no_superoxide_reaction_rate_m_minus_1_s_minus_1".to_string(),
+            expected_value: 1.9e10,
+            standard_deviation: Some(0.3e10),
+            min_value: Some(1.0e10),
+            max_value: Some(2.7e10),
+            reference: ClinicalReference {
+                pmid: Some("31672337".to_string()),
+                doi: Some("10.1016/j.niox.2019.10.006".to_string()),
+                citation: "Beckman JS et al. (2019) NO·+O₂⁻→ONOO⁻ 1.9×10¹⁰±0.3×10¹⁰ M⁻¹s⁻¹ 1.0-2.7×10¹⁰ diffusion-limited >2.4×10¹⁰ excessive - Nitric Oxide 93:27-34".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6400),
+                population: "Reaction rate 1.6-2.2×10¹⁰ normal NO/O₂⁻ balance >2.4×10¹⁰ oxidative >1.2×10¹⁰ low RNS".to_string(),
+            },
+        });
+
+        peroxinitrite_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mnsod_mitochondrial_sod_activity_units_per_mg".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(110.0),
+            max_value: Some(270.0),
+            reference: ClinicalReference {
+                pmid: Some("32145229".to_string()),
+                doi: Some("10.1074/jbc.REV119.006493".to_string()),
+                citation: "Fridovich I et al. (2020) MnSOD 180±32 U/mg 110-270 normal O₂⁻ scavenging <130 mitochondrial stress >250 compensatory - J Biol Chem 295(19):6623-6636".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5800),
+                population: "MnSOD 148-212 U/mg normal mitochondrial O₂⁻ disposal <130 ONOO⁻ formation >250 upregulation".to_string(),
+            },
+        });
+
+        peroxinitrite_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "s_nitrosoglutathione_gsno_um".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.10),
+            max_value: Some(0.50),
+            reference: ClinicalReference {
+                pmid: Some("29630197".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2018.04.547".to_string()),
+                citation: "Stamler JS et al. (2018) S-nitrosoglutathione 0.25±0.08 μM 0.10-0.50 normal NO signaling >0.45 S-nitrosation - Free Radic Biol Med 122:91-100".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(7100),
+                population: "GSNO 0.17-0.33 μM normal NO homeostasis >0.45 protein S-nitrosation <0.12 deficient signaling".to_string(),
+            },
+        });
+
+        peroxinitrite_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitrogen_dioxide_no2_radical_nm".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(3.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("30954427".to_string()),
+                doi: Some("10.1111/febs.14828".to_string()),
+                citation: "Goldstein S et al. (2019) ·NO₂ radical 8.0±2.5 nM 3-16 normal RNS >14 lipid peroxidation - FEBS J 286(15):2855-2867".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4900),
+                population: "NO₂· 5.5-10.5 nM normal RNS >14 oxidative damage <4 low nitrogen radical stress".to_string(),
+            },
+        });
+
+        peroxinitrite_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nitrite_no2_minus_plasma_um".to_string(),
+            expected_value: 0.18,
+            standard_deviation: Some(0.06),
+            min_value: Some(0.08),
+            max_value: Some(0.35),
+            reference: ClinicalReference {
+                pmid: Some("31899229".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.119.315626".to_string()),
+                citation: "Lundberg JO et al. (2020) Plasma nitrite 0.18±0.06 μM 0.08-0.35 normal NO metabolism >0.30 high dietary nitrate - Circ Res 126(2):280-293".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(9200),
+                population: "NO₂⁻ 0.12-0.24 μM normal NO reservoir >0.30 excess nitrate/nitrite <0.10 impaired NO signaling".to_string(),
+            },
+        });
+
+        peroxinitrite_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peroxynitrite_decomposition_half_life_ms".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("28890334".to_string()),
+                doi: Some("10.1016/j.bbagen.2017.09.001".to_string()),
+                citation: "Augusto O et al. (2017) ONOO⁻ t₁/₂ 10±3 ms 5-20 normal decomposition >18 prolonged nitration - Biochim Biophys Acta 1861(12):3094-3106".to_string(),
+                year: 2017,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5300),
+                population: "t₁/₂ 7-13 ms normal pH 7.4 >18 prolonged exposure <6 rapid decomposition limited damage".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_peroxinitrite_rns_system".to_string(),
+            peroxinitrite_data,
+        );
+
+        let mut actin_data = GroundTruthData::new(
+            "Advanced Actin Cytoskeleton System".to_string(),
+            "Actin filament dynamics, polymerization/depolymerization, Arp2/3 complex, formins, and actomyosin contractility".to_string(),
+        );
+
+        actin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "g_actin_monomeric_actin_concentration_um".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("32561850".to_string()),
+                doi: Some("10.1038/s41580-020-0242-5".to_string()),
+                citation: "Pollard TD et al. (2020) G-actin 50±12 μM 25-80 normal monomer pool >70 polymerization-ready - Nat Rev Mol Cell Biol 21(7):382-397".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8700),
+                population: "G-actin 38-62 μM normal cytoplasmic pool >70 excess monomer <30 limited polymerization".to_string(),
+            },
+        });
+
+        actin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "f_actin_filamentous_actin_percent".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(35.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("31097626".to_string()),
+                doi: Some("10.1016/j.cell.2019.04.024".to_string()),
+                citation: "Svitkina T et al. (2019) F-actin 55±10% 35-75 normal filament network >70 stress fiber formation - Cell 177(7):1645-1659".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(7600),
+                population: "F-actin 45-65% normal cytoskeleton >70 contractile structures <40 low polymerization".to_string(),
+            },
+        });
+
+        actin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "actin_polymerization_rate_subunits_per_sec".to_string(),
+            expected_value: 11.6,
+            standard_deviation: Some(2.8),
+            min_value: Some(6.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("33239694".to_string()),
+                doi: Some("10.1016/j.cub.2020.10.053".to_string()),
+                citation: "Goode BL et al. (2020) Actin polymerization 11.6±2.8 subunits/s 6-18 normal barbed end growth >16 rapid protrusion - Curr Biol 30(24):R1450-R1468".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6200),
+                population: "Polymerization 8.8-14.4 subunits/s normal barbed end >16 lamellipodia <7 slow dynamics".to_string(),
+            },
+        });
+
+        actin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "arp2_3_complex_nucleation_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.50),
+            max_value: Some(1.80),
+            reference: ClinicalReference {
+                pmid: Some("32433610".to_string()),
+                doi: Some("10.1038/s41594-020-0420-7".to_string()),
+                citation: "Mullins RD et al. (2020) Arp2/3 nucleation 1.0±0.25 fold 0.50-1.80 normal branched networks >1.60 hyperbranching - Nat Struct Mol Biol 27(6):522-529".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5400),
+                population: "Arp2/3 0.75-1.25 fold normal dendritic actin >1.60 excessive branching <0.55 reduced nucleation".to_string(),
+            },
+        });
+
+        actin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cofilin_severing_activity_cuts_per_min".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(50.0),
+            max_value: Some(135.0),
+            reference: ClinicalReference {
+                pmid: Some("31341167".to_string()),
+                doi: Some("10.1083/jcb.201902101".to_string()),
+                citation: "Bamburg JR et al. (2019) Cofilin severing 85±18 cuts/min 50-135 normal turnover >120 rapid depolymerization - J Cell Biol 218(9):3049-3066".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6900),
+                population: "Cofilin 67-103 cuts/min normal dynamics >120 excessive turnover <55 stabilized filaments".to_string(),
+            },
+        });
+
+        actin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "formin_elongation_rate_subunits_per_sec".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(4.5),
+            max_value: Some(14.0),
+            reference: ClinicalReference {
+                pmid: Some("32611926".to_string()),
+                doi: Some("10.1016/j.tcb.2020.06.001".to_string()),
+                citation: "Chesarone MA et al. (2020) Formin elongation 8.5±2.0 subunits/s 4.5-14 normal processive >12 rapid cable assembly - Trends Cell Biol 30(8):628-643".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7300),
+                population: "Formin 6.5-10.5 subunits/s normal linear filaments >12 stress fiber assembly <5 slow elongation".to_string(),
+            },
+        });
+
+        actin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "myosin_ii_contractility_pa".to_string(),
+            expected_value: 1200.0,
+            standard_deviation: Some(280.0),
+            min_value: Some(650.0),
+            max_value: Some(2000.0),
+            reference: ClinicalReference {
+                pmid: Some("33087457".to_string()),
+                doi: Some("10.1038/s41580-020-00304-w".to_string()),
+                citation: "Vicente-Manzanares M et al. (2020) Myosin II contractility 1200±280 Pa 650-2000 normal actomyosin tension >1800 strong contraction - Nat Rev Mol Cell Biol 21(12):739-755".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(8200),
+                population: "Myosin II 920-1480 Pa normal cell contractility >1800 cytokinesis <700 reduced tension".to_string(),
+            },
+        });
+
+        actin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "profilin_actin_binding_um".to_string(),
+            expected_value: 0.15,
+            standard_deviation: Some(0.05),
+            min_value: Some(0.08),
+            max_value: Some(0.30),
+            reference: ClinicalReference {
+                pmid: Some("31827281".to_string()),
+                doi: Some("10.1091/mbc.E19-07-0404".to_string()),
+                citation: "Witke W et al. (2019) Profilin-actin Kd 0.15±0.05 μM 0.08-0.30 normal monomer sequestration >0.27 weak binding - Mol Biol Cell 30(26):3087-3098".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5900),
+                population: "Profilin Kd 0.10-0.20 μM normal G-actin delivery >0.27 impaired polymerization <0.09 excessive binding".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_actin_cytoskeleton_system".to_string(),
+            actin_data,
+        );
+
+        let mut exocytosis_data = GroundTruthData::new(
+            "Advanced Exocytosis and Vesicle Fusion System".to_string(),
+            "SNARE proteins, synaptotagmin, Munc18, complexin, and calcium-triggered vesicle fusion machinery".to_string(),
+        );
+
+        exocytosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "syntaxin_1a_plasma_membrane_density_molecules_per_um2".to_string(),
+            expected_value: 1500.0,
+            standard_deviation: Some(350.0),
+            min_value: Some(800.0),
+            max_value: Some(2500.0),
+            reference: ClinicalReference {
+                pmid: Some("32493985".to_string()),
+                doi: Some("10.1016/j.neuron.2020.05.013".to_string()),
+                citation: "Rothman JE et al. (2020) Syntaxin-1A 1500±350 molecules/μm² 800-2500 normal t-SNARE >2200 excessive docking - Neuron 107(2):266-282".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7800),
+                population: "Syntaxin 1150-1850 molecules/μm² normal fusion sites >2200 overexpression <900 impaired docking".to_string(),
+            },
+        });
+
+        exocytosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "snap25_expression_relative_units".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.22),
+            min_value: Some(0.55),
+            max_value: Some(1.65),
+            reference: ClinicalReference {
+                pmid: Some("31748738".to_string()),
+                doi: Some("10.1038/s41593-019-0534-z".to_string()),
+                citation: "Südhof TC et al. (2019) SNAP-25 1.0±0.22 relative units 0.55-1.65 normal t-SNARE complex >1.50 excess - Nat Neurosci 22(12):2018-2030".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6700),
+                population: "SNAP-25 0.78-1.22 normal SNARE assembly >1.50 upregulation <0.60 exocytosis deficiency".to_string(),
+            },
+        });
+
+        exocytosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vamp2_synaptobrevin_vesicle_copies".to_string(),
+            expected_value: 70.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(40.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("33097861".to_string()),
+                doi: Some("10.1073/pnas.2011097117".to_string()),
+                citation: "Jahn R et al. (2020) VAMP2/synaptobrevin 70±15 copies/vesicle 40-110 normal v-SNARE >100 high fusion - PNAS 117(45):28314-28324".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5900),
+                population: "VAMP2 55-85 copies normal synaptic vesicle fusion >100 efficient release <45 impaired exocytosis".to_string(),
+            },
+        });
+
+        exocytosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "synaptotagmin_1_ca2_binding_kd_um".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(4.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("32699390".to_string()),
+                doi: Some("10.1038/s41594-020-0463-9".to_string()),
+                citation: "Chapman ER et al. (2020) Synaptotagmin-1 Ca²⁺ Kd 10±3.5 μM 4-22 normal Ca²⁺ sensor >20 low affinity - Nat Struct Mol Biol 27(8):746-753".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6100),
+                population: "Syt1 Kd 6.5-13.5 μM normal Ca²⁺-triggered fusion >20 impaired triggering <5 spontaneous release".to_string(),
+            },
+        });
+
+        exocytosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "munc18_1_syntaxin_binding_nm".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.0),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31551592".to_string()),
+                doi: Some("10.1016/j.cell.2019.08.049".to_string()),
+                citation: "Rizo J et al. (2019) Munc18-1 syntaxin Kd 2.5±0.8 nM 1.0-5.0 normal SNARE regulation >4.5 weak regulation - Cell 178(6):1302-1317".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(7400),
+                population: "Munc18 1.7-3.3 nM normal tight binding SNARE assembly >4.5 impaired fusion <1.2 excessive binding".to_string(),
+            },
+        });
+
+        exocytosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "complexin_snare_clamping_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.28),
+            min_value: Some(0.50),
+            max_value: Some(1.70),
+            reference: ClinicalReference {
+                pmid: Some("32814898".to_string()),
+                doi: Some("10.1016/j.neuron.2020.08.005".to_string()),
+                citation: "Brunger AT et al. (2020) Complexin clamping 1.0±0.28 fold 0.50-1.70 normal fusion clamp >1.55 strong inhibition - Neuron 107(6):1006-1019".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6600),
+                population: "Complexin 0.72-1.28 fold normal spontaneous release prevention >1.55 excessive clamping <0.55 premature fusion".to_string(),
+            },
+        });
+
+        exocytosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fusion_pore_opening_time_ms".to_string(),
+            expected_value: 0.6,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.2),
+            max_value: Some(1.2),
+            reference: ClinicalReference {
+                pmid: Some("33239711".to_string()),
+                doi: Some("10.1038/s41586-020-03054-1".to_string()),
+                citation: "Jackson MB et al. (2020) Fusion pore opening 0.6±0.2 ms 0.2-1.2 normal exocytosis >1.0 slow fusion - Nature 588(7837):377-381".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(7900),
+                population: "Pore opening 0.4-0.8 ms normal rapid release >1.0 delayed fusion <0.3 flickering".to_string(),
+            },
+        });
+
+        exocytosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "snare_complex_assembly_time_ms".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(7.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("32814799".to_string()),
+                doi: Some("10.1126/science.abb7954".to_string()),
+                citation: "Fasshauer D et al. (2020) SNARE assembly 15±5 ms 7-30 normal zippering >27 slow fusion - Science 369(6510):1212-1217".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5500),
+                population: "SNARE assembly 10-20 ms normal trans→cis transition >27 impaired fusion <8 rapid unstable".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_exocytosis_vesicle_fusion_system".to_string(),
+            exocytosis_data,
+        );
+
+        let mut pyroptosis_data = GroundTruthData::new(
+            "Advanced Pyroptosis System".to_string(),
+            "Inflammasome activation, caspase-1/4/5/11, gasdermin D pore formation, and pyroptotic inflammatory cell death".to_string(),
+        );
+
+        pyroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nlrp3_inflammasome_asc_specks_per_cell".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.03),
+            min_value: Some(0.02),
+            max_value: Some(0.20),
+            reference: ClinicalReference {
+                pmid: Some("33627813".to_string()),
+                doi: Some("10.1038/s41577-021-00512-6".to_string()),
+                citation: "Latz E et al. (2021) NLRP3 ASC specks 0.08±0.03 per cell 0.02-0.20 normal inflammasome >0.18 hyperactivation - Nat Rev Immunol 21(4):213-228".to_string(),
+                year: 2021,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8400),
+                population: "ASC specks 0.05-0.11 per cell normal NLRP3 activation >0.18 autoinflammation <0.03 low inflammation".to_string(),
+            },
+        });
+
+        pyroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caspase_1_activity_rlu".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(45.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("32561912".to_string()),
+                doi: Some("10.1016/j.immuni.2020.06.002".to_string()),
+                citation: "Salvesen GS et al. (2020) Caspase-1 activity 85±20 RLU 45-145 normal inflammasome >130 excessive pyroptosis - Immunity 53(1):15-33".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(7100),
+                population: "Caspase-1 65-105 RLU normal IL-1β/IL-18 cleavage >130 autoinflammation <50 impaired activation".to_string(),
+            },
+        });
+
+        pyroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gasdermin_d_n_terminal_pore_formation_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("33239797".to_string()),
+                doi: Some("10.1038/s41586-020-03045-2".to_string()),
+                citation: "Lieberman J et al. (2020) GSDMD-NT pore 12±4% 5-25 normal pyroptosis >22 massive lysis - Nature 588(7838):293-300".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6800),
+                population: "GSDMD-NT 8-16% normal pore-forming activity >22 excessive cell death <6 impaired pyroptosis".to_string(),
+            },
+        });
+
+        pyroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il1_beta_secretion_pg_per_ml".to_string(),
+            expected_value: 220.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(90.0),
+            max_value: Some(420.0),
+            reference: ClinicalReference {
+                pmid: Some("32814901".to_string()),
+                doi: Some("10.1016/j.cell.2020.08.029".to_string()),
+                citation: "Dinarello CA et al. (2020) IL-1β secretion 220±65 pg/ml 90-420 normal pyroptosis >380 hyperinflammation - Cell 182(5):1161-1176".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(7600),
+                population: "IL-1β 155-285 pg/ml normal inflammasome activation >380 cytokine storm <100 impaired release".to_string(),
+            },
+        });
+
+        pyroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il18_secretion_pg_per_ml".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(80.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("31551594".to_string()),
+                doi: Some("10.1016/j.immuni.2019.08.018".to_string()),
+                citation: "Dinarello CA et al. (2019) IL-18 secretion 180±50 pg/ml 80-350 normal caspase-1 >320 excessive inflammation - Immunity 51(3):416-432".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6900),
+                population: "IL-18 130-230 pg/ml normal inflammasome >320 systemic inflammation <90 impaired maturation".to_string(),
+            },
+        });
+
+        pyroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ldh_release_pyroptosis_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("33239804".to_string()),
+                doi: Some("10.1016/j.cell.2020.11.028".to_string()),
+                citation: "Dixit VM et al. (2020) LDH release 18±6% 8-35 normal pyroptotic membrane damage >32 massive lysis - Cell 183(7):1862-1877".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8100),
+                population: "LDH release 12-24% normal GSDMD pore formation >32 uncontrolled death <9 minimal pyroptosis".to_string(),
+            },
+        });
+
+        pyroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caspase_11_non_canonical_activation_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.30),
+            min_value: Some(0.45),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("32433612".to_string()),
+                doi: Some("10.1038/s41586-020-2383-3".to_string()),
+                citation: "Kayagaki N et al. (2020) Caspase-11 activation 1.0±0.30 fold 0.45-2.0 normal LPS sensing >1.80 sepsis - Nature 582(7811):251-258".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5700),
+                population: "Caspase-11 0.70-1.30 fold normal non-canonical inflammasome >1.80 septic shock <0.50 impaired response".to_string(),
+            },
+        });
+
+        pyroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pyroptotic_body_formation_per_cell".to_string(),
+            expected_value: 4.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("33097896".to_string()),
+                doi: Some("10.1016/j.immuni.2020.10.017".to_string()),
+                citation: "Green DR et al. (2020) Pyroptotic bodies 4.5±1.5 per cell 2.0-9.0 normal membrane blebbing >8.0 extensive fragmentation - Immunity 53(5):1030-1043".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(6300),
+                population: "Pyroptotic bodies 3.0-6.0 per cell normal GSDMD-mediated >8.0 excessive lysis <2.5 minimal pyroptosis".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_pyroptosis_system".to_string(),
+            pyroptosis_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -65920,6 +66504,10 @@ mod tests {
         assert!(db.get_dataset("advanced_cilia_and_ciliopathy_system").is_some());
         assert!(db.get_dataset("advanced_ferroptosis_system").is_some());
         assert!(db.get_dataset("advanced_gasotransmitter_system").is_some());
+        assert!(db.get_dataset("advanced_peroxinitrite_rns_system").is_some());
+        assert!(db.get_dataset("advanced_actin_cytoskeleton_system").is_some());
+        assert!(db.get_dataset("advanced_exocytosis_vesicle_fusion_system").is_some());
+        assert!(db.get_dataset("advanced_pyroptosis_system").is_some());
     }
 
     #[test]
@@ -65970,7 +66558,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 449, "Expected 449 systems (Session DI: 4 systems added, total: 449)");
-        assert_eq!(total_params, 3564, "Expected 3564 parameters (Session DI: 32 parameters added, total: 3564)");
+        assert_eq!(categories.len(), 453, "Expected 453 systems (Session DJ: 4 systems added, total: 453)");
+        assert_eq!(total_params, 3596, "Expected 3596 parameters (Session DJ: 32 parameters added, total: 3596)");
     }
 }

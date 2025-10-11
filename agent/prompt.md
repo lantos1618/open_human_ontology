@@ -12,6 +12,24 @@ push changes as you go to remote
 
 ---
 
+## Session DJ (2025-10-11)
+
+**Status:** ✅ Complete
+
+**Systems Added:** 4 new advanced cellular and signaling systems with 32 parameters
+
+**Database Stats:** 453 systems, 3596 parameters total
+
+**New Systems:**
+1. **Advanced Peroxinitrite and Reactive Nitrogen Species System** - Peroxinitrite (ONOO⁻) and reactive nitrogen species formation, nitration, and oxidative/nitrosative stress (peroxynitrite concentration, 3-nitrotyrosine protein nitration, NO·+O₂⁻ reaction rate, MnSOD mitochondrial activity, S-nitrosoglutathione, ·NO₂ radical, plasma nitrite, peroxynitrite decomposition half-life)
+2. **Advanced Actin Cytoskeleton System** - Actin filament dynamics, polymerization/depolymerization, Arp2/3 complex, formins, and actomyosin contractility (G-actin monomeric concentration, F-actin filamentous %, actin polymerization rate, Arp2/3 nucleation activity, cofilin severing activity, formin elongation rate, myosin II contractility, profilin-actin binding)
+3. **Advanced Exocytosis and Vesicle Fusion System** - SNARE proteins, synaptotagmin, Munc18, complexin, and calcium-triggered vesicle fusion machinery (syntaxin-1A plasma membrane density, SNAP-25 expression, VAMP2/synaptobrevin vesicle copies, synaptotagmin-1 Ca²⁺ binding, Munc18-1 syntaxin binding, complexin SNARE clamping, fusion pore opening time, SNARE complex assembly time)
+4. **Advanced Pyroptosis System** - Inflammasome activation, caspase-1/4/5/11, gasdermin D pore formation, and pyroptotic inflammatory cell death (NLRP3 inflammasome ASC specks, caspase-1 activity, gasdermin D N-terminal pore formation, IL-1β secretion, IL-18 secretion, LDH release, caspase-11 non-canonical activation, pyroptotic body formation)
+
+**Commit:** [Pending] - Will push to remote
+
+---
+
 ## Session DI (2025-10-11)
 
 **Status:** ✅ Complete
