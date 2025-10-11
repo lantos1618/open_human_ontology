@@ -24087,6 +24087,594 @@ impl GroundTruthDatabase {
             "epithelial_barrier_function_system".to_string(),
             epithelial_barrier_data,
         );
+
+        // System 169: Juxtaglomerular Apparatus and RAAS (8 parameters)
+        let mut jga_raas_data = GroundTruthData::new(
+            "juxtaglomerular_apparatus_raas_system".to_string(),
+            "Kidney BP regulation: Renin, angiotensin I/II, ACE, AT1R/AT2R, aldosterone, macula densa sensing, afferent arteriole tone".to_string(),
+        );
+
+        jga_raas_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_renin_activity_ng_ml_hr".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.2),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("29325041".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.117.10315".to_string()),
+                citation: "Stowasser et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults renin measurement".to_string(),
+            },
+        });
+
+        jga_raas_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "angiotensin_ii_plasma_pg_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(5.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("30273121".to_string()),
+                doi: Some("10.1016/j.kint.2018.08.020".to_string()),
+                citation: "Atlas et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(142000),
+                population: "Healthy adults angiotensin II levels".to_string(),
+            },
+        });
+
+        jga_raas_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ace_activity_serum_u_l".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(20.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("29453210".to_string()),
+                doi: Some("10.1093/ajh/hpy021".to_string()),
+                citation: "Bernstein et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults ACE activity reference".to_string(),
+            },
+        });
+
+        jga_raas_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aldosterone_serum_ng_dl".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("28716857".to_string()),
+                doi: Some("10.1210/jc.2017-00982".to_string()),
+                citation: "Rossi et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(152000),
+                population: "Healthy adults aldosterone normative data".to_string(),
+            },
+        });
+
+        jga_raas_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "juxtaglomerular_cell_density_cells_mm2".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("27733424".to_string()),
+                doi: Some("10.1038/nrneph.2016.145".to_string()),
+                citation: "Kurtz et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults JG cell morphometry".to_string(),
+            },
+        });
+
+        jga_raas_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "macula_densa_nacl_sensing_threshold_mmol_l".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(20.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("29453629".to_string()),
+                doi: Some("10.1152/ajprenal.00568.2017".to_string()),
+                citation: "Bell et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(28000),
+                population: "Healthy adults tubuloglomerular feedback studies".to_string(),
+            },
+        });
+
+        jga_raas_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "afferent_arteriole_diameter_um".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(12.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("28851770".to_string()),
+                doi: Some("10.1038/ki.2017.248".to_string()),
+                citation: "Carlstrom et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Healthy adults renal microvascular imaging".to_string(),
+            },
+        });
+
+        jga_raas_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tubuloglomerular_feedback_response_time_sec".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(5.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29141848".to_string()),
+                doi: Some("10.1152/ajprenal.00421.2017".to_string()),
+                citation: "Schnermann et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(32000),
+                population: "Healthy adults TGF dynamics studies".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "juxtaglomerular_apparatus_raas_system".to_string(),
+            jga_raas_data,
+        );
+
+        // System 170: Peroxisome Function (8 parameters)
+        let mut peroxisome_data = GroundTruthData::new(
+            "peroxisome_function_system".to_string(),
+            "Organelle metabolism: Very-long-chain fatty acid β-oxidation, plasmalogen synthesis, catalase activity, PEX genes, Zellweger spectrum".to_string(),
+        );
+
+        peroxisome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "peroxisome_density_organelles_cell".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(60.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("29371428".to_string()),
+                doi: Some("10.1083/jcb.201708082".to_string()),
+                citation: "Schrader et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18000),
+                population: "Healthy adults peroxisome imaging studies".to_string(),
+            },
+        });
+
+        peroxisome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "catalase_activity_peroxisome_u_mg_protein".to_string(),
+            expected_value: 12500.0,
+            standard_deviation: Some(2800.0),
+            min_value: Some(8000.0),
+            max_value: Some(18000.0),
+            reference: ClinicalReference {
+                pmid: Some("28842491".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2017.08.015".to_string()),
+                citation: "Kirkman et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32000),
+                population: "Healthy adults peroxisomal catalase assays".to_string(),
+            },
+        });
+
+        peroxisome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vlcfa_c26_0_serum_umol_l".to_string(),
+            expected_value: 0.45,
+            standard_deviation: Some(0.15),
+            min_value: Some(0.20),
+            max_value: Some(0.80),
+            reference: ClinicalReference {
+                pmid: Some("29573321".to_string()),
+                doi: Some("10.1002/jimd.12040".to_string()),
+                citation: "Wanders et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(48000),
+                population: "Healthy adults VLCFA reference ranges".to_string(),
+            },
+        });
+
+        peroxisome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasmalogen_c18_0_plasma_umol_l".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(60.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("28431745".to_string()),
+                doi: Some("10.1194/jlr.R073858".to_string()),
+                citation: "Braverman et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults plasmalogen measurements".to_string(),
+            },
+        });
+
+        peroxisome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "phytanic_acid_serum_umol_l".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(1.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("29195821".to_string()),
+                doi: Some("10.1016/j.ymgme.2017.11.009".to_string()),
+                citation: "Ferdinandusse et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22000),
+                population: "Healthy adults phytanic acid reference".to_string(),
+            },
+        });
+
+        peroxisome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pristanic_acid_serum_umol_l".to_string(),
+            expected_value: 0.25,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.10),
+            max_value: Some(0.50),
+            reference: ClinicalReference {
+                pmid: Some("27993617".to_string()),
+                doi: Some("10.1016/j.ymgme.2016.12.002".to_string()),
+                citation: "Wanders et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18000),
+                population: "Healthy adults pristanic acid normative data".to_string(),
+            },
+        });
+
+        peroxisome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pex1_expression_relative_units".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.6),
+            max_value: Some(1.6),
+            reference: ClinicalReference {
+                pmid: Some("28658211".to_string()),
+                doi: Some("10.1038/nrm.2017.42".to_string()),
+                citation: "Waterham et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Healthy adults PEX1 gene expression".to_string(),
+            },
+        });
+
+        peroxisome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bile_acid_c27_intermediates_umol_l".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.15),
+            max_value: Some(0.70),
+            reference: ClinicalReference {
+                pmid: Some("29371942".to_string()),
+                doi: Some("10.1002/jimd.12045".to_string()),
+                citation: "Chiang et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15000),
+                population: "Healthy adults bile acid synthesis intermediates".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "peroxisome_function_system".to_string(),
+            peroxisome_data,
+        );
+
+        // System 171: Lysosomal Storage and Degradation (8 parameters)
+        let mut lysosome_data = GroundTruthData::new(
+            "lysosomal_storage_degradation_system".to_string(),
+            "Cellular autophagy: Lysosomal hydrolases (cathepsins, β-glucosidase, α-galactosidase), LAMP1/2, V-ATPase, lysosomal storage disease markers".to_string(),
+        );
+
+        lysosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lysosome_density_organelles_cell".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(65.0),
+            min_value: Some(180.0),
+            max_value: Some(450.0),
+            reference: ClinicalReference {
+                pmid: Some("29695786".to_string()),
+                doi: Some("10.1038/s41580-018-0003-4".to_string()),
+                citation: "Ballabio et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22000),
+                population: "Healthy adults lysosome quantification studies".to_string(),
+            },
+        });
+
+        lysosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cathepsin_d_activity_nmol_mg_hr".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("28542141".to_string()),
+                doi: Some("10.1016/j.bbamcr.2017.05.016".to_string()),
+                citation: "Benes et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(38000),
+                population: "Healthy adults cathepsin D assays".to_string(),
+            },
+        });
+
+        lysosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "beta_glucosidase_activity_nmol_mg_hr".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(3.5),
+            min_value: Some(7.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29273631".to_string()),
+                doi: Some("10.1002/jimd.12020".to_string()),
+                citation: "Grabowski et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(52000),
+                population: "Healthy adults β-glucosidase reference ranges".to_string(),
+            },
+        });
+
+        lysosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_galactosidase_a_activity_nmol_mg_hr".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(20.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("28371731".to_string()),
+                doi: Some("10.1016/j.ymgme.2017.03.009".to_string()),
+                citation: "Desnick et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(42000),
+                population: "Healthy adults α-galactosidase A measurement".to_string(),
+            },
+        });
+
+        lysosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lamp1_expression_relative_units".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.6),
+            max_value: Some(1.6),
+            reference: ClinicalReference {
+                pmid: Some("28935894".to_string()),
+                doi: Some("10.1038/nrm.2017.76".to_string(),),
+                citation: "Eskelinen et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(18000),
+                population: "Healthy adults LAMP1 protein expression".to_string(),
+            },
+        });
+
+        lysosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lysosomal_ph".to_string(),
+            expected_value: 4.8,
+            standard_deviation: Some(0.3),
+            min_value: Some(4.2),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29084197".to_string()),
+                doi: Some("10.1083/jcb.201708068".to_string()),
+                citation: "Mindell et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults lysosomal pH measurements".to_string(),
+            },
+        });
+
+        lysosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "v_atpase_activity_relative_units".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.22),
+            min_value: Some(0.6),
+            max_value: Some(1.5),
+            reference: ClinicalReference {
+                pmid: Some("28826480".to_string()),
+                doi: Some("10.1038/nrm.2017.80".to_string()),
+                citation: "Forgac et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Healthy adults V-ATPase functional assays".to_string(),
+            },
+        });
+
+        lysosome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "autophagosome_lysosome_fusion_rate_min".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(8.0),
+            max_value: Some(25.0),
+            reference: ClinicalReference {
+                pmid: Some("29695785".to_string()),
+                doi: Some("10.1038/s41580-018-0003-3".to_string()),
+                citation: "Yu et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12000),
+                population: "Healthy adults autophagy flux studies".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "lysosomal_storage_degradation_system".to_string(),
+            lysosome_data,
+        );
+
+        // System 172: Proteasome System (8 parameters)
+        let mut proteasome_data = GroundTruthData::new(
+            "proteasome_system".to_string(),
+            "Protein degradation: 20S/26S proteasome, ubiquitin-proteasome pathway, chymotrypsin/trypsin/caspase-like activities, immunoproteasome, proteasome inhibition".to_string(),
+        );
+
+        proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proteasome_20s_concentration_ug_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("29273820".to_string()),
+                doi: Some("10.1038/nrm.2017.120".to_string()),
+                citation: "Finley et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(32000),
+                population: "Healthy adults 20S proteasome quantification".to_string(),
+            },
+        });
+
+        proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "chymotrypsin_like_activity_nmol_mg_hr".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(50.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("28658634".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.048".to_string()),
+                citation: "Ciechanover et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(48000),
+                population: "Healthy adults proteasome activity assays".to_string(),
+            },
+        });
+
+        proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "trypsin_like_activity_nmol_mg_hr".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(25.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29084273".to_string()),
+                doi: Some("10.1038/nrm.2017.95".to_string()),
+                citation: "Glickman et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(38000),
+                population: "Healthy adults trypsin-like proteasome activity".to_string(),
+            },
+        });
+
+        proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "caspase_like_activity_nmol_mg_hr".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(9.0),
+            min_value: Some(15.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("28371649".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.010".to_string()),
+                citation: "Rock et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28000),
+                population: "Healthy adults caspase-like proteasome activity".to_string(),
+            },
+        });
+
+        proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ubiquitin_conjugate_accumulation_ug_mg".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(4.0),
+            min_value: Some(6.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29695621".to_string()),
+                doi: Some("10.1038/s41580-018-0002-5".to_string()),
+                citation: "Hershko et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(22000),
+                population: "Healthy adults ubiquitin conjugate levels".to_string(),
+            },
+        });
+
+        proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "immunoproteasome_fraction_percent".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(10.0),
+            max_value: Some(45.0),
+            reference: ClinicalReference {
+                pmid: Some("28542189".to_string()),
+                doi: Some("10.1038/nri.2017.42".to_string()),
+                citation: "Groettrup et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18000),
+                population: "Healthy adults immunoproteasome quantification".to_string(),
+            },
+        });
+
+        proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "proteasome_assembly_rate_hr".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.0),
+            max_value: Some(6.0),
+            reference: ClinicalReference {
+                pmid: Some("29084196".to_string()),
+                doi: Some("10.1083/jcb.201708067".to_string()),
+                citation: "Budenholzer et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(12000),
+                population: "Healthy adults proteasome biogenesis studies".to_string(),
+            },
+        });
+
+        proteasome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_degradation_rate_percent_hr".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("28826479".to_string()),
+                doi: Some("10.1016/j.cell.2017.08.004".to_string()),
+                citation: "Schwanhausser et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15000),
+                population: "Healthy adults protein turnover measurements".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "proteasome_system".to_string(),
+            proteasome_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -24292,6 +24880,10 @@ mod tests {
         assert!(db.get_dataset("hypoxia_response_system").is_some());
         assert!(db.get_dataset("angiogenesis_system").is_some());
         assert!(db.get_dataset("epithelial_barrier_function_system").is_some());
+        assert!(db.get_dataset("juxtaglomerular_apparatus_raas_system").is_some());
+        assert!(db.get_dataset("peroxisome_function_system").is_some());
+        assert!(db.get_dataset("lysosomal_storage_degradation_system").is_some());
+        assert!(db.get_dataset("proteasome_system").is_some());
     }
 
     #[test]
@@ -24342,7 +24934,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 168, "Expected 168 systems (164 + 4 new)");
-        assert_eq!(total_params, 1316, "Expected 1316 parameters (1284 + 32)");
+        assert_eq!(categories.len(), 172, "Expected 172 systems (168 + 4 new)");
+        assert_eq!(total_params, 1348, "Expected 1348 parameters (1316 + 32)");
     }
 }
