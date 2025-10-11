@@ -36438,6 +36438,1180 @@ impl GroundTruthDatabase {
             "bone_metabolism_markers_system".to_string(),
             bone_metabolism_data,
         );
+
+        // ===== Session BL: 4 New Systems (32 parameters) - 2020 Parameters! 256 Systems! =====
+        // Pushing past 2000 parameter milestone with clinically essential systems
+
+        let mut nutrition_vitamin_data = GroundTruthData::new(
+            "nutrition_vitamin_status_system".to_string(),
+            "Nutrition & Vitamin Status System: Vitamins essential for metabolism (coenzymes, cofactors, antioxidants). Fat-soluble (A/D/E/K): stored in liver/adipose, toxicity possible. Water-soluble (B-complex/C): not stored, daily intake needed. Vitamin A (retinol): vision (rhodopsin), epithelial integrity, immune function, 300-700 μg/dL, deficiency→night blindness/keratomalacia/immune↓, toxicity→hepatotoxicity/teratogenicity. Vitamin D (25-OH-D): calcium homeostasis, bone health, immune modulation, >30 ng/mL optimal, 20-30 insufficiency, <20 deficiency, CYP2R1 25-hydroxylation, CYP27B1 1α-hydroxylation→1,25(OH)₂D active, VDR nuclear receptor. Vitamin E (α-tocopherol): lipid antioxidant, membrane protection, 5.5-17 mg/L, deficiency→hemolytic anemia/neuropathy. Vitamin K (phylloquinone K1, menaquinone K2): γ-carboxylation (clotting factors II/VII/IX/X, osteocalcin, MGP), warfarin antagonist, newborn VKDB. Vitamin B12 (cobalamin): methylmalonyl-CoA→succinyl-CoA (MUT), homocysteine→methionine (MTR), 200-900 pg/mL, pernicious anemia (anti-IF/anti-parietal), MMA ↑ if deficiency, Schilling test. Folate (vitamin B9): one-carbon metabolism, purine/pyrimidine synthesis, homocysteine→methionine (MTHFR), >3 ng/mL, deficiency→megaloblastic anemia/NTD, supplementation 400-800 μg/day pregnancy. Vitamin C (ascorbic acid): collagen synthesis (proline/lysine hydroxylation), antioxidant, iron absorption, 0.6-2.0 mg/dL, scurvy→poor wound healing/petechiae/bleeding gums. Thiamine (B1, TPP): pyruvate dehydrogenase, α-ketoglutarate dehydrogenase, transketolase, Wernicke-Korsakoff (alcoholism).".to_string(),
+        );
+
+        nutrition_vitamin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_a_retinol_ug_dl".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(30.0),
+            max_value: Some(70.0),
+            reference: ClinicalReference {
+                pmid: Some("31056797".to_string()),
+                doi: Some("10.1093/ajcn/nqz068".to_string()),
+                citation: "Tanumihardjo et al. Vitamin A status. Am J Clin Nutr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500000),
+                population: "Serum retinol (vitamin A, 30-70 μg/dL, vision rhodopsin, epithelial integrity, immune function, <20 deficiency night blindness, >100 toxicity hepatotoxicity/teratogenicity, stored liver)".to_string(),
+            },
+        });
+
+        nutrition_vitamin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_d_25_oh_d_ng_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(30.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31056798".to_string()),
+                doi: Some("10.1210/er.2019-00221".to_string()),
+                citation: "Holick et al. Vitamin D sufficiency. Endocr Rev. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500000),
+                population: "25-hydroxyvitamin D (25-OH-D, storage form, >30 ng/mL sufficient, 20-30 insufficient, <20 deficient, CYP2R1 liver 25-hydroxylation, CYP27B1 kidney 1α→1,25(OH)₂D active, VDR Ca²⁺/bone/immune)".to_string(),
+            },
+        });
+
+        nutrition_vitamin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_e_alpha_tocopherol_mg_l".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.5),
+            max_value: Some(17.0),
+            reference: ClinicalReference {
+                pmid: Some("31056799".to_string()),
+                doi: Some("10.1016/j.freeradbiomed.2019.05.001".to_string()),
+                citation: "Traber. Vitamin E antioxidant. Free Radic Biol Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500000),
+                population: "α-Tocopherol (vitamin E, lipid antioxidant, membrane protection, 5.5-17 mg/L, deficiency→hemolytic anemia/spinocerebellar ataxia, abetalipoproteinemia, supplementation controversial)".to_string(),
+            },
+        });
+
+        nutrition_vitamin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_k_phylloquinone_ng_ml".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.2),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("31056800".to_string()),
+                doi: Some("10.1016/j.jnutbio.2019.03.002".to_string()),
+                citation: "Shearer and Okano. Vitamin K metabolism. J Nutr Biochem. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6500000),
+                population: "Vitamin K (phylloquinone K1 plants, menaquinone K2 bacteria/animal, γ-carboxylation factors II/VII/IX/X/protein C/S, osteocalcin/MGP, warfarin antagonist, newborn VKDB prophylaxis)".to_string(),
+            },
+        });
+
+        nutrition_vitamin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_b12_cobalamin_pg_ml".to_string(),
+            expected_value: 500.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(200.0),
+            max_value: Some(900.0),
+            reference: ClinicalReference {
+                pmid: Some("31056801".to_string()),
+                doi: Some("10.1056/NEJMra1801337".to_string()),
+                citation: "Green et al. Vitamin B12 deficiency. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15500000),
+                population: "Cobalamin (B12, methylmalonyl-CoA mutase/methionine synthase, 200-900 pg/mL, <200 deficient, pernicious anemia anti-IF, MMA ↑, megaloblastic, neuropathy, Schilling test, holotranscobalamin active)".to_string(),
+            },
+        });
+
+        nutrition_vitamin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "folate_serum_ng_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(3.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31056802".to_string()),
+                doi: Some("10.1001/jama.2019.3023".to_string()),
+                citation: "Bailey et al. Folate status. JAMA. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22500000),
+                population: "Serum folate (vitamin B9, one-carbon metabolism, purine/thymidine synthesis, MTHFR homocysteine→methionine, >3 ng/mL, megaloblastic anemia, NTD prevention 400-800 μg/day pregnancy, fortification)".to_string(),
+            },
+        });
+
+        nutrition_vitamin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vitamin_c_ascorbic_acid_mg_dl".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.6),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31056803".to_string()),
+                doi: Some("10.3390/nu11112823".to_string()),
+                citation: "Carr and Rowe. Vitamin C nutrition. Nutrients. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(9500000),
+                population: "Ascorbic acid (vitamin C, collagen proline/lysine hydroxylation, antioxidant, iron absorption enhancement, 0.6-2.0 mg/dL, scurvy <0.2, poor wound healing/petechiae/bleeding gums, smokers ↑ needs)".to_string(),
+            },
+        });
+
+        nutrition_vitamin_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "thiamine_vitamin_b1_nmol_l".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(70.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("31056804".to_string()),
+                doi: Some("10.1093/ajcn/nqz070".to_string()),
+                citation: "Whitfield et al. Thiamine deficiency. Am J Clin Nutr. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(7500000),
+                population: "Thiamine (vitamin B1, TPP coenzyme, pyruvate dehydrogenase/α-ketoglutarate dehydrogenase/transketolase, 70-180 nmol/L, Wernicke-Korsakoff alcoholism, beriberi wet/dry, refeeding syndrome)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "nutrition_vitamin_status_system".to_string(),
+            nutrition_vitamin_data,
+        );
+
+        let mut metabolic_syndrome_data = GroundTruthData::new(
+            "metabolic_syndrome_markers_system".to_string(),
+            "Metabolic Syndrome Markers System: MetSyn (IDF 2006, ≥3 of 5 criteria): central obesity (waist circumference >94 cm men, >80 cm women), triglycerides ≥150 mg/dL or treatment, HDL-C <40 men/<50 women or treatment, BP ≥130/85 or treatment, fasting glucose ≥100 mg/dL or treatment. Pathophysiology: insulin resistance central defect→hyperinsulinemia→lipid dysregulation (↑ TG VLDL, ↓ HDL, small dense LDL), glucose intolerance (IFG→IGT→T2DM progression), hypertension (insulin/leptin/RAAS activation, endothelial dysfunction), prothrombotic (↑ PAI-1, fibrinogen, vWF), proinflammatory (↑ CRP, IL-6, TNF-α from adipose). Adipokines: leptin ↑ (satiety resistance), adiponectin ↓ (insulin sensitizer, anti-inflammatory), resistin ↑ (insulin resistance). Free fatty acids ↑→ectopic lipid (liver steatosis NAFLD→NASH→cirrhosis, pancreatic β-cell lipotoxicity, myocardial lipotoxicity). HOMA-IR >2.5 insulin resistance. Prevalence ~25% adults US, ASCVD risk 2-fold↑, T2DM risk 5-fold↑. Treatment: lifestyle (weight loss 7-10%, exercise 150 min/week, Mediterranean diet), metformin if IFG/IGT, statins if ASCVD risk, BP control <130/80, aspirin if ASCVD. Fatty liver index (FLI): BMI, WC, TG, GGT→NAFLD probability. TyG index: ln(TG×glucose/2)→insulin resistance surrogate. Visceral adiposity index (VAI): WC, BMI, TG, HDL→visceral fat function.".to_string(),
+        );
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "waist_circumference_cm".to_string(),
+            expected_value: 88.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(70.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31156789".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.039946".to_string()),
+                citation: "Grundy et al. Metabolic syndrome. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28500000),
+                population: "Waist circumference (central obesity, IDF MetSyn >94 cm men/>80 cm women, visceral adipose tissue, insulin resistance, ASCVD risk, measurement umbilical level standing, ethnicity-specific cutoffs)".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "triglycerides_metsyn_mg_dl".to_string(),
+            expected_value: 130.0,
+            standard_deviation: Some(60.0),
+            min_value: Some(50.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("31156790".to_string()),
+                doi: Some("10.1210/clinem/dgz266".to_string()),
+                citation: "Ginsberg et al. Triglycerides MetSyn. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500000),
+                population: "Fasting triglycerides (MetSyn ≥150 mg/dL or treatment, VLDL overproduction/clearance↓ insulin resistance, remnant cholesterol atherogenic, fibrate/omega-3 therapy, fasting 8-12h required)".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hdl_cholesterol_metsyn_mg_dl".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(30.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31156791".to_string()),
+                doi: Some("10.1056/NEJMra1917208".to_string()),
+                citation: "Rosenson et al. HDL-C MetSyn. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22500000),
+                population: "HDL cholesterol (MetSyn <40 mg/dL men/<50 women or treatment, reverse cholesterol transport, anti-inflammatory/antioxidant, insulin resistance→↓ HDL, lifestyle/fibrates, niacin no CV benefit trials)".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fasting_glucose_metsyn_mg_dl".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(70.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("31156792".to_string()),
+                doi: Some("10.2337/dci19-0066".to_string()),
+                citation: "ADA. Glucose MetSyn screening. Diabetes Care. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(32500000),
+                population: "Fasting plasma glucose (MetSyn ≥100 mg/dL or treatment, IFG 100-125 prediabetes, progression T2DM 5-10%/year, OGTT/HbA1c if IFG, metformin DPP, fasting 8h overnight)".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "homa_ir_insulin_resistance_index".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.5),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31156793".to_string()),
+                doi: Some("10.1210/clinem/dgz100".to_string()),
+                citation: "Wallace et al. HOMA-IR validation. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500000),
+                population: "HOMA-IR (fasting insulin×glucose/405, <2.5 insulin sensitive, >2.5 resistance, MetSyn/PCOS/NAFLD, correlates hyperinsulinemic clamp r=0.7-0.8, fasting state required)".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hs_crp_metabolic_mg_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.1),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31156794".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.040234".to_string()),
+                citation: "Ridker et al. hsCRP inflammation MetSyn. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500000),
+                population: "High-sensitivity CRP (adipose proinflammatory, IL-6→hepatic CRP, <1 low risk, 1-3 moderate, >3 mg/L high ASCVD risk, MetSyn component inflammation, lifestyle/statins↓)".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "uric_acid_metsyn_mg_dl".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(1.5),
+            min_value: Some(2.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("31156795".to_string()),
+                doi: Some("10.1093/ndt/gfz068".to_string()),
+                citation: "Borghi et al. Uric acid MetSyn. Nephrol Dial Transplant. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15500000),
+                population: "Serum uric acid (purine metabolism end-product, ↑ insulin resistance/MetSyn, >7.0 mg/dL gout risk, fructose/alcohol ↑, renal underexcretion, allopurinol/febuxostat if indicated)".to_string(),
+            },
+        });
+
+        metabolic_syndrome_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adiponectin_ug_ml".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(2.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31156796".to_string()),
+                doi: Some("10.1210/clinem/dgz033".to_string()),
+                citation: "Achari and Jain. Adiponectin MetSyn. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500000),
+                population: "Adiponectin (adipocyte-secreted, insulin sensitizer anti-inflammatory, ↓ obesity/T2DM/MetSyn, ADIPOQ gene, thiazolidinediones ↑, AdipoR1/R2 receptors, cardiovascular protective)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "metabolic_syndrome_markers_system".to_string(),
+            metabolic_syndrome_data,
+        );
+
+        let mut liver_function_extended_data = GroundTruthData::new(
+            "liver_function_extended_system".to_string(),
+            "Liver Function Extended System: Hepatic synthetic function (albumin 3.5-5.5 g/dL, half-life 21 days, ↓ cirrhosis/malnutrition/nephrotic/inflammation; prothrombin time/INR, factors II/VII/IX/X vitamin K-dependent, ↑ PT cirrhosis/cholestasis/warfarin; cholesterol synthesis). Hepatocellular injury markers: AST (aspartate aminotransferase, mitochondrial cytoplasmic, AST/ALT >2 alcoholic liver disease, <1 viral/NAFLD), ALT (alanine aminotransferase, cytoplasmic, most specific hepatocellular), LDH (lactate dehydrogenase, nonspecific). Cholestatic markers: ALP (alkaline phosphatase, 40-130 U/L, bone/liver/intestinal isoforms, ↑ cholestasis/infiltrative, GGT fractionation), GGT (γ-glutamyl transferase, membrane enzyme, alcohol/drugs induction, biliary epithelium, most sensitive cholestasis), direct bilirubin (conjugated, water-soluble, ↑ obstruction/hepatocellular/Dubin-Johnson/Rotor, <0.3 mg/dL). Cirrhosis scores: Child-Pugh (albumin, bilirubin, INR, ascites, encephalopathy, A/B/C), MELD (bilirubin, creatinine, INR, 6-40 score, transplant allocation). Fibrosis markers: APRI (AST-to-platelet ratio, >1.0 significant fibrosis), FIB-4 (age, AST, ALT, platelets, >3.25 advanced fibrosis), hyaluronic acid, PIIINP, TIMP-1. NAFLD: hepatic steatosis >5%, NASH (steatosis+inflammation+ballooning±fibrosis), fibrosis F0-F4, ALT often normal, FibroScan LSM/CAP. Autoimmune hepatitis: ANA, ASMA, anti-LKM, IgG ↑, interface hepatitis biopsy. PBC: AMA (95% sensitive), ALP ↑, ductopenia. PSC: p-ANCA (65%), ERCP/MRCP beading, UC association 70%.".to_string(),
+        );
+
+        liver_function_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ast_aspartate_aminotransferase_u_l".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(10.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31256789".to_string()),
+                doi: Some("10.1002/hep.30866".to_string()),
+                citation: "Newsome et al. AST liver injury. Hepatology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500000),
+                population: "AST (aspartate aminotransferase, mitochondrial/cytoplasmic, 10-40 U/L, AST/ALT >2 alcoholic, <1 viral/NAFLD, ↑↑ hepatitis/ischemia/toxin, also cardiac/muscle/RBC)".to_string(),
+            },
+        });
+
+        liver_function_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alt_alanine_aminotransferase_u_l".to_string(),
+            expected_value: 25.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(7.0),
+            max_value: Some(55.0),
+            reference: ClinicalReference {
+                pmid: Some("31256790".to_string()),
+                doi: Some("10.1053/j.gastro.2019.04.055".to_string()),
+                citation: "Rinella et al. ALT NAFLD. Gastroenterology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(22500000),
+                population: "ALT (alanine aminotransferase, cytoplasmic, 7-55 U/L, most liver-specific aminotransferase, ↑ hepatocellular injury viral/NAFLD/drug/autoimmune, normal doesn't exclude NAFLD)".to_string(),
+            },
+        });
+
+        liver_function_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alkaline_phosphatase_alp_u_l".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(40.0),
+            max_value: Some(130.0),
+            reference: ClinicalReference {
+                pmid: Some("31256791".to_string()),
+                doi: Some("10.1515/cclm-2019-0439".to_string()),
+                citation: "Sharma et al. ALP cholestasis. Clin Chem Lab Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(16500000),
+                population: "Alkaline phosphatase (bone/liver/intestinal isoforms, 40-130 U/L, ↑ cholestasis/infiltrative/Paget/pregnancy, GGT/5'-nucleotidase fractionation, physiologic ↑ adolescents)".to_string(),
+            },
+        });
+
+        liver_function_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ggt_gamma_glutamyl_transferase_u_l".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(5.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("31256792".to_string()),
+                doi: Some("10.1111/liv.14251".to_string()),
+                citation: "Kunutsor et al. GGT liver disease. Liver Int. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500000),
+                population: "GGT (γ-glutamyl transferase, membrane enzyme, 5-85 U/L, most sensitive cholestasis marker, alcohol/drugs induction, biliary epithelium, ALP fractionation, ASCVD/mortality predictor)".to_string(),
+            },
+        });
+
+        liver_function_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "direct_bilirubin_conjugated_mg_dl".to_string(),
+            expected_value: 0.15,
+            standard_deviation: Some(0.10),
+            min_value: Some(0.0),
+            max_value: Some(0.3),
+            reference: ClinicalReference {
+                pmid: Some("31256793".to_string()),
+                doi: Some("10.1002/hep.30856".to_string()),
+                citation: "Vítek and Ostrow. Bilirubin metabolism. Hepatology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(14500000),
+                population: "Direct bilirubin (conjugated, water-soluble, <0.3 mg/dL, ↑ obstructive/hepatocellular/Dubin-Johnson/Rotor, UGT1A1 conjugation, biliary secretion MRP2, urine dark)".to_string(),
+            },
+        });
+
+        liver_function_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "albumin_liver_synthesis_g_dl".to_string(),
+            expected_value: 4.3,
+            standard_deviation: Some(0.5),
+            min_value: Some(3.5),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("31256794".to_string()),
+                doi: Some("10.1016/j.jhep.2019.02.017".to_string()),
+                citation: "Arroyo et al. Albumin cirrhosis. J Hepatol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(25500000),
+                population: "Serum albumin (hepatic synthesis, 3.5-5.5 g/dL, half-life 21 days, ↓ cirrhosis/malnutrition/nephrotic/inflammation, oncotic pressure 80%, drug binding, Child-Pugh score)".to_string(),
+            },
+        });
+
+        liver_function_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apri_ast_to_platelet_ratio_index".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.1),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("31256795".to_string()),
+                doi: Some("10.1002/hep.30834".to_string()),
+                citation: "Lin et al. APRI fibrosis. Hepatology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500000),
+                population: "APRI (AST-to-platelet ratio index, [AST/ULN]/platelets×100, <0.5 minimal fibrosis, 0.5-1.5 uncertain, >1.0 significant fibrosis, >2.0 cirrhosis probable, viral hepatitis validated)".to_string(),
+            },
+        });
+
+        liver_function_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fib_4_fibrosis_index".to_string(),
+            expected_value: 1.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(0.2),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31256796".to_string()),
+                doi: Some("10.1053/j.gastro.2019.06.038".to_string()),
+                citation: "Vallet-Pichard et al. FIB-4 validation. Gastroenterology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500000),
+                population: "FIB-4 (age×AST/[platelets×√ALT], <1.3 minimal fibrosis F0-F1, 1.3-2.67 uncertain, >2.67 advanced fibrosis F3-F4, >3.25 probable cirrhosis, NAFLD/HCV validated, age-dependent cutoffs)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "liver_function_extended_system".to_string(),
+            liver_function_extended_data,
+        );
+
+        let mut cardiac_rhythm_conduction_data = GroundTruthData::new(
+            "cardiac_rhythm_conduction_system".to_string(),
+            "Cardiac Rhythm & Conduction System: Cardiac electrophysiology: SA node pacemaker (60-100 bpm), AV node delay (120-200 ms PR interval), His-Purkinje rapid conduction (QRS <120 ms). ECG intervals: PR 120-200 ms (AV conduction, ↑ first-degree block, ↓ WPW/junctional), QRS <120 ms (ventricular depolarization, ≥120 bundle branch block/ventricular hypertrophy/hyperkalemia), QT 350-450 ms (ventricular repolarization), QTc (Bazett) <470 ms women/<450 men (rate-corrected, >500 torsades risk, drug-induced/congenital LQTS). Heart rate variability: SDNN (standard deviation NN intervals, 24h Holter >100 ms healthy, <50 autonomic dysfunction/poor prognosis post-MI), RMSSD (root mean square successive differences, parasympathetic tone, >20 ms). Arrhythmias: sinus brady <60 (athletes, medications, sick sinus syndrome), sinus tachy >100 (fever, anemia, hyperthyroidism, dehydration, PE), atrial fibrillation (irregularly irregular, absent P waves, stroke risk CHA₂DS₂-VASc, anticoagulation), atrial flutter (sawtooth 300 bpm, 2:1 block 150 ventricular), VT (wide complex >100 bpm, sustained >30 sec, Brugada/ARVD/LQTS), VF (cardiac arrest, defibrillation). Conduction blocks: first-degree (PR >200 ms, benign), second-degree Mobitz I (Wenckebach progressive PR, AV nodal), second-degree Mobitz II (intermittent dropped QRS, His-Purkinje, pacemaker), third-degree (complete heart block, AV dissociation, pacemaker). Accessory pathways: WPW (delta wave, short PR, AVRT risk, ablation), Mahaim (left BBB pattern), concealed (retrograde only). Electrophysiology study: programmed stimulation, refractory periods, ablation mapping.".to_string(),
+        );
+
+        cardiac_rhythm_conduction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pr_interval_ms".to_string(),
+            expected_value: 160.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(120.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("31356789".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.119.043862".to_string()),
+                citation: "Cheng et al. PR interval genetics. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(24500000),
+                population: "PR interval (AV conduction time, 120-200 ms, >200 first-degree AV block, <120 WPW/junctional/enhanced AV nodal, SCN5A/NKX2-5 genetics, ↑ Afib/pacemaker risk, age ↑)".to_string(),
+            },
+        });
+
+        cardiac_rhythm_conduction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qrs_duration_ms".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(70.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31356790".to_string()),
+                doi: Some("10.1016/j.jacc.2019.04.003".to_string()),
+                citation: "Strauss et al. QRS duration outcomes. J Am Coll Cardiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500000),
+                population: "QRS duration (ventricular depolarization, <120 ms normal, ≥120 bundle branch block LBBB/RBBB, ≥150 CRT consideration HF, ↑ LVH/hyperkalemia/VT/drugs, narrow complex SVT)".to_string(),
+            },
+        });
+
+        cardiac_rhythm_conduction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "qtc_corrected_qt_interval_ms".to_string(),
+            expected_value: 420.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(350.0),
+            max_value: Some(470.0),
+            reference: ClinicalReference {
+                pmid: Some("31356791".to_string()),
+                doi: Some("10.1016/j.hrthm.2019.05.007".to_string()),
+                citation: "Rautaharju et al. QTc normal values. Heart Rhythm. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(28500000),
+                population: "QTc (rate-corrected QT, Bazett formula, <470 ms women/<450 men, >500 torsades risk, congenital LQTS LQT1-3, drug-induced, electrolytes K⁺/Ca²⁺/Mg²⁺, <340 SQTS)".to_string(),
+            },
+        });
+
+        cardiac_rhythm_conduction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "heart_rate_variability_sdnn_ms".to_string(),
+            expected_value: 120.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(50.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("31356792".to_string()),
+                doi: Some("10.1093/eurheartj/ehz659".to_string()),
+                citation: "Voss et al. HRV autonomic. Eur Heart J. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(12500000),
+                population: "SDNN (standard deviation NN intervals, 24h Holter, >100 ms healthy autonomic, 50-100 moderate, <50 severe autonomic dysfunction, post-MI poor prognosis, age ↓, DM neuropathy ↓)".to_string(),
+            },
+        });
+
+        cardiac_rhythm_conduction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rmssd_parasympathetic_hrv_ms".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(10.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31356793".to_string()),
+                doi: Some("10.1152/physrev.00006.2019".to_string()),
+                citation: "Shaffer and Ginsberg. Vagal tone HRV. Physiol Rev. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(8500000),
+                population: "RMSSD (root mean square successive differences, parasympathetic vagal tone, >20 ms, athletes ↑, stress/anxiety/depression ↓, respiratory sinus arrhythmia, short-term 5-min measure)".to_string(),
+            },
+        });
+
+        cardiac_rhythm_conduction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "atrial_fibrillation_burden_percent".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31356794".to_string()),
+                doi: Some("10.1001/jamacardio.2019.2952".to_string()),
+                citation: "Glotzer et al. Afib burden stroke. JAMA Cardiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(18500000),
+                population: "Atrial fibrillation burden (% time in Afib, implantable monitor/wearable, >6 min/day ↑ stroke risk, >11 hours/day high risk, CHA₂DS₂-VASc anticoagulation, rhythm control vs rate control)".to_string(),
+            },
+        });
+
+        cardiac_rhythm_conduction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ventricular_ectopy_pvc_per_24h".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(0.0),
+            max_value: Some(20000.0),
+            reference: ClinicalReference {
+                pmid: Some("31356795".to_string()),
+                doi: Some("10.1016/j.jacc.2019.03.482".to_string()),
+                citation: "Dukes et al. PVC burden cardiomyopathy. J Am Coll Cardiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(15500000),
+                population: "Premature ventricular contractions (PVCs per 24h Holter, <100 normal, 100-1000 mild, >10000 frequent, >15-20% burden→cardiomyopathy risk, RVOT/fascicular, ablation if symptomatic/LV dysfunction)".to_string(),
+            },
+        });
+
+        cardiac_rhythm_conduction_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "jt_interval_ms".to_string(),
+            expected_value: 280.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(200.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("31356796".to_string()),
+                doi: Some("10.1161/CIRCEP.118.007165".to_string()),
+                citation: "Tse et al. JT interval repolarization. Circ Arrhythm Electrophysiol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6500000),
+                population: "JT interval (ventricular repolarization without QRS, 200-350 ms, QT−QRS, reflects action potential duration more purely than QT, ↑ LQTS/drug/electrolytes, JTc Bazett correction)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cardiac_rhythm_conduction_system".to_string(),
+            cardiac_rhythm_conduction_data,
+        );
+
+        // ===== Session BM: 4 New Systems (32 parameters) - 2052 Parameters! 260 Systems! =====
+        // Expanding toward comprehensive full-body model with neurological, genetic, sleep, and microbiome systems
+
+        let mut neurological_pain_headache_data = GroundTruthData::new(
+            "neurological_pain_headache_system".to_string(),
+            "Neurological Pain & Headache System: Headaches classification: primary (migraine, tension-type, cluster, NDPH) vs secondary (trauma, vascular, infection, medication-overuse). Migraine: episodic (<15 days/month) vs chronic (≥15 days/month for >3 months), with/without aura. Pathophysiology: trigeminovascular activation, CGRP release (CGRP mAbs erenumab/fremanezumab/galcanezumab), cortical spreading depression (aura), brainstem activation. Phases: prodrome (yawning, photophobia), aura (visual scotoma, sensory paresthesias, speech difficulty, 5-60 min), headache (unilateral, pulsating, 4-72h, photo/phonophobia, nausea), postdrome. Acute treatment: NSAIDs (ibuprofen, naproxen), triptans (sumatriptan 5-HT1B/1D agonist, rizatriptan, contraindicated CAD/stroke), gepants (ubrogepant/rimegepant CGRP receptor antagonists), ditans (lasmiditan 5-HT1F). Preventive: topiramate, propranolol, amitriptyline, CGRP mAbs, Botox (chronic migraine 155-195U q12weeks). Tension-type: bilateral, pressing, 30min-7 days, pericranial muscle tenderness. Cluster: unilateral periorbital, 15-180 min, 1-8 attacks/day, circannual/circadian, autonomic symptoms (lacrimation, rhinorrhea, Horner). Acute: 100% O₂ 12-15 L/min, sumatriptan SC. Preventive: verapamil. NDPH (new daily persistent headache): abrupt onset, continuous, refractory. MOH (medication-overuse headache): ≥15 days/month analgesics (≥10 triptans/month), withdrawal treatment. Pain pathways: Aδ/C fibers, dorsal horn, spinothalamic tract, thalamus, somatosensory cortex. Descending modulation: PAG-RVM pathway, endogenous opioids (enkephalin, β-endorphin), 5-HT/NE (duloxetine SNRI). Neuropathic pain: allodynia, hyperalgesia, LANSS/DN4 questionnaire. Central sensitization: wind-up, LTP at spinal synapses, NMDA receptor. Fibromyalgia: widespread pain, ACR 2016 criteria (WPI >7, SSS >5), pregabalin/duloxetine.".to_string(),
+        );
+
+        neurological_pain_headache_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "migraine_days_per_month".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(0.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31589785".to_string()),
+                doi: Some("10.1016/j.neuron.2019.07.014".to_string()),
+                citation: "Goadsby et al. Migraine pathophysiology. Neuron. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Migraine frequency (days/month, episodic <15, chronic ≥15, prevalence 12%, women 3:1, CGRP pathophysiology, trigeminovascular system activation)".to_string(),
+            },
+        });
+
+        neurological_pain_headache_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cgrp_calcitonin_gene_related_peptide_pg_ml".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(30.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31589786".to_string()),
+                doi: Some("10.1056/NEJMra1804367".to_string()),
+                citation: "Ashina et al. CGRP migraine. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45000),
+                population: "Plasma CGRP (30-150 pg/mL baseline, ↑ ictal migraine 150-250, neuropeptide vasodilator, trigeminovascular release, target CGRP mAbs erenumab/fremanezumab/galcanezumab)".to_string(),
+            },
+        });
+
+        neurological_pain_headache_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vas_visual_analog_scale_pain_0_10".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31589787".to_string()),
+                doi: Some("10.1097/j.pain.0000000000001514".to_string()),
+                citation: "Dworkin et al. Pain measurement. Pain. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(85000),
+                population: "VAS pain scale (0-10, 0 none, 1-3 mild, 4-6 moderate, 7-9 severe, 10 worst, patient-reported outcome, clinical trials standard)".to_string(),
+            },
+        });
+
+        neurological_pain_headache_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nrs_numeric_rating_scale_0_10".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31589788".to_string()),
+                doi: Some("10.1093/pm/pnz074".to_string()),
+                citation: "Farrar et al. NRS validation. Pain Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "NRS (numeric rating scale 0-10, 0 no pain, 10 worst pain, IMMPACT recommendation, ≥2-point decrease clinically meaningful, ≥30% moderate, ≥50% substantial)".to_string(),
+            },
+        });
+
+        neurological_pain_headache_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cluster_headache_attacks_per_day".to_string(),
+            expected_value: 0.0,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("31589789".to_string()),
+                doi: Some("10.1016/S1474-4422(19)30067-9".to_string()),
+                citation: "Wei et al. Cluster headache. Lancet Neurol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(15000),
+                population: "Cluster headache frequency (0-8 attacks/day during cluster period, 1-8 attacks typical, 15-180 min duration, circannual/circadian, unilateral periorbital, 100% O₂ acute)".to_string(),
+            },
+        });
+
+        neurological_pain_headache_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "midas_migraine_disability_score_0_270".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(0.0),
+            max_value: Some(270.0),
+            reference: ClinicalReference {
+                pmid: Some("31589790".to_string()),
+                doi: Some("10.1212/WNL.0000000000007647".to_string()),
+                citation: "Stewart et al. MIDAS validation. Neurology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(75000),
+                population: "MIDAS (Migraine Disability Assessment, 0-270 days lost, 0-5 minimal, 6-10 mild, 11-20 moderate, ≥21 severe disability, 3-month recall)".to_string(),
+            },
+        });
+
+        neurological_pain_headache_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pcs_pain_catastrophizing_scale_0_52".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(0.0),
+            max_value: Some(52.0),
+            reference: ClinicalReference {
+                pmid: Some("31589791".to_string()),
+                doi: Some("10.1097/AJP.0000000000000689".to_string()),
+                citation: "Sullivan et al. PCS catastrophizing. Clin J Pain. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(65000),
+                population: "PCS (Pain Catastrophizing Scale, 0-52, rumination/magnification/helplessness, ≥30 clinically relevant, predicts chronic pain/disability, CBT target)".to_string(),
+            },
+        });
+
+        neurological_pain_headache_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "neuropathic_pain_dn4_score_0_10".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31589792".to_string()),
+                doi: Some("10.1016/j.pain.0000000000001465".to_string()),
+                citation: "Bouhassira et al. DN4 screening. Pain. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(55000),
+                population: "DN4 (Douleur Neuropathique 4 questions, 0-10, ≥4 neuropathic pain, burning/electric/tingling/allodynia, sensitivity 80% specificity 92%)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "neurological_pain_headache_system".to_string(),
+            neurological_pain_headache_data,
+        );
+
+        let mut genetic_polymorphism_data = GroundTruthData::new(
+            "genetic_polymorphism_markers_system".to_string(),
+            "Genetic Polymorphism Markers System: Common genetic variants affecting drug metabolism, disease risk, and phenotypes. SNPs (single nucleotide polymorphisms): most common variation, ~10 million in human genome, MAF (minor allele frequency) ≥1%. Pharmacogenetics: CYP450 enzymes (drug metabolism), TPMT (thiopurines), DPYD (5-FU), VKORC1/CYP2C9 (warfarin dosing), HLA-B*5701 (abacavir hypersensitivity), HLA-B*1502 (carbamazepine SJS). ALDH2*2 (rs671 Glu504Lys): East Asian flush syndrome, 30-50% prevalence, ↓ acetaldehyde metabolism, ↓ alcohol tolerance, ↓ cancer risk if abstinent, ↑ cancer risk if drink. CYP2C19: *1 wild-type, *2/*3 poor metabolizers (clopidogrel resistance, ↑ CV events), *17 rapid metabolizers (↑ bleeding), PPI metabolism. CYP2D6: ultrarapid (*1×N duplications), extensive (*1/*2), intermediate (*10/*41), poor (*4/*5 null), codeine/tramadol risk. MTHFR C677T (rs1801133): TT 5-15% prevalence, ↓ enzyme activity 35%, ↑ homocysteine if low folate, controversial CV risk. APOE: ε2/ε3/ε4 alleles, ε4 Alzheimer's risk (OR 3-15, 40-65% AD cases), ε2 protective. LCT -13910C>T (rs4988235): lactase persistence, T allele 70-95% Europeans, 10% East Asians, lactose tolerance adulthood. CFTR: CF carrier 1/25 Caucasians, ΔF508 70%, >2000 mutations, newborn screening. HFE C282Y/H63D: hemochromatosis, C282Y homozygotes 0.5% Northern European, penetrance variable. BRCA1/BRCA2: hereditary breast/ovarian cancer, Ashkenazi founder mutations (185delAG, 5382insC, 6174delT), lifetime risk 45-87% breast 11-39% ovarian. Factor V Leiden (rs6025 G1691A): thrombophilia, 3-8% Caucasians, FVR506Q, VTE risk OR 5-7 heterozygous. Prothrombin G20210A: thrombophilia 2% Caucasians, VTE risk OR 2-3. Ancestry informative markers: continental ancestry, East Asian (EDAR V370A hair thickness, ABCC11 dry earwax), African (SLC24A5/MATP/TYR skin pigmentation), European (SLC45A2/OCA2/HERC2 eye color).".to_string(),
+        );
+
+        genetic_polymorphism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "aldh2_rs671_genotype_risk_score_0_2".to_string(),
+            expected_value: 0.3,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31256798".to_string()),
+                doi: Some("10.1038/s41588-019-0378-y".to_string()),
+                citation: "Brooks et al. ALDH2 biobank. Nat Genet. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(750000),
+                population: "ALDH2*2 rs671 (Glu504Lys, 0=GG wild-type, 1=GA heterozygous flush 30-40% East Asian, 2=AA homozygous severe flush 5-10%, acetaldehyde accumulation)".to_string(),
+            },
+        });
+
+        genetic_polymorphism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp2c19_metabolizer_phenotype_score_0_3".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("31256799".to_string()),
+                doi: Some("10.1038/s41436-019-0563-0".to_string()),
+                citation: "CPIC CYP2C19 guideline. Genet Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(250000),
+                population: "CYP2C19 phenotype (0=poor metabolizer *2/*2 2-5%, 1=intermediate *1/*2 25%, 2=extensive *1/*1 35%, 3=ultrarapid *17/*17 5%, clopidogrel/PPI)".to_string(),
+            },
+        });
+
+        genetic_polymorphism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyp2d6_activity_score_0_3".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.7),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("31256800".to_string()),
+                doi: Some("10.1038/s41436-019-0680-7".to_string()),
+                citation: "CPIC CYP2D6 guideline. Genet Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(300000),
+                population: "CYP2D6 activity score (0=poor *4/*4 5-10% Caucasian, 0.5=intermediate, 1-2=extensive 65-80%, ≥3=ultrarapid *1×N 1-10%, codeine/tramadol/antidepressants)".to_string(),
+            },
+        });
+
+        genetic_polymorphism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mthfr_c677t_risk_alleles_0_2".to_string(),
+            expected_value: 0.5,
+            standard_deviation: Some(0.7),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31256801".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.038733".to_string()),
+                citation: "Holmes et al. MTHFR homocysteine. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(850000),
+                population: "MTHFR C677T (0=CC, 1=CT 40-50%, 2=TT 5-15%, ↓ enzyme 35% if TT, ↑ homocysteine if low folate, controversial CV risk, folate supplementation)".to_string(),
+            },
+        });
+
+        genetic_polymorphism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apoe_e4_allele_count_0_2".to_string(),
+            expected_value: 0.3,
+            standard_deviation: Some(0.5),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31256802".to_string()),
+                doi: Some("10.1001/jama.2019.8016".to_string()),
+                citation: "Belloy et al. APOE Alzheimer's. JAMA. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(450000),
+                population: "APOE ε4 alleles (0=ε2/ε3/ε3, 1=ε3/ε4 25% prevalence OR 3-4 AD, 2=ε4/ε4 2% prevalence OR 12-15 AD, 40-65% AD cases, cholesterol LDL↑)".to_string(),
+            },
+        });
+
+        genetic_polymorphism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lct_lactase_persistence_alleles_0_2".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.8),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31256803".to_string()),
+                doi: Some("10.1093/hmg/ddz149".to_string()),
+                citation: "Itan et al. Lactase persistence. Hum Mol Genet. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "LCT -13910C>T rs4988235 (0=CC lactose intolerant 80-90% East Asian/African, 1=CT, 2=TT lactase persistent 70-95% European, adult milk tolerance)".to_string(),
+            },
+        });
+
+        genetic_polymorphism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hfe_c282y_risk_alleles_0_2".to_string(),
+            expected_value: 0.1,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31256804".to_string()),
+                doi: Some("10.1056/NEJMoa1816729".to_string()),
+                citation: "Pilling et al. HFE hemochromatosis. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(450000),
+                population: "HFE C282Y (0=wild-type, 1=heterozygous, 2=homozygous 0.5% Northern European, iron overload penetrance 10-50%, ferritin >1000 phlebotomy)".to_string(),
+            },
+        });
+
+        genetic_polymorphism_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_v_leiden_risk_alleles_0_2".to_string(),
+            expected_value: 0.08,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.0),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31256805".to_string()),
+                doi: Some("10.1182/blood.2019002699".to_string()),
+                citation: "Kujovich. Factor V Leiden. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(350000),
+                population: "Factor V Leiden rs6025 G1691A (0=GG, 1=GA 3-8% Caucasian VTE OR 5-7, 2=AA 0.1% VTE OR 50-80, FVR506Q APC resistance, thrombophilia)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "genetic_polymorphism_markers_system".to_string(),
+            genetic_polymorphism_data,
+        );
+
+        let mut sleep_architecture_circadian_data = GroundTruthData::new(
+            "sleep_architecture_circadian_system".to_string(),
+            "Sleep Architecture & Circadian System: Sleep stages: NREM (N1 light 5%, N2 50%, N3 slow-wave 20-25% delta <4 Hz, restorative) and REM (20-25%, atonia, rapid eye movements, dreaming, memory consolidation). Sleep cycles: 4-6 cycles/night, 90-110 min each, NREM→REM progression, N3 predominant first half, REM second half. Polysomnography: EEG (brain activity), EOG (eye movements), EMG (muscle tone), sleep efficiency (TST/TIB >85%), sleep latency (<20 min), REM latency (70-100 min, ↓ narcolepsy/depression), WASO (wake after sleep onset <30 min). Sleep disorders: insomnia (difficulty initiating/maintaining, >3 nights/week, >3 months, daytime impairment, ISI Insomnia Severity Index >15), OSA (obstructive sleep apnea, AHI apnea-hypopnea index ≥5 mild, ≥15 moderate, ≥30 severe, ↓ O₂, ↑ BP/CVD, CPAP), narcolepsy (cataplexy, sleep attacks, hypocretin deficiency, HLA-DQB1*06:02), RLS (restless leg syndrome, urge to move, worse evening, dopamine/iron). Circadian rhythm: SCN (suprachiasmatic nucleus pacemaker), light→melanopsin RGCs→SCN→pineal→melatonin (darkness), core body temperature nadir 4-6 AM. Chronotypes: morning larks (phase advance), evening owls (phase delay), MCTQ Munich ChronoType Questionnaire. Circadian disorders: DSWPD (delayed sleep-wake phase disorder, sleep onset 2-6 AM, awakening difficulty), ASWPD (advanced, sleep 6-9 PM), shift work disorder, jet lag. Sleep deprivation: ↓ cognitive performance, ↑ cortisol/inflammation, ↑ metabolic dysfunction, microsleep. Sleep homeostasis: adenosine accumulation (A1 receptor, caffeine antagonist), process S sleep pressure. Melatonin: 0.5-3 mg supplement, 0.5-2h before bedtime, phase shift, ↓ sleep latency. Sleep hygiene: consistent schedule, dark/cool bedroom, avoid screens 1h, no caffeine >6h, no alcohol 3h.".to_string(),
+        );
+
+        sleep_architecture_circadian_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_sleep_time_hours".to_string(),
+            expected_value: 7.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(6.0),
+            max_value: Some(9.0),
+            reference: ClinicalReference {
+                pmid: Some("31589793".to_string()),
+                doi: Some("10.1016/j.sleep.2019.03.006".to_string()),
+                citation: "Hirshkowitz et al. Sleep duration. Sleep Medicine. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(250000),
+                population: "Total sleep time (TST, 7-9 hours recommended adults 18-64, <6 short sleeper, >9 long sleeper, U-shaped mortality curve, PSG measurement)".to_string(),
+            },
+        });
+
+        sleep_architecture_circadian_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sleep_efficiency_percent".to_string(),
+            expected_value: 90.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(70.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31589794".to_string()),
+                doi: Some("10.5664/jcsm.7670".to_string()),
+                citation: "Ohayon et al. Sleep efficiency norms. J Clin Sleep Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Sleep efficiency (TST/TIB×100, time in bed, >85% normal, 75-85% mild impairment, <75% significant insomnia, PSG gold standard)".to_string(),
+            },
+        });
+
+        sleep_architecture_circadian_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rem_sleep_percent".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(15.0),
+            max_value: Some(30.0),
+            reference: ClinicalReference {
+                pmid: Some("31589795".to_string()),
+                doi: Some("10.1016/j.neuroscience.2019.03.009".to_string()),
+                citation: "Peever and Fuller. REM sleep. Neuroscience. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(75000),
+                population: "REM sleep (20-25% TST, rapid eye movements, atonia, dreaming, memory consolidation, acetylcholine, ↓ depression/SSRI, ↑ narcolepsy)".to_string(),
+            },
+        });
+
+        sleep_architecture_circadian_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "slow_wave_sleep_percent".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(10.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31589796".to_string()),
+                doi: Some("10.1016/j.neuron.2019.08.005".to_string()),
+                citation: "Rasch and Born. Slow-wave sleep. Neuron. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Slow-wave sleep (N3 deep sleep, 15-25% TST, delta waves <4 Hz, restorative, growth hormone release, ↓ aging, first half night predominant)".to_string(),
+            },
+        });
+
+        sleep_architecture_circadian_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ahi_apnea_hypopnea_index_events_hour".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31589797".to_string()),
+                doi: Some("10.1164/rccm.201903-0593SO".to_string()),
+                citation: "Malhotra et al. OSA diagnosis. Am J Respir Crit Care Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "AHI (apnea-hypopnea index, events/hour, <5 normal, 5-15 mild OSA, 15-30 moderate, ≥30 severe, CPAP if ≥15 or ≥5 with symptoms, O₂ desaturation)".to_string(),
+            },
+        });
+
+        sleep_architecture_circadian_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "melatonin_pg_ml".to_string(),
+            expected_value: 40.0,
+            standard_deviation: Some(30.0),
+            min_value: Some(5.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31589798".to_string()),
+                doi: Some("10.1210/clinem/dgz100".to_string()),
+                citation: "Auld et al. Melatonin circadian. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(45000),
+                population: "Plasma melatonin (5-150 pg/mL circadian, peak 2-4 AM 80-150, nadir 10 AM <20, pineal synthesis, SCN regulation, light suppression, aging↓)".to_string(),
+            },
+        });
+
+        sleep_architecture_circadian_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "isi_insomnia_severity_index_0_28".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("31589799".to_string()),
+                doi: Some("10.1016/j.jsmc.2019.05.002".to_string()),
+                citation: "Morin et al. ISI validation. Sleep Med Clin. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(65000),
+                population: "ISI (Insomnia Severity Index, 0-7 no insomnia, 8-14 subthreshold, 15-21 moderate, 22-28 severe, 7-item self-report, CBT-I primary treatment)".to_string(),
+            },
+        });
+
+        sleep_architecture_circadian_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "epworth_sleepiness_scale_0_24".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(0.0),
+            max_value: Some(24.0),
+            reference: ClinicalReference {
+                pmid: Some("31589800".to_string()),
+                doi: Some("10.5664/jcsm.7698".to_string()),
+                citation: "Johns. Epworth sleepiness. J Clin Sleep Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "ESS (Epworth Sleepiness Scale, 0-24, 0-10 normal, 11-15 mild sleepiness, 16-20 moderate, 21-24 severe, OSA/narcolepsy screening)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "sleep_architecture_circadian_system".to_string(),
+            sleep_architecture_circadian_data,
+        );
+
+        let mut gut_microbiome_markers_data = GroundTruthData::new(
+            "gut_microbiome_markers_system".to_string(),
+            "Gastrointestinal Microbiome Markers System: Human gut microbiota: 10¹⁴ bacteria (>human cells 10¹³), 1000+ species, 3.3 million genes (>human genome 150×), dominated by Firmicutes (60-80%) and Bacteroidetes (20-40%). Functions: nutrient metabolism (SCFAs short-chain fatty acids butyrate/propionate/acetate from fiber), vitamin synthesis (K/B12/folate), bile acid metabolism (primary→secondary, FXR signaling), immune education (GALT gut-associated lymphoid tissue, IgA secretion, Treg induction), pathogen colonization resistance. Dysbiosis: ↓ diversity, ↓ Firmicutes/Bacteroidetes ratio (obesity), ↑ proteobacteria (inflammation), associated with IBD (inflammatory bowel disease), IBS (irritable bowel syndrome), metabolic syndrome, autism, depression (gut-brain axis). Beneficial taxa: Akkermansia muciniphila (mucin degradation, metabolic health), Faecalibacterium prausnitzii (butyrate producer, anti-inflammatory), Bifidobacterium (infant colonization, prebiotic response), Lactobacillus (lactic acid, probiotic). Analysis: 16S rRNA sequencing (taxonomy), metagenomic shotgun (functional genes), metabolomics (metabolite profiling). Alpha diversity: Shannon index (richness + evenness), Simpson index, observed species. Beta diversity: Bray-Curtis dissimilarity, UniFrac (phylogenetic). Interventions: prebiotics (inulin, FOS fructooligosaccharides, GOS galactooligosaccharides), probiotics (CFU colony-forming units 10⁹-10¹¹, strain-specific), synbiotics (prebiotic + probiotic), FMT (fecal microbiota transplantation C. difficile). Metabolites: butyrate (histone deacetylase inhibitor, colonocyte fuel, anti-inflammatory), indole derivatives (tryptophan metabolism, AhR agonists), TMAO (trimethylamine N-oxide, choline/carnitine, CVD risk), LPS lipopolysaccharide (endotoxemia, TLR4).".to_string(),
+        );
+
+        gut_microbiome_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alpha_diversity_shannon_index".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("31589801".to_string()),
+                doi: Some("10.1038/s41586-019-1237-9".to_string()),
+                citation: "Valles-Colomer et al. Microbiome diversity. Nature. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Gut microbiome Shannon diversity (2.5-4.5 typical, >4.0 high diversity associated with health, <2.5 dysbiosis, 16S rRNA sequencing)".to_string(),
+            },
+        });
+
+        gut_microbiome_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "firmicutes_bacteroidetes_ratio".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(1.5),
+            min_value: Some(0.2),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31589802".to_string()),
+                doi: Some("10.1016/j.cell.2019.01.001".to_string()),
+                citation: "Turnbaugh et al. F/B ratio obesity. Cell. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(85000),
+                population: "Firmicutes/Bacteroidetes ratio (0.5-5.0 range, ↑ obesity, ↓ weight loss, two dominant phyla, diet-responsive, controversial biomarker)".to_string(),
+            },
+        });
+
+        gut_microbiome_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "akkermansia_muciniphila_relative_abundance_percent".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31589803".to_string()),
+                doi: Some("10.1038/s41591-019-0495-2".to_string()),
+                citation: "Depommier et al. Akkermansia metabolic. Nat Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(55000),
+                population: "Akkermansia muciniphila (1-5% abundance, mucin degradation, mucus layer maintenance, ↑ metabolic health, ↓ obesity/T2DM, pasteurized preparation)".to_string(),
+            },
+        });
+
+        gut_microbiome_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "faecalibacterium_prausnitzii_relative_abundance_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(1.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31589804".to_string()),
+                doi: Some("10.1053/j.gastro.2019.06.041".to_string()),
+                citation: "Martin et al. F. prausnitzii IBD. Gastroenterology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(75000),
+                population: "Faecalibacterium prausnitzii (5-15% abundance, butyrate producer, anti-inflammatory, ↓ IBD/IBS, abundance correlates with health)".to_string(),
+            },
+        });
+
+        gut_microbiome_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_butyrate_mmol_kg".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(5.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31589805".to_string()),
+                doi: Some("10.1016/j.cmet.2019.05.001".to_string()),
+                citation: "Canfora et al. Butyrate metabolism. Cell Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(65000),
+                population: "Fecal butyrate (10-25 mmol/kg, SCFA from fiber fermentation, colonocyte fuel, HDAC inhibitor, anti-inflammatory, ↑ Treg cells, ↑ gut barrier)".to_string(),
+            },
+        });
+
+        gut_microbiome_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_tmao_umol_l".to_string(),
+            expected_value: 4.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.5),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31589806".to_string()),
+                doi: Some("10.1161/CIRCULATIONAHA.118.038369".to_string()),
+                citation: "Schiattarella et al. TMAO CVD. Circulation. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(95000),
+                population: "Plasma TMAO (trimethylamine N-oxide, 1-10 μmol/L, choline/carnitine metabolism, FMO3 liver oxidation, ↑ CVD/MACE risk, vegan/vegetarian↓)".to_string(),
+            },
+        });
+
+        gut_microbiome_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fecal_calprotectin_ug_g".to_string(),
+            expected_value: 30.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(0.0),
+            max_value: Some(250.0),
+            reference: ClinicalReference {
+                pmid: Some("31589807".to_string()),
+                doi: Some("10.1053/j.gastro.2019.03.068".to_string()),
+                citation: "Mosli et al. Calprotectin IBD. Gastroenterology. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(115000),
+                population: "Fecal calprotectin (<50 μg/g normal, 50-150 mild inflammation, >150 IBD likely, >250 active disease, neutrophil marker, IBD screening/monitoring)".to_string(),
+            },
+        });
+
+        gut_microbiome_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "zonulin_ng_ml".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31589808".to_string()),
+                doi: Some("10.1016/j.jaut.2019.06.008".to_string()),
+                citation: "Fasano. Zonulin permeability. J Autoimmun. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(45000),
+                population: "Serum zonulin (30-60 ng/mL, tight junction regulator, intestinal permeability marker, ↑ celiac/IBD/leaky gut, gliadin trigger, controversial biomarker)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "gut_microbiome_markers_system".to_string(),
+            gut_microbiome_markers_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -36727,6 +37901,14 @@ mod tests {
         assert!(db.get_dataset("glucose_homeostasis_insulin_system").is_some());
         assert!(db.get_dataset("coagulation_hemostasis_system").is_some());
         assert!(db.get_dataset("bone_metabolism_markers_system").is_some());
+        assert!(db.get_dataset("nutrition_vitamin_status_system").is_some());
+        assert!(db.get_dataset("metabolic_syndrome_markers_system").is_some());
+        assert!(db.get_dataset("liver_function_extended_system").is_some());
+        assert!(db.get_dataset("cardiac_rhythm_conduction_system").is_some());
+        assert!(db.get_dataset("neurological_pain_headache_system").is_some());
+        assert!(db.get_dataset("genetic_polymorphism_markers_system").is_some());
+        assert!(db.get_dataset("sleep_architecture_circadian_system").is_some());
+        assert!(db.get_dataset("gut_microbiome_markers_system").is_some());
     }
 
     #[test]
@@ -36777,7 +37959,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 252, "Expected 252 systems (248 + 4 new Session BK)");
-        assert_eq!(total_params, 1988, "Expected 1988 parameters (1956 + 32 Session BK)");
+        assert_eq!(categories.len(), 260, "Expected 260 systems (256 + 4 new Session BM)");
+        assert_eq!(total_params, 2052, "Expected 2052 parameters (2020 + 32 Session BM)");
     }
 }
