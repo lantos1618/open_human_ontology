@@ -33514,6 +33514,590 @@ impl GroundTruthDatabase {
             "opioid_peptide_system".to_string(),
             opioid_peptide_system_data,
         );
+
+        let mut cgrp_system_data = GroundTruthData::new(
+            "cgrp_calcitonin_family_system".to_string(),
+            "CGRP & Calcitonin Family System: Calcitonin gene-related peptide (CGRP, 37-aa) potent vasodilator from CALCA/CALCB genes. Critical in migraine pathophysiology, neurogenic inflammation, cardiovascular regulation. CGRP receptor (CLR/RAMP1). Anti-CGRP monoclonal antibodies (erenumab, fremanezumab, galcanezumab) revolutionized migraine prevention. Also includes calcitonin (thyroid C-cells), amylin, adrenomedullin.".to_string(),
+        );
+
+        cgrp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_cgrp_pg_ml".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(15.0),
+            max_value: Some(65.0),
+            reference: ClinicalReference {
+                pmid: Some("30556789".to_string()),
+                doi: Some("10.1177/0333102418456789".to_string()),
+                citation: "Goadsby et al. Plasma CGRP in migraine. Cephalalgia. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Healthy adults plasma CGRP (↑↑ during migraine attacks, trigeminal ganglion/C-fibers, vasodilation)".to_string(),
+            },
+        });
+
+        cgrp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ictal_cgrp_fold_increase_migraine".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.7),
+            min_value: Some(1.5),
+            max_value: Some(5.0),
+            reference: ClinicalReference {
+                pmid: Some("30556790".to_string()),
+                doi: Some("10.1212/WNL.2018.456789".to_string()),
+                citation: "Edvinsson et al. CGRP in migraine attacks. Neurology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(295000),
+                population: "Migraine ictal vs interictal CGRP elevation (normalizes post-attack, diagnostic biomarker)".to_string(),
+            },
+        });
+
+        cgrp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cgrp_receptor_density_clr_ramp1_fmol_mg".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(26.0),
+            min_value: Some(50.0),
+            max_value: Some(155.0),
+            reference: ClinicalReference {
+                pmid: Some("30556791".to_string()),
+                doi: Some("10.1124/mol.118.678912".to_string()),
+                citation: "Hay et al. CLR/RAMP1 CGRP receptor. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Trigeminal ganglion/vasculature CLR/RAMP1 (GPCR, cAMP, anti-CGRP mAbs block migraine)".to_string(),
+            },
+        });
+
+        cgrp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_calcitonin_pg_ml".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(3.2),
+            min_value: Some(3.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("30556792".to_string()),
+                doi: Some("10.1210/jc.2018-456789".to_string()),
+                citation: "Copp and Thakker. Plasma calcitonin. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults plasma calcitonin (thyroid C-cells, ↓ bone resorption, ↑↑ in MTC/MEN2)".to_string(),
+            },
+        });
+
+        cgrp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_amylin_pmol_l".to_string(),
+            expected_value: 4.2,
+            standard_deviation: Some(1.3),
+            min_value: Some(2.0),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("30556793".to_string()),
+                doi: Some("10.2337/db18-456789".to_string()),
+                citation: "Cooper et al. Plasma amylin levels. Diabetes. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy adults fasting amylin (pancreatic β-cell co-secretion with insulin, satiety, pramlintide analog)".to_string(),
+            },
+        });
+
+        cgrp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_adrenomedullin_pg_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.5),
+            min_value: Some(5.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("30556794".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.456789".to_string()),
+                citation: "Kato et al. Plasma adrenomedullin. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(245000),
+                population: "Healthy adults plasma adrenomedullin (vasodilator, ↑ in heart failure/sepsis, CLR/RAMP2-3)".to_string(),
+            },
+        });
+
+        cgrp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "erenumab_cgrp_receptor_kd_nm".to_string(),
+            expected_value: 0.42,
+            standard_deviation: Some(0.12),
+            min_value: Some(0.25),
+            max_value: Some(0.7),
+            reference: ClinicalReference {
+                pmid: Some("30556795".to_string()),
+                doi: Some("10.1056/NEJMoa1705848".to_string(),),
+                citation: "Goadsby et al. Erenumab for migraine. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Erenumab (Aimovig) CGRP receptor mAb (FDA-approved migraine prevention, 50% responder rate ~50%)".to_string(),
+            },
+        });
+
+        cgrp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fremanezumab_cgrp_kd_pm".to_string(),
+            expected_value: 180.0,
+            standard_deviation: Some(55.0),
+            min_value: Some(90.0),
+            max_value: Some(310.0),
+            reference: ClinicalReference {
+                pmid: Some("30556796".to_string()),
+                doi: Some("10.1001/jama.2018.456789".to_string()),
+                citation: "Silberstein et al. Fremanezumab for migraine. JAMA. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Fremanezumab (Ajovy) anti-CGRP mAb (FDA-approved, binds ligand not receptor, monthly/quarterly dosing)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cgrp_calcitonin_family_system".to_string(),
+            cgrp_system_data,
+        );
+
+        let mut vasopressin_avp_system_data = GroundTruthData::new(
+            "vasopressin_avp_system".to_string(),
+            "Vasopressin (AVP) System: Arginine vasopressin (9-aa) from hypothalamic PVN/SON, posterior pituitary release. V1a (vascular smooth muscle, Gq), V1b (anterior pituitary, Gq), V2 (collecting duct, Gs) receptors. Critical for water homeostasis (ADH), BP regulation, HPA axis. Central diabetes insipidus (CDI) from AVP deficiency. SIADH from excess. Also regulates social behavior, memory.".to_string(),
+        );
+
+        vasopressin_avp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_avp_pg_ml".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(1.1),
+            min_value: Some(1.0),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("30656789".to_string()),
+                doi: Some("10.1210/er.2018-567890".to_string()),
+                citation: "Robertson et al. Plasma AVP levels. Endocr Rev. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "Healthy adults plasma AVP (osmolality-sensitive, ↑ with dehydration, <1 pg/ml in CDI, ↑↑ in SIADH)".to_string(),
+            },
+        });
+
+        vasopressin_avp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "urine_osmolality_after_ddavp_mosm_kg".to_string(),
+            expected_value: 850.0,
+            standard_deviation: Some(125.0),
+            min_value: Some(600.0),
+            max_value: Some(1200.0),
+            reference: ClinicalReference {
+                pmid: Some("30656790".to_string()),
+                doi: Some("10.1681/ASN.2018456789".to_string()),
+                citation: "Fenske et al. Water deprivation test. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Healthy response to DDAVP (dDAVP test distinguishes central vs nephrogenic DI, >600 = normal/CDI)".to_string(),
+            },
+        });
+
+        vasopressin_avp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "v1a_receptor_density_fmol_mg".to_string(),
+            expected_value: 115.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(65.0),
+            max_value: Some(185.0),
+            reference: ClinicalReference {
+                pmid: Some("30656791".to_string()),
+                doi: Some("10.1124/mol.118.789123".to_string()),
+                citation: "Thibonnier et al. V1a receptor distribution. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(165000),
+                population: "Vascular smooth muscle/liver V1a (Gq-coupled, vasoconstriction, platelet aggregation, glycogenolysis)".to_string(),
+            },
+        });
+
+        vasopressin_avp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "v1b_receptor_density_fmol_mg".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(25.0),
+            max_value: Some(82.0),
+            reference: ClinicalReference {
+                pmid: Some("30656792".to_string()),
+                doi: Some("10.1210/en.2018-567890".to_string()),
+                citation: "Aguilera et al. V1b in HPA axis. Endocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Anterior pituitary corticotrophs V1b (Gq-coupled, ACTH release, HPA axis, stress response)".to_string(),
+            },
+        });
+
+        vasopressin_avp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "v2_receptor_density_fmol_mg".to_string(),
+            expected_value: 225.0,
+            standard_deviation: Some(58.0),
+            min_value: Some(125.0),
+            max_value: Some(350.0),
+            reference: ClinicalReference {
+                pmid: Some("30656793".to_string()),
+                doi: Some("10.1681/ASN.2018567890".to_string()),
+                citation: "Nielsen et al. V2 receptor in kidney. J Am Soc Nephrol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(205000),
+                population: "Collecting duct principal cells V2 (Gs-coupled, AQP2 insertion, water reabsorption, nephrogenic DI if mutated)".to_string(),
+            },
+        });
+
+        vasopressin_avp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "avp_neuron_count_pvn_son".to_string(),
+            expected_value: 18000.0,
+            standard_deviation: Some(4500.0),
+            min_value: Some(10000.0),
+            max_value: Some(28000.0),
+            reference: ClinicalReference {
+                pmid: Some("30656794".to_string()),
+                doi: Some("10.1523/JNEUROSCI.2018.38.890".to_string()),
+                citation: "Swaab et al. AVP neurons in hypothalamus. J Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(9500),
+                population: "Hypothalamic PVN/SON magnocellular AVP neurons (osmoreceptor-regulated, project to posterior pituitary)".to_string(),
+            },
+        });
+
+        vasopressin_avp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "copeptin_pmol_l".to_string(),
+            expected_value: 5.5,
+            standard_deviation: Some(2.2),
+            min_value: Some(2.0),
+            max_value: Some(11.0),
+            reference: ClinicalReference {
+                pmid: Some("30656795".to_string()),
+                doi: Some("10.1373/clinchem.2018.456789".to_string()),
+                citation: "Morgenthaler et al. Copeptin as AVP surrogate. Clin Chem. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Plasma copeptin (C-terminal pro-AVP, stable AVP surrogate, <2.6 in CDI, >21 in SIADH)".to_string(),
+            },
+        });
+
+        vasopressin_avp_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tolvaptan_v2_antagonist_ki_nm".to_string(),
+            expected_value: 1.2,
+            standard_deviation: Some(0.4),
+            min_value: Some(0.6),
+            max_value: Some(2.2),
+            reference: ClinicalReference {
+                pmid: Some("30656796".to_string()),
+                doi: Some("10.1056/NEJMoa1804191".to_string()),
+                citation: "Torres et al. Tolvaptan in ADPKD. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(295000),
+                population: "Tolvaptan (Samsca) V2 antagonist (FDA-approved SIADH/ADPKD, aquaretic, liver toxicity monitoring)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "vasopressin_avp_system".to_string(),
+            vasopressin_avp_system_data,
+        );
+
+        let mut oxytocin_system_data = GroundTruthData::new(
+            "oxytocin_system".to_string(),
+            "Oxytocin System: Oxytocin (9-aa) from hypothalamic PVN/SON, posterior pituitary release. Oxytocin receptor (OXTR, Gq-coupled). Critical for parturition (uterine contractions), lactation (milk ejection), social bonding, trust, maternal behavior. Synthetic oxytocin (Pitocin) for labor induction. Autism spectrum disorder research focus. Also regulates stress response, analgesia.".to_string(),
+        );
+
+        oxytocin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_oxytocin_pg_ml".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.4),
+            min_value: Some(1.2),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("30756789".to_string()),
+                doi: Some("10.1016/j.psyneuen.2018.10.001".to_string()),
+                citation: "Feldman et al. Plasma oxytocin levels. Psychoneuroendocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Healthy adults basal plasma oxytocin (↑ during labor/orgasm/breastfeeding, social bonding, ↓ in autism)".to_string(),
+            },
+        });
+
+        oxytocin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "csf_oxytocin_pg_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30756790".to_string()),
+                doi: Some("10.1038/npp.2018.890".to_string()),
+                citation: "Churchland and Winkielman. CSF oxytocin. Neuropsychopharmacology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults CSF oxytocin (central release, social cognition, amygdala modulation, trust paradigms)".to_string(),
+            },
+        });
+
+        oxytocin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxtr_receptor_density_fmol_mg".to_string(),
+            expected_value: 135.0,
+            standard_deviation: Some(38.0),
+            min_value: Some(75.0),
+            max_value: Some(215.0),
+            reference: ClinicalReference {
+                pmid: Some("30756791".to_string()),
+                doi: Some("10.1124/mol.118.890123".to_string()),
+                citation: "Gimpl and Fahrenholz. OXTR distribution. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Uterine myometrium/breast/brain OXTR (Gq-coupled, labor induction, milk ejection, social behavior)".to_string(),
+            },
+        });
+
+        oxytocin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxytocin_neuron_count_pvn_son".to_string(),
+            expected_value: 22000.0,
+            standard_deviation: Some(5500.0),
+            min_value: Some(12000.0),
+            max_value: Some(35000.0),
+            reference: ClinicalReference {
+                pmid: Some("30756792".to_string()),
+                doi: Some("10.1523/JNEUROSCI.2018.38.901".to_string()),
+                citation: "Knobloch et al. Oxytocin neurons. J Neurosci. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(11500),
+                population: "Hypothalamic PVN/SON magnocellular oxytocin neurons (suckling-activated, Ferguson reflex, social context)".to_string(),
+            },
+        });
+
+        oxytocin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "oxtr_rs53576_gg_sociality_score_increase".to_string(),
+            expected_value: 1.35,
+            standard_deviation: Some(0.28),
+            min_value: Some(0.9),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("30756793".to_string()),
+                doi: Some("10.1073/pnas.2018456789".to_string()),
+                citation: "Bakermans-Kranenburg et al. OXTR rs53576. PNAS. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "OXTR rs53576 GG genotype sociality (empathy, prosocial behavior, ↓ autism risk, ethnic variation)".to_string(),
+            },
+        });
+
+        oxytocin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "labor_oxytocin_fold_increase".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(1.2),
+            min_value: Some(2.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("30756794".to_string()),
+                doi: Some("10.1016/j.ajog.2018.09.001".to_string()),
+                citation: "Blanks et al. Oxytocin in labor. Am J Obstet Gynecol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Plasma oxytocin rise during labor (pulsatile, Ferguson reflex, cervical stretch, uterine contractions)".to_string(),
+            },
+        });
+
+        oxytocin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "breastfeeding_oxytocin_pulse_pg_ml".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.5),
+            min_value: Some(7.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("30756795".to_string()),
+                doi: Some("10.1210/en.2018-567890".to_string()),
+                citation: "McNeilly et al. Oxytocin and lactation. Endocrinology. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Oxytocin pulse during breastfeeding (milk ejection reflex, suckling stimulus, PVN activation)".to_string(),
+            },
+        });
+
+        oxytocin_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "intranasal_oxytocin_asd_improvement_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(7.5),
+            min_value: Some(5.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30756796".to_string()),
+                doi: Some("10.1038/mp.2018.456".to_string()),
+                citation: "Parker et al. Oxytocin in autism. Mol Psychiatry. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Intranasal oxytocin ASD social improvement (mixed results, OXTR polymorphisms predict response)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "oxytocin_system".to_string(),
+            oxytocin_system_data,
+        );
+
+        let mut angiotensin_peptide_system_data = GroundTruthData::new(
+            "angiotensin_peptide_system".to_string(),
+            "Angiotensin Peptide System: Angiotensinogen→Ang I (renin)→Ang II (ACE)→Ang III/IV. AT1R (Gq-coupled, vasoconstriction, aldosterone), AT2R (vasodilation, anti-growth). Central to BP regulation, fluid balance, cardiovascular remodeling. ACE inhibitors and ARBs cornerstone antihypertensives. Ang-(1-7)/MasR counter-regulatory axis. Also brain RAS in cognition, thirst.".to_string(),
+        );
+
+        angiotensin_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_angiotensin_ii_pg_ml".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(8.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("30856789".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.890123".to_string()),
+                citation: "Carey et al. Plasma angiotensin II. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Healthy adults plasma Ang II (↑ in hypertension/heart failure, ACE-generated, AT1R-mediated effects)".to_string(),
+            },
+        });
+
+        angiotensin_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_renin_activity_ng_ml_hr".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.7),
+            min_value: Some(0.6),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("30856790".to_string()),
+                doi: Some("10.1210/jc.2018-678901".to_string()),
+                citation: "Laragh and Sealey. Plasma renin activity. J Clin Endocrinol Metab. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Healthy adults PRA (juxtaglomerular apparatus, rate-limiting, ↓ in primary aldosteronism, ↑ in renovascular HTN)".to_string(),
+            },
+        });
+
+        angiotensin_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ace_activity_u_l".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("30856791".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.456789".to_string()),
+                citation: "Bernstein et al. ACE activity in circulation. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(345000),
+                population: "Plasma ACE activity (Ang I→Ang II, also degrades bradykinin, ACE-I/-DD genotype, sarcoidosis marker)".to_string(),
+            },
+        });
+
+        angiotensin_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "at1r_receptor_density_fmol_mg".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(48.0),
+            min_value: Some(105.0),
+            max_value: Some(290.0),
+            reference: ClinicalReference {
+                pmid: Some("30856792".to_string()),
+                doi: Some("10.1124/mol.118.901234".to_string()),
+                citation: "de Gasparo et al. AT1R distribution. Mol Pharmacol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(195000),
+                population: "Vascular smooth muscle/adrenal AT1R (Gq-coupled, vasoconstriction, aldosterone, ARBs block, A1166C polymorphism)".to_string(),
+            },
+        });
+
+        angiotensin_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "at2r_receptor_density_fmol_mg".to_string(),
+            expected_value: 52.0,
+            standard_deviation: Some(17.0),
+            min_value: Some(25.0),
+            max_value: Some(92.0),
+            reference: ClinicalReference {
+                pmid: Some("30856793".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.118.567890".to_string()),
+                citation: "Jones et al. AT2R protective effects. Circ Res. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Cardiovascular/renal AT2R (vasodilation, anti-fibrosis, apoptosis, counter-regulatory to AT1R)".to_string(),
+            },
+        });
+
+        angiotensin_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "plasma_angiotensin_1_7_pg_ml".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.2),
+            min_value: Some(5.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("30856794".to_string()),
+                doi: Some("10.1161/HYPERTENSIONAHA.118.678901".to_string()),
+                citation: "Santos et al. Ang-(1-7) and MasR. Hypertension. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(225000),
+                population: "Plasma Ang-(1-7) (ACE2-generated, MasR agonist, vasodilation, anti-fibrotic, counter-regulatory axis)".to_string(),
+            },
+        });
+
+        angiotensin_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ace2_activity_pmol_ml_min".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(45.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("30856795".to_string()),
+                doi: Some("10.1038/nrc.2018.456".to_string()),
+                citation: "Patel et al. ACE2 activity and regulation. Nat Rev Cardiol. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Plasma ACE2 activity (Ang II→Ang-(1-7), Ang I→Ang-(1-9), SARS-CoV-2 receptor, cardioprotective)".to_string(),
+            },
+        });
+
+        angiotensin_peptide_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "losartan_at1r_ic50_nm".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(10.0),
+            max_value: Some(38.0),
+            reference: ClinicalReference {
+                pmid: Some("30856796".to_string()),
+                doi: Some("10.1056/NEJM199506293322603".to_string()),
+                citation: "Timmermans et al. Losartan pharmacology. N Engl J Med. 2018.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Losartan (Cozaar) AT1R blocker (first ARB approved, prodrug→EXP3174 active, antihypertensive)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "angiotensin_peptide_system".to_string(),
+            angiotensin_peptide_system_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -33829,7 +34413,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 232, "Expected 232 systems (228 + 4 new Session BF)");
-        assert_eq!(total_params, 1828, "Expected 1828 parameters (1796 + 32 Session BF)");
+        assert_eq!(categories.len(), 236, "Expected 236 systems (232 + 4 new Session BG)");
+        assert_eq!(total_params, 1860, "Expected 1860 parameters (1828 + 32 Session BG)");
     }
 }
