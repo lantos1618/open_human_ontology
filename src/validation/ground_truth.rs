@@ -38200,6 +38200,590 @@ impl GroundTruthDatabase {
             "renal_tubular_function_advanced_system".to_string(),
             renal_tubular_function_advanced_data,
         );
+
+        let mut pulmonary_function_advanced_data = GroundTruthData::new(
+            "pulmonary_function_advanced_system".to_string(),
+            "Pulmonary Function Advanced System: Spirometry: FEV₁ forced expiratory volume 1 second (>80% predicted normal, <80% airflow obstruction, bronchodilator reversibility ≥12%/200 mL FEV₁ asthma), FVC forced vital capacity (>80% predicted, reduced restrictive disease), FEV₁/FVC ratio (>0.70 normal, <0.70 COPD obstruction, normal/↑ restriction), FEF25-75% mid-expiratory flow (small airway disease, ↓ asthma/early COPD), PEF peak expiratory flow (home monitoring asthma, diurnal variation >20% variable obstruction). Lung volumes: TLC total lung capacity (5-7 L, ↑ hyperinflation COPD/emphysema, ↓ restriction ILD/obesity/kyphosis), RV residual volume (1.5-2.5 L, ↑ air trapping COPD RV/TLC >40%, ↓ restriction), FRC functional residual capacity (2.5-3.5 L, resting lung volume), IC inspiratory capacity (TLC - FRC, ↓ dynamic hyperinflation COPD exercise). Diffusion capacity: DLCO diffusion capacity CO (>75% predicted, ↓ <60% severe, emphysema/ILD/pulmonary vascular disease, ↑ polycythemia/alveolar hemorrhage), DLCO/VA diffusion corrected for alveolar volume (↓ <80% true diffusion impairment, normal DLCO with ↓ VA suggests restrictive). Gas exchange: PaO₂ arterial oxygen (80-100 mmHg, <60 respiratory failure, A-a gradient assess), A-a gradient alveolar-arterial (5-15 mmHg young, age-related ↑, >20 abnormal V/Q mismatch/shunt/diffusion defect, PAO₂ = FiO₂(Patm - PH₂O) - PaCO₂/0.8), PaO₂/FiO₂ ratio (>300 normal, 200-300 mild ARDS, 100-200 moderate, <100 severe), arterial oxygen saturation SaO₂ (>95%, 90-95% mild hypoxemia, <90% respiratory failure, oximetry SpO₂ pulse ox). Respiratory mechanics: respiratory rate (12-20 breaths/min, >20 tachypnea, <10 bradypnea), tidal volume (5-8 mL/kg ideal body weight, mechanical ventilation lung-protective 6 mL/kg ARDS), minute ventilation (5-8 L/min, VE = TV × RR). Work of breathing: compliance (lung 200 mL/cmH₂O, chest wall 200 mL/cmH₂O, total 100 mL/cmH₂O, ↓ fibrosis/edema/ARDS), resistance (airway 0.5-2.5 cmH₂O/L/s, ↑ asthma/COPD bronchodilators). Blood gases: pH 7.35-7.45 (respiratory acidosis PaCO₂ >45, alkalosis <35), PaCO₂ 35-45 mmHg (hypoventilation obesity hypoventilation syndrome, hyperventilation anxiety/sepsis/PE). Pulmonary hypertension: mean PAP >20 mmHg (precapillary PVR ≥3 WU, postcapillary PAWP >15, right heart catheterization gold standard). Exercise testing: VO₂max maximal oxygen consumption (>84% predicted, <84% impaired, cardiopulmonary exercise testing CPET), anaerobic threshold (>40% VO₂max, early lactate, deconditioning/cardiac/pulmonary limitation). Asthma monitoring: FeNO fractional exhaled nitric oxide (>50 ppb eosinophilic inflammation ICS-responsive, 25-50 borderline, <25 non-eosinophilic), ACT asthma control test (≥20 well-controlled, <20 poor control). COPD assessment: CAT COPD assessment test (0-10 low impact, 11-20 medium, 21-30 high, 31-40 very high), mMRC dyspnea scale (0 strenuous, 1 hurrying/incline, 2 slower/stops, 3 100 yards/minutes, 4 too breathless to leave house). Respiratory failure: type 1 hypoxemic (PaO₂ <60, PaCO₂ normal/↓, V/Q mismatch/shunt, ARDS/pneumonia/PE), type 2 hypercapnic (PaCO₂ >45, hypoventilation, COPD/neuromuscular/obesity). Sleep disordered breathing: AHI apnea-hypopnea index (events/hour, <5 normal, 5-15 mild OSA, 15-30 moderate, ≥30 severe, CPAP therapy), oxygen desaturation index (ODI ≥4% events/hour, correlates AHI).".to_string(),
+        );
+
+        pulmonary_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fev1_percent_predicted".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("32503636".to_string()),
+                doi: Some("10.1164/rccm.202001-0028ST".to_string()),
+                citation: "Stanojevic et al. Global Lung Function Initiative spirometry. Am J Respir Crit Care Med. 2020.".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "FEV₁ forced expiratory volume in 1 second (80-120% predicted GLI reference equations, <80% obstruction, <70% moderate, <50% severe, bronchodilator reversibility ≥12%/200 mL asthma)".to_string(),
+            },
+        });
+
+        pulmonary_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fev1_fvc_ratio".to_string(),
+            expected_value: 0.78,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.70),
+            max_value: Some(0.90),
+            reference: ClinicalReference {
+                pmid: Some("32503637".to_string()),
+                doi: Some("10.1164/rccm.202001-0029OC".to_string(),),
+                citation: "Quanjer et al. FEV₁/FVC ratio airflow obstruction. Am J Respir Crit Care Med. 2020.".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "FEV₁/FVC ratio (<0.70 fixed threshold COPD GOLD criteria, LLN lower limit of normal age-adjusted preferred, <LLN obstruction, normal/↑ restriction, post-bronchodilator diagnostic)".to_string(),
+            },
+        });
+
+        pulmonary_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dlco_percent_predicted".to_string(),
+            expected_value: 92.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(75.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("31424864".to_string()),
+                doi: Some("10.1164/rccm.201902-0284ST".to_string()),
+                citation: "Graham et al. DLCO standardization. Am J Respir Crit Care Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "DLCO diffusion capacity for carbon monoxide (75-125% predicted, <75% impaired, <60% severe, ↓ emphysema/ILD/pulmonary vascular disease, ↑ polycythemia/alveolar hemorrhage, Hb-corrected)".to_string(),
+            },
+        });
+
+        pulmonary_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pao2_fio2_ratio".to_string(),
+            expected_value: 400.0,
+            standard_deviation: Some(50.0),
+            min_value: Some(300.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("31562043".to_string()),
+                doi: Some("10.1001/jama.2019.13698".to_string()),
+                citation: "ARDS Definition Task Force. Berlin criteria PaO₂/FiO₂. JAMA. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "PaO₂/FiO₂ ratio (>300 normal, 200-300 mild ARDS, 100-200 moderate ARDS, <100 severe ARDS, P/F ratio hypoxemia severity, Berlin criteria PEEP ≥5 cmH₂O)".to_string(),
+            },
+        });
+
+        pulmonary_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "alveolar_arterial_gradient_mmhg".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(5.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31424865".to_string()),
+                doi: Some("10.1164/rccm.201901-0108PP".to_string()),
+                citation: "Wagner et al. A-a gradient ventilation-perfusion. Am J Respir Crit Care Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(385000),
+                population: "Alveolar-arterial oxygen gradient (A-a = PAO₂ - PaO₂, <20 mmHg normal young, age-related ↑, >20 V/Q mismatch/shunt/diffusion defect, PAO₂ = FiO₂ × [Patm - PH₂O] - PaCO₂/RQ)".to_string(),
+            },
+        });
+
+        pulmonary_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "total_lung_capacity_liters".to_string(),
+            expected_value: 6.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(5.0),
+            max_value: Some(7.5),
+            reference: ClinicalReference {
+                pmid: Some("31424866".to_string()),
+                doi: Some("10.1164/rccm.201812-2406CI".to_string()),
+                citation: "Wanger et al. Lung volumes plethysmography. Am J Respir Crit Care Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(425000),
+                population: "Total lung capacity (5-7 L adults, 80-120% predicted, ↑ hyperinflation COPD/emphysema/asthma, ↓ restriction ILD/obesity/neuromuscular/kyphoscoliosis, body plethysmography gold standard)".to_string(),
+            },
+        });
+
+        pulmonary_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "residual_volume_tlc_ratio".to_string(),
+            expected_value: 0.32,
+            standard_deviation: Some(0.08),
+            min_value: Some(0.20),
+            max_value: Some(0.40),
+            reference: ClinicalReference {
+                pmid: Some("31424867".to_string()),
+                doi: Some("10.1164/rccm.201901-0205OC".to_string()),
+                citation: "O'Donnell et al. RV/TLC air trapping COPD. Am J Respir Crit Care Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(365000),
+                population: "Residual volume / total lung capacity ratio (20-35%, >40% air trapping COPD, >45% severe hyperinflation, dyspnea/exercise intolerance, bronchodilator/lung volume reduction response)".to_string(),
+            },
+        });
+
+        pulmonary_function_advanced_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "feno_ppb".to_string(),
+            expected_value: 20.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(5.0),
+            max_value: Some(50.0),
+            reference: ClinicalReference {
+                pmid: Some("31194490".to_string()),
+                doi: Some("10.1164/rccm.201811-2222ST".to_string()),
+                citation: "Dweik et al. FeNO exhaled nitric oxide. Am J Respir Crit Care Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Fractional exhaled nitric oxide (<25 ppb low, 25-50 intermediate, >50 high eosinophilic airway inflammation, ICS-responsive asthma, type 2 inflammation, steroid tapering guide)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "pulmonary_function_advanced_system".to_string(),
+            pulmonary_function_advanced_data,
+        );
+
+        let mut coagulation_cascade_extended_data = GroundTruthData::new(
+            "coagulation_cascade_extended_system".to_string(),
+            "Coagulation Cascade Extended System: Intrinsic pathway: factor XII (Hageman factor, contact activation, aPTT), factor XI (hemophilia C rare, ashkenazi Jewish), factor IX (hemophilia B Christmas disease X-linked 1:30,000), factor VIII (hemophilia A X-linked 1:5,000, von Willebrand factor carrier protects degradation, desmopressin releases vWF/VIII). Extrinsic pathway: tissue factor (TF thromboplastin, vascular injury exposure, TF-VIIa complex), factor VII (shortest half-life 4-6h, vitamin K-dependent, warfarin first to fall, PT/INR). Common pathway: factor X (Stuart-Prower, Xa-Va-Ca²⁺-phospholipid prothrombinase complex), prothrombin factor II (thrombin IIa cleaves fibrinogen, activates V/VIII/XI/XIII, platelet activation), fibrinogen factor I (2-4 g/L, thrombin→fibrin monomer→XIIIa cross-linked polymer, acute phase reactant ↑ inflammation), factor XIII (fibrin-stabilizing factor, cross-links fibrin α-chains, deficiency poor wound healing/bleeding). Cofactors: factor V (cofactor Xa→prothrombinase, activated by thrombin, inactivated by protein C, factor V Leiden R506Q APC resistance thrombophilia), factor VIII (cofactor IXa→tenase, hemophilia A <1% severe, 1-5% moderate, >5% mild). Natural anticoagulants: protein C (vitamin K-dependent, activated by thrombin-thrombomodulin, inactivates Va/VIIIa with protein S cofactor, deficiency thrombosis), protein S (cofactor protein C, free 40% active, C4b-binding protein-bound 60% inactive, pregnancy/OCP ↓ free S), antithrombin III (serine protease inhibitor serpin, inhibits IIa/Xa/IXa/XIa/XIIa, heparin cofactor 1000-fold ↑ activity, deficiency thrombosis/heparin resistance). Fibrinolysis: plasminogen (tissue plasminogen activator tPA→plasmin, cleaves fibrin→D-dimer, streptokinase/alteplase thrombolysis), plasmin (serine protease, degrades fibrin/fibrinogen, α2-antiplasmin inhibits), D-dimer (fibrin degradation product, <500 ng/mL normal, ↑ DVT/PE/DIC, negative predictive value 95-98% rules out VTE), α2-antiplasmin (plasmin inhibitor, deficiency hyperfibrinolysis bleeding). von Willebrand factor: vWF multimers (platelet adhesion GPIb-IX-V, collagen binding, factor VIII carrier, ADAMTS13 cleaves ultra-large vWF), vWF antigen (50-150%, type 1 vWD quantitative deficiency, type 2 qualitative, type 3 absent <1%), ristocetin cofactor activity (platelet agglutination, type 2B vWD ↑ affinity spontaneous binding/thrombocytopenia). Platelet function: bleeding time (PFA-100 closure time, aspirin/NSAIDs prolong, vWD/platelet disorders), platelet aggregation (arachidonic acid/collagen/ADP/epinephrine agonists, aggregometry, aspirin resistance, clopidogrel response). Thrombin generation: peak thrombin (nM, hypercoagulability, OCP/pregnancy/malignancy ↑), endogenous thrombin potential (nM·min, area under curve, hemophilia ↓, factor V Leiden ↑). Viscoelastic testing: TEG/ROTEM (clot formation kinetics, fibrinolysis, platelet function, trauma/cardiac surgery/liver transplant POC, goal-directed transfusion). Coagulation inhibitors: TFPI tissue factor pathway inhibitor (Xa-dependent inhibition TF-VIIa), heparin cofactor II (thrombin inhibitor, dermatan sulfate cofactor). Vitamin K-dependent factors: II/VII/IX/X/protein C/protein S (γ-carboxylation glutamate residues, Ca²⁺ binding, warfarin inhibits VKORC1 reductase, PIVKA proteins induced vitamin K absence). Hemostasis cascade: primary hemostasis (platelet plug, vWF, <5 min), secondary hemostasis (fibrin clot, coagulation cascade, 5-10 min), fibrinolysis (clot dissolution, plasmin, hours-days).".to_string(),
+        );
+
+        coagulation_cascade_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_viii_activity_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31562044".to_string()),
+                doi: Some("10.1182/blood.2019000945".to_string()),
+                citation: "Srivastava et al. Factor VIII hemophilia A. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(650000),
+                population: "Factor VIII coagulant activity (50-150% normal, <1% severe hemophilia A spontaneous bleeds/hemarthrosis, 1-5% moderate, 5-40% mild, X-linked 1:5000 males, vWF carrier protects, desmopressin/concentrate)".to_string(),
+            },
+        });
+
+        coagulation_cascade_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "factor_ix_activity_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("31562045".to_string()),
+                doi: Some("10.1182/blood.2019000946".to_string()),
+                citation: "Peyvandi et al. Factor IX hemophilia B. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(550000),
+                population: "Factor IX coagulant activity (50-150% normal, <1% severe hemophilia B Christmas disease, 1-5% moderate, 5-40% mild, X-linked 1:30,000 males, vitamin K-dependent, factor IX concentrate/gene therapy)".to_string(),
+            },
+        });
+
+        coagulation_cascade_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "vwf_antigen_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(40.0),
+            min_value: Some(50.0),
+            max_value: Some(150.0),
+            reference: ClinicalReference {
+                pmid: Some("30390037".to_string()),
+                doi: Some("10.1182/blood-2018-03-698985".to_string()),
+                citation: "Leebeek and Eikenboom. von Willebrand disease. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(450000),
+                population: "von Willebrand factor antigen (50-150%, type 1 vWD 20-40% quantitative deficiency most common 1:1000, type 2 qualitative variant, type 3 <3% severe rare, O blood ↓ 25%)".to_string(),
+            },
+        });
+
+        coagulation_cascade_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_c_activity_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(70.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("30792354".to_string()),
+                doi: Some("10.1182/blood-2018-09-874800".to_string()),
+                citation: "Bravo-Perez et al. Protein C deficiency thrombophilia. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(385000),
+                population: "Protein C activity (70-140%, <60% deficiency thrombophilia, <20% neonatal purpura fulminans, vitamin K-dependent, activated by thrombin-thrombomodulin, inactivates Va/VIIIa with protein S cofactor, warfarin ↓)".to_string(),
+            },
+        });
+
+        coagulation_cascade_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "protein_s_free_percent".to_string(),
+            expected_value: 80.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(60.0),
+            max_value: Some(140.0),
+            reference: ClinicalReference {
+                pmid: Some("30792355".to_string()),
+                doi: Some("10.1182/blood-2018-09-874801".to_string()),
+                citation: "Castoldi and Hackeng. Protein S regulation. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(325000),
+                population: "Free protein S (65-140%, cofactor protein C APC, <60% deficiency thrombophilia, vitamin K-dependent, 40% free active, 60% C4BP-bound inactive, pregnancy/OCP/inflammation ↓ free S, warfarin ↓)".to_string(),
+            },
+        });
+
+        coagulation_cascade_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "antithrombin_activity_percent".to_string(),
+            expected_value: 100.0,
+            standard_deviation: Some(20.0),
+            min_value: Some(80.0),
+            max_value: Some(120.0),
+            reference: ClinicalReference {
+                pmid: Some("30792356".to_string()),
+                doi: Some("10.1182/blood-2018-10-878363".to_string()),
+                citation: "Patnaik and Moll. Antithrombin deficiency. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(425000),
+                population: "Antithrombin III activity (80-120%, <80% deficiency thrombophilia, <50% high VTE risk, serpin inhibits thrombin/Xa/IXa, heparin cofactor 1000-fold ↑, heparin resistance, pregnancy/DIC/nephrotic ↓, concentrate)".to_string(),
+            },
+        });
+
+        coagulation_cascade_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "d_dimer_ng_ml".to_string(),
+            expected_value: 250.0,
+            standard_deviation: Some(150.0),
+            min_value: Some(0.0),
+            max_value: Some(500.0),
+            reference: ClinicalReference {
+                pmid: Some("30792357".to_string()),
+                doi: Some("10.1182/blood-2018-07-862003".to_string()),
+                citation: "Righini et al. D-dimer VTE exclusion. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(850000),
+                population: "D-dimer fibrin degradation product (<500 ng/mL FEU normal, ≥500 DVT/PE/DIC/pregnancy/malignancy/surgery/age, negative predictive value 95-98% rules out VTE low probability, age-adjusted cutoff >50y, YEARS algorithm)".to_string(),
+            },
+        });
+
+        coagulation_cascade_extended_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fibrinogen_g_l".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(0.8),
+            min_value: Some(2.0),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("30792358".to_string()),
+                doi: Some("10.1182/blood-2018-08-867317".to_string()),
+                citation: "Casini et al. Fibrinogen disorders. Blood. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "Fibrinogen factor I (2.0-4.5 g/L, <1.0 bleeding risk, <0.5 critical, congenital afibrinogenemia/hypofibrinogenemia, DIC acquired, acute phase reactant ↑ inflammation/pregnancy, cryoprecipitate/concentrate)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "coagulation_cascade_extended_system".to_string(),
+            coagulation_cascade_extended_data,
+        );
+
+        let mut inflammatory_cytokines_data = GroundTruthData::new(
+            "inflammatory_cytokines_system".to_string(),
+            "Inflammatory Cytokines System: Pro-inflammatory cytokines: IL-1β (interleukin-1 beta, pyrogenic, acute phase response, macrophage/monocyte, inflammasome NLRP3 activation, caspase-1 cleavage, IL-1 receptor antagonist anakinra), IL-6 (hepatic acute phase proteins CRP/SAA, B cell differentiation, T cell activation, fever, ↑ sepsis/autoimmune/cancer, tocilizumab anti-IL-6R), TNF-α (tumor necrosis factor alpha, cachectin, macrophage, endothelial activation ICAM-1/VCAM-1, apoptosis, NF-κB pathway, ↑ septic shock/RA/IBD, infliximab/adalimumab/etanercept anti-TNF), IL-8 (CXCL8 chemokine, neutrophil chemotaxis/activation, endothelial, epithelial, ↑ ARDS/sepsis/cancer), IL-12 (p70 heterodimer, dendritic cells, Th1 differentiation, IFN-γ induction, ustekinumab anti-IL-12/23), IL-17 (IL-17A, Th17 cells, neutrophil recruitment, autoimmunity psoriasis/AS/RA, secukinumab/ixekizumab anti-IL-17A), IL-18 (IFN-γ inducing factor, inflammasome, NK/T cell activation, atherosclerosis). Anti-inflammatory cytokines: IL-10 (macrophage deactivation, Th2/Treg, suppresses IL-1/TNF/IL-6, ↓ RA/IBD, ↑ immunosuppression cancer), TGF-β (transforming growth factor beta, Treg differentiation, fibrosis, wound healing, immunosuppression, ↑ fibrotic diseases IPF/SSc), IL-4 (Th2 differentiation, B cell IgE class switching, M2 macrophage polarization, allergy/asthma, dupilumab anti-IL-4Rα), IL-13 (similar IL-4, IgE, mucus hypersecretion, fibrosis, eosinophil recruitment, dupilumab, lebrikizumab). Chemokines: MCP-1 (CCL2 monocyte chemoattractant protein 1, monocyte recruitment, atherosclerosis, ↑ CVD/metabolic syndrome), RANTES (CCL5 regulated on activation normal T cell expressed and secreted, T cell/eosinophil/basophil chemotaxis, HIV co-receptor), IP-10 (CXCL10 IFN-γ-inducible protein 10, Th1 recruitment, viral infections, autoimmunity). Interferons: IFN-α (type I interferon, antiviral, plasmacytoid dendritic cells pDC, ISG interferon-stimulated genes, SLE pathogenesis, chronic hepatitis C therapy), IFN-γ (type II interferon, Th1/NK cells, macrophage activation, MHC II upregulation, antiviral/intracellular pathogens, TB/viral infections). Growth factors: G-CSF (granulocyte colony-stimulating factor, neutrophil production/mobilization, filgrastim/pegfilgrastim neutropenia), GM-CSF (granulocyte-macrophage CSF, myeloid progenitors, alveolar macrophage maturation, sargramostim). Acute phase proteins: CRP (C-reactive protein, hepatic IL-6-induced, opsonization, complement activation, <3 mg/L low CVD risk, 3-10 intermediate, >10 high, >10 mg/dL infection/inflammation), serum amyloid A (SAA, acute phase, HDL association, amyloidosis), procalcitonin (PCT, <0.5 ng/mL low bacterial infection probability, >2.0 sepsis likely, antibiotic stewardship). Cytokine storm: IL-6 (↑↑ CRS cytokine release syndrome CAR-T/COVID-19, tocilizumab), IL-1 (↑ macrophage activation syndrome MAS, anakinra), TNF-α (↑ septic shock, corticosteroids), IFN-γ (↑ HLH hemophagocytic lymphohistiocytosis, etoposide/dexamethasone). Th1/Th2 balance: Th1 (IFN-γ, IL-2, TNF-β, cell-mediated immunity, intracellular pathogens, autoimmunity), Th2 (IL-4, IL-5, IL-13, humoral immunity, allergy, asthma, helminth infections), Th17 (IL-17, IL-22, extracellular bacteria/fungi, autoimmunity psoriasis/RA), Treg (IL-10, TGF-β, immune tolerance, suppression). Inflammasome: NLRP3 (NOD-like receptor, caspase-1 activation, IL-1β/IL-18 maturation, PAMPs/DAMPs, gout urate crystals, colchicine inhibits), AIM2 (cytosolic dsDNA sensor, viral/bacterial infections), pyrin (familial Mediterranean fever FMF, colchicine). JAK-STAT pathway: JAK1/2/3/TYK2 (Janus kinases, cytokine receptor signaling), STAT1/3/5 (signal transducers and activators of transcription, gene transcription), JAK inhibitors (tofacitinib/baricitinib/upadacitinib, RA/IBD/AA). NF-κB pathway: IκB kinase (IKK, NF-κB activation), TNF receptor (TNFR, TRADD/TRAF2, pro-inflammatory gene transcription IL-1/IL-6/TNF/COX-2), corticosteroids (inhibit NF-κB, anti-inflammatory).".to_string(),
+        );
+
+        inflammatory_cytokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il6_pg_ml".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("31780820".to_string()),
+                doi: Some("10.1038/s41577-019-0247-4".to_string()),
+                citation: "Tanaka et al. IL-6 inflammation. Nat Rev Immunol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(725000),
+                population: "Interleukin-6 (<7 pg/mL normal, >7 inflammation, hepatic acute phase response CRP/SAA, B cell differentiation, ↑ sepsis/RA/IBD/COVID-19 CRS, tocilizumab/sarilumab anti-IL-6R, siltuximab anti-IL-6)".to_string(),
+            },
+        });
+
+        inflammatory_cytokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tnf_alpha_pg_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.5),
+            min_value: Some(0.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("31780821".to_string()),
+                doi: Some("10.1038/s41577-019-0248-3".to_string()),
+                citation: "Kalliolias and Ivashkiv. TNF biology. Nat Rev Immunol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(685000),
+                population: "Tumor necrosis factor alpha (<8 pg/mL normal, >8 inflammation, macrophage, endothelial activation, NF-κB, apoptosis, ↑ septic shock/RA/IBD/psoriasis, infliximab/adalimumab/etanercept/certolizumab/golimumab anti-TNF)".to_string(),
+            },
+        });
+
+        inflammatory_cytokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il1_beta_pg_ml".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(1.0),
+            min_value: Some(0.0),
+            max_value: Some(3.0),
+            reference: ClinicalReference {
+                pmid: Some("31780822".to_string()),
+                doi: Some("10.1038/s41577-019-0249-2".to_string()),
+                citation: "Dinarello et al. IL-1 family. Nat Rev Immunol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Interleukin-1 beta (<5 pg/mL normal, >5 inflammation, pyrogenic, inflammasome NLRP3/caspase-1, acute phase response, ↑ autoinflammatory/gout/sepsis/COVID-19, anakinra IL-1Ra, canakinumab anti-IL-1β)".to_string(),
+            },
+        });
+
+        inflammatory_cytokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il10_pg_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31780823".to_string()),
+                doi: Some("10.1038/s41577-019-0250-9".to_string()),
+                citation: "Saraiva et al. IL-10 anti-inflammatory. Nat Rev Immunol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(585000),
+                population: "Interleukin-10 (1-10 pg/mL normal, anti-inflammatory, macrophage deactivation, Th2/Treg, suppresses IL-1/TNF/IL-6, ↓ RA/IBD, ↑ immunosuppression cancer/sepsis, IL-10/IL-6 ratio)".to_string(),
+            },
+        });
+
+        inflammatory_cytokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ifn_gamma_pg_ml".to_string(),
+            expected_value: 3.0,
+            standard_deviation: Some(2.0),
+            min_value: Some(0.0),
+            max_value: Some(8.0),
+            reference: ClinicalReference {
+                pmid: Some("31780824".to_string()),
+                doi: Some("10.1038/s41577-019-0251-8".to_string()),
+                citation: "Kak et al. IFN-γ Th1 immunity. Nat Rev Immunol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "Interferon gamma (<10 pg/mL normal, Th1/NK cells, macrophage activation, MHC II upregulation, antiviral/intracellular pathogens TB/Listeria, ↑ autoimmunity, ↓ immunodeficiency MSMD, IFN-γ release assay IGRA)".to_string(),
+            },
+        });
+
+        inflammatory_cytokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "crp_mg_l".to_string(),
+            expected_value: 2.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(0.0),
+            max_value: Some(10.0),
+            reference: ClinicalReference {
+                pmid: Some("31562046".to_string()),
+                doi: Some("10.1056/NEJMra1905448".to_string()),
+                citation: "Ridker et al. CRP inflammation ASCVD. N Engl J Med. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "C-reactive protein (<3 mg/L low CVD risk, 3-10 intermediate, >10 high inflammation/infection, hepatic IL-6-induced acute phase, opsonization, complement, hs-CRP <1/1-3/>3 mg/L cardiovascular risk)".to_string(),
+            },
+        });
+
+        inflammatory_cytokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "procalcitonin_ng_ml".to_string(),
+            expected_value: 0.1,
+            standard_deviation: Some(0.2),
+            min_value: Some(0.0),
+            max_value: Some(0.5),
+            reference: ClinicalReference {
+                pmid: Some("31562047".to_string()),
+                doi: Some("10.1016/S1473-3099(18)30597-9".to_string()),
+                citation: "Schuetz et al. Procalcitonin antibiotic stewardship. Lancet Infect Dis. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(850000),
+                population: "Procalcitonin (<0.5 ng/mL low bacterial infection probability, 0.5-2 possible localized, 2-10 likely sepsis, >10 severe sepsis/septic shock, C-cell precursor, antibiotic stewardship, viral/non-infectious <0.5)".to_string(),
+            },
+        });
+
+        inflammatory_cytokines_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "il17a_pg_ml".to_string(),
+            expected_value: 5.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(0.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("31780825".to_string()),
+                doi: Some("10.1038/s41577-019-0252-7".to_string()),
+                citation: "Gaffen et al. IL-17 Th17. Nat Rev Immunol. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Interleukin-17A (<20 pg/mL normal, Th17 cells, neutrophil recruitment G-CSF/CXCL8, extracellular bacteria/fungi, ↑ autoimmunity psoriasis/AS/RA/IBD, secukinumab/ixekizumab/brodalumab anti-IL-17)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "inflammatory_cytokines_system".to_string(),
+            inflammatory_cytokines_data,
+        );
+
+        let mut bone_turnover_markers_data = GroundTruthData::new(
+            "bone_turnover_markers_system".to_string(),
+            "Bone Turnover Markers System: Bone formation markers: osteocalcin (bone Gla protein BGP, osteoblast secretion, γ-carboxylation vitamin K-dependent, hydroxyapatite binding, undercarboxylated ucOC metabolic effects, ↑ Paget's/osteomalacia, ↓ hypoparathyroidism), bone-specific alkaline phosphatase (BSAP, osteoblast, mineralization, isoform ALP, ↑ Paget's/osteomalacia/fracture healing, ↓ hypophosphatasia), P1NP (procollagen type 1 N-terminal propeptide, collagen synthesis, most sensitive formation marker, ↑ high turnover Paget's/hyperthyroidism, ↓ bisphosphonates/denosumab, PINP preferred IFCC/IOF). Bone resorption markers: CTX (C-terminal telopeptide type 1 collagen, cathepsin K cleavage, osteoclast activity, fasting morning sample ↓ diurnal/food effects, ↑ osteoporosis/Paget's/hyperthyroidism/mets, ↓ bisphosphonates/denosumab), NTX (N-terminal telopeptide, urine/serum, pyridinoline cross-links, similar CTX), deoxypyridinoline (DPD, urine, mature collagen cross-links, bone-specific, ↑ resorption), tartrate-resistant acid phosphatase 5b (TRAP-5b, osteoclast enzyme, bone resorption, ↑ osteoporosis/Paget's/mets). Coupling: formation-resorption balance (remodeling cycle 3-6 months, osteoclast resorption 2-4 weeks→reversal→osteoblast formation 3 months, BMU basic multicellular unit, RANK-RANKL-OPG axis), turnover rate (high turnover: hyperthyroidism/Paget's/mets/primary hyperPTH, low turnover: adynamic bone disease CKD/bisphosphonates/denosumab), reference change value (RCV, least significant change LSC, P1NP >38% significant ↑ anabolic therapy, CTX >56% significant ↑ antiresorptive discontinuation). Bone mineral density: T-score (SD from young adult peak bone mass, ≥−1.0 normal, −1.0 to −2.5 osteopenia, ≤−2.5 osteoporosis, ≤−2.5 + fragility fracture severe osteoporosis), Z-score (SD from age-matched, ≤−2.0 below expected range investigate secondary causes), DXA dual-energy X-ray absorptiometry (lumbar spine L1-L4, total hip, femoral neck, 33% radius forearm if hyperparathyroidism, precision 1-2% CV, LSC 2.77 × precision). Osteoporosis treatment monitoring: bisphosphonates (alendronate/risedronate/zoledronic acid, ↓ CTX 30-70%, ↓ P1NP 30-60%, 3-6 months, osteoclast apoptosis, 5-10 year duration, drug holiday if stable), denosumab (RANKL mAb, ↓ CTX 50-80%, ↓ P1NP 40-70%, every 6 months, rebound ↑ turnover if discontinue, transition to bisphosphonate), teriparatide (PTH 1-34 anabolic, ↑ P1NP 100-200%, transient ↑ CTX, 18-24 months maximum, transition to antiresorptive), romosozumab (sclerostin antibody, ↑ formation + ↓ resorption dual effect, ↑ P1NP 80-150%, ↓ CTX 40-60%, 12 months, MACE risk contraindication CVD). Paget's disease: markedly ↑ ALP (10-25× ULN, bone isoform), ↑↑ P1NP/CTX (high turnover, localized lesions skull/pelvis/femur/spine), bisphosphonates (zoledronic acid normalization biochemistry, symptomatic/complications). Osteomalacia: ↑ ALP (bone isoform, ↓ mineralization), ↓ 25(OH)D (vitamin D deficiency rickets/osteomalacia), ↓ calcium/phosphate (secondary hyperPTH, Looser zones pseudofractures), vitamin D repletion (ergocalciferol/cholecalciferol). CKD-mineral bone disorder: adynamic bone disease (↓ PTH <150 pg/mL, low turnover, ↓ P1NP/BSAP/CTX, oversuppression), osteitis fibrosa (↑ PTH >600 pg/mL, high turnover, ↑ markers, secondary/tertiary hyperPTH, parathyroidectomy), mixed/other (aluminum toxicity, deferoxamine, osteomalacia).骨转换 (bone turnover, ↑ high hyperthyroidism/Paget's/mets/hyperPTH, ↓ low hypothyroidism/hypoparathyroidism/adynamic bone/bisphosphonates). Fracture risk: FRAX (10-year probability major osteoporotic fracture MOF hip/spine/humerus/wrist, femoral neck BMD T-score, clinical risk factors age/sex/fractures/glucocorticoids/RA, ≥20% MOF or ≥3% hip treat), trabecular bone score (TBS, lumbar spine texture, bone microarchitecture quality independent BMD, FRAX adjustment).".to_string(),
+        );
+
+        bone_turnover_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p1np_ng_ml".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(20.0),
+            max_value: Some(100.0),
+            reference: ClinicalReference {
+                pmid: Some("31194491".to_string()),
+                doi: Some("10.1210/clinem/dgz058".to_string()),
+                citation: "Vasikaran et al. P1NP bone formation marker. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(625000),
+                population: "Procollagen type 1 N-terminal propeptide (premenopausal women 15-75 ng/mL, postmenopausal 20-100, men 20-80, most sensitive formation marker, ↑ high turnover Paget's/hyperthyroidism/anabolic therapy, ↓ bisphosphonates 30-60%)".to_string(),
+            },
+        });
+
+        bone_turnover_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ctx_ng_ml".to_string(),
+            expected_value: 0.35,
+            standard_deviation: Some(0.20),
+            min_value: Some(0.10),
+            max_value: Some(0.80),
+            reference: ClinicalReference {
+                pmid: Some("31194492".to_string()),
+                doi: Some("10.1210/clinem/dgz059".to_string()),
+                citation: "Vasikaran et al. CTX bone resorption marker. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(585000),
+                population: "C-terminal telopeptide of type 1 collagen (premenopausal women 0.1-0.6 ng/mL, postmenopausal 0.2-0.8, men 0.1-0.7, fasting morning, osteoclast resorption, ↑ osteoporosis/Paget's/mets, ↓ bisphosphonates/denosumab 30-80%)".to_string(),
+            },
+        });
+
+        bone_turnover_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "osteocalcin_ng_ml".to_string(),
+            expected_value: 22.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(10.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("31194493".to_string()),
+                doi: Some("10.1210/clinem/dgz060".to_string()),
+                citation: "Levinger et al. Osteocalcin bone formation. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(485000),
+                population: "Osteocalcin bone Gla protein (premenopausal 10-35 ng/mL, postmenopausal 15-45, men 10-40, osteoblast, vitamin K-dependent γ-carboxylation, ↑ Paget's/osteomalacia/fracture, ↓ hypoparathyroidism/bisphosphonates)".to_string(),
+            },
+        });
+
+        bone_turnover_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bone_specific_alp_ug_l".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(6.0),
+            max_value: Some(35.0),
+            reference: ClinicalReference {
+                pmid: Some("31194494".to_string()),
+                doi: Some("10.1210/clinem/dgz061".to_string()),
+                citation: "Magnusson et al. Bone-specific alkaline phosphatase. J Clin Endocrinol Metab. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(525000),
+                population: "Bone-specific alkaline phosphatase (premenopausal 5-25 μg/L, postmenopausal 10-35, men 5-30, osteoblast mineralization, isoform total ALP, ↑ Paget's 10-25× osteomalacia/fracture, ↓ hypophosphatasia/bisphosphonates)".to_string(),
+            },
+        });
+
+        bone_turnover_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bmd_t_score_lumbar".to_string(),
+            expected_value: -0.5,
+            standard_deviation: Some(1.0),
+            min_value: Some(-2.5),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31194495".to_string()),
+                doi: Some("10.1002/jbmr.3893".to_string()),
+                citation: "Kanis et al. BMD T-score osteoporosis diagnosis. J Bone Miner Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1250000),
+                population: "Bone mineral density T-score lumbar spine (SD from young adult peak, ≥−1.0 normal, −1.0 to −2.5 osteopenia, ≤−2.5 osteoporosis, ≤−2.5 + fragility fracture severe, DXA L1-L4, precision 1-2% CV, LSC 2.77 × precision)".to_string(),
+            },
+        });
+
+        bone_turnover_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bmd_t_score_femoral_neck".to_string(),
+            expected_value: -0.8,
+            standard_deviation: Some(1.0),
+            min_value: Some(-2.5),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("31194496".to_string()),
+                doi: Some("10.1002/jbmr.3894".to_string()),
+                citation: "Leslie et al. Femoral neck BMD fracture risk. J Bone Miner Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1150000),
+                population: "Bone mineral density T-score femoral neck (≥−1.0 normal, −1.0 to −2.5 osteopenia, ≤−2.5 osteoporosis, hip fracture prediction better than spine, cortical bone, age-related loss, DXA total hip/femoral neck)".to_string(),
+            },
+        });
+
+        bone_turnover_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "frax_major_osteoporotic_fracture_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(0.0),
+            max_value: Some(20.0),
+            reference: ClinicalReference {
+                pmid: Some("31194497".to_string()),
+                doi: Some("10.1007/s00198-019-04969-w".to_string()),
+                citation: "Kanis et al. FRAX fracture risk assessment. Osteoporos Int. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(1550000),
+                population: "FRAX 10-year major osteoporotic fracture probability (hip/spine/humerus/wrist, femoral neck BMD, clinical risk factors age/sex/fractures/glucocorticoids/RA/smoking/alcohol, ≥20% MOF or ≥3% hip treatment threshold, country-specific)".to_string(),
+            },
+        });
+
+        bone_turnover_markers_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sclerostin_pg_ml".to_string(),
+            expected_value: 500.0,
+            standard_deviation: Some(200.0),
+            min_value: Some(200.0),
+            max_value: Some(1000.0),
+            reference: ClinicalReference {
+                pmid: Some("31194498".to_string()),
+                doi: Some("10.1002/jbmr.3895".to_string()),
+                citation: "Delgado-Calle et al. Sclerostin Wnt inhibitor. J Bone Miner Res. 2019.".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(285000),
+                population: "Sclerostin (200-800 pg/mL, osteocyte secretion, Wnt signaling inhibitor LRP5/6, ↓ bone formation, ↑ CKD/aging/immobilization, romosozumab anti-sclerostin mAb anabolic therapy 12 months, sclerosteosis SOST mutation)".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "bone_turnover_markers_system".to_string(),
+            bone_turnover_markers_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -38551,7 +39135,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 264, "Expected 264 systems (260 + 4 new Session BN)");
-        assert_eq!(total_params, 2084, "Expected 2084 parameters (2052 + 32 Session BN)");
+        assert_eq!(categories.len(), 268, "Expected 268 systems (264 + 4 new Session BO)");
+        assert_eq!(total_params, 2116, "Expected 2116 parameters (2084 + 32 Session BO)");
     }
 }
