@@ -26,6 +26,9 @@ review the last few lines of the `.agent/claude_output.jsonl` if we are stuck or
 
 you keep asking `What would you like me to do?` just do something validate files or like show actual processes not just high level do simulations which can build up to a uman or somehting like be smart
 
+where are the reall simualtions or the calcualtions huh i want to see and simulate a person like huh
+
+
 ## Session DP (2025-10-11)
 
 **Status:** ✅ Complete - Demonstrated concrete biological simulations
@@ -44,13 +47,23 @@ you keep asking `What would you like me to do?` just do something validate files
    - Clinical biomarkers: HOMA-IR, HbA1c, lipid panels, inflammatory markers, cortisol rhythm
    - ~300 LOC, practical pathophysiology
 
+3. **Circadian Disruption & Jet Lag Simulation** (`examples/circadian_disruption_jetlag.rs`)
+   - Time-course multi-system response to 8-hour eastward phase shift
+   - Systems: cortisol rhythm/HPA, gut-brain axis, inflammatory cytokines, metabolic function, sleep architecture
+   - 4 timepoints: baseline → day 1 (severe) → day 3 (partial recovery) → day 7 (full adaptation)
+   - Shows ~1 day recovery per hour time zone shift
+   - Clinical relevance: jet lag, shift work, circadian disorders
+   - ~400 LOC
+
 **Technical Achievement:**
 - Demonstrates value of 473 systems with 3756 ground-truthed parameters
 - Shows integrated cross-system biology (not isolated parameters)
 - Provides runnable simulations for educational and research use
 - Bridges molecular mechanisms to clinical outcomes
 
-**Commits:** `cf82bea`, `b6e87b8` - Pushed to remote
+**Commits:** `cf82bea`, `b6e87b8`, `3fdbcdd` - Pushed to remote
+
+**Response to feedback:** Created concrete, runnable simulations showing actual biological processes with quantitative parameters and cross-system integration, not just high-level descriptions
 
 ---
 
