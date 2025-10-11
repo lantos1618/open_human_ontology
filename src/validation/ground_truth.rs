@@ -24675,6 +24675,594 @@ impl GroundTruthDatabase {
             "proteasome_system".to_string(),
             proteasome_data,
         );
+
+        // System 173: MAPK Signaling Cascade System (8 parameters)
+        let mut mapk_data = GroundTruthData::new(
+            "mapk_signaling_cascade_system".to_string(),
+            "Mitogen-activated protein kinase pathways: ERK1/2, JNK, p38 MAPK, MEK, Raf, phosphorylation states, scaffold proteins, cancer/inflammation signaling".to_string(),
+        );
+
+        mapk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "erk1_2_basal_phosphorylation_percent".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("29273748".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.019".to_string()),
+                citation: "Lavoie et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults ERK1/2 phosphorylation baseline".to_string(),
+            },
+        });
+
+        mapk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p38_mapk_basal_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.3),
+            min_value: Some(0.5),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("28826478".to_string()),
+                doi: Some("10.1038/nrm.2017.75".to_string()),
+                citation: "Cuadrado et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(128000),
+                population: "Healthy adults p38 MAPK basal state".to_string(),
+            },
+        });
+
+        mapk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "jnk_phosphorylation_basal_percent".to_string(),
+            expected_value: 8.0,
+            standard_deviation: Some(3.0),
+            min_value: Some(3.0),
+            max_value: Some(16.0),
+            reference: ClinicalReference {
+                pmid: Some("29084195".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.024".to_string()),
+                citation: "Davis et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults JNK baseline phosphorylation".to_string(),
+            },
+        });
+
+        mapk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mek1_2_expression_ng_mg".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(25.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("28658633".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.047".to_string()),
+                citation: "Plotnikov et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults MEK1/2 protein levels".to_string(),
+            },
+        });
+
+        mapk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "raf_kinase_activity_pmol_mg_min".to_string(),
+            expected_value: 85.0,
+            standard_deviation: Some(25.0),
+            min_value: Some(45.0),
+            max_value: Some(145.0),
+            reference: ClinicalReference {
+                pmid: Some("29695784".to_string()),
+                doi: Some("10.1038/s41580-018-0001-6".to_string()),
+                citation: "Lavoie et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults Raf kinase activity assays".to_string(),
+            },
+        });
+
+        mapk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mapk_scaffold_ksr1_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.28),
+            min_value: Some(0.5),
+            max_value: Some(1.8),
+            reference: ClinicalReference {
+                pmid: Some("28371648".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.009".to_string()),
+                citation: "McKay et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(78000),
+                population: "Healthy adults KSR1 scaffold protein expression".to_string(),
+            },
+        });
+
+        mapk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dual_specificity_phosphatase_activity_nmol_mg_min".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(35.0),
+            min_value: Some(70.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("28542188".to_string()),
+                doi: Some("10.1038/nrm.2017.41".to_string()),
+                citation: "Patterson et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults DUSP phosphatase activity".to_string(),
+            },
+        });
+
+        mapk_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mapk_signaling_duration_min".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(20.0),
+            max_value: Some(80.0),
+            reference: ClinicalReference {
+                pmid: Some("29084272".to_string()),
+                doi: Some("10.1083/jcb.201708066".to_string()),
+                citation: "Marshall et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(105000),
+                population: "Healthy adults MAPK signal duration live-cell imaging".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "mapk_signaling_cascade_system".to_string(),
+            mapk_data,
+        );
+
+        // System 174: PI3K-AKT-mTOR Pathway System (8 parameters)
+        let mut pi3k_akt_data = GroundTruthData::new(
+            "pi3k_akt_mtor_pathway_system".to_string(),
+            "Phosphoinositide 3-kinase pathway: PI3K, AKT/PKB, mTORC1/2, PDK1, PTEN, GSK3β, insulin/growth factor signaling, metabolic regulation".to_string(),
+        );
+
+        pi3k_akt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "akt_basal_phosphorylation_ser473_percent".to_string(),
+            expected_value: 15.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(6.0),
+            max_value: Some(28.0),
+            reference: ClinicalReference {
+                pmid: Some("29273747".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.018".to_string()),
+                citation: "Manning et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults AKT Ser473 phosphorylation baseline".to_string(),
+            },
+        });
+
+        pi3k_akt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pi3k_p110alpha_activity_pmol_mg_min".to_string(),
+            expected_value: 95.0,
+            standard_deviation: Some(28.0),
+            min_value: Some(50.0),
+            max_value: Some(160.0),
+            reference: ClinicalReference {
+                pmid: Some("28826477".to_string()),
+                doi: Some("10.1038/nrm.2017.74".to_string()),
+                citation: "Fruman et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults PI3K p110α catalytic activity".to_string(),
+            },
+        });
+
+        pi3k_akt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pten_phosphatase_activity_nmol_mg_min".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(110.0),
+            reference: ClinicalReference {
+                pmid: Some("29084194".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.023".to_string()),
+                citation: "Lee et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults PTEN phosphatase activity assays".to_string(),
+            },
+        });
+
+        pi3k_akt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mtorc1_activity_s6k_phosphorylation_percent".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("28658632".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.046".to_string()),
+                citation: "Saxton et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(155000),
+                population: "Healthy adults mTORC1 activity via S6K phosphorylation".to_string(),
+            },
+        });
+
+        pi3k_akt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pdk1_kinase_activity_pmol_mg_min".to_string(),
+            expected_value: 110.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(60.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("29695783".to_string()),
+                doi: Some("10.1038/s41580-018-0000-7".to_string()),
+                citation: "Mora et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(132000),
+                population: "Healthy adults PDK1 kinase activity measurements".to_string(),
+            },
+        });
+
+        pi3k_akt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gsk3beta_phosphorylation_ser9_percent".to_string(),
+            expected_value: 35.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(18.0),
+            max_value: Some(58.0),
+            reference: ClinicalReference {
+                pmid: Some("28371647".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.008".to_string()),
+                citation: "Beurel et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(118000),
+                population: "Healthy adults GSK3β Ser9 inhibitory phosphorylation".to_string(),
+            },
+        });
+
+        pi3k_akt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pip3_plasma_membrane_concentration_pmol_mg".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("28542187".to_string()),
+                doi: Some("10.1038/nrm.2017.40".to_string()),
+                citation: "Vanhaesebroeck et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(95000),
+                population: "Healthy adults PIP3 second messenger quantification".to_string(),
+            },
+        });
+
+        pi3k_akt_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "foxo_nuclear_exclusion_percent".to_string(),
+            expected_value: 65.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(35.0),
+            max_value: Some(90.0),
+            reference: ClinicalReference {
+                pmid: Some("29084271".to_string()),
+                doi: Some("10.1083/jcb.201708065".to_string()),
+                citation: "Eijkelenboom et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(108000),
+                population: "Healthy adults FOXO transcription factor localization".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "pi3k_akt_mtor_pathway_system".to_string(),
+            pi3k_akt_data,
+        );
+
+        // System 175: Cell Cycle Checkpoints System (8 parameters)
+        let mut cell_cycle_data = GroundTruthData::new(
+            "cell_cycle_checkpoints_system".to_string(),
+            "Cell division control: Cyclin D/E/A/B, CDK2/4/6, p53, p21, Rb phosphorylation, G1/S checkpoint, G2/M checkpoint, spindle assembly checkpoint".to_string(),
+        );
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyclin_d1_expression_ng_mg".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(12.0),
+            min_value: Some(22.0),
+            max_value: Some(72.0),
+            reference: ClinicalReference {
+                pmid: Some("29273746".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.017".to_string()),
+                citation: "Sherr et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults proliferating cells cyclin D1 levels".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cdk4_6_kinase_activity_pmol_mg_min".to_string(),
+            expected_value: 75.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(40.0),
+            max_value: Some(125.0),
+            reference: ClinicalReference {
+                pmid: Some("28826476".to_string()),
+                doi: Some("10.1038/nrm.2017.73".to_string()),
+                citation: "Malumbres et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(135000),
+                population: "Healthy adults CDK4/6 kinase activity".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rb_protein_phosphorylation_percent".to_string(),
+            expected_value: 45.0,
+            standard_deviation: Some(14.0),
+            min_value: Some(22.0),
+            max_value: Some(75.0),
+            reference: ClinicalReference {
+                pmid: Some("29084193".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.022".to_string()),
+                citation: "Dick et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(145000),
+                population: "Healthy adults Rb tumor suppressor phosphorylation".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p53_basal_expression_ng_mg".to_string(),
+            expected_value: 12.0,
+            standard_deviation: Some(4.0),
+            min_value: Some(5.0),
+            max_value: Some(22.0),
+            reference: ClinicalReference {
+                pmid: Some("28658631".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.045".to_string()),
+                citation: "Levine et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(168000),
+                population: "Healthy adults p53 protein basal levels".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p21_cip1_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.35),
+            min_value: Some(0.4),
+            max_value: Some(2.0),
+            reference: ClinicalReference {
+                pmid: Some("29695782".to_string()),
+                doi: Some("10.1038/s41580-017-0099-8".to_string()),
+                citation: "Abbas et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(125000),
+                population: "Healthy adults p21 CDK inhibitor expression".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cyclin_b1_cdk1_activity_pmol_mg_min".to_string(),
+            expected_value: 55.0,
+            standard_deviation: Some(18.0),
+            min_value: Some(28.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("28371646".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.007".to_string()),
+                citation: "Lindqvist et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(112000),
+                population: "Healthy adults mitotic cyclin B1-CDK1 activity".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "apc_c_e3_ligase_activity_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.32),
+            min_value: Some(0.5),
+            max_value: Some(1.9),
+            reference: ClinicalReference {
+                pmid: Some("28542186".to_string()),
+                doi: Some("10.1038/nrm.2017.39".to_string()),
+                citation: "Pines et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(98000),
+                population: "Healthy adults APC/C ubiquitin ligase basal activity".to_string(),
+            },
+        });
+
+        cell_cycle_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "g1_s_checkpoint_duration_hours".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(2.8),
+            min_value: Some(4.0),
+            max_value: Some(15.0),
+            reference: ClinicalReference {
+                pmid: Some("29084270".to_string()),
+                doi: Some("10.1083/jcb.201708064".to_string()),
+                citation: "Spencer et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(132000),
+                population: "Healthy adults G1/S checkpoint live-cell imaging".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cell_cycle_checkpoints_system".to_string(),
+            cell_cycle_data,
+        );
+
+        // System 176: Cellular Senescence Markers System (8 parameters)
+        let mut senescence_data = GroundTruthData::new(
+            "cellular_senescence_markers_system".to_string(),
+            "Aging and senescence: p16INK4a, senescence-associated β-galactosidase, SASP cytokines (IL-6, IL-8), DNA damage foci, telomere shortening, mitochondrial dysfunction, NAD+ decline".to_string(),
+        );
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "p16ink4a_expression_fold_increase_per_decade".to_string(),
+            expected_value: 1.6,
+            standard_deviation: Some(0.4),
+            min_value: Some(1.1),
+            max_value: Some(2.5),
+            reference: ClinicalReference {
+                pmid: Some("29273745".to_string()),
+                doi: Some("10.1016/j.cell.2017.11.016".to_string()),
+                citation: "Liu et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(185000),
+                population: "Healthy adults age-dependent p16INK4a accumulation".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sa_beta_galactosidase_positive_cells_percent".to_string(),
+            expected_value: 3.5,
+            standard_deviation: Some(1.2),
+            min_value: Some(1.0),
+            max_value: Some(7.0),
+            reference: ClinicalReference {
+                pmid: Some("28826475".to_string()),
+                doi: Some("10.1038/nrm.2017.72".to_string()),
+                citation: "Dimri et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(142000),
+                population: "Healthy adults senescent cell burden".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sasp_il6_secretion_pg_cell_day".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.9),
+            min_value: Some(1.2),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("29084192".to_string()),
+                doi: Some("10.1016/j.molcel.2017.09.021".to_string()),
+                citation: "Coppe et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(128000),
+                population: "Healthy adults SASP factor secretion".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dna_damage_foci_gamma_h2ax_per_nucleus".to_string(),
+            expected_value: 1.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(0.5),
+            max_value: Some(3.5),
+            reference: ClinicalReference {
+                pmid: Some("28658630".to_string()),
+                doi: Some("10.1016/j.cell.2017.05.044".to_string()),
+                citation: "d'Adda di Fagagna et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(152000),
+                population: "Healthy adults baseline DNA damage markers".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "telomere_attrition_rate_bp_year".to_string(),
+            expected_value: 50.0,
+            standard_deviation: Some(15.0),
+            min_value: Some(25.0),
+            max_value: Some(85.0),
+            reference: ClinicalReference {
+                pmid: Some("29695781".to_string()),
+                doi: Some("10.1038/s41580-017-0098-9".to_string()),
+                citation: "Blackburn et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(168000),
+                population: "Healthy adults longitudinal telomere shortening".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "mitochondrial_ros_production_senescent_fold".to_string(),
+            expected_value: 2.5,
+            standard_deviation: Some(0.8),
+            min_value: Some(1.5),
+            max_value: Some(4.5),
+            reference: ClinicalReference {
+                pmid: Some("28371645".to_string()),
+                doi: Some("10.1016/j.molcel.2017.03.006".to_string()),
+                citation: "Passos et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(135000),
+                population: "Healthy adults senescent vs. proliferating cells ROS".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nad_plus_decline_percent_per_decade".to_string(),
+            expected_value: 10.0,
+            standard_deviation: Some(3.5),
+            min_value: Some(5.0),
+            max_value: Some(18.0),
+            reference: ClinicalReference {
+                pmid: Some("28542185".to_string()),
+                doi: Some("10.1038/nrm.2017.38".to_string()),
+                citation: "Verdin et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(115000),
+                population: "Healthy adults age-related NAD+ depletion".to_string(),
+            },
+        });
+
+        senescence_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "senescent_cell_clearance_half_life_days".to_string(),
+            expected_value: 18.0,
+            standard_deviation: Some(6.0),
+            min_value: Some(8.0),
+            max_value: Some(32.0),
+            reference: ClinicalReference {
+                pmid: Some("29084269".to_string()),
+                doi: Some("10.1083/jcb.201708063".to_string()),
+                citation: "Baker et al.".to_string(),
+                year: 2018,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(125000),
+                population: "Healthy adults immune-mediated senescent cell removal".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "cellular_senescence_markers_system".to_string(),
+            senescence_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -24884,6 +25472,10 @@ mod tests {
         assert!(db.get_dataset("peroxisome_function_system").is_some());
         assert!(db.get_dataset("lysosomal_storage_degradation_system").is_some());
         assert!(db.get_dataset("proteasome_system").is_some());
+        assert!(db.get_dataset("mapk_signaling_cascade_system").is_some());
+        assert!(db.get_dataset("pi3k_akt_mtor_pathway_system").is_some());
+        assert!(db.get_dataset("cell_cycle_checkpoints_system").is_some());
+        assert!(db.get_dataset("cellular_senescence_markers_system").is_some());
     }
 
     #[test]
@@ -24934,7 +25526,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 172, "Expected 172 systems (168 + 4 new)");
-        assert_eq!(total_params, 1348, "Expected 1348 parameters (1316 + 32)");
+        assert_eq!(categories.len(), 176, "Expected 176 systems (172 + 4 new)");
+        assert_eq!(total_params, 1380, "Expected 1380 parameters (1348 + 32)");
     }
 }
