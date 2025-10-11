@@ -1,14 +1,36 @@
 # Human Ontology Project
-careful this project OOMs sometimes
 
-# update this agent/prompt.md at the end of your run
-don't ask me for things just keep going we want to have a very accurate and true model. just keep going
+A comprehensive computational model of human biology using Rust type systems.
 
-we want to leverage rust, the .md files are for planning and getting information research and stuff.
+## Goals
+- Build an accurate, validated model of human biological systems
+- Enable simulation and diagnosis of biological processes
+- Support personalized medicine and health assessment
+- Model genetics, metabolism, inflammation, stress responses, and more
 
-we should be able to like describe people later on and run tests on us like if someone has asian genes what can we do or if someone has migragines or clusters we can do it this is just examples we want to get a full body
+## Development Guidelines
+- Leverage Rust for type-safe biological modeling
+- Push changes to remote as you go
+- Ground truth all parameters with scientific literature
+- Avoid monolithic files - consider modular organization
 
-push changes as you go to remote
+---
+
+## Session DO (2025-10-11)
+
+**Status:** ✅ Complete
+
+**Systems Added:** 4 new advanced stress, dietary, inflammatory, and gut-brain systems with 32 parameters
+
+**Database Stats:** 473 systems, 3756 parameters total
+
+**New Systems:**
+1. **Advanced Cortisol Stress Response System** - HPA axis, cortisol diurnal rhythm (morning peak, evening nadir), ACTH, CRH hypothalamic release, glucocorticoid receptor (GR) binding and nuclear translocation, cortisol awakening response (CAR), and 11β-HSD1 cortisone-to-cortisol conversion regulating stress physiology
+2. **Advanced Dietary Lipid Metabolism System** - Pancreatic lipase, bile salt micelles, chylomicron formation and postprandial lipemia, apolipoprotein B-48, lingual and gastric lipases, and NPC1L1 cholesterol absorption regulating dietary fat digestion and absorption
+3. **Advanced Inflammatory Cytokine Network System** - IL-1β inflammasome secretion, TNF-α LPS-induced response, IL-6 acute phase response, NLRP3 inflammasome ASC speck formation, IL-18, IFN-γ Th1 response, IL-17A Th17 secretion, and IL-10/TNF-α anti-inflammatory ratio regulating inflammatory signaling cascades
+4. **Advanced Gut-Brain Axis System** - Vagal afferent firing, gut-derived serotonin (90% of total), microbiota-derived GABA, GLP-1 enteroendocrine secretion, short-chain fatty acid butyrate, peptide YY (PYY) satiety signaling, microbiota tryptophan metabolism (indole), and CCK cholecystokinin regulating bidirectional gut-brain communication
+
+**Commit:** Pending
 
 ---
 
