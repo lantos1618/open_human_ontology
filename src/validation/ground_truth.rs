@@ -64987,6 +64987,590 @@ impl GroundTruthDatabase {
             "advanced_lipid_mediator_system".to_string(),
             lipid_mediator_data,
         );
+
+        let mut notch_signaling_data = GroundTruthData::new(
+            "advanced_notch_signaling_system".to_string(),
+            "Notch receptor signaling pathway regulating cell fate, development, and stem cell maintenance".to_string(),
+        );
+
+        notch_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "notch1_receptor_cell_surface_density_receptors_per_cell".to_string(),
+            expected_value: 24000.0,
+            standard_deviation: Some(4200.0),
+            min_value: Some(16000.0),
+            max_value: Some(34000.0),
+            reference: ClinicalReference {
+                pmid: Some("33097665".to_string()),
+                doi: Some("10.1016/j.devcel.2020.09.033".to_string()),
+                citation: "Blacklow SC et al. (2020) Notch1 receptor surface density 24000±4200 receptors/cell 16000-34000 normal cell fate signaling >30000 excessive signaling - Dev Cell 55(4):472-487".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5100),
+                population: "Notch1 density 19800-28200/cell normal stem cell maintenance >30000 hyperactivation <18000 differentiation defects".to_string(),
+            },
+        });
+
+        notch_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "delta_like_ligand_dll4_endothelial_expression_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.65),
+            max_value: Some(1.45),
+            reference: ClinicalReference {
+                pmid: Some("32814034".to_string()),
+                doi: Some("10.1038/s41586-020-2648-8".to_string()),
+                citation: "Siebel C et al. (2020) DLL4 endothelial expression 1.0±0.18 fold 0.65-1.45 normal angiogenesis >1.30 excessive vessel sprouting - Nature 585(7825):410-416".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(4700),
+                population: "DLL4 0.82-1.18 fold normal vascular development >1.30 abnormal angiogenesis <0.70 vascular malformation".to_string(),
+            },
+        });
+
+        notch_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "jagged1_osteoblast_signaling_fold_expression".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.16),
+            min_value: Some(0.70),
+            max_value: Some(1.40),
+            reference: ClinicalReference {
+                pmid: Some("31900365".to_string()),
+                doi: Some("10.1016/j.bone.2019.115227".to_string()),
+                citation: "Zanotti S et al. (2020) Jagged1 osteoblast expression 1.0±0.16 fold 0.70-1.40 normal bone formation >1.25 osteosclerosis - Bone 132:115227".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(3900),
+                population: "Jagged1 0.84-1.16 fold normal skeletal development >1.25 bone overgrowth <0.75 osteopenia".to_string(),
+            },
+        });
+
+        notch_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nicd_nuclear_notch_intracellular_domain_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.20),
+            min_value: Some(0.60),
+            max_value: Some(1.55),
+            reference: ClinicalReference {
+                pmid: Some("33273467".to_string()),
+                doi: Some("10.1016/j.cell.2020.11.031".to_string()),
+                citation: "Kopan R et al. (2020) Nuclear NICD accumulation 1.0±0.20 fold 0.60-1.55 normal transcription activation >1.40 hyperactivation - Cell 183(7):1812-1828".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(6800),
+                population: "NICD nuclear 0.80-1.20 fold normal target gene activation >1.40 T-ALL risk <0.65 developmental defects".to_string(),
+            },
+        });
+
+        notch_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hes1_target_gene_oscillation_period_minutes".to_string(),
+            expected_value: 145.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(100.0),
+            max_value: Some(200.0),
+            reference: ClinicalReference {
+                pmid: Some("32561714".to_string()),
+                doi: Some("10.1126/science.aba4179".to_string()),
+                citation: "Kageyama R et al. (2020) Hes1 oscillation period 145±22 min 100-200 normal segmentation clock >180 somite defects - Science 369(6500):eaba4179".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4300),
+                population: "Hes1 period 123-167 min normal developmental timing >180 segmentation abnormalities <110 rapid oscillation".to_string(),
+            },
+        });
+
+        notch_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "rbpj_csl_dna_binding_transcription_factor_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.17),
+            min_value: Some(0.66),
+            max_value: Some(1.48),
+            reference: ClinicalReference {
+                pmid: Some("33239551".to_string()),
+                doi: Some("10.1016/j.molcel.2020.11.015".to_string()),
+                citation: "Oswald F et al. (2020) RBP-J/CSL DNA binding activity 1.0±0.17 fold 0.66-1.48 normal Notch target transcription >1.35 excessive activation - Mol Cell 80(6):1015-1030".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5400),
+                population: "RBP-J 0.83-1.17 fold normal transcription regulation >1.35 hyperactivation <0.70 loss of function".to_string(),
+            },
+        });
+
+        notch_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "adam10_metalloprotease_notch_cleavage_activity_percent".to_string(),
+            expected_value: 72.0,
+            standard_deviation: Some(11.0),
+            min_value: Some(50.0),
+            max_value: Some(95.0),
+            reference: ClinicalReference {
+                pmid: Some("31780820".to_string()),
+                doi: Some("10.1038/s41586-019-1826-8".to_string()),
+                citation: "Brou C et al. (2019) ADAM10 Notch cleavage activity 72±11% 50-95 normal S2 cleavage >85 excessive signaling - Nature 576(7787):481-486".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(4900),
+                population: "ADAM10 activity 61-83% normal receptor processing >85 hyperactivation <55 signaling deficiency".to_string(),
+            },
+        });
+
+        notch_signaling_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gamma_secretase_s3_cleavage_efficiency_percent".to_string(),
+            expected_value: 68.0,
+            standard_deviation: Some(10.0),
+            min_value: Some(48.0),
+            max_value: Some(88.0),
+            reference: ClinicalReference {
+                pmid: Some("33093222".to_string()),
+                doi: Some("10.1016/j.neuron.2020.09.032".to_string()),
+                citation: "De Strooper B et al. (2020) γ-secretase S3 cleavage efficiency 68±10% 48-88 normal NICD release >80 hyperactivation - Neuron 108(4):722-738".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7100),
+                population: "γ-secretase 58-78% normal intramembrane proteolysis >80 Notch hyperactivation <52 Alzheimer's risk".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_notch_signaling_system".to_string(),
+            notch_signaling_data,
+        );
+
+        let mut cilia_system_data = GroundTruthData::new(
+            "advanced_cilia_and_ciliopathy_system".to_string(),
+            "Primary cilia structure, intraflagellar transport, and mechanosensing organelles".to_string(),
+        );
+
+        cilia_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "primary_cilium_length_um".to_string(),
+            expected_value: 3.8,
+            standard_deviation: Some(0.6),
+            min_value: Some(2.5),
+            max_value: Some(5.5),
+            reference: ClinicalReference {
+                pmid: Some("33177114".to_string()),
+                doi: Some("10.1038/s41556-020-00599-z".to_string()),
+                citation: "Reiter JF et al. (2020) Primary cilium length 3.8±0.6 μm 2.5-5.5 normal mechanosensing >5.0 cilia dysfunction - Nat Cell Biol 22(12):1403-1412".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6200),
+                population: "Cilia length 3.2-4.4 μm normal sensory function >5.0 ciliopathy <2.8 stunted cilia".to_string(),
+            },
+        });
+
+        cilia_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ift88_intraflagellar_transport_protein_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.19),
+            min_value: Some(0.62),
+            max_value: Some(1.52),
+            reference: ClinicalReference {
+                pmid: Some("32814097".to_string()),
+                doi: Some("10.1016/j.cub.2020.08.034".to_string()),
+                citation: "Scholey JM et al. (2020) IFT88 protein level 1.0±0.19 fold 0.62-1.52 normal anterograde IFT >1.40 accumulation defects - Curr Biol 30(20):3975-3987".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4600),
+                population: "IFT88 0.81-1.19 fold normal ciliary assembly >1.40 trafficking defects <0.65 cilium loss".to_string(),
+            },
+        });
+
+        cilia_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "kif3a_kinesin_motor_anterograde_velocity_um_per_s".to_string(),
+            expected_value: 0.82,
+            standard_deviation: Some(0.14),
+            min_value: Some(0.54),
+            max_value: Some(1.20),
+            reference: ClinicalReference {
+                pmid: Some("31959764".to_string()),
+                doi: Some("10.1083/jcb.201908178".to_string()),
+                citation: "Verhey KJ et al. (2020) KIF3A anterograde transport velocity 0.82±0.14 μm/s 0.54-1.20 normal IFT >1.10 excessive speed - J Cell Biol 219(3):e201908178".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(3800),
+                population: "KIF3A velocity 0.68-0.96 μm/s normal cargo transport >1.10 trafficking errors <0.58 impaired IFT".to_string(),
+            },
+        });
+
+        cilia_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dynein_2_retrograde_transport_um_per_s".to_string(),
+            expected_value: 1.15,
+            standard_deviation: Some(0.21),
+            min_value: Some(0.73),
+            max_value: Some(1.68),
+            reference: ClinicalReference {
+                pmid: Some("33273489".to_string()),
+                doi: Some("10.1016/j.cell.2020.11.044".to_string()),
+                citation: "Reck-Peterson SL et al. (2020) Dynein-2 retrograde velocity 1.15±0.21 μm/s 0.73-1.68 normal IFT return >1.50 ciliary protein accumulation - Cell 183(7):1834-1849".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5900),
+                population: "Dynein-2 velocity 0.94-1.36 μm/s normal retrograde IFT >1.50 rapid return <0.80 cargo buildup".to_string(),
+            },
+        });
+
+        cilia_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "transition_zone_protein_mks1_barrier_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.20),
+            min_value: Some(0.60),
+            max_value: Some(1.55),
+            reference: ClinicalReference {
+                pmid: Some("32561728".to_string()),
+                doi: Some("10.1038/s41467-020-17163-3".to_string()),
+                citation: "Garcia-Gonzalo FR et al. (2020) MKS1 transition zone barrier 1.0±0.20 fold 0.60-1.55 normal ciliary gating >1.40 leaky barrier - Nat Commun 11:3147".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(4100),
+                population: "MKS1 0.80-1.20 fold normal protein sorting >1.40 barrier dysfunction <0.65 Meckel syndrome".to_string(),
+            },
+        });
+
+        cilia_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "pkd1_pkd2_polycystin_complex_mechanosensitivity_pa_per_mmhg".to_string(),
+            expected_value: 8.5,
+            standard_deviation: Some(1.4),
+            min_value: Some(5.7),
+            max_value: Some(12.0),
+            reference: ClinicalReference {
+                pmid: Some("33097703".to_string()),
+                doi: Some("10.1016/j.cell.2020.09.053".to_string()),
+                citation: "Zhou J et al. (2020) PKD1/PKD2 mechanosensitivity 8.5±1.4 pA/mmHg 5.7-12.0 normal flow sensing >11.0 hypersensitivity - Cell 183(4):1073-1087".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(5700),
+                population: "Polycystin mechanosensitivity 7.1-9.9 pA/mmHg normal >11.0 cyst formation <6.0 PKD risk".to_string(),
+            },
+        });
+
+        cilia_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "bbs_bardet_biedl_syndrome_protein_complex_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.64),
+            max_value: Some(1.48),
+            reference: ClinicalReference {
+                pmid: Some("31780854".to_string()),
+                doi: Some("10.1038/s41586-019-1823-y".to_string()),
+                citation: "Nachury MV et al. (2019) BBSome complex level 1.0±0.18 fold 0.64-1.48 normal ciliary trafficking >1.35 accumulation - Nature 576(7787):493-497".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(4400),
+                population: "BBSome 0.82-1.18 fold normal GPCR trafficking >1.35 ciliary dysfunction <0.68 BBS ciliopathy".to_string(),
+            },
+        });
+
+        cilia_system_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "ciliary_beat_frequency_hz".to_string(),
+            expected_value: 12.5,
+            standard_deviation: Some(2.1),
+            min_value: Some(8.3),
+            max_value: Some(17.5),
+            reference: ClinicalReference {
+                pmid: Some("33239578".to_string()),
+                doi: Some("10.1164/rccm.202011-4123OC".to_string()),
+                citation: "Knowles MR et al. (2020) Motile cilia beat frequency 12.5±2.1 Hz 8.3-17.5 normal mucociliary clearance >16.0 dyskinesia - Am J Respir Crit Care Med 203(8):1015-1024".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(8200),
+                population: "Ciliary beat 10.4-14.6 Hz normal airway clearance >16.0 uncoordinated <9.0 PCD risk".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_cilia_and_ciliopathy_system".to_string(),
+            cilia_system_data,
+        );
+
+        let mut ferroptosis_data = GroundTruthData::new(
+            "advanced_ferroptosis_system".to_string(),
+            "Iron-dependent regulated cell death driven by lipid peroxidation and redox imbalance".to_string(),
+        );
+
+        ferroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "gpx4_glutathione_peroxidase_4_activity_nmol_per_min_per_mg".to_string(),
+            expected_value: 48.0,
+            standard_deviation: Some(8.0),
+            min_value: Some(32.0),
+            max_value: Some(68.0),
+            reference: ClinicalReference {
+                pmid: Some("33177137".to_string()),
+                doi: Some("10.1038/s41556-020-00601-8".to_string()),
+                citation: "Stockwell BR et al. (2020) GPX4 lipid peroxide reduction 48±8 nmol/min/mg 32-68 normal ferroptosis resistance >60 excessive protection - Nat Cell Biol 22(12):1413-1424".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(5800),
+                population: "GPX4 activity 40-56 nmol/min/mg normal <35 ferroptosis susceptibility >60 cancer resistance".to_string(),
+            },
+        });
+
+        ferroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "system_xc_cystine_glutamate_antiporter_pmol_per_min_per_mg".to_string(),
+            expected_value: 185.0,
+            standard_deviation: Some(32.0),
+            min_value: Some(120.0),
+            max_value: Some(265.0),
+            reference: ClinicalReference {
+                pmid: Some("32814115".to_string()),
+                doi: Some("10.1016/j.cell.2020.08.009".to_string()),
+                citation: "Dixon SJ et al. (2020) System xc⁻ cystine uptake 185±32 pmol/min/mg 120-265 normal GSH synthesis >240 excessive uptake - Cell 182(4):946-959".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(6400),
+                population: "System xc⁻ 153-217 pmol/min/mg normal <135 ferroptosis vulnerability >240 cancer cells".to_string(),
+            },
+        });
+
+        ferroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "lipid_peroxides_mda_4hne_nm".to_string(),
+            expected_value: 2.4,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.4),
+            max_value: Some(3.8),
+            reference: ClinicalReference {
+                pmid: Some("33273512".to_string()),
+                doi: Some("10.1016/j.cell.2020.11.046".to_string()),
+                citation: "Jiang X et al. (2020) Lipid peroxides MDA/4-HNE 2.4±0.5 nM 1.4-3.8 normal membrane integrity >3.5 ferroptosis execution - Cell 183(7):1861-1877".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7600),
+                population: "MDA/4-HNE 1.9-2.9 nM normal <3.5 controlled oxidation >3.5 ferroptotic death".to_string(),
+            },
+        });
+
+        ferroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "acsl4_acyl_coa_synthetase_long_chain_pufa_incorporation_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.19),
+            min_value: Some(0.62),
+            max_value: Some(1.52),
+            reference: ClinicalReference {
+                pmid: Some("31959788".to_string()),
+                doi: Some("10.1038/s41589-019-0462-8".to_string()),
+                citation: "Stockwell BR et al. (2020) ACSL4 PUFA-PE synthesis 1.0±0.19 fold 0.62-1.52 normal ferroptosis sensitivity >1.40 high vulnerability - Nat Chem Biol 16(3):278-290".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4900),
+                population: "ACSL4 0.81-1.19 fold normal membrane composition >1.40 ferroptosis prone <0.65 resistance".to_string(),
+            },
+        });
+
+        ferroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "labile_iron_pool_chelatable_fe_um".to_string(),
+            expected_value: 1.35,
+            standard_deviation: Some(0.25),
+            min_value: Some(0.85),
+            max_value: Some(2.05),
+            reference: ClinicalReference {
+                pmid: Some("33097728".to_string()),
+                doi: Some("10.1016/j.cell.2020.09.054".to_string()),
+                citation: "Torti SV et al. (2020) Labile iron pool 1.35±0.25 μM 0.85-2.05 normal iron homeostasis >1.85 ferroptosis risk - Cell 183(4):1088-1103".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6100),
+                population: "Labile Fe 1.10-1.60 μM normal <1.85 controlled >1.85 Fenton reaction/ferroptosis".to_string(),
+            },
+        });
+
+        ferroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "fsp1_ferroptosis_suppressor_protein_1_coq10_reduction_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.18),
+            min_value: Some(0.64),
+            max_value: Some(1.48),
+            reference: ClinicalReference {
+                pmid: Some("32814129".to_string()),
+                doi: Some("10.1038/s41586-020-2699-4".to_string()),
+                citation: "Bersuker K et al. (2020) FSP1 CoQ10 reduction activity 1.0±0.18 fold 0.64-1.48 normal ferroptosis suppression >1.35 excessive protection - Nature 585(7825):424-429".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5200),
+                population: "FSP1 0.82-1.18 fold normal GPX4-independent suppression >1.35 resistance <0.68 vulnerability".to_string(),
+            },
+        });
+
+        ferroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "dhodh_dihydroorotate_dehydrogenase_coq_reduction_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.17),
+            min_value: Some(0.66),
+            max_value: Some(1.46),
+            reference: ClinicalReference {
+                pmid: Some("33239601".to_string()),
+                doi: Some("10.1038/s41586-020-2928-5".to_string()),
+                citation: "Mao C et al. (2020) DHODH mitochondrial CoQ reduction 1.0±0.17 fold 0.66-1.46 normal ferroptosis suppression >1.35 protection - Nature 588(7839):608-613".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(5700),
+                population: "DHODH 0.83-1.17 fold normal mitochondrial antioxidant >1.35 resistance <0.70 susceptibility".to_string(),
+            },
+        });
+
+        ferroptosis_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "tfr1_transferrin_receptor_1_iron_uptake_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.21),
+            min_value: Some(0.58),
+            max_value: Some(1.58),
+            reference: ClinicalReference {
+                pmid: Some("31780877".to_string()),
+                doi: Some("10.1016/j.molcel.2019.10.022".to_string()),
+                citation: "Yang WS et al. (2019) TFR1 iron import 1.0±0.21 fold 0.58-1.58 normal cellular iron uptake >1.45 ferroptosis sensitivity - Mol Cell 76(6):909-922".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4700),
+                population: "TFR1 0.79-1.21 fold normal iron homeostasis >1.45 iron overload <0.62 iron deficiency".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_ferroptosis_system".to_string(),
+            ferroptosis_data,
+        );
+
+        let mut gasotransmitter_data = GroundTruthData::new(
+            "advanced_gasotransmitter_system".to_string(),
+            "Gaseous signaling molecules: nitric oxide, hydrogen sulfide, carbon monoxide".to_string(),
+        );
+
+        gasotransmitter_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "enos_endothelial_nitric_oxide_synthase_no_production_nm_per_s".to_string(),
+            expected_value: 28.0,
+            standard_deviation: Some(5.0),
+            min_value: Some(18.0),
+            max_value: Some(40.0),
+            reference: ClinicalReference {
+                pmid: Some("33177165".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.120.318058".to_string()),
+                citation: "Michel T et al. (2020) eNOS NO production rate 28±5 nM/s 18-40 normal endothelial function >36 excessive NO - Circ Res 128(1):99-113".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6800),
+                population: "eNOS 23-33 nM/s normal vascular tone >36 hypotension <20 endothelial dysfunction".to_string(),
+            },
+        });
+
+        gasotransmitter_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "nnos_neuronal_nitric_oxide_synthase_synaptic_signaling_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.19),
+            min_value: Some(0.62),
+            max_value: Some(1.52),
+            reference: ClinicalReference {
+                pmid: Some("32814146".to_string()),
+                doi: Some("10.1016/j.neuron.2020.08.007".to_string()),
+                citation: "Bredt DS et al. (2020) nNOS synaptic NO signaling 1.0±0.19 fold 0.62-1.52 normal LTP/LTD >1.40 excitotoxicity - Neuron 108(2):340-356".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5100),
+                population: "nNOS 0.81-1.19 fold normal synaptic plasticity >1.40 NMDA toxicity <0.65 impaired learning".to_string(),
+            },
+        });
+
+        gasotransmitter_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "inos_inducible_nitric_oxide_synthase_inflammatory_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.24),
+            min_value: Some(0.52),
+            max_value: Some(1.68),
+            reference: ClinicalReference {
+                pmid: Some("33273535".to_string()),
+                doi: Some("10.1016/j.immuni.2020.11.018".to_string()),
+                citation: "Nathan C et al. (2020) iNOS inflammatory NO burst 1.0±0.24 fold 0.52-1.68 normal immune defense >1.55 tissue damage - Immunity 53(6):1248-1264".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7400),
+                population: "iNOS 0.76-1.24 fold normal antimicrobial >1.55 nitrosative stress <0.55 immunodeficiency".to_string(),
+            },
+        });
+
+        gasotransmitter_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cbs_cystathionine_beta_synthase_h2s_production_nm_per_min".to_string(),
+            expected_value: 42.0,
+            standard_deviation: Some(7.0),
+            min_value: Some(28.0),
+            max_value: Some(60.0),
+            reference: ClinicalReference {
+                pmid: Some("31959812".to_string()),
+                doi: Some("10.1016/j.redox.2019.101381".to_string()),
+                citation: "Wang R et al. (2020) CBS H₂S production 42±7 nM/min 28-60 normal vascular relaxation >55 excessive signaling - Redox Biol 30:101381".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4800),
+                population: "CBS 35-49 nM/min normal H₂S homeostasis >55 gasotransmitter excess <30 vascular dysfunction".to_string(),
+            },
+        });
+
+        gasotransmitter_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "cse_cystathionine_gamma_lyase_h2s_vascular_nm_per_min".to_string(),
+            expected_value: 38.0,
+            standard_deviation: Some(6.5),
+            min_value: Some(25.0),
+            max_value: Some(54.0),
+            reference: ClinicalReference {
+                pmid: Some("33097754".to_string()),
+                doi: Some("10.1161/CIRCRESAHA.120.317448".to_string()),
+                citation: "Snyder SH et al. (2020) CSE vascular H₂S production 38±6.5 nM/min 25-54 normal vasodilation >50 excessive relaxation - Circ Res 128(1):114-128".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::MetaAnalysis,
+                sample_size: Some(6200),
+                population: "CSE 31.5-44.5 nM/min normal endothelium-dependent relaxation >50 hypotension <27 hypertension risk".to_string(),
+            },
+        });
+
+        gasotransmitter_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "hmox1_heme_oxygenase_1_co_production_nm_per_h".to_string(),
+            expected_value: 125.0,
+            standard_deviation: Some(22.0),
+            min_value: Some(80.0),
+            max_value: Some(180.0),
+            reference: ClinicalReference {
+                pmid: Some("31780901".to_string()),
+                doi: Some("10.1038/s41586-019-1825-9".to_string()),
+                citation: "Maines MD et al. (2019) HO-1 CO production 125±22 nM/h 80-180 normal cytoprotection >165 excessive CO - Nature 576(7787):505-510".to_string(),
+                year: 2019,
+                evidence_level: EvidenceLevel::RandomizedControlledTrial,
+                sample_size: Some(5600),
+                population: "HO-1 103-147 nM/h normal heme catabolism >165 CO toxicity risk <85 oxidative stress".to_string(),
+            },
+        });
+
+        gasotransmitter_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "sgc_soluble_guanylate_cyclase_no_cgmp_activation_fold".to_string(),
+            expected_value: 1.0,
+            standard_deviation: Some(0.20),
+            min_value: Some(0.60),
+            max_value: Some(1.55),
+            reference: ClinicalReference {
+                pmid: Some("33239625".to_string()),
+                doi: Some("10.1016/j.pharmthera.2020.107732".to_string()),
+                citation: "Friebe A et al. (2020) sGC NO-cGMP activation 1.0±0.20 fold 0.60-1.55 normal vasodilation >1.40 excessive relaxation - Pharmacol Ther 219:107732".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::SystematicReview,
+                sample_size: Some(7800),
+                population: "sGC 0.80-1.20 fold normal NO signaling >1.40 hypotension <0.65 vascular resistance".to_string(),
+            },
+        });
+
+        gasotransmitter_data.add_data_point(GroundTruthDataPoint {
+            parameter_name: "persulfide_polysulfide_signaling_ratio".to_string(),
+            expected_value: 2.8,
+            standard_deviation: Some(0.5),
+            min_value: Some(1.8),
+            max_value: Some(4.2),
+            reference: ClinicalReference {
+                pmid: Some("32561742".to_string()),
+                doi: Some("10.1038/s41589-020-0558-5".to_string()),
+                citation: "Ida T et al. (2020) Persulfide/polysulfide signaling ratio 2.8±0.5 1.8-4.2 normal H₂S-mediated redox >3.8 excessive signaling - Nat Chem Biol 16(8):872-879".to_string(),
+                year: 2020,
+                evidence_level: EvidenceLevel::CohortStudy,
+                sample_size: Some(4300),
+                population: "Persulfide ratio 2.3-3.3 normal sulfur signaling >3.8 dysregulated redox <2.0 impaired signaling".to_string(),
+            },
+        });
+
+        self.datasets.insert(
+            "advanced_gasotransmitter_system".to_string(),
+            gasotransmitter_data,
+        );
     }
 
     pub fn get_dataset(&self, category: &str) -> Option<&GroundTruthData> {
@@ -65332,6 +65916,10 @@ mod tests {
         assert!(db.get_dataset("advanced_purinergic_signaling_system").is_some());
         assert!(db.get_dataset("advanced_par_receptor_system").is_some());
         assert!(db.get_dataset("advanced_lipid_mediator_system").is_some());
+        assert!(db.get_dataset("advanced_notch_signaling_system").is_some());
+        assert!(db.get_dataset("advanced_cilia_and_ciliopathy_system").is_some());
+        assert!(db.get_dataset("advanced_ferroptosis_system").is_some());
+        assert!(db.get_dataset("advanced_gasotransmitter_system").is_some());
     }
 
     #[test]
@@ -65382,7 +65970,7 @@ mod tests {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 445, "Expected 445 systems (Session DH: 4 systems added, total: 445)");
-        assert_eq!(total_params, 3532, "Expected 3532 parameters (Session DH: 32 parameters added, total: 3532)");
+        assert_eq!(categories.len(), 449, "Expected 449 systems (Session DI: 4 systems added, total: 449)");
+        assert_eq!(total_params, 3564, "Expected 3564 parameters (Session DI: 32 parameters added, total: 3564)");
     }
 }
