@@ -30,6 +30,8 @@ pub mod session_df;
 pub mod session_dg;
 pub mod session_do;
 pub mod session_dp;
+pub mod oncology;
+pub mod alzheimers;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum EvidenceLevel {
@@ -160,6 +162,9 @@ impl GroundTruthDatabase {
         session_dg::initialize_session_dg_systems(&mut db);
         session_do::initialize_session_do_systems(&mut db);
         session_dp::initialize_session_dp_systems(&mut db);
+        db.add_dataset("cancer_biomarkers".to_string(), oncology::get_cancer_biomarkers());
+        db.add_dataset("inflammation_markers".to_string(), oncology::get_inflammation_markers());
+        db.add_dataset("alzheimers_biomarkers".to_string(), alzheimers::get_alzheimers_biomarkers());
         db
     }
 
@@ -184,7 +189,7 @@ impl GroundTruthDatabase {
         println!("Total Parameters: {}", total_params);
 
         // Verify we have the expected counts
-        assert_eq!(categories.len(), 473, "Expected 473 systems (Session DO: 4 systems added, total: 473)");
-        assert_eq!(total_params, 3756, "Expected 3756 parameters (Session DO: 32 parameters added, total: 3756)");
+        assert_eq!(categories.len(), 476, "Expected 476 systems (Session DV: +3 oncology/alzheimers datasets, total: 476)");
+        assert_eq!(total_params, 3822, "Expected 3822 parameters (Session DV: +66 biomarker parameters, total: 3822)");
     }
 }
