@@ -65,6 +65,7 @@ pub mod pharmacology;
 pub mod physics;
 pub mod physiology;
 pub mod simulation;
+pub mod simulation_utils;
 pub mod systems;
 pub mod validation;
 
