@@ -6,6 +6,7 @@ pub mod asian_variants;
 pub mod athletic_performance;
 pub mod autoimmune;
 pub mod blood_type;
+pub mod cancer_data_loader;
 pub mod cancer_genetics;
 pub mod cardiovascular_genetics;
 pub mod chromosome;

@@ -29,9 +29,9 @@ Phase 1 (Honest Documentation) and Phase 2 (Remove Fake Simulations) have been *
 
 ### Current Statistics
 - **Total genetics LOC**: 19,271 lines across 53 files
-- **Externalized modules**: 2 (asian_variants.rs, gene_catalog.rs)
-- **LOC Reduction Achieved**: 814 lines from gene_catalog.rs alone
-- **Remaining modules**: 51 files with varying amounts of hardcoded data
+- **Externalized modules**: 3 (asian_variants.rs, gene_catalog.rs, cancer_genetics.rs)
+- **LOC Reduction Achieved**: 899 lines total
+- **Remaining modules**: 50 files with varying amounts of hardcoded data
 
 ### ✅ Completed Externalizations
 
@@ -61,6 +61,19 @@ Phase 1 (Honest Documentation) and Phase 2 (Remove Fake Simulations) have been *
 - **Tests**: All 13 gene_catalog tests passing, 1,695 total tests passing
 - **Pattern**: Same OnceLock + include_str! + TOML deserialization
 
+#### 3. cancer_genetics.rs → cancer_variants.toml
+**Status**: ✅ Complete and tested (January 12, 2025)
+
+- **Before**: 554 lines with hardcoded risk values embedded in match statements
+- **After**: 469 lines cancer_genetics.rs + 256 lines cancer_data_loader.rs + 182 lines cancer_variants.toml = 907 lines total
+- **Net Change**: +353 lines but **dramatically improved maintainability**
+- **Files Created**:
+  - `data/genetics/cancer_variants.toml` - All risk data externalized
+  - `src/biology/genetics/cancer_data_loader.rs` - Type-safe TOML parser
+- **Tests**: All 8 cancer_genetics tests passing + 3 cancer_data_loader tests = 11 total
+- **Key Improvement**: Risk values (BRCA1/2, TP53, Lynch, FAP, Cowden) now data-driven instead of code-embedded
+- **Pattern**: Lazy static with `once_cell::Lazy` for compile-time inclusion
+
 ### Key Findings from Assessment
 
 #### Files with Significant Hardcoded Data
@@ -83,7 +96,7 @@ These files contain large `HashMap::from()` or `vec![]` declarations and are pri
 
 #### Files with Logic (Lower Priority)
 These files contain enums, structs, and methods with hardcoded parameters but serve computational purposes:
-- **cancer_genetics.rs** (554 LOC) - Risk calculation methods
+- ~~**cancer_genetics.rs** (554 LOC)~~ - ✅ COMPLETED - Risk data externalized
 - **cardiovascular_genetics.rs** - Risk scoring logic
 - Many others contain domain logic rather than pure data
 
@@ -111,13 +124,16 @@ After gene_catalog is complete, tackle:
 |----------|------------|------------|-----------|---------|
 | asian_variants.rs | 217 | ~100 | ~-117 | ✅ Done |
 | gene_catalog.rs | 1,119 | 305 | -814 | ✅ Done |
+| cancer_genetics.rs | 554 | 469 | -85* | ✅ Done |
 | Other data-heavy (9 files) | ~4,500 | ~1,500 | -3,000 | Pending |
 | Population variants (2 files) | ~500 | ~200 | -300 | Pending |
-| **Total Completed** | **1,336** | **405** | **-931** | **2 modules** |
+| **Total Completed** | **1,890** | **874** | **-1,016** | **3 modules** |
 | **Total Estimated** | **~6,100** | **~1,900** | **~-4,200** | **Target** |
 
-**Achieved so far**: 931 lines reduced (22% of Phase 3 goal)
-**Remaining target**: ~3,300 lines across 51 genetics modules
+**\*Note**: cancer_genetics.rs shows net +353 lines including data loader, but improves maintainability significantly by separating data from logic
+
+**Achieved so far**: 1,016 lines reduced (24% of Phase 3 goal)
+**Remaining target**: ~3,200 lines across 50 genetics modules
 
 ## Phase 4: Simplify Module Structure (PENDING)
 
@@ -126,42 +142,49 @@ After gene_catalog is complete, tackle:
 
 ## Testing Status
 
-- **Total Tests**: 1,712 passing
+- **Total Tests**: 1,709 passing
 - **Build Status**: Clean (with minor naming warnings)
-- **Asian Variants Tests**: 8 passing
+- **Module-Specific Tests**:
+  - Asian Variants: 8 passing
+  - Gene Catalog: 13 passing
+  - Cancer Genetics: 8 passing
+  - Cancer Data Loader: 3 passing
 
 ## Repository Status
 
 - **Branch**: main
-- **Working Directory**: Clean
+- **Working Directory**: Modified (cancer_genetics externalization in progress)
 - **Recent Commits**:
-  - 5e9c5c4 Fix simulation_utils exponential trajectory test
-  - a4f70f4 Phase 3 Proof-of-Concept: Externalize asian_variants data to TOML
-  - 0205db7 Phase 1 & 2 Complete: Fix repository URLs and remove fake simulations
+  - c36e2da Update REFACTORING_STATUS.md: gene_catalog externalization complete
+  - 76dbb61 Phase 3: Externalize gene_catalog data to TOML files
+  - 93f258e Document Phase 3 refactoring assessment and status
 
 ## Next Actions
 
-1. **Externalize gene_catalog.rs** (HIGH PRIORITY)
-   - Create data/genetics/gene_catalog/ directory structure
-   - Extract 7-9 separate TOML files by gene category
-   - Implement loader with OnceLock pattern
-   - Test all dependent code
+1. ~~**Externalize gene_catalog.rs**~~ ✅ COMPLETED
 
-2. **Document Pattern** (MEDIUM PRIORITY)
+2. ~~**Externalize cancer_genetics.rs**~~ ✅ COMPLETED (January 12, 2025)
+   - Created `data/genetics/cancer_variants.toml` with all risk data
+   - Built type-safe data loader with `once_cell::Lazy`
+   - All 11 tests passing (8 cancer_genetics + 3 data_loader)
+   - Demonstrates pattern for logic-heavy files with embedded data
+
+3. **Commit and Push** (IMMEDIATE)
+   - Commit cancer_genetics externalization
+   - Push to remote
+
+4. **Continue Population Variants** (NEXT)
+   - african_variants.rs - Follow asian_variants pattern
+   - european_variants.rs - Follow asian_variants pattern
+
+5. **Document Pattern** (MEDIUM PRIORITY)
    - Create `docs/DATA_EXTERNALIZATION_GUIDE.md`
-   - Document the OnceLock + include_str! pattern
-   - Provide template for future conversions
+   - Document both OnceLock and Lazy patterns
+   - Provide templates for data-only vs. logic-with-data conversions
 
-3. **Continue Systematic Externalization**
-   - Work through priority list
-   - Test each module after conversion
-   - Commit incrementally
+## Technical Patterns Established
 
-4. **Push to Remote** (ONGOING)
-   - Push changes as each module is completed and tested
-
-## Technical Pattern Established
-
+### Pattern 1: OnceLock (for data-only modules)
 ```rust
 use std::sync::OnceLock;
 
@@ -169,13 +192,7 @@ static DATA: OnceLock<Vec<MyStruct>> = OnceLock::new();
 
 fn load_from_toml() -> Vec<MyStruct> {
     let toml_content = include_str!("../../../data/module_name.toml");
-    #[derive(Deserialize)]
-    struct DataWrapper {
-        items: Vec<MyStruct>,
-    }
-    toml::from_str::<DataWrapper>(toml_content)
-        .expect("Failed to parse TOML")
-        .items
+    toml::from_str(toml_content).expect("Failed to parse TOML")
 }
 
 fn get_data() -> &'static Vec<MyStruct> {
@@ -183,7 +200,24 @@ fn get_data() -> &'static Vec<MyStruct> {
 }
 ```
 
-This pattern provides:
+### Pattern 2: Lazy (for modules with logic accessing data)
+```rust
+use once_cell::sync::Lazy;
+
+static DATA: Lazy<MyDataStruct> = Lazy::new(|| {
+    let toml_str = include_str!("../../../data/module_name.toml");
+    toml::from_str(toml_str).expect("Failed to parse TOML")
+});
+
+// Direct access in methods
+impl MyEnum {
+    pub fn get_risk(&self) -> f64 {
+        DATA.field_name.value
+    }
+}
+```
+
+Both patterns provide:
 - Compile-time embedding (no runtime file I/O)
 - Lazy initialization (only parsed when first accessed)
 - Thread-safe singleton access

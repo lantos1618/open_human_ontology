@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use super::cancer_data_loader::CANCER_DATA;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Brca1Status {
@@ -11,65 +12,25 @@ pub enum Brca1Status {
 
 impl Brca1Status {
     pub fn breast_cancer_risk_by_age(&self, age: f64) -> f64 {
-        match self {
-            Brca1Status::WildType | Brca1Status::VariantOfUncertainSignificance => {
-                if age < 40.0 {
-                    0.015
-                } else if age < 50.0 {
-                    0.035
-                } else if age < 60.0 {
-                    0.065
-                } else {
-                    0.12
-                }
-            }
-            Brca1Status::Pathogenic185delAG
-            | Brca1Status::Pathogenic5382insC
-            | Brca1Status::OtherPathogenic => {
-                if age < 40.0 {
-                    0.18
-                } else if age < 50.0 {
-                    0.45
-                } else if age < 60.0 {
-                    0.61
-                } else {
-                    0.72
-                }
-            }
-        }
+        CANCER_DATA.brca1.get_breast_cancer_risk(age, self.is_pathogenic())
     }
 
     pub fn ovarian_cancer_lifetime_risk(&self) -> f64 {
-        match self {
-            Brca1Status::WildType | Brca1Status::VariantOfUncertainSignificance => 0.012,
-            Brca1Status::Pathogenic185delAG
-            | Brca1Status::Pathogenic5382insC
-            | Brca1Status::OtherPathogenic => 0.44,
+        if self.is_pathogenic() {
+            CANCER_DATA.brca1.ovarian_cancer_risk.pathogenic
+        } else {
+            CANCER_DATA.brca1.ovarian_cancer_risk.wild_type
         }
     }
 
     pub fn screening_recommendations(&self) -> Vec<String> {
-        let mut recs = Vec::new();
-
         match self {
             Brca1Status::Pathogenic185delAG
             | Brca1Status::Pathogenic5382insC
-            | Brca1Status::OtherPathogenic => {
-                recs.push("Annual breast MRI starting age 25-30".to_string());
-                recs.push("Annual mammography starting age 30".to_string());
-                recs.push("Consider risk-reducing mastectomy".to_string());
-                recs.push("Transvaginal ultrasound + CA-125 every 6 months".to_string());
-                recs.push("Consider risk-reducing salpingo-oophorectomy age 35-40".to_string());
-            }
-            Brca1Status::WildType => {
-                recs.push("Standard population screening".to_string());
-            }
-            Brca1Status::VariantOfUncertainSignificance => {
-                recs.push("Intermediate screening, genetic counseling recommended".to_string());
-            }
+            | Brca1Status::OtherPathogenic => CANCER_DATA.brca1.screening.pathogenic.clone(),
+            Brca1Status::WildType => CANCER_DATA.brca1.screening.wild_type.clone(),
+            Brca1Status::VariantOfUncertainSignificance => CANCER_DATA.brca1.screening.vus.clone(),
         }
-
-        recs
     }
 
     pub fn is_pathogenic(&self) -> bool {
@@ -92,50 +53,30 @@ pub enum Brca2Status {
 
 impl Brca2Status {
     pub fn breast_cancer_risk_by_age(&self, age: f64) -> f64 {
-        match self {
-            Brca2Status::WildType | Brca2Status::VariantOfUncertainSignificance => {
-                if age < 40.0 {
-                    0.015
-                } else if age < 50.0 {
-                    0.035
-                } else if age < 60.0 {
-                    0.065
-                } else {
-                    0.12
-                }
-            }
-            Brca2Status::Pathogenic6174delT | Brca2Status::OtherPathogenic => {
-                if age < 40.0 {
-                    0.12
-                } else if age < 50.0 {
-                    0.35
-                } else if age < 60.0 {
-                    0.53
-                } else {
-                    0.69
-                }
-            }
-        }
+        CANCER_DATA.brca2.get_breast_cancer_risk(age, self.is_pathogenic())
     }
 
     pub fn ovarian_cancer_lifetime_risk(&self) -> f64 {
-        match self {
-            Brca2Status::WildType | Brca2Status::VariantOfUncertainSignificance => 0.012,
-            Brca2Status::Pathogenic6174delT | Brca2Status::OtherPathogenic => 0.17,
+        if self.is_pathogenic() {
+            CANCER_DATA.brca2.ovarian_cancer_risk.pathogenic
+        } else {
+            CANCER_DATA.brca2.ovarian_cancer_risk.wild_type
         }
     }
 
     pub fn prostate_cancer_risk(&self) -> f64 {
-        match self {
-            Brca2Status::WildType | Brca2Status::VariantOfUncertainSignificance => 1.0,
-            Brca2Status::Pathogenic6174delT | Brca2Status::OtherPathogenic => 8.6,
+        if self.is_pathogenic() {
+            CANCER_DATA.brca2.prostate_cancer_risk.pathogenic
+        } else {
+            CANCER_DATA.brca2.prostate_cancer_risk.wild_type
         }
     }
 
     pub fn pancreatic_cancer_risk(&self) -> f64 {
-        match self {
-            Brca2Status::WildType | Brca2Status::VariantOfUncertainSignificance => 1.0,
-            Brca2Status::Pathogenic6174delT | Brca2Status::OtherPathogenic => 5.0,
+        if self.is_pathogenic() {
+            CANCER_DATA.brca2.pancreatic_cancer_risk.pathogenic
+        } else {
+            CANCER_DATA.brca2.pancreatic_cancer_risk.wild_type
         }
     }
 
@@ -159,36 +100,15 @@ impl Tp53Status {
     }
 
     pub fn cancer_risk_by_age(&self, age: f64) -> f64 {
-        match self {
-            Tp53Status::WildType => 0.01,
-            Tp53Status::Pathogenic => {
-                if age < 20.0 {
-                    0.22
-                } else if age < 30.0 {
-                    0.41
-                } else if age < 40.0 {
-                    0.63
-                } else {
-                    0.90
-                }
-            }
-        }
+        CANCER_DATA.tp53.get_cancer_risk(age, matches!(self, Tp53Status::Pathogenic))
     }
 
     pub fn screening_protocol(&self) -> Vec<String> {
-        let mut protocol = Vec::new();
-
         if self.li_fraumeni_syndrome() {
-            protocol.push("Annual whole-body MRI".to_string());
-            protocol.push("Annual brain MRI".to_string());
-            protocol.push("Annual abdominal/pelvic ultrasound".to_string());
-            protocol.push("Annual complete blood count".to_string());
-            protocol.push("Annual dermatology exam".to_string());
-            protocol.push("Breast screening: clinical exam every 6 months from age 20".to_string());
-            protocol.push("Colonoscopy every 2-5 years starting age 25".to_string());
+            CANCER_DATA.tp53.screening.pathogenic.clone()
+        } else {
+            Vec::new()
         }
-
-        protocol
     }
 }
 
@@ -207,36 +127,33 @@ impl MlhMshStatus {
     }
 
     pub fn colorectal_cancer_lifetime_risk(&self) -> f64 {
-        match self {
-            MlhMshStatus::WildType => 0.045,
-            MlhMshStatus::Mlh1Pathogenic | MlhMshStatus::Msh2Pathogenic => 0.52,
-            MlhMshStatus::Msh6Pathogenic => 0.44,
-            MlhMshStatus::Pms2Pathogenic => 0.25,
-        }
+        let variant = match self {
+            MlhMshStatus::Mlh1Pathogenic => "Mlh1Pathogenic",
+            MlhMshStatus::Msh2Pathogenic => "Msh2Pathogenic",
+            MlhMshStatus::Msh6Pathogenic => "Msh6Pathogenic",
+            MlhMshStatus::Pms2Pathogenic => "Pms2Pathogenic",
+            MlhMshStatus::WildType => "WildType",
+        };
+        CANCER_DATA.mlh_msh.get_colorectal_risk(variant)
     }
 
     pub fn endometrial_cancer_lifetime_risk(&self) -> f64 {
-        match self {
-            MlhMshStatus::WildType => 0.028,
-            MlhMshStatus::Mlh1Pathogenic | MlhMshStatus::Msh2Pathogenic => 0.54,
-            MlhMshStatus::Msh6Pathogenic => 0.49,
-            MlhMshStatus::Pms2Pathogenic => 0.15,
-        }
+        let variant = match self {
+            MlhMshStatus::Mlh1Pathogenic => "Mlh1Pathogenic",
+            MlhMshStatus::Msh2Pathogenic => "Msh2Pathogenic",
+            MlhMshStatus::Msh6Pathogenic => "Msh6Pathogenic",
+            MlhMshStatus::Pms2Pathogenic => "Pms2Pathogenic",
+            MlhMshStatus::WildType => "WildType",
+        };
+        CANCER_DATA.mlh_msh.get_endometrial_risk(variant)
     }
 
     pub fn screening_recommendations(&self) -> Vec<String> {
-        let mut recs = Vec::new();
-
         if self.lynch_syndrome() {
-            recs.push("Colonoscopy every 1-2 years starting age 20-25".to_string());
-            recs.push("Annual endometrial biopsy starting age 30-35".to_string());
-            recs.push("Annual transvaginal ultrasound".to_string());
-            recs.push("Upper endoscopy every 3-5 years".to_string());
-            recs.push("Annual urinalysis".to_string());
-            recs.push("Consider aspirin chemoprevention".to_string());
+            CANCER_DATA.mlh_msh.screening.pathogenic.clone()
+        } else {
+            Vec::new()
         }
-
-        recs
     }
 }
 
@@ -252,30 +169,27 @@ impl ApcStatus {
     }
 
     pub fn colorectal_cancer_risk(&self) -> f64 {
-        match self {
-            ApcStatus::WildType => 0.045,
-            ApcStatus::Pathogenic => 1.0,
+        if self.familial_adenomatous_polyposis() {
+            CANCER_DATA.apc.colorectal_cancer_risk.pathogenic
+        } else {
+            CANCER_DATA.apc.colorectal_cancer_risk.wild_type
         }
     }
 
-    pub fn polyp_burden(&self) -> &'static str {
-        match self {
-            ApcStatus::WildType => "Normal",
-            ApcStatus::Pathogenic => "Hundreds to thousands of polyps",
+    pub fn polyp_burden(&self) -> &str {
+        if self.familial_adenomatous_polyposis() {
+            &CANCER_DATA.apc.polyp_burden.pathogenic
+        } else {
+            &CANCER_DATA.apc.polyp_burden.wild_type
         }
     }
 
     pub fn management(&self) -> Vec<String> {
-        let mut mgmt = Vec::new();
-
         if self.familial_adenomatous_polyposis() {
-            mgmt.push("Annual sigmoidoscopy starting age 10-12".to_string());
-            mgmt.push("Prophylactic colectomy recommended by age 20-25".to_string());
-            mgmt.push("Upper endoscopy every 1-3 years".to_string());
-            mgmt.push("Annual thyroid ultrasound".to_string());
+            CANCER_DATA.apc.management.pathogenic.clone()
+        } else {
+            Vec::new()
         }
-
-        mgmt
     }
 }
 
@@ -291,23 +205,26 @@ impl PtenStatus {
     }
 
     pub fn breast_cancer_lifetime_risk(&self) -> f64 {
-        match self {
-            PtenStatus::WildType => 0.125,
-            PtenStatus::Pathogenic => 0.85,
+        if self.cowden_syndrome() {
+            CANCER_DATA.pten.breast_cancer_risk.pathogenic
+        } else {
+            CANCER_DATA.pten.breast_cancer_risk.wild_type
         }
     }
 
     pub fn thyroid_cancer_risk(&self) -> f64 {
-        match self {
-            PtenStatus::WildType => 1.0,
-            PtenStatus::Pathogenic => 35.0,
+        if self.cowden_syndrome() {
+            CANCER_DATA.pten.thyroid_cancer_risk.pathogenic
+        } else {
+            CANCER_DATA.pten.thyroid_cancer_risk.wild_type
         }
     }
 
     pub fn endometrial_cancer_risk(&self) -> f64 {
-        match self {
-            PtenStatus::WildType => 1.0,
-            PtenStatus::Pathogenic => 28.0,
+        if self.cowden_syndrome() {
+            CANCER_DATA.pten.endometrial_cancer_risk.pathogenic
+        } else {
+            CANCER_DATA.pten.endometrial_cancer_risk.wild_type
         }
     }
 }
@@ -364,9 +281,7 @@ impl CancerGeneticProfile {
         }
 
         if self.pten.cowden_syndrome() {
-            screening.push("Annual thyroid ultrasound".to_string());
-            screening.push("Annual breast MRI starting age 30-35".to_string());
-            screening.push("Colonoscopy every 5 years starting age 35".to_string());
+            screening.extend(CANCER_DATA.pten.screening.pathogenic.clone());
         }
 
         if screening.is_empty() {
