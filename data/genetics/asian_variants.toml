@@ -1,0 +1,251 @@
+# Asian Genetic Variants Data
+# Externalized from src/biology/genetics/asian_variants.rs
+
+# Metabolic Variants
+[[genes]]
+symbol = "ALDH2"
+full_name = "Aldehyde Dehydrogenase 2 Family Member"
+chromosome = "12q24.12"
+function = "Enzyme"
+phenotypes = ["Alcohol metabolism", "Acetaldehyde clearance", "Facial flushing response"]
+drug_interactions = ["Alcohol", "Disulfiram"]
+
+[[genes.clinical_variants]]
+variant_name = "Glu504Lys (rs671)"
+rs_id = "rs671"
+hgvs = "c.1510G>A"
+clinical_significance = "RiskFactor"
+associated_conditions = [
+    "Alcohol flush reaction (Asian flush)",
+    "Reduced alcohol tolerance",
+    "Esophageal cancer with alcohol (10x increased risk)",
+    "Facial flushing",
+    "Tachycardia with alcohol",
+    "Nausea with alcohol",
+    "Lower risk of alcoholism"
+]
+population_frequency = 0.35
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "ADH1B"
+full_name = "Alcohol Dehydrogenase 1B"
+chromosome = "4q23"
+function = "Enzyme"
+phenotypes = ["Alcohol metabolism rate"]
+drug_interactions = ["Alcohol"]
+
+[[genes.clinical_variants]]
+variant_name = "Arg48His (rs1229984)"
+rs_id = "rs1229984"
+hgvs = "c.143G>A"
+clinical_significance = "Protective"
+associated_conditions = [
+    "Faster alcohol metabolism",
+    "Protection against alcohol dependence",
+    "Lower risk of alcohol-related liver disease"
+]
+population_frequency = 0.70
+inheritance_pattern = "Complex"
+
+# Morphological Variants
+[[genes]]
+symbol = "EDAR"
+full_name = "Ectodysplasin A Receptor"
+chromosome = "2q13"
+function = "Receptor"
+phenotypes = ["Hair thickness and texture", "Tooth morphology", "Sweat gland development"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "370A (rs3827760)"
+rs_id = "rs3827760"
+hgvs = "c.1109T>C"
+clinical_significance = "Benign"
+associated_conditions = [
+    "Thick, straight hair",
+    "Shovel-shaped incisors",
+    "Increased sweat gland density",
+    "Smaller breast size"
+]
+population_frequency = 0.93
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "ABCC11"
+full_name = "ATP Binding Cassette Subfamily C Member 11"
+chromosome = "16q12.1"
+function = "Transporter"
+phenotypes = ["Earwax type", "Apocrine gland secretion", "Body odor production"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "538G>A (rs17822931)"
+rs_id = "rs17822931"
+hgvs = "c.538G>A"
+clinical_significance = "Benign"
+associated_conditions = [
+    "Dry earwax type",
+    "Reduced body odor",
+    "Reduced axillary osmidrosis"
+]
+population_frequency = 0.80
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes]]
+symbol = "OCA2"
+full_name = "OCA2 Melanosomal Transmembrane Protein"
+chromosome = "15q12-q13"
+function = "Transporter"
+phenotypes = ["Skin pigmentation", "Eye color"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "His615Arg (rs1800414)"
+rs_id = "rs1800414"
+hgvs = "c.1844A>G"
+clinical_significance = "Benign"
+associated_conditions = [
+    "Lighter skin pigmentation",
+    "Brown to lighter eye color"
+]
+population_frequency = 0.25
+inheritance_pattern = "Complex"
+
+# Disease Susceptibility Variants
+[[genes]]
+symbol = "EGFR"
+full_name = "Epidermal Growth Factor Receptor"
+chromosome = "7p11.2"
+function = "Receptor"
+phenotypes = ["Cell growth regulation"]
+drug_interactions = ["Erlotinib", "Gefitinib", "Osimertinib", "Afatinib"]
+
+[[genes.clinical_variants]]
+variant_name = "L858R (rs121434568)"
+rs_id = "rs121434568"
+hgvs = "c.2573T>G"
+clinical_significance = "Pathogenic"
+associated_conditions = [
+    "Non-small cell lung cancer (NSCLC)",
+    "Lung adenocarcinoma (higher in East Asians)"
+]
+population_frequency = 0.00015
+inheritance_pattern = "Somatic"
+
+[[genes.clinical_variants]]
+variant_name = "Exon 19 deletion"
+hgvs = "c.2235_2249del15"
+clinical_significance = "Pathogenic"
+associated_conditions = ["NSCLC with high response to EGFR TKIs"]
+population_frequency = 0.0001
+inheritance_pattern = "Somatic"
+
+[[genes]]
+symbol = "PNPLA3"
+full_name = "Patatin Like Phospholipase Domain Containing 3"
+chromosome = "22q13.31"
+function = "Enzyme"
+phenotypes = ["Lipid metabolism in liver"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "I148M (rs738409)"
+rs_id = "rs738409"
+hgvs = "c.444C>G"
+clinical_significance = "RiskFactor"
+associated_conditions = [
+    "Non-alcoholic fatty liver disease (NAFLD)",
+    "Hepatocellular carcinoma risk",
+    "Alcoholic liver disease"
+]
+population_frequency = 0.45
+inheritance_pattern = "Complex"
+
+[[genes]]
+symbol = "GJB2"
+full_name = "Gap Junction Protein Beta 2 (Connexin 26)"
+chromosome = "13q12.11"
+function = "IonChannel"
+phenotypes = ["Hearing", "Cochlear function"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "235delC"
+rs_id = "rs80338943"
+hgvs = "c.235delC"
+clinical_significance = "Pathogenic"
+associated_conditions = [
+    "Autosomal recessive nonsyndromic hearing loss",
+    "Congenital deafness (most common in East Asia)"
+]
+population_frequency = 0.015
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes]]
+symbol = "SLC2A9"
+full_name = "Solute Carrier Family 2 Member 9"
+chromosome = "4p16.1"
+function = "Transporter"
+phenotypes = ["Uric acid transport"]
+drug_interactions = ["Allopurinol", "Febuxostat"]
+
+[[genes.clinical_variants]]
+variant_name = "rs16890979"
+rs_id = "rs16890979"
+hgvs = "c.265G>A"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Hyperuricemia", "Gout susceptibility"]
+population_frequency = 0.20
+inheritance_pattern = "Complex"
+
+# Pharmacogenetic Variants
+[[genes]]
+symbol = "CYP2C19"
+full_name = "Cytochrome P450 2C19"
+chromosome = "10q23.33"
+function = "Enzyme"
+phenotypes = ["Drug metabolism"]
+drug_interactions = ["Clopidogrel", "Omeprazole", "Voriconazole"]
+
+[[genes.clinical_variants]]
+variant_name = "*2 (rs4244285)"
+rs_id = "rs4244285"
+hgvs = "c.681G>A"
+clinical_significance = "DrugResponse"
+associated_conditions = [
+    "Poor metabolizer (higher in East Asians ~15%)",
+    "Reduced clopidogrel efficacy",
+    "Increased proton pump inhibitor efficacy"
+]
+population_frequency = 0.30
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes.clinical_variants]]
+variant_name = "*3 (rs4986893)"
+rs_id = "rs4986893"
+hgvs = "c.636G>A"
+clinical_significance = "DrugResponse"
+associated_conditions = ["Poor metabolizer (common in East Asians)"]
+population_frequency = 0.08
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes]]
+symbol = "HLA-B*58:01"
+full_name = "Major Histocompatibility Complex Class I B*58:01"
+chromosome = "6p21.3"
+function = "Receptor"
+phenotypes = ["Drug hypersensitivity"]
+drug_interactions = ["Allopurinol"]
+
+[[genes.clinical_variants]]
+variant_name = "HLA-B*58:01"
+hgvs = "HLA-B*58:01"
+clinical_significance = "RiskFactor"
+associated_conditions = [
+    "Allopurinol-induced severe cutaneous adverse reactions",
+    "Stevens-Johnson syndrome risk (100x increased)",
+    "DRESS syndrome with allopurinol"
+]
+population_frequency = 0.06
+inheritance_pattern = "Complex"
