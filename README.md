@@ -8,8 +8,8 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 
 - ✅ **Compilation**: Clean build (no warnings)
 - ✅ **Tests**: 1698 tests passing
-- ✅ **Files**: 313 Rust source files
-- ⚠️ **Code**: ~453,000 total lines (includes extensive biological data structures and computational models)
+- ✅ **Files**: 380 Rust source files
+- ⚠️ **Code**: ~227,000 lines of Rust (includes extensive biological data structures and computational models)
 - ⚠️ **Systems**: 13 organ system scaffolds (implementation depth varies)
 
 ## Features
