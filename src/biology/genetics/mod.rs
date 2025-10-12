@@ -52,107 +52,104 @@ pub mod taste_smell;
 pub mod trait_interactions;
 pub mod variation;
 
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
+// CRITICAL: Fix conflicts first
+// Genotype: Use the main comprehensive struct from genotype.rs, alias the simple enum from population variants
+pub use genotype::{Genotype, GenotypeRiskProfile, PhenotypeAssociation, AncestryComponent, DiseaseRisk, PharmacogeneticMarker, MetabolizerStatus, Severity};
+pub use african_variants::{AfricanGeneticVariants, SickleCellStatus, G6PDStatus, LactasePersistence, SkinPigmentationGenotype, MalariaResistanceProfile, HypertensionRiskProfile, VitaminDMetabolism, APOL1Status};
+pub use african_variants::Genotype as AfricanGenotype;
+pub use native_american_variants::{NativeAmericanGeneticVariants, AlcoholMetabolismProfile, ALDH2Genotype, ADH1BGenotype, ADH1CGenotype, DiabetesRiskProfile, GallbladderRiskProfile, ACEInhibitorResponse, ACEResponse, APOEStatus};
+pub use native_american_variants::Genotype as NativeAmericanGenotype;
+
+// CaffeineMetabolism: Use the comprehensive version from phenotype.rs, alias the simple enum from phenotype_predictor.rs
+pub use phenotype::{PhenotypeProfile, PhysicalTraits, MetabolicTraits, DiseaseSusceptibility, PharmacologicalTraits, EyeColor, HairColor, SkinPigmentation, EarwaxType, CaffeineMetabolism, AlcoholMetabolism, ALDH2Function, ADH1BVariant, VitaminDSynthesis, WarfarinSensitivity, OpioidMetabolism, SSRIResponse};
+pub use phenotype_predictor::{FullBodyPhenotypePredictor, PredictedTraits, PhysicalAppearance, PhysiologyTraits, PerformanceTraits, MetabolismTraits, SensoryTraits, BehaviorTraits, Probability};
+pub use phenotype_predictor::CaffeineMetabolism as PredictorCaffeineMetabolism;
+
+// HIGH PRIORITY: Core genetic types - resolve conflicts
+// Allele: Use the comprehensive struct from allele.rs, alias the simple enum from gene_variants.rs
+pub use allele::{Allele, AlleleType, AllelePair, Zygosity, CarrierStatus, AlleleFrequency};
+pub use gene_variants::{GeneVariantCatalog, PharmacogeneticVariant, MetabolicVariant, DiseaseRiskVariant, TraitVariant, DrugResponse, DrugEffect, DosageAdjustment, PharmacogeneticPhenotype, MetabolicImpact, VariantClinicalSignificance, RiskAssessment, TraitEffect, EffectDirection};
+pub use gene_variants::Allele as VariantAllele;
+pub use gene_variants::Genotype as VariantGenotype;
+
+// Gene: Use the comprehensive struct from gene.rs, alias the simple struct from genome.rs
+pub use gene::{Gene, GeneType, Exon, Intron, Promoter, RegulatoryRegion, RegulatoryType};
+pub use gene::Strand as GeneStrand;
+pub use genome::{Genome, GenomicLocation, Variant};
+pub use genome::Gene as GenomeGene;
+pub use genome::Strand as GenomeStrand;
+
+// Chromosome: Use the comprehensive enum from chromosome.rs (genome.rs should import this)
+pub use chromosome::Chromosome;
+
+// Nucleotide: Use the comprehensive version from dna.rs, alias the simple version from genome.rs
+pub use dna::{Nucleotide, DNASequence};
+pub use genome::Nucleotide as GenomeNucleotide;
+
+// MEDIUM/LOW PRIORITY: Resolve conflicts using type aliases only, keep globs
+// HLAAllele conflict: autoimmune vs hla_typing
+pub use autoimmune::HLAAllele as AutoimmuneHLAAllele;
+pub use hla_typing::HLAAllele as HLATypingAllele;
+
+// RiskLevel conflict: blood_type vs mental_health_genetics vs hla_typing
+pub use blood_type::RiskLevel as BloodRiskLevel;
+pub use mental_health_genetics::RiskLevel as MentalHealthRiskLevel;
+pub use hla_typing::RiskLevel as HLATypingRiskLevel;
+
+// RiskCategory conflict: comprehensive_risk_calculator vs epistasis
+pub use comprehensive_risk_calculator::RiskCategory as ComprehensiveRiskCategory;
+pub use epistasis::RiskCategory as EpistaticRiskCategory;
+
+// HairTexture conflict: dermatology vs hair_genetics
+pub use dermatology::HairTexture as DermatologyHairTexture;
+pub use hair_genetics::HairTexture as HairGeneticsTexture;
+
+// HairColor conflict: phenotype vs hair_genetics
+pub use hair_genetics::HairColor as HairGeneticsColor;
+
+// PsoriasisRisk conflict: dermatology vs skin_genetics
+pub use dermatology::PsoriasisRisk as DermatologyPsoriasisRisk;
+pub use skin_genetics::PsoriasisRisk as SkinGeneticsPsoriasisRisk;
+
+// Keep all modules as glob exports - conflicts resolved through aliases above
 pub use addiction_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use african_variants::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use allele::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use ancestry::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use asian_variants::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use athletic_performance::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use autoimmune::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use blood_type::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use cancer_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use cardiovascular_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use chromosome::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use comprehensive_risk_calculator::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use dermatology::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use dietary_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use disease_association::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use disease_susceptibility::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use dna::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use epistasis::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use european_variants::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use eye_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use gene::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use gene_catalog::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use gene_environment::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use gene_variants::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use genome::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use genotype::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use hair_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use hla_typing::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use lactose_tolerance::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use longevity_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use markers::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use mental_health_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use metabolic_disease::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use migraine_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use mitochondrial::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use native_american_variants::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use neurological_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use ophthalmology::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use pain_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use pharmacogenomics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use phenotype::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
-pub use phenotype_predictor::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use population::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use population_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use population_traits::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use respiratory_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use skin_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use sleep_genetics::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use snp::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use taste_smell::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use trait_interactions::*;
-#[allow(ambiguous_glob_reexports, ambiguous_glob_imports)]
 pub use variation::*;
