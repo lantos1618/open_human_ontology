@@ -27,6 +27,38 @@ review the last few lines of the `.agent/claude_output.jsonl` if we are stuck or
 
 ---
 
+## Session DT (2025-10-12)
+
+**Status:** ✅ Complete - Alzheimer's disease progression simulation
+
+**Deliverable:**
+**Alzheimer's Disease Progression Simulation** (`examples/alzheimers_progression_simulation.rs`)
+- Comprehensive multi-decade simulation spanning 4 disease stages from preclinical to severe dementia
+- Stage 1: Preclinical (age 55-65, 10-15yr pre-symptom): initial Aβ accumulation (5 Centiloid), minimal tau (Braak I), early microglial activation, clinically normal (MMSE 29/30)
+- Stage 2: Early AD/MCI (age 65-72): widespread Aβ plaques (58 Centiloid), limbic tau spread (Braak IV, tau-PET 1.65 SUVR), first wave Aβ-driven neuroinflammation (TSPO 1.32, IL-6 ↑781%), 28% synaptic loss, mild cognitive impairment (MMSE 25/30)
+- Stage 3: Moderate AD (age 72-78): Aβ plateau (98 Centiloid), neocortical tau (Braak V, tau-PET 3.15 SUVR), second wave tau-driven neuroinflammation, 62% synaptic loss, 45% hippocampal neuron death, moderate dementia (MMSE 16/30)
+- Stage 4: Severe AD (age 78-85+): end-stage pathology (Braak VI), microglial exhaustion (58% dystrophic), 82% synaptic loss, 85% CA1 neuron death, severe dementia (MMSE 4/30), total care dependence
+- Integrates 6 biological domains:
+  - **Amyloid-β pathology**: APP/BACE1/γ-secretase processing, Aβ monomers/oligomers/plaques, Centiloid PET quantification, neuritic plaques (CERAD scoring)
+  - **Tau pathology**: Braak staging (I-VI temporal-spatial progression), phosphorylation (p-tau181 CSF, AT8/PHF-1 antibodies), tau-PET SUVR (meta-temporal, lateral temporal, frontal), paired helical filaments (PHF density), neurofibrillary tangles, ghost tangles
+  - **Neuroinflammation (Two-Wave Model)**: microglial activation (TSPO-PET 0.95→1.68→1.52, exhaustion), morphology transition (ramified→activated→dystrophic senescence), reactive astrocytes (GFAP ↑420%, S100β, AQP4 edema), cytokine cascade (IL-1β, TNF-α, IL-6, IL-10/TNF ratio), complement-mediated synapse pruning (C1q, C3 opsonization), NLRP3 inflammasome Aβ-triggered activation
+  - **Synaptic/neuronal degeneration**: synaptic density (SV2A-PET ↓82%), hippocampal atrophy (98%→42% volume), entorhinal cortex degeneration, neurotransmitter loss (acetylcholine ↓92%, glutamate NMDA ↓62%), dendritic spine density (↓68%), CA1 hippocampal neuron loss (85%), cholinergic nucleus basalis (NBM) degeneration (↓82%), brain weight loss (1000g→780g)
+  - **Oxidative stress/mitochondrial dysfunction**: ROS (H₂O₂, superoxide), lipid peroxidation (MDA, 4-HNE membrane damage), protein carbonyl oxidation, mitochondrial depolarization (ΔΨm -168→-148 mV), ATP bioenergetic failure (↓72%), Complex IV cytochrome c oxidase (↓62%), excessive Drp1 fission/fragmentation, impaired PINK1/Parkin mitophagy
+  - **Cerebrovascular pathology**: blood-brain barrier disruption (permeability ↑285%, occludin tight junctions ↓68%, albumin extravasation), cerebral amyloid angiopathy (CAA 68% vessels), cerebral blood flow hypoperfusion (↓32%), white matter hyperintensities (28% volume, Fazekas 3), myelin degeneration, tau-impaired axonal transport
+- Demonstrates **TWO-WAVE MODEL** of neuroinflammation informed by TRIAD cohort (PMC12477628):
+  - **Wave 1 (Early AD)**: Aβ plaque-driven microglial activation → detrimental effects on frontal/parietal gray matter density → complement-mediated synapse loss
+  - **Wave 2 (Moderate-Severe AD)**: Widespread tau (Braak V-VI) → second neuroinflammation wave → temporal/occipital cortex neurodegeneration → microglial dystrophy/exhaustion (30%→58%)
+- Clinical progression: cognitive scores (MMSE 29→4, MoCA 27→unscored, CDR-SB 0→16), domain-specific decline (episodic memory 98%→5%, executive function 75%→lost, semantic memory/language 82%→12%), ADL independence (100%→8%), end-stage complications (dysphagia, immobility, infections, cachexia)
+- **Biomarker cascade** (Jack et al. model): Aβ PET/CSF (10-20yr pre-symptom) → tau PET/CSF (5-10yr) → neuroinflammation TSPO-PET (parallels Aβ and tau) → neurodegeneration MRI/FDG-PET (symptom onset) → cognitive decline
+- **Therapeutic implications**: anti-Aβ monoclonal antibodies (lecanemab, donanemab) effective early Braak I-IV; anti-tau therapies target second wave Braak V-VI; anti-inflammatory timing-dependent (beneficial early?, harmful late?); multi-target approaches address full cascade
+- ~700 LOC, fully runnable, educational framework demonstrating AD pathophysiology from molecular mechanisms → cellular dysfunction → tissue degeneration → clinical dementia
+
+**Key achievement:** Created first comprehensive neurodegenerative disease progression simulation showing multi-decade Alzheimer's cascade with quantitative biomarkers (PET imaging: Aβ Centiloid, tau-PET SUVR, TSPO neuroinflammation; CSF: p-tau181; MRI: volumetric atrophy; cognitive: MMSE/MoCA/CDR-SB), demonstrating two-wave neuroinflammation model and therapeutic windows for intervention
+
+**Commit:** `65044b4` - Pushed to remote
+
+---
+
 ## Session DS (2025-10-11)
 
 **Status:** ✅ Complete - NSAID pharmacological intervention simulation
