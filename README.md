@@ -65,6 +65,7 @@ let gfr = person.gfr_ml_per_min();
 ```bash
 # Clone and build
 git clone https://github.com/lantos1618/open_human_ontology
+# Note: Repository URL may vary - verify current location
 cd open_human_ontology
 cargo build --release
 
@@ -173,10 +174,10 @@ MIT License - see LICENSE file
 
 ## Acknowledgments
 
-Built with medical literature references from Guyton & Hall, Ganong's, and peer-reviewed research. Ground truth validation is in progress for core modules (see `examples/*_groundtruth.rs` for validated implementations).
+Built with references to medical literature (Guyton & Hall, Ganong's, peer-reviewed research). Validation status varies: some modules have ground-truth implementations (see `examples/*_groundtruth.rs`), while others are scaffolds awaiting proper validation.
 
 ---
 
-**Status**: Active development
+**Status**: Active development (Refactoring Phase)
 **Version**: 0.1.0
-**Last Updated**: January 12, 2025
+**Last Updated**: October 12, 2025
