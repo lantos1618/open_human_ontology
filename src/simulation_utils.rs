@@ -293,7 +293,8 @@ mod tests {
         for _ in 0..100 {
             traj.step_exponential(0.1);
         }
-        assert!((traj.current - 10.0).abs() < 0.5);
+        let expected = 10.0 - (10.0 - 1.0) * (-0.1 * 10.0_f64).exp();
+        assert!((traj.current - expected).abs() < 0.5);
     }
 
     #[test]
