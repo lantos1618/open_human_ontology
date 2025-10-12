@@ -5,7 +5,7 @@ edition = "2021"
 authors = ["Human Biology Project Contributors"]
 description = "A computational model of human biology focusing on bone structure and mechanics"
 license = "MIT"
-repository = "https://github.com/yourusername/human_biology"
+repository = "https://github.com/lantos1618/open_human_ontology"
 keywords = ["biology", "simulation", "bone", "medical", "science"]
 categories = ["science", "simulation"]
 

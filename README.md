@@ -64,7 +64,7 @@ let gfr = person.gfr_ml_per_min();
 
 ```bash
 # Clone and build
-git clone https://github.com/yourusername/human_biology
+git clone https://github.com/lantos1618/open_human_ontology
 cd open_human_ontology
 cargo build --release
 
