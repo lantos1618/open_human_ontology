@@ -1,0 +1,110 @@
+[[genes]]
+symbol = "CACNA1A"
+full_name = "Calcium Voltage-Gated Channel Subunit Alpha1 A"
+chromosome = "19p13.13"
+function = "IonChannel"
+phenotypes = ["Neuronal calcium signaling"]
+drug_interactions = ["Calcium channel blockers"]
+
+[[genes.clinical_variants]]
+variant_name = "R583Q"
+rs_id = "rs104894406"
+hgvs = "c.1748G>A"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Familial hemiplegic migraine type 1", "Episodic ataxia type 2"]
+population_frequency = 0.0001
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "SCN1A"
+full_name = "Sodium Voltage-Gated Channel Alpha Subunit 1"
+chromosome = "2q24.3"
+function = "IonChannel"
+phenotypes = ["Neuronal excitability", "Neuronal sodium channel function"]
+drug_interactions = ["Antiepileptic drugs", "Local anesthetics"]
+
+[[genes.clinical_variants]]
+variant_name = "R1648H"
+rs_id = "rs121918596"
+hgvs = "c.4943G>A"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Dravet syndrome", "Generalized epilepsy with febrile seizures plus"]
+population_frequency = 0.00001
+inheritance_pattern = "AutosomalDominant"
+
+[[genes.clinical_variants]]
+variant_name = "Q1489K"
+rs_id = "rs121918601"
+hgvs = "c.4465C>A"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Familial hemiplegic migraine type 3", "Migraine with aura"]
+population_frequency = 0.00003
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "ATP1A2"
+full_name = "ATPase Na+/K+ Transporting Subunit Alpha 2"
+chromosome = "1q23.2"
+function = "IonChannel"
+phenotypes = ["Sodium-potassium pump activity"]
+drug_interactions = ["Digoxin"]
+
+[[genes.clinical_variants]]
+variant_name = "T345A"
+rs_id = "rs121909365"
+hgvs = "c.1033A>G"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Familial hemiplegic migraine type 2", "Migraine with aura"]
+population_frequency = 0.00005
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "MTHFR"
+full_name = "Methylenetetrahydrofolate Reductase"
+chromosome = "1p36.22"
+function = "Enzyme"
+phenotypes = ["Folate metabolism", "Homocysteine regulation"]
+drug_interactions = ["Methotrexate"]
+
+[[genes.clinical_variants]]
+variant_name = "C677T"
+rs_id = "rs1801133"
+hgvs = "c.665C>T"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Migraine with aura (increased risk)", "Elevated homocysteine", "Cardiovascular disease risk"]
+population_frequency = 0.25
+inheritance_pattern = "Complex"
+
+[[genes]]
+symbol = "LRP1"
+full_name = "LDL Receptor Related Protein 1"
+chromosome = "12q13.3"
+function = "Receptor"
+phenotypes = ["Lipoprotein metabolism", "Neuronal signaling"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "rs11172113"
+rs_id = "rs11172113"
+hgvs = "c.766-18C>T"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Migraine susceptibility", "Migraine without aura"]
+population_frequency = 0.31
+inheritance_pattern = "Complex"
+
+[[genes]]
+symbol = "PRDM16"
+full_name = "PR/SET Domain 16"
+chromosome = "1p36.32"
+function = "TranscriptionFactor"
+phenotypes = ["Transcriptional regulation"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "rs2651899"
+rs_id = "rs2651899"
+hgvs = "c.4235A>G"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Migraine susceptibility", "Common migraine"]
+population_frequency = 0.46
+inheritance_pattern = "Complex"

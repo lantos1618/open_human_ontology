@@ -1,0 +1,93 @@
+[[genes]]
+symbol = "HCRTR2"
+full_name = "Hypocretin Receptor 2"
+chromosome = "6p12.1"
+function = "Receptor"
+phenotypes = ["Circadian rhythm regulation", "Sleep-wake cycle"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "rs2653349"
+rs_id = "rs2653349"
+hgvs = "c.1246A>G"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Cluster headache susceptibility"]
+population_frequency = 0.12
+inheritance_pattern = "Complex"
+
+[[genes]]
+symbol = "CLOCK"
+full_name = "Clock Circadian Regulator"
+chromosome = "4q12"
+function = "TranscriptionFactor"
+phenotypes = ["Circadian rhythm"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "3111T>C"
+rs_id = "rs1801260"
+hgvs = "c.3111T>C"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Cluster headache susceptibility", "Circadian rhythm disorders"]
+population_frequency = 0.24
+inheritance_pattern = "Complex"
+
+[[genes]]
+symbol = "SCN9A"
+full_name = "Sodium Voltage-Gated Channel Alpha Subunit 9"
+chromosome = "2q24.3"
+function = "IonChannel"
+phenotypes = ["Pain perception", "Nociception"]
+drug_interactions = ["Local anesthetics", "Carbamazepine"]
+
+[[genes.clinical_variants]]
+variant_name = "L858H"
+rs_id = "rs6746030"
+hgvs = "c.2573T>A"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Paroxysmal extreme pain disorder", "Chronic pain sensitivity"]
+population_frequency = 0.0001
+inheritance_pattern = "AutosomalDominant"
+
+[[genes.clinical_variants]]
+variant_name = "R1150W"
+rs_id = "rs121908912"
+hgvs = "c.3448C>T"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Erythromelalgia", "Burning pain"]
+population_frequency = 0.00005
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "COMT"
+full_name = "Catechol-O-Methyltransferase"
+chromosome = "22q11.21"
+function = "Enzyme"
+phenotypes = ["Catecholamine metabolism", "Pain modulation"]
+drug_interactions = ["Levodopa", "COMT inhibitors"]
+
+[[genes.clinical_variants]]
+variant_name = "Val158Met"
+rs_id = "rs4680"
+hgvs = "c.472G>A"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Pain sensitivity", "Fibromyalgia risk", "Chronic pain susceptibility"]
+population_frequency = 0.48
+inheritance_pattern = "Complex"
+
+[[genes]]
+symbol = "OPRM1"
+full_name = "Opioid Receptor Mu 1"
+chromosome = "6q25.2"
+function = "Receptor"
+phenotypes = ["Opioid response", "Pain relief sensitivity"]
+drug_interactions = ["Morphine", "Oxycodone", "Fentanyl"]
+
+[[genes.clinical_variants]]
+variant_name = "A118G"
+rs_id = "rs1799971"
+hgvs = "c.118A>G"
+clinical_significance = "DrugResponse"
+associated_conditions = ["Opioid response variation", "Pain medication efficacy"]
+population_frequency = 0.15
+inheritance_pattern = "Complex"

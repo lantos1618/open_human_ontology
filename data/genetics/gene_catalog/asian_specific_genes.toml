@@ -1,0 +1,41 @@
+[[genes]]
+symbol = "SLC24A5"
+full_name = "Solute Carrier Family 24 Member 5"
+chromosome = "15q21.1"
+function = "Transporter"
+phenotypes = ["Skin pigmentation"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "111T (ancestral)"
+rs_id = "rs1426654"
+hgvs = "c.111A>G"
+clinical_significance = "Benign"
+associated_conditions = ["Darker skin pigmentation"]
+population_frequency = 0.99
+inheritance_pattern = "Complex"
+
+[[genes]]
+symbol = "EGFR"
+full_name = "Epidermal Growth Factor Receptor"
+chromosome = "7p11.2"
+function = "Receptor"
+phenotypes = ["Cell growth regulation"]
+drug_interactions = ["Erlotinib", "Gefitinib", "Osimertinib"]
+
+[[genes.clinical_variants]]
+variant_name = "L858R"
+rs_id = "rs121434568"
+hgvs = "c.2573T>G"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Non-small cell lung cancer", "EGFR-mutant lung adenocarcinoma"]
+population_frequency = 0.00015
+inheritance_pattern = "Somatic"
+
+[[genes.clinical_variants]]
+variant_name = "Exon 19 deletion"
+hgvs = "c.2235_2249del"
+clinical_significance = "Pathogenic"
+associated_conditions = ["EGFR-mutant lung cancer"]
+population_frequency = 0.0001
+inheritance_pattern = "Somatic"

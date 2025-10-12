@@ -1,0 +1,67 @@
+[[genes]]
+symbol = "LCT"
+full_name = "Lactase"
+chromosome = "2q21.3"
+function = "Enzyme"
+phenotypes = ["Lactose digestion"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "MCM6 -13910C>T"
+rs_id = "rs4988235"
+hgvs = "c.-13910C>T"
+clinical_significance = "Benign"
+associated_conditions = ["Lactase persistence (lactose tolerance)"]
+population_frequency = 0.35
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "TAS2R38"
+full_name = "Taste Receptor Type 2 Member 38"
+chromosome = "7q34"
+function = "Receptor"
+phenotypes = ["Bitter taste perception"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "PAV haplotype"
+rs_id = "rs713598"
+hgvs = "c.145G>C"
+clinical_significance = "Benign"
+associated_conditions = ["PTC taster (bitter sensitivity)"]
+population_frequency = 0.55
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "ABCC11"
+full_name = "ATP Binding Cassette Subfamily C Member 11"
+chromosome = "16q12.1"
+function = "Transporter"
+phenotypes = ["Earwax type", "Apocrine gland secretion"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "538G>A"
+rs_id = "rs17822931"
+hgvs = "c.538G>A"
+clinical_significance = "Benign"
+associated_conditions = ["Dry earwax", "Reduced body odor"]
+population_frequency = 0.80
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes]]
+symbol = "EDAR"
+full_name = "Ectodysplasin A Receptor"
+chromosome = "2q13"
+function = "Receptor"
+phenotypes = ["Hair thickness", "Tooth morphology"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "370A"
+rs_id = "rs3827760"
+hgvs = "c.1109T>C"
+clinical_significance = "Benign"
+associated_conditions = ["Thick hair", "Shovel-shaped incisors", "Increased sweat gland density"]
+population_frequency = 0.93
+inheritance_pattern = "AutosomalDominant"

@@ -1,0 +1,42 @@
+[[genes]]
+symbol = "APOE"
+full_name = "Apolipoprotein E"
+chromosome = "19q13.32"
+function = "Transporter"
+phenotypes = ["Lipid metabolism", "Cholesterol transport"]
+drug_interactions = ["Statins"]
+
+[[genes.clinical_variants]]
+variant_name = "ε4"
+rs_id = "rs429358"
+hgvs = "c.388T>C"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Alzheimer's disease", "Cardiovascular disease"]
+population_frequency = 0.14
+inheritance_pattern = "Complex"
+
+[[genes.clinical_variants]]
+variant_name = "ε2"
+rs_id = "rs7412"
+hgvs = "c.526C>T"
+clinical_significance = "Protective"
+associated_conditions = ["Lower cholesterol", "Reduced AD risk"]
+population_frequency = 0.08
+inheritance_pattern = "Complex"
+
+[[genes]]
+symbol = "F5"
+full_name = "Coagulation Factor V"
+chromosome = "1q24.2"
+function = "Enzyme"
+phenotypes = ["Blood clotting"]
+drug_interactions = ["Oral contraceptives", "Warfarin"]
+
+[[genes.clinical_variants]]
+variant_name = "Leiden"
+rs_id = "rs6025"
+hgvs = "c.1691G>A"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Deep vein thrombosis", "Pulmonary embolism", "Pregnancy complications"]
+population_frequency = 0.05
+inheritance_pattern = "AutosomalDominant"

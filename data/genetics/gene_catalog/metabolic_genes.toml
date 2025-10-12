@@ -1,0 +1,94 @@
+[[genes]]
+symbol = "CYP2D6"
+full_name = "Cytochrome P450 2D6"
+chromosome = "22q13.2"
+function = "Enzyme"
+phenotypes = ["Drug metabolism"]
+drug_interactions = ["Codeine", "Tramadol", "Tamoxifen", "Venlafaxine"]
+
+[[genes.clinical_variants]]
+variant_name = "*4"
+rs_id = "rs3892097"
+hgvs = "c.506-1G>A"
+clinical_significance = "DrugResponse"
+associated_conditions = ["Poor metabolizer"]
+population_frequency = 0.12
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes.clinical_variants]]
+variant_name = "*10"
+rs_id = "rs1065852"
+hgvs = "c.100C>T"
+clinical_significance = "DrugResponse"
+associated_conditions = ["Intermediate metabolizer"]
+population_frequency = 0.51
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes]]
+symbol = "CYP2C19"
+full_name = "Cytochrome P450 2C19"
+chromosome = "10q23.33"
+function = "Enzyme"
+phenotypes = ["Drug metabolism"]
+drug_interactions = ["Clopidogrel", "Omeprazole", "Voriconazole"]
+
+[[genes.clinical_variants]]
+variant_name = "*2"
+rs_id = "rs4244285"
+hgvs = "c.681G>A"
+clinical_significance = "DrugResponse"
+associated_conditions = ["Poor metabolizer"]
+population_frequency = 0.15
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes.clinical_variants]]
+variant_name = "*17"
+rs_id = "rs12248560"
+hgvs = "c.-806C>T"
+clinical_significance = "DrugResponse"
+associated_conditions = ["Ultrarapid metabolizer"]
+population_frequency = 0.18
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes]]
+symbol = "ALDH2"
+full_name = "Aldehyde Dehydrogenase 2"
+chromosome = "12q24.12"
+function = "Enzyme"
+phenotypes = ["Alcohol metabolism"]
+drug_interactions = ["Alcohol"]
+
+[[genes.clinical_variants]]
+variant_name = "Glu504Lys"
+rs_id = "rs671"
+hgvs = "c.1510G>A"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Alcohol flush reaction", "Reduced alcohol tolerance", "Esophageal cancer risk with alcohol"]
+population_frequency = 0.30
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "MTHFR"
+full_name = "Methylenetetrahydrofolate Reductase"
+chromosome = "1p36.22"
+function = "Enzyme"
+phenotypes = ["Folate metabolism"]
+drug_interactions = ["Methotrexate"]
+
+[[genes.clinical_variants]]
+variant_name = "C677T"
+rs_id = "rs1801133"
+hgvs = "c.665C>T"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Elevated homocysteine", "Neural tube defects", "Cardiovascular disease risk"]
+population_frequency = 0.25
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes.clinical_variants]]
+variant_name = "A1298C"
+rs_id = "rs1801131"
+hgvs = "c.1286A>C"
+clinical_significance = "RiskFactor"
+associated_conditions = ["Mild hyperhomocysteinemia"]
+population_frequency = 0.20
+inheritance_pattern = "AutosomalRecessive"

@@ -1,0 +1,77 @@
+[[genes]]
+symbol = "ABO"
+full_name = "ABO Blood Group Transferase"
+chromosome = "9q34.2"
+function = "Enzyme"
+phenotypes = ["Blood group antigen expression"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "A allele"
+rs_id = "rs8176719"
+hgvs = "c.261delG"
+clinical_significance = "Benign"
+associated_conditions = ["Blood type A"]
+population_frequency = 0.27
+inheritance_pattern = "Complex"
+
+[[genes.clinical_variants]]
+variant_name = "B allele"
+rs_id = "rs8176746"
+hgvs = "c.796C>A"
+clinical_significance = "Benign"
+associated_conditions = ["Blood type B"]
+population_frequency = 0.16
+inheritance_pattern = "Complex"
+
+[[genes.clinical_variants]]
+variant_name = "O allele"
+rs_id = "rs8176747"
+hgvs = "c.261delG"
+clinical_significance = "Benign"
+associated_conditions = ["Blood type O"]
+population_frequency = 0.63
+inheritance_pattern = "Complex"
+
+[[genes]]
+symbol = "HBB"
+full_name = "Hemoglobin Subunit Beta"
+chromosome = "11p15.4"
+function = "StructuralProtein"
+phenotypes = ["Oxygen transport"]
+drug_interactions = ["Hydroxyurea"]
+
+[[genes.clinical_variants]]
+variant_name = "HbS (Sickle)"
+rs_id = "rs334"
+hgvs = "c.20A>T"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Sickle cell disease", "Sickle cell trait"]
+population_frequency = 0.05
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes.clinical_variants]]
+variant_name = "HbC"
+rs_id = "rs33930165"
+hgvs = "c.19G>A"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Hemoglobin C disease"]
+population_frequency = 0.02
+inheritance_pattern = "AutosomalRecessive"
+
+[[genes]]
+symbol = "G6PD"
+full_name = "Glucose-6-Phosphate Dehydrogenase"
+chromosome = "Xq28"
+function = "Enzyme"
+phenotypes = ["Red blood cell metabolism"]
+drug_interactions = ["Primaquine", "Aspirin (high dose)", "Sulfonamides"]
+
+[[genes.clinical_variants]]
+variant_name = "Mediterranean"
+rs_id = "rs5030868"
+hgvs = "c.563C>T"
+clinical_significance = "Pathogenic"
+associated_conditions = ["G6PD deficiency", "Hemolytic anemia"]
+population_frequency = 0.08
+inheritance_pattern = "XLinkedRecessive"

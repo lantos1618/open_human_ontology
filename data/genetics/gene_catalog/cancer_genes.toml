@@ -1,0 +1,59 @@
+[[genes]]
+symbol = "BRCA1"
+full_name = "Breast Cancer 1"
+chromosome = "17q21.31"
+function = "DNARepair"
+phenotypes = ["DNA repair"]
+drug_interactions = ["PARP inhibitors"]
+
+[[genes.clinical_variants]]
+variant_name = "185delAG"
+rs_id = "rs80357713"
+hgvs = "c.68_69delAG"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Breast cancer", "Ovarian cancer"]
+population_frequency = 0.001
+inheritance_pattern = "AutosomalDominant"
+
+[[genes.clinical_variants]]
+variant_name = "5382insC"
+rs_id = "rs80357906"
+hgvs = "c.5266dupC"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Breast cancer", "Ovarian cancer"]
+population_frequency = 0.001
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "BRCA2"
+full_name = "Breast Cancer 2"
+chromosome = "13q13.1"
+function = "DNARepair"
+phenotypes = ["DNA repair"]
+drug_interactions = ["PARP inhibitors", "Platinum chemotherapy"]
+
+[[genes.clinical_variants]]
+variant_name = "6174delT"
+rs_id = "rs80359550"
+hgvs = "c.5946delT"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Breast cancer", "Ovarian cancer", "Prostate cancer", "Pancreatic cancer"]
+population_frequency = 0.001
+inheritance_pattern = "AutosomalDominant"
+
+[[genes]]
+symbol = "TP53"
+full_name = "Tumor Protein P53"
+chromosome = "17p13.1"
+function = "TranscriptionFactor"
+phenotypes = ["Cell cycle regulation", "Tumor suppression"]
+drug_interactions = []
+
+[[genes.clinical_variants]]
+variant_name = "R175H"
+rs_id = "rs28934576"
+hgvs = "c.524G>A"
+clinical_significance = "Pathogenic"
+associated_conditions = ["Li-Fraumeni syndrome", "Multiple cancers"]
+population_frequency = 0.0001
+inheritance_pattern = "AutosomalDominant"
