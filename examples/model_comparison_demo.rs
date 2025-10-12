@@ -1,7 +1,7 @@
 use human_biology::metabolism::{
     ADH1BGenotype, ALDH2Genotype, AlcoholIngestion, AlcoholMetabolismSimulation, Sex,
 };
-use human_biology::validation::ground_truth::GroundTruthDatabase;
+use human_biology::validation::GroundTruthDatabase;
 
 fn main() {
     println!("╔═══════════════════════════════════════════════════════════════╗");
@@ -58,8 +58,9 @@ fn demonstration_1_simple_vs_complex_aldh2_models() {
     println!("Basis: Brooks et al. 2009 meta-analysis (44,000 subjects)");
 
     println!("\n### Validation Against Clinical Data");
-    let db = GroundTruthDatabase::default();
-    if let Some(ground_truth) = db.get_parameter("acetaldehyde_peak_multiplier_aldh2_het") {
+    let db = GroundTruthDatabase::new();
+    if let Some(aldh2_dataset) = db.get_dataset("aldh2") {
+        if let Some(ground_truth) = aldh2_dataset.data_points.iter().find(|dp| dp.parameter_name == "acetaldehyde_peak_multiplier_aldh2_het") {
         let expected_range = (
             ground_truth.min_value.unwrap_or(2.0),
             ground_truth.max_value.unwrap_or(10.0),
@@ -116,6 +117,7 @@ fn demonstration_1_simple_vs_complex_aldh2_models() {
         );
 
         println!("\n✅ Result: Model B is superior - validated against clinical data");
+        }
     }
 }
 
@@ -130,7 +132,7 @@ fn demonstration_2_quantitative_comparison() {
     println!("\nUsing Mean Absolute Percentage Error (MAPE) as primary metric");
     println!("MAPE < 5%: Excellent | 5-10%: Good | 10-20%: Acceptable | >20%: Poor\n");
 
-    let db = GroundTruthDatabase::default();
+    let db = GroundTruthDatabase::new();
 
     let model_predictions = vec![
         ("resting_heart_rate_bpm", 72.0),
@@ -148,10 +150,12 @@ fn demonstration_2_quantitative_comparison() {
     println!("---------------------------------|-----------|----------|--------|--------");
 
     for (param, predicted) in &model_predictions {
-        if let Some(ground_truth) = db.get_parameter(param) {
+        if let Some(ground_truth) = db.get_all_datasets().values()
+            .flat_map(|ds| ds.data_points.iter())
+            .find(|dp| dp.parameter_name == *param) {
             let error = (predicted - ground_truth.expected_value).abs()
                 / ground_truth.expected_value
-                * 100.0;
+                * 100.0f64;
             total_mape += error;
             total += 1;
 

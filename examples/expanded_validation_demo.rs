@@ -7,7 +7,7 @@ fn main() {
     let db = GroundTruthDatabase::new();
 
     println!("Ground Truth Database Coverage:");
-    println!("Categories: {:?}\n", db.all_categories());
+    println!("Categories: {}\n", db.get_all_datasets().len());
 
     println!("=== Cardiovascular Parameters ===");
     validate_cardiovascular(&db);
@@ -337,7 +337,7 @@ fn validate_integrated_physiology(db: &GroundTruthDatabase) {
 }
 
 fn print_database_stats(db: &GroundTruthDatabase) {
-    let categories = db.all_categories();
+    let categories: Vec<&String> = db.get_all_datasets().keys().collect();
     let mut total_params = 0;
     let mut total_samples = 0;
     let mut systematic_reviews = 0;

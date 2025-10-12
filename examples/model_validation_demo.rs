@@ -116,8 +116,8 @@ fn main() {
 
     let db = GroundTruthDatabase::new();
     println!("\nAvailable validation datasets:");
-    for category in db.all_categories() {
-        if let Some(dataset) = db.get_dataset(&category) {
+    for category in db.get_all_datasets().keys().take(3) {
+        if let Some(dataset) = db.get_dataset(category) {
             println!("\n  Category: {}", dataset.category);
             println!("  Description: {}", dataset.description);
             println!("  Parameters: {}", dataset.data_points.len());
