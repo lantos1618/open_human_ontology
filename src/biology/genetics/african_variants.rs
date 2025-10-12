@@ -1,5 +1,117 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use std::sync::OnceLock;
+
+static VARIANTS_CONFIG: OnceLock<AfricanVariantsConfig> = OnceLock::new();
+
+#[derive(Debug, Clone, Deserialize)]
+struct AfricanVariantsConfig {
+    default_profile: DefaultProfile,
+    apol1_risk_multipliers: Apol1RiskMultipliers,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct DefaultProfile {
+    sickle_cell: SickleCellConfig,
+    g6pd_deficiency: G6PDConfig,
+    lactase_persistence: LactasePersistenceConfig,
+    skin_pigmentation: SkinPigmentationConfig,
+    malaria_resistance: MalariaResistanceConfig,
+    hypertension_risk: HypertensionRiskConfig,
+    vitamin_d_metabolism: VitaminDMetabolismConfig,
+    apol1_kidney_risk: Apol1KidneyRiskConfig,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct SickleCellConfig {
+    status: String,
+    carrier_prevalence: f64,
+    disease_prevalence: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct G6PDConfig {
+    status: String,
+    male_prevalence: f64,
+    female_prevalence: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct LactasePersistenceConfig {
+    c_14010_status: String,
+    persistence_probability: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct SkinPigmentationConfig {
+    mc1r_variants: Vec<String>,
+    slc24a5_genotype: String,
+    slc45a2_genotype: String,
+    tyrosinase_variants: Vec<String>,
+    melanin_index: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct MalariaResistanceConfig {
+    hbs_sickle: bool,
+    hbc_hemoglobin_c: bool,
+    duffy_negative: bool,
+    g6pd_deficiency: bool,
+    alpha_thalassemia: bool,
+    resistance_score: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct HypertensionRiskConfig {
+    agt_m235t: String,
+    ace_id_polymorphism: String,
+    crp_variants: Vec<String>,
+    salt_sensitivity: f64,
+    risk_multiplier: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct VitaminDMetabolismConfig {
+    cyp2r1_genotype: String,
+    gc_genotype: String,
+    darker_skin_factor: f64,
+    synthesis_efficiency: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct Apol1KidneyRiskConfig {
+    status: String,
+    g0g0_prevalence: f64,
+    monoallelic_prevalence: f64,
+    biallelic_prevalence: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct Apol1RiskMultipliers {
+    g0g0: f64,
+    monoallelic: f64,
+    biallelic: f64,
+    fsgs_monoallelic: f64,
+    fsgs_biallelic: f64,
+}
+
+fn load_config_from_toml() -> AfricanVariantsConfig {
+    let toml_content = include_str!("../../../data/genetics/african_variants.toml");
+    toml::from_str(toml_content).expect("Failed to parse african_variants.toml")
+}
+
+fn get_config() -> &'static AfricanVariantsConfig {
+    VARIANTS_CONFIG.get_or_init(load_config_from_toml)
+}
+
+fn parse_genotype(s: &str) -> Genotype {
+    match s {
+        "Homozygous" => Genotype::Homozygous,
+        "Heterozygous" => Genotype::Heterozygous,
+        "Absent" => Genotype::Absent,
+        _ => Genotype::Absent,
+    }
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AfricanGeneticVariants {
@@ -90,40 +202,43 @@ pub enum Genotype {
 
 impl AfricanGeneticVariants {
     pub fn new() -> Self {
+        let config = get_config();
+        let profile = &config.default_profile;
+
         Self {
             sickle_cell_status: SickleCellStatus::Normal,
             g6pd_deficiency: G6PDStatus::Normal,
             lactase_persistence: LactasePersistence {
-                c_14010_status: Genotype::Absent,
-                persistence_probability: 0.15,
+                c_14010_status: parse_genotype(&profile.lactase_persistence.c_14010_status),
+                persistence_probability: profile.lactase_persistence.persistence_probability,
             },
             skin_pigmentation: SkinPigmentationGenotype {
-                mc1r_variants: vec![],
-                slc24a5_genotype: Genotype::Homozygous,
-                slc45a2_genotype: Genotype::Homozygous,
-                tyrosinase_variants: vec![],
-                melanin_index: 0.85,
+                mc1r_variants: profile.skin_pigmentation.mc1r_variants.clone(),
+                slc24a5_genotype: parse_genotype(&profile.skin_pigmentation.slc24a5_genotype),
+                slc45a2_genotype: parse_genotype(&profile.skin_pigmentation.slc45a2_genotype),
+                tyrosinase_variants: profile.skin_pigmentation.tyrosinase_variants.clone(),
+                melanin_index: profile.skin_pigmentation.melanin_index,
             },
             malaria_resistance: MalariaResistanceProfile {
-                hbs_sickle: false,
-                hbc_hemoglobin_c: false,
-                duffy_negative: false,
-                g6pd_deficiency: false,
-                alpha_thalassemia: false,
-                resistance_score: 0.0,
+                hbs_sickle: profile.malaria_resistance.hbs_sickle,
+                hbc_hemoglobin_c: profile.malaria_resistance.hbc_hemoglobin_c,
+                duffy_negative: profile.malaria_resistance.duffy_negative,
+                g6pd_deficiency: profile.malaria_resistance.g6pd_deficiency,
+                alpha_thalassemia: profile.malaria_resistance.alpha_thalassemia,
+                resistance_score: profile.malaria_resistance.resistance_score,
             },
             hypertension_risk: HypertensionRiskProfile {
-                agt_m235t: Genotype::Heterozygous,
-                ace_id_polymorphism: Genotype::Heterozygous,
-                crp_variants: vec![],
-                salt_sensitivity: 0.6,
-                risk_multiplier: 1.3,
+                agt_m235t: parse_genotype(&profile.hypertension_risk.agt_m235t),
+                ace_id_polymorphism: parse_genotype(&profile.hypertension_risk.ace_id_polymorphism),
+                crp_variants: profile.hypertension_risk.crp_variants.clone(),
+                salt_sensitivity: profile.hypertension_risk.salt_sensitivity,
+                risk_multiplier: profile.hypertension_risk.risk_multiplier,
             },
             vitamin_d_metabolism: VitaminDMetabolism {
-                cyp2r1_genotype: Genotype::Homozygous,
-                gc_genotype: Genotype::Heterozygous,
-                darker_skin_factor: 0.3,
-                synthesis_efficiency: 0.35,
+                cyp2r1_genotype: parse_genotype(&profile.vitamin_d_metabolism.cyp2r1_genotype),
+                gc_genotype: parse_genotype(&profile.vitamin_d_metabolism.gc_genotype),
+                darker_skin_factor: profile.vitamin_d_metabolism.darker_skin_factor,
+                synthesis_efficiency: profile.vitamin_d_metabolism.synthesis_efficiency,
             },
             apol1_kidney_risk: APOL1Status::G0G0,
         }
@@ -157,10 +272,11 @@ impl AfricanGeneticVariants {
     }
 
     pub fn kidney_disease_risk(&self) -> f64 {
+        let config = get_config();
         match self.apol1_kidney_risk {
-            APOL1Status::G0G0 => 1.0,
-            APOL1Status::G0G1 | APOL1Status::G0G2 => 1.0,
-            APOL1Status::G1G1 | APOL1Status::G1G2 | APOL1Status::G2G2 => 7.0,
+            APOL1Status::G0G0 => config.apol1_risk_multipliers.g0g0,
+            APOL1Status::G0G1 | APOL1Status::G0G2 => config.apol1_risk_multipliers.monoallelic,
+            APOL1Status::G1G1 | APOL1Status::G1G2 | APOL1Status::G2G2 => config.apol1_risk_multipliers.biallelic,
         }
     }
 
