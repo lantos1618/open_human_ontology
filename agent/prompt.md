@@ -5,6 +5,7 @@
 - ✅ Concrete person-level simulations completed (exercise, metabolic syndrome, circadian disruption, cellular stress, 24-hour human day, NSAID pharmacological intervention)
 - ✅ Ground truth validation completed: NLRP3 inflammasome, GPX4 ferroptosis, Drp1 fission, nuclear pore complexes
 - Continue building simulations: disease progression models (cancer, neurodegenerative), aging trajectories, multi-drug interactions, vaccine responses 
+- Fix compilation errors in examples
 
 A comprehensive computational model of human biology using Rust type systems.
 
