@@ -1,0 +1,211 @@
+# European Genetic Variants - Ground Truth Data
+# Sources:
+# - Lactase Persistence: Alves et al. (2021) Front Genet "Tracing Distribution of European Lactase Persistence Genotypes"
+# - Hemochromatosis: Hanson et al. (2001) Am J Epidemiol "HFE Gene and Hereditary Hemochromatosis: A HuGE Review"
+# - Thrombophilia: Jadaon (2011) Mediterr J Hematol Infect Dis "Prothrombin G20210A Mutation in Mediterranean Region"
+# - Factor V Leiden: Well-established 3-5% carrier rate in Europeans
+# - Cystic Fibrosis: Established ~1/25 carrier rate in Northern Europeans
+# - Celiac Disease: HLA-DQ2/DQ8 present in ~30-40% European population
+
+[default_profile]
+# Default European ancestry genetic profile
+
+[default_profile.lactase_persistence]
+c_13910_t = "Homozygous"  # C-13910T allele
+# Northern Europe: 85-95% persistence, Southern Europe: 40-60%
+persistence_probability = 0.85
+
+[default_profile.skin_pigmentation]
+slc24a5_rs1426654 = "Homozygous"  # Derived allele, light skin
+slc45a2_rs16891982 = "Heterozygous"  # rs16891982, affects skin tone
+mc1r_variants = ["Wildtype"]
+fitzpatrick_type = 2  # Fair skin (1-6 scale)
+
+[default_profile.eye_color]
+oca2_herc2_rs12913832 = "Homozygous"  # Blue eye allele
+predicted_color = "Blue"
+
+[default_profile.hair_color]
+mc1r_status = "NoVariants"
+slc45a2_genotype = "Heterozygous"
+predicted_color = "Blonde"
+
+[default_profile.hemochromatosis]
+status = "Normal"
+# C282Y carrier frequency: 9.2% in Europeans (Hanson et al. 2001)
+# C282Y homozygous: 0.4% prevalence
+# H63D carrier frequency: 22% in Europeans
+c282y_carrier_rate = 0.092
+c282y_homozygous_rate = 0.004
+h63d_carrier_rate = 0.22
+
+[default_profile.cystic_fibrosis]
+status = "Normal"
+# ΔF508 carrier rate ~1/25 (4%) in Northern Europeans
+carrier_rate = 0.04
+disease_prevalence = 0.0004  # 1/2500
+
+[default_profile.celiac_disease_risk]
+hla_dq2 = false
+hla_dq8 = false
+risk_level = 0.01  # Baseline risk without risk alleles
+# HLA-DQ2 present in ~30% European population
+# HLA-DQ8 present in ~10% European population
+hla_dq2_frequency = 0.30
+hla_dq8_frequency = 0.10
+
+[default_profile.thrombophilia]
+factor_v_leiden = "Absent"
+prothrombin_g20210a = "Absent"
+clotting_risk = 1.0
+# Factor V Leiden heterozygous: 3-5% in Europeans
+# Prothrombin G20210A: 1-3% in Southern Europe, 0-2% Northern Europe
+factor_v_leiden_carrier_rate = 0.05
+prothrombin_g20210a_rate = 0.02
+
+[default_profile.alcohol_metabolism]
+aldh2_genotype = "Normal"  # ALDH2 deficiency rare in Europeans (<1%)
+adh1b_genotype = "SlowMetabolizer"
+metabolism_rate = 1.0
+flush_response = false
+
+# Northern European preset
+[northern_european]
+[northern_european.lactase_persistence]
+c_13910_t = "Homozygous"
+persistence_probability = 0.95  # Very high in Scandinavia/Northern Europe
+
+[northern_european.skin_pigmentation]
+slc24a5_rs1426654 = "Homozygous"
+slc45a2_rs16891982 = "Homozygous"
+mc1r_variants = ["Wildtype"]
+fitzpatrick_type = 1  # Very fair skin
+
+[northern_european.eye_color]
+oca2_herc2_rs12913832 = "Homozygous"
+predicted_color = "Blue"
+
+[northern_european.hair_color]
+mc1r_status = "NoVariants"
+slc45a2_genotype = "Homozygous"
+predicted_color = "Blonde"
+
+# Southern European preset
+[southern_european]
+[southern_european.lactase_persistence]
+c_13910_t = "Heterozygous"
+persistence_probability = 0.50  # Lower in Mediterranean populations
+
+[southern_european.skin_pigmentation]
+slc24a5_rs1426654 = "Homozygous"
+slc45a2_rs16891982 = "Heterozygous"
+mc1r_variants = ["Wildtype"]
+fitzpatrick_type = 3  # Medium skin tone
+
+[southern_european.eye_color]
+oca2_herc2_rs12913832 = "Heterozygous"
+predicted_color = "Brown"
+
+[southern_european.hair_color]
+mc1r_status = "NoVariants"
+slc45a2_genotype = "Heterozygous"
+predicted_color = "Brown"
+
+[southern_european.thrombophilia]
+factor_v_leiden = "Absent"
+prothrombin_g20210a = "Absent"
+clotting_risk = 1.0
+# Higher prothrombin G20210A in Mediterranean: 3-8% (Jadaon 2011)
+prothrombin_g20210a_rate_southern = 0.05
+
+# Hemochromatosis preset (C282Y homozygous)
+[hemochromatosis_high_risk]
+hemochromatosis_status = "C282YHomozygous"
+
+[hemochromatosis_high_risk.iron_overload]
+# C282Y homozygous: 95% develop iron overload (Hanson et al. 2001)
+risk = 0.95
+penetrance = 0.70  # 40-70% develop clinical iron overload
+liver_cirrhosis_risk = 0.25
+diabetes_risk = 0.15
+cardiomyopathy_risk = 0.15
+
+[hemochromatosis_high_risk.pharmacogenomics]
+iron_supplements = "Avoid iron supplementation; regular phlebotomy indicated"
+
+# Celiac disease high risk preset
+[celiac_high_risk]
+[celiac_high_risk.celiac_disease_risk]
+hla_dq2 = true
+hla_dq8 = false
+# HLA-DQ2 positive: ~30% lifetime risk if symptomatic
+risk_level = 0.30
+
+[celiac_high_risk.pharmacogenomics]
+gluten = "Consider celiac screening if GI symptoms present"
+
+# Factor V Leiden carrier
+[factor_v_leiden_carrier]
+[factor_v_leiden_carrier.thrombophilia]
+factor_v_leiden = "Heterozygous"
+prothrombin_g20210a = "Absent"
+# 3-8 fold increased VTE risk with Factor V Leiden heterozygous
+clotting_risk = 5.0
+
+[factor_v_leiden_carrier.pharmacogenomics]
+anticoagulation = "Increased thrombosis risk; consider prophylaxis for surgery/travel"
+oral_contraceptives = "Avoid estrogen-containing contraceptives (30-fold VTE risk)"
+
+# Combined thrombophilia (both Factor V Leiden and Prothrombin)
+[compound_thrombophilia]
+[compound_thrombophilia.thrombophilia]
+factor_v_leiden = "Heterozygous"
+prothrombin_g20210a = "Heterozygous"
+# Compound heterozygotes: 20-fold increased VTE risk
+clotting_risk = 20.0
+
+# MC1R red hair variants
+[red_hair_variant]
+[red_hair_variant.hair_color]
+mc1r_status = "TwoVariants"
+slc45a2_genotype = "Heterozygous"
+predicted_color = "Red"
+
+[red_hair_variant.skin_pigmentation]
+slc24a5_rs1426654 = "Homozygous"
+slc45a2_rs16891982 = "Heterozygous"
+mc1r_variants = ["R151C", "R160W"]  # Common red hair variants
+fitzpatrick_type = 1
+
+[red_hair_variant.melanoma_risk]
+# MC1R variants: 2-4 fold increased melanoma risk
+risk_multiplier = 3.0
+
+[red_hair_variant.pharmacogenomics]
+sun_protection = "High melanoma risk; aggressive sun protection recommended"
+anesthesia = "May require higher doses of anesthetics (MC1R effect on pain sensitivity)"
+
+# Risk multipliers for clinical use
+[clinical_risk_multipliers]
+# Hemochromatosis iron overload risk by genotype
+c282y_homozygous_iron_overload = 0.95
+c282y_heterozygous_iron_overload = 0.05
+h63d_heterozygous_iron_overload = 0.02
+compound_het_c282y_h63d = 0.50
+
+# Thrombophilia VTE risk
+factor_v_leiden_heterozygous_vte = 5.0
+factor_v_leiden_homozygous_vte = 50.0
+prothrombin_g20210a_heterozygous_vte = 3.0
+compound_thrombophilia_vte = 20.0
+
+# Celiac disease risk by HLA type
+hla_dq2_positive_celiac = 0.30
+hla_dq8_positive_celiac = 0.10
+hla_dq2_dq8_negative_celiac = 0.001
+
+# Sun sensitivity by Fitzpatrick type
+fitzpatrick_1_sun_sensitivity = 1.0
+fitzpatrick_2_sun_sensitivity = 0.8
+fitzpatrick_3_sun_sensitivity = 0.5
+fitzpatrick_4_sun_sensitivity = 0.3

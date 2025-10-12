@@ -1,5 +1,168 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use std::sync::OnceLock;
+
+static VARIANTS_CONFIG: OnceLock<EuropeanVariantsConfig> = OnceLock::new();
+
+#[derive(Debug, Clone, Deserialize)]
+struct EuropeanVariantsConfig {
+    default_profile: DefaultProfile,
+    northern_european: NorthernEuropeanProfile,
+    southern_european: SouthernEuropeanProfile,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct DefaultProfile {
+    lactase_persistence: LactasePersistenceConfig,
+    skin_pigmentation: SkinPigmentationConfig,
+    eye_color: EyeColorConfig,
+    hair_color: HairColorConfig,
+    celiac_disease_risk: CeliacDiseaseRiskConfig,
+    thrombophilia: ThrombophiliaConfig,
+    alcohol_metabolism: AlcoholMetabolismConfig,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct NorthernEuropeanProfile {
+    lactase_persistence: LactasePersistenceConfig,
+    skin_pigmentation: SkinPigmentationConfig,
+    eye_color: EyeColorConfig,
+    hair_color: HairColorConfig,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct SouthernEuropeanProfile {
+    lactase_persistence: LactasePersistenceConfig,
+    skin_pigmentation: SkinPigmentationConfig,
+    eye_color: EyeColorConfig,
+    hair_color: HairColorConfig,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct LactasePersistenceConfig {
+    c_13910_t: String,
+    persistence_probability: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct SkinPigmentationConfig {
+    slc24a5_rs1426654: String,
+    slc45a2_rs16891982: String,
+    mc1r_variants: Vec<String>,
+    fitzpatrick_type: u8,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct EyeColorConfig {
+    oca2_herc2_rs12913832: String,
+    predicted_color: String,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct HairColorConfig {
+    mc1r_status: String,
+    slc45a2_genotype: String,
+    predicted_color: String,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct CeliacDiseaseRiskConfig {
+    hla_dq2: bool,
+    hla_dq8: bool,
+    risk_level: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct ThrombophiliaConfig {
+    factor_v_leiden: String,
+    prothrombin_g20210a: String,
+    clotting_risk: f64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct AlcoholMetabolismConfig {
+    aldh2_genotype: String,
+    adh1b_genotype: String,
+    metabolism_rate: f64,
+    flush_response: bool,
+}
+
+fn load_config_from_toml() -> EuropeanVariantsConfig {
+    let toml_content = include_str!("../../../data/genetics/european_variants.toml");
+    toml::from_str(toml_content).expect("Failed to parse european_variants.toml")
+}
+
+fn get_config() -> &'static EuropeanVariantsConfig {
+    VARIANTS_CONFIG.get_or_init(load_config_from_toml)
+}
+
+fn parse_genotype(s: &str) -> Genotype {
+    match s {
+        "Homozygous" => Genotype::Homozygous,
+        "Heterozygous" => Genotype::Heterozygous,
+        "Absent" => Genotype::Absent,
+        _ => Genotype::Absent,
+    }
+}
+
+fn parse_eye_color(s: &str) -> EyeColor {
+    match s {
+        "Blue" => EyeColor::Blue,
+        "Green" => EyeColor::Green,
+        "Hazel" => EyeColor::Hazel,
+        "Brown" => EyeColor::Brown,
+        _ => EyeColor::Brown,
+    }
+}
+
+fn parse_hair_color(s: &str) -> HairColor {
+    match s {
+        "Red" => HairColor::Red,
+        "Blonde" => HairColor::Blonde,
+        "Brown" => HairColor::Brown,
+        "Black" => HairColor::Black,
+        _ => HairColor::Brown,
+    }
+}
+
+fn parse_mc1r_status(s: &str) -> MC1RRedHairStatus {
+    match s {
+        "TwoVariants" => MC1RRedHairStatus::TwoVariants,
+        "OneVariant" => MC1RRedHairStatus::OneVariant,
+        "NoVariants" => MC1RRedHairStatus::NoVariants,
+        _ => MC1RRedHairStatus::NoVariants,
+    }
+}
+
+fn parse_aldh2_genotype(s: &str) -> ALDH2Genotype {
+    match s {
+        "Normal" => ALDH2Genotype::Normal,
+        "Heterozygous" => ALDH2Genotype::Heterozygous,
+        "Homozygous" => ALDH2Genotype::Homozygous,
+        _ => ALDH2Genotype::Normal,
+    }
+}
+
+fn parse_adh1b_genotype(s: &str) -> ADH1BGenotype {
+    match s {
+        "SlowMetabolizer" => ADH1BGenotype::SlowMetabolizer,
+        "IntermediateMetabolizer" => ADH1BGenotype::IntermediateMetabolizer,
+        "FastMetabolizer" => ADH1BGenotype::FastMetabolizer,
+        _ => ADH1BGenotype::SlowMetabolizer,
+    }
+}
+
+fn parse_mc1r_variants(variants: &[String]) -> Vec<MC1RVariant> {
+    variants
+        .iter()
+        .map(|v| match v.as_str() {
+            "R151C" => MC1RVariant::R151C,
+            "R160W" => MC1RVariant::R160W,
+            "D294H" => MC1RVariant::D294H,
+            _ => MC1RVariant::Wildtype,
+        })
+        .collect()
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct EuropeanGeneticVariants {
@@ -133,62 +296,71 @@ pub enum Genotype {
 
 impl EuropeanGeneticVariants {
     pub fn new() -> Self {
+        let config = get_config();
+        let profile = &config.default_profile;
+
         Self {
             lactase_persistence: LactasePersistence {
-                c_13910_t: Genotype::Homozygous,
-                persistence_probability: 0.85,
+                c_13910_t: parse_genotype(&profile.lactase_persistence.c_13910_t),
+                persistence_probability: profile.lactase_persistence.persistence_probability,
             },
             skin_pigmentation: SkinPigmentation {
-                slc24a5_rs1426654: Genotype::Homozygous,
-                slc45a2_rs16891982: Genotype::Heterozygous,
-                mc1r_variants: vec![MC1RVariant::Wildtype],
-                fitzpatrick_type: 2,
+                slc24a5_rs1426654: parse_genotype(&profile.skin_pigmentation.slc24a5_rs1426654),
+                slc45a2_rs16891982: parse_genotype(&profile.skin_pigmentation.slc45a2_rs16891982),
+                mc1r_variants: parse_mc1r_variants(&profile.skin_pigmentation.mc1r_variants),
+                fitzpatrick_type: profile.skin_pigmentation.fitzpatrick_type,
             },
             eye_color: EuropeanEyeColorGenetics {
-                oca2_herc2_rs12913832: Genotype::Homozygous,
-                predicted_color: EyeColor::Blue,
+                oca2_herc2_rs12913832: parse_genotype(&profile.eye_color.oca2_herc2_rs12913832),
+                predicted_color: parse_eye_color(&profile.eye_color.predicted_color),
             },
             hair_color: EuropeanHairColorGenetics {
-                mc1r_status: MC1RRedHairStatus::NoVariants,
-                slc45a2_genotype: Genotype::Heterozygous,
-                predicted_color: HairColor::Blonde,
+                mc1r_status: parse_mc1r_status(&profile.hair_color.mc1r_status),
+                slc45a2_genotype: parse_genotype(&profile.hair_color.slc45a2_genotype),
+                predicted_color: parse_hair_color(&profile.hair_color.predicted_color),
             },
             hemochromatosis: HemochromatosisStatus::Normal,
             cystic_fibrosis: CysticFibrosisStatus::Normal,
             celiac_disease_risk: CeliacDiseaseRisk {
-                hla_dq2: false,
-                hla_dq8: false,
-                risk_level: 0.01,
+                hla_dq2: profile.celiac_disease_risk.hla_dq2,
+                hla_dq8: profile.celiac_disease_risk.hla_dq8,
+                risk_level: profile.celiac_disease_risk.risk_level,
             },
             thrombophilia: ThrombophiliaRisk {
-                factor_v_leiden: Genotype::Absent,
-                prothrombin_g20210a: Genotype::Absent,
-                clotting_risk: 1.0,
+                factor_v_leiden: parse_genotype(&profile.thrombophilia.factor_v_leiden),
+                prothrombin_g20210a: parse_genotype(&profile.thrombophilia.prothrombin_g20210a),
+                clotting_risk: profile.thrombophilia.clotting_risk,
             },
             alcohol_metabolism: AlcoholMetabolism {
-                aldh2_genotype: ALDH2Genotype::Normal,
-                adh1b_genotype: ADH1BGenotype::SlowMetabolizer,
-                metabolism_rate: 1.0,
-                flush_response: false,
+                aldh2_genotype: parse_aldh2_genotype(&profile.alcohol_metabolism.aldh2_genotype),
+                adh1b_genotype: parse_adh1b_genotype(&profile.alcohol_metabolism.adh1b_genotype),
+                metabolism_rate: profile.alcohol_metabolism.metabolism_rate,
+                flush_response: profile.alcohol_metabolism.flush_response,
             },
         }
     }
 
     pub fn northern_european() -> Self {
+        let config = get_config();
+        let profile = &config.northern_european;
+
         let mut variants = Self::new();
-        variants.lactase_persistence.persistence_probability = 0.95;
-        variants.skin_pigmentation.fitzpatrick_type = 1;
-        variants.eye_color.predicted_color = EyeColor::Blue;
-        variants.hair_color.predicted_color = HairColor::Blonde;
+        variants.lactase_persistence.persistence_probability = profile.lactase_persistence.persistence_probability;
+        variants.skin_pigmentation.fitzpatrick_type = profile.skin_pigmentation.fitzpatrick_type;
+        variants.eye_color.predicted_color = parse_eye_color(&profile.eye_color.predicted_color);
+        variants.hair_color.predicted_color = parse_hair_color(&profile.hair_color.predicted_color);
         variants
     }
 
     pub fn southern_european() -> Self {
+        let config = get_config();
+        let profile = &config.southern_european;
+
         let mut variants = Self::new();
-        variants.lactase_persistence.persistence_probability = 0.50;
-        variants.skin_pigmentation.fitzpatrick_type = 3;
-        variants.eye_color.predicted_color = EyeColor::Brown;
-        variants.hair_color.predicted_color = HairColor::Brown;
+        variants.lactase_persistence.persistence_probability = profile.lactase_persistence.persistence_probability;
+        variants.skin_pigmentation.fitzpatrick_type = profile.skin_pigmentation.fitzpatrick_type;
+        variants.eye_color.predicted_color = parse_eye_color(&profile.eye_color.predicted_color);
+        variants.hair_color.predicted_color = parse_hair_color(&profile.hair_color.predicted_color);
         variants
     }
 
