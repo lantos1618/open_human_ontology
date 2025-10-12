@@ -29,18 +29,37 @@ Phase 1 (Honest Documentation) and Phase 2 (Remove Fake Simulations) have been *
 
 ### Current Statistics
 - **Total genetics LOC**: 19,271 lines across 53 files
-- **Externalized modules**: 1 (asian_variants.rs → asian_variants.toml)
-- **Remaining modules**: 52 files with varying amounts of hardcoded data
+- **Externalized modules**: 2 (asian_variants.rs, gene_catalog.rs)
+- **LOC Reduction Achieved**: 814 lines from gene_catalog.rs alone
+- **Remaining modules**: 51 files with varying amounts of hardcoded data
 
-### Proof-of-Concept Success: asian_variants.rs
+### ✅ Completed Externalizations
+
+#### 1. asian_variants.rs → asian_variants.toml
 **Status**: ✅ Complete and tested
 
-The asian_variants module has been successfully refactored:
 - **Before**: Hardcoded `Vec<GeneInfo>` in Rust source
 - **After**: External TOML file loaded at runtime using `OnceLock` pattern
 - **File**: `data/genetics/asian_variants.toml` (6.8 KB)
 - **Tests**: 8 tests passing
 - **Pattern**: Uses `include_str!` + `OnceLock` for compile-time inclusion with lazy loading
+
+#### 2. gene_catalog.rs → 8 TOML files
+**Status**: ✅ Complete and tested (January 12, 2025)
+
+- **Before**: 1,119 lines with hardcoded HashMap data
+- **After**: 305 lines with TOML loaders (-814 LOC, -73% reduction)
+- **Files Created**:
+  - `data/genetics/gene_catalog/metabolic_genes.toml`
+  - `data/genetics/gene_catalog/cardiovascular_genes.toml`
+  - `data/genetics/gene_catalog/cancer_genes.toml`
+  - `data/genetics/gene_catalog/neurological_genes.toml`
+  - `data/genetics/gene_catalog/pain_disorder_genes.toml`
+  - `data/genetics/gene_catalog/hematological_genes.toml`
+  - `data/genetics/gene_catalog/metabolic_trait_genes.toml`
+  - `data/genetics/gene_catalog/asian_specific_genes.toml`
+- **Tests**: All 13 gene_catalog tests passing, 1,695 total tests passing
+- **Pattern**: Same OnceLock + include_str! + TOML deserialization
 
 ### Key Findings from Assessment
 
@@ -70,26 +89,10 @@ These files contain enums, structs, and methods with hardcoded parameters but se
 
 ### Recommended Next Steps
 
-#### Immediate: Externalize gene_catalog.rs
-**Estimated Impact**: -800 to -1000 LOC
+#### ~~Immediate: Externalize gene_catalog.rs~~ ✅ COMPLETED
+**Actual Impact**: -814 LOC (-73% reduction)
 
-```
-Before: src/biology/genetics/gene_catalog.rs (1,119 lines)
-After:  src/biology/genetics/gene_catalog.rs (~200 lines of logic)
-        data/genetics/metabolic_genes.toml
-        data/genetics/cardiovascular_genes.toml
-        data/genetics/cancer_genes.toml
-        data/genetics/neurological_genes.toml
-        data/genetics/pain_disorder_genes.toml
-        data/genetics/hematological_genes.toml
-        data/genetics/metabolic_trait_genes.toml
-```
-
-**Approach**:
-1. Extract each `get_*_genes()` function's data to separate TOML
-2. Create unified loader similar to asian_variants pattern
-3. Use `OnceLock` for each category
-4. Test all dependent modules
+**Completed January 12, 2025**: Successfully externalized all gene_catalog data to 8 TOML files in `data/genetics/gene_catalog/`. File reduced from 1,119 lines to 305 lines. All tests passing.
 
 #### Medium Priority: Population-Specific Variants
 - **african_variants.rs** - Follow asian_variants pattern
@@ -102,17 +105,19 @@ After gene_catalog is complete, tackle:
 - dermatology.rs
 - Others as needed
 
-### Expected LOC Reduction
+### LOC Reduction Progress
 
-| Category | Current LOC | Est. After | Reduction |
-|----------|------------|------------|-----------|
-| gene_catalog.rs | 1,119 | 200 | -919 |
-| Other data-heavy (9 files) | ~4,500 | ~1,500 | -3,000 |
-| Population variants (2 files) | ~500 | ~200 | -300 |
-| **Total Estimated** | **~6,100** | **~1,900** | **-4,200** |
+| Category | Current LOC | Est. After | Reduction | Status |
+|----------|------------|------------|-----------|---------|
+| asian_variants.rs | 217 | ~100 | ~-117 | ✅ Done |
+| gene_catalog.rs | 1,119 | 305 | -814 | ✅ Done |
+| Other data-heavy (9 files) | ~4,500 | ~1,500 | -3,000 | Pending |
+| Population variants (2 files) | ~500 | ~200 | -300 | Pending |
+| **Total Completed** | **1,336** | **405** | **-931** | **2 modules** |
+| **Total Estimated** | **~6,100** | **~1,900** | **~-4,200** | **Target** |
 
-Conservative estimate: **4,000-5,000 LOC reduction** from Phase 3
-Original estimate: 20,000-40,000 (may have been based on earlier codebase state)
+**Achieved so far**: 931 lines reduced (22% of Phase 3 goal)
+**Remaining target**: ~3,300 lines across 51 genetics modules
 
 ## Phase 4: Simplify Module Structure (PENDING)
 
