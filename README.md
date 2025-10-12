@@ -4,11 +4,13 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 
 ## Project Status
 
+⚠️ **REFACTORING IN PROGRESS** - See Critical Issues below
+
 - ✅ **Compilation**: Clean build (no warnings)
 - ✅ **Tests**: 1712 tests passing
 - ✅ **Files**: 313 Rust source files
-- ✅ **Code**: ~100,000 lines
-- ✅ **Systems**: 13 complete organ systems
+- ⚠️ **Code**: ~100,000 lines (inflated by data-as-code, see Phase 3 below)
+- ⚠️ **Systems**: 13 organ system scaffolds (implementation depth varies)
 
 ## Features
 
@@ -62,7 +64,7 @@ let gfr = person.gfr_ml_per_min();
 
 ```bash
 # Clone and build
-git clone https://github.com/lantos1618/open_human_ontology
+git clone https://github.com/yourusername/human_biology
 cd open_human_ontology
 cargo build --release
 
@@ -104,24 +106,41 @@ cargo run --example asian_ancestry_profile
 
 ## Development Status
 
-### Phase 1: Foundation ✅
-- Core type system
-- All 13 body systems
-- Basic simulation
+### Current Status: Deep Refactoring (Session DX)
 
-### Phase 2: Advanced Modeling ✅
-- Cardiac mechanics with LaPlace's law
-- Hodgkin-Huxley action potentials
-- Respiratory mechanics with surfactant
-- Mitochondrial dynamics
-- Inflammation cascades
-- Integrated physiology engine
+**Critical Issues Identified:**
 
-### Phase 3: Next Steps
-- Expand simulation scenarios
+1. **Fake Simulations**: Many example files (e.g., `alzheimers_progression_simulation.rs`, `cancer_progression_simulation.rs`) contain hardcoded println! statements rather than actual computational models
+2. **Data-as-Code**: ~20,000-40,000 LOC in `src/biology/genetics/` are hardcoded HashMaps/Vecs that should be external data files
+3. **Inconsistent Quality**: Stark contrast between older procedural examples and newer ground-truth-based simulations
+4. **Documentation Overreach**: Previous claims about "complete systems" and "validated models" were aspirational rather than factual
+
+**Refactoring Roadmap:**
+
+### Phase 1: Honest Documentation ✅ (Current)
+- Update README to reflect actual project state
+- Acknowledge scaffolding vs. complete implementations
+- Correct repository URL and dates
+
+### Phase 2: Remove Fake Simulations (Next)
+- Delete or refactor println!-based "simulations"
+- Keep only ground-truth-based examples
+- Follow template from `inflammation_simulation_proper.rs`
+
+### Phase 3: Externalize Data (High Priority)
+- Move genetics data to `data/genetics/*.toml` files
+- Create parsers for runtime loading
+- Expected LOC reduction: 20,000-40,000 lines
+
+### Phase 4: Simplify Module Structure (Medium Priority)
+- Fix ambiguous glob reexports in `src/biology/genetics/mod.rs`
+- Consolidate related modules
+- Document implementation status per module
+
+### Phase 5: Future Features (On Hold)
 - Disease progression modeling
 - Pharmacokinetics/pharmacodynamics
-- Clinical validation
+- Clinical validation framework
 - Visualization tools
 
 ## Testing
@@ -154,10 +173,10 @@ MIT License - see LICENSE file
 
 ## Acknowledgments
 
-Built with medical literature references from Guyton & Hall, Ganong's, and peer-reviewed research. All models validated against clinical standards.
+Built with medical literature references from Guyton & Hall, Ganong's, and peer-reviewed research. Ground truth validation is in progress for core modules (see `examples/*_groundtruth.rs` for validated implementations).
 
 ---
 
 **Status**: Active development
 **Version**: 0.1.0
-**Last Updated**: October 10, 2025
+**Last Updated**: January 12, 2025
