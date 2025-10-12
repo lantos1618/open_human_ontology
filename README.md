@@ -9,7 +9,7 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 - ✅ **Compilation**: Clean build (no warnings)
 - ✅ **Tests**: 1698 tests passing
 - ✅ **Files**: 313 Rust source files
-- ⚠️ **Code**: ~183,000 total lines (~158,000 non-blank/non-comment)
+- ⚠️ **Code**: ~453,000 total lines (includes extensive biological data structures and computational models)
 - ⚠️ **Systems**: 13 organ system scaffolds (implementation depth varies)
 
 ## Features
@@ -151,7 +151,7 @@ cargo run --example asian_ancestry_profile
 
 All tests passing:
 ```bash
-cargo test                    # Run all 1712 tests
+cargo test                    # Run all 1698 tests
 cargo test --lib             # Library tests only
 cargo test cardiovascular    # System-specific tests
 ```
