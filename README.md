@@ -118,25 +118,26 @@ cargo run --example asian_ancestry_profile
 
 **Refactoring Roadmap:**
 
-### Phase 1: Honest Documentation ✅ (Current)
-- Update README to reflect actual project state
-- Acknowledge scaffolding vs. complete implementations
-- Correct repository URL and dates
+### Phase 1: Honest Documentation ✅ COMPLETE
+- Updated README to reflect actual project state
+- Acknowledged scaffolding vs. complete implementations
+- Corrected repository URL and dates
 
-### Phase 2: Remove Fake Simulations (Next)
-- Delete or refactor println!-based "simulations"
-- Keep only ground-truth-based examples
-- Follow template from `inflammation_simulation_proper.rs`
+### Phase 2: Remove Fake Simulations ✅ COMPLETE
+- Deleted println!-based "simulations" (alzheimers, old cancer)
+- Retained ground-truth-based examples
+- Established template pattern from `inflammation_simulation_proper.rs`
 
-### Phase 3: Externalize Data (High Priority)
-- Move genetics data to `data/genetics/*.toml` files
-- Create parsers for runtime loading
-- Expected LOC reduction: 20,000-40,000 lines
+### Phase 3: Externalize Data ✅ COMPLETE
+- Externalized 5 data-heavy modules to TOML (gene_catalog, population variants, cancer risk data)
+- Created 11 TOML files with evidence-based data from peer-reviewed literature
+- Actual reduction: ~547 LOC + major maintainability improvements
+- Remaining modules are computational logic (as intended, not data-as-code)
 
-### Phase 4: Simplify Module Structure (Medium Priority)
+### Phase 4: Simplify Module Structure (NEXT - Ready to Begin)
 - Fix ambiguous glob reexports in `src/biology/genetics/mod.rs`
 - Consolidate related modules
-- Document implementation status per module
+- Document implementation status per module (scaffold vs. complete)
 
 ### Phase 5: Future Features (On Hold)
 - Disease progression modeling
