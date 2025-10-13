@@ -4,6 +4,7 @@ pub mod comprehensive_pathways;
 pub mod detailed_pathways;
 pub mod detoxification;
 pub mod energy;
+pub mod enzyme_kinetics;
 pub mod enzymes;
 pub mod lipid_metabolism;
 pub mod nutrients;
@@ -14,6 +15,7 @@ pub use alcohol_metabolism::{
     ADH1BGenotype, ALDH2Genotype, AlcoholConsumptionLevel, AlcoholIngestion,
     AlcoholMetabolismPathway, AlcoholMetabolismSimulation, MetabolismTimePoint, Sex,
 };
+pub use enzyme_kinetics::{GlycolysisWithKinetics, MichaelisMentenEnzyme};
 pub use amino_acid_metabolism::{
     AminoAcidDisorder, AminoAcidMetabolism, AromaticAminoAcidMetabolism,
     BranchedChainAminoAcidMetabolism, EssentialAminoAcidStatus, NonEssentialAminoAcidStatus,

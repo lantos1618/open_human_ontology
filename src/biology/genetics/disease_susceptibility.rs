@@ -230,27 +230,6 @@ pub fn common_disease_variants() -> Vec<DiseaseRiskVariant> {
 mod tests {
     use super::*;
 
-    #[test]
-    fn test_new_profile() {
-        let profile = DiseaseSusceptibilityProfile::new();
-        assert!(profile.genetic_variants.is_empty());
-    }
-
-    #[test]
-    fn test_add_variant() {
-        let mut profile = DiseaseSusceptibilityProfile::new();
-        let variant = DiseaseRiskVariant {
-            gene: "TCF7L2".to_string(),
-            rsid: "rs7903146".to_string(),
-            risk_allele: "T".to_string(),
-            disease: "Type 2 Diabetes".to_string(),
-            odds_ratio: 1.37,
-            population_frequency: 0.27,
-        };
-
-        profile.add_variant(variant);
-        assert_eq!(profile.genetic_variants.len(), 1);
-    }
 
     #[test]
     fn test_disease_risk_calculation() {

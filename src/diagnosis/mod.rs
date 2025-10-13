@@ -1,4 +1,3 @@
-pub mod analyzer;
 pub mod biomarkers;
 pub mod comprehensive_assessment;
 pub mod genetic_risk_assessment;
@@ -6,9 +5,6 @@ pub mod laboratory;
 pub mod population_analyzer;
 pub mod screening;
 
-pub use analyzer::{
-    DiagnosticEngine, DiagnosticReport, DrugRecommendation, Finding, GeneticInsight, RiskFactor,
-};
 pub use biomarkers::{Biomarker, BiomarkerPanel, BiomarkerValue, ReferenceRange};
 pub use comprehensive_assessment::*;
 pub use genetic_risk_assessment::*;

@@ -380,7 +380,6 @@ mod tests {
         let mut profile = IgEProfile::new();
         profile.add_specific_ige("Peanut".to_string(), 5.0);
 
-        assert!(profile.is_elevated() || !profile.is_elevated());
         assert_eq!(
             profile.allergen_sensitivity("Peanut"),
             AllergySensitivity::High

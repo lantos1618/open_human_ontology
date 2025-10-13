@@ -40,7 +40,6 @@ pub mod ophthalmology;
 pub mod pain_genetics;
 pub mod pharmacogenomics;
 pub mod phenotype;
-pub mod phenotype_predictor;
 pub mod population;
 pub mod population_genetics;
 pub mod population_traits;
@@ -60,10 +59,7 @@ pub use african_variants::Genotype as AfricanGenotype;
 pub use native_american_variants::{NativeAmericanGeneticVariants, AlcoholMetabolismProfile, ALDH2Genotype, ADH1BGenotype, ADH1CGenotype, DiabetesRiskProfile, GallbladderRiskProfile, ACEInhibitorResponse, ACEResponse, APOEStatus};
 pub use native_american_variants::Genotype as NativeAmericanGenotype;
 
-// CaffeineMetabolism: Use the comprehensive version from phenotype.rs, alias the simple enum from phenotype_predictor.rs
 pub use phenotype::{PhenotypeProfile, PhysicalTraits, MetabolicTraits, DiseaseSusceptibility, PharmacologicalTraits, EyeColor, HairColor, SkinPigmentation, EarwaxType, CaffeineMetabolism, AlcoholMetabolism, ALDH2Function, ADH1BVariant, VitaminDSynthesis, WarfarinSensitivity, OpioidMetabolism, SSRIResponse};
-pub use phenotype_predictor::{FullBodyPhenotypePredictor, PredictedTraits, PhysicalAppearance, PhysiologyTraits, PerformanceTraits, MetabolismTraits, SensoryTraits, BehaviorTraits, Probability};
-pub use phenotype_predictor::CaffeineMetabolism as PredictorCaffeineMetabolism;
 
 // HIGH PRIORITY: Core genetic types - resolve conflicts
 // Allele: Use the comprehensive struct from allele.rs, alias the simple enum from gene_variants.rs

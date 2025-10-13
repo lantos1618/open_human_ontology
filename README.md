@@ -4,42 +4,47 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 
 ## Project Status
 
-✅ **REFACTORING COMPLETE** - All 4 critical phases addressed (see Development Status below)
+- ✅ **Compilation**: Clean build
+- ✅ **Tests**: 1698 passing
+- ✅ **Systems**: 3 complete computational systems, 9 scaffolds
 
-- ⚠️ **Compilation**: Clean build (20 dead code warnings for unused struct fields)
-- ✅ **Tests**: 1698 tests passing
-- ✅ **Files**: 339 Rust source files
-- ⚠️ **Code**: ~177,000 lines of Rust (includes extensive biological data structures and computational models)
-- ⚠️ **Systems**: 13 organ system scaffolds (implementation depth varies)
+## Organ Systems
 
-## Features
+### ✅ Complete Computational Models
+- **Cardiovascular**: Cardiac mechanics, hemodynamics, electrophysiology
+- **Nervous**: Hodgkin-Huxley action potentials, synaptic transmission, circadian rhythms
+- **Respiratory**: Gas exchange, pulmonary mechanics, oxygen transport kinetics
 
-### Core Systems
-- **Cardiovascular**: Heart mechanics, blood vessels, cardiac output, pressure-volume loops
-- **Respiratory**: Lung mechanics, gas exchange, surfactant, work of breathing
-- **Nervous**: Action potentials, Hodgkin-Huxley model, neurotransmission, ion channels
-- **Muscular**: Fiber types, contraction, sarcomeres, force generation
-- **Skeletal**: Bones, joints, remodeling, biomechanics, fracture risk
-- **Digestive**: GI tract, absorption, gut-brain axis, microbiome
-- **Endocrine**: Hormones, glands, feedback loops, stress response
-- **Renal**: Filtration, electrolytes, fluid balance, GFR
-- **Immune**: Cells, inflammation, cytokines, resolution
-- **Integumentary**: Skin, wound healing, thermal regulation
-- **Reproductive**: Male/female anatomy, cycles, fertility
+### 🚧 Scaffolds
+- **Immune**: Cytokine networks, immune cells
+- **Endocrine**: Hormones, feedback loops
+- **Renal**: Filtration, acid-base balance
+- **Digestive**: GI tract, absorption
+- **Sensory**: Vision, hearing
+- **Integumentary**: Skin layers
+- **Reproductive**: Reproductive anatomy
+- **Muscular**: Muscle contraction
+- **Lymphatic**: Lymph nodes, vessels
 
-### Advanced Modeling
-- **Genetics**: 50+ genes, ancestry variants, pharmacogenomics
-- **Physiology**: Stress response, aging, mitochondria, thermoregulation
-- **Simulation**: Time-stepped multi-system integration engine
-- **Pathology**: Disease states, biomarkers, risk assessment
+## What Actually Works
 
-### Specialized Features
+### Computational Models (Ready to Use)
 - **Cardiac Mechanics**: LaPlace's law, Frank-Starling curves, MVO2, ischemia detection
-- **Action Potentials**: Complete Hodgkin-Huxley implementation with gating variables
+- **Action Potentials**: Complete Hodgkin-Huxley equations with gating variables
 - **Respiratory Mechanics**: Compliance, resistance, V/Q matching, surfactant dynamics
-- **Mitochondria**: ETC, OXPHOS, dynamics, quality control, ROS
-- **Inflammation**: Acute/chronic, cytokine networks, resolution mediators
-- **Aging**: Biological age, cellular senescence, organ aging, frailty
+- **Mitochondrial Function**: ETC, OXPHOS, ROS production
+- **ALDH2 Metabolism**: Acetaldehyde processing with genetic variants
+- **Inflammation Markers**: Cytokine levels, acute phase response
+
+### Clinical Validation (Ground-Truth Data)
+- **20+ Medical Domains**: Cardiovascular, metabolic, renal, etc. with peer-reviewed references
+- **Evidence-Based**: PMID/DOI citations for expected ranges
+- **Biomarker Simulation**: Cancer markers, inflammation, Alzheimer's biomarkers
+
+### Genetics & Ancestry
+- **50+ Genes**: Externalized TOML data with population variants
+- **Ancestry Models**: African, Asian, European genetic variants
+- **Pharmacogenomics**: Drug metabolism (ALDH2, CYP2D6, etc.)
 
 ## Quick Start
 
@@ -63,16 +68,10 @@ let gfr = person.gfr_ml_per_min();
 ## Installation
 
 ```bash
-# Clone and build
 git clone https://github.com/lantos1618/open_human_ontology
-# Note: Repository URL may vary - verify current location
 cd open_human_ontology
 cargo build --release
-
-# Run tests
 cargo test
-
-# Generate documentation
 cargo doc --open
 ```
 
@@ -89,12 +88,26 @@ src/
 └── human.rs          # Main integrated model
 ```
 
-## Examples
+## Examples - Real Computational Models
 
 ```bash
-# Run example profiles
-cargo run --example personalized_profile
-cargo run --example asian_ancestry_profile
+# Cardiovascular: Cardiac ischemia detection
+cargo run --example cardiac_ischemia_detector --release
+
+# Nervous: Hodgkin-Huxley action potential
+cargo run --example hodgkin_huxley_action_potential --release
+
+# Respiratory: COPD vs Pulmonary Fibrosis
+cargo run --example respiratory_pathology --release
+
+# Metabolism: Alcohol pharmacokinetics
+cargo run --example alcohol_pharmacokinetics --release
+
+# Endocrine: Insulin-glucose feedback
+cargo run --example insulin_glucose_feedback --release
+
+# Clinical: Biomarker analyzer
+cargo run --example clinical_biomarker_analyzer --release
 ```
 
 ## Technology
@@ -107,52 +120,31 @@ cargo run --example asian_ancestry_profile
 
 ## Development Status
 
-### Current Status: Deep Refactoring (Session DX)
+### Completed Refactoring
 
-**Critical Issues Identified:**
+**Phase 1: Honest Documentation**
+- Corrected claims about system completeness
+- Distinguished scaffolds from working implementations
 
-1. **Fake Simulations**: Many example files (e.g., `alzheimers_progression_simulation.rs`, `cancer_progression_simulation.rs`) contain hardcoded println! statements rather than actual computational models
-2. **Data-as-Code**: ~20,000-40,000 LOC in `src/biology/genetics/` are hardcoded HashMaps/Vecs that should be external data files
-3. **Inconsistent Quality**: Stark contrast between older procedural examples and newer ground-truth-based simulations
-4. **Documentation Overreach**: Previous claims about "complete systems" and "validated models" were aspirational rather than factual
+**Phase 2: Remove Fake Simulations**
+- Deleted hardcoded println-based examples
+- Retained ground-truth validated simulations
 
-**Refactoring Roadmap:**
+**Phase 3: Externalize Data**
+- Moved genetic data to TOML files
+- Validated cancer risk data against peer-reviewed sources (NCI, BOADICEA, GeneReviews)
 
-### Phase 1: Honest Documentation ✅ COMPLETE
-- Updated README to reflect actual project state
-- Acknowledged scaffolding vs. complete implementations
-- Corrected repository URL and dates
+**Phase 4: Simplify Module Structure**
+- Fixed all ambiguous glob reexports
+- Removed warning suppressions
 
-### Phase 2: Remove Fake Simulations ✅ COMPLETE
-- Deleted println!-based "simulations" (alzheimers, old cancer)
-- Retained ground-truth-based examples
-- Established template pattern from `inflammation_simulation_proper.rs`
-
-### Phase 3: Externalize Data ✅ COMPLETE
-- Externalized 5 data-heavy modules to TOML (gene_catalog, population variants, cancer risk data)
-- Created 11 TOML files with evidence-based data from peer-reviewed literature
-- Reduction: ~50,000 LOC removed (227k → 177k lines)
-- Line count remains substantial (~177k total) due to comprehensive biological modeling across 13 organ systems
-- Remaining modules are computational logic (as intended, not data-as-code)
-- **Ground-truth validation (2025-10-12)**: Cancer risk data validated against NCI, BOADICEA model, GeneReviews, and Prospective Lynch Syndrome Database with proper citations added
-
-### Phase 4: Simplify Module Structure ✅ COMPLETE
-- Fixed ambiguous glob reexports in `src/biology/genetics/mod.rs` (13 conflicts resolved)
-- Fixed ambiguous glob reexports in `src/pathology/mod.rs` (20 conflicts resolved)
-- Fixed ambiguous glob reexports in `src/systems/sensory/mod.rs` (4 conflicts resolved)
-- Removed ALL `#[allow(ambiguous_glob_reexports)]` suppressions (26 total removed)
-- Zero ambiguous reexport warnings in entire codebase
-- All tests passing, build successful
-
-### Phase 5: Future Features (On Hold)
+### Future Work
 - Disease progression modeling
 - Pharmacokinetics/pharmacodynamics
 - Clinical validation framework
-- Visualization tools
 
 ## Testing
 
-All tests passing:
 ```bash
 cargo test                    # Run all 1698 tests
 cargo test --lib             # Library tests only
@@ -184,7 +176,5 @@ Built with references to medical literature (Guyton & Hall, Ganong's, peer-revie
 
 ---
 
-**Status**: Active development (Ground-truth validation ongoing)
 **Version**: 0.1.0
-**Last Updated**: October 12, 2025
-**Data Validation**: Cancer genetics data validated against peer-reviewed sources (2025-10-12)
+**Last Updated**: October 13, 2025

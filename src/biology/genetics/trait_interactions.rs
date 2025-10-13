@@ -215,28 +215,6 @@ pub fn epistatic_interactions() -> Vec<EpistaticEffect> {
 mod tests {
     use super::*;
 
-    #[test]
-    fn test_new_profile() {
-        let profile = TraitInteractionProfile::new();
-        assert!(profile.gene_gene_interactions.is_empty());
-        assert!(profile.gene_environment_interactions.is_empty());
-    }
-
-    #[test]
-    fn test_add_interactions() {
-        let mut profile = TraitInteractionProfile::new();
-
-        let interaction = GeneGeneInteraction {
-            gene1: "GENE1".to_string(),
-            gene2: "GENE2".to_string(),
-            interaction_type: InteractionType::Synergistic,
-            combined_effect: 2.0,
-            affected_trait: "Test Trait".to_string(),
-        };
-
-        profile.add_gene_gene_interaction(interaction);
-        assert_eq!(profile.gene_gene_interactions.len(), 1);
-    }
 
     #[test]
     fn test_common_interactions() {

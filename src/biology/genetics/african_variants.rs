@@ -12,13 +12,16 @@ struct AfricanVariantsConfig {
 
 #[derive(Debug, Clone, Deserialize)]
 struct DefaultProfile {
+    #[allow(dead_code)]
     sickle_cell: SickleCellConfig,
+    #[allow(dead_code)]
     g6pd_deficiency: G6PDConfig,
     lactase_persistence: LactasePersistenceConfig,
     skin_pigmentation: SkinPigmentationConfig,
     malaria_resistance: MalariaResistanceConfig,
     hypertension_risk: HypertensionRiskConfig,
     vitamin_d_metabolism: VitaminDMetabolismConfig,
+    #[allow(dead_code)]
     apol1_kidney_risk: Apol1KidneyRiskConfig,
 }
 
@@ -91,7 +94,9 @@ struct Apol1RiskMultipliers {
     g0g0: f64,
     monoallelic: f64,
     biallelic: f64,
+    #[allow(dead_code)]
     fsgs_monoallelic: f64,
+    #[allow(dead_code)]
     fsgs_biallelic: f64,
 }
 

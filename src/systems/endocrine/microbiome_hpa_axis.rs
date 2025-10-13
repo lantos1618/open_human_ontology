@@ -84,8 +84,8 @@ impl MicrobiomeHPAAxis {
         let interaction_strength = self.stress_microbiome_interaction();
 
         match (dysfunction_score, diversity_index, interaction_strength) {
-            (d, div, _) if d > 0.7 || div < 0.3 => MicrobiomeHPAHealth::Severely_Disrupted,
-            (d, div, _) if d > 0.4 || div < 0.5 => MicrobiomeHPAHealth::Moderately_Disrupted,
+            (d, div, _) if d > 0.7 || div < 0.3 => MicrobiomeHPAHealth::SeverelyDisrupted,
+            (d, div, _) if d > 0.4 || div < 0.5 => MicrobiomeHPAHealth::ModeratelyDisrupted,
             (d, div, i) if d < 0.2 && div > 0.8 && i > 0.7 => MicrobiomeHPAHealth::Optimal,
             _ => MicrobiomeHPAHealth::Normal,
         }
@@ -96,8 +96,8 @@ impl MicrobiomeHPAAxis {
 pub enum MicrobiomeHPAHealth {
     Optimal,
     Normal,
-    Moderately_Disrupted,
-    Severely_Disrupted,
+    ModeratelyDisrupted,
+    SeverelyDisrupted,
 }
 
 /// Represents the state of gut microbiome metabolic activity
@@ -115,11 +115,11 @@ pub struct MicrobiomeMetabolicActivity {
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum SCFAProduction {
-    Severely_Reduced,
+    SeverelyReduced,
     Reduced,
     Normal,
     Enhanced,
-    High_Producer,
+    HighProducer,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -153,7 +153,7 @@ pub struct GutBarrierStatus {
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum TightJunctionIntegrity {
-    Severely_Compromised,
+    SeverelyCompromised,
     Compromised,
     Normal,
     Robust,

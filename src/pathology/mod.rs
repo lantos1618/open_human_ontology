@@ -11,7 +11,6 @@ pub mod metabolic;
 pub mod neurological;
 pub mod neuromuscular;
 pub mod ophthalmology;
-pub mod organ_pathophysiology;
 pub mod orthopedics;
 pub mod otolaryngology;
 pub mod pain;
@@ -24,17 +23,6 @@ pub mod toxicology;
 pub mod transplant;
 
 // Type aliases to resolve conflicts
-// ArrhythmiaType conflict: cardiovascular vs organ_pathophysiology
-pub use cardiovascular::ArrhythmiaType as CardiovascularArrhythmiaType;
-pub use organ_pathophysiology::ArrhythmiaType as OrganArrhythmiaType;
-
-// ValveType conflict: cardiovascular vs organ_pathophysiology
-pub use cardiovascular::ValveType as CardiovascularValveType;
-pub use organ_pathophysiology::ValveType as OrganValveType;
-
-// ValvularDysfunction conflict: cardiovascular vs organ_pathophysiology
-pub use cardiovascular::ValvularDysfunction as CardiovascularValvularDysfunction;
-pub use organ_pathophysiology::ValvularDysfunction as OrganValvularDysfunction;
 
 // HypertensionStage conflict: cardiovascular vs metabolic
 pub use cardiovascular::HypertensionStage as CardiovascularHypertensionStage;
@@ -72,13 +60,6 @@ pub use disease::RiskFactor as DiseaseRiskFactor;
 pub use headache::PainIntensity as HeadachePainIntensity;
 pub use pain::PainIntensity as PainPainIntensity;
 
-// ThyroidStatus conflict: metabolic vs organ_pathophysiology
-pub use metabolic::ThyroidStatus as MetabolicThyroidStatus;
-pub use organ_pathophysiology::ThyroidStatus as OrganThyroidStatus;
-
-// CognitiveFunction conflict: organ_pathophysiology vs psychiatry
-pub use organ_pathophysiology::CognitiveFunction as OrganCognitiveFunction;
-pub use psychiatry::CognitiveFunction as PsychiatryCognitiveFunction;
 
 // InjuryType conflict: orthopedics vs sports_medicine
 pub use orthopedics::InjuryType as OrthopedicsInjuryType;
@@ -136,9 +117,6 @@ pub use neurological::{NeurologicalCondition, MigraineType, EpilepsyType, Neurop
 
 pub use neuromuscular::*;
 pub use ophthalmology::*;
-
-// organ_pathophysiology exports only non-conflicting items (ArrhythmiaType, ValveType, ValvularDysfunction, ThyroidStatus, CognitiveFunction aliased above)
-pub use organ_pathophysiology::{OrganPathophysiology, CardiacPathology, CardiacOutputStatus, ValveDysfunction, DysfunctionSeverity, CADSeverity, HeartFailureStage, PulmonaryPathology, ChronicPulmonaryCondition, HepaticPathology, LiverFunctionTests, FibrosisStage, SteatosisGrade, SyntheticFunction, RenalPathology, CKDStage, ElectrolyteDisturbance, Electrolyte, ElectrolyteAbnormality, AcidBaseStatus, AcidBaseDisorder, NeurologicalPathology, MotorFunction, CoordinationStatus, TremorType, SensoryFunction, SensoryStatus, NeurodegenerativeCondition, EndocrinePathology, ThyroidFunction, AdrenalFunction, AdrenalStatus, GlucoseMetabolismStatus, DiabetesStatus, BoneMetabolismStatus, BoneHealthStatus};
 
 // orthopedics exports only non-conflicting items (InjuryType, AnatomicalLocation, InjurySeverity, InjuryMechanism, FractureType aliased above)
 pub use orthopedics::{OrthopedicProfile, OrthopedicInjury, HealingStatus, Fracture, Bone, FractureHealing, UnionStatus, JointReplacement, ImplantType, ImplantComplication, SpinalCondition, SpinalConditionType, SpinalLevel, SpinalSeverity, FunctionalStatus};

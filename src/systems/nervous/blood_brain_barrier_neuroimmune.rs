@@ -85,8 +85,8 @@ impl BloodBrainBarrierNeuroimmune {
         let neuroprotection = self.neuroprotective_capacity();
 
         match (integrity_score, inflammation_index, neuroprotection) {
-            (i, inf, _) if i < 0.4 || inf > 0.7 => BBBNeuroImmuneStatus::Severely_Compromised,
-            (i, inf, _) if i < 0.6 || inf > 0.4 => BBBNeuroImmuneStatus::Moderately_Compromised,
+            (i, inf, _) if i < 0.4 || inf > 0.7 => BBBNeuroImmuneStatus::SeverelyCompromised,
+            (i, inf, _) if i < 0.6 || inf > 0.4 => BBBNeuroImmuneStatus::ModeratelyCompromised,
             (i, inf, n) if i > 0.8 && inf < 0.2 && n > 0.8 => BBBNeuroImmuneStatus::Optimal,
             _ => BBBNeuroImmuneStatus::Normal,
         }
@@ -97,8 +97,8 @@ impl BloodBrainBarrierNeuroimmune {
 pub enum BBBNeuroImmuneStatus {
     Optimal,
     Normal,
-    Moderately_Compromised,
-    Severely_Compromised,
+    ModeratelyCompromised,
+    SeverelyCompromised,
 }
 
 /// Represents the structural integrity of the blood-brain barrier
@@ -116,7 +116,7 @@ pub struct BBBStructuralIntegrity {
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum TightJunctionStatus {
-    Severely_Disrupted,
+    SeverelyDisrupted,
     Disrupted,
     Normal,
     Enhanced,
@@ -132,10 +132,10 @@ pub enum EndothelialIntegrity {
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum PericyteStatus {
-    Severely_Reduced,
+    SeverelyReduced,
     Reduced,
     Normal,
-    Enhanced_Coverage,
+    EnhancedCoverage,
 }
 
 /// Glymphatic system function for brain clearance
@@ -153,7 +153,7 @@ pub struct GlymphaticFunction {
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum AQP4Polarization {
-    Severely_Impaired,
+    SeverelyImpaired,
     Impaired,
     Normal,
     Optimal,
@@ -199,9 +199,9 @@ pub enum MMPActivity {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum AstrocyteActivation {
     Quiescent,
-    Mildly_Activated,
+    MildlyActivated,
     Activated,
-    Severely_Activated,
+    SeverelyActivated,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

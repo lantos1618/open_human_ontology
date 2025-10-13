@@ -84,8 +84,8 @@ impl AdipokineInflammationSignaling {
         let lipotoxicity = self.lipotoxicity_index();
 
         match (inflammation_index, metabolic_balance, lipotoxicity) {
-            (i, _, l) if i > 0.7 || l > 0.7 => AdipokineInflammationStatus::Severely_Disrupted,
-            (i, b, l) if i > 0.4 || b < 0.4 || l > 0.4 => AdipokineInflammationStatus::Moderately_Disrupted,
+            (i, _, l) if i > 0.7 || l > 0.7 => AdipokineInflammationStatus::SeverelyDisrupted,
+            (i, b, l) if i > 0.4 || b < 0.4 || l > 0.4 => AdipokineInflammationStatus::ModeratelyDisrupted,
             (i, b, l) if i < 0.2 && b > 0.8 && l < 0.2 => AdipokineInflammationStatus::Optimal,
             _ => AdipokineInflammationStatus::Normal,
         }
@@ -96,8 +96,8 @@ impl AdipokineInflammationSignaling {
 pub enum AdipokineInflammationStatus {
     Optimal,
     Normal,
-    Moderately_Disrupted,
-    Severely_Disrupted,
+    ModeratelyDisrupted,
+    SeverelyDisrupted,
 }
 
 /// Represents the inflammatory state of adipose tissue

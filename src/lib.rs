@@ -46,7 +46,6 @@
 
 pub mod anthropometry;
 pub mod biology;
-pub mod biometric_authentication;
 pub mod biometrics;
 pub mod chemistry;
 pub mod comprehensive_health;
@@ -60,7 +59,6 @@ pub mod microbiome;
 pub mod nutrition;
 pub mod pathology;
 pub mod personalized_medicine;
-pub mod personalized_testing;
 pub mod pharmacology;
 pub mod physics;
 pub mod physiology;
