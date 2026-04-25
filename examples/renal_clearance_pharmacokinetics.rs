@@ -1,6 +1,10 @@
 //! Renal clearance: Starling filtration, Tm-limited glucose reabsorption,
 //! and one-compartment drug pharmacokinetics with GFR-dependent clearance.
 //!
+//! Validation hooks into Layer 4 (`validation::ground_truth`): the healthy-GFR
+//! tests assert against the citation-backed range from the renal registry
+//! (Levey 2013) rather than hand-coded thresholds.
+//!
 //! References:
 //!   Starling EH (1896). J Physiol 19(4):312–326.
 //!   Cockcroft DW, Gault MH (1976). Nephron 16(1):31–41.
@@ -77,16 +81,33 @@ fn renal_cleared_drug(dose_mg: f64, vd_l: f64, cl_normal_l_per_h: f64,
 }
 
 fn main() {
+    use human_biology::validation::ground_truth::GroundTruthDatabase;
+
     println!("Renal clearance: filtration, reabsorption, and drug pharmacokinetics\n");
+
+    println!("━━━ 0. Layer-4 validation registry (Levey 2013, PMID 23062522) ━━━");
+    let db = GroundTruthDatabase::new();
+    if let Some(renal) = db.get_dataset("renal") {
+        if let Some(gfr_dp) = renal.data_points.iter()
+            .find(|dp| dp.parameter_name == "gfr_ml_per_min_1_73m2")
+        {
+            println!("registry expects GFR = {} (range {}–{}) mL/min/1.73m²  [{}]",
+                     gfr_dp.expected_value,
+                     gfr_dp.min_value.unwrap_or(f64::NAN),
+                     gfr_dp.max_value.unwrap_or(f64::NAN),
+                     gfr_dp.reference.citation);
+        }
+    }
+    println!();
 
     println!("━━━ 1. Glomerular filtration (Starling forces) ━━━");
     println!("{:>22}  {:>5}  {:>5}  {:>5}  {:>5}  {:>9}",
              "scenario", "P_GC", "P_BS", "π_GC", "Kf", "GFR (mL/min)");
     let scenarios = [
-        ("healthy adult",    StarlingForces { p_gc: 60.0, p_bs: 18.0, pi_gc: 32.0, kf: 12.5 }),
-        ("afferent dilation",StarlingForces { p_gc: 65.0, p_bs: 18.0, pi_gc: 32.0, kf: 12.5 }),
-        ("urinary obstruction", StarlingForces { p_gc: 60.0, p_bs: 35.0, pi_gc: 32.0, kf: 12.5 }),
-        ("dehydration (↑π)", StarlingForces { p_gc: 60.0, p_bs: 18.0, pi_gc: 40.0, kf: 12.5 }),
+        ("healthy adult",    StarlingForces { p_gc: 60.0, p_bs: 18.0, pi_gc: 32.0, kf: 11.0 }),
+        ("afferent dilation",StarlingForces { p_gc: 65.0, p_bs: 18.0, pi_gc: 32.0, kf: 11.0 }),
+        ("urinary obstruction", StarlingForces { p_gc: 60.0, p_bs: 35.0, pi_gc: 32.0, kf: 11.0 }),
+        ("dehydration (↑π)", StarlingForces { p_gc: 60.0, p_bs: 18.0, pi_gc: 40.0, kf: 11.0 }),
         ("CKD (↓Kf, fewer nephrons)", StarlingForces { p_gc: 60.0, p_bs: 18.0, pi_gc: 32.0, kf: 4.0 }),
     ];
     for (name, s) in &scenarios {
@@ -151,16 +172,25 @@ mod tests {
     fn approx(a: f64, b: f64, tol: f64) -> bool { (a - b).abs() <= tol }
 
     #[test]
-    fn healthy_gfr_in_physiologic_range() {
-        let s = StarlingForces { p_gc: 60.0, p_bs: 18.0, pi_gc: 32.0, kf: 12.5 };
+    fn healthy_gfr_within_layer4_registry_range() {
+        // Asserts the model's healthy GFR sits in the published clinical range
+        // recorded in src/validation/ground_truth/renal.rs (Levey 2013, PMID 23062522)
+        // — the L3 example's correctness is gated by the L4 ground-truth registry.
+        use human_biology::validation::ground_truth::GroundTruthDatabase;
+        let s = StarlingForces { p_gc: 60.0, p_bs: 18.0, pi_gc: 32.0, kf: 11.0 };
         let gfr = gfr_from_starling(s);
-        assert!((100.0..=130.0).contains(&gfr), "GFR = {gfr}");
+        let db = GroundTruthDatabase::new();
+        let renal = db.get_dataset("renal").expect("renal registry must exist");
+        assert!(
+            renal.is_within_expected_range("gfr_ml_per_min_1_73m2", gfr),
+            "model GFR {gfr} outside Levey-2013 reference range",
+        );
     }
 
     #[test]
     fn obstruction_collapses_filtration() {
         // Obstruction raises Bowman-space pressure enough to abolish net filtration.
-        let s = StarlingForces { p_gc: 60.0, p_bs: 30.0, pi_gc: 32.0, kf: 12.5 };
+        let s = StarlingForces { p_gc: 60.0, p_bs: 30.0, pi_gc: 32.0, kf: 11.0 };
         let gfr = gfr_from_starling(s);
         assert!(gfr < 5.0, "Obstructed GFR should approach zero, got {gfr}");
     }

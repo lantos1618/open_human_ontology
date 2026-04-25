@@ -222,6 +222,25 @@ mod tests {
     }
 
     #[test]
+    fn diurnal_peak_and_trough_match_layer4_registry() {
+        // Asserts our model's peak and trough cortisol agree with the endocrine
+        // registry (Deutschbein 2019 systematic review, n=12000) — morning 8 AM
+        // expected 15 µg/dL [6–25], evening 11 PM expected 5 µg/dL [2–10].
+        use human_biology::validation::ground_truth::GroundTruthDatabase;
+        let p = HpaParams::healthy();
+        let log = diurnal_profile(p);
+        let peak = log.iter().map(|s| s.cortisol).fold(0.0_f64, f64::max);
+        let trough = log.iter().map(|s| s.cortisol).fold(f64::INFINITY, f64::min);
+
+        let db = GroundTruthDatabase::new();
+        let endo = db.get_dataset("endocrine").expect("endocrine registry must exist");
+        assert!(endo.is_within_expected_range("cortisol_morning_ug_dl", peak),
+                "model peak cortisol {peak} outside Deutschbein-2019 morning range");
+        assert!(endo.is_within_expected_range("cortisol_evening_ug_dl", trough),
+                "model trough cortisol {trough} outside Deutschbein-2019 evening range");
+    }
+
+    #[test]
     fn healthy_diurnal_trough_lower_than_peak() {
         let p = HpaParams::healthy();
         let log = diurnal_profile(p);

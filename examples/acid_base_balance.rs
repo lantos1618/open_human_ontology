@@ -167,6 +167,20 @@ mod tests {
     }
 
     #[test]
+    fn normal_arterial_values_match_layer4_registry() {
+        // Asserts our normal-state numerics agree with the respiratory ground-truth
+        // registry (Adrogué & Madias 2014 for arterial_ph; Crapo 2017 for paco2_mmhg).
+        use human_biology::validation::ground_truth::GroundTruthDatabase;
+        let db = GroundTruthDatabase::new();
+        let resp = db.get_dataset("respiratory").expect("respiratory registry must exist");
+        let ph = henderson_hasselbalch(NORMAL_HCO3, NORMAL_PACO2);
+        assert!(resp.is_within_expected_range("arterial_ph", ph),
+                "computed normal pH {ph} outside L4 registry range");
+        assert!(resp.is_within_expected_range("paco2_mmhg", NORMAL_PACO2),
+                "constant NORMAL_PACO2 {NORMAL_PACO2} outside L4 registry range");
+    }
+
+    #[test]
     fn doubling_hco3_buffer_raises_ph_by_log10_2() {
         let baseline = henderson_hasselbalch(NORMAL_HCO3, NORMAL_PACO2);
         let doubled  = henderson_hasselbalch(2.0 * NORMAL_HCO3, NORMAL_PACO2);

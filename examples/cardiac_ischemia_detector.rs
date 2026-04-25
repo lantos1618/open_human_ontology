@@ -1,4 +1,4 @@
-use human_biology::systems::cardiovascular::{CardiacMechanics, CoronaryArtery, MyocardialOxygenDemand};
+use human_biology::systems::cardiovascular::{CardiacMechanics, MyocardialOxygenDemand};
 use std::thread;
 use std::time::Duration;
 
@@ -20,11 +20,10 @@ fn main() {
     println!("  ⚠️  = ISCHEMIA DETECTED\n");
 
     let lad_stenosis = 70.0;
-    let lad = CoronaryArtery::new("LAD".to_string(), 3.5, 120.0);
 
-    println!("{:>5} {:>5} {:>6} {:>6} {:>7} {:>8} {:>6} {}",
-             "Time", "HR", "BP", "PRP", "MVO2", "Flow", "S/D", "Status");
-    println!("{}", "─".repeat(75));
+    println!("{:>5} {:>5} {:>6} {:>6} {:>7} {:>8} {:>6} {:<26} {}",
+             "Time", "HR", "BP", "PRP", "MVO2", "Flow", "S/D", "Workload", "Status");
+    println!("{}", "─".repeat(110));
 
     for stage in 0..=8 {
         let time_min = stage * 3;
@@ -66,10 +65,10 @@ fn main() {
             "✓ Normal"
         };
 
-        println!("{:>5} {:>5.0} {:>6.0} {:>6.0} {:>7.1} {:>8.1} {:>6.2} {}",
+        println!("{:>5} {:>5.0} {:>6.0} {:>6.0} {:>7.1} {:>8.1} {:>6.2} {:<26} {}",
                  time_min, hr, systolic_bp, prp,
                  mvo2.mvo2_ml_min_100g, actual_flow,
-                 supply_demand_ratio, status);
+                 supply_demand_ratio, workload_description, status);
 
         if stage == 0 {
             println!("\n▶ Starting exercise...\n");

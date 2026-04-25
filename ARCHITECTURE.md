@@ -59,12 +59,22 @@ The currently promoted systems with full L3 coverage:
 `src/validation/ground_truth/*.rs`.
 
 Per-domain reference-range registries (oncology, cardiovascular, hepatic, …)
-with PMID/DOI citations. About 3.5K LOC across 22 domains. The
-`GroundTruthDatabase` interface is intended as the canonical source of
-expected biomarker values for L3 examples; in practice only
-`cancer_biomarker_simulation_groundtruth` currently calls it. Wiring more
-L3 examples to L4 (so their tests assert "value within published clinical
-range" rather than hand-coded thresholds) is a standing future task.
+with PMID/DOI citations. About 3.5K LOC across 22 domains. Used as the
+canonical source of expected biomarker values: an L3 example calls
+`GroundTruthDatabase::new().get_dataset("renal").is_within_expected_range(name, value)`
+to assert its model output sits inside a literature-cited interval rather than
+a hand-coded one.
+
+Currently wired:
+
+- `cancer_biomarker_simulation_groundtruth` — full registry consumer
+- `renal_clearance_pharmacokinetics` — GFR vs Levey 2013
+- `acid_base_balance` — arterial pH and PaCO₂ vs Adrogué/Crapo 2014/2017
+- `hpa_axis_cortisol_rhythm` — diurnal cortisol vs Deutschbein 2019
+
+Wiring an L3 example to L4 surfaces real model-vs-literature mismatches:
+the renal Kf was tuned from 12.5 to 11.0 to land GFR inside the
+Levey-2013 cohort range when the registry assertion failed.
 
 ## How the layers interact
 
