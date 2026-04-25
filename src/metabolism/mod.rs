@@ -2,7 +2,6 @@ pub mod alcohol_metabolism;
 pub mod amino_acid_metabolism;
 pub mod comprehensive_pathways;
 pub mod detailed_pathways;
-pub mod detoxification;
 pub mod energy;
 pub mod enzyme_kinetics;
 pub mod enzymes;
@@ -26,11 +25,6 @@ pub use comprehensive_pathways::{
 };
 pub use detailed_pathways::{
     BetaOxidation, DetailedGlycolysis, ElectronTransportChain, KrebsCycle, PentosePhosphatePathway,
-};
-pub use detoxification::{
-    AntioxidantSystems, CYP2D6Phenotype, CytochromeP450System, DetoxificationSystem,
-    GlucuronidationSystem, GlutathioneConjugationSystem, NAT2Phenotype, OxidativeStressMarkers,
-    Phase1Metabolism, Phase2Metabolism,
 };
 pub use energy::{BasalMetabolicRate, EnergyBalance, TotalEnergyExpenditure};
 pub use enzymes::{Cofactor, CytochromeP450, Enzyme, EnzymeClass};

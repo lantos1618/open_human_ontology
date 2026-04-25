@@ -160,10 +160,6 @@ fn main() {
             self.time += dt;
         }
 
-        fn ionized_calcium(&self) -> f64 {
-            self.ca_serum * 0.5
-        }
-
         fn phosphate_estimate(&self) -> f64 {
             let base_phos = 3.5;
             base_phos - (self.pth - 35.0) * 0.008
@@ -173,7 +169,7 @@ fn main() {
             let diagnosis = match (self.ca_serum, self.pth) {
                 (ca, pth) if ca > 10.5 && pth > 65.0 => "Primary hyperparathyroidism",
                 (ca, pth) if ca > 10.5 && pth < 20.0 => "Hypercalcemia of malignancy",
-                (ca, pth) if ca > 10.5 => "Hypercalcemia (other)",
+                (ca, _pth) if ca > 10.5 => "Hypercalcemia (other)",
                 (ca, pth) if ca < 8.5 && pth > 65.0 => "Secondary hyperparathyroidism (Vit D def/CKD)",
                 (ca, pth) if ca < 8.5 && pth < 15.0 => "Hypoparathyroidism",
                 (ca, pth) if ca >= 8.5 && ca <= 10.5 && pth >= 15.0 && pth <= 65.0 => "Normal calcium homeostasis",

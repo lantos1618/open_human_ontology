@@ -158,7 +158,7 @@ fn main() {
     println!("  Right shift: P₅₀ 27 → 32 mmHg");
     println!("  Paradox: ↓ arterial loading BUT ↑ tissue unloading\n");
 
-    let mut acute_altitude = Hemoglobin::new_normal();
+    let acute_altitude = Hemoglobin::new_normal();
     let mut adapted_altitude = Hemoglobin::new_normal();
     adapted_altitude.bpg_2_3 = 8.0;
     adapted_altitude.p50_adjusted();
@@ -237,7 +237,7 @@ fn main() {
     let mut anemia = Hemoglobin::new_normal();
     anemia.hgb_concentration = 7.0;
 
-    let mut hypoxemia = Hemoglobin::new_normal();
+    let hypoxemia = Hemoglobin::new_normal();
     let hypoxemic_art_po2 = 50.0;
 
     println!("{:>20} {:>10} {:>12} {:>15} {:>18}",
@@ -272,7 +272,7 @@ fn main() {
     println!("  Left shift: P₅₀ ~19 mmHg (vs 27 mmHg for HbA)");
     println!("  Facilitates O₂ transfer from maternal → fetal circulation\n");
 
-    let mut maternal_hgb = Hemoglobin::new_normal();
+    let maternal_hgb = Hemoglobin::new_normal();
     let mut fetal_hgb = Hemoglobin::new_normal();
     fetal_hgb.p50 = 19.0;
 

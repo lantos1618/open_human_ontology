@@ -1,4 +1,4 @@
-use human_biology::metabolism::enzyme_kinetics::GlycolysisWithKinetics;
+use human_biology::metabolism::GlycolysisWithKinetics;
 
 fn main() {
     println!("╔═══════════════════════════════════════════════════════════════════╗");

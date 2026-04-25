@@ -78,14 +78,6 @@ fn main() {
             model
         }
 
-        fn new_desensitized() -> Self {
-            let mut model = Self::new_baseline();
-            model.receptor_desensitized = 70.0;
-            model.receptor_free = 30.0;
-            model.k_resens = 0.002;
-            model
-        }
-
         fn step(&mut self, dt: f64, beta_blocker: f64, pde_inhibitor: f64) {
             let effective_ligand = self.ligand * (1.0 - beta_blocker);
 
@@ -128,10 +120,6 @@ fn main() {
 
         fn total_receptors(&self) -> f64 {
             self.receptor_free + self.receptor_active + self.receptor_desensitized
-        }
-
-        fn signaling_magnitude(&self) -> f64 {
-            self.pka_active
         }
     }
 

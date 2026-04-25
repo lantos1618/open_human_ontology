@@ -162,10 +162,6 @@ fn main() {
             self.time += dt;
         }
 
-        fn mean_arterial_pressure(&self) -> f64 {
-            self.bp * 0.8 + 20.0
-        }
-
         fn cardiac_output(&self) -> f64 {
             (self.hr * self.sv * (1.0 + (self.blood_volume - 5.0) * 0.08)) / 1000.0
         }

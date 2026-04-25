@@ -26,6 +26,7 @@ struct DefaultProfile {
 }
 
 #[derive(Debug, Clone, Deserialize)]
+#[allow(dead_code)]
 struct SickleCellConfig {
     status: String,
     carrier_prevalence: f64,
@@ -33,6 +34,7 @@ struct SickleCellConfig {
 }
 
 #[derive(Debug, Clone, Deserialize)]
+#[allow(dead_code)]
 struct G6PDConfig {
     status: String,
     male_prevalence: f64,
@@ -82,6 +84,7 @@ struct VitaminDMetabolismConfig {
 }
 
 #[derive(Debug, Clone, Deserialize)]
+#[allow(dead_code)]
 struct Apol1KidneyRiskConfig {
     status: String,
     g0g0_prevalence: f64,

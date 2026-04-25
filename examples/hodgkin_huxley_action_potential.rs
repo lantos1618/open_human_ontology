@@ -306,7 +306,7 @@ fn main() {
         let mut last_spike = false;
 
         for i in 0..10000 {
-            let t = i as f64 * 0.01;
+            let _t = i as f64 * 0.01;
             freq_neuron.step(0.01, current);
 
             let spiking = freq_neuron.is_spiking();

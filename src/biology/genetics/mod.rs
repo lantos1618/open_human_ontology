@@ -41,7 +41,6 @@ pub mod pain_genetics;
 pub mod pharmacogenomics;
 pub mod phenotype;
 pub mod population;
-pub mod population_genetics;
 pub mod population_traits;
 pub mod respiratory_genetics;
 pub mod skin_genetics;
@@ -229,7 +228,6 @@ pub use ophthalmology::{VisionGene, EyeColorGenetics, ColorVisionGenetics, GeneS
 pub use pain_genetics::*;
 pub use pharmacogenomics::*;
 pub use population::*;
-pub use population_genetics::*;
 pub use population_traits::*;
 pub use respiratory_genetics::*;
 // skin_genetics exports only non-conflicting items (PsoriasisRisk, EczemaRisk, MC1RVariant, SkinPigmentation aliased above)
