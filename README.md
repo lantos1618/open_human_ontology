@@ -5,8 +5,9 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 ## Project Status
 
 - ✅ **Compilation**: Clean build
-- ✅ **Tests**: 1698 passing
+- ✅ **Tests**: 1551 passing
 - ✅ **Systems**: 3 complete computational systems, 9 scaffolds
+- 18 example ODE simulations, each tied to a published model
 
 ## Organ Systems
 
@@ -90,24 +91,40 @@ src/
 
 ## Examples - Real Computational Models
 
+Each example is a self-contained ODE binary tied to a published model.
+
 ```bash
-# Cardiovascular: Cardiac ischemia detection
+# Cardiovascular
 cargo run --example cardiac_ischemia_detector --release
+cargo run --example raas_blood_pressure_control --release
+cargo run --example hemoglobin_allosteric_cooperativity --release
 
-# Nervous: Hodgkin-Huxley action potential
+# Nervous (biophysics)
 cargo run --example hodgkin_huxley_action_potential --release
+cargo run --example ghk_resting_potential --release
+cargo run --example neuron_spike_train --release
 
-# Respiratory: COPD vs Pulmonary Fibrosis
+# Respiratory
 cargo run --example respiratory_pathology --release
 
-# Metabolism: Alcohol pharmacokinetics
-cargo run --example alcohol_pharmacokinetics --release
-
-# Endocrine: Insulin-glucose feedback
+# Endocrine feedback
 cargo run --example insulin_glucose_feedback --release
+cargo run --example thyroid_hormone_feedback --release
+cargo run --example calcium_homeostasis_feedback --release
 
-# Clinical: Biomarker analyzer
+# Pharmacology
+cargo run --example multi_compartment_pk --release
+cargo run --example pharmacodynamics_emax_model --release
+cargo run --example alcohol_pharmacokinetics --release
+cargo run --example drug_interaction_calculator --release
+
+# Cellular signaling
+cargo run --example gpcr_camp_signaling_cascade --release
+cargo run --example glycolysis_kinetics_simulation --release
+
+# Clinical
 cargo run --example clinical_biomarker_analyzer --release
+cargo run --example exercise_physiology_vo2max --release
 ```
 
 ## Technology
@@ -146,7 +163,7 @@ cargo run --example clinical_biomarker_analyzer --release
 ## Testing
 
 ```bash
-cargo test                    # Run all 1698 tests
+cargo test                    # Run all 1551 tests
 cargo test --lib             # Library tests only
 cargo test cardiovascular    # System-specific tests
 ```
@@ -177,4 +194,4 @@ Built with references to medical literature (Guyton & Hall, Ganong's, peer-revie
 ---
 
 **Version**: 0.1.0
-**Last Updated**: October 13, 2025
+**Last Updated**: April 25, 2026
