@@ -58,8 +58,12 @@ The currently promoted systems with full L3 coverage:
 `src/validation/ground_truth/*.rs`.
 
 Per-domain reference-range registries (oncology, cardiovascular, hepatic, …)
-with PMID/DOI citations. L1 modules call into these to assert simulation
-outputs land in published clinical ranges.
+with PMID/DOI citations. About 3.5K LOC across 22 domains. The
+`GroundTruthDatabase` interface is intended as the canonical source of
+expected biomarker values for L3 examples; in practice only
+`cancer_biomarker_simulation_groundtruth` currently calls it. Wiring more
+L3 examples to L4 (so their tests assert "value within published clinical
+range" rather than hand-coded thresholds) is a standing future task.
 
 ## How the layers interact
 

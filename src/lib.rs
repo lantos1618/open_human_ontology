@@ -52,7 +52,6 @@ pub mod config;
 pub mod diagnosis;
 pub mod human;
 pub mod metabolism;
-pub mod microbiome;
 pub mod nutrition;
 pub mod pathology;
 pub mod pharmacology;
