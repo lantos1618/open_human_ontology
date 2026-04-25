@@ -22,8 +22,6 @@ pub mod genetics;
 pub mod gut_brain_axis;
 pub mod hematology;
 pub mod hematopoiesis;
-pub mod hormone_signaling;
-pub mod immune_system;
 pub mod immunology;
 pub mod lifestyle;
 pub mod metabolism;

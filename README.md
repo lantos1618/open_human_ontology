@@ -5,21 +5,21 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 ## Project Status
 
 - ✅ **Compilation**: Clean build
-- ✅ **Tests**: 1551 passing
-- ✅ **Systems**: 3 complete computational systems, 9 scaffolds
-- 18 example ODE simulations, each tied to a published model
+- ✅ **Tests**: 1536 passing
+- ✅ **Systems**: 4 complete computational systems, 8 scaffolds
+- 19 example ODE simulations, each tied to a published model
 
 ## Organ Systems
 
 ### ✅ Complete Computational Models
 - **Cardiovascular**: Cardiac mechanics, hemodynamics, electrophysiology
-- **Nervous**: Hodgkin-Huxley action potentials, synaptic transmission, circadian rhythms
+- **Nervous**: Hodgkin-Huxley + Goldman-Hodgkin-Katz, synaptic transmission, circadian rhythms
 - **Respiratory**: Gas exchange, pulmonary mechanics, oxygen transport kinetics
+- **Renal**: Starling filtration, Cockcroft-Gault CrCl, Tm-limited reabsorption, GFR-scaled drug clearance
 
 ### 🚧 Scaffolds
 - **Immune**: Cytokine networks, immune cells
 - **Endocrine**: Hormones, feedback loops
-- **Renal**: Filtration, acid-base balance
 - **Digestive**: GI tract, absorption
 - **Sensory**: Vision, hearing
 - **Integumentary**: Skin layers
@@ -163,7 +163,7 @@ cargo run --example exercise_physiology_vo2max --release
 ## Testing
 
 ```bash
-cargo test                    # Run all 1551 tests
+cargo test                    # Run all 1536 tests
 cargo test --lib             # Library tests only
 cargo test cardiovascular    # System-specific tests
 ```
@@ -171,8 +171,8 @@ cargo test cardiovascular    # System-specific tests
 ## Documentation
 
 - Full Rust docs: `cargo doc --open`
-- Architecture: `agent/docs_archive/ARCHITECTURE.md`
-- Previous sessions: `agent/docs_archive/`
+- Architecture: [`ARCHITECTURE.md`](ARCHITECTURE.md)
+- Historical session logs: `agent/docs_archive/`
 
 ## Contributing
 
