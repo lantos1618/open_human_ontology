@@ -50,6 +50,7 @@ The currently promoted systems with full L3 coverage:
 - cellular signaling — `gpcr_camp_signaling_cascade`,
   `glycolysis_kinetics_simulation`
 - renal — `renal_clearance_pharmacokinetics`
+- acid-base — `acid_base_balance` (Henderson-Hasselbalch, Winters, Boston rules)
 - clinical — `clinical_biomarker_analyzer`, `exercise_physiology_vo2max`
 
 ## Layer 4 — Validation registries

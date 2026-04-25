@@ -7,7 +7,7 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 - ✅ **Compilation**: Clean build
 - ✅ **Tests**: 1536 passing
 - ✅ **Systems**: 4 complete computational systems, 8 scaffolds
-- 19 example ODE simulations, each tied to a published model
+- 20 example ODE simulations, each tied to a published model
 
 ## Organ Systems
 
@@ -125,6 +125,7 @@ cargo run --example glycolysis_kinetics_simulation --release
 # Clinical
 cargo run --example clinical_biomarker_analyzer --release
 cargo run --example exercise_physiology_vo2max --release
+cargo run --example acid_base_balance --release
 ```
 
 ## Technology
