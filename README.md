@@ -5,9 +5,9 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 ## Project Status
 
 - ✅ **Compilation**: Clean build
-- ✅ **Tests**: 1536 passing
+- ✅ **Tests**: 1520 passing
 - ✅ **Systems**: 4 complete computational systems, 8 scaffolds
-- 20 example ODE simulations, each tied to a published model
+- 21 example ODE simulations, each tied to a published model
 
 ## Organ Systems
 
@@ -111,6 +111,7 @@ cargo run --example respiratory_pathology --release
 cargo run --example insulin_glucose_feedback --release
 cargo run --example thyroid_hormone_feedback --release
 cargo run --example calcium_homeostasis_feedback --release
+cargo run --example hpa_axis_cortisol_rhythm --release
 
 # Pharmacology
 cargo run --example multi_compartment_pk --release
@@ -164,7 +165,7 @@ cargo run --example acid_base_balance --release
 ## Testing
 
 ```bash
-cargo test                    # Run all 1536 tests
+cargo test                    # Run all 1520 tests
 cargo test --lib             # Library tests only
 cargo test cardiovascular    # System-specific tests
 ```

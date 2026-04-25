@@ -44,7 +44,8 @@ The currently promoted systems with full L3 coverage:
   `ghk_resting_potential`, `neuron_spike_train`
 - respiratory — `respiratory_pathology`
 - endocrine feedback — `insulin_glucose_feedback`,
-  `thyroid_hormone_feedback`, `calcium_homeostasis_feedback`
+  `thyroid_hormone_feedback`, `calcium_homeostasis_feedback`,
+  `hpa_axis_cortisol_rhythm`
 - pharmacology — `multi_compartment_pk`, `pharmacodynamics_emax_model`,
   `alcohol_pharmacokinetics`, `drug_interaction_calculator`
 - cellular signaling — `gpcr_camp_signaling_cascade`,
