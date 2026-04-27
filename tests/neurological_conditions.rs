@@ -52,7 +52,8 @@ fn test_tension_type_headache() {
     let mut profile = HeadacheProfile::new();
     profile.primary_diagnosis = Some(HeadacheType::TensionType);
     profile.headache_days_per_month = 5.0;
-    assert!(profile.headache_days_per_month >= 0.0);
+    assert_eq!(profile.primary_diagnosis, Some(HeadacheType::TensionType));
+    assert_eq!(profile.headache_days_per_month, 5.0);
 }
 
 #[test]
@@ -74,8 +75,12 @@ fn test_headache_profile() {
     headache_profile.headache_days_per_month = 10.0;
     headache_profile.medication_overuse = false;
 
-    assert!(headache_profile.primary_diagnosis.is_some());
-    assert!(headache_profile.headache_days_per_month > 0.0);
+    assert_eq!(
+        headache_profile.primary_diagnosis,
+        Some(HeadacheType::Migraine(MigraineSubtype::WithAura))
+    );
+    assert_eq!(headache_profile.headache_days_per_month, 10.0);
+    assert!(!headache_profile.medication_overuse);
 }
 
 #[test]
@@ -100,9 +105,14 @@ fn test_migraine_prophylactic_candidates() {
 }
 
 #[test]
-fn test_cluster_headache() {
+fn test_cluster_headache_defaults() {
+    // ICHD-3 defines cluster as 1-8 attacks/day; defaults must fall in that band.
     let cluster = ClusterHeadache::new();
-    assert!(cluster.attacks_per_day >= 0.0);
+    assert!(
+        (1.0..=8.0).contains(&cluster.attacks_per_day),
+        "default attacks_per_day {} outside ICHD-3 1-8 range",
+        cluster.attacks_per_day
+    );
 }
 
 #[test]

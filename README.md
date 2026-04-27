@@ -5,9 +5,9 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 ## Project Status
 
 - ✅ **Compilation**: Clean build
-- ✅ **Tests**: 1520 passing
+- ✅ **Tests**: 1512 passing
 - ✅ **Systems**: 4 complete computational systems, 8 scaffolds
-- 21 example ODE simulations, each tied to a published model
+- 22 example ODE simulations, each tied to a published model
 
 ## Organ Systems
 
@@ -30,7 +30,7 @@ A comprehensive, type-safe computational model of human biology built in Rust fo
 ## What Actually Works
 
 ### Computational Models (Ready to Use)
-- **Cardiac Mechanics**: LaPlace's law, Frank-Starling curves, MVO2, ischemia detection
+- **Cardiac Mechanics**: LaPlace's law, Frank-Starling curves, MVO2, Bruce-protocol stress walk-through
 - **Action Potentials**: Complete Hodgkin-Huxley equations with gating variables
 - **Respiratory Mechanics**: Compliance, resistance, V/Q matching, surfactant dynamics
 - **Mitochondrial Function**: ETC, OXPHOS, ROS production

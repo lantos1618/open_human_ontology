@@ -68,10 +68,7 @@ pub use biology::{
     Modification, Molecule,
 };
 
-pub use human::{
-    BiologicalSex, ComprehensiveHealthAssessment, GeneticProfile, HealthConditions, HealthSummary,
-    Human,
-};
+pub use human::{BiologicalSex, GeneticProfile, HealthConditions, HealthSummary, Human};
 
 /// Version information
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");

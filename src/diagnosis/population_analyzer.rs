@@ -219,10 +219,8 @@ impl PopulationAnalyzer {
                 .any(|(a, p)| *a == ancestry && *p > 25.0)
             {
                 count += 1;
-
-                let risks = individual.assess_genetic_disease_risks();
-                for risk in risks {
-                    *conditions.entry(risk.condition.clone()).or_insert(0) += 1;
+                for condition in &individual.health_conditions.active_conditions {
+                    *conditions.entry(condition.clone()).or_insert(0) += 1;
                 }
             }
         }
@@ -244,44 +242,6 @@ impl PopulationAnalyzer {
             common_conditions,
             protective_factors: Vec::new(),
             screening_recommendations,
-        }
-    }
-
-    pub fn migraine_prevalence_analysis(&self) -> MigraineAnalysis {
-        let mut total_at_risk = 0;
-        let mut female_at_risk = 0;
-        let mut male_at_risk = 0;
-
-        for individual in &self.individuals {
-            let migraine_info = individual.assess_migraine_risk();
-            if migraine_info.risk_score > 2.0 {
-                total_at_risk += 1;
-                match individual.demographics.biological_sex {
-                    crate::human::BiologicalSex::Female => female_at_risk += 1,
-                    crate::human::BiologicalSex::Male => male_at_risk += 1,
-                }
-            }
-        }
-
-        let total = self.individuals.len();
-
-        MigraineAnalysis {
-            total_at_risk,
-            prevalence_rate: if total > 0 {
-                (total_at_risk as f64 / total as f64) * 100.0
-            } else {
-                0.0
-            },
-            female_risk_rate: if total > 0 {
-                (female_at_risk as f64 / total as f64) * 100.0
-            } else {
-                0.0
-            },
-            male_risk_rate: if total > 0 {
-                (male_at_risk as f64 / total as f64) * 100.0
-            } else {
-                0.0
-            },
         }
     }
 
@@ -367,14 +327,6 @@ impl Default for PopulationAnalyzer {
     fn default() -> Self {
         Self::new()
     }
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct MigraineAnalysis {
-    pub total_at_risk: usize,
-    pub prevalence_rate: f64,
-    pub female_risk_rate: f64,
-    pub male_risk_rate: f64,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -474,20 +426,4 @@ mod tests {
         assert!((stats.average_age - 27.5).abs() < 0.1);
     }
 
-    #[test]
-    fn test_migraine_analysis() {
-        let mut analyzer = PopulationAnalyzer::new();
-
-        for i in 0..10 {
-            analyzer.add_individual(Human::new_adult_female(
-                format!("f{}", i),
-                30.0,
-                165.0,
-                60.0,
-            ));
-        }
-
-        let migraine_stats = analyzer.migraine_prevalence_analysis();
-        assert!(migraine_stats.female_risk_rate > 0.0);
-    }
 }
