@@ -10,7 +10,6 @@ pub mod cancer_data_loader;
 pub mod cancer_genetics;
 pub mod cardiovascular_genetics;
 pub mod chromosome;
-pub mod comprehensive_risk_calculator;
 pub mod dermatology;
 pub mod dietary_genetics;
 pub mod disease_association;
@@ -95,9 +94,6 @@ pub use blood_type::{
 };
 pub use cancer_genetics::*;
 pub use cardiovascular_genetics::*;
-pub use comprehensive_risk_calculator::{
-    ComprehensiveRiskCalculator, DiseaseRiskProfile, TraitPrediction,
-};
 pub use dermatology::{
     AcneRisk, FitzpatrickType, HairGenetics, SkinPigmentationGenetics, SkinTone,
 };

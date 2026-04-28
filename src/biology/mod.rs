@@ -5,40 +5,7 @@
 use serde::{Deserialize, Serialize};
 use std::fmt;
 
-pub mod aging;
-pub mod allergy;
-pub mod biomarkers;
-pub mod blood_typing;
-pub mod cancer;
-pub mod cellular;
-pub mod circadian;
-pub mod developmental;
-pub mod embryology;
-pub mod environmental;
-pub mod epigenetic_clocks;
-pub mod epigenetics;
-pub mod exercise_physiology;
 pub mod genetics;
-pub mod gut_brain_axis;
-pub mod hematology;
-pub mod hematopoiesis;
-pub mod immunology;
-pub mod lifestyle;
-pub mod metabolism;
-pub mod metabolism_pathways;
-pub mod microbiome;
-pub mod molecular;
-pub mod neural;
-pub mod neurotransmitters;
-pub mod nutrition;
-pub mod proteomics;
-pub mod radiation_biology;
-pub mod rare_diseases;
-pub mod skeletal;
-pub mod sleep;
-pub mod tissue;
-pub mod toxicology;
-pub mod wound_healing;
 
 /// Represents different types of biological molecules
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -16,10 +16,7 @@
 //!
 //! See `VISION.md` for scope and non-goals.
 
-pub mod anthropometry;
 pub mod biology;
-pub mod biometrics;
-pub mod chemistry;
 pub mod config;
 pub mod diagnosis;
 pub mod human;
@@ -27,9 +24,6 @@ pub mod metabolism;
 pub mod nutrition;
 pub mod pathology;
 pub mod pharmacology;
-pub mod physics;
-pub mod physiology;
-pub mod simulation;
 pub mod simulation_utils;
 pub mod systems;
 pub mod validation;
