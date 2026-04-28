@@ -18,7 +18,6 @@
 
 pub mod biology;
 pub mod config;
-pub mod diagnosis;
 pub mod human;
 pub mod metabolism;
 pub mod nutrition;
