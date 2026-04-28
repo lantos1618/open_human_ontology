@@ -27,13 +27,8 @@ pub mod simulation_utils;
 pub mod systems;
 pub mod validation;
 
-// Re-export commonly used types
-pub use biology::{
-    AminoAcid, BiologyError, BiologyResult, Compartment, Concentration, ConcentrationUnit,
-    Modification, Molecule,
-};
-
-pub use human::{BiologicalSex, GeneticProfile, HealthConditions, HealthSummary, Human};
+pub use biology::{BiologyError, BiologyResult};
+pub use human::{BiologicalSex, Human};
 
 /// Version information
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
