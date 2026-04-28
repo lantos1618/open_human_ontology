@@ -1,48 +1,20 @@
-//! # Human Ontology
+//! ODE physiology models with literature-cited validation.
 //!
-//! A comprehensive computational model of human biology using type systems.
-//! This library enables simulation and diagnosis of biological systems.
+//! The library is structured as four layers, each with one job:
 //!
-//! ## Overview
+//! - **L1** — narrow, typed primitives that compute textbook formulas with
+//!   the citation inline (e.g. Cockcroft-Gault, Frank-Starling, BSA).
+//!   Live under [`systems`], [`pharmacology`], [`metabolism`].
+//! - **L2** — cited TOML genetics data plus typed accessors under
+//!   [`biology::genetics`].
+//! - **L3** — self-contained ODE example binaries under `examples/`. Each
+//!   binary owns its parameters and prints its own results.
+//! - **L4** — per-domain reference ranges with PMID/DOI citations under
+//!   [`validation::ground_truth`], so an L3 example can call
+//!   `db.get_dataset("renal").is_within_expected_range(...)` and catch
+//!   model drift the moment a parameter is mistuned.
 //!
-//! The Human Ontology project models the human body at multiple scales:
-//! - **Molecular**: Proteins, DNA, small molecules
-//! - **Cellular**: Cell types, organelles, cellular processes
-//! - **Tissue**: Tissue types and organization
-//! - **Organ**: Individual organs and their functions
-//! - **System**: Integrated organ systems
-//!
-//! ## Features
-//!
-//! - **Type-safe modeling**: Strong typing prevents invalid biological states
-//! - **Multi-scale simulation**: From molecules to organ systems
-//! - **Diagnostic capabilities**: Pattern recognition and health assessment
-//! - **Extensible architecture**: Easy to add new systems and processes
-//!
-//! ## Example Usage
-//!
-//! ```rust
-//! use human_biology::biology::molecular::bone_matrix::BoneMatrix;
-//!
-//! // Create a bone matrix
-//! let matrix = BoneMatrix::new();
-//!
-//! // Calculate matrix quality
-//! let quality = matrix.calculate_quality();
-//! assert!(quality > 0.0);
-//! ```
-//!
-//! ## Architecture
-//!
-//! - [`biology`]: Core biological types and structures
-//! - [`physics`]: Physical properties and mechanics
-//! - [`chemistry`]: Chemical properties and reactions
-//!
-//! ### Planned Modules
-//! - Systems: Organ systems (cardiovascular, nervous, etc.)
-//! - Processes: Biological processes and pathways
-//! - Simulation: Simulation engine and state management
-//! - Diagnosis: Diagnostic tools and health assessment
+//! See `VISION.md` for scope and non-goals.
 
 pub mod anthropometry;
 pub mod biology;

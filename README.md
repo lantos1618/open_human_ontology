@@ -1,69 +1,57 @@
-# Human Biology - Computational Model
+# human_biology
 
-A comprehensive, type-safe computational model of human biology built in Rust for simulation, analysis, and diagnosis of biological systems.
+A Rust library of cited, testable physiology models — closed-form formulas
+and small ODE simulations. Each example binary is tied to a published model;
+each parameter carries a citation; each test asserts a literature reference
+range. See [VISION.md](VISION.md) for scope and non-goals.
 
 ## Project Status
 
-- ✅ **Compilation**: Clean build
-- ✅ **Tests**: 1512 passing
-- ✅ **Systems**: 4 complete computational systems, 8 scaffolds
-- 22 example ODE simulations, each tied to a published model
+- Clean build, zero warnings
+- 1255 library tests passing
+- 22 example ODE binaries, each tied to a published model
+- L4 ground-truth registry with PMID/DOI citations
 
 ## Organ Systems
 
-### ✅ Complete Computational Models
-- **Cardiovascular**: Cardiac mechanics, hemodynamics, electrophysiology
+Four systems with cited primitives, exercised by the example binaries:
+
+- **Cardiovascular**: Cardiac mechanics (LaPlace, Frank-Starling, MVO2), hemodynamics, electrophysiology
 - **Nervous**: Hodgkin-Huxley + Goldman-Hodgkin-Katz, synaptic transmission, circadian rhythms
 - **Respiratory**: Gas exchange, pulmonary mechanics, oxygen transport kinetics
 - **Renal**: Starling filtration, Cockcroft-Gault CrCl, Tm-limited reabsorption, GFR-scaled drug clearance
 
-### 🚧 Scaffolds
-- **Immune**: Cytokine networks, immune cells
-- **Endocrine**: Hormones, feedback loops
-- **Digestive**: GI tract, absorption
-- **Sensory**: Vision, hearing
-- **Integumentary**: Skin layers
-- **Reproductive**: Reproductive anatomy
-- **Muscular**: Muscle contraction
-- **Lymphatic**: Lymph nodes, vessels
+Eight uncited organ-system scaffolds (immune, endocrine, digestive, sensory,
+integumentary, reproductive, muscular, lymphatic) were removed in the
+2026-04 cull. They produced typed-but-empty struct hierarchies with no L3
+example exercising them.
 
-## What Actually Works
+## What's here
 
-### Computational Models (Ready to Use)
-- **Cardiac Mechanics**: LaPlace's law, Frank-Starling curves, MVO2, Bruce-protocol stress walk-through
-- **Action Potentials**: Complete Hodgkin-Huxley equations with gating variables
+### L1 cited primitives
+- **Cardiac Mechanics**: LaPlace's law, Frank-Starling curves, MVO2
+- **Action Potentials**: Hodgkin-Huxley with gating variables; GHK resting potential
 - **Respiratory Mechanics**: Compliance, resistance, V/Q matching, surfactant dynamics
-- **Mitochondrial Function**: ETC, OXPHOS, ROS production
-- **ALDH2 Metabolism**: Acetaldehyde processing with genetic variants
-- **Inflammation Markers**: Cytokine levels, acute phase response
+- **Renal**: Cockcroft-Gault CrCl, Starling filtration, Tm-limited reabsorption
+- **Metabolic**: Mifflin-St Jeor RMR
 
-### Clinical Validation (Ground-Truth Data)
-- **20+ Medical Domains**: Cardiovascular, metabolic, renal, etc. with peer-reviewed references
-- **Evidence-Based**: PMID/DOI citations for expected ranges
-- **Biomarker Simulation**: Cancer markers, inflammation, Alzheimer's biomarkers
+### L4 ground-truth registries
+- 20+ medical domains with peer-reviewed reference ranges
+- Each entry carries a PMID or DOI; spot-checked against textbook bands
+- Used by L3 examples to assert physiologic plausibility
 
-### Genetics & Ancestry
-- **50+ Genes**: Externalized TOML data with population variants
-- **Ancestry Models**: African, Asian, European genetic variants
-- **Pharmacogenomics**: Drug metabolism (ALDH2, CYP2D6, etc.)
+### L2 genetics data
+- TOML-driven gene catalogs with population frequencies
+- Pharmacogenomics: ALDH2, CYP2D6, warfarin sensitivity, opioid metabolism
 
 ## Quick Start
 
-```rust
-use human_biology::{Human, BiologicalSex};
+Each example is a self-contained ODE binary tied to a published model:
 
-// Create a human model
-let person = Human::new_adult_male(
-    "john_doe",
-    30.0,  // age
-    175.0, // height (cm)
-    75.0   // weight (kg)
-);
-
-// Get health metrics
-let bmi = person.bmi();
-let cardiac_output = person.cardiac_output_l_per_min();
-let gfr = person.gfr_ml_per_min();
+```bash
+cargo run --example cardiac_ischemia_detector --release
+cargo run --example hodgkin_huxley_action_potential --release
+cargo run --example acid_base_balance --release
 ```
 
 ## Installation
@@ -80,13 +68,14 @@ cargo doc --open
 
 ```
 src/
-├── biology/          # Cellular, molecular, genetics, neural, immunology
-├── systems/          # 13 organ systems (cardiovascular, nervous, etc.)
-├── physiology/       # Stress, aging, inflammation, thermoregulation
-├── simulation/       # Multi-system integration engine
+├── biology/          # Genetics (TOML-driven), molecular, cellular primitives
+├── systems/          # 4 organ systems: cardiovascular, nervous, renal, respiratory
+├── physiology/       # Time-series snapshots, stress/aging/inflammation primitives
 ├── chemistry/        # Reactions, equilibrium
 ├── physics/          # Mechanics, forces, thermodynamics
-└── human.rs          # Main integrated model
+├── pharmacology/     # PK/PD primitives used by the example binaries
+├── validation/       # L4 ground-truth registries with PMID/DOI citations
+└── human.rs          # Slim Human aggregate (BiologicalSex, body metrics, 4-system state)
 ```
 
 ## Examples - Real Computational Models
@@ -137,37 +126,12 @@ cargo run --example acid_base_balance --release
 - **rayon** for parallelization
 - **proptest** for property-based testing
 
-## Development Status
-
-### Completed Refactoring
-
-**Phase 1: Honest Documentation**
-- Corrected claims about system completeness
-- Distinguished scaffolds from working implementations
-
-**Phase 2: Remove Fake Simulations**
-- Deleted hardcoded println-based examples
-- Retained ground-truth validated simulations
-
-**Phase 3: Externalize Data**
-- Moved genetic data to TOML files
-- Validated cancer risk data against peer-reviewed sources (NCI, BOADICEA, GeneReviews)
-
-**Phase 4: Simplify Module Structure**
-- Fixed all ambiguous glob reexports
-- Removed warning suppressions
-
-### Future Work
-- Disease progression modeling
-- Pharmacokinetics/pharmacodynamics
-- Clinical validation framework
-
 ## Testing
 
 ```bash
-cargo test                    # Run all 1520 tests
-cargo test --lib             # Library tests only
-cargo test cardiovascular    # System-specific tests
+cargo test                    # All tests (~1255 lib + 16 integration)
+cargo test --lib              # Library tests only
+cargo test cardiovascular     # Filter by module
 ```
 
 ## Documentation
@@ -191,9 +155,12 @@ MIT License - see LICENSE file
 
 ## Acknowledgments
 
-Built with references to medical literature (Guyton & Hall, Ganong's, peer-reviewed research). Validation status varies: some modules have ground-truth implementations (see `examples/*_groundtruth.rs`), while others are scaffolds awaiting proper validation.
+Cited against medical literature (Guyton & Hall, Ganong's, peer-reviewed
+papers). Each L1 primitive carries an inline PMID/DOI; each L4 reference
+range cites a published source. Models that could not be cited were removed
+in the 2026-04 cull rather than left as scaffolds.
 
 ---
 
 **Version**: 0.1.0
-**Last Updated**: April 25, 2026
+**Last Updated**: 2026-04-28

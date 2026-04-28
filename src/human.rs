@@ -59,14 +59,7 @@ pub struct BodySystems {
     pub cardiovascular: CardiovascularSystem,
     pub respiratory: RespiratorySystem,
     pub nervous: NervousSystemIntegrated,
-    pub digestive: DigestiveSystem,
     pub renal: RenalSystem,
-    pub endocrine: EndocrineLandscape,
-    pub muscular: MuscularSystem,
-    pub skeletal: SkeletalSystem,
-    pub integumentary: IntegumentarySystem,
-    pub immune: ImmuneSystem,
-    pub reproductive: ReproductiveSystem,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -91,46 +84,10 @@ pub struct NervousSystemIntegrated {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct DigestiveSystem {
-    pub gi_tract: GITract,
-    pub nutrient_absorption: NutrientAbsorption,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RenalSystem {
     pub left_kidney: Kidney,
     pub right_kidney: Kidney,
     pub filtration: Filtration,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct MuscularSystem {
-    pub total_muscle_mass_kg: f64,
-    pub fiber_type_distribution: f64,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct SkeletalSystem {
-    pub total_bone_mass_kg: f64,
-    pub bone_density_g_cm3: f64,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct IntegumentarySystem {
-    pub skin: Skin,
-    pub skin_type: integumentary::SkinType,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ImmuneSystem {
-    pub lymphatic: LymphaticSystem,
-    pub wbc_count_per_ul: f64,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub enum ReproductiveSystem {
-    Male(MaleReproductiveSystem),
-    Female(FemaleReproductiveSystem),
 }
 
 impl Human {
@@ -526,33 +483,11 @@ impl BodySystems {
                 central: CentralNervousSystem::new_adult(),
                 peripheral: PeripheralNervousSystem::new(),
             },
-            digestive: DigestiveSystem {
-                gi_tract: GITract::new_adult(),
-                nutrient_absorption: NutrientAbsorption::new_normal(),
-            },
             renal: RenalSystem {
                 left_kidney: Kidney::new_left(),
                 right_kidney: Kidney::new_right(),
                 filtration: Filtration::new_normal(),
             },
-            endocrine: EndocrineLandscape::new_adult_male(),
-            muscular: MuscularSystem {
-                total_muscle_mass_kg: 35.0,
-                fiber_type_distribution: 0.5,
-            },
-            skeletal: SkeletalSystem {
-                total_bone_mass_kg: 4.5,
-                bone_density_g_cm3: 1.3,
-            },
-            integumentary: IntegumentarySystem {
-                skin: Skin::new_adult(1.8),
-                skin_type: integumentary::SkinType::new_type_iii(),
-            },
-            immune: ImmuneSystem {
-                lymphatic: LymphaticSystem::new_adult(),
-                wbc_count_per_ul: 7000.0,
-            },
-            reproductive: ReproductiveSystem::Male(MaleReproductiveSystem::new_adult()),
         }
     }
 
@@ -584,139 +519,20 @@ impl BodySystems {
                 central: CentralNervousSystem::new_adult(),
                 peripheral: PeripheralNervousSystem::new(),
             },
-            digestive: DigestiveSystem {
-                gi_tract: GITract::new_adult(),
-                nutrient_absorption: NutrientAbsorption::new_normal(),
-            },
             renal: RenalSystem {
                 left_kidney: kidney_left,
                 right_kidney: kidney_right,
                 filtration: Filtration::new_normal(),
             },
-            endocrine: EndocrineLandscape::new_adult_male(),
-            muscular: MuscularSystem {
-                total_muscle_mass_kg: 35.0,
-                fiber_type_distribution: 0.5,
-            },
-            skeletal: SkeletalSystem {
-                total_bone_mass_kg: 4.5,
-                bone_density_g_cm3: 1.3,
-            },
-            integumentary: IntegumentarySystem {
-                skin: Skin::new_adult(1.8),
-                skin_type: integumentary::SkinType::new_type_iii(),
-            },
-            immune: ImmuneSystem {
-                lymphatic: LymphaticSystem::new_adult(),
-                wbc_count_per_ul: params.hematology.wbc_count_per_ul,
-            },
-            reproductive: ReproductiveSystem::Male(MaleReproductiveSystem::new_adult()),
         }
     }
 
     pub fn new_adult_female() -> Self {
-        Self {
-            cardiovascular: CardiovascularSystem {
-                heart: Heart::new(),
-                blood_vessels: vec![],
-                blood: Blood::new(cardiovascular::BloodType::OPositive),
-            },
-            respiratory: RespiratorySystem {
-                left_lung: Lung::new_left(),
-                right_lung: Lung::new_right(),
-                gas_exchange: GasExchange::new_normal(),
-                breathing_pattern: BreathingPattern::new_normal(),
-            },
-            nervous: NervousSystemIntegrated {
-                central: CentralNervousSystem::new_adult(),
-                peripheral: PeripheralNervousSystem::new(),
-            },
-            digestive: DigestiveSystem {
-                gi_tract: GITract::new_adult(),
-                nutrient_absorption: NutrientAbsorption::new_normal(),
-            },
-            renal: RenalSystem {
-                left_kidney: Kidney::new_left(),
-                right_kidney: Kidney::new_right(),
-                filtration: Filtration::new_normal(),
-            },
-            endocrine: EndocrineLandscape::new_adult_female(),
-            muscular: MuscularSystem {
-                total_muscle_mass_kg: 28.0,
-                fiber_type_distribution: 0.5,
-            },
-            skeletal: SkeletalSystem {
-                total_bone_mass_kg: 3.5,
-                bone_density_g_cm3: 1.2,
-            },
-            integumentary: IntegumentarySystem {
-                skin: Skin::new_adult(1.6),
-                skin_type: integumentary::SkinType::new_type_iii(),
-            },
-            immune: ImmuneSystem {
-                lymphatic: LymphaticSystem::new_adult(),
-                wbc_count_per_ul: 7000.0,
-            },
-            reproductive: ReproductiveSystem::Female(FemaleReproductiveSystem::new_adult()),
-        }
+        Self::new_adult_male()
     }
 
     pub fn from_baseline_params_female(params: &BaselineHumanParams) -> Self {
-        let mut heart = Heart::new();
-        heart.heart_rate_bpm = params.cardiovascular.resting_heart_rate_bpm;
-        heart.stroke_volume_ml = params.cardiovascular.stroke_volume_ml;
-        heart.ejection_fraction = params.cardiovascular.ejection_fraction;
-
-        let mut kidney_left = Kidney::new_left();
-        kidney_left.gfr_ml_per_min = params.renal.gfr_ml_per_min;
-
-        let mut kidney_right = Kidney::new_right();
-        kidney_right.gfr_ml_per_min = params.renal.gfr_ml_per_min;
-
-        Self {
-            cardiovascular: CardiovascularSystem {
-                heart,
-                blood_vessels: vec![],
-                blood: Blood::new(cardiovascular::BloodType::OPositive),
-            },
-            respiratory: RespiratorySystem {
-                left_lung: Lung::new_left(),
-                right_lung: Lung::new_right(),
-                gas_exchange: GasExchange::new_normal(),
-                breathing_pattern: BreathingPattern::new_normal(),
-            },
-            nervous: NervousSystemIntegrated {
-                central: CentralNervousSystem::new_adult(),
-                peripheral: PeripheralNervousSystem::new(),
-            },
-            digestive: DigestiveSystem {
-                gi_tract: GITract::new_adult(),
-                nutrient_absorption: NutrientAbsorption::new_normal(),
-            },
-            renal: RenalSystem {
-                left_kidney: kidney_left,
-                right_kidney: kidney_right,
-                filtration: Filtration::new_normal(),
-            },
-            endocrine: EndocrineLandscape::new_adult_female(),
-            muscular: MuscularSystem {
-                total_muscle_mass_kg: 28.0,
-                fiber_type_distribution: 0.5,
-            },
-            skeletal: SkeletalSystem {
-                total_bone_mass_kg: 3.5,
-                bone_density_g_cm3: 1.2,
-            },
-            integumentary: IntegumentarySystem {
-                skin: Skin::new_adult(1.6),
-                skin_type: integumentary::SkinType::new_type_iii(),
-            },
-            immune: ImmuneSystem {
-                lymphatic: LymphaticSystem::new_adult(),
-                wbc_count_per_ul: params.hematology.wbc_count_per_ul,
-            },
-            reproductive: ReproductiveSystem::Female(FemaleReproductiveSystem::new_adult()),
-        }
+        Self::from_baseline_params_male(params)
     }
 }
 
@@ -772,23 +588,6 @@ mod tests {
         assert!(summary.bmi > 0.0);
         assert!(summary.cardiac_output > 0.0);
         assert!(summary.gfr > 0.0);
-    }
-
-    #[test]
-    fn test_body_systems_male() {
-        let systems = BodySystems::new_adult_male();
-        assert!(matches!(systems.reproductive, ReproductiveSystem::Male(_)));
-        assert!(systems.muscular.total_muscle_mass_kg > 30.0);
-    }
-
-    #[test]
-    fn test_body_systems_female() {
-        let systems = BodySystems::new_adult_female();
-        assert!(matches!(
-            systems.reproductive,
-            ReproductiveSystem::Female(_)
-        ));
-        assert!(systems.muscular.total_muscle_mass_kg < 30.0);
     }
 
     #[test]
