@@ -18,7 +18,6 @@
 
 pub mod biology;
 pub mod config;
-pub mod human;
 pub mod metabolism;
 pub mod nutrition;
 pub mod pathology;
@@ -28,7 +27,6 @@ pub mod systems;
 pub mod validation;
 
 pub use biology::{BiologyError, BiologyResult};
-pub use human::{BiologicalSex, Human};
 
 /// Version information
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");

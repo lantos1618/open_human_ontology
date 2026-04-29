@@ -8,10 +8,10 @@ reference range. See [VISION.md](VISION.md) for scope and non-goals.
 ## Project Status
 
 - Clean build, zero warnings
-- 358 library tests + 16 integration tests passing
+- 340 library tests + 16 integration tests passing
 - 22 example ODE binaries, each tied to a published model
 - L4 ground-truth registry with PMID/DOI citations
-- ~23K LOC after the 2026-04 cull (down from ~75K)
+- ~22K LOC after the 2026-04 cull (down from ~75K)
 
 ## Organ Systems
 
@@ -74,11 +74,10 @@ src/
 ├── metabolism/          # L1: alcohol PK + enzyme kinetics
 ├── pharmacology/        # L1: pharmacokinetics, pharmacogenomics
 ├── nutrition/           # L1: cited evidence base for dietary recommendations
-├── pathology/headache.rs # used by Human + integration tests
+├── pathology/headache.rs # used by integration tests
 ├── validation/ground_truth/ # L4: PMID-cited reference ranges per domain
 ├── config/              # baseline params, presets
-├── simulation_utils.rs  # helpers for L3 examples
-└── human.rs             # slim aggregate over the 4 systems (Mifflin-St Jeor)
+└── simulation_utils.rs  # helpers for L3 examples
 data/genetics/*.toml     # L2: cited gene catalogs
 examples/*.rs            # L3: 22 ODE binaries, each tied to a published model
 ```
@@ -133,7 +132,7 @@ cargo run --example acid_base_balance --release
 ## Testing
 
 ```bash
-cargo test                    # 358 lib + 16 integration
+cargo test                    # 340 lib + 16 integration
 cargo test --lib              # library tests only
 cargo test cardiovascular     # filter by module
 ```
